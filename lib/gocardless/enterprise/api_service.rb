@@ -22,9 +22,9 @@ module GoCardless
         @headers['Authorization'] = "Basic " + Base64.strict_encode64("#{key}:#{secret}")
     end
 
-    def make_request(method, path, options = {})
+    def make_request(method, path, options = {}, custom_headers = {})
       raise ArgumentError, 'options must be a hash' unless options.is_a?(Hash)
-      Request.new(@connection, method, @path_prefix + path, options, @headers).request
+      Request.new(@connection, method, @path_prefix + path, options, @headers.merge(custom_headers)).request
     end
 
     def inspect

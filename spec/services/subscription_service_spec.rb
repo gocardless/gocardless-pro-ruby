@@ -3,8 +3,8 @@ require 'spec_helper'
 describe GoCardless::Services::SubscriptionService do
   let(:client) do
     GoCardless::Client.new(
-      user: "AK123",
-      password: "ABC"
+      api_key: "AK123",
+      api_secret: "ABC"
     )
   end
 
@@ -439,6 +439,48 @@ describe GoCardless::Services::SubscriptionService do
         expect(post_response).to be_a(GoCardless::Resources::Subscription)
 
         expect(stub).to have_been_requested
+      end
+
+      context "when the request needs a body and custom header" do
+        
+          let(:body) { { foo: 'bar' } }
+          let(:headers) { { 'Foo' => 'Bar' } }
+          subject(:post_response) { client.subscriptions.cancel(resource_id, body, headers) }
+        
+        let(:resource_id) { "ABC123" }
+
+        let!(:stub) do
+          # /subscriptions/%v/actions/cancel
+          stub_url = "/subscriptions/:identity/actions/cancel".gsub(':identity', resource_id)
+          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              subscriptions: {
+                
+                "amount" => "amount-input",
+                "count" => "count-input",
+                "created_at" => "created_at-input",
+                "currency" => "currency-input",
+                "day_of_month" => "day_of_month-input",
+                "end_at" => "end_at-input",
+                "id" => "id-input",
+                "interval" => "interval-input",
+                "interval_unit" => "interval_unit-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+                "month" => "month-input",
+                "name" => "name-input",
+                "start_at" => "start_at-input",
+                "status" => "status-input",
+                "upcoming_payments" => "upcoming_payments-input",
+              }
+            }.to_json,
+            headers: {'Content-Type' => 'application/json'},
+          )
+        end
       end
     end
     

@@ -3,8 +3,8 @@ require 'spec_helper'
 describe GoCardless::Services::PaymentService do
   let(:client) do
     GoCardless::Client.new(
-      user: "AK123",
-      password: "ABC"
+      api_key: "AK123",
+      api_secret: "ABC"
     )
   end
 
@@ -375,6 +375,43 @@ describe GoCardless::Services::PaymentService do
 
         expect(stub).to have_been_requested
       end
+
+      context "when the request needs a body and custom header" do
+        
+          let(:body) { { foo: 'bar' } }
+          let(:headers) { { 'Foo' => 'Bar' } }
+          subject(:post_response) { client.payments.cancel(resource_id, body, headers) }
+        
+        let(:resource_id) { "ABC123" }
+
+        let!(:stub) do
+          # /payments/%v/actions/cancel
+          stub_url = "/payments/:identity/actions/cancel".gsub(':identity', resource_id)
+          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              payments: {
+                
+                "amount" => "amount-input",
+                "amount_refunded" => "amount_refunded-input",
+                "charge_date" => "charge_date-input",
+                "created_at" => "created_at-input",
+                "currency" => "currency-input",
+                "description" => "description-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+                "reference" => "reference-input",
+                "status" => "status-input",
+              }
+            }.to_json,
+            headers: {'Content-Type' => 'application/json'},
+          )
+        end
+      end
     end
     
   
@@ -416,6 +453,43 @@ describe GoCardless::Services::PaymentService do
         expect(post_response).to be_a(GoCardless::Resources::Payment)
 
         expect(stub).to have_been_requested
+      end
+
+      context "when the request needs a body and custom header" do
+        
+          let(:body) { { foo: 'bar' } }
+          let(:headers) { { 'Foo' => 'Bar' } }
+          subject(:post_response) { client.payments.retry(resource_id, body, headers) }
+        
+        let(:resource_id) { "ABC123" }
+
+        let!(:stub) do
+          # /payments/%v/actions/retry
+          stub_url = "/payments/:identity/actions/retry".gsub(':identity', resource_id)
+          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              payments: {
+                
+                "amount" => "amount-input",
+                "amount_refunded" => "amount_refunded-input",
+                "charge_date" => "charge_date-input",
+                "created_at" => "created_at-input",
+                "currency" => "currency-input",
+                "description" => "description-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+                "reference" => "reference-input",
+                "status" => "status-input",
+              }
+            }.to_json,
+            headers: {'Content-Type' => 'application/json'},
+          )
+        end
       end
     end
     

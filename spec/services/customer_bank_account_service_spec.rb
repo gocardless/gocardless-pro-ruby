@@ -3,8 +3,8 @@ require 'spec_helper'
 describe GoCardless::Services::CustomerBankAccountService do
   let(:client) do
     GoCardless::Client.new(
-      user: "AK123",
-      password: "ABC"
+      api_key: "AK123",
+      api_secret: "ABC"
     )
   end
 
@@ -361,6 +361,42 @@ describe GoCardless::Services::CustomerBankAccountService do
         expect(post_response).to be_a(GoCardless::Resources::CustomerBankAccount)
 
         expect(stub).to have_been_requested
+      end
+
+      context "when the request needs a body and custom header" do
+        
+          let(:body) { { foo: 'bar' } }
+          let(:headers) { { 'Foo' => 'Bar' } }
+          subject(:post_response) { client.customer_bank_accounts.disable(resource_id, body, headers) }
+        
+        let(:resource_id) { "ABC123" }
+
+        let!(:stub) do
+          # /customer_bank_accounts/%v/actions/disable
+          stub_url = "/customer_bank_accounts/:identity/actions/disable".gsub(':identity', resource_id)
+          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              customer_bank_accounts: {
+                
+                "account_holder_name" => "account_holder_name-input",
+                "account_number_ending" => "account_number_ending-input",
+                "bank_name" => "bank_name-input",
+                "country_code" => "country_code-input",
+                "created_at" => "created_at-input",
+                "currency" => "currency-input",
+                "enabled" => "enabled-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+              }
+            }.to_json,
+            headers: {'Content-Type' => 'application/json'},
+          )
+        end
       end
     end
     

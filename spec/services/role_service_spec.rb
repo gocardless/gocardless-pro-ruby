@@ -3,8 +3,8 @@ require 'spec_helper'
 describe GoCardless::Services::RoleService do
   let(:client) do
     GoCardless::Client.new(
-      user: "AK123",
-      password: "ABC"
+      api_key: "AK123",
+      api_secret: "ABC"
     )
   end
 
@@ -298,6 +298,37 @@ describe GoCardless::Services::RoleService do
         expect(post_response).to be_a(GoCardless::Resources::Role)
 
         expect(stub).to have_been_requested
+      end
+
+      context "when the request needs a body and custom header" do
+        
+          let(:body) { { foo: 'bar' } }
+          let(:headers) { { 'Foo' => 'Bar' } }
+          subject(:post_response) { client.roles.disable(resource_id, body, headers) }
+        
+        let(:resource_id) { "ABC123" }
+
+        let!(:stub) do
+          # /roles/%v/actions/disable
+          stub_url = "/roles/:identity/actions/disable".gsub(':identity', resource_id)
+          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              roles: {
+                
+                "created_at" => "created_at-input",
+                "enabled" => "enabled-input",
+                "id" => "id-input",
+                "name" => "name-input",
+                "permissions" => "permissions-input",
+              }
+            }.to_json,
+            headers: {'Content-Type' => 'application/json'},
+          )
+        end
       end
     end
     

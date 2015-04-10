@@ -13,12 +13,23 @@ gem 'gocardless-enterprise'
 - In the case of list responses, the client will return an instance of `ListResponse`, which is enumerable.
 - You can also call `#all` to get a lazily paginated list of resource that will deal with making extra API requests to paginate through all the data
 
+### Initialising the client
+
+The client is initialised with a user and password, which is the API Key and token respectively. You can also pass in `environment` as `:sandbox` to make requests to the sandbox environment.
+
+```
+@client = GoCardless::Client.new(
+  api_key: ENV["GOCARDLESS_KEY"],
+  api_secret: ENV["GOCARDLESS_TOKEN"]
+)
+```
+
 ### GET requests
 
 Simple requests can be made like this:
 
 ```
-GoCardless.resource.list
+@client.resource.list
 ```
 
 Where `resource` is one of the resources in the GoCardless API, such as `customers` or `mandate`.
@@ -26,27 +37,27 @@ Where `resource` is one of the resources in the GoCardless API, such as `custome
 If you need to pass any options, the last (or in the absence of URL params, the only) argument is an options hash. This is used to pass query parameters for `GET` requests.
 
 ```
-GoCardless.resource.list(limit: 400)
+@client.customers.list(limit: 400)
 ```
 
 In the case where url parameters are needed, the method signature will contain required arguments:
 
 ```
-GoCardless.resource.show(resource_id)
+@client.customers.show(customers_id)
 ```
 
 As with list, the last argument can be an options hash:
 
 ```
-GoCardless.resource.show(resource_id, limit: 200)
+@client.customers.show(customers_id, limit: 200)
 ```
 
 ### POST/PUT Requests
 
-For POST and PUT requests you need to pass in the body as the last argument.
+For POST and PUT requests you need to pass in the body in as the last argument.
 
 ```
-GoCardless.customers.create(
+@client.customers.create(
   first_name: "Pete",
   last_name: "Hamilton",
   ...
@@ -56,7 +67,20 @@ GoCardless.customers.create(
 As with GET requests, if href params are required they come first:
 
 ```
-GoCardless.resource.update(resource_id, {...})
+@client.customers.update(customers_id, {...})
+```
+
+### Custom Headers
+
+If you need to pass in a custom header to an endpoint, you can pass in a separate hash as the last argument:
+
+```
+@client.helpers.mandate({
+  account_number: 200000
+  ...
+}, {
+  'Accept': 'application/pdf'
+})
 ```
 
 ### Handling failures

@@ -1,8 +1,8 @@
  require_relative 'lib/gocardless/enterprise'
 
 @client = GoCardless::Client.new(
-  user: ENV["GOCARDLESS_KEY"],
-  password: ENV["GOCARDLESS_TOKEN"],
+  api_key: ENV["GOCARDLESS_KEY"],
+  api_secret: ENV["GOCARDLESS_TOKEN"],
   environment: :sandbox
 )
 

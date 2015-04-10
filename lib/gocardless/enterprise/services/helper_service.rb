@@ -43,7 +43,7 @@ module GoCardless
         # Example URL: /helpers/mandate
         # @param options: any query parameters, in the form of a hash
         def mandate(
-          options = {}
+        options = {}, custom_headers = {}
         )
         path = nil
         
@@ -57,7 +57,7 @@ module GoCardless
           options = new_options
         
         
-        response = make_request(:post, path, options)
+        response = make_request(:post, path, options, custom_headers)
         
           Resources::Helper.new(unenvelope_body(response.body))
         
@@ -80,7 +80,7 @@ module GoCardless
         # Example URL: /helpers/modulus_check
         # @param options: any query parameters, in the form of a hash
         def modulus_check(
-          options = {}
+        options = {}, custom_headers = {}
         )
         path = nil
         
@@ -94,7 +94,7 @@ module GoCardless
           options = new_options
         
         
-        response = make_request(:post, path, options)
+        response = make_request(:post, path, options, custom_headers)
         
           Resources::Helper.new(unenvelope_body(response.body))
         

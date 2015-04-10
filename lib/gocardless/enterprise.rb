@@ -167,10 +167,11 @@ module GoCardless
     #   authentication.
     def initialize(options)
       environment = options.delete(:environment) || :production
-      user = options.delete(:user) || raise("No API key ID given to GoCardless Client")
-      password = options.delete(:password) || raise("No API secret given to GoCardless Client")
+      api_key = options.delete(:api_key) || raise("No API key ID given to GoCardless Client")
+      api_secret = options.delete(:api_secret) || raise("No API secret given to GoCardless Client")
       options = custom_options(options)
-      @api_service = ApiService.new(url_for_environment(environment), user, password, options)
+      @api_service = ApiService.new(
+        url_for_environment(environment), api_key, api_secret, options)
     end
 
     private
