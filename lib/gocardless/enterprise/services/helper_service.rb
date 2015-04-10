@@ -50,6 +50,13 @@ module GoCardless
           path = "/helpers/mandate"
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::Helper.new(unenvelope_body(response.body))
@@ -80,6 +87,13 @@ module GoCardless
           path = "/helpers/modulus_check"
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::Helper.new(unenvelope_body(response.body))

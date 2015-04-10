@@ -26,6 +26,13 @@ module GoCardless
           path = "/publishable_api_keys"
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::PublishableApiKey.new(unenvelope_body(response.body))
@@ -49,6 +56,9 @@ module GoCardless
           path = "/publishable_api_keys"
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           ListResponse.new(
@@ -86,6 +96,9 @@ module GoCardless
           })
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           Resources::PublishableApiKey.new(unenvelope_body(response.body))
@@ -112,6 +125,13 @@ module GoCardless
           })
         
 
+        
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
         response = make_request(:put, path, options)
         
           Resources::PublishableApiKey.new(unenvelope_body(response.body))
@@ -138,6 +158,13 @@ module GoCardless
           })
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::PublishableApiKey.new(unenvelope_body(response.body))

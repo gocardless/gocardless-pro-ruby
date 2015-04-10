@@ -26,6 +26,13 @@ module GoCardless
           path = "/subscriptions"
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::Subscription.new(unenvelope_body(response.body))
@@ -49,6 +56,9 @@ module GoCardless
           path = "/subscriptions"
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           ListResponse.new(
@@ -86,6 +96,9 @@ module GoCardless
           })
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           Resources::Subscription.new(unenvelope_body(response.body))
@@ -111,6 +124,13 @@ module GoCardless
           })
         
 
+        
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
         response = make_request(:put, path, options)
         
           Resources::Subscription.new(unenvelope_body(response.body))
@@ -142,6 +162,13 @@ module GoCardless
           })
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::Subscription.new(unenvelope_body(response.body))

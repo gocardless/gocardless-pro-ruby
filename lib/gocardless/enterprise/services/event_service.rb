@@ -28,6 +28,9 @@ module GoCardless
           path = "/events"
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           ListResponse.new(
@@ -65,6 +68,9 @@ module GoCardless
           })
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           Resources::Event.new(unenvelope_body(response.body))

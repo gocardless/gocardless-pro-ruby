@@ -27,6 +27,13 @@ module GoCardless
           path = "/users"
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::User.new(unenvelope_body(response.body))
@@ -50,6 +57,9 @@ module GoCardless
           path = "/users"
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           ListResponse.new(
@@ -88,6 +98,9 @@ module GoCardless
           })
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           Resources::User.new(unenvelope_body(response.body))
@@ -114,6 +127,13 @@ module GoCardless
           })
         
 
+        
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
         response = make_request(:put, path, options)
         
           Resources::User.new(unenvelope_body(response.body))
@@ -139,6 +159,13 @@ module GoCardless
           })
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::User.new(unenvelope_body(response.body))
@@ -164,6 +191,13 @@ module GoCardless
           })
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::User.new(unenvelope_body(response.body))

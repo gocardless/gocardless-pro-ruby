@@ -26,6 +26,13 @@ module GoCardless
           path = "/mandates"
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::Mandate.new(unenvelope_body(response.body))
@@ -50,6 +57,9 @@ module GoCardless
           path = "/mandates"
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           ListResponse.new(
@@ -97,6 +107,9 @@ module GoCardless
           })
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           Resources::Mandate.new(unenvelope_body(response.body))
@@ -122,6 +135,13 @@ module GoCardless
           })
         
 
+        
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
         response = make_request(:put, path, options)
         
           Resources::Mandate.new(unenvelope_body(response.body))
@@ -152,6 +172,13 @@ module GoCardless
           })
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::Mandate.new(unenvelope_body(response.body))
@@ -187,6 +214,13 @@ module GoCardless
           })
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::Mandate.new(unenvelope_body(response.body))

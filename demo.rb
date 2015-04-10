@@ -1,11 +1,10 @@
  require_relative 'lib/gocardless/enterprise'
 
 @client = GoCardless::Client.new(
-  user: "AK0000133BVTZP",
-  password: "I4WaBGT8FQTDmUbmIl51-FLw3OqhyeHj2x89rOV7",
+  user: ENV["GOCARDLESS_KEY"],
+  password: ENV["GOCARDLESS_TOKEN"],
   environment: :sandbox
 )
 
-p @client.customers.list.first
-
-p @client.customers.all.to_a
+puts "Your first customer:"
+puts "-> #{@client.customers.list.first.inspect}"

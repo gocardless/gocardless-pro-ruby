@@ -28,6 +28,9 @@ module GoCardless
           path = "/payouts"
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           ListResponse.new(
@@ -65,6 +68,9 @@ module GoCardless
           })
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           Resources::Payout.new(unenvelope_body(response.body))

@@ -36,7 +36,28 @@ describe GoCardless::Services::CustomerService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/customers/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/customers/).
+          with(
+            body: {
+              customers: {
+                
+                "address_line1" => "address_line1-input",
+                "address_line2" => "address_line2-input",
+                "address_line3" => "address_line3-input",
+                "city" => "city-input",
+                "country_code" => "country_code-input",
+                "created_at" => "created_at-input",
+                "email" => "email-input",
+                "family_name" => "family_name-input",
+                "given_name" => "given_name-input",
+                "id" => "id-input",
+                "metadata" => "metadata-input",
+                "postal_code" => "postal_code-input",
+                "region" => "region-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               customers: {
                 

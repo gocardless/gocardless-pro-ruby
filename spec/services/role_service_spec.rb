@@ -28,7 +28,20 @@ describe GoCardless::Services::RoleService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/roles/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/roles/).
+          with(
+            body: {
+              roles: {
+                
+                "created_at" => "created_at-input",
+                "enabled" => "enabled-input",
+                "id" => "id-input",
+                "name" => "name-input",
+                "permissions" => "permissions-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               roles: {
                 

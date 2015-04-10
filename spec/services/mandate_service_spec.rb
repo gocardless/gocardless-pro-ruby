@@ -31,7 +31,23 @@ describe GoCardless::Services::MandateService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/mandates/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/mandates/).
+          with(
+            body: {
+              mandates: {
+                
+                "created_at" => "created_at-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+                "next_possible_charge_date" => "next_possible_charge_date-input",
+                "reference" => "reference-input",
+                "scheme" => "scheme-input",
+                "status" => "status-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               mandates: {
                 

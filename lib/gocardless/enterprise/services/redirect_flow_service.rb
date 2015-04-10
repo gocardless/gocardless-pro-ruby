@@ -27,6 +27,13 @@ module GoCardless
           path = "/redirect_flows"
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::RedirectFlow.new(unenvelope_body(response.body))
@@ -52,6 +59,9 @@ module GoCardless
           })
         
 
+        
+        
+        
         response = make_request(:get, path, options)
         
           Resources::RedirectFlow.new(unenvelope_body(response.body))
@@ -91,6 +101,13 @@ module GoCardless
           })
         
 
+        
+        
+          new_options = {}
+          new_options[envelope_key] = options
+          options = new_options
+        
+        
         response = make_request(:post, path, options)
         
           Resources::RedirectFlow.new(unenvelope_body(response.body))

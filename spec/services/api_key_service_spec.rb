@@ -30,7 +30,22 @@ describe GoCardless::Services::ApiKeyService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/api_keys/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/api_keys/).
+          with(
+            body: {
+              api_keys: {
+                
+                "created_at" => "created_at-input",
+                "enabled" => "enabled-input",
+                "id" => "id-input",
+                "key" => "key-input",
+                "links" => "links-input",
+                "name" => "name-input",
+                "webhook_url" => "webhook_url-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               api_keys: {
                 

@@ -39,7 +39,31 @@ describe GoCardless::Services::SubscriptionService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/subscriptions/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/subscriptions/).
+          with(
+            body: {
+              subscriptions: {
+                
+                "amount" => "amount-input",
+                "count" => "count-input",
+                "created_at" => "created_at-input",
+                "currency" => "currency-input",
+                "day_of_month" => "day_of_month-input",
+                "end_at" => "end_at-input",
+                "id" => "id-input",
+                "interval" => "interval-input",
+                "interval_unit" => "interval_unit-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+                "month" => "month-input",
+                "name" => "name-input",
+                "start_at" => "start_at-input",
+                "status" => "status-input",
+                "upcoming_payments" => "upcoming_payments-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               subscriptions: {
                 

@@ -34,7 +34,26 @@ describe GoCardless::Services::PaymentService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/payments/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/payments/).
+          with(
+            body: {
+              payments: {
+                
+                "amount" => "amount-input",
+                "amount_refunded" => "amount_refunded-input",
+                "charge_date" => "charge_date-input",
+                "created_at" => "created_at-input",
+                "currency" => "currency-input",
+                "description" => "description-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+                "reference" => "reference-input",
+                "status" => "status-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               payments: {
                 

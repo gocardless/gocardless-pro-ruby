@@ -29,7 +29,21 @@ describe GoCardless::Services::RefundService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/refunds/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/refunds/).
+          with(
+            body: {
+              refunds: {
+                
+                "amount" => "amount-input",
+                "created_at" => "created_at-input",
+                "currency" => "currency-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               refunds: {
                 

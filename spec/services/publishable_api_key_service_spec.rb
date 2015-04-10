@@ -28,7 +28,20 @@ describe GoCardless::Services::PublishableApiKeyService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/publishable_api_keys/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/publishable_api_keys/).
+          with(
+            body: {
+              publishable_api_keys: {
+                
+                "created_at" => "created_at-input",
+                "enabled" => "enabled-input",
+                "id" => "id-input",
+                "key" => "key-input",
+                "name" => "name-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               publishable_api_keys: {
                 

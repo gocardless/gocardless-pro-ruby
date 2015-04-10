@@ -30,7 +30,22 @@ describe GoCardless::Services::UserService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/users/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/users/).
+          with(
+            body: {
+              users: {
+                
+                "created_at" => "created_at-input",
+                "email" => "email-input",
+                "enabled" => "enabled-input",
+                "family_name" => "family_name-input",
+                "given_name" => "given_name-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               users: {
                 

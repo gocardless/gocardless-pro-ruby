@@ -31,7 +31,23 @@ describe GoCardless::Services::RedirectFlowService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/redirect_flows/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/redirect_flows/).
+          with(
+            body: {
+              redirect_flows: {
+                
+                "created_at" => "created_at-input",
+                "description" => "description-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "redirect_url" => "redirect_url-input",
+                "scheme" => "scheme-input",
+                "session_token" => "session_token-input",
+                "success_redirect_url" => "success_redirect_url-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               redirect_flows: {
                 

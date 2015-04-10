@@ -33,7 +33,25 @@ describe GoCardless::Services::CreditorBankAccountService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/creditor_bank_accounts/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/creditor_bank_accounts/).
+          with(
+            body: {
+              creditor_bank_accounts: {
+                
+                "account_holder_name" => "account_holder_name-input",
+                "account_number_ending" => "account_number_ending-input",
+                "bank_name" => "bank_name-input",
+                "country_code" => "country_code-input",
+                "created_at" => "created_at-input",
+                "currency" => "currency-input",
+                "enabled" => "enabled-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+                }
+            }
+          ).
+          to_return(
             body: {
               creditor_bank_accounts: {
                 
