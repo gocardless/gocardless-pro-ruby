@@ -37,6 +37,24 @@ describe GoCardless::ApiService do
     end
   end
 
+  describe "making a post request with data and custom header" do
+    it "passes the data in as the post body" do
+      stub = stub_request(:post, /.*api.example.com\/customers/).
+        with(
+          body: { given_name: "Jack", family_name: "Franklin" },
+          headers: { 'Foo' => 'Bar' }
+        )
+
+      service.make_request(:post, "/customers", {
+        given_name: "Jack",
+        family_name: "Franklin"
+      }, {
+        'Foo' => 'Bar'
+      })
+      expect(stub).to have_been_requested
+    end
+  end
+
   describe "making a put request with some data" do
     it "passes the data in as the request body" do
       stub = stub_request(:put, /.*api.example.com\/customers\/CU123/).

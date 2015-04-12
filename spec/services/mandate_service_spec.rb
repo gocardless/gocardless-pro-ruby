@@ -3,8 +3,8 @@ require 'spec_helper'
 describe GoCardless::Services::MandateService do
   let(:client) do
     GoCardless::Client.new(
-      user: "AK123",
-      password: "ABC"
+      api_key: "AK123",
+      api_secret: "ABC"
     )
   end
 
@@ -336,6 +336,40 @@ describe GoCardless::Services::MandateService do
 
         expect(stub).to have_been_requested
       end
+
+      context "when the request needs a body and custom header" do
+        
+          let(:body) { { foo: 'bar' } }
+          let(:headers) { { 'Foo' => 'Bar' } }
+          subject(:post_response) { client.mandates.cancel(resource_id, body, headers) }
+        
+        let(:resource_id) { "ABC123" }
+
+        let!(:stub) do
+          # /mandates/%v/actions/cancel
+          stub_url = "/mandates/:identity/actions/cancel".gsub(':identity', resource_id)
+          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              mandates: {
+                
+                "created_at" => "created_at-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+                "next_possible_charge_date" => "next_possible_charge_date-input",
+                "reference" => "reference-input",
+                "scheme" => "scheme-input",
+                "status" => "status-input",
+              }
+            }.to_json,
+            headers: {'Content-Type' => 'application/json'},
+          )
+        end
+      end
     end
     
   
@@ -374,6 +408,40 @@ describe GoCardless::Services::MandateService do
         expect(post_response).to be_a(GoCardless::Resources::Mandate)
 
         expect(stub).to have_been_requested
+      end
+
+      context "when the request needs a body and custom header" do
+        
+          let(:body) { { foo: 'bar' } }
+          let(:headers) { { 'Foo' => 'Bar' } }
+          subject(:post_response) { client.mandates.reinstate(resource_id, body, headers) }
+        
+        let(:resource_id) { "ABC123" }
+
+        let!(:stub) do
+          # /mandates/%v/actions/reinstate
+          stub_url = "/mandates/:identity/actions/reinstate".gsub(':identity', resource_id)
+          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              mandates: {
+                
+                "created_at" => "created_at-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "metadata" => "metadata-input",
+                "next_possible_charge_date" => "next_possible_charge_date-input",
+                "reference" => "reference-input",
+                "scheme" => "scheme-input",
+                "status" => "status-input",
+              }
+            }.to_json,
+            headers: {'Content-Type' => 'application/json'},
+          )
+        end
       end
     end
     

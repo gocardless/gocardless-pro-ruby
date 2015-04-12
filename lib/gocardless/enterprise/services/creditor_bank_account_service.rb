@@ -23,7 +23,7 @@ module GoCardless
         # Example URL: /creditor_bank_accounts
         # @param options: any query parameters, in the form of a hash
         def create(
-          options = {}
+        options = {}, custom_headers = {}
         )
         path = nil
         
@@ -37,7 +37,7 @@ module GoCardless
           options = new_options
         
         
-        response = make_request(:post, path, options)
+        response = make_request(:post, path, options, custom_headers)
         
           Resources::CreditorBankAccount.new(unenvelope_body(response.body))
         
@@ -53,7 +53,7 @@ module GoCardless
         # Example URL: /creditor_bank_accounts
         # @param options: any query parameters, in the form of a hash
         def list(
-          options = {}
+        options = {}, custom_headers = {}
         )
         path = nil
         
@@ -63,7 +63,7 @@ module GoCardless
         
         
         
-        response = make_request(:get, path, options)
+        response = make_request(:get, path, options, custom_headers)
         
           ListResponse.new(
             raw_response: response,
@@ -91,7 +91,7 @@ module GoCardless
         # @param identity:       # Unique identifier, beginning with "BA" }}
         # @param options: any query parameters, in the form of a hash
         def get(
-          identity, options = {}
+        identity, options = {}, custom_headers = {}
         )
         path = nil
         
@@ -103,7 +103,7 @@ module GoCardless
         
         
         
-        response = make_request(:get, path, options)
+        response = make_request(:get, path, options, custom_headers)
         
           Resources::CreditorBankAccount.new(unenvelope_body(response.body))
         
@@ -127,7 +127,7 @@ module GoCardless
         # @param identity:       # Unique identifier, beginning with "BA" }}
         # @param options: any query parameters, in the form of a hash
         def disable(
-          identity, options = {}
+        identity, options = {}, custom_headers = {}
         )
         path = nil
         
@@ -143,7 +143,7 @@ module GoCardless
           options = new_options
         
         
-        response = make_request(:post, path, options)
+        response = make_request(:post, path, options, custom_headers)
         
           Resources::CreditorBankAccount.new(unenvelope_body(response.body))
         

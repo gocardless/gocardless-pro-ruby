@@ -19,7 +19,7 @@ module GoCardless
         # Example URL: /roles
         # @param options: any query parameters, in the form of a hash
         def create(
-          options = {}
+        options = {}, custom_headers = {}
         )
         path = nil
         
@@ -33,7 +33,7 @@ module GoCardless
           options = new_options
         
         
-        response = make_request(:post, path, options)
+        response = make_request(:post, path, options, custom_headers)
         
           Resources::Role.new(unenvelope_body(response.body))
         
@@ -47,7 +47,7 @@ module GoCardless
         # Example URL: /roles
         # @param options: any query parameters, in the form of a hash
         def list(
-          options = {}
+        options = {}, custom_headers = {}
         )
         path = nil
         
@@ -57,7 +57,7 @@ module GoCardless
         
         
         
-        response = make_request(:get, path, options)
+        response = make_request(:get, path, options, custom_headers)
         
           ListResponse.new(
             raw_response: response,
@@ -85,7 +85,7 @@ module GoCardless
         # @param identity:       # Unique identifier, beginning with "RO" }}
         # @param options: any query parameters, in the form of a hash
         def get(
-          identity, options = {}
+        identity, options = {}, custom_headers = {}
         )
         path = nil
         
@@ -97,7 +97,7 @@ module GoCardless
         
         
         
-        response = make_request(:get, path, options)
+        response = make_request(:get, path, options, custom_headers)
         
           Resources::Role.new(unenvelope_body(response.body))
         
@@ -114,7 +114,7 @@ module GoCardless
         # @param identity:       # Unique identifier, beginning with "RO" }}
         # @param options: any query parameters, in the form of a hash
         def update(
-          identity, options = {}
+        identity, options = {}, custom_headers = {}
         )
         path = nil
         
@@ -130,7 +130,7 @@ module GoCardless
           new_options[envelope_key] = options
           options = new_options
         
-        response = make_request(:put, path, options)
+        response = make_request(:put, path, options, custom_headers)
         
           Resources::Role.new(unenvelope_body(response.body))
         
@@ -146,7 +146,7 @@ module GoCardless
         # @param identity:       # Unique identifier, beginning with "RO" }}
         # @param options: any query parameters, in the form of a hash
         def disable(
-          identity, options = {}
+        identity, options = {}, custom_headers = {}
         )
         path = nil
         
@@ -162,7 +162,7 @@ module GoCardless
           options = new_options
         
         
-        response = make_request(:post, path, options)
+        response = make_request(:post, path, options, custom_headers)
         
           Resources::Role.new(unenvelope_body(response.body))
         

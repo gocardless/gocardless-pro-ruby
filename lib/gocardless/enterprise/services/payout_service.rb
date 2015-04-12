@@ -21,7 +21,7 @@ module GoCardless
         # Example URL: /payouts
         # @param options: any query parameters, in the form of a hash
         def list(
-          options = {}
+        options = {}, custom_headers = {}
         )
         path = nil
         
@@ -31,7 +31,7 @@ module GoCardless
         
         
         
-        response = make_request(:get, path, options)
+        response = make_request(:get, path, options, custom_headers)
         
           ListResponse.new(
             raw_response: response,
@@ -59,7 +59,7 @@ module GoCardless
         # @param identity:       # Unique identifier, beginning with "PO" }}
         # @param options: any query parameters, in the form of a hash
         def get(
-          identity, options = {}
+        identity, options = {}, custom_headers = {}
         )
         path = nil
         
@@ -71,7 +71,7 @@ module GoCardless
         
         
         
-        response = make_request(:get, path, options)
+        response = make_request(:get, path, options, custom_headers)
         
           Resources::Payout.new(unenvelope_body(response.body))
         

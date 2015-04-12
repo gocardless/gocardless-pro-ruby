@@ -3,8 +3,8 @@ require 'spec_helper'
 describe GoCardless::Services::RedirectFlowService do
   let(:client) do
     GoCardless::Client.new(
-      user: "AK123",
-      password: "ABC"
+      api_key: "AK123",
+      api_secret: "ABC"
     )
   end
 
@@ -167,6 +167,40 @@ describe GoCardless::Services::RedirectFlowService do
         expect(post_response).to be_a(GoCardless::Resources::RedirectFlow)
 
         expect(stub).to have_been_requested
+      end
+
+      context "when the request needs a body and custom header" do
+        
+          let(:body) { { foo: 'bar' } }
+          let(:headers) { { 'Foo' => 'Bar' } }
+          subject(:post_response) { client.redirect_flows.complete(resource_id, body, headers) }
+        
+        let(:resource_id) { "ABC123" }
+
+        let!(:stub) do
+          # /redirect_flows/%v/actions/complete
+          stub_url = "/redirect_flows/:identity/actions/complete".gsub(':identity', resource_id)
+          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              redirect_flows: {
+                
+                "created_at" => "created_at-input",
+                "description" => "description-input",
+                "id" => "id-input",
+                "links" => "links-input",
+                "redirect_url" => "redirect_url-input",
+                "scheme" => "scheme-input",
+                "session_token" => "session_token-input",
+                "success_redirect_url" => "success_redirect_url-input",
+              }
+            }.to_json,
+            headers: {'Content-Type' => 'application/json'},
+          )
+        end
       end
     end
     

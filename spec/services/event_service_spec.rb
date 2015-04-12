@@ -3,8 +3,8 @@ require 'spec_helper'
 describe GoCardless::Services::EventService do
   let(:client) do
     GoCardless::Client.new(
-      user: "AK123",
-      password: "ABC"
+      api_key: "AK123",
+      api_secret: "ABC"
     )
   end
 
