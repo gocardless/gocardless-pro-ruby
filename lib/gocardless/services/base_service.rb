@@ -10,8 +10,9 @@ module GoCardless
       end
 
       def envelope_key
-        fail NotImplementedError
+        raise NotImplementedError
       end
     end
   end
 end
+

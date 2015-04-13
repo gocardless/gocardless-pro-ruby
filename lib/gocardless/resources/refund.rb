@@ -10,55 +10,72 @@ require 'uri'
 
 module GoCardless
   module Resources
-    # Refund objects represent (partial) refunds of a
-    # [payment](https://developer.gocardless.com/pro/#api-endpoints-payment) back
-    # to the
-    # [customer](https://developer.gocardless.com/pro/#api-endpoints-customers).
-
-    # #
-    # The API allows you to create, show, list and update your refunds.
-    #
-    #
-    # GoCardless will notify you via a
-    # [webhook](https://developer.gocardless.com/pro/#webhooks) whenever a refund
-    # is created.
-    #
-    # _Note:_ A payment that has been (partially) refunded
-    # can still receive a late failure or chargeback from the banks.
+  # Refund objects represent (partial) refunds of a
+  # [payment](https://developer.gocardless.com/pro/#api-endpoints-payment) back
+  # to the
+  # [customer](https://developer.gocardless.com/pro/#api-endpoints-customers).
+ 
+  # # 
+  # The API allows you to create, show, list and update your refunds.
+  #
+  # 
+  # GoCardless will notify you via a
+  # [webhook](https://developer.gocardless.com/pro/#webhooks) whenever a refund
+  # is created.
+  # 
+  # _Note:_ A payment that has been (partially) refunded
+  # can still receive a late failure or chargeback from the banks.
     class Refund
+      
+      
       attr_reader :amount
-
+      
       attr_reader :created_at
-
+      
       attr_reader :currency
-
+      
       attr_reader :id
-
+      
+      
       attr_reader :metadata
       def initialize(object)
         @object = object
-
-        @amount = object['amount']
-        @created_at = object['created_at']
-        @currency = object['currency']
-        @id = object['id']
-        @links = object['links']
-        @metadata = object['metadata']
+        
+        @amount = object["amount"]
+        @created_at = object["created_at"]
+        @currency = object["currency"]
+        @id = object["id"]
+        @links = object["links"]
+        @metadata = object["metadata"]
       end
 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       def links
         Struct.new(
           *{
-
-            payment: ''
-
+          
+            payment: "",
+          
           }.keys
-        ).new(*@links.values)
+          ).new(*@links.values)
       end
+      
+      
+      
+      
 
       def envelope_key
-        # TODO: could you use $propName here, or use the Envelope property
-        'refunds'
+        #TODO: could you use $propName here, or use the Envelope property
+        "refunds"
       end
     end
   end

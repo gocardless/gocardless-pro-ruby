@@ -10,37 +10,51 @@ require 'uri'
 
 module GoCardless
   module Resources
-    # Publishable API keys are designed to be used by the [js
-    # flow](https://developer.gocardless.com/pro/#api-endpoints-customer-bank-account-tokens).
-    # You should generate a key and then use it to make requests to the API. They
-    # do not expire, but can be disabled.
-    #
-    # Publishable API keys only have
-    # permissions to create [customer bank account
-    # tokens](https://developer.gocardless.com/pro/#api-endpoints-customer-bank-account-tokens).
+  # Publishable API keys are designed to be used by the [js
+  # flow](https://developer.gocardless.com/pro/#api-endpoints-customer-bank-account-tokens).
+  # You should generate a key and then use it to make requests to the API. They
+  # do not expire, but can be disabled.
+  # 
+  # Publishable API keys only have
+  # permissions to create [customer bank account
+  # tokens](https://developer.gocardless.com/pro/#api-endpoints-customer-bank-account-tokens).
     class PublishableApiKey
+      
+      
       attr_reader :created_at
-
+      
       attr_reader :enabled
-
+      
       attr_reader :id
-
+      
       attr_reader :key
-
+      
       attr_reader :name
       def initialize(object)
         @object = object
-
-        @created_at = object['created_at']
-        @enabled = object['enabled']
-        @id = object['id']
-        @key = object['key']
-        @name = object['name']
+        
+        @created_at = object["created_at"]
+        @enabled = object["enabled"]
+        @id = object["id"]
+        @key = object["key"]
+        @name = object["name"]
       end
 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
       def envelope_key
-        # TODO: could you use $propName here, or use the Envelope property
-        'publishable_api_keys'
+        #TODO: could you use $propName here, or use the Envelope property
+        "publishable_api_keys"
       end
     end
   end

@@ -1,6 +1,5 @@
 module GoCardless
   class Paginator
-
     def initialize(options = {})
       @service = options.fetch(:service)
       @path = options.fetch(:path)

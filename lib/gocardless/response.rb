@@ -19,9 +19,7 @@ module GoCardless
     end
 
     def meta
-      unless json?
-        raise ResponseError, 'Cannot fetch meta for non JSON response'
-      end
+      fail ResponseError, 'Cannot fetch meta for non JSON response' unless json?
 
       json_body.fetch('meta', {})
     end
@@ -43,7 +41,7 @@ module GoCardless
     def handle_json
       if error?
         type = json_body['error']['type']
-        raise(error_class_for_type(type), json_body['error'])
+        fail(error_class_for_type(type), json_body['error'])
       else
         json_body
       end
@@ -65,7 +63,7 @@ module GoCardless
         "headers: #{@response.headers}\n" \
         "body: #{@response.body}"
       }
-      error? ? raise(ApiError, default_raw_message) : raw_body
+      error? ? fail(ApiError, default_raw_message) : raw_body
     end
   end
 end
