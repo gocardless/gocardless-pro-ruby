@@ -11,19 +11,19 @@ module GoCardless
   # GoCardless Enterprise API
   class ApiService
     def initialize(url, key, secret, options = {})
-        @url = url
-        root_url, @path_prefix = unpack_url(url)
-        http_adapter = options[:http_adapter] || [:net_http]
-        @connection = Faraday.new(url: root_url) do |faraday|
-          faraday.adapter(*http_adapter)
-        end
+      @url = url
+      root_url, @path_prefix = unpack_url(url)
+      http_adapter = options[:http_adapter] || [:net_http]
+      @connection = Faraday.new(url: root_url) do |faraday|
+        faraday.adapter(*http_adapter)
+      end
 
-        @headers = options[:default_headers] || {}
-        @headers['Authorization'] = "Basic " + Base64.strict_encode64("#{key}:#{secret}")
+      @headers = options[:default_headers] || {}
+      @headers['Authorization'] = 'Basic ' + Base64.strict_encode64("#{key}:#{secret}")
     end
 
     def make_request(method, path, options = {}, custom_headers = {})
-      raise ArgumentError, 'options must be a hash' unless options.is_a?(Hash)
+      fail ArgumentError, 'options must be a hash' unless options.is_a?(Hash)
       Request.new(@connection, method, @path_prefix + path, options, @headers.merge(custom_headers)).request
     end
 

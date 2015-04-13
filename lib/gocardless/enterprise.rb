@@ -166,7 +166,7 @@ module GoCardless
     # @return [Client] A client configured to use the API with HTTP Basic
     #   authentication.
     def initialize(options)
-      environment = options.delete(:environment) || :production
+      environment = options.delete(:environment) || :live
       api_key = options.delete(:api_key) || raise("No API key ID given to GoCardless Client")
       api_secret = options.delete(:api_secret) || raise("No API secret given to GoCardless Client")
       options = custom_options(options)
@@ -177,7 +177,7 @@ module GoCardless
     private
 
     def url_for_environment(environment)
-      if environment === :production
+      if environment === :live
         "https://api.gocardless.com"
       elsif environment === :sandbox
         "https://api-sandbox.gocardless.com"

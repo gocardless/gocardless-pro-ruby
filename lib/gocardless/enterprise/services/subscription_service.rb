@@ -11,188 +11,130 @@ require_relative './base_service'
 module GoCardless
   module Services
     class SubscriptionService < BaseService
-
     
       
-
-            # Creates a new subscription object
-        # Example URL: /subscriptions
-        # @param options: any query parameters, in the form of a hash
-        def create(
-        options = {}, custom_headers = {}
-        )
-        path = nil
-        
-          path = "/subscriptions"
-        
-
-        
-        
-          new_options = {}
-          new_options[envelope_key] = options
-          options = new_options
-        
-        
+      # Creates a new subscription object
+      # Example URL: /subscriptions
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Else, they will be the body of the request.
+      def create(options = {}, custom_headers = {})
+        path = "/subscriptions"
+        new_options = {}
+        new_options[envelope_key] = options
+        options = new_options
         response = make_request(:post, path, options, custom_headers)
         
-          Resources::Subscription.new(unenvelope_body(response.body))
-        
-        end
-
-        
-        
+        Resources::Subscription.new(unenvelope_body(response.body))
+      end
       
-
-            # Returns a
-    # [cursor-paginated](https://developer.gocardless.com/pro/#overview-cursor-pagination)
-    # list of your subscriptions.
-        # Example URL: /subscriptions
-        # @param options: any query parameters, in the form of a hash
-        def list(
-        options = {}, custom_headers = {}
+      
+      # Returns a
+# [cursor-paginated](https://developer.gocardless.com/pro/#overview-cursor-pagination)
+# list of your subscriptions.
+      # Example URL: /subscriptions
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Else, they will be the body of the request.
+      def list(options = {}, custom_headers = {})
+        path = "/subscriptions"
+        
+        response = make_request(:get, path, options, custom_headers)
+        ListResponse.new(
+          raw_response: response,
+          unenveloped_body: unenvelope_body(response.body),
+          resource_class: Resources::Subscription
         )
-        path = nil
-        
-          path = "/subscriptions"
-        
-
-        
+      end
+      
+      # Get a lazily enumerated list of all the items returned. This is simmilar to the `list` method but will paginate for you automatically.
+      #
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Otherwise they will be the body of the request.
+      def all(options = {})
+        Paginator.new(
+          service: self,
+          path: "/subscriptions",
+          options: options
+        ).enumerator
+      end
+      
+      # Retrieves the details of a single subscription.
+      # Example URL: /subscriptions/:identity
+      #
+      # @param identity:       # Unique identifier, beginning with "SB" }}
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Else, they will be the body of the request.
+      def get(identity, options = {}, custom_headers = {})
+        path = sub_url("/subscriptions/:identity", { 
+          'identity' => identity
+        })
         
         
         response = make_request(:get, path, options, custom_headers)
         
-          ListResponse.new(
-            raw_response: response,
-            unenveloped_body: unenvelope_body(response.body),
-            resource_class: Resources::Subscription
-          )
-        
-        end
-
-        
-        def all(options = {})
-          Paginator.new(
-            service: self,
-            path: "/subscriptions",
-            options: options
-          ).enumerator
-        end
-        
-        
+        Resources::Subscription.new(unenvelope_body(response.body))
+      end
       
-
-            # Retrieves the details of a single subscription.
-        # Example URL: /subscriptions/:identity
-        #
-        # @param identity:       # Unique identifier, beginning with "SB" }}
-        # @param options: any query parameters, in the form of a hash
-        def get(
-        identity, options = {}, custom_headers = {}
-        )
-        path = nil
-        
-          path = sub_url("/subscriptions/:identity", { 
-            "identity" => identity
-          })
-        
-
-        
-        
-        
-        response = make_request(:get, path, options, custom_headers)
-        
-          Resources::Subscription.new(unenvelope_body(response.body))
-        
-        end
-
-        
-        
       
-
-            # Updates a subscription object.
-        # Example URL: /subscriptions/:identity
-        #
-        # @param identity:       # Unique identifier, beginning with "SB" }}
-        # @param options: any query parameters, in the form of a hash
-        def update(
-        identity, options = {}, custom_headers = {}
-        )
-        path = nil
+      # Updates a subscription object.
+      # Example URL: /subscriptions/:identity
+      #
+      # @param identity:       # Unique identifier, beginning with "SB" }}
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Else, they will be the body of the request.
+      def update(identity, options = {}, custom_headers = {})
+        path = sub_url("/subscriptions/:identity", { 
+          'identity' => identity
+        })
         
-          path = sub_url("/subscriptions/:identity", { 
-            "identity" => identity
-          })
-        
-
-        
-        
-        
-          new_options = {}
-          new_options[envelope_key] = options
-          options = new_options
-        
+        new_options = {}
+        new_options[envelope_key] = options
+        options = new_options
         response = make_request(:put, path, options, custom_headers)
         
-          Resources::Subscription.new(unenvelope_body(response.body))
-        
-        end
-
-        
-        
+        Resources::Subscription.new(unenvelope_body(response.body))
+      end
       
-
-            # Immediately cancels a subscription; no more payments will be created under
-    # it. Any metadata supplied to this endpoint will be stored on the payment
-    # cancellation event it causes.
-    # 
-    # This will fail with a
-    # cancellation_failed error if the subscription is already cancelled or
-    # finished.
-        # Example URL: /subscriptions/:identity/actions/cancel
-        #
-        # @param identity:       # Unique identifier, beginning with "SB" }}
-        # @param options: any query parameters, in the form of a hash
-        def cancel(
-        identity, options = {}, custom_headers = {}
-        )
-        path = nil
+      
+      # Immediately cancels a subscription; no more payments will be created under it.
+# Any metadata supplied to this endpoint will be stored on the payment
+# cancellation event it causes.
+# 
+# This will fail with a cancellation_failed
+# error if the subscription is already cancelled or finished.
+      # Example URL: /subscriptions/:identity/actions/cancel
+      #
+      # @param identity:       # Unique identifier, beginning with "SB" }}
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Else, they will be the body of the request.
+      def cancel(identity, options = {}, custom_headers = {})
+        path = sub_url("/subscriptions/:identity/actions/cancel", { 
+          'identity' => identity
+        })
         
-          path = sub_url("/subscriptions/:identity/actions/cancel", { 
-            "identity" => identity
-          })
-        
-
-        
-        
-          new_options = {}
-          new_options[envelope_key] = options
-          options = new_options
-        
-        
+        new_options = {}
+        new_options[envelope_key] = options
+        options = new_options
         response = make_request(:post, path, options, custom_headers)
         
-          Resources::Subscription.new(unenvelope_body(response.body))
-        
+        Resources::Subscription.new(unenvelope_body(response.body))
+      end
+      
+
+      def unenvelope_body(body)
+        body[envelope_key] || body['data']
+      end
+
+      private
+
+      def envelope_key
+        "subscriptions"
+      end
+
+      def sub_url(url, param_map)
+        param_map.reduce(url) do |new_url, (param, value)|
+          new_url.gsub(":#{param}", value)
         end
-
-        
-        
-
-        def unenvelope_body(body)
-          body[envelope_key] || body["data"]
-        end
-
-        private
-
-        def envelope_key
-          "subscriptions"
-        end
-
-        def sub_url(url, param_map)
-          param_map.reduce(url) do |new_url, (param, value)|
-            new_url.gsub(":#{param}", value)
-          end
-        end
+      end
     end
   end
 end

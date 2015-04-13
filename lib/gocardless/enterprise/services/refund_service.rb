@@ -11,166 +11,120 @@ require_relative './base_service'
 module GoCardless
   module Services
     class RefundService < BaseService
-
     
       
-
-            # Creates a new refund object.
-    # 
-    # This fails with:<a
-    # name="refund_payment_invalid_state"></a><a
-    # name="total_amount_confirmation_invalid"></a>
-    # 
-    # -
-    # `refund_payment_invalid_state` error if the linked
-    # [payment](https://developer.gocardless.com/pro/#api-endpoints-payments)
-    # isn't either `confirmed` or `paid_out`.
-    # 
-    # -
-    # `total_amount_confirmation_invalid` if the confirmation amount doesn't
-    # match the total amount refunded for the payment. This safeguard is there
-    # to prevent two processes from creating refunds without awareness of each
-    # other.
-    # 
-        # Example URL: /refunds
-        # @param options: any query parameters, in the form of a hash
-        def create(
-        options = {}, custom_headers = {}
-        )
-        path = nil
-        
-          path = "/refunds"
-        
-
-        
-        
-          new_options = {}
-          new_options[envelope_key] = options
-          options = new_options
-        
-        
+      # Creates a new refund object.
+# 
+# This fails with:<a
+# name="refund_payment_invalid_state"></a><a
+# name="total_amount_confirmation_invalid"></a>
+# 
+# -
+# `refund_payment_invalid_state` error if the linked
+# [payment](https://developer.gocardless.com/pro/#api-endpoints-payments) isn't
+# either `confirmed` or `paid_out`.
+# 
+# - `total_amount_confirmation_invalid`
+# if the confirmation amount doesn't match the total amount refunded for the
+# payment. This safeguard is there to prevent two processes from creating
+# refunds without awareness of each other.
+# 
+      # Example URL: /refunds
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Else, they will be the body of the request.
+      def create(options = {}, custom_headers = {})
+        path = "/refunds"
+        new_options = {}
+        new_options[envelope_key] = options
+        options = new_options
         response = make_request(:post, path, options, custom_headers)
         
-          Resources::Refund.new(unenvelope_body(response.body))
-        
-        end
-
-        
-        
+        Resources::Refund.new(unenvelope_body(response.body))
+      end
       
-
-            # Returns a
-    # [cursor-paginated](https://developer.gocardless.com/pro/#overview-cursor-pagination)
-    # list of your refunds.
-        # Example URL: /refunds
-        # @param options: any query parameters, in the form of a hash
-        def list(
-        options = {}, custom_headers = {}
+      
+      # Returns a
+# [cursor-paginated](https://developer.gocardless.com/pro/#overview-cursor-pagination)
+# list of your refunds.
+      # Example URL: /refunds
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Else, they will be the body of the request.
+      def list(options = {}, custom_headers = {})
+        path = "/refunds"
+        
+        response = make_request(:get, path, options, custom_headers)
+        ListResponse.new(
+          raw_response: response,
+          unenveloped_body: unenvelope_body(response.body),
+          resource_class: Resources::Refund
         )
-        path = nil
-        
-          path = "/refunds"
-        
-
-        
+      end
+      
+      # Get a lazily enumerated list of all the items returned. This is simmilar to the `list` method but will paginate for you automatically.
+      #
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Otherwise they will be the body of the request.
+      def all(options = {})
+        Paginator.new(
+          service: self,
+          path: "/refunds",
+          options: options
+        ).enumerator
+      end
+      
+      # Retrieves all details for a single refund
+      # Example URL: /refunds/:identity
+      #
+      # @param identity:       # Unique identifier, beginning with "RF" }}
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Else, they will be the body of the request.
+      def get(identity, options = {}, custom_headers = {})
+        path = sub_url("/refunds/:identity", { 
+          'identity' => identity
+        })
         
         
         response = make_request(:get, path, options, custom_headers)
         
-          ListResponse.new(
-            raw_response: response,
-            unenveloped_body: unenvelope_body(response.body),
-            resource_class: Resources::Refund
-          )
-        
-        end
-
-        
-        def all(options = {})
-          Paginator.new(
-            service: self,
-            path: "/refunds",
-            options: options
-          ).enumerator
-        end
-        
-        
+        Resources::Refund.new(unenvelope_body(response.body))
+      end
       
-
-            # Retrieves all details for a single refund
-        # Example URL: /refunds/:identity
-        #
-        # @param identity:       # Unique identifier, beginning with "RF" }}
-        # @param options: any query parameters, in the form of a hash
-        def get(
-        identity, options = {}, custom_headers = {}
-        )
-        path = nil
-        
-          path = sub_url("/refunds/:identity", { 
-            "identity" => identity
-          })
-        
-
-        
-        
-        
-        response = make_request(:get, path, options, custom_headers)
-        
-          Resources::Refund.new(unenvelope_body(response.body))
-        
-        end
-
-        
-        
       
-
-            # Updates a refund object.
-        # Example URL: /refunds/:identity
-        #
-        # @param identity:       # Unique identifier, beginning with "RF" }}
-        # @param options: any query parameters, in the form of a hash
-        def update(
-        identity, options = {}, custom_headers = {}
-        )
-        path = nil
+      # Updates a refund object.
+      # Example URL: /refunds/:identity
+      #
+      # @param identity:       # Unique identifier, beginning with "RF" }}
+      # @param options: parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Else, they will be the body of the request.
+      def update(identity, options = {}, custom_headers = {})
+        path = sub_url("/refunds/:identity", { 
+          'identity' => identity
+        })
         
-          path = sub_url("/refunds/:identity", { 
-            "identity" => identity
-          })
-        
-
-        
-        
-        
-          new_options = {}
-          new_options[envelope_key] = options
-          options = new_options
-        
+        new_options = {}
+        new_options[envelope_key] = options
+        options = new_options
         response = make_request(:put, path, options, custom_headers)
         
-          Resources::Refund.new(unenvelope_body(response.body))
-        
+        Resources::Refund.new(unenvelope_body(response.body))
+      end
+      
+
+      def unenvelope_body(body)
+        body[envelope_key] || body['data']
+      end
+
+      private
+
+      def envelope_key
+        "refunds"
+      end
+
+      def sub_url(url, param_map)
+        param_map.reduce(url) do |new_url, (param, value)|
+          new_url.gsub(":#{param}", value)
         end
-
-        
-        
-
-        def unenvelope_body(body)
-          body[envelope_key] || body["data"]
-        end
-
-        private
-
-        def envelope_key
-          "refunds"
-        end
-
-        def sub_url(url, param_map)
-          param_map.reduce(url) do |new_url, (param, value)|
-            new_url.gsub(":#{param}", value)
-          end
-        end
+      end
     end
   end
 end

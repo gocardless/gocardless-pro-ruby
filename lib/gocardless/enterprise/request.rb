@@ -20,8 +20,7 @@ module GoCardless
       Response.new(make_request)
     end
 
-    def make_request(opts = {})
-
+    def make_request(_opts = {})
       @connection.send(@method) do |request|
         request.url @path
         request.body = @request_body
@@ -36,7 +35,7 @@ module GoCardless
       elsif @method == :post || @method == :put
         @given_options
       else
-        raise "unknown method #{@method}"
+        fail "unknown method #{@method}"
       end
     end
 
@@ -46,7 +45,7 @@ module GoCardless
       elsif @method == :post || @method == :put
         {}
       else
-        raise "unknown method #{@method}"
+        fail "unknown method #{@method}"
       end
     end
 
