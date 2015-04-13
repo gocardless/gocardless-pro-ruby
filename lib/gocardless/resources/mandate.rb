@@ -10,76 +10,55 @@ require 'uri'
 
 module GoCardless
   module Resources
-  # Mandates represent the Direct Debit mandate with a
-  # [customer](https://developer.gocardless.com/pro/#api-endpoints-customers).
- 
-  # # 
-  # GoCardless will notify you via a
-  # [webhook](https://developer.gocardless.com/pro/#webhooks) whenever the
-  # status of a mandate changes.
+    # Mandates represent the Direct Debit mandate with a
+    # [customer](https://developer.gocardless.com/pro/#api-endpoints-customers).
+
+    # #
+    # GoCardless will notify you via a
+    # [webhook](https://developer.gocardless.com/pro/#webhooks) whenever the
+    # status of a mandate changes.
     class Mandate
-      
-      
       attr_reader :created_at
-      
+
       attr_reader :id
-      
-      
+
       attr_reader :metadata
-      
+
       attr_reader :next_possible_charge_date
-      
+
       attr_reader :reference
-      
+
       attr_reader :scheme
-      
+
       attr_reader :status
       def initialize(object)
         @object = object
-        
-        @created_at = object["created_at"]
-        @id = object["id"]
-        @links = object["links"]
-        @metadata = object["metadata"]
-        @next_possible_charge_date = object["next_possible_charge_date"]
-        @reference = object["reference"]
-        @scheme = object["scheme"]
-        @status = object["status"]
+
+        @created_at = object['created_at']
+        @id = object['id']
+        @links = object['links']
+        @metadata = object['metadata']
+        @next_possible_charge_date = object['next_possible_charge_date']
+        @reference = object['reference']
+        @scheme = object['scheme']
+        @status = object['status']
       end
 
-      
-      
-      
-      
-      
-      
       def links
         Struct.new(
           *{
-          
-            creditor: "",
-          
-            customer_bank_account: "",
-          
+
+            creditor: '',
+
+            customer_bank_account: ''
+
           }.keys
-          ).new(*@links.values)
+        ).new(*@links.values)
       end
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
 
       def envelope_key
-        #TODO: could you use $propName here, or use the Envelope property
-        "mandates"
+        # TODO: could you use $propName here, or use the Envelope property
+        'mandates'
       end
     end
   end

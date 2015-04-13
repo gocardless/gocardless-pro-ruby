@@ -12,7 +12,6 @@ require 'faraday'
 require 'time'
 require 'active_support/core_ext/hash/indifferent_access'
 
-
 require 'uri'
 
 module GoCardless
@@ -36,7 +35,6 @@ require_relative 'gocardless/error/invalid_state_error'
 require_relative 'gocardless/paginator'
 require_relative 'gocardless/request'
 require_relative 'gocardless/response'
-
 
 require_relative 'gocardless/resources/api_key'
 require_relative 'gocardless/services/api_key_service'
@@ -86,76 +84,73 @@ require_relative 'gocardless/services/subscription_service'
 require_relative 'gocardless/resources/user'
 require_relative 'gocardless/services/user_service'
 
-
 module GoCardless
-
   class Client
     extend Forwardable
-  
+
     def api_keys
       @api_keys ||= Services::ApiKeyService.new(@api_service)
     end
-  
+
     def creditors
       @creditors ||= Services::CreditorService.new(@api_service)
     end
-  
+
     def creditor_bank_accounts
       @creditor_bank_accounts ||= Services::CreditorBankAccountService.new(@api_service)
     end
-  
+
     def customers
       @customers ||= Services::CustomerService.new(@api_service)
     end
-  
+
     def customer_bank_accounts
       @customer_bank_accounts ||= Services::CustomerBankAccountService.new(@api_service)
     end
-  
+
     def events
       @events ||= Services::EventService.new(@api_service)
     end
-  
+
     def helpers
       @helpers ||= Services::HelperService.new(@api_service)
     end
-  
+
     def mandates
       @mandates ||= Services::MandateService.new(@api_service)
     end
-  
+
     def payments
       @payments ||= Services::PaymentService.new(@api_service)
     end
-  
+
     def payouts
       @payouts ||= Services::PayoutService.new(@api_service)
     end
-  
+
     def publishable_api_keys
       @publishable_api_keys ||= Services::PublishableApiKeyService.new(@api_service)
     end
-  
+
     def redirect_flows
       @redirect_flows ||= Services::RedirectFlowService.new(@api_service)
     end
-  
+
     def refunds
       @refunds ||= Services::RefundService.new(@api_service)
     end
-  
+
     def roles
       @roles ||= Services::RoleService.new(@api_service)
     end
-  
+
     def subscriptions
       @subscriptions ||= Services::SubscriptionService.new(@api_service)
     end
-  
+
     def users
       @users ||= Services::UserService.new(@api_service)
     end
-  
 
     # Get a Client configured to use HTTP Basic authentication.
     #
@@ -167,8 +162,8 @@ module GoCardless
     #   authentication.
     def initialize(options)
       environment = options.delete(:environment) || :live
-      api_key = options.delete(:api_key) || raise("No API key ID given to GoCardless Client")
-      api_secret = options.delete(:api_secret) || raise("No API secret given to GoCardless Client")
+      api_key = options.delete(:api_key) || fail('No API key ID given to GoCardless Client')
+      api_secret = options.delete(:api_secret) || fail('No API secret given to GoCardless Client')
       options = custom_options(options)
       @api_service = ApiService.new(
         url_for_environment(environment), api_key, api_secret, options)
@@ -178,11 +173,11 @@ module GoCardless
 
     def url_for_environment(environment)
       if environment === :live
-        "https://api.gocardless.com"
+        'https://api.gocardless.com'
       elsif environment === :sandbox
-        "https://api-sandbox.gocardless.com"
+        'https://api-sandbox.gocardless.com'
       else
-        raise "Unknown environment key: #{environment}"
+        fail "Unknown environment key: #{environment}"
       end
     end
 
@@ -201,7 +196,7 @@ module GoCardless
     # Get the default options.
     def default_options
       {
-        default_headers: { 
+        default_headers: {
           'GoCardless-Version' => '2014-11-03',
           'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json'
@@ -212,7 +207,7 @@ module GoCardless
     def user_agent
       @user_agent ||=
         begin
-          gem_name = "gocardless"
+          gem_name = 'gocardless'
           gem_info = "#{gem_name}"
           gem_info += "/v#{ GoCardless::VERSION}" if defined?(GoCardless::VERSION)
           ruby_engine = defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'
@@ -222,7 +217,7 @@ module GoCardless
           comment << "gocardless v#{ GoCardless::VERSION}"
           comment << "faraday v#{Faraday::VERSION}"
           comment << RUBY_PLATFORM if defined?(RUBY_PLATFORM)
-          "#{gem_info} (#{comment.join("; ")})"
+          "#{gem_info} (#{comment.join('; ')})"
         end
     end
   end

@@ -10,98 +10,71 @@ require 'uri'
 
 module GoCardless
   module Resources
-  # Payment objects represent payments from a
-  # [customer](https://developer.gocardless.com/pro/#api-endpoints-customers) to
-  # a [creditor](https://developer.gocardless.com/pro/#api-endpoints-creditors),
-  # taken against a Direct Debit
-  # [mandate](https://developer.gocardless.com/pro/#api-endpoints-mandates).
-  #
-  # 
-  # GoCardless will notify you via a
-  # [webhook](https://developer.gocardless.com/pro/#webhooks) whenever the state
-  # of a payment changes.
+    # Payment objects represent payments from a
+    # [customer](https://developer.gocardless.com/pro/#api-endpoints-customers) to
+    # a [creditor](https://developer.gocardless.com/pro/#api-endpoints-creditors),
+    # taken against a Direct Debit
+    # [mandate](https://developer.gocardless.com/pro/#api-endpoints-mandates).
+    #
+    #
+    # GoCardless will notify you via a
+    # [webhook](https://developer.gocardless.com/pro/#webhooks) whenever the state
+    # of a payment changes.
     class Payment
-      
-      
       attr_reader :amount
-      
+
       attr_reader :amount_refunded
-      
+
       attr_reader :charge_date
-      
+
       attr_reader :created_at
-      
+
       attr_reader :currency
-      
+
       attr_reader :description
-      
+
       attr_reader :id
-      
-      
+
       attr_reader :metadata
-      
+
       attr_reader :reference
-      
+
       attr_reader :status
       def initialize(object)
         @object = object
-        
-        @amount = object["amount"]
-        @amount_refunded = object["amount_refunded"]
-        @charge_date = object["charge_date"]
-        @created_at = object["created_at"]
-        @currency = object["currency"]
-        @description = object["description"]
-        @id = object["id"]
-        @links = object["links"]
-        @metadata = object["metadata"]
-        @reference = object["reference"]
-        @status = object["status"]
+
+        @amount = object['amount']
+        @amount_refunded = object['amount_refunded']
+        @charge_date = object['charge_date']
+        @created_at = object['created_at']
+        @currency = object['currency']
+        @description = object['description']
+        @id = object['id']
+        @links = object['links']
+        @metadata = object['metadata']
+        @reference = object['reference']
+        @status = object['status']
       end
 
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
       def links
         Struct.new(
           *{
-          
-            creditor: "",
-          
-            mandate: "",
-          
-            payout: "",
-          
-            subscription: "",
-          
+
+            creditor: '',
+
+            mandate: '',
+
+            payout: '',
+
+            subscription: ''
+
           }.keys
-          ).new(*@links.values)
+        ).new(*@links.values)
       end
-      
-      
-      
-      
-      
-      
-      
-      
 
       def envelope_key
-        #TODO: could you use $propName here, or use the Envelope property
-        "payments"
+        # TODO: could you use $propName here, or use the Envelope property
+        'payments'
       end
     end
   end

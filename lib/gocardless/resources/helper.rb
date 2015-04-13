@@ -10,19 +10,15 @@ require 'uri'
 
 module GoCardless
   module Resources
-  # 
+    #
     class Helper
-      
       def initialize(object)
         @object = object
-        
       end
 
-      
-
       def envelope_key
-        #TODO: could you use $propName here, or use the Envelope property
-        "helpers"
+        # TODO: could you use $propName here, or use the Envelope property
+        'helpers'
       end
     end
   end

@@ -10,63 +10,45 @@ require 'uri'
 
 module GoCardless
   module Resources
-  # 
+    #
     class User
-      
-      
       attr_reader :created_at
-      
+
       attr_reader :email
-      
+
       attr_reader :enabled
-      
+
       attr_reader :family_name
-      
+
       attr_reader :given_name
-      
+
       attr_reader :id
-      
+
       def initialize(object)
         @object = object
-        
-        @created_at = object["created_at"]
-        @email = object["email"]
-        @enabled = object["enabled"]
-        @family_name = object["family_name"]
-        @given_name = object["given_name"]
-        @id = object["id"]
-        @links = object["links"]
+
+        @created_at = object['created_at']
+        @email = object['email']
+        @enabled = object['enabled']
+        @family_name = object['family_name']
+        @given_name = object['given_name']
+        @id = object['id']
+        @links = object['links']
       end
 
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
       def links
         Struct.new(
           *{
-          
-            role: "",
-          
+
+            role: ''
+
           }.keys
-          ).new(*@links.values)
+        ).new(*@links.values)
       end
-      
-      
 
       def envelope_key
-        #TODO: could you use $propName here, or use the Envelope property
-        "users"
+        # TODO: could you use $propName here, or use the Envelope property
+        'users'
       end
     end
   end

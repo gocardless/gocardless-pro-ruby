@@ -10,95 +10,68 @@ require 'uri'
 
 module GoCardless
   module Resources
-  # Each [payment](https://developer.gocardless.com/pro/#api-endpoints-payments)
-  # taken through the API is linked to a "creditor", to whom the payment is then
-  # paid out. In most cases your organisation will have a single "creditor", but
-  # the API also supports collecting payments on behalf of others.
-  # 
-  #
-  # Please get in touch if you wish to use this endpoint. Currently, for Anti
-  # Money Laundering reasons, any creditors you add must be directly related to
-  # your organisation.
+    # Each [payment](https://developer.gocardless.com/pro/#api-endpoints-payments)
+    # taken through the API is linked to a "creditor", to whom the payment is then
+    # paid out. In most cases your organisation will have a single "creditor", but
+    # the API also supports collecting payments on behalf of others.
+    #
+    #
+    # Please get in touch if you wish to use this endpoint. Currently, for Anti
+    # Money Laundering reasons, any creditors you add must be directly related to
+    # your organisation.
     class Creditor
-      
-      
       attr_reader :address_line1
-      
+
       attr_reader :address_line2
-      
+
       attr_reader :address_line3
-      
+
       attr_reader :city
-      
+
       attr_reader :country_code
-      
+
       attr_reader :created_at
-      
+
       attr_reader :id
-      
-      
+
       attr_reader :name
-      
+
       attr_reader :postal_code
-      
+
       attr_reader :region
       def initialize(object)
         @object = object
-        
-        @address_line1 = object["address_line1"]
-        @address_line2 = object["address_line2"]
-        @address_line3 = object["address_line3"]
-        @city = object["city"]
-        @country_code = object["country_code"]
-        @created_at = object["created_at"]
-        @id = object["id"]
-        @links = object["links"]
-        @name = object["name"]
-        @postal_code = object["postal_code"]
-        @region = object["region"]
+
+        @address_line1 = object['address_line1']
+        @address_line2 = object['address_line2']
+        @address_line3 = object['address_line3']
+        @city = object['city']
+        @country_code = object['country_code']
+        @created_at = object['created_at']
+        @id = object['id']
+        @links = object['links']
+        @name = object['name']
+        @postal_code = object['postal_code']
+        @region = object['region']
       end
 
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
       def links
         Struct.new(
           *{
-          
-            default_eur_payout_account: "",
-          
-            default_gbp_payout_account: "",
-          
-            logo: "",
-          
+
+            default_eur_payout_account: '',
+
+            default_gbp_payout_account: '',
+
+            logo: ''
+
           }.keys
-          ).new(*@links.values)
+        ).new(*@links.values)
       end
-      
-      
-      
-      
-      
-      
-      
-      
 
       def envelope_key
-        #TODO: could you use $propName here, or use the Envelope property
-        "creditors"
+        # TODO: could you use $propName here, or use the Envelope property
+        'creditors'
       end
     end
   end
