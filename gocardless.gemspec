@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'gocardless/enterprise/version'
+require 'gocardless/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "gocardless-enterprise"
+  spec.name          = "gocardless"
   spec.version       = GoCardless::VERSION
   spec.authors       = %w(GoCardless)
   spec.email         = %w(engineering@gocardless.com)
