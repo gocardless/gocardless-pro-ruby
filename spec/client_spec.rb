@@ -12,7 +12,7 @@ describe GoCardless::Client do
   end
 
   context "when initialised without an API key" do
-    let(:environment) { :production }
+    let(:environment) { :live }
     let(:api_secret) { "MYSECRETTOKEN" }
     let(:api_key) { nil }
 
@@ -21,7 +21,7 @@ describe GoCardless::Client do
 
   context "when initialised without an API secret" do
     let(:api_secret) { nil }
-    let(:environment) { :production }
+    let(:environment) { :live }
     let(:api_key) { "AK123" }
 
     it { is_expected.to raise_error("No API secret given to GoCardless Client") }

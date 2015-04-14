@@ -1,4 +1,4 @@
- require_relative 'lib/gocardless/enterprise'
+ require_relative 'lib/gocardless'
 
 @client = GoCardless::Client.new(
   api_key: ENV["GOCARDLESS_KEY"],
