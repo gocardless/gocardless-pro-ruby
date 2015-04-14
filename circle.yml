@@ -6,7 +6,7 @@ deployment:
   git:
     branch: dev
     commands:
-      - yard doc
+      - bundle exec yard doc
       - git config user.name "Circle CI"
       - git config user.email "robot+circleci@gocardless.com"
       - git checkout gh-pages
