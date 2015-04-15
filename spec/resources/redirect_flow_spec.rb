@@ -22,6 +22,8 @@ describe GoCardless::Resources::RedirectFlow do
           
             "creditor" => "creditor-input",
           
+            "mandate" => "mandate-input",
+          
         },
         
       
@@ -62,6 +64,8 @@ describe GoCardless::Resources::RedirectFlow do
        
          
            expect(resource.links.creditor).to eq("creditor-input")
+         
+           expect(resource.links.mandate).to eq("mandate-input")
          
        
        

@@ -15,48 +15,58 @@ gem 'gocardless'
 
 ### Initialising the client
 
-The client is initialised with a user and password, which is the API Key and token respectively. You can also pass in `environment` as `:sandbox` to make requests to the sandbox environment.
+The client is initialised with the API Key ID and the API Key `key` property.
 
-```
+You can also pass in `environment` as `:sandbox` to make requests to the sandbox environment rather than the live one.
+
+```rb
 @client = GoCardless::Client.new(
-  api_key: ENV["GOCARDLESS_KEY"],
-  api_secret: ENV["GOCARDLESS_TOKEN"]
+  api_key: ENV["GOCARDLESS_API_ID"],
+  api_secret: ENV["GOCARDLESS_API_KEY"]
 )
 ```
 
 ### GET requests
 
-Simple requests can be made like this:
+You can make a request to get a list of resources using the `list` method:
 
+```rb
+@client.customers.list
 ```
-@client.resource.list
-```
 
-Where `resource` is one of the resources in the GoCardless API, such as `customers` or `mandate`.
+This README will use `customers` throughout but each of the resources in the API is available in this library. They are defined in [`gocardless.rb`](https://github.com/gocardless/pro-client-ruby/blob/master/lib/gocardless.rb#L87).
 
-If you need to pass any options, the last (or in the absence of URL params, the only) argument is an options hash. This is used to pass query parameters for `GET` requests.
+If you need to pass any options, the last (or in the absence of URL params, the only) argument is an options hash. This is used to pass query parameters for `GET` requests:
 
-```
+```rb
 @client.customers.list(limit: 400)
 ```
 
-In the case where url parameters are needed, the method signature will contain required arguments:
+A call to `list` returns an instance of `GoCardless::ListResponse`. This is a enumerable which lets you iterate over every item returned:
 
+```rb
+@client.customers.list do |customer|
+  p customer.given_name
+end
 ```
-@client.customers.show(customers_id)
+
+In the case where a url parameter is needed, the method signature will contain required arguments:
+
+```rb
+@client.customers.get(customers_id)
 ```
 
 As with list, the last argument can be an options hash:
 
-```
-@client.customers.show(customers_id, limit: 200)
+```rb
+@client.customers.get(customers_id, limit: 200)
 ```
 
 ### POST/PUT Requests
 
 For POST and PUT requests you need to pass in the body in as the last argument.
 
-```
+```rb
 @client.customers.create(
   first_name: "Pete",
   last_name: "Hamilton",
@@ -64,24 +74,26 @@ For POST and PUT requests you need to pass in the body in as the last argument.
 )
 ```
 
-As with GET requests, if href params are required they come first:
+As with GET requests, if any parameters are required they come first:
 
-```
-@client.customers.update(customers_id, {...})
+```rb
+@client.customers.update(customer_id, {...})
 ```
 
 ### Custom Headers
 
 If you need to pass in a custom header to an endpoint, you can pass in a separate hash as the last argument:
 
-```
+```rb
 @client.helpers.mandate({
-  account_number: 200000
+  account_number: 200000,
   ...
 }, {
   'Accept': 'application/pdf'
 })
 ```
+
+There are very few endpoints in the API that require custom headers. Currently, the only ones that do are [helpers](https://developer.gocardless.com/pro/#api-endpoints-helpers).
 
 ### Handling failures
 
@@ -96,13 +108,12 @@ These errors are fully documented in the [API documentation](https://developer.g
 
 The error has the following methods to allow you to access the information from the API response:
 
-- #documentation_url
-- #message
-- #type
-- #code
-- #request_id
-- #errors
-
+- `#documentation_url`
+- `#message`
+- `#type`
+- `#code`
+- `#request_id`
+- `#errors`
 
 ## Supporting Ruby < 2.0.0
 The client only supports Ruby >= 2.0.0 out of the box due to our use of

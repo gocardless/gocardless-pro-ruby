@@ -83,7 +83,9 @@ module GoCardless
         Struct.new(
           *{
 
-            creditor: ''
+            creditor: '',
+
+            mandate: ''
 
           }.keys
         ).new(*@links.values)

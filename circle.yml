@@ -1,3 +1,18 @@
 machine:
   ruby:
     version: 2.0.0-p353
+
+deployment:
+  git:
+    branch: master
+    commands:
+      - bundle exec yard doc
+      - git config user.name "Circle CI"
+      - git config user.email "robot+circleci@gocardless.com"
+      - git checkout gh-pages
+      - rm -r css GoCardless js
+      - mv doc/* .
+      - touch .nojekyll
+      - git add .
+      - git commit -m "[ci skip] Generate Yard Doc"
+      - git push origin gh-pages
