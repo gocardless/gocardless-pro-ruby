@@ -11,6 +11,7 @@ deployment:
       - git config user.email "robot+circleci@gocardless.com"
       - git checkout gh-pages
       - mv doc/* .
+      - touch .nojekyll
       - git add .
       - git commit -m "[ci skip] Generate Yard Doc"
       - git push origin gh-pages
