@@ -62,8 +62,8 @@ module GoCardless
 
             subscription: ''
 
-          }.keys
-        ).new(*@links.values)
+          }.keys.sort
+        ).new(*@links.sort.map(&:last))
       end
     end
   end
