@@ -4,7 +4,7 @@ machine:
 
 deployment:
   git:
-    branch: dev
+    branch: master
     commands:
       - bundle exec yard doc
       - git config user.name "Circle CI"
