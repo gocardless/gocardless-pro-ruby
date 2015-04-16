@@ -62,6 +62,11 @@ module GoCardless
         @postal_code = object['postal_code']
         @region = object['region']
       end
+
+      # Provides the resource as a hash of all it's readable attributes
+      def to_h
+        @object
+      end
     end
   end
 end

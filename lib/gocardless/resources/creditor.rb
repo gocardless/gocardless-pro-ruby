@@ -73,6 +73,11 @@ module GoCardless
           }.keys.sort
         ).new(*@links.sort.map(&:last))
       end
+
+      # Provides the resource as a hash of all it's readable attributes
+      def to_h
+        @object
+      end
     end
   end
 end
