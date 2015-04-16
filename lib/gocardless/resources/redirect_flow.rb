@@ -48,10 +48,6 @@ module GoCardless
     # after they are first created. You cannot
     # [complete](https://developer.gocardless.com/pro/#complete-a-redirect-flow)
     # an expired redirect flow.
-    #
-    # [View an example
-    # integration](https://pay-sandbox.gocardless.com/AL000000AKFPFF) that uses
-    # redirect flows.
     # Represents an instance of a redirect_flow resource returned from the API
     class RedirectFlow
       attr_reader :created_at
@@ -93,11 +89,6 @@ module GoCardless
 
           }.keys.sort
         ).new(*@links.sort.map(&:last))
-      end
-
-      # Provides the resource as a hash of all it's readable attributes
-      def to_h
-        @object
       end
     end
   end

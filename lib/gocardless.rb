@@ -175,17 +175,16 @@ module GoCardless
     # @option options [Symbol] :environment the environment to connect to - one of `:live` or `:sandbox`.
     # @option options [Symbol] :api_key the ID of the API Key
     # @option options [Symbol] :api_secret the key of the API Key
-    # @option options [Symbol] :url the full URL used to make requests to. If you specify this, it will be used over the `environment` option.
     # @return [Client] A client configured to use the API with HTTP Basic
     #   authentication.
     #
     def initialize(options)
+      environment = options.delete(:environment) || :live
       api_key = options.delete(:api_key) || fail('No API key ID given to GoCardless Client')
       api_secret = options.delete(:api_secret) || fail('No API secret given to GoCardless Client')
-      environment = options.delete(:environment) || :live
-      url = options.delete(:url) || url_for_environment(environment)
       options = custom_options(options)
-      @api_service = ApiService.new(url, api_key, api_secret, options)
+      @api_service = ApiService.new(
+        url_for_environment(environment), api_key, api_secret, options)
     end
 
     private

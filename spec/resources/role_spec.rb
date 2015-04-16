@@ -52,12 +52,6 @@ describe GoCardless::Resources::Role do
        
        
     end
-
-    describe "#to_h" do
-      it "returns a hash representing the resource" do
-        expect(described_class.new(data).to_h).to eq(data)
-      end
-    end
   end
 end
 

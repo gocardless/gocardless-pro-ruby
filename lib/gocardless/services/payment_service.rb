@@ -105,7 +105,7 @@ module GoCardless
         path = sub_url('/payments/:identity/actions/cancel',           'identity' => identity)
 
         new_options = {}
-        new_options['data'] = options
+        new_options[envelope_key] = options
         options = new_options
         response = make_request(:post, path, options, custom_headers)
 
@@ -130,7 +130,7 @@ module GoCardless
         path = sub_url('/payments/:identity/actions/retry',           'identity' => identity)
 
         new_options = {}
-        new_options['data'] = options
+        new_options[envelope_key] = options
         options = new_options
         response = make_request(:post, path, options, custom_headers)
 

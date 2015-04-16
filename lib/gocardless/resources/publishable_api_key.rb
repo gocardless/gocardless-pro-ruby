@@ -41,11 +41,6 @@ module GoCardless
         @key = object['key']
         @name = object['name']
       end
-
-      # Provides the resource as a hash of all it's readable attributes
-      def to_h
-        @object
-      end
     end
   end
 end

@@ -96,7 +96,7 @@ module GoCardless
         path = sub_url('/publishable_api_keys/:identity/actions/disable',           'identity' => identity)
 
         new_options = {}
-        new_options['data'] = options
+        new_options[envelope_key] = options
         options = new_options
         response = make_request(:post, path, options, custom_headers)
 

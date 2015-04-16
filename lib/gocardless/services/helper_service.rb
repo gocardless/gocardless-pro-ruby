@@ -40,7 +40,7 @@ module GoCardless
       def mandate(options = {}, custom_headers = {})
         path = '/helpers/mandate'
         new_options = {}
-        new_options['data'] = options
+        new_options[envelope_key] = options
         options = new_options
         response = make_request(:post, path, options, custom_headers)
 
@@ -63,7 +63,7 @@ module GoCardless
       def modulus_check(options = {}, custom_headers = {})
         path = '/helpers/modulus_check'
         new_options = {}
-        new_options['data'] = options
+        new_options[envelope_key] = options
         options = new_options
         response = make_request(:post, path, options, custom_headers)
 
