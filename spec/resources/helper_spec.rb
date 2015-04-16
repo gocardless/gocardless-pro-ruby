@@ -12,6 +12,12 @@ describe GoCardless::Resources::Helper do
       resource = described_class.new(data)
       
     end
+
+    describe "#to_h" do
+      it "returns a hash representing the resource" do
+        expect(described_class.new(data).to_h).to eq(data)
+      end
+    end
   end
 end
 
