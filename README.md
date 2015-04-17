@@ -1,10 +1,21 @@
-# Client for GoCardless Enterprise API
+# Ruby Client for GoCardless Enterprise API
 
+- [YARD Docs](http://gocardless.github.io/pro-client-ruby/)
+- [GoCardless Pro API Docs](https://developer.gocardless.com/pro/)
+- [RubyGems](https://rubygems.org/gems/gocardless-pro)
+
+This client is still in beta and is subject to change. Until a stable major version is released you should expect breaking changes.
 
 Add this line to your application's Gemfile:
 
 ```ruby
 gem 'gocardless-pro'
+```
+
+And then load it into your application:
+
+```ruby
+require 'gocardless-pro'
 ```
 
 ## Usage Examples
