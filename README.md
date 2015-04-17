@@ -45,7 +45,7 @@ You can make a request to get a list of resources using the `list` method:
 @client.customers.list
 ```
 
-This README will use `customers` throughout but each of the resources in the API is available in this library. They are defined in [`gocardless.rb`](https://github.com/gocardless/pro-client-ruby/blob/master/lib/gocardless.rb#L87).
+This README will use `customers` throughout but each of the resources in the API is available in this library. They are defined in [`gocardless.rb`](https://github.com/gocardless/pro-client-ruby/blob/master/lib/gocardless-pro.rb#L87).
 
 If you need to pass any options, the last (or in the absence of URL params, the only) argument is an options hash. This is used to pass query parameters for `GET` requests:
 
