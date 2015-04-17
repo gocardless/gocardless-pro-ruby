@@ -4,7 +4,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'gocardless'
+gem 'gocardless-pro'
 ```
 
 ## Usage Examples

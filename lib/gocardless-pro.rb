@@ -17,7 +17,7 @@ require 'uri'
 module GoCardless
 end
 
-version_file = 'gocardless/version'
+version_file = 'gocardless-pro/version'
 
 if File.file? File.expand_path("#{version_file}.rb", File.dirname(__FILE__))
   require_relative version_file
@@ -25,64 +25,64 @@ else
   GoCardless::VERSION = ''
 end
 
-require_relative 'gocardless/api_service'
-require_relative 'gocardless/list_response'
-require_relative 'gocardless/error'
-require_relative 'gocardless/error/validation_error'
-require_relative 'gocardless/error/gocardless_error'
-require_relative 'gocardless/error/invalid_api_usage_error'
-require_relative 'gocardless/error/invalid_state_error'
-require_relative 'gocardless/paginator'
-require_relative 'gocardless/request'
-require_relative 'gocardless/response'
+require_relative 'gocardless-pro/api_service'
+require_relative 'gocardless-pro/list_response'
+require_relative 'gocardless-pro/error'
+require_relative 'gocardless-pro/error/validation_error'
+require_relative 'gocardless-pro/error/gocardless_error'
+require_relative 'gocardless-pro/error/invalid_api_usage_error'
+require_relative 'gocardless-pro/error/invalid_state_error'
+require_relative 'gocardless-pro/paginator'
+require_relative 'gocardless-pro/request'
+require_relative 'gocardless-pro/response'
 
-require_relative 'gocardless/resources/api_key'
-require_relative 'gocardless/services/api_key_service'
+require_relative 'gocardless-pro/resources/api_key'
+require_relative 'gocardless-pro/services/api_key_service'
 
-require_relative 'gocardless/resources/creditor'
-require_relative 'gocardless/services/creditor_service'
+require_relative 'gocardless-pro/resources/creditor'
+require_relative 'gocardless-pro/services/creditor_service'
 
-require_relative 'gocardless/resources/creditor_bank_account'
-require_relative 'gocardless/services/creditor_bank_account_service'
+require_relative 'gocardless-pro/resources/creditor_bank_account'
+require_relative 'gocardless-pro/services/creditor_bank_account_service'
 
-require_relative 'gocardless/resources/customer'
-require_relative 'gocardless/services/customer_service'
+require_relative 'gocardless-pro/resources/customer'
+require_relative 'gocardless-pro/services/customer_service'
 
-require_relative 'gocardless/resources/customer_bank_account'
-require_relative 'gocardless/services/customer_bank_account_service'
+require_relative 'gocardless-pro/resources/customer_bank_account'
+require_relative 'gocardless-pro/services/customer_bank_account_service'
 
-require_relative 'gocardless/resources/event'
-require_relative 'gocardless/services/event_service'
+require_relative 'gocardless-pro/resources/event'
+require_relative 'gocardless-pro/services/event_service'
 
-require_relative 'gocardless/resources/helper'
-require_relative 'gocardless/services/helper_service'
+require_relative 'gocardless-pro/resources/helper'
+require_relative 'gocardless-pro/services/helper_service'
 
-require_relative 'gocardless/resources/mandate'
-require_relative 'gocardless/services/mandate_service'
+require_relative 'gocardless-pro/resources/mandate'
+require_relative 'gocardless-pro/services/mandate_service'
 
-require_relative 'gocardless/resources/payment'
-require_relative 'gocardless/services/payment_service'
+require_relative 'gocardless-pro/resources/payment'
+require_relative 'gocardless-pro/services/payment_service'
 
-require_relative 'gocardless/resources/payout'
-require_relative 'gocardless/services/payout_service'
+require_relative 'gocardless-pro/resources/payout'
+require_relative 'gocardless-pro/services/payout_service'
 
-require_relative 'gocardless/resources/publishable_api_key'
-require_relative 'gocardless/services/publishable_api_key_service'
+require_relative 'gocardless-pro/resources/publishable_api_key'
+require_relative 'gocardless-pro/services/publishable_api_key_service'
 
-require_relative 'gocardless/resources/redirect_flow'
-require_relative 'gocardless/services/redirect_flow_service'
+require_relative 'gocardless-pro/resources/redirect_flow'
+require_relative 'gocardless-pro/services/redirect_flow_service'
 
-require_relative 'gocardless/resources/refund'
-require_relative 'gocardless/services/refund_service'
+require_relative 'gocardless-pro/resources/refund'
+require_relative 'gocardless-pro/services/refund_service'
 
-require_relative 'gocardless/resources/role'
-require_relative 'gocardless/services/role_service'
+require_relative 'gocardless-pro/resources/role'
+require_relative 'gocardless-pro/services/role_service'
 
-require_relative 'gocardless/resources/subscription'
-require_relative 'gocardless/services/subscription_service'
+require_relative 'gocardless-pro/resources/subscription'
+require_relative 'gocardless-pro/services/subscription_service'
 
-require_relative 'gocardless/resources/user'
-require_relative 'gocardless/services/user_service'
+require_relative 'gocardless-pro/resources/user'
+require_relative 'gocardless-pro/services/user_service'
 
 module GoCardless
   # A class for working with and talking to the GoCardless API
@@ -226,14 +226,14 @@ module GoCardless
     def user_agent
       @user_agent ||=
         begin
-          gem_name = 'gocardless'
+          gem_name = 'gocardless-pro'
           gem_info = "#{gem_name}"
           gem_info += "/v#{ GoCardless::VERSION}" if defined?(GoCardless::VERSION)
           ruby_engine = defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'
           ruby_version = RUBY_VERSION
           ruby_version += " p#{RUBY_PATCHLEVEL}" if defined?(RUBY_PATCHLEVEL)
           comment = ["#{ruby_engine} #{ruby_version}"]
-          comment << "gocardless v#{ GoCardless::VERSION}"
+          comment << "gocardless-pro v#{ GoCardless::VERSION}"
           comment << "faraday v#{Faraday::VERSION}"
           comment << RUBY_PLATFORM if defined?(RUBY_PLATFORM)
           "#{gem_info} (#{comment.join('; ')})"
