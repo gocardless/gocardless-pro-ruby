@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = %w(GoCardless)
   spec.email         = %w(engineering@gocardless.com)
   spec.summary       = %q{A gem for calling the GoCardless Pro API}
-  spec.homepage      = "https://developer.gocardless.com/pro"
+  spec.homepage      = "https://github.com/gocardless/gocardless-pro-ruby"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
