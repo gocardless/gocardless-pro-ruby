@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = GoCardless::VERSION
   spec.authors       = %w(GoCardless)
   spec.email         = %w(engineering@gocardless.com)
-  spec.description   = %q{THIS API CLIENT IS AUTO-GENERATED. DO NOT MODIFY}
+  spec.summary       = %q{A gem for calling the GoCardless Pro API}
   spec.homepage      = "https://developer.gocardless.com/pro"
   spec.license       = "MIT"
 
@@ -22,6 +22,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.30.0'
   spec.add_development_dependency 'yard', '~> 0.8.7.6'
 
-  spec.add_dependency 'faraday', '>= 0.8.9'
+  spec.add_dependency 'faraday', '~> 0.8.9'
   spec.add_dependency 'activesupport', '~> 4.1'
 end

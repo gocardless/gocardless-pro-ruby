@@ -129,4 +129,4 @@ However, support for previous ruby versions can be added using a gem such as
 
 ## Contributing
 
-This client is auto-generated from Crank, a toolchain that we hope to soon open source. Issues should for now be reported on this repository. Please do not modify the source code yourself, your changes will be overriden!
+This client is auto-generated from Crank, a toolchain that we hope to soon open source. Issues should for now be reported on this repository. __Please do not modify the source code yourself, your changes will be overriden!__

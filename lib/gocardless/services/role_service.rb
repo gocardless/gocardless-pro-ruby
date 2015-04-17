@@ -93,7 +93,7 @@ module GoCardless
         path = sub_url('/roles/:identity/actions/disable',           'identity' => identity)
 
         new_options = {}
-        new_options[envelope_key] = options
+        new_options['data'] = options
         options = new_options
         response = make_request(:post, path, options, custom_headers)
 

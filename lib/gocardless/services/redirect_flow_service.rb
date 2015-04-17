@@ -62,7 +62,7 @@ module GoCardless
         path = sub_url('/redirect_flows/:identity/actions/complete',           'identity' => identity)
 
         new_options = {}
-        new_options[envelope_key] = options
+        new_options['data'] = options
         options = new_options
         response = make_request(:post, path, options, custom_headers)
 
