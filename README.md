@@ -1,10 +1,21 @@
-# Client for GoCardless Enterprise API
+# Ruby Client for GoCardless Enterprise API
 
+- [YARD Docs](http://gocardless.github.io/pro-client-ruby/)
+- [GoCardless Pro API Docs](https://developer.gocardless.com/pro/)
+- [RubyGems](https://rubygems.org/gems/gocardless-pro)
+
+This client is still in beta and is subject to change. Until a stable major version is released you should expect breaking changes.
 
 Add this line to your application's Gemfile:
 
 ```ruby
 gem 'gocardless-pro'
+```
+
+And then load it into your application:
+
+```ruby
+require 'gocardless-pro'
 ```
 
 ## Usage Examples
@@ -34,7 +45,7 @@ You can make a request to get a list of resources using the `list` method:
 @client.customers.list
 ```
 
-This README will use `customers` throughout but each of the resources in the API is available in this library. They are defined in [`gocardless.rb`](https://github.com/gocardless/pro-client-ruby/blob/master/lib/gocardless.rb#L87).
+This README will use `customers` throughout but each of the resources in the API is available in this library. They are defined in [`gocardless.rb`](https://github.com/gocardless/pro-client-ruby/blob/master/lib/gocardless-pro.rb#L87).
 
 If you need to pass any options, the last (or in the absence of URL params, the only) argument is an options hash. This is used to pass query parameters for `GET` requests:
 
