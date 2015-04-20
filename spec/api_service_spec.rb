@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe GoCardless::ApiService do
-  subject(:service) { described_class.new("https://api.example.com", "ak123", "abc123") }
+  subject(:service) { described_class.new("https://api.example.com", "secret_token") }
 
   it "uses basic auth" do
-    stub = stub_request(:get, 'https://ak123:abc123@api.example.com/customers')
+    stub = stub_request(:get, 'https://api.example.com/customers').
+      with(headers: { "Authorization" => "Bearer secret_token" })
     service.make_request(:get, "/customers")
     expect(stub).to have_been_requested
   end
