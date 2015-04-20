@@ -7,10 +7,8 @@
 
 require 'json'
 require 'zlib'
-require 'active_support/inflector'
 require 'faraday'
 require 'time'
-require 'active_support/core_ext/hash/indifferent_access'
 
 require 'uri'
 

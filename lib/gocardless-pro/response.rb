@@ -39,7 +39,7 @@ module GoCardless
     private
 
     def json_body
-      @json_body ||= JSON.parse(@response.body).with_indifferent_access
+      @json_body ||= JSON.parse(@response.body)
     end
 
     def raw_body

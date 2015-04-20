@@ -23,12 +23,12 @@ module GoCardless
 
     # return the before cursor for paginating
     def before
-      @raw_response.body[:meta][:cursors][:before]
+      @raw_response.body['meta']['cursors']['before']
     end
 
     # return the after cursor for paginating
     def after
-      @raw_response.body[:meta][:cursors][:after]
+      @raw_response.body['meta']['cursors']['after']
     end
   end
 end
