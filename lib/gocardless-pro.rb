@@ -38,48 +38,38 @@ require_relative 'gocardless-pro/response'
 
 require_relative 'gocardless-pro/resources/creditor'
 require_relative 'gocardless-pro/services/creditor_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/creditor_bank_account'
 require_relative 'gocardless-pro/services/creditor_bank_account_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/customer'
 require_relative 'gocardless-pro/services/customer_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/customer_bank_account'
 require_relative 'gocardless-pro/services/customer_bank_account_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/event'
 require_relative 'gocardless-pro/services/event_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/helper'
 require_relative 'gocardless-pro/services/helper_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/mandate'
 require_relative 'gocardless-pro/services/mandate_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/payment'
 require_relative 'gocardless-pro/services/payment_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/payout'
 require_relative 'gocardless-pro/services/payout_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/redirect_flow'
 require_relative 'gocardless-pro/services/redirect_flow_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/refund'
 require_relative 'gocardless-pro/services/refund_service'
-require_relative 'gocardless-pro/client.rb'
 
 require_relative 'gocardless-pro/resources/subscription'
 require_relative 'gocardless-pro/services/subscription_service'
+
 require_relative 'gocardless-pro/client.rb'
