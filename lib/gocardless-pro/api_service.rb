@@ -16,7 +16,7 @@ module GoCardless
     # @param key [String] the API Key ID to use
     # @param secret [String] the API key secret to use
     # @param options [Hash] additional options to use when creating the service
-    def initialize(url, key, secret, options = {})
+    def initialize(url, token, options = {})
       @url = url
       root_url, @path_prefix = unpack_url(url)
       http_adapter = options[:http_adapter] || [:net_http]
@@ -25,7 +25,7 @@ module GoCardless
       end
 
       @headers = options[:default_headers] || {}
-      @headers['Authorization'] = 'Basic ' + Base64.strict_encode64("#{key}:#{secret}")
+      @headers['Authorization'] = "Bearer #{token}"
     end
 
     # Make a request to the API

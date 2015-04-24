@@ -6,24 +6,14 @@ describe GoCardless::Client do
   let(:options) do
     {
       environment: environment,
-      api_key: api_key,
-      api_secret: api_secret
+      token: token
     }
   end
 
-  context "when initialised without an API key" do
+  context "when initialised without an Access Token" do
     let(:environment) { :live }
-    let(:api_secret) { "MYSECRETTOKEN" }
-    let(:api_key) { nil }
+    let(:token) { nil }
 
-    it { is_expected.to raise_error("No API key ID given to GoCardless Client") }
-  end
-
-  context "when initialised without an API secret" do
-    let(:api_secret) { nil }
-    let(:environment) { :live }
-    let(:api_key) { "AK123" }
-
-    it { is_expected.to raise_error("No API secret given to GoCardless Client") }
+    it { is_expected.to raise_error("No Access Token given to GoCardless Client") }
   end
 end

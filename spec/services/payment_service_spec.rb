@@ -3,8 +3,7 @@ require 'spec_helper'
 describe GoCardless::Services::PaymentService do
   let(:client) do
     GoCardless::Client.new(
-      api_key: "AK123",
-      api_secret: "ABC"
+      token: "SECRET_TOKEN"
     )
   end
 

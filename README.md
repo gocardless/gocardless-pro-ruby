@@ -26,14 +26,12 @@ require 'gocardless-pro'
 
 ### Initialising the client
 
-The client is initialised with the API Key ID and the API Key `key` property.
-
+The client is initialised with an Access Token.
 You can also pass in `environment` as `:sandbox` to make requests to the sandbox environment rather than the live one.
 
 ```rb
 @client = GoCardless::Client.new(
-  api_key: ENV["GOCARDLESS_API_ID"],
-  api_secret: ENV["GOCARDLESS_API_KEY"]
+  token: ENV["GOCARDLESS_TOKEN"]
 )
 ```
 
