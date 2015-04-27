@@ -16,18 +16,18 @@ module GoCardless
       # three different ways to supply bank account details:
       #
       # - [Local
-      # details](https://developer.gocardless.com/pro/#ui-compliance-local-bank-details)
+      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-compliance-local-bank-details)
       #
       #
       # - IBAN
       #
       # - [Customer Bank Account
-      # Tokens](https://developer.gocardless.com/pro/#js-flow-create-a-customer-bank-account-token)
+      # Tokens](https://developer.gocardless.com/pro/2015-04-29/#js-flow-create-a-customer-bank-account-token)
       #
       #
       # For more information on the different fields required in each country, see
       # [local bank
-      # details](https://developer.gocardless.com/pro/#ui-compliance-local-bank-details).
+      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-compliance-local-bank-details).
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
       # Else, they will be the body of the request.
@@ -42,7 +42,7 @@ module GoCardless
       end
 
       # Returns a
-      # [cursor-paginated](https://developer.gocardless.com/pro/#overview-cursor-pagination)
+      # [cursor-paginated](https://developer.gocardless.com/pro/2015-04-29/#overview-cursor-pagination)
       # list of your bank accounts.
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.

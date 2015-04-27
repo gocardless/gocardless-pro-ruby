@@ -12,15 +12,16 @@ module GoCardless
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Payment objects represent payments from a
-    # [customer](https://developer.gocardless.com/pro/#api-endpoints-customers) to
-    # a [creditor](https://developer.gocardless.com/pro/#api-endpoints-creditors),
+    # [customer](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-customers)
+    # to a
+    # [creditor](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-creditors),
     # taken against a Direct Debit
-    # [mandate](https://developer.gocardless.com/pro/#api-endpoints-mandates).
-    #
-    #
+    # [mandate](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-mandates).
+
+    #  #
     # GoCardless will notify you via a
-    # [webhook](https://developer.gocardless.com/pro/#webhooks) whenever the state
-    # of a payment changes.
+    # [webhook](https://developer.gocardless.com/pro/2015-04-29/#webhooks)
+    # whenever the state of a payment changes.
     # Represents an instance of a payment resource returned from the API
     class Payment
       attr_reader :amount

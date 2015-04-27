@@ -12,15 +12,15 @@ module GoCardless
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Creditor Bank Accounts hold the bank details of a
-    # [creditor](https://developer.gocardless.com/pro/#api-endpoints-creditor).
+    # [creditor](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-creditor).
     # These are the bank accounts which your
-    # [payouts](https://developer.gocardless.com/pro/#api-endpoints-payouts) will
-    # be sent to.
+    # [payouts](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-payouts)
+    # will be sent to.
     #
-    # Note that creditor bank accounts must be unique, and so
-    # you will encounter a `bank_account_exists` error if you try to create a
-    # duplicate bank account. You may wish to handle this by updating the existing
-    # record instead, the ID of which will be provided as
+    # Note that creditor bank accounts must be unique,
+    # and so you will encounter a `bank_account_exists` error if you try to create
+    # a duplicate bank account. You may wish to handle this by updating the
+    # existing record instead, the ID of which will be provided as
     # `links[creditor_bank_account]` in the error response.
     # Represents an instance of a creditor_bank_account resource returned from the API
     class CreditorBankAccount

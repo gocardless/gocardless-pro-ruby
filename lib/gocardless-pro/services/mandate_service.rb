@@ -25,7 +25,7 @@ module GoCardless
       end
 
       # Returns a
-      # [cursor-paginated](https://developer.gocardless.com/pro/#overview-cursor-pagination)
+      # [cursor-paginated](https://developer.gocardless.com/pro/2015-04-29/#overview-cursor-pagination)
       # list of your mandates. Except where stated, these filters can only be used one
       # at a time.
       # Example URL: /mandates

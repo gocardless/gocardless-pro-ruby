@@ -14,9 +14,9 @@ module GoCardless
       #
       # This
       # fails with a `mandate_is_inactive` error if the linked
-      # [mandate](https://developer.gocardless.com/pro/#api-endpoints-mandates) is
-      # cancelled. Payments can be created against `pending_submission` mandates, but
-      # they will not be submitted until the mandate becomes active.
+      # [mandate](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-mandates)
+      # is cancelled. Payments can be created against `pending_submission` mandates,
+      # but they will not be submitted until the mandate becomes active.
       # Example URL: /payments
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
       # Else, they will be the body of the request.
@@ -31,7 +31,7 @@ module GoCardless
       end
 
       # Returns a
-      # [cursor-paginated](https://developer.gocardless.com/pro/#overview-cursor-pagination)
+      # [cursor-paginated](https://developer.gocardless.com/pro/2015-04-29/#overview-cursor-pagination)
       # list of your payments.
       # Example URL: /payments
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.

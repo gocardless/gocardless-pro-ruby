@@ -12,12 +12,12 @@ module GoCardless
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Mandates represent the Direct Debit mandate with a
-    # [customer](https://developer.gocardless.com/pro/#api-endpoints-customers).
+    # [customer](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-customers).
 
-    # #
+    #  #
     # GoCardless will notify you via a
-    # [webhook](https://developer.gocardless.com/pro/#webhooks) whenever the
-    # status of a mandate changes.
+    # [webhook](https://developer.gocardless.com/pro/2015-04-29/#webhooks)
+    # whenever the status of a mandate changes.
     # Represents an instance of a mandate resource returned from the API
     class Mandate
       attr_reader :created_at

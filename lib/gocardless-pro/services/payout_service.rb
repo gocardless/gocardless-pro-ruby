@@ -11,7 +11,7 @@ module GoCardless
     # Service for making requests to the Payout endpoints
     class PayoutService < BaseService
       # Returns a
-      # [cursor-paginated](https://developer.gocardless.com/pro/#overview-cursor-pagination)
+      # [cursor-paginated](https://developer.gocardless.com/pro/2015-04-29/#overview-cursor-pagination)
       # list of your payouts.
       # Example URL: /payouts
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.

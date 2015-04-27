@@ -18,13 +18,13 @@ module GoCardless
       #
       # -
       # `refund_payment_invalid_state` error if the linked
-      # [payment](https://developer.gocardless.com/pro/#api-endpoints-payments) isn't
-      # either `confirmed` or `paid_out`.
+      # [payment](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-payments)
+      # isn't either `confirmed` or `paid_out`.
       #
-      # - `total_amount_confirmation_invalid`
-      # if the confirmation amount doesn't match the total amount refunded for the
-      # payment. This safeguard is there to prevent two processes from creating
-      # refunds without awareness of each other.
+      # -
+      # `total_amount_confirmation_invalid` if the confirmation amount doesn't match
+      # the total amount refunded for the payment. This safeguard is there to prevent
+      # two processes from creating refunds without awareness of each other.
       #
       # Example URL: /refunds
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
@@ -40,7 +40,7 @@ module GoCardless
       end
 
       # Returns a
-      # [cursor-paginated](https://developer.gocardless.com/pro/#overview-cursor-pagination)
+      # [cursor-paginated](https://developer.gocardless.com/pro/2015-04-29/#overview-cursor-pagination)
       # list of your refunds.
       # Example URL: /refunds
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.

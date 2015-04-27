@@ -11,7 +11,8 @@ require 'uri'
 module GoCardless
   # A module containing classes for each of the resources in the GC Api
   module Resources
-    # Each [payment](https://developer.gocardless.com/pro/#api-endpoints-payments)
+    # Each
+    # [payment](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-payments)
     # taken through the API is linked to a "creditor", to whom the payment is then
     # paid out. In most cases your organisation will have a single "creditor", but
     # the API also supports collecting payments on behalf of others.

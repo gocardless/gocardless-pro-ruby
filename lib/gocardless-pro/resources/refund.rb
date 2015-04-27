@@ -12,21 +12,21 @@ module GoCardless
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Refund objects represent (partial) refunds of a
-    # [payment](https://developer.gocardless.com/pro/#api-endpoints-payment) back
-    # to the
-    # [customer](https://developer.gocardless.com/pro/#api-endpoints-customers).
+    # [payment](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-payment)
+    # back to the
+    # [customer](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-customers).
 
-    # #
+    #  #
     # The API allows you to create, show, list and update your refunds.
-    #
-    #
-    # GoCardless will notify you via a
-    # [webhook](https://developer.gocardless.com/pro/#webhooks) whenever a refund
-    # is created, and will update the `amount_refunded` property of the payment.
 
     # #
-    # _Note:_ A payment that has been (partially) refunded can still
-    # receive a late failure or chargeback from the banks.
+    # GoCardless will notify you via a
+    # [webhook](https://developer.gocardless.com/pro/2015-04-29/#webhooks)
+    # whenever a refund is created, and will update the `amount_refunded` property
+    # of the payment.
+    #
+    # _Note:_ A payment that has been (partially)
+    # refunded can still receive a late failure or chargeback from the banks.
     # Represents an instance of a refund resource returned from the API
     class Refund
       attr_reader :amount

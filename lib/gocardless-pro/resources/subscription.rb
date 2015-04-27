@@ -12,7 +12,7 @@ module GoCardless
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Subscriptions create
-    # [payments](https://developer.gocardless.com/pro/#api-endpoints-payments)
+    # [payments](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-payments)
     # according to a schedule.
     #
     # #### Recurrence Rules
