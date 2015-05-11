@@ -127,6 +127,8 @@ module GoCardless
       #
       # This will fail with a `mandate_not_inactive` error if the mandate is already
       # being submitted, or is active.
+      #
+      # Mandates can be resubmitted up to 3 times.
       # Example URL: /mandates/:identity/actions/reinstate
       #
       # @param identity       # Unique identifier, beginning with "MD"
