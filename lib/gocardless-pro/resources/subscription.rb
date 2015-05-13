@@ -104,6 +104,8 @@ module GoCardless
 
       attr_reader :name
 
+      attr_reader :payment_reference
+
       attr_reader :start_at
 
       attr_reader :status
@@ -127,6 +129,7 @@ module GoCardless
         @metadata = object['metadata']
         @month = object['month']
         @name = object['name']
+        @payment_reference = object['payment_reference']
         @start_at = object['start_at']
         @status = object['status']
         @upcoming_payments = object['upcoming_payments']

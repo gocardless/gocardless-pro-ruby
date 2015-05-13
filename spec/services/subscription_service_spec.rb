@@ -31,6 +31,7 @@ describe GoCardless::Services::SubscriptionService do
           "metadata" => "metadata-input",
           "month" => "month-input",
           "name" => "name-input",
+          "payment_reference" => "payment_reference-input",
           "start_at" => "start_at-input",
           "status" => "status-input",
           "upcoming_payments" => "upcoming_payments-input",
@@ -56,6 +57,7 @@ describe GoCardless::Services::SubscriptionService do
                 "metadata" => "metadata-input",
                 "month" => "month-input",
                 "name" => "name-input",
+                "payment_reference" => "payment_reference-input",
                 "start_at" => "start_at-input",
                 "status" => "status-input",
                 "upcoming_payments" => "upcoming_payments-input",
@@ -79,6 +81,7 @@ describe GoCardless::Services::SubscriptionService do
                 "metadata" => "metadata-input",
                 "month" => "month-input",
                 "name" => "name-input",
+                "payment_reference" => "payment_reference-input",
                 "start_at" => "start_at-input",
                 "status" => "status-input",
                 "upcoming_payments" => "upcoming_payments-input",
@@ -144,6 +147,7 @@ describe GoCardless::Services::SubscriptionService do
                 "metadata" => "metadata-input",
                 "month" => "month-input",
                 "name" => "name-input",
+                "payment_reference" => "payment_reference-input",
                 "start_at" => "start_at-input",
                 "status" => "status-input",
                 "upcoming_payments" => "upcoming_payments-input",
@@ -214,6 +218,10 @@ describe GoCardless::Services::SubscriptionService do
           
           
           
+          expect(get_list_response.first.payment_reference).to eq("payment_reference-input")
+          
+          
+          
           expect(get_list_response.first.start_at).to eq("start_at-input")
           
           
@@ -253,6 +261,7 @@ describe GoCardless::Services::SubscriptionService do
               "metadata" => "metadata-input",
               "month" => "month-input",
               "name" => "name-input",
+              "payment_reference" => "payment_reference-input",
               "start_at" => "start_at-input",
               "status" => "status-input",
               "upcoming_payments" => "upcoming_payments-input",
@@ -284,6 +293,7 @@ describe GoCardless::Services::SubscriptionService do
               "metadata" => "metadata-input",
               "month" => "month-input",
               "name" => "name-input",
+              "payment_reference" => "payment_reference-input",
               "start_at" => "start_at-input",
               "status" => "status-input",
               "upcoming_payments" => "upcoming_payments-input",
@@ -333,6 +343,7 @@ describe GoCardless::Services::SubscriptionService do
                 "metadata" => "metadata-input",
                 "month" => "month-input",
                 "name" => "name-input",
+                "payment_reference" => "payment_reference-input",
                 "start_at" => "start_at-input",
                 "status" => "status-input",
                 "upcoming_payments" => "upcoming_payments-input",
@@ -378,6 +389,7 @@ describe GoCardless::Services::SubscriptionService do
                 "metadata" => "metadata-input",
                 "month" => "month-input",
                 "name" => "name-input",
+                "payment_reference" => "payment_reference-input",
                 "start_at" => "start_at-input",
                 "status" => "status-input",
                 "upcoming_payments" => "upcoming_payments-input",
@@ -425,6 +437,7 @@ describe GoCardless::Services::SubscriptionService do
               "metadata" => "metadata-input",
               "month" => "month-input",
               "name" => "name-input",
+              "payment_reference" => "payment_reference-input",
               "start_at" => "start_at-input",
               "status" => "status-input",
               "upcoming_payments" => "upcoming_payments-input",
@@ -472,6 +485,7 @@ describe GoCardless::Services::SubscriptionService do
                 "metadata" => "metadata-input",
                 "month" => "month-input",
                 "name" => "name-input",
+                "payment_reference" => "payment_reference-input",
                 "start_at" => "start_at-input",
                 "status" => "status-input",
                 "upcoming_payments" => "upcoming_payments-input",

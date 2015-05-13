@@ -62,6 +62,10 @@ describe GoCardless::Resources::Subscription do
         
       
         
+          "payment_reference" => "payment_reference-input",
+        
+      
+        
           "start_at" => "start_at-input",
         
       
@@ -131,6 +135,10 @@ describe GoCardless::Resources::Subscription do
        
        
        expect(resource.name).to eq("name-input")
+       
+       
+       
+       expect(resource.payment_reference).to eq("payment_reference-input")
        
        
        
