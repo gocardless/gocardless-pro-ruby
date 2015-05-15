@@ -15,10 +15,10 @@ module GoCardless
       # This fails with:<a
       # name="refund_payment_invalid_state"></a><a
       # name="total_amount_confirmation_invalid"></a><a
-      # name="total_number_of_refunds_exceeded"></a>
+      # name="number_of_refunds_exceeded"></a>
       #
-      # -
-      # `refund_payment_invalid_state` error if the linked
+      # - `refund_payment_invalid_state`
+      # error if the linked
       # [payment](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-payments)
       # isn't either `confirmed` or `paid_out`.
       #
@@ -28,8 +28,8 @@ module GoCardless
       # two processes from creating refunds without awareness of each other.
       #
       # -
-      # `total_number_of_refunds_exceeded` if five or more refunds have already been
-      # created against the payment.
+      # `number_of_refunds_exceeded` if five or more refunds have already been created
+      # against the payment.
       #
       # Example URL: /refunds
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
