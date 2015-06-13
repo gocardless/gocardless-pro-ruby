@@ -1,8 +1,7 @@
- require_relative 'lib/gocardless'
+ require_relative 'lib/gocardless_pro'
 
-@client = GoCardless::Client.new(
-  api_key: ENV["GOCARDLESS_KEY"],
-  api_secret: ENV["GOCARDLESS_TOKEN"],
+@client = GoCardlessPro::Client.new(
+  access_token: ENV["GOCARDLESS_TOKEN"],
   environment: :sandbox
 )
 

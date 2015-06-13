@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardless::Response do
+describe GoCardlessPro::Response do
 
   subject(:response) { described_class.new(raw_response) }
   let(:default_headers) do
@@ -21,6 +21,16 @@ describe GoCardless::Response do
     end
   end
 
+  context "when the response is empty" do
+    let(:raw_response) do
+      double("response", headers: default_headers, status: 204, body: '')
+    end
+
+    it "returns nil" do
+      expect(response.body).to be_nil
+    end
+  end
+
   context "when the resonse is a validation error" do
     let(:raw_response) do
       double("response",
@@ -31,7 +41,7 @@ describe GoCardless::Response do
     end
 
     it "raises a ValidationError" do
-      expect { response.body }.to raise_error(GoCardless::ValidationError)
+      expect { response.body }.to raise_error(GoCardlessPro::ValidationError)
     end
   end
 
@@ -45,7 +55,7 @@ describe GoCardless::Response do
     end
 
     it "raises a ValidationError" do
-      expect { response.body }.to raise_error(GoCardless::GoCardlessError)
+      expect { response.body }.to raise_error(GoCardlessPro::GoCardlessError)
     end
   end
 
@@ -59,7 +69,7 @@ describe GoCardless::Response do
     end
 
     it "raises a ValidationError" do
-      expect { response.body }.to raise_error(GoCardless::InvalidApiUsageError)
+      expect { response.body }.to raise_error(GoCardlessPro::InvalidApiUsageError)
     end
   end
 
@@ -73,7 +83,7 @@ describe GoCardless::Response do
     end
 
     it "raises a ValidationError" do
-      expect { response.body }.to raise_error(GoCardless::InvalidStateError)
+      expect { response.body }.to raise_error(GoCardlessPro::InvalidStateError)
     end
   end
 end

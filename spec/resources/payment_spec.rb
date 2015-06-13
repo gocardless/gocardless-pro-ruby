@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardless::Resources::Payment do
+describe GoCardlessPro::Resources::Payment do
   describe "initialising" do
     let(:data) do
       {

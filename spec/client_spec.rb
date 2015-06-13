@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardless::Client do
+describe GoCardlessPro::Client do
   subject { -> { described_class.new(options) } }
 
   let(:options) do

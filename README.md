@@ -2,20 +2,20 @@
 
 - [YARD Docs](http://gocardless.github.io/pro-client-ruby/)
 - [GoCardless Pro API Docs](https://developer.gocardless.com/pro/)
-- [RubyGems](https://rubygems.org/gems/gocardless-pro)
+- [RubyGems](https://rubygems.org/gems/gocardless_pro)
 
 This client is still in beta and is subject to change. Until a stable major version is released you should expect breaking changes.
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'gocardless-pro'
+gem 'gocardless_pro'
 ```
 
 And then load it into your application:
 
 ```ruby
-require 'gocardless-pro'
+require 'gocardless_pro'
 ```
 
 ## Usage Examples
@@ -30,7 +30,7 @@ The client is initialised with an Access Token.
 You can also pass in `environment` as `:sandbox` to make requests to the sandbox environment rather than the live one.
 
 ```rb
-@client = GoCardless::Client.new(
+@client = GoCardlessPro::Client.new(
   token: ENV["GOCARDLESS_TOKEN"]
 )
 ```
@@ -43,7 +43,7 @@ You can make a request to get a list of resources using the `list` method:
 @client.customers.list
 ```
 
-This README will use `customers` throughout but each of the resources in the API is available in this library. They are defined in [`gocardless.rb`](https://github.com/gocardless/pro-client-ruby/blob/master/lib/gocardless-pro.rb#L87).
+This README will use `customers` throughout but each of the resources in the API is available in this library. They are defined in [`gocardless.rb`](https://github.com/gocardless/pro-client-ruby/blob/master/lib/gocardless_pro.rb#L87).
 
 If you need to pass any options, the last (or in the absence of URL params, the only) argument is an options hash. This is used to pass query parameters for `GET` requests:
 
@@ -51,10 +51,10 @@ If you need to pass any options, the last (or in the absence of URL params, the 
 @client.customers.list(limit: 400)
 ```
 
-A call to `list` returns an instance of `GoCardless::ListResponse`. This is a enumerable which lets you iterate over every item returned:
+A call to `list` returns an instance of `GoCardlessPro::ListResponse`. You can call `records` on this to iterate through results:
 
 ```rb
-@client.customers.list do |customer|
+@client.customers.list.records do |customer|
   p customer.given_name
 end
 ```
@@ -65,21 +65,23 @@ In the case where a url parameter is needed, the method signature will contain r
 @client.customers.get(customers_id)
 ```
 
-As with list, the last argument can be an options hash:
+As with list, the last argument can be an options hash, with any URL parameters given under the `params` key:
 
 ```rb
-@client.customers.get(customers_id, limit: 200)
+@client.customers.get(customers_id, params: { limit: 200 })
 ```
 
 ### POST/PUT Requests
 
-For POST and PUT requests you need to pass in the body in as the last argument.
+For POST and PUT requests you need to pass in the body in under the `params` key:
 
 ```rb
 @client.customers.create(
-  first_name: "Pete",
-  last_name: "Hamilton",
-  ...
+  params: {
+    first_name: "Pete",
+    last_name: "Hamilton",
+    ...
+  }
 )
 ```
 
@@ -91,14 +93,17 @@ As with GET requests, if any parameters are required they come first:
 
 ### Custom Headers
 
-If you need to pass in a custom header to an endpoint, you can pass in a separate hash as the last argument:
+If you need to pass in a custom header to an endpoint, you can pass in a `headers` object to the options hash:
 
 ```rb
 @client.helpers.mandate({
-  account_number: 200000,
-  ...
-}, {
-  'Accept': 'application/pdf'
+  params: {
+    account_number: 200000,
+    ...
+  },
+  headers: {
+    'Accept': 'application/pdf'
+  }
 })
 ```
 

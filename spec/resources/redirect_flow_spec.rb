@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardless::Resources::RedirectFlow do
+describe GoCardlessPro::Resources::RedirectFlow do
   describe "initialising" do
     let(:data) do
       {

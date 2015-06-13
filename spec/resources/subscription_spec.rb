@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardless::Resources::Subscription do
+describe GoCardlessPro::Resources::Subscription do
   describe "initialising" do
     let(:data) do
       {

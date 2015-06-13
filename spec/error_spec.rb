@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardless::Error do
+describe GoCardlessPro::Error do
   subject(:error) { described_class.new(api_error) }
 
   let(:api_error) do

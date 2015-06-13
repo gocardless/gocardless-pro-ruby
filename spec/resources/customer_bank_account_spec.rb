@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardless::Resources::CustomerBankAccount do
+describe GoCardlessPro::Resources::CustomerBankAccount do
   describe "initialising" do
     let(:data) do
       {

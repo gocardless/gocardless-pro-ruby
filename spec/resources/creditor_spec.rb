@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardless::Resources::Creditor do
+describe GoCardlessPro::Resources::Creditor do
   describe "initialising" do
     let(:data) do
       {

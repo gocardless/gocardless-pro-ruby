@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardless::ApiService do
+describe GoCardlessPro::ApiService do
   subject(:service) { described_class.new("https://api.example.com", "secret_token") }
 
   it "uses basic auth" do
@@ -21,7 +21,7 @@ describe GoCardless::ApiService do
   describe "making a get request with query parameters" do
     it "correctly passes the query parameters" do
       stub = stub_request(:get, /.*api.example.com\/customers\?a=1&b=2/)
-      service.make_request(:get, "/customers", { a: 1, b: 2 })
+      service.make_request(:get, "/customers", params: { a: 1, b: 2 })
       expect(stub).to have_been_requested
     end
   end
@@ -30,7 +30,7 @@ describe GoCardless::ApiService do
     it "passes the data in as the post body" do
       stub = stub_request(:post, /.*api.example.com\/customers/).
         with(body: { given_name: "Jack", family_name: "Franklin" })
-      service.make_request(:post, "/customers", {
+      service.make_request(:post, "/customers", params: {
         given_name: "Jack",
         family_name: "Franklin"
       })
@@ -47,10 +47,13 @@ describe GoCardless::ApiService do
         )
 
       service.make_request(:post, "/customers", {
-        given_name: "Jack",
-        family_name: "Franklin"
-      }, {
-        'Foo' => 'Bar'
+        params: {
+          given_name: "Jack",
+          family_name: "Franklin"
+        },
+        headers: {
+          'Foo' => 'Bar'
+        }
       })
       expect(stub).to have_been_requested
     end
@@ -60,10 +63,10 @@ describe GoCardless::ApiService do
     it "passes the data in as the request body" do
       stub = stub_request(:put, /.*api.example.com\/customers\/CU123/).
         with(body: { given_name: "Jack", family_name: "Franklin" })
-      service.make_request(:put, "/customers/CU123",
+      service.make_request(:put, "/customers/CU123", params: {
         given_name: "Jack",
         family_name: "Franklin"
-      )
+      })
       expect(stub).to have_been_requested
     end
   end

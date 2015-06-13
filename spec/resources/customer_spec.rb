@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardless::Resources::Customer do
+describe GoCardlessPro::Resources::Customer do
   describe "initialising" do
     let(:data) do
       {
@@ -19,6 +19,10 @@ describe GoCardless::Resources::Customer do
       
         
           "city" => "city-input",
+        
+      
+        
+          "company_name" => "company_name-input",
         
       
         
@@ -77,6 +81,10 @@ describe GoCardless::Resources::Customer do
        
        
        expect(resource.city).to eq("city-input")
+       
+       
+       
+       expect(resource.company_name).to eq("company_name-input")
        
        
        
