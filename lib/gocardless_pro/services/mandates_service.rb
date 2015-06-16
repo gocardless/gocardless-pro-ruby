@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Mandate endpoints
     class MandatesService < BaseService
-      # Creates a new mandate object
+      # Creates a new mandate object.
       # Example URL: /mandates
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})

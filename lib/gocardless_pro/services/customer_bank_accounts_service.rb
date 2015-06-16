@@ -10,10 +10,10 @@ module GoCardlessPro
   module Services
     # Service for making requests to the CustomerBankAccount endpoints
     class CustomerBankAccountsService < BaseService
-      # Creates a new bank account object associated to a customer id.
+      # Creates a new customer bank account object.
       #
-      # There are
-      # three different ways to supply bank account details:
+      # There are three different
+      # ways to supply bank account details:
       #
       # - [Local
       # details](https://developer.gocardless.com/pro/2015-04-29/#ui-compliance-local-bank-details)

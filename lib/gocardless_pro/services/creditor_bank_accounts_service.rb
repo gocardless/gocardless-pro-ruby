@@ -11,10 +11,6 @@ module GoCardlessPro
     # Service for making requests to the CreditorBankAccount endpoints
     class CreditorBankAccountsService < BaseService
       # Creates a new creditor bank account object.
-      #
-      # Bank account details may be
-      # supplied using the IBAN (international bank account number) or [local
-      # details](#ui-compliance-local-bank-details).
       # Example URL: /creditor_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
