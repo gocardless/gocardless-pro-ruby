@@ -1,4 +1,4 @@
-# Ruby Client for GoCardless Enterprise API
+# Ruby Client for GoCardless Pro API
 
 - [YARD Docs](http://gocardless.github.io/pro-client-ruby/)
 - [GoCardless Pro API Docs](https://developer.gocardless.com/pro/)

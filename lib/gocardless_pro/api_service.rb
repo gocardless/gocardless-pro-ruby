@@ -8,7 +8,7 @@ require 'uri'
 require 'base64'
 
 module GoCardlessPro
-  # GoCardless Enterprise API
+  # GoCardless Pro API
   class ApiService
     # Initialize an APIService
     #
