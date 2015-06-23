@@ -29,7 +29,7 @@ module GoCardlessPro
       # Returns all details about a single redirect flow
       # Example URL: /redirect_flows/:identity
       #
-      # @param identity       # Unique identifier, beginning with "RE"
+      # @param identity       # Unique identifier, beginning with "RE".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/redirect_flows/:identity',           'identity' => identity)
@@ -57,7 +57,7 @@ module GoCardlessPro
       # created.
       # Example URL: /redirect_flows/:identity/actions/complete
       #
-      # @param identity       # Unique identifier, beginning with "RE"
+      # @param identity       # Unique identifier, beginning with "RE".
       # @param options [Hash] parameters as a hash, under a params key.
       def complete(identity, options = {})
         path = sub_url('/redirect_flows/:identity/actions/complete',           'identity' => identity)
