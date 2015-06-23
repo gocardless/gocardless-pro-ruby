@@ -16,7 +16,7 @@ module GoCardlessPro
       # ways to supply bank account details:
       #
       # - [Local
-      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-compliance-local-bank-details)
+      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-local-bank-details)
       #
       #
       # - IBAN
@@ -27,7 +27,7 @@ module GoCardlessPro
       #
       # For more information on the different fields required in each country, see
       # [local bank
-      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-compliance-local-bank-details).
+      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-local-bank-details).
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})

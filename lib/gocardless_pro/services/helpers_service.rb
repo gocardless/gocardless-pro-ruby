@@ -19,10 +19,10 @@ module GoCardlessPro
       # Bank account details may
       # either be supplied using the IBAN (international bank account number), or
       # [local
-      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-compliance-local-bank-details).
+      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-local-bank-details).
       # For more information on the different fields required in each country, please
       # see the [local bank
-      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-compliance-local-bank-details)
+      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-local-bank-details)
       # section.
       #
       # To generate a mandate in a foreign language, set your
@@ -53,10 +53,10 @@ module GoCardlessPro
       #
       # Bank account details may either be supplied using the IBAN
       # (international bank account number), or [local
-      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-compliance-local-bank-details).
+      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-local-bank-details).
       # For more information on the different fields required in each country, please
       # see the [local bank
-      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-compliance-local-bank-details)
+      # details](https://developer.gocardless.com/pro/2015-04-29/#ui-local-bank-details)
       # section.
       # Example URL: /helpers/modulus_check
       # @param options [Hash] parameters as a hash, under a params key.
