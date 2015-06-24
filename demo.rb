@@ -6,4 +6,4 @@
 )
 
 puts "Your first customer:"
-puts "-> #{@client.customers.list.first.inspect}"
+puts "-> #{@client.customers.list.records.first.inspect}"
