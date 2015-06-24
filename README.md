@@ -48,7 +48,7 @@ This README will use `customers` throughout but each of the resources in the API
 If you need to pass any options, the last (or in the absence of URL params, the only) argument is an options hash. This is used to pass query parameters for `GET` requests:
 
 ```rb
-@client.customers.list(limit: 400)
+@client.customers.list(params: { limit: 400 })
 ```
 
 A call to `list` returns an instance of `GoCardlessPro::ListResponse`. You can call `records` on this to iterate through results:
