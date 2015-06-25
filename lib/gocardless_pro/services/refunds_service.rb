@@ -18,18 +18,16 @@ module GoCardlessPro
       # name="number_of_refunds_exceeded"></a>
       #
       # - `refund_payment_invalid_state`
-      # error if the linked
-      # [payment](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-payments)
-      # isn't either `confirmed` or `paid_out`.
+      # error if the linked [payment](#core-endpoints-payments) isn't either
+      # `confirmed` or `paid_out`.
       #
-      # -
-      # `total_amount_confirmation_invalid` if the confirmation amount doesn't match
-      # the total amount refunded for the payment. This safeguard is there to prevent
-      # two processes from creating refunds without awareness of each other.
+      # - `total_amount_confirmation_invalid` if the
+      # confirmation amount doesn't match the total amount refunded for the payment.
+      # This safeguard is there to prevent two processes from creating refunds without
+      # awareness of each other.
       #
-      # -
-      # `number_of_refunds_exceeded` if five or more refunds have already been created
-      # against the payment.
+      # - `number_of_refunds_exceeded` if five or more
+      # refunds have already been created against the payment.
       #
       # Example URL: /refunds
       # @param options [Hash] parameters as a hash, under a params key.
@@ -45,9 +43,8 @@ module GoCardlessPro
         Resources::Refund.new(unenvelope_body(response.body))
       end
 
-      # Returns a
-      # [cursor-paginated](https://developer.gocardless.com/pro/2015-04-29/#overview-cursor-pagination)
-      # list of your refunds.
+      # Returns a [cursor-paginated](#overview-cursor-pagination) list of your
+      # refunds.
       # Example URL: /refunds
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

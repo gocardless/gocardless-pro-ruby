@@ -11,16 +11,14 @@ require 'uri'
 module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
-    # Each
-    # [payment](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-payments)
-    # taken through the API is linked to a "creditor", to whom the payment is then
-    # paid out. In most cases your organisation will have a single "creditor", but
-    # the API also supports collecting payments on behalf of others.
+    # Each [payment](#core-endpoints-payments) taken through the API is linked to
+    # a "creditor", to whom the payment is then paid out. In most cases your
+    # organisation will have a single "creditor", but the API also supports
+    # collecting payments on behalf of others.
     #
-    #
-    # Please get in touch if you wish to use this endpoint. Currently, for Anti
-    # Money Laundering reasons, any creditors you add must be directly related to
-    # your organisation.
+    # Please get in touch if you
+    # wish to use this endpoint. Currently, for Anti Money Laundering reasons, any
+    # creditors you add must be directly related to your organisation.
     # Represents an instance of a creditor resource returned from the API
     class Creditor
       attr_reader :address_line1

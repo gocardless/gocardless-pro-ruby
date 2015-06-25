@@ -12,18 +12,15 @@ module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Customer Bank Accounts hold the bank details of a
-    # [customer](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-customers).
-    # They always belong to a
-    # [customer](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-customers),
-    # and may be linked to several Direct Debit
-    # [mandates](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-mandates).
-
-    #  #
-    # Note that customer bank accounts must be unique, and so you will
-    # encounter a `bank_account_exists` error if you try to create a duplicate
-    # bank account. You may wish to handle this by updating the existing record
-    # instead, the ID of which will be provided as links[customer_bank_account] in
-    # the error response.
+    # [customer](#core-endpoints-customers). They always belong to a
+    # [customer](#core-endpoints-customers), and may be linked to several Direct
+    # Debit [mandates](#core-endpoints-mandates).
+    #
+    # Note that customer bank
+    # accounts must be unique, and so you will encounter a `bank_account_exists`
+    # error if you try to create a duplicate bank account. You may wish to handle
+    # this by updating the existing record instead, the ID of which will be
+    # provided as links[customer_bank_account] in the error response.
     # Represents an instance of a customer_bank_account resource returned from the API
     class CustomerBankAccount
       attr_reader :account_holder_name

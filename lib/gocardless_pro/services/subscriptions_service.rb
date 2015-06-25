@@ -25,9 +25,8 @@ module GoCardlessPro
         Resources::Subscription.new(unenvelope_body(response.body))
       end
 
-      # Returns a
-      # [cursor-paginated](https://developer.gocardless.com/pro/2015-04-29/#overview-cursor-pagination)
-      # list of your subscriptions.
+      # Returns a [cursor-paginated](#overview-cursor-pagination) list of your
+      # subscriptions.
       # Example URL: /subscriptions
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

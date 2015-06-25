@@ -25,10 +25,8 @@ module GoCardlessPro
         Resources::Mandate.new(unenvelope_body(response.body))
       end
 
-      # Returns a
-      # [cursor-paginated](https://developer.gocardless.com/pro/2015-04-29/#overview-cursor-pagination)
-      # list of your mandates. Except where stated, these filters can only be used one
-      # at a time.
+      # Returns a [cursor-paginated](#overview-cursor-pagination) list of your
+      # mandates. Except where stated, these filters can only be used one at a time.
       # Example URL: /mandates
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

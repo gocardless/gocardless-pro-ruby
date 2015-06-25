@@ -14,9 +14,9 @@ module GoCardlessPro
       #
       # This
       # fails with a `mandate_is_inactive` error if the linked
-      # [mandate](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-mandates)
-      # is cancelled. Payments can be created against `pending_submission` mandates,
-      # but they will not be submitted until the mandate becomes active.
+      # [mandate](#core-endpoints-mandates) is cancelled. Payments can be created
+      # against `pending_submission` mandates, but they will not be submitted until
+      # the mandate becomes active.
       # Example URL: /payments
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -31,9 +31,8 @@ module GoCardlessPro
         Resources::Payment.new(unenvelope_body(response.body))
       end
 
-      # Returns a
-      # [cursor-paginated](https://developer.gocardless.com/pro/2015-04-29/#overview-cursor-pagination)
-      # list of your payments.
+      # Returns a [cursor-paginated](#overview-cursor-pagination) list of your
+      # payments.
       # Example URL: /payments
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
