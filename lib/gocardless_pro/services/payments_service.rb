@@ -14,7 +14,7 @@ module GoCardlessPro
       #
       # This
       # fails with a `mandate_is_inactive` error if the linked
-      # [mandate](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-mandates)
+      # [mandate](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-mandates)
       # is cancelled. Payments can be created against `pending_submission` mandates,
       # but they will not be submitted until the mandate becomes active.
       # Example URL: /payments

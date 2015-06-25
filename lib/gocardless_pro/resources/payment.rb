@@ -12,11 +12,11 @@ module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Payment objects represent payments from a
-    # [customer](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-customers)
+    # [customer](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-customers)
     # to a
-    # [creditor](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-creditors),
+    # [creditor](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-creditors),
     # taken against a Direct Debit
-    # [mandate](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-mandates).
+    # [mandate](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-mandates).
 
     #  #
     # GoCardless will notify you via a

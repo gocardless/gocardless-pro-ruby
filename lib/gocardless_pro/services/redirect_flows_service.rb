@@ -41,11 +41,11 @@ module GoCardlessPro
       end
 
       # This creates a
-      # [customer](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-customers),
+      # [customer](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-customers),
       # [customer bank
-      # account](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-customer-bank-accounts),
+      # account](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-customer-bank-accounts),
       # and
-      # [mandate](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-mandates)
+      # [mandate](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-mandates)
       # using the details supplied by your customer and returns the ID of the created
       # mandate.
       #

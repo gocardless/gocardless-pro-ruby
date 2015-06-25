@@ -12,11 +12,11 @@ module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Customer Bank Accounts hold the bank details of a
-    # [customer](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-customers).
+    # [customer](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-customers).
     # They always belong to a
-    # [customer](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-customers),
+    # [customer](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-customers),
     # and may be linked to several Direct Debit
-    # [mandates](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-mandates).
+    # [mandates](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-mandates).
 
     #  #
     # Note that customer bank accounts must be unique, and so you will

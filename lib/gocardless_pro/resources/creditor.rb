@@ -12,7 +12,7 @@ module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Each
-    # [payment](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-payments)
+    # [payment](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-payments)
     # taken through the API is linked to a "creditor", to whom the payment is then
     # paid out. In most cases your organisation will have a single "creditor", but
     # the API also supports collecting payments on behalf of others.

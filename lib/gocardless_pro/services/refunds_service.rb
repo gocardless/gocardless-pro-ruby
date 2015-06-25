@@ -19,7 +19,7 @@ module GoCardlessPro
       #
       # - `refund_payment_invalid_state`
       # error if the linked
-      # [payment](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-payments)
+      # [payment](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-payments)
       # isn't either `confirmed` or `paid_out`.
       #
       # -

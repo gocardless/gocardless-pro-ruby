@@ -12,9 +12,9 @@ module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Creditor Bank Accounts hold the bank details of a
-    # [creditor](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-creditor).
+    # [creditor](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-creditor).
     # These are the bank accounts which your
-    # [payouts](https://developer.gocardless.com/pro/2015-04-29/#api-endpoints-payouts)
+    # [payouts](https://developer.gocardless.com/pro/2015-04-29/#core-endpoints-payouts)
     # will be sent to.
     #
     # Note that creditor bank accounts must be unique,
