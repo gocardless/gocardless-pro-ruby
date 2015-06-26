@@ -11,25 +11,27 @@ require 'uri'
 module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
-    # Redirect flows enable you to use GoCardless Pro's secure payment pages to
-    # set up mandates with your customers.
+    # Redirect flows enable you to use GoCardless Pro's [hosted payment
+    # pages](https://pay-sandbox.gocardless.com/AL000000AKFPFF) to set up mandates
+    # with your customers. These pages are fully compliant and have been
+    # translated into Dutch, French, German, Italian, Portuguese and Spanish.
+    #
     #
     # The overall flow is:
     #
+    # 1. You [create](#create-a-redirect-flow)
+    # a redirect flow for your customer, and redirect them to the returned
+    # redirect url, e.g. `https://pay.gocardless.com/flow/RE123`.
     #
-    # 1. You [create](#create-a-redirect-flow) a redirect flow for your customer,
-    # and redirect them to the returned redirect url, e.g.
-    # `https://pay.gocardless.com/flow/RE123`.
+    # 2. Your
+    # customer supplies their name, email, address, and bank account details, and
+    # submits the form. This securely stores their details, and redirects them
+    # back to your `success_redirect_url` with `redirect_flow_id=RE123` in the
+    # querystring.
     #
-    # 2. Your customer supplies
-    # their name, email, address, and bank account details, and submits the form.
-    # This securely stores their details, and redirects them back to your
-    # `success_redirect_url` with `redirect_flow_id=RE123` in the querystring.
-    #
-    #
-    # 3. You [complete](#complete-a-redirect-flow) the redirect flow, which
-    # creates a [customer](#core-endpoints-customers), [customer bank
-    # account](#core-endpoints-customer-bank-accounts), and
+    # 3. You [complete](#complete-a-redirect-flow) the
+    # redirect flow, which creates a [customer](#core-endpoints-customers),
+    # [customer bank account](#core-endpoints-customer-bank-accounts), and
     # [mandate](#core-endpoints-mandates), and returns the ID of the mandate. You
     # may wish to create a [subscription](#core-endpoints-subscriptions) or
     # [payment](#core-endpoints-payments) at this point.
@@ -40,12 +42,7 @@ module GoCardlessPro
     # step.
     #
     # Redirect flows expire 30 minutes after they are first
-    # created. You cannot [complete](#complete-a-redirect-flow) an expired
-    # redirect flow.
-    #
-    # [View an example
-    # integration](https://pay-sandbox.gocardless.com/AL000000AKFPFF) that uses
-    # redirect flows.
+    # created. You cannot complete an expired redirect flow.
     # Represents an instance of a redirect_flow resource returned from the API
     class RedirectFlow
       attr_reader :created_at
