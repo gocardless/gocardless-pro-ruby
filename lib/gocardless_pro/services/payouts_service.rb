@@ -43,7 +43,7 @@ module GoCardlessPro
       # guide](#events-fetching-events-for-a-payout).
       # Example URL: /payouts/:identity
       #
-      # @param identity       # Unique identifier, beginning with "PO"
+      # @param identity       # Unique identifier, beginning with "PO".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/payouts/:identity',           'identity' => identity)

@@ -56,7 +56,7 @@ module GoCardlessPro
       # Retrieves the details of a single subscription.
       # Example URL: /subscriptions/:identity
       #
-      # @param identity       # Unique identifier, beginning with "SB"
+      # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/subscriptions/:identity',           'identity' => identity)
@@ -70,7 +70,7 @@ module GoCardlessPro
       # Updates a subscription object.
       # Example URL: /subscriptions/:identity
       #
-      # @param identity       # Unique identifier, beginning with "SB"
+      # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/subscriptions/:identity',           'identity' => identity)
@@ -92,7 +92,7 @@ module GoCardlessPro
       # error if the subscription is already cancelled or finished.
       # Example URL: /subscriptions/:identity/actions/cancel
       #
-      # @param identity       # Unique identifier, beginning with "SB"
+      # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/subscriptions/:identity/actions/cancel',           'identity' => identity)

@@ -40,7 +40,7 @@ module GoCardlessPro
       # Retrieves the details of a single event.
       # Example URL: /events/:identity
       #
-      # @param identity       # Unique identifier, beginning with "EV"
+      # @param identity       # Unique identifier, beginning with "EV".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/events/:identity',           'identity' => identity)

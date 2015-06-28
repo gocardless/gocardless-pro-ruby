@@ -71,7 +71,7 @@ module GoCardlessPro
       # Retrieves the details of an existing bank account.
       # Example URL: /customer_bank_accounts/:identity
       #
-      # @param identity       # Unique identifier, beginning with "BA"
+      # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/customer_bank_accounts/:identity',           'identity' => identity)
@@ -86,7 +86,7 @@ module GoCardlessPro
       # allowed.
       # Example URL: /customer_bank_accounts/:identity
       #
-      # @param identity       # Unique identifier, beginning with "BA"
+      # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/customer_bank_accounts/:identity',           'identity' => identity)
@@ -110,7 +110,7 @@ module GoCardlessPro
       # bank account resource with the same details.
       # Example URL: /customer_bank_accounts/:identity/actions/disable
       #
-      # @param identity       # Unique identifier, beginning with "BA"
+      # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def disable(identity, options = {})
         path = sub_url('/customer_bank_accounts/:identity/actions/disable',           'identity' => identity)

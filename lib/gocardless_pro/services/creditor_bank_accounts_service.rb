@@ -56,7 +56,7 @@ module GoCardlessPro
       # Retrieves the details of an existing creditor bank account.
       # Example URL: /creditor_bank_accounts/:identity
       #
-      # @param identity       # Unique identifier, beginning with "BA"
+      # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/creditor_bank_accounts/:identity',           'identity' => identity)
@@ -77,7 +77,7 @@ module GoCardlessPro
       # creating a new bank account resource with the same details.
       # Example URL: /creditor_bank_accounts/:identity/actions/disable
       #
-      # @param identity       # Unique identifier, beginning with "BA"
+      # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def disable(identity, options = {})
         path = sub_url('/creditor_bank_accounts/:identity/actions/disable',           'identity' => identity)

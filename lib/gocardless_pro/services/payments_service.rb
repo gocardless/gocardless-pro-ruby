@@ -62,7 +62,7 @@ module GoCardlessPro
       # Retrieves the details of a single existing payment.
       # Example URL: /payments/:identity
       #
-      # @param identity       # Unique identifier, beginning with "PM"
+      # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/payments/:identity',           'identity' => identity)
@@ -76,7 +76,7 @@ module GoCardlessPro
       # Updates a payment object. This accepts only the metadata parameter.
       # Example URL: /payments/:identity
       #
-      # @param identity       # Unique identifier, beginning with "PM"
+      # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/payments/:identity',           'identity' => identity)
@@ -98,7 +98,7 @@ module GoCardlessPro
       # the payment's status is `pending_submission`.
       # Example URL: /payments/:identity/actions/cancel
       #
-      # @param identity       # Unique identifier, beginning with "PM"
+      # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/payments/:identity/actions/cancel',           'identity' => identity)
@@ -126,7 +126,7 @@ module GoCardlessPro
       # times.
       # Example URL: /payments/:identity/actions/retry
       #
-      # @param identity       # Unique identifier, beginning with "PM"
+      # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def retry(identity, options = {})
         path = sub_url('/payments/:identity/actions/retry',           'identity' => identity)

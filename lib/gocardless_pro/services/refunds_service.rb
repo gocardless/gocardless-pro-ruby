@@ -74,7 +74,7 @@ module GoCardlessPro
       # Retrieves all details for a single refund
       # Example URL: /refunds/:identity
       #
-      # @param identity       # Unique identifier, beginning with "RF"
+      # @param identity       # Unique identifier, beginning with "RF".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/refunds/:identity',           'identity' => identity)
@@ -88,7 +88,7 @@ module GoCardlessPro
       # Updates a refund object.
       # Example URL: /refunds/:identity
       #
-      # @param identity       # Unique identifier, beginning with "RF"
+      # @param identity       # Unique identifier, beginning with "RF".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/refunds/:identity',           'identity' => identity)

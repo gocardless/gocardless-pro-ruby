@@ -66,7 +66,7 @@ module GoCardlessPro
       # language code as an `Accept-Language` header.
       # Example URL: /mandates/:identity
       #
-      # @param identity       # Unique identifier, beginning with "MD"
+      # @param identity       # Unique identifier, beginning with "MD".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/mandates/:identity',           'identity' => identity)
@@ -80,7 +80,7 @@ module GoCardlessPro
       # Updates a mandate object. This accepts only the metadata parameter.
       # Example URL: /mandates/:identity
       #
-      # @param identity       # Unique identifier, beginning with "MD"
+      # @param identity       # Unique identifier, beginning with "MD".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/mandates/:identity',           'identity' => identity)
@@ -102,7 +102,7 @@ module GoCardlessPro
       # mandate is already cancelled.
       # Example URL: /mandates/:identity/actions/cancel
       #
-      # @param identity       # Unique identifier, beginning with "MD"
+      # @param identity       # Unique identifier, beginning with "MD".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/mandates/:identity/actions/cancel',           'identity' => identity)
@@ -130,7 +130,7 @@ module GoCardlessPro
       # Mandates can be resubmitted up to 3 times.
       # Example URL: /mandates/:identity/actions/reinstate
       #
-      # @param identity       # Unique identifier, beginning with "MD"
+      # @param identity       # Unique identifier, beginning with "MD".
       # @param options [Hash] parameters as a hash, under a params key.
       def reinstate(identity, options = {})
         path = sub_url('/mandates/:identity/actions/reinstate',           'identity' => identity)
