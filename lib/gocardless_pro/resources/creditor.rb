@@ -65,9 +65,7 @@ module GoCardlessPro
 
             default_eur_payout_account: '',
 
-            default_gbp_payout_account: '',
-
-            logo: ''
+            default_gbp_payout_account: ''
 
           }.keys.sort
         ).new(*@links.sort.map(&:last))
