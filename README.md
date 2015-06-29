@@ -20,7 +20,7 @@ require 'gocardless_pro'
 ## Usage Examples
 
 - In the case of a single response, the client will return you an instance of the resource
-- In the case of list responses, the client will return an instance of `ListResponse`, which is enumerable.
+- In the case of list responses, the client will return an instance of `ListResponse`.
 - You can also call `#all` to get a lazily paginated list of resource that will deal with making extra API requests to paginate through all the data
 
 ### Initialising the client
