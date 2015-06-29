@@ -40,7 +40,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::Refund.new(unenvelope_body(response.body))
+        Resources::Refund.new(unenvelope_body(response.body), response)
       end
 
       # Returns a [cursor-paginated](#overview-cursor-pagination) list of your
@@ -52,7 +52,7 @@ module GoCardlessPro
 
         response = make_request(:get, path, options)
         ListResponse.new(
-          raw_response: response,
+          response: response,
           unenveloped_body: unenvelope_body(response.body),
           resource_class: Resources::Refund
         )
@@ -82,7 +82,7 @@ module GoCardlessPro
         response = make_request(:get, path, options)
 
         return if response.body.nil?
-        Resources::Refund.new(unenvelope_body(response.body))
+        Resources::Refund.new(unenvelope_body(response.body), response)
       end
 
       # Updates a refund object.
@@ -99,7 +99,7 @@ module GoCardlessPro
         response = make_request(:put, path, options)
 
         return if response.body.nil?
-        Resources::Refund.new(unenvelope_body(response.body))
+        Resources::Refund.new(unenvelope_body(response.body), response)
       end
 
       # Unenvelope the response of the body using the service's `envelope_key`

@@ -42,7 +42,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::Helper.new(unenvelope_body(response.body))
+        Resources::Helper.new(unenvelope_body(response.body), response)
       end
 
       # Check whether an account number and bank / branch code combination are
@@ -64,7 +64,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::Helper.new(unenvelope_body(response.body))
+        Resources::Helper.new(unenvelope_body(response.body), response)
       end
 
       # Unenvelope the response of the body using the service's `envelope_key`

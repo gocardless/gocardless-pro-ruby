@@ -28,7 +28,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::Payment.new(unenvelope_body(response.body))
+        Resources::Payment.new(unenvelope_body(response.body), response)
       end
 
       # Returns a [cursor-paginated](#overview-cursor-pagination) list of your
@@ -40,7 +40,7 @@ module GoCardlessPro
 
         response = make_request(:get, path, options)
         ListResponse.new(
-          raw_response: response,
+          response: response,
           unenveloped_body: unenvelope_body(response.body),
           resource_class: Resources::Payment
         )
@@ -70,7 +70,7 @@ module GoCardlessPro
         response = make_request(:get, path, options)
 
         return if response.body.nil?
-        Resources::Payment.new(unenvelope_body(response.body))
+        Resources::Payment.new(unenvelope_body(response.body), response)
       end
 
       # Updates a payment object. This accepts only the metadata parameter.
@@ -87,7 +87,7 @@ module GoCardlessPro
         response = make_request(:put, path, options)
 
         return if response.body.nil?
-        Resources::Payment.new(unenvelope_body(response.body))
+        Resources::Payment.new(unenvelope_body(response.body), response)
       end
 
       # Cancels the payment if it has not already been submitted to the banks. Any
@@ -109,7 +109,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::Payment.new(unenvelope_body(response.body))
+        Resources::Payment.new(unenvelope_body(response.body), response)
       end
 
       # <a name="retry_failed"></a>Retries a failed payment if the underlying mandate
@@ -137,7 +137,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::Payment.new(unenvelope_body(response.body))
+        Resources::Payment.new(unenvelope_body(response.body), response)
       end
 
       # Unenvelope the response of the body using the service's `envelope_key`

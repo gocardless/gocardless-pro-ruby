@@ -22,7 +22,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::Customer.new(unenvelope_body(response.body))
+        Resources::Customer.new(unenvelope_body(response.body), response)
       end
 
       # Returns a [cursor-paginated](#overview-cursor-pagination) list of your
@@ -34,7 +34,7 @@ module GoCardlessPro
 
         response = make_request(:get, path, options)
         ListResponse.new(
-          raw_response: response,
+          response: response,
           unenveloped_body: unenvelope_body(response.body),
           resource_class: Resources::Customer
         )
@@ -64,7 +64,7 @@ module GoCardlessPro
         response = make_request(:get, path, options)
 
         return if response.body.nil?
-        Resources::Customer.new(unenvelope_body(response.body))
+        Resources::Customer.new(unenvelope_body(response.body), response)
       end
 
       # Updates a customer object. Supports all of the fields supported when creating
@@ -82,7 +82,7 @@ module GoCardlessPro
         response = make_request(:put, path, options)
 
         return if response.body.nil?
-        Resources::Customer.new(unenvelope_body(response.body))
+        Resources::Customer.new(unenvelope_body(response.body), response)
       end
 
       # Unenvelope the response of the body using the service's `envelope_key`

@@ -25,7 +25,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::ModulusCheck.new(unenvelope_body(response.body))
+        Resources::ModulusCheck.new(unenvelope_body(response.body), response)
       end
 
       # Unenvelope the response of the body using the service's `envelope_key`

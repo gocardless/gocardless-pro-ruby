@@ -22,7 +22,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::CreditorBankAccount.new(unenvelope_body(response.body))
+        Resources::CreditorBankAccount.new(unenvelope_body(response.body), response)
       end
 
       # Returns a [cursor-paginated](#overview-cursor-pagination) list of your
@@ -34,7 +34,7 @@ module GoCardlessPro
 
         response = make_request(:get, path, options)
         ListResponse.new(
-          raw_response: response,
+          response: response,
           unenveloped_body: unenvelope_body(response.body),
           resource_class: Resources::CreditorBankAccount
         )
@@ -64,7 +64,7 @@ module GoCardlessPro
         response = make_request(:get, path, options)
 
         return if response.body.nil?
-        Resources::CreditorBankAccount.new(unenvelope_body(response.body))
+        Resources::CreditorBankAccount.new(unenvelope_body(response.body), response)
       end
 
       # Immediately disables the bank account, no money can be paid out to a disabled
@@ -88,7 +88,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::CreditorBankAccount.new(unenvelope_body(response.body))
+        Resources::CreditorBankAccount.new(unenvelope_body(response.body), response)
       end
 
       # Unenvelope the response of the body using the service's `envelope_key`

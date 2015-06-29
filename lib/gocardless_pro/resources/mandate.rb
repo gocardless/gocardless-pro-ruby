@@ -33,7 +33,7 @@ module GoCardlessPro
       attr_reader :status
       # initialize a resource instance
       # @param object [Hash] an object returned from the API
-      def initialize(object)
+      def initialize(object, response = nil)
         @object = object
 
         @created_at = object['created_at']
@@ -44,6 +44,11 @@ module GoCardlessPro
         @reference = object['reference']
         @scheme = object['scheme']
         @status = object['status']
+        @response = response
+      end
+
+      def api_response
+        ApiResponse.new(@response.api_response)
       end
 
       # return the links that the resource has

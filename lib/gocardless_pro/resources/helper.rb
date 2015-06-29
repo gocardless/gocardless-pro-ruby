@@ -16,8 +16,14 @@ module GoCardlessPro
     class Helper
       # initialize a resource instance
       # @param object [Hash] an object returned from the API
-      def initialize(object)
+      def initialize(object, response = nil)
         @object = object
+
+        @response = response
+      end
+
+      def api_response
+        ApiResponse.new(@response.api_response)
       end
 
       # Provides the resource as a hash of all it's readable attributes

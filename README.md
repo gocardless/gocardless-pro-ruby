@@ -31,7 +31,7 @@ You can also pass in `environment` as `:sandbox` to make requests to the sandbox
 
 ```rb
 @client = GoCardlessPro::Client.new(
-  token: ENV["GOCARDLESS_TOKEN"]
+  access_token: ENV["GOCARDLESS_TOKEN"]
 )
 ```
 
@@ -70,6 +70,12 @@ As with list, the last argument can be an options hash, with any URL parameters 
 ```rb
 @client.customers.get(customers_id, params: { limit: 200 })
 ```
+
+Both individual resource and `ListResponse` instances provide an `api_response` method, which lets you access the following properties of the request:
+
+- `status`
+- `headers`
+- `body`
 
 ### POST/PUT Requests
 

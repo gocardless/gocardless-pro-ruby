@@ -217,6 +217,8 @@ describe GoCardlessPro::Services::CustomersService do
           expect(get_list_response.before).to eq(nil)
           expect(get_list_response.after).to eq("ABC123")
         end
+
+        specify { expect(get_list_response.api_response.headers).to eql('content-type' => 'application/json') }
       end
     end
 

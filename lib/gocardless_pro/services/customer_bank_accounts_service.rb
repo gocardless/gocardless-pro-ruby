@@ -37,7 +37,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::CustomerBankAccount.new(unenvelope_body(response.body))
+        Resources::CustomerBankAccount.new(unenvelope_body(response.body), response)
       end
 
       # Returns a [cursor-paginated](#overview-cursor-pagination) list of your bank
@@ -49,7 +49,7 @@ module GoCardlessPro
 
         response = make_request(:get, path, options)
         ListResponse.new(
-          raw_response: response,
+          response: response,
           unenveloped_body: unenvelope_body(response.body),
           resource_class: Resources::CustomerBankAccount
         )
@@ -79,7 +79,7 @@ module GoCardlessPro
         response = make_request(:get, path, options)
 
         return if response.body.nil?
-        Resources::CustomerBankAccount.new(unenvelope_body(response.body))
+        Resources::CustomerBankAccount.new(unenvelope_body(response.body), response)
       end
 
       # Updates a customer bank account object. Only the metadata parameter is
@@ -97,7 +97,7 @@ module GoCardlessPro
         response = make_request(:put, path, options)
 
         return if response.body.nil?
-        Resources::CustomerBankAccount.new(unenvelope_body(response.body))
+        Resources::CustomerBankAccount.new(unenvelope_body(response.body), response)
       end
 
       # Immediately cancels all associated mandates and cancellable payments.
@@ -121,7 +121,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::CustomerBankAccount.new(unenvelope_body(response.body))
+        Resources::CustomerBankAccount.new(unenvelope_body(response.body), response)
       end
 
       # Unenvelope the response of the body using the service's `envelope_key`

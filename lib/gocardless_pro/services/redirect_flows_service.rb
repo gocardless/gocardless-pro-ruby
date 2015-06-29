@@ -23,7 +23,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::RedirectFlow.new(unenvelope_body(response.body))
+        Resources::RedirectFlow.new(unenvelope_body(response.body), response)
       end
 
       # Returns all details about a single redirect flow
@@ -37,7 +37,7 @@ module GoCardlessPro
         response = make_request(:get, path, options)
 
         return if response.body.nil?
-        Resources::RedirectFlow.new(unenvelope_body(response.body))
+        Resources::RedirectFlow.new(unenvelope_body(response.body), response)
       end
 
       # This creates a [customer](#core-endpoints-customers), [customer bank
@@ -64,7 +64,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::RedirectFlow.new(unenvelope_body(response.body))
+        Resources::RedirectFlow.new(unenvelope_body(response.body), response)
       end
 
       # Unenvelope the response of the body using the service's `envelope_key`

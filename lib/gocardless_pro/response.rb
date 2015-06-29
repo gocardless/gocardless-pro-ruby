@@ -36,6 +36,10 @@ module GoCardlessPro
       meta.fetch('limit', nil)
     end
 
+    def api_response
+      @response
+    end
+
     private
 
     def json_body

@@ -42,7 +42,7 @@ module GoCardlessPro
       attr_reader :metadata
       # initialize a resource instance
       # @param object [Hash] an object returned from the API
-      def initialize(object)
+      def initialize(object, response = nil)
         @object = object
 
         @account_holder_name = object['account_holder_name']
@@ -55,6 +55,11 @@ module GoCardlessPro
         @id = object['id']
         @links = object['links']
         @metadata = object['metadata']
+        @response = response
+      end
+
+      def api_response
+        ApiResponse.new(@response.api_response)
       end
 
       # return the links that the resource has
