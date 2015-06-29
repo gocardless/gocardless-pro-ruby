@@ -26,7 +26,7 @@ require 'gocardless_pro'
 ### Initialising the client
 
 The client is initialised with an Access Token.
-You can also pass in `environment` as `:sandbox` to make requests to the sandbox environment rather than the live one.
+You can also pass in `environment` as `:sandbox` to make requests to the sandbox environment rather than production.
 
 ```rb
 @client = GoCardlessPro::Client.new(
