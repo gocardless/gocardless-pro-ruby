@@ -111,12 +111,12 @@ There are very few endpoints in the API that require custom headers. Currently, 
 
 ### Handling failures
 
-When an API returns an error, the client __will raise__ an error that corresponds to the type of error. All errors subclass `GoCardless::Error`. There are four errors that could be thrown:
+When an API returns an error, the client __will raise__ an error that corresponds to the type of error. All errors subclass `GoCardlessPro::Error`. There are four errors that could be thrown:
 
-- `GoCardless::GoCardlessError`
-- `GoCardless::InvalidApiUsageError`
-- `GoCardless::InvalidStateError`
-- `GoCardless::ValidationError`
+- `GoCardlessPro::GoCardlessError`
+- `GoCardlessPro::InvalidApiUsageError`
+- `GoCardlessPro::InvalidStateError`
+- `GoCardlessPro::ValidationError`
 
 These errors are fully documented in the [API documentation](https://developer.gocardless.com/pro/#overview-errors).
 
