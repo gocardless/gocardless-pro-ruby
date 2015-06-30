@@ -38,6 +38,11 @@ module GoCardlessPro
       @mandates ||= Services::MandatesService.new(@api_service)
     end
 
+    # Access to the service for mandate_pdf to make API calls
+    def mandate_pdfs
+      @mandate_pdfs ||= Services::MandatePdfsService.new(@api_service)
+    end
+
     # Access to the service for modulus_check to make API calls
     def modulus_checks
       @modulus_checks ||= Services::ModulusChecksService.new(@api_service)

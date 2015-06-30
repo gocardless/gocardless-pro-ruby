@@ -56,6 +56,9 @@ require_relative 'gocardless_pro/services/helpers_service'
 require_relative 'gocardless_pro/resources/mandate'
 require_relative 'gocardless_pro/services/mandates_service'
 
+require_relative 'gocardless_pro/resources/mandate_pdf'
+require_relative 'gocardless_pro/services/mandate_pdfs_service'
+
 require_relative 'gocardless_pro/resources/modulus_check'
 require_relative 'gocardless_pro/services/modulus_checks_service'
 
