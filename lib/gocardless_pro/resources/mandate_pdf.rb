@@ -11,8 +11,9 @@ require 'uri'
 module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
-    # Construct a mandate PDF for a given set of bank details or an
-    # already-existing mandate.
+    # Mandate PDFs allow you to easily display [scheme-rules
+    # compliant](#ui-compliance-requirements) Direct Debit mandates to your
+    # customers.
     # Represents an instance of a mandate_pdf resource returned from the API
     class MandatePdf
       attr_reader :expires_at
