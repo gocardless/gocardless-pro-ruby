@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardlessPro::Resources::ModulusCheck do
+describe GoCardlessPro::Resources::BankDetailsLookup do
   describe "initialising" do
     let(:data) do
       {
@@ -10,11 +10,7 @@ describe GoCardlessPro::Resources::ModulusCheck do
         
       
         
-          "errors" => "errors-input",
-        
-      
-        
-          "succeeded" => "succeeded-input",
+          "bank_name" => "bank_name-input",
         
       
       }
@@ -28,11 +24,7 @@ describe GoCardlessPro::Resources::ModulusCheck do
        
        
        
-       expect(resource.errors).to eq("errors-input")
-       
-       
-       
-       expect(resource.succeeded).to eq("succeeded-input")
+       expect(resource.bank_name).to eq("bank_name-input")
        
        
     end

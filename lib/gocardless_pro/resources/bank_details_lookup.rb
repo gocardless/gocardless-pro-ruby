@@ -11,23 +11,19 @@ require 'uri'
 module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
-    # Check whether an account number and bank / branch code combination are
-    # compatible.
-    # Represents an instance of a modulus_check resource returned from the API
-    class ModulusCheck
+    # Look up the name and reachability of a bank.
+    # Represents an instance of a bank_details_lookup resource returned from the API
+    class BankDetailsLookup
       attr_reader :available_schemes
 
-      attr_reader :errors
-
-      attr_reader :succeeded
+      attr_reader :bank_name
       # initialize a resource instance
       # @param object [Hash] an object returned from the API
       def initialize(object, response = nil)
         @object = object
 
         @available_schemes = object['available_schemes']
-        @errors = object['errors']
-        @succeeded = object['succeeded']
+        @bank_name = object['bank_name']
         @response = response
       end
 

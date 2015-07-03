@@ -35,6 +35,9 @@ require_relative 'gocardless_pro/request'
 require_relative 'gocardless_pro/response'
 require_relative 'gocardless_pro/api_response'
 
+require_relative 'gocardless_pro/resources/bank_details_lookup'
+require_relative 'gocardless_pro/services/bank_details_lookups_service'
+
 require_relative 'gocardless_pro/resources/creditor'
 require_relative 'gocardless_pro/services/creditors_service'
 
@@ -58,9 +61,6 @@ require_relative 'gocardless_pro/services/mandates_service'
 
 require_relative 'gocardless_pro/resources/mandate_pdf'
 require_relative 'gocardless_pro/services/mandate_pdfs_service'
-
-require_relative 'gocardless_pro/resources/modulus_check'
-require_relative 'gocardless_pro/services/modulus_checks_service'
 
 require_relative 'gocardless_pro/resources/payment'
 require_relative 'gocardless_pro/services/payments_service'

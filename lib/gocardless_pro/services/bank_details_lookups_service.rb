@@ -8,16 +8,16 @@ require_relative './base_service'
 
 module GoCardlessPro
   module Services
-    # Service for making requests to the ModulusCheck endpoints
-    class ModulusChecksService < BaseService
-      # Performs a modulus check.
+    # Service for making requests to the BankDetailsLookup endpoints
+    class BankDetailsLookupsService < BaseService
+      # Performs a bank details lookup.
       #
-      # Bank account details may be supplied using
-      # [local details](#ui-local-bank-details) or an IBAN.
-      # Example URL: /modulus_checks
+      # Bank account details may be supplied
+      # using [local details](#ui-local-bank-details) or an IBAN.
+      # Example URL: /bank_details_lookups
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
-        path = '/modulus_checks'
+        path = '/bank_details_lookups'
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -25,7 +25,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::ModulusCheck.new(unenvelope_body(response.body), response)
+        Resources::BankDetailsLookup.new(unenvelope_body(response.body), response)
       end
 
       # Unenvelope the response of the body using the service's `envelope_key`
@@ -39,7 +39,7 @@ module GoCardlessPro
 
       # return the key which API responses will envelope data under
       def envelope_key
-        'modulus_checks'
+        'bank_details_lookups'
       end
 
       # take a URL with placeholder params and substitute them out for the acutal value

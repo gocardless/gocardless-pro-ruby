@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardlessPro::Services::ModulusChecksService do
+describe GoCardlessPro::Services::BankDetailsLookupsService do
   let(:client) do
     GoCardlessPro::Client.new(
       access_token: "SECRET_TOKEN"
@@ -13,36 +13,33 @@ describe GoCardlessPro::Services::ModulusChecksService do
 
     
     describe "#create" do
-    subject(:post_create_response) { client.modulus_checks.create(params: new_resource) }
+    subject(:post_create_response) { client.bank_details_lookups.create(params: new_resource) }
       context "with a valid request" do
         let(:new_resource) do
           {
           
           "available_schemes" => "available_schemes-input",
-          "errors" => "errors-input",
-          "succeeded" => "succeeded-input",
+          "bank_name" => "bank_name-input",
           }
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/modulus_checks/).
+          stub_request(:post, /.*api.gocardless.com\/bank_details_lookups/).
           with(
             body: {
-              modulus_checks: {
+              bank_details_lookups: {
                 
                 "available_schemes" => "available_schemes-input",
-                "errors" => "errors-input",
-                "succeeded" => "succeeded-input",
+                "bank_name" => "bank_name-input",
                 }
             }
           ).
           to_return(
             body: {
-              modulus_checks: {
+              bank_details_lookups: {
                 
                 "available_schemes" => "available_schemes-input",
-                "errors" => "errors-input",
-                "succeeded" => "succeeded-input",
+                "bank_name" => "bank_name-input",
                 }
             }.to_json,
             :headers => {'Content-Type' => 'application/json'}
@@ -50,7 +47,7 @@ describe GoCardlessPro::Services::ModulusChecksService do
         end
 
         it "creates and returns the resource" do
-          expect(post_create_response).to be_a(GoCardlessPro::Resources::ModulusCheck)
+          expect(post_create_response).to be_a(GoCardlessPro::Resources::BankDetailsLookup)
         end
       end
 
@@ -58,7 +55,7 @@ describe GoCardlessPro::Services::ModulusChecksService do
         let(:new_resource) { {} }
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/modulus_checks/).to_return(
+          stub_request(:post, /.*api.gocardless.com\/bank_details_lookups/).to_return(
             body: {
               error: {
                 type: 'validation_failed',
