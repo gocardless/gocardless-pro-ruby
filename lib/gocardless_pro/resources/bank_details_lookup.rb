@@ -14,7 +14,7 @@ module GoCardlessPro
     # Look up the name and reachability of a bank.
     # Represents an instance of a bank_details_lookup resource returned from the API
     class BankDetailsLookup
-      attr_reader :available_schemes
+      attr_reader :available_debit_schemes
 
       attr_reader :bank_name
       # initialize a resource instance
@@ -22,7 +22,7 @@ module GoCardlessPro
       def initialize(object, response = nil)
         @object = object
 
-        @available_schemes = object['available_schemes']
+        @available_debit_schemes = object['available_debit_schemes']
         @bank_name = object['bank_name']
         @response = response
       end

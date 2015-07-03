@@ -18,7 +18,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
         let(:new_resource) do
           {
           
-          "available_schemes" => "available_schemes-input",
+          "available_debit_schemes" => "available_debit_schemes-input",
           "bank_name" => "bank_name-input",
           }
         end
@@ -29,7 +29,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
             body: {
               bank_details_lookups: {
                 
-                "available_schemes" => "available_schemes-input",
+                "available_debit_schemes" => "available_debit_schemes-input",
                 "bank_name" => "bank_name-input",
                 }
             }
@@ -38,7 +38,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
             body: {
               bank_details_lookups: {
                 
-                "available_schemes" => "available_schemes-input",
+                "available_debit_schemes" => "available_debit_schemes-input",
                 "bank_name" => "bank_name-input",
                 }
             }.to_json,

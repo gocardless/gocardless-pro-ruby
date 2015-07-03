@@ -6,7 +6,7 @@ describe GoCardlessPro::Resources::BankDetailsLookup do
       {
       
         
-          "available_schemes" => "available_schemes-input",
+          "available_debit_schemes" => "available_debit_schemes-input",
         
       
         
@@ -20,7 +20,7 @@ describe GoCardlessPro::Resources::BankDetailsLookup do
       resource = described_class.new(data)
       
        
-       expect(resource.available_schemes).to eq("available_schemes-input")
+       expect(resource.available_debit_schemes).to eq("available_debit_schemes-input")
        
        
        
