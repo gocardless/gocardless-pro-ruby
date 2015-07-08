@@ -3,8 +3,6 @@
 - [GoCardless Pro API Docs](https://developer.gocardless.com/pro/)
 - [RubyGems](https://rubygems.org/gems/gocardless_pro)
 
-This client is still in beta and is subject to change. Until a stable major version is released you should expect breaking changes.
-
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -95,24 +93,6 @@ As with GET requests, if any parameters are required they come first:
 ```rb
 @client.customers.update(customer_id, {...})
 ```
-
-### Custom Headers
-
-If you need to pass in a custom header to an endpoint, you can pass in a `headers` object to the options hash:
-
-```rb
-@client.helpers.mandate({
-  params: {
-    account_number: 200000,
-    ...
-  },
-  headers: {
-    'Accept': 'application/pdf'
-  }
-})
-```
-
-There are very few endpoints in the API that require custom headers. Currently, the only ones that do are [helpers](https://developer.gocardless.com/pro/#api-endpoints-helpers).
 
 ### Handling failures
 
