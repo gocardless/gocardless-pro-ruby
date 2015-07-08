@@ -21,13 +21,13 @@ module GoCardlessPro
     # - The first payment must be charged within 1
     # year.
     # - When neither `month` nor `day_of_month` are present, the
-    # subscription will recur from the `start_at` based on the `interval_unit`.
+    # subscription will recur from the `start_date` based on the `interval_unit`.
 
-    # # - If `month` or `day_of_month` are present, the recurrence rules will be
-    # applied from the `start_at`, and the following validations apply:
+    #  # - If `month` or `day_of_month` are present, the recurrence rules will be
+    # applied from the `start_date`, and the following validations apply:
     #
-    # |
-    # interval_unit   | month                                          |
+    #
+    # | interval_unit   | month                                          |
     # day_of_month                            |
     # | :-------------- |
     # :--------------------------------------------- |
@@ -89,7 +89,7 @@ module GoCardlessPro
 
       attr_reader :day_of_month
 
-      attr_reader :end_at
+      attr_reader :end_date
 
       attr_reader :id
 
@@ -105,7 +105,7 @@ module GoCardlessPro
 
       attr_reader :payment_reference
 
-      attr_reader :start_at
+      attr_reader :start_date
 
       attr_reader :status
 
@@ -120,7 +120,7 @@ module GoCardlessPro
         @created_at = object['created_at']
         @currency = object['currency']
         @day_of_month = object['day_of_month']
-        @end_at = object['end_at']
+        @end_date = object['end_date']
         @id = object['id']
         @interval = object['interval']
         @interval_unit = object['interval_unit']
@@ -129,14 +129,14 @@ module GoCardlessPro
         @month = object['month']
         @name = object['name']
         @payment_reference = object['payment_reference']
-        @start_at = object['start_at']
+        @start_date = object['start_date']
         @status = object['status']
         @upcoming_payments = object['upcoming_payments']
         @response = response
       end
 
       def api_response
-        ApiResponse.new(@response.api_response)
+        ApiResponse.new(@response)
       end
 
       # return the links that the resource has

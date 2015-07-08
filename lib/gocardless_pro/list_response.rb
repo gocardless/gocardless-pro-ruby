@@ -17,7 +17,7 @@ module GoCardlessPro
     end
 
     def api_response
-      @api_response ||= ApiResponse.new(@response.api_response)
+      @api_response ||= ApiResponse.new(@response)
     end
 
     # return the before cursor for paginating

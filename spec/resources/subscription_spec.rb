@@ -26,7 +26,7 @@ describe GoCardlessPro::Resources::Subscription do
         
       
         
-          "end_at" => "end_at-input",
+          "end_date" => "end_date-input",
         
       
         
@@ -66,7 +66,7 @@ describe GoCardlessPro::Resources::Subscription do
         
       
         
-          "start_at" => "start_at-input",
+          "start_date" => "start_date-input",
         
       
         
@@ -104,7 +104,7 @@ describe GoCardlessPro::Resources::Subscription do
        
        
        
-       expect(resource.end_at).to eq("end_at-input")
+       expect(resource.end_date).to eq("end_date-input")
        
        
        
@@ -142,7 +142,7 @@ describe GoCardlessPro::Resources::Subscription do
        
        
        
-       expect(resource.start_at).to eq("start_at-input")
+       expect(resource.start_date).to eq("start_date-input")
        
        
        

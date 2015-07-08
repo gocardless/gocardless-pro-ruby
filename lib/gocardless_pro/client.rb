@@ -33,11 +33,6 @@ module GoCardlessPro
       @events ||= Services::EventsService.new(@api_service)
     end
 
-    # Access to the service for helper to make API calls
-    def helpers
-      @helpers ||= Services::HelpersService.new(@api_service)
-    end
-
     # Access to the service for mandate to make API calls
     def mandates
       @mandates ||= Services::MandatesService.new(@api_service)
@@ -118,7 +113,7 @@ module GoCardlessPro
     def default_options
       {
         default_headers: {
-          'GoCardless-Version' => '2015-04-29',
+          'GoCardless-Version' => '2015-07-06',
           'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json'
         }
@@ -131,14 +126,21 @@ module GoCardlessPro
           gem_name = 'gocardless_pro'
           gem_info = "#{gem_name}"
           gem_info += "/v#{ GoCardlessPro::VERSION}" if defined?(GoCardlessPro::VERSION)
+
           ruby_engine = defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'
+
           ruby_version = RUBY_VERSION
-          ruby_version += " p#{RUBY_PATCHLEVEL}" if defined?(RUBY_PATCHLEVEL)
-          comment = ["#{ruby_engine} #{ruby_version}"]
-          comment << "gocardless_pro v#{ GoCardlessPro::VERSION}"
-          comment << "faraday v#{Faraday::VERSION}"
-          comment << RUBY_PLATFORM if defined?(RUBY_PLATFORM)
-          "#{gem_info} (#{comment.join('; ')})"
+          ruby_version += "p#{RUBY_PATCHLEVEL}" if defined?(RUBY_PATCHLEVEL)
+
+          interpreter_version = defined?(JRUBY_VERSION) ? JRUBY_VERSION : RUBY_VERSION
+
+          comment = [
+            "#{ruby_engine}/#{ruby_version}",
+            "#{RUBY_ENGINE}/#{interpreter_version}",
+            "#{RUBY_PLATFORM}"
+          ]
+          comment << "faraday/#{Faraday::VERSION}"
+          "#{gem_info} #{comment.join(' ')}"
         end
     end
   end

@@ -7,8 +7,8 @@ module GoCardlessPro
       @response = response
     end
 
-    def_delegator :@response, :headers, :headers
-    def_delegator :@response, :status, :status
-    def_delegator :@response, :body, :body
+    def_delegator :@response, :headers
+    def_delegator :@response, :body
+    def_delegator :@response, :status_code
   end
 end

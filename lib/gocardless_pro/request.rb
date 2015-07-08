@@ -42,10 +42,10 @@ module GoCardlessPro
     def request_body
       if @method == :get
         nil
-      elsif @method == :post || @method == :put
+      elsif [:post, :put, :delete].include?(@method)
         @given_options.fetch(:params, {})
       else
-        fail "unknown method #{@method}"
+        fail "Unknown request method #{@method}"
       end
     end
 
@@ -53,17 +53,9 @@ module GoCardlessPro
     def request_query
       if @method == :get
         @given_options.fetch(:params, {})
-      elsif @method == :post || @method == :put
-        {}
       else
-        fail "unknown method #{@method}"
+        {}
       end
-    end
-
-    private
-
-    def options
-      { headers: @headers, body: @body, query: @query }
     end
   end
 end

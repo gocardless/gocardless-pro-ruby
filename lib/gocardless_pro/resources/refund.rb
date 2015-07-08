@@ -48,7 +48,7 @@ module GoCardlessPro
       end
 
       def api_response
-        ApiResponse.new(@response.api_response)
+        ApiResponse.new(@response)
       end
 
       # return the links that the resource has

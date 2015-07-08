@@ -1,6 +1,11 @@
 module GoCardlessPro
   # A class to wrap an API response
   class Response
+    extend Forwardable
+
+    def_delegator :@response, :headers
+    def_delegator :@response, :status, :status_code
+
     # Initialize a response instance
     # @param response an API response
     def initialize(response)
@@ -34,10 +39,6 @@ module GoCardlessPro
     # Returns the limit parameter from the response
     def limit
       meta.fetch('limit', nil)
-    end
-
-    def api_response
-      @response
     end
 
     private
