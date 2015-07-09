@@ -12,7 +12,7 @@ module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Creditor Bank Accounts hold the bank details of a
-    # [creditor](#whitelabel-partner-endpoints-creditor). These are the bank
+    # [creditor](#whitelabel-partner-endpoints-creditors). These are the bank
     # accounts which your [payouts](#core-endpoints-payouts) will be sent to.
     #
     #
