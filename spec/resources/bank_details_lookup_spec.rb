@@ -13,6 +13,10 @@ describe GoCardlessPro::Resources::BankDetailsLookup do
           "bank_name" => "bank_name-input",
         
       
+        
+          "bic" => "bic-input",
+        
+      
       }
     end
 
@@ -25,6 +29,10 @@ describe GoCardlessPro::Resources::BankDetailsLookup do
        
        
        expect(resource.bank_name).to eq("bank_name-input")
+       
+       
+       
+       expect(resource.bic).to eq("bic-input")
        
        
     end

@@ -21,6 +21,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
           
           "available_debit_schemes" => "available_debit_schemes-input",
           "bank_name" => "bank_name-input",
+          "bic" => "bic-input",
           }
         end
 
@@ -32,6 +33,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
                 
                 "available_debit_schemes" => "available_debit_schemes-input",
                 "bank_name" => "bank_name-input",
+                "bic" => "bic-input",
                 }
             }
           ).
@@ -41,6 +43,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
                 
                 "available_debit_schemes" => "available_debit_schemes-input",
                 "bank_name" => "bank_name-input",
+                "bic" => "bic-input",
                 }
             }.to_json,
             :headers => {'Content-Type' => 'application/json'}

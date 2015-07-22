@@ -17,6 +17,8 @@ module GoCardlessPro
       attr_reader :available_debit_schemes
 
       attr_reader :bank_name
+
+      attr_reader :bic
       # initialize a resource instance
       # @param object [Hash] an object returned from the API
       def initialize(object, response = nil)
@@ -24,6 +26,7 @@ module GoCardlessPro
 
         @available_debit_schemes = object['available_debit_schemes']
         @bank_name = object['bank_name']
+        @bic = object['bic']
         @response = response
       end
 
