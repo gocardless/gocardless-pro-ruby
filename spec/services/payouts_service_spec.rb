@@ -20,7 +20,7 @@ describe GoCardlessPro::Services::PayoutsService do
         before do
           stub_request(:get, %r(.*api.gocardless.com/payouts)).to_return(
             body: {
-              "<nil>" => [{
+              "payouts" => [{
                 
                 "amount" => "amount-input",
                 "created_at" => "created_at-input",
@@ -86,7 +86,7 @@ describe GoCardlessPro::Services::PayoutsService do
       let!(:first_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/payouts$)).to_return(
           body: {
-            "<nil>" => [{
+            "payouts" => [{
               
               "amount" => "amount-input",
               "created_at" => "created_at-input",
@@ -108,7 +108,7 @@ describe GoCardlessPro::Services::PayoutsService do
       let!(:second_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/payouts\?after=AB345)).to_return(
           body: {
-            "<nil>" => [{
+            "payouts" => [{
               
               "amount" => "amount-input",
               "created_at" => "created_at-input",
@@ -151,7 +151,7 @@ describe GoCardlessPro::Services::PayoutsService do
           with(headers: { 'Foo' => 'Bar' }).
           to_return(
             body: {
-              "<nil>" => {
+              "payouts" => {
                 
                 "amount" => "amount-input",
                 "created_at" => "created_at-input",
@@ -183,7 +183,7 @@ describe GoCardlessPro::Services::PayoutsService do
           stub_url = "/payouts/:identity".gsub(':identity', id)
           stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "payouts" => {
                 
                 "amount" => "amount-input",
                 "created_at" => "created_at-input",

@@ -78,7 +78,7 @@ module GoCardlessPro
 
       # return the key which API responses will envelope data under
       def envelope_key
-        '<nil>'
+        'redirect_flows'
       end
 
       # take a URL with placeholder params and substitute them out for the acutal value

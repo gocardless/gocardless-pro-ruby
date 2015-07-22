@@ -28,7 +28,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
           stub_request(:post, %r(.*api.gocardless.com/bank_details_lookups)).
           with(
             body: {
-              "<nil>" => {
+              "bank_details_lookups" => {
                 
                 "available_debit_schemes" => "available_debit_schemes-input",
                 "bank_name" => "bank_name-input",
@@ -37,7 +37,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
           ).
           to_return(
             body: {
-              "<nil>" => {
+              "bank_details_lookups" => {
                 
                 "available_debit_schemes" => "available_debit_schemes-input",
                 "bank_name" => "bank_name-input",

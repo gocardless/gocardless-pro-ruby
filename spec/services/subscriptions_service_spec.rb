@@ -43,7 +43,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
           stub_request(:post, %r(.*api.gocardless.com/subscriptions)).
           with(
             body: {
-              "<nil>" => {
+              "subscriptions" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -67,7 +67,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
           ).
           to_return(
             body: {
-              "<nil>" => {
+              "subscriptions" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -133,7 +133,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
         before do
           stub_request(:get, %r(.*api.gocardless.com/subscriptions)).to_return(
             body: {
-              "<nil>" => [{
+              "subscriptions" => [{
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -249,7 +249,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
       let!(:first_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/subscriptions$)).to_return(
           body: {
-            "<nil>" => [{
+            "subscriptions" => [{
               
               "amount" => "amount-input",
               "count" => "count-input",
@@ -281,7 +281,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
       let!(:second_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/subscriptions\?after=AB345)).to_return(
           body: {
-            "<nil>" => [{
+            "subscriptions" => [{
               
               "amount" => "amount-input",
               "count" => "count-input",
@@ -334,7 +334,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
           with(headers: { 'Foo' => 'Bar' }).
           to_return(
             body: {
-              "<nil>" => {
+              "subscriptions" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -376,7 +376,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
           stub_url = "/subscriptions/:identity".gsub(':identity', id)
           stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "subscriptions" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -437,7 +437,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
           stub_url = "/subscriptions/:identity".gsub(':identity', id)
           stub_request(:put, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "subscriptions" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -485,7 +485,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
         stub_url = "/subscriptions/:identity/actions/cancel".gsub(':identity', resource_id)
         stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            "<nil>" => {
+            "subscriptions" => {
               
               "amount" => "amount-input",
               "count" => "count-input",
@@ -533,7 +533,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              "<nil>" => {
+              "subscriptions" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",

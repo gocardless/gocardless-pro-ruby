@@ -34,7 +34,7 @@ describe GoCardlessPro::Services::MandatesService do
           stub_request(:post, %r(.*api.gocardless.com/mandates)).
           with(
             body: {
-              "<nil>" => {
+              "mandates" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -49,7 +49,7 @@ describe GoCardlessPro::Services::MandatesService do
           ).
           to_return(
             body: {
-              "<nil>" => {
+              "mandates" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -106,7 +106,7 @@ describe GoCardlessPro::Services::MandatesService do
         before do
           stub_request(:get, %r(.*api.gocardless.com/mandates)).to_return(
             body: {
-              "<nil>" => [{
+              "mandates" => [{
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -177,7 +177,7 @@ describe GoCardlessPro::Services::MandatesService do
       let!(:first_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/mandates$)).to_return(
           body: {
-            "<nil>" => [{
+            "mandates" => [{
               
               "created_at" => "created_at-input",
               "id" => "id-input",
@@ -200,7 +200,7 @@ describe GoCardlessPro::Services::MandatesService do
       let!(:second_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/mandates\?after=AB345)).to_return(
           body: {
-            "<nil>" => [{
+            "mandates" => [{
               
               "created_at" => "created_at-input",
               "id" => "id-input",
@@ -244,7 +244,7 @@ describe GoCardlessPro::Services::MandatesService do
           with(headers: { 'Foo' => 'Bar' }).
           to_return(
             body: {
-              "<nil>" => {
+              "mandates" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -277,7 +277,7 @@ describe GoCardlessPro::Services::MandatesService do
           stub_url = "/mandates/:identity".gsub(':identity', id)
           stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "mandates" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -329,7 +329,7 @@ describe GoCardlessPro::Services::MandatesService do
           stub_url = "/mandates/:identity".gsub(':identity', id)
           stub_request(:put, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "mandates" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -368,7 +368,7 @@ describe GoCardlessPro::Services::MandatesService do
         stub_url = "/mandates/:identity/actions/cancel".gsub(':identity', resource_id)
         stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            "<nil>" => {
+            "mandates" => {
               
               "created_at" => "created_at-input",
               "id" => "id-input",
@@ -407,7 +407,7 @@ describe GoCardlessPro::Services::MandatesService do
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              "<nil>" => {
+              "mandates" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -441,7 +441,7 @@ describe GoCardlessPro::Services::MandatesService do
         stub_url = "/mandates/:identity/actions/reinstate".gsub(':identity', resource_id)
         stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            "<nil>" => {
+            "mandates" => {
               
               "created_at" => "created_at-input",
               "id" => "id-input",
@@ -480,7 +480,7 @@ describe GoCardlessPro::Services::MandatesService do
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              "<nil>" => {
+              "mandates" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",

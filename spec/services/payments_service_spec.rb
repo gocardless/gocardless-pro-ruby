@@ -37,7 +37,7 @@ describe GoCardlessPro::Services::PaymentsService do
           stub_request(:post, %r(.*api.gocardless.com/payments)).
           with(
             body: {
-              "<nil>" => {
+              "payments" => {
                 
                 "amount" => "amount-input",
                 "amount_refunded" => "amount_refunded-input",
@@ -55,7 +55,7 @@ describe GoCardlessPro::Services::PaymentsService do
           ).
           to_return(
             body: {
-              "<nil>" => {
+              "payments" => {
                 
                 "amount" => "amount-input",
                 "amount_refunded" => "amount_refunded-input",
@@ -115,7 +115,7 @@ describe GoCardlessPro::Services::PaymentsService do
         before do
           stub_request(:get, %r(.*api.gocardless.com/payments)).to_return(
             body: {
-              "<nil>" => [{
+              "payments" => [{
                 
                 "amount" => "amount-input",
                 "amount_refunded" => "amount_refunded-input",
@@ -201,7 +201,7 @@ describe GoCardlessPro::Services::PaymentsService do
       let!(:first_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/payments$)).to_return(
           body: {
-            "<nil>" => [{
+            "payments" => [{
               
               "amount" => "amount-input",
               "amount_refunded" => "amount_refunded-input",
@@ -227,7 +227,7 @@ describe GoCardlessPro::Services::PaymentsService do
       let!(:second_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/payments\?after=AB345)).to_return(
           body: {
-            "<nil>" => [{
+            "payments" => [{
               
               "amount" => "amount-input",
               "amount_refunded" => "amount_refunded-input",
@@ -274,7 +274,7 @@ describe GoCardlessPro::Services::PaymentsService do
           with(headers: { 'Foo' => 'Bar' }).
           to_return(
             body: {
-              "<nil>" => {
+              "payments" => {
                 
                 "amount" => "amount-input",
                 "amount_refunded" => "amount_refunded-input",
@@ -310,7 +310,7 @@ describe GoCardlessPro::Services::PaymentsService do
           stub_url = "/payments/:identity".gsub(':identity', id)
           stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "payments" => {
                 
                 "amount" => "amount-input",
                 "amount_refunded" => "amount_refunded-input",
@@ -365,7 +365,7 @@ describe GoCardlessPro::Services::PaymentsService do
           stub_url = "/payments/:identity".gsub(':identity', id)
           stub_request(:put, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "payments" => {
                 
                 "amount" => "amount-input",
                 "amount_refunded" => "amount_refunded-input",
@@ -407,7 +407,7 @@ describe GoCardlessPro::Services::PaymentsService do
         stub_url = "/payments/:identity/actions/cancel".gsub(':identity', resource_id)
         stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            "<nil>" => {
+            "payments" => {
               
               "amount" => "amount-input",
               "amount_refunded" => "amount_refunded-input",
@@ -449,7 +449,7 @@ describe GoCardlessPro::Services::PaymentsService do
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              "<nil>" => {
+              "payments" => {
                 
                 "amount" => "amount-input",
                 "amount_refunded" => "amount_refunded-input",
@@ -486,7 +486,7 @@ describe GoCardlessPro::Services::PaymentsService do
         stub_url = "/payments/:identity/actions/retry".gsub(':identity', resource_id)
         stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            "<nil>" => {
+            "payments" => {
               
               "amount" => "amount-input",
               "amount_refunded" => "amount_refunded-input",
@@ -528,7 +528,7 @@ describe GoCardlessPro::Services::PaymentsService do
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              "<nil>" => {
+              "payments" => {
                 
                 "amount" => "amount-input",
                 "amount_refunded" => "amount_refunded-input",

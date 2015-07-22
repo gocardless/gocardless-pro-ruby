@@ -39,7 +39,7 @@ module GoCardlessPro
 
       # return the key which API responses will envelope data under
       def envelope_key
-        '<nil>'
+        'bank_details_lookups'
       end
 
       # take a URL with placeholder params and substitute them out for the acutal value

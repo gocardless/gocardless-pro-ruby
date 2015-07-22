@@ -36,7 +36,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
           stub_request(:post, %r(.*api.gocardless.com/creditor_bank_accounts)).
           with(
             body: {
-              "<nil>" => {
+              "creditor_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -53,7 +53,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
           ).
           to_return(
             body: {
-              "<nil>" => {
+              "creditor_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -112,7 +112,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
         before do
           stub_request(:get, %r(.*api.gocardless.com/creditor_bank_accounts)).to_return(
             body: {
-              "<nil>" => [{
+              "creditor_bank_accounts" => [{
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -193,7 +193,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
       let!(:first_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/creditor_bank_accounts$)).to_return(
           body: {
-            "<nil>" => [{
+            "creditor_bank_accounts" => [{
               
               "account_holder_name" => "account_holder_name-input",
               "account_number_ending" => "account_number_ending-input",
@@ -218,7 +218,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
       let!(:second_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/creditor_bank_accounts\?after=AB345)).to_return(
           body: {
-            "<nil>" => [{
+            "creditor_bank_accounts" => [{
               
               "account_holder_name" => "account_holder_name-input",
               "account_number_ending" => "account_number_ending-input",
@@ -264,7 +264,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
           with(headers: { 'Foo' => 'Bar' }).
           to_return(
             body: {
-              "<nil>" => {
+              "creditor_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -299,7 +299,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
           stub_url = "/creditor_bank_accounts/:identity".gsub(':identity', id)
           stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "creditor_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -354,7 +354,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
         stub_url = "/creditor_bank_accounts/:identity/actions/disable".gsub(':identity', resource_id)
         stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            "<nil>" => {
+            "creditor_bank_accounts" => {
               
               "account_holder_name" => "account_holder_name-input",
               "account_number_ending" => "account_number_ending-input",
@@ -395,7 +395,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              "<nil>" => {
+              "creditor_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",

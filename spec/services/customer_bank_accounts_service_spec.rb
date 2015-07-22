@@ -36,7 +36,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
           stub_request(:post, %r(.*api.gocardless.com/customer_bank_accounts)).
           with(
             body: {
-              "<nil>" => {
+              "customer_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -53,7 +53,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
           ).
           to_return(
             body: {
-              "<nil>" => {
+              "customer_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -112,7 +112,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
         before do
           stub_request(:get, %r(.*api.gocardless.com/customer_bank_accounts)).to_return(
             body: {
-              "<nil>" => [{
+              "customer_bank_accounts" => [{
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -193,7 +193,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
       let!(:first_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/customer_bank_accounts$)).to_return(
           body: {
-            "<nil>" => [{
+            "customer_bank_accounts" => [{
               
               "account_holder_name" => "account_holder_name-input",
               "account_number_ending" => "account_number_ending-input",
@@ -218,7 +218,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
       let!(:second_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/customer_bank_accounts\?after=AB345)).to_return(
           body: {
-            "<nil>" => [{
+            "customer_bank_accounts" => [{
               
               "account_holder_name" => "account_holder_name-input",
               "account_number_ending" => "account_number_ending-input",
@@ -264,7 +264,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
           with(headers: { 'Foo' => 'Bar' }).
           to_return(
             body: {
-              "<nil>" => {
+              "customer_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -299,7 +299,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
           stub_url = "/customer_bank_accounts/:identity".gsub(':identity', id)
           stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "customer_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -353,7 +353,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
           stub_url = "/customer_bank_accounts/:identity".gsub(':identity', id)
           stub_request(:put, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "customer_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -394,7 +394,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
         stub_url = "/customer_bank_accounts/:identity/actions/disable".gsub(':identity', resource_id)
         stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            "<nil>" => {
+            "customer_bank_accounts" => {
               
               "account_holder_name" => "account_holder_name-input",
               "account_number_ending" => "account_number_ending-input",
@@ -435,7 +435,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              "<nil>" => {
+              "customer_bank_accounts" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",

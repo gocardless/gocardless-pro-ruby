@@ -28,7 +28,7 @@ describe GoCardlessPro::Services::MandatePdfsService do
           stub_request(:post, %r(.*api.gocardless.com/mandate_pdfs)).
           with(
             body: {
-              "<nil>" => {
+              "mandate_pdfs" => {
                 
                 "expires_at" => "expires_at-input",
                 "url" => "url-input",
@@ -37,7 +37,7 @@ describe GoCardlessPro::Services::MandatePdfsService do
           ).
           to_return(
             body: {
-              "<nil>" => {
+              "mandate_pdfs" => {
                 
                 "expires_at" => "expires_at-input",
                 "url" => "url-input",

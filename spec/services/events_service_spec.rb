@@ -20,7 +20,7 @@ describe GoCardlessPro::Services::EventsService do
         before do
           stub_request(:get, %r(.*api.gocardless.com/events)).to_return(
             body: {
-              "<nil>" => [{
+              "events" => [{
                 
                 "action" => "action-input",
                 "created_at" => "created_at-input",
@@ -86,7 +86,7 @@ describe GoCardlessPro::Services::EventsService do
       let!(:first_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/events$)).to_return(
           body: {
-            "<nil>" => [{
+            "events" => [{
               
               "action" => "action-input",
               "created_at" => "created_at-input",
@@ -108,7 +108,7 @@ describe GoCardlessPro::Services::EventsService do
       let!(:second_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/events\?after=AB345)).to_return(
           body: {
-            "<nil>" => [{
+            "events" => [{
               
               "action" => "action-input",
               "created_at" => "created_at-input",
@@ -151,7 +151,7 @@ describe GoCardlessPro::Services::EventsService do
           with(headers: { 'Foo' => 'Bar' }).
           to_return(
             body: {
-              "<nil>" => {
+              "events" => {
                 
                 "action" => "action-input",
                 "created_at" => "created_at-input",
@@ -183,7 +183,7 @@ describe GoCardlessPro::Services::EventsService do
           stub_url = "/events/:identity".gsub(':identity', id)
           stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "events" => {
                 
                 "action" => "action-input",
                 "created_at" => "created_at-input",

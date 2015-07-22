@@ -37,7 +37,7 @@ describe GoCardlessPro::Services::CreditorsService do
           stub_request(:post, %r(.*api.gocardless.com/creditors)).
           with(
             body: {
-              "<nil>" => {
+              "creditors" => {
                 
                 "address_line1" => "address_line1-input",
                 "address_line2" => "address_line2-input",
@@ -55,7 +55,7 @@ describe GoCardlessPro::Services::CreditorsService do
           ).
           to_return(
             body: {
-              "<nil>" => {
+              "creditors" => {
                 
                 "address_line1" => "address_line1-input",
                 "address_line2" => "address_line2-input",
@@ -115,7 +115,7 @@ describe GoCardlessPro::Services::CreditorsService do
         before do
           stub_request(:get, %r(.*api.gocardless.com/creditors)).to_return(
             body: {
-              "<nil>" => [{
+              "creditors" => [{
                 
                 "address_line1" => "address_line1-input",
                 "address_line2" => "address_line2-input",
@@ -201,7 +201,7 @@ describe GoCardlessPro::Services::CreditorsService do
       let!(:first_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/creditors$)).to_return(
           body: {
-            "<nil>" => [{
+            "creditors" => [{
               
               "address_line1" => "address_line1-input",
               "address_line2" => "address_line2-input",
@@ -227,7 +227,7 @@ describe GoCardlessPro::Services::CreditorsService do
       let!(:second_response_stub) do
         stub_request(:get, %r(.*api.gocardless.com/creditors\?after=AB345)).to_return(
           body: {
-            "<nil>" => [{
+            "creditors" => [{
               
               "address_line1" => "address_line1-input",
               "address_line2" => "address_line2-input",
@@ -274,7 +274,7 @@ describe GoCardlessPro::Services::CreditorsService do
           with(headers: { 'Foo' => 'Bar' }).
           to_return(
             body: {
-              "<nil>" => {
+              "creditors" => {
                 
                 "address_line1" => "address_line1-input",
                 "address_line2" => "address_line2-input",
@@ -310,7 +310,7 @@ describe GoCardlessPro::Services::CreditorsService do
           stub_url = "/creditors/:identity".gsub(':identity', id)
           stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "creditors" => {
                 
                 "address_line1" => "address_line1-input",
                 "address_line2" => "address_line2-input",
@@ -365,7 +365,7 @@ describe GoCardlessPro::Services::CreditorsService do
           stub_url = "/creditors/:identity".gsub(':identity', id)
           stub_request(:put, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              "<nil>" => {
+              "creditors" => {
                 
                 "address_line1" => "address_line1-input",
                 "address_line2" => "address_line2-input",
