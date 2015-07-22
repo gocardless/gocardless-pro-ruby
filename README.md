@@ -114,7 +114,16 @@ The error has the following methods to allow you to access the information from 
 - `#request_id`
 - `#errors`
 
+### Using the OAuth API
+
+The API includes [OAuth](https://developer.gocardless.com/pro/2015-07-06/#guides-oauth) functionality, which allows you to work with other users' GoCardless accounts. Once a user approves you, you can use the GoCardless API on their behalf and receive their webhooks.
+
+OAuth simply provides a means by which you obtain an access token - once you have this access token, you can use this gem as usual.
+
+We recommend using the [oauth2](https://github.com/intridea/oauth2) gem to handle the authorisation process and gain a token. For an example of this in action, see our [open-source OAuth demo app](https://github.com/gocardless/oauth-demo/blob/master/app.rb#L46).
+
 ## Supporting Ruby < 2.0.0
+
 The client only supports Ruby >= 2.0.0 out of the box due to our use of
 Enumerable::Lazy for lazy loading of paginated API resources.
 
