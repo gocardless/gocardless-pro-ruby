@@ -9,6 +9,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
 
   
   
+  
     
 
     
@@ -30,10 +31,10 @@ describe GoCardlessPro::Services::RedirectFlowsService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/redirect_flows/).
+          stub_request(:post, %r(.*api.gocardless.com/redirect_flows)).
           with(
             body: {
-              redirect_flows: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "description" => "description-input",
@@ -48,7 +49,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
           ).
           to_return(
             body: {
-              redirect_flows: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "description" => "description-input",
@@ -73,7 +74,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
         let(:new_resource) { {} }
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/redirect_flows/).to_return(
+          stub_request(:post, %r(.*api.gocardless.com/redirect_flows)).to_return(
             body: {
               error: {
                 type: 'validation_failed',
@@ -105,11 +106,12 @@ describe GoCardlessPro::Services::RedirectFlowsService do
 
       context "passing in a custom header" do
         let!(:stub) do
-          stub_request(:get, /.*api.gocardless.com\/redirect_flows\/ID123/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+          stub_url = "/redirect_flows/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
-              redirect_flows: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "description" => "description-input",
@@ -139,9 +141,10 @@ describe GoCardlessPro::Services::RedirectFlowsService do
 
       context "when there is a redirect_flow to return" do
         before do
-          stub_request(:get, /.*api.gocardless.com\/redirect_flows\/ID123/).to_return(
+          stub_url = "/redirect_flows/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              redirect_flows: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "description" => "description-input",
@@ -164,7 +167,8 @@ describe GoCardlessPro::Services::RedirectFlowsService do
 
       context "when nothing is returned" do
         before do
-          stub_request(:get, /.*api.gocardless.com\/redirect_flows\/ID123/).to_return(
+          stub_url = "/redirect_flows/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: "",
             headers: { 'Content-Type' => 'application/json' }
           )
@@ -191,9 +195,9 @@ describe GoCardlessPro::Services::RedirectFlowsService do
       let!(:stub) do
         # /redirect_flows/%v/actions/complete
         stub_url = "/redirect_flows/:identity/actions/complete".gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            redirect_flows: {
+            "<nil>" => {
               
               "created_at" => "created_at-input",
               "description" => "description-input",
@@ -226,13 +230,13 @@ describe GoCardlessPro::Services::RedirectFlowsService do
         let!(:stub) do
           # /redirect_flows/%v/actions/complete
           stub_url = "/redirect_flows/:identity/actions/complete".gsub(':identity', resource_id)
-          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          stub_request(:post, %r(.*api.gocardless.com#{stub_url})).
           with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              redirect_flows: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "description" => "description-input",

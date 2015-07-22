@@ -9,6 +9,7 @@ describe GoCardlessPro::Services::MandatesService do
 
   
   
+  
     
 
     
@@ -30,10 +31,10 @@ describe GoCardlessPro::Services::MandatesService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/mandates/).
+          stub_request(:post, %r(.*api.gocardless.com/mandates)).
           with(
             body: {
-              mandates: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -48,7 +49,7 @@ describe GoCardlessPro::Services::MandatesService do
           ).
           to_return(
             body: {
-              mandates: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -73,7 +74,7 @@ describe GoCardlessPro::Services::MandatesService do
         let(:new_resource) { {} }
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/mandates/).to_return(
+          stub_request(:post, %r(.*api.gocardless.com/mandates)).to_return(
             body: {
               error: {
                 type: 'validation_failed',
@@ -103,9 +104,9 @@ describe GoCardlessPro::Services::MandatesService do
         subject(:get_list_response) { client.mandates.list }
 
         before do
-          stub_request(:get, /.*api.gocardless.com\/mandates/).to_return(
+          stub_request(:get, %r(.*api.gocardless.com/mandates)).to_return(
             body: {
-              mandates: [{
+              "<nil>" => [{
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -174,9 +175,9 @@ describe GoCardlessPro::Services::MandatesService do
 
     describe "#all" do
       let!(:first_response_stub) do
-        stub_request(:get, /.*api.gocardless.com\/mandates$/).to_return(
+        stub_request(:get, %r(.*api.gocardless.com/mandates$)).to_return(
           body: {
-            mandates: [{
+            "<nil>" => [{
               
               "created_at" => "created_at-input",
               "id" => "id-input",
@@ -197,9 +198,9 @@ describe GoCardlessPro::Services::MandatesService do
       end
 
       let!(:second_response_stub) do
-        stub_request(:get, /.*api.gocardless.com\/mandates\?after=AB345/).to_return(
+        stub_request(:get, %r(.*api.gocardless.com/mandates\?after=AB345)).to_return(
           body: {
-            mandates: [{
+            "<nil>" => [{
               
               "created_at" => "created_at-input",
               "id" => "id-input",
@@ -238,11 +239,12 @@ describe GoCardlessPro::Services::MandatesService do
 
       context "passing in a custom header" do
         let!(:stub) do
-          stub_request(:get, /.*api.gocardless.com\/mandates\/ID123/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+          stub_url = "/mandates/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
-              mandates: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -272,9 +274,10 @@ describe GoCardlessPro::Services::MandatesService do
 
       context "when there is a mandate to return" do
         before do
-          stub_request(:get, /.*api.gocardless.com\/mandates\/ID123/).to_return(
+          stub_url = "/mandates/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              mandates: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -297,7 +300,8 @@ describe GoCardlessPro::Services::MandatesService do
 
       context "when nothing is returned" do
         before do
-          stub_request(:get, /.*api.gocardless.com\/mandates\/ID123/).to_return(
+          stub_url = "/mandates/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: "",
             headers: { 'Content-Type' => 'application/json' }
           )
@@ -322,9 +326,10 @@ describe GoCardlessPro::Services::MandatesService do
         let(:update_params) { { "hello" => "world" } }
 
         let!(:stub) do
-          stub_request(:put, /.*api.gocardless.com\/mandates\/ABC123/).to_return(
+          stub_url = "/mandates/:identity".gsub(':identity', id)
+          stub_request(:put, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              mandates: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -361,9 +366,9 @@ describe GoCardlessPro::Services::MandatesService do
       let!(:stub) do
         # /mandates/%v/actions/cancel
         stub_url = "/mandates/:identity/actions/cancel".gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            mandates: {
+            "<nil>" => {
               
               "created_at" => "created_at-input",
               "id" => "id-input",
@@ -396,13 +401,13 @@ describe GoCardlessPro::Services::MandatesService do
         let!(:stub) do
           # /mandates/%v/actions/cancel
           stub_url = "/mandates/:identity/actions/cancel".gsub(':identity', resource_id)
-          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          stub_request(:post, %r(.*api.gocardless.com#{stub_url})).
           with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              mandates: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",
@@ -434,9 +439,9 @@ describe GoCardlessPro::Services::MandatesService do
       let!(:stub) do
         # /mandates/%v/actions/reinstate
         stub_url = "/mandates/:identity/actions/reinstate".gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            mandates: {
+            "<nil>" => {
               
               "created_at" => "created_at-input",
               "id" => "id-input",
@@ -469,13 +474,13 @@ describe GoCardlessPro::Services::MandatesService do
         let!(:stub) do
           # /mandates/%v/actions/reinstate
           stub_url = "/mandates/:identity/actions/reinstate".gsub(':identity', resource_id)
-          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          stub_request(:post, %r(.*api.gocardless.com#{stub_url})).
           with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              mandates: {
+              "<nil>" => {
                 
                 "created_at" => "created_at-input",
                 "id" => "id-input",

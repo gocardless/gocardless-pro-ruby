@@ -9,6 +9,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
 
   
   
+  
     
 
     
@@ -32,10 +33,10 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/creditor_bank_accounts/).
+          stub_request(:post, %r(.*api.gocardless.com/creditor_bank_accounts)).
           with(
             body: {
-              creditor_bank_accounts: {
+              "<nil>" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -52,7 +53,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
           ).
           to_return(
             body: {
-              creditor_bank_accounts: {
+              "<nil>" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -79,7 +80,7 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
         let(:new_resource) { {} }
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/creditor_bank_accounts/).to_return(
+          stub_request(:post, %r(.*api.gocardless.com/creditor_bank_accounts)).to_return(
             body: {
               error: {
                 type: 'validation_failed',
@@ -109,9 +110,9 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
         subject(:get_list_response) { client.creditor_bank_accounts.list }
 
         before do
-          stub_request(:get, /.*api.gocardless.com\/creditor_bank_accounts/).to_return(
+          stub_request(:get, %r(.*api.gocardless.com/creditor_bank_accounts)).to_return(
             body: {
-              creditor_bank_accounts: [{
+              "<nil>" => [{
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -190,9 +191,9 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
 
     describe "#all" do
       let!(:first_response_stub) do
-        stub_request(:get, /.*api.gocardless.com\/creditor_bank_accounts$/).to_return(
+        stub_request(:get, %r(.*api.gocardless.com/creditor_bank_accounts$)).to_return(
           body: {
-            creditor_bank_accounts: [{
+            "<nil>" => [{
               
               "account_holder_name" => "account_holder_name-input",
               "account_number_ending" => "account_number_ending-input",
@@ -215,9 +216,9 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
       end
 
       let!(:second_response_stub) do
-        stub_request(:get, /.*api.gocardless.com\/creditor_bank_accounts\?after=AB345/).to_return(
+        stub_request(:get, %r(.*api.gocardless.com/creditor_bank_accounts\?after=AB345)).to_return(
           body: {
-            creditor_bank_accounts: [{
+            "<nil>" => [{
               
               "account_holder_name" => "account_holder_name-input",
               "account_number_ending" => "account_number_ending-input",
@@ -258,11 +259,12 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
 
       context "passing in a custom header" do
         let!(:stub) do
-          stub_request(:get, /.*api.gocardless.com\/creditor_bank_accounts\/ID123/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+          stub_url = "/creditor_bank_accounts/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
-              creditor_bank_accounts: {
+              "<nil>" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -294,9 +296,10 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
 
       context "when there is a creditor_bank_account to return" do
         before do
-          stub_request(:get, /.*api.gocardless.com\/creditor_bank_accounts\/ID123/).to_return(
+          stub_url = "/creditor_bank_accounts/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              creditor_bank_accounts: {
+              "<nil>" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",
@@ -321,7 +324,8 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
 
       context "when nothing is returned" do
         before do
-          stub_request(:get, /.*api.gocardless.com\/creditor_bank_accounts\/ID123/).to_return(
+          stub_url = "/creditor_bank_accounts/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: "",
             headers: { 'Content-Type' => 'application/json' }
           )
@@ -348,9 +352,9 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
       let!(:stub) do
         # /creditor_bank_accounts/%v/actions/disable
         stub_url = "/creditor_bank_accounts/:identity/actions/disable".gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            creditor_bank_accounts: {
+            "<nil>" => {
               
               "account_holder_name" => "account_holder_name-input",
               "account_number_ending" => "account_number_ending-input",
@@ -385,13 +389,13 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
         let!(:stub) do
           # /creditor_bank_accounts/%v/actions/disable
           stub_url = "/creditor_bank_accounts/:identity/actions/disable".gsub(':identity', resource_id)
-          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          stub_request(:post, %r(.*api.gocardless.com#{stub_url})).
           with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              creditor_bank_accounts: {
+              "<nil>" => {
                 
                 "account_holder_name" => "account_holder_name-input",
                 "account_number_ending" => "account_number_ending-input",

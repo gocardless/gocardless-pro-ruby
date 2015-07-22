@@ -9,6 +9,7 @@ describe GoCardlessPro::Services::RefundsService do
 
   
   
+  
     
 
     
@@ -28,10 +29,10 @@ describe GoCardlessPro::Services::RefundsService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/refunds/).
+          stub_request(:post, %r(.*api.gocardless.com/refunds)).
           with(
             body: {
-              refunds: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "created_at" => "created_at-input",
@@ -44,7 +45,7 @@ describe GoCardlessPro::Services::RefundsService do
           ).
           to_return(
             body: {
-              refunds: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "created_at" => "created_at-input",
@@ -67,7 +68,7 @@ describe GoCardlessPro::Services::RefundsService do
         let(:new_resource) { {} }
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/refunds/).to_return(
+          stub_request(:post, %r(.*api.gocardless.com/refunds)).to_return(
             body: {
               error: {
                 type: 'validation_failed',
@@ -97,9 +98,9 @@ describe GoCardlessPro::Services::RefundsService do
         subject(:get_list_response) { client.refunds.list }
 
         before do
-          stub_request(:get, /.*api.gocardless.com\/refunds/).to_return(
+          stub_request(:get, %r(.*api.gocardless.com/refunds)).to_return(
             body: {
-              refunds: [{
+              "<nil>" => [{
                 
                 "amount" => "amount-input",
                 "created_at" => "created_at-input",
@@ -158,9 +159,9 @@ describe GoCardlessPro::Services::RefundsService do
 
     describe "#all" do
       let!(:first_response_stub) do
-        stub_request(:get, /.*api.gocardless.com\/refunds$/).to_return(
+        stub_request(:get, %r(.*api.gocardless.com/refunds$)).to_return(
           body: {
-            refunds: [{
+            "<nil>" => [{
               
               "amount" => "amount-input",
               "created_at" => "created_at-input",
@@ -179,9 +180,9 @@ describe GoCardlessPro::Services::RefundsService do
       end
 
       let!(:second_response_stub) do
-        stub_request(:get, /.*api.gocardless.com\/refunds\?after=AB345/).to_return(
+        stub_request(:get, %r(.*api.gocardless.com/refunds\?after=AB345)).to_return(
           body: {
-            refunds: [{
+            "<nil>" => [{
               
               "amount" => "amount-input",
               "created_at" => "created_at-input",
@@ -218,11 +219,12 @@ describe GoCardlessPro::Services::RefundsService do
 
       context "passing in a custom header" do
         let!(:stub) do
-          stub_request(:get, /.*api.gocardless.com\/refunds\/ID123/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+          stub_url = "/refunds/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
-              refunds: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "created_at" => "created_at-input",
@@ -250,9 +252,10 @@ describe GoCardlessPro::Services::RefundsService do
 
       context "when there is a refund to return" do
         before do
-          stub_request(:get, /.*api.gocardless.com\/refunds\/ID123/).to_return(
+          stub_url = "/refunds/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              refunds: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "created_at" => "created_at-input",
@@ -273,7 +276,8 @@ describe GoCardlessPro::Services::RefundsService do
 
       context "when nothing is returned" do
         before do
-          stub_request(:get, /.*api.gocardless.com\/refunds\/ID123/).to_return(
+          stub_url = "/refunds/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: "",
             headers: { 'Content-Type' => 'application/json' }
           )
@@ -298,9 +302,10 @@ describe GoCardlessPro::Services::RefundsService do
         let(:update_params) { { "hello" => "world" } }
 
         let!(:stub) do
-          stub_request(:put, /.*api.gocardless.com\/refunds\/ABC123/).to_return(
+          stub_url = "/refunds/:identity".gsub(':identity', id)
+          stub_request(:put, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              refunds: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "created_at" => "created_at-input",

@@ -9,6 +9,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
 
   
   
+  
     
 
     
@@ -24,10 +25,10 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/bank_details_lookups/).
+          stub_request(:post, %r(.*api.gocardless.com/bank_details_lookups)).
           with(
             body: {
-              bank_details_lookups: {
+              "<nil>" => {
                 
                 "available_debit_schemes" => "available_debit_schemes-input",
                 "bank_name" => "bank_name-input",
@@ -36,7 +37,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
           ).
           to_return(
             body: {
-              bank_details_lookups: {
+              "<nil>" => {
                 
                 "available_debit_schemes" => "available_debit_schemes-input",
                 "bank_name" => "bank_name-input",
@@ -55,7 +56,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
         let(:new_resource) { {} }
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/bank_details_lookups/).to_return(
+          stub_request(:post, %r(.*api.gocardless.com/bank_details_lookups)).to_return(
             body: {
               error: {
                 type: 'validation_failed',

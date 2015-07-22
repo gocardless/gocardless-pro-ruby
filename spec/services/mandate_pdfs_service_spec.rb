@@ -9,6 +9,7 @@ describe GoCardlessPro::Services::MandatePdfsService do
 
   
   
+  
     
 
     
@@ -24,10 +25,10 @@ describe GoCardlessPro::Services::MandatePdfsService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/mandate_pdfs/).
+          stub_request(:post, %r(.*api.gocardless.com/mandate_pdfs)).
           with(
             body: {
-              mandate_pdfs: {
+              "<nil>" => {
                 
                 "expires_at" => "expires_at-input",
                 "url" => "url-input",
@@ -36,7 +37,7 @@ describe GoCardlessPro::Services::MandatePdfsService do
           ).
           to_return(
             body: {
-              mandate_pdfs: {
+              "<nil>" => {
                 
                 "expires_at" => "expires_at-input",
                 "url" => "url-input",
@@ -55,7 +56,7 @@ describe GoCardlessPro::Services::MandatePdfsService do
         let(:new_resource) { {} }
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/mandate_pdfs/).to_return(
+          stub_request(:post, %r(.*api.gocardless.com/mandate_pdfs)).to_return(
             body: {
               error: {
                 type: 'validation_failed',

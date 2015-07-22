@@ -9,6 +9,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
 
   
   
+  
     
 
     
@@ -39,10 +40,10 @@ describe GoCardlessPro::Services::SubscriptionsService do
         end
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/subscriptions/).
+          stub_request(:post, %r(.*api.gocardless.com/subscriptions)).
           with(
             body: {
-              subscriptions: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -66,7 +67,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
           ).
           to_return(
             body: {
-              subscriptions: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -100,7 +101,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
         let(:new_resource) { {} }
 
         before do
-          stub_request(:post, /.*api.gocardless.com\/subscriptions/).to_return(
+          stub_request(:post, %r(.*api.gocardless.com/subscriptions)).to_return(
             body: {
               error: {
                 type: 'validation_failed',
@@ -130,9 +131,9 @@ describe GoCardlessPro::Services::SubscriptionsService do
         subject(:get_list_response) { client.subscriptions.list }
 
         before do
-          stub_request(:get, /.*api.gocardless.com\/subscriptions/).to_return(
+          stub_request(:get, %r(.*api.gocardless.com/subscriptions)).to_return(
             body: {
-              subscriptions: [{
+              "<nil>" => [{
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -246,9 +247,9 @@ describe GoCardlessPro::Services::SubscriptionsService do
 
     describe "#all" do
       let!(:first_response_stub) do
-        stub_request(:get, /.*api.gocardless.com\/subscriptions$/).to_return(
+        stub_request(:get, %r(.*api.gocardless.com/subscriptions$)).to_return(
           body: {
-            subscriptions: [{
+            "<nil>" => [{
               
               "amount" => "amount-input",
               "count" => "count-input",
@@ -278,9 +279,9 @@ describe GoCardlessPro::Services::SubscriptionsService do
       end
 
       let!(:second_response_stub) do
-        stub_request(:get, /.*api.gocardless.com\/subscriptions\?after=AB345/).to_return(
+        stub_request(:get, %r(.*api.gocardless.com/subscriptions\?after=AB345)).to_return(
           body: {
-            subscriptions: [{
+            "<nil>" => [{
               
               "amount" => "amount-input",
               "count" => "count-input",
@@ -328,11 +329,12 @@ describe GoCardlessPro::Services::SubscriptionsService do
 
       context "passing in a custom header" do
         let!(:stub) do
-          stub_request(:get, /.*api.gocardless.com\/subscriptions\/ID123/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+          stub_url = "/subscriptions/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
-              subscriptions: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -371,9 +373,10 @@ describe GoCardlessPro::Services::SubscriptionsService do
 
       context "when there is a subscription to return" do
         before do
-          stub_request(:get, /.*api.gocardless.com\/subscriptions\/ID123/).to_return(
+          stub_url = "/subscriptions/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              subscriptions: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -405,7 +408,8 @@ describe GoCardlessPro::Services::SubscriptionsService do
 
       context "when nothing is returned" do
         before do
-          stub_request(:get, /.*api.gocardless.com\/subscriptions\/ID123/).to_return(
+          stub_url = "/subscriptions/:identity".gsub(':identity', id)
+          stub_request(:get, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: "",
             headers: { 'Content-Type' => 'application/json' }
           )
@@ -430,9 +434,10 @@ describe GoCardlessPro::Services::SubscriptionsService do
         let(:update_params) { { "hello" => "world" } }
 
         let!(:stub) do
-          stub_request(:put, /.*api.gocardless.com\/subscriptions\/ABC123/).to_return(
+          stub_url = "/subscriptions/:identity".gsub(':identity', id)
+          stub_request(:put, %r(.*api.gocardless.com#{stub_url})).to_return(
             body: {
-              subscriptions: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
@@ -478,9 +483,9 @@ describe GoCardlessPro::Services::SubscriptionsService do
       let!(:stub) do
         # /subscriptions/%v/actions/cancel
         stub_url = "/subscriptions/:identity/actions/cancel".gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        stub_request(:post, %r(.*api.gocardless.com#{stub_url})).to_return(
           body: {
-            subscriptions: {
+            "<nil>" => {
               
               "amount" => "amount-input",
               "count" => "count-input",
@@ -522,13 +527,13 @@ describe GoCardlessPro::Services::SubscriptionsService do
         let!(:stub) do
           # /subscriptions/%v/actions/cancel
           stub_url = "/subscriptions/:identity/actions/cancel".gsub(':identity', resource_id)
-          stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          stub_request(:post, %r(.*api.gocardless.com#{stub_url})).
           with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              subscriptions: {
+              "<nil>" => {
                 
                 "amount" => "amount-input",
                 "count" => "count-input",
