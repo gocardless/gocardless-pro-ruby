@@ -74,4 +74,7 @@ require_relative 'gocardless_pro/services/refunds_service'
 require_relative 'gocardless_pro/resources/subscription'
 require_relative 'gocardless_pro/services/subscriptions_service'
 
+require_relative 'gocardless_pro/resources/whitelabel_partner_request'
+require_relative 'gocardless_pro/services/whitelabel_partner_requests_service'
+
 require_relative 'gocardless_pro/client.rb'

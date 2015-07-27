@@ -68,6 +68,11 @@ module GoCardlessPro
       @subscriptions ||= Services::SubscriptionsService.new(@api_service)
     end
 
+    # Access to the service for whitelabel_partner_request to make API calls
+    def whitelabel_partner_requests
+      @whitelabel_partner_requests ||= Services::WhitelabelPartnerRequestsService.new(@api_service)
+    end
+
     # Get a Client configured to use HTTP Basic authentication with the GC Api
     #
     # @param options [Hash<Symbol,String>] configuration for creating the client
