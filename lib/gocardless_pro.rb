@@ -59,9 +59,6 @@ require_relative 'gocardless_pro/services/mandates_service'
 require_relative 'gocardless_pro/resources/mandate_pdf'
 require_relative 'gocardless_pro/services/mandate_pdfs_service'
 
-require_relative 'gocardless_pro/resources/own_sun_request'
-require_relative 'gocardless_pro/services/own_sun_requests_service'
-
 require_relative 'gocardless_pro/resources/payment'
 require_relative 'gocardless_pro/services/payments_service'
 
@@ -76,8 +73,5 @@ require_relative 'gocardless_pro/services/refunds_service'
 
 require_relative 'gocardless_pro/resources/subscription'
 require_relative 'gocardless_pro/services/subscriptions_service'
-
-require_relative 'gocardless_pro/resources/whitelabel_partner_request'
-require_relative 'gocardless_pro/services/whitelabel_partner_requests_service'
 
 require_relative 'gocardless_pro/client.rb'

@@ -43,11 +43,6 @@ module GoCardlessPro
       @mandate_pdfs ||= Services::MandatePdfsService.new(@api_service)
     end
 
-    # Access to the service for own_sun_request to make API calls
-    def own_sun_requests
-      @own_sun_requests ||= Services::OwnSunRequestsService.new(@api_service)
-    end
-
     # Access to the service for payment to make API calls
     def payments
       @payments ||= Services::PaymentsService.new(@api_service)
@@ -71,11 +66,6 @@ module GoCardlessPro
     # Access to the service for subscription to make API calls
     def subscriptions
       @subscriptions ||= Services::SubscriptionsService.new(@api_service)
-    end
-
-    # Access to the service for whitelabel_partner_request to make API calls
-    def whitelabel_partner_requests
-      @whitelabel_partner_requests ||= Services::WhitelabelPartnerRequestsService.new(@api_service)
     end
 
     # Get a Client configured to use HTTP Basic authentication with the GC Api
