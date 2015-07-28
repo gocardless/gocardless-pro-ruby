@@ -59,6 +59,9 @@ require_relative 'gocardless_pro/services/mandates_service'
 require_relative 'gocardless_pro/resources/mandate_pdf'
 require_relative 'gocardless_pro/services/mandate_pdfs_service'
 
+require_relative 'gocardless_pro/resources/own_sun_request'
+require_relative 'gocardless_pro/services/own_sun_requests_service'
+
 require_relative 'gocardless_pro/resources/payment'
 require_relative 'gocardless_pro/services/payments_service'
 

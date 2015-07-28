@@ -8,16 +8,15 @@ require_relative './base_service'
 
 module GoCardlessPro
   module Services
-    # Service for making requests to the WhitelabelPartnerRequest endpoints
-    class WhitelabelPartnerRequestsService < BaseService
-      # Returns an error if the organisation is already a whitelabel partner.
-      # Otherwise, in sandbox this will convert the organisation to a whitelabel
-      # partner, or in live it will send an email to GoCardless team members
-      # requesting the upgrade.
-      # Example URL: /whitelabel_partner_requests
+    # Service for making requests to the OwnSunRequest endpoints
+    class OwnSunRequestsService < BaseService
+      # Sends an email to GoCardless team members requesting a SUN for the
+      # organisation, unless this is the live environment and the organisation already
+      # has its own SUN.
+      # Example URL: /own_sun_requests
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
-        path = '/whitelabel_partner_requests'
+        path = '/own_sun_requests'
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -25,7 +24,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
-        Resources::WhitelabelPartnerRequest.new(unenvelope_body(response.body), response)
+        Resources::OwnSunRequest.new(unenvelope_body(response.body), response)
       end
 
       # Unenvelope the response of the body using the service's `envelope_key`
@@ -39,7 +38,7 @@ module GoCardlessPro
 
       # return the key which API responses will envelope data under
       def envelope_key
-        'whitelabel_partner_requests'
+        'own_sun_request'
       end
 
       # take a URL with placeholder params and substitute them out for the acutal value

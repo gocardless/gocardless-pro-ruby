@@ -43,6 +43,11 @@ module GoCardlessPro
       @mandate_pdfs ||= Services::MandatePdfsService.new(@api_service)
     end
 
+    # Access to the service for own_sun_request to make API calls
+    def own_sun_requests
+      @own_sun_requests ||= Services::OwnSunRequestsService.new(@api_service)
+    end
+
     # Access to the service for payment to make API calls
     def payments
       @payments ||= Services::PaymentsService.new(@api_service)
