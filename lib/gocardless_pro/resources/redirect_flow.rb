@@ -85,6 +85,10 @@ module GoCardlessPro
 
             creditor: '',
 
+            customer: '',
+
+            customer_bank_account: '',
+
             mandate: ''
 
           }.keys.sort
