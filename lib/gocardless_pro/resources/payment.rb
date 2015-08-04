@@ -64,6 +64,9 @@ module GoCardlessPro
 
       # return the links that the resource has
       def links
+        valid_link_keys = %w(creditor mandate payout subscription )
+        valid_links = @links.select { |key, _| valid_link_keys.include?(key) }
+
         Struct.new(
           *{
 
@@ -76,7 +79,7 @@ module GoCardlessPro
             subscription: ''
 
           }.keys.sort
-        ).new(*@links.sort.map(&:last))
+        ).new(*valid_links.sort.map(&:last))
       end
 
       # Provides the resource as a hash of all it's readable attributes
