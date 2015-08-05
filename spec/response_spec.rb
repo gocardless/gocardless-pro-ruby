@@ -73,7 +73,21 @@ describe GoCardlessPro::Response do
     end
   end
 
-  context "when the resonse is an invalid invalid state error" do
+  context "when the response isn't JSON" do
+    let(:raw_response) do
+      double("response",
+        headers: {},
+        status: 400,
+        body: '',
+      )
+    end
+
+    it "raises an ApiError" do
+      expect { response.body }.to raise_error(GoCardlessPro::ApiError)
+    end
+  end
+
+  context "when the response is an invalid state error" do
     let(:raw_response) do
       double("response",
         headers: default_headers,
