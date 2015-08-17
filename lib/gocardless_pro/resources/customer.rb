@@ -39,6 +39,8 @@ module GoCardlessPro
 
       attr_reader :id
 
+      attr_reader :language
+
       attr_reader :metadata
 
       attr_reader :postal_code
@@ -60,6 +62,7 @@ module GoCardlessPro
         @family_name = object['family_name']
         @given_name = object['given_name']
         @id = object['id']
+        @language = object['language']
         @metadata = object['metadata']
         @postal_code = object['postal_code']
         @region = object['region']

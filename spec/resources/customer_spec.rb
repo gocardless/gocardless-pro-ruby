@@ -50,6 +50,10 @@ describe GoCardlessPro::Resources::Customer do
         
       
         
+          "language" => "language-input",
+        
+      
+        
           "metadata" => "metadata-input",
         
       
@@ -109,6 +113,10 @@ describe GoCardlessPro::Resources::Customer do
        
        
        expect(resource.id).to eq("id-input")
+       
+       
+       
+       expect(resource.language).to eq("language-input")
        
        
        

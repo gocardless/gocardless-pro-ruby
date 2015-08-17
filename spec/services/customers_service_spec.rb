@@ -30,6 +30,7 @@ describe GoCardlessPro::Services::CustomersService do
           "family_name" => "family_name-input",
           "given_name" => "given_name-input",
           "id" => "id-input",
+          "language" => "language-input",
           "metadata" => "metadata-input",
           "postal_code" => "postal_code-input",
           "region" => "region-input",
@@ -53,6 +54,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "family_name" => "family_name-input",
                 "given_name" => "given_name-input",
                 "id" => "id-input",
+                "language" => "language-input",
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
@@ -74,6 +76,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "family_name" => "family_name-input",
                 "given_name" => "given_name-input",
                 "id" => "id-input",
+                "language" => "language-input",
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
@@ -137,6 +140,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "family_name" => "family_name-input",
                 "given_name" => "given_name-input",
                 "id" => "id-input",
+                "language" => "language-input",
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
@@ -201,6 +205,10 @@ describe GoCardlessPro::Services::CustomersService do
           
           
           
+          expect(get_list_response.records.first.language).to eq("language-input")
+          
+          
+          
           expect(get_list_response.records.first.metadata).to eq("metadata-input")
           
           
@@ -240,6 +248,7 @@ describe GoCardlessPro::Services::CustomersService do
               "family_name" => "family_name-input",
               "given_name" => "given_name-input",
               "id" => "id-input",
+              "language" => "language-input",
               "metadata" => "metadata-input",
               "postal_code" => "postal_code-input",
               "region" => "region-input",
@@ -269,6 +278,7 @@ describe GoCardlessPro::Services::CustomersService do
               "family_name" => "family_name-input",
               "given_name" => "given_name-input",
               "id" => "id-input",
+              "language" => "language-input",
               "metadata" => "metadata-input",
               "postal_code" => "postal_code-input",
               "region" => "region-input",
@@ -319,6 +329,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "family_name" => "family_name-input",
                 "given_name" => "given_name-input",
                 "id" => "id-input",
+                "language" => "language-input",
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
@@ -358,6 +369,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "family_name" => "family_name-input",
                 "given_name" => "given_name-input",
                 "id" => "id-input",
+                "language" => "language-input",
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
@@ -416,6 +428,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "family_name" => "family_name-input",
                 "given_name" => "given_name-input",
                 "id" => "id-input",
+                "language" => "language-input",
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
