@@ -68,15 +68,22 @@ module GoCardlessPro
         valid_link_keys = %w(default_eur_payout_account default_gbp_payout_account )
         valid_links = @links.select { |key, _| valid_link_keys.include?(key) }
 
-        Struct.new(
+        links_class = Struct.new(
           *{
 
             default_eur_payout_account: '',
 
             default_gbp_payout_account: ''
 
-          }.keys.sort
-        ).new(*valid_links.sort.map(&:last))
+          }.keys
+        ) do
+          def initialize(hash)
+            hash.each do |key, val|
+              send("#{key}=", val)
+            end
+          end
+        end
+        links_class.new(valid_links)
       end
 
       # Provides the resource as a hash of all it's readable attributes
