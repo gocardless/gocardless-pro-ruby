@@ -16,16 +16,16 @@ module GoCardlessPro
       # ways to supply bank account details:
       #
       # - [Local
-      # details](#ui-local-bank-details)
+      # details](#appendix-local-bank-details)
       #
       # - IBAN
       #
-      # - [Customer Bank Account
-      # Tokens](#js-flow-create-a-customer-bank-account-token)
+      # - [Customer Bank
+      # Account Tokens](#js-flow-create-a-customer-bank-account-token)
       #
       # For more
       # information on the different fields required in each country, see [local bank
-      # details](#ui-local-bank-details).
+      # details](#appendix-local-bank-details).
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
