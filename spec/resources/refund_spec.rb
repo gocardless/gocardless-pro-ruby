@@ -33,6 +33,10 @@ describe GoCardlessPro::Resources::Refund do
           "metadata" => "metadata-input",
         
       
+        
+          "reference" => "reference-input",
+        
+      
       }
     end
 
@@ -63,6 +67,10 @@ describe GoCardlessPro::Resources::Refund do
        
        
        expect(resource.metadata).to eq("metadata-input")
+       
+       
+       
+       expect(resource.reference).to eq("reference-input")
        
        
     end

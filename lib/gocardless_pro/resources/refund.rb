@@ -33,6 +33,8 @@ module GoCardlessPro
       attr_reader :id
 
       attr_reader :metadata
+
+      attr_reader :reference
       # initialize a resource instance
       # @param object [Hash] an object returned from the API
       def initialize(object, response = nil)
@@ -44,6 +46,7 @@ module GoCardlessPro
         @id = object['id']
         @links = object['links']
         @metadata = object['metadata']
+        @reference = object['reference']
         @response = response
       end
 
