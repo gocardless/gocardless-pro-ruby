@@ -65,7 +65,7 @@ module GoCardlessPro
 
       # return the links that the resource has
       def links
-        valid_link_keys = %w(default_eur_payout_account default_gbp_payout_account )
+        valid_link_keys = %w(default_eur_payout_account default_gbp_payout_account default_sek_payout_account )
         valid_links = @links.select { |key, _| valid_link_keys.include?(key) }
 
         links_class = Struct.new(
@@ -73,7 +73,9 @@ module GoCardlessPro
 
             default_eur_payout_account: '',
 
-            default_gbp_payout_account: ''
+            default_gbp_payout_account: '',
+
+            default_sek_payout_account: ''
 
           }.keys
         ) do

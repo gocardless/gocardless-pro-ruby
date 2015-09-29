@@ -14,6 +14,10 @@ describe GoCardlessPro::Resources::Payment do
         
       
         
+          "app_fee" => "app_fee-input",
+        
+      
+        
           "charge_date" => "charge_date-input",
         
       
@@ -71,6 +75,10 @@ describe GoCardlessPro::Resources::Payment do
        
        
        expect(resource.amount_refunded).to eq("amount_refunded-input")
+       
+       
+       
+       expect(resource.app_fee).to eq("app_fee-input")
        
        
        

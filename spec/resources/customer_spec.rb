@@ -65,6 +65,10 @@ describe GoCardlessPro::Resources::Customer do
           "region" => "region-input",
         
       
+        
+          "swedish_identity_number" => "swedish_identity_number-input",
+        
+      
       }
     end
 
@@ -129,6 +133,10 @@ describe GoCardlessPro::Resources::Customer do
        
        
        expect(resource.region).to eq("region-input")
+       
+       
+       
+       expect(resource.swedish_identity_number).to eq("swedish_identity_number-input")
        
        
     end

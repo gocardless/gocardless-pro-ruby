@@ -34,6 +34,7 @@ describe GoCardlessPro::Services::CustomersService do
           "metadata" => "metadata-input",
           "postal_code" => "postal_code-input",
           "region" => "region-input",
+          "swedish_identity_number" => "swedish_identity_number-input",
           }
         end
 
@@ -58,6 +59,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
+                "swedish_identity_number" => "swedish_identity_number-input",
                 }
             }
           ).
@@ -80,6 +82,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
+                "swedish_identity_number" => "swedish_identity_number-input",
                 }
             }.to_json,
             :headers => {'Content-Type' => 'application/json'}
@@ -144,6 +147,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
+                "swedish_identity_number" => "swedish_identity_number-input",
                 }],
                 meta: {
                   cursors: {
@@ -220,6 +224,10 @@ describe GoCardlessPro::Services::CustomersService do
           expect(get_list_response.records.first.region).to eq("region-input")
           
           
+          
+          expect(get_list_response.records.first.swedish_identity_number).to eq("swedish_identity_number-input")
+          
+          
         end
 
         it "exposes the cursors for before and after" do
@@ -252,6 +260,7 @@ describe GoCardlessPro::Services::CustomersService do
               "metadata" => "metadata-input",
               "postal_code" => "postal_code-input",
               "region" => "region-input",
+              "swedish_identity_number" => "swedish_identity_number-input",
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -282,6 +291,7 @@ describe GoCardlessPro::Services::CustomersService do
               "metadata" => "metadata-input",
               "postal_code" => "postal_code-input",
               "region" => "region-input",
+              "swedish_identity_number" => "swedish_identity_number-input",
             }],
             meta: {
               limit: 2,
@@ -333,6 +343,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
+                "swedish_identity_number" => "swedish_identity_number-input",
               }
             }.to_json,
             :headers => {'Content-Type' => 'application/json'}
@@ -373,6 +384,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
+                "swedish_identity_number" => "swedish_identity_number-input",
               }
             }.to_json,
             :headers => {'Content-Type' => 'application/json'}
@@ -432,6 +444,7 @@ describe GoCardlessPro::Services::CustomersService do
                 "metadata" => "metadata-input",
                 "postal_code" => "postal_code-input",
                 "region" => "region-input",
+                "swedish_identity_number" => "swedish_identity_number-input",
               }
             }.to_json,
             :headers => {'Content-Type' => 'application/json'}

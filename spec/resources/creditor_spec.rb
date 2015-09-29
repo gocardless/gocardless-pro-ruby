@@ -40,6 +40,8 @@ describe GoCardlessPro::Resources::Creditor do
           
             "default_gbp_payout_account" => "default_gbp_payout_account-input",
           
+            "default_sek_payout_account" => "default_sek_payout_account-input",
+          
         },
         
       
@@ -94,6 +96,8 @@ describe GoCardlessPro::Resources::Creditor do
            expect(resource.links.default_eur_payout_account).to eq("default_eur_payout_account-input")
          
            expect(resource.links.default_gbp_payout_account).to eq("default_gbp_payout_account-input")
+         
+           expect(resource.links.default_sek_payout_account).to eq("default_sek_payout_account-input")
          
        
        

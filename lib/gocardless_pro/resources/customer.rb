@@ -15,6 +15,11 @@ module GoCardlessPro
     # have several [customer bank
     # accounts](#core-endpoints-customer-bank-accounts), which in turn can have
     # several Direct Debit [mandates](#core-endpoints-mandates).
+    #
+    # Note:
+    # the `swedish_identity_number` field may only be supplied for Swedish
+    # customers, and must be supplied if you intend to set up an Autogiro mandate
+    # with the customer.
     # Represents an instance of a customer resource returned from the API
     class Customer
       attr_reader :address_line1
@@ -46,6 +51,8 @@ module GoCardlessPro
       attr_reader :postal_code
 
       attr_reader :region
+
+      attr_reader :swedish_identity_number
       # initialize a resource instance
       # @param object [Hash] an object returned from the API
       def initialize(object, response = nil)
@@ -66,6 +73,7 @@ module GoCardlessPro
         @metadata = object['metadata']
         @postal_code = object['postal_code']
         @region = object['region']
+        @swedish_identity_number = object['swedish_identity_number']
         @response = response
       end
 
