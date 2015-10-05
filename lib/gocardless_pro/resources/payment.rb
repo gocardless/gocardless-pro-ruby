@@ -24,8 +24,6 @@ module GoCardlessPro
 
       attr_reader :amount_refunded
 
-      attr_reader :app_fee
-
       attr_reader :charge_date
 
       attr_reader :created_at
@@ -48,7 +46,6 @@ module GoCardlessPro
 
         @amount = object['amount']
         @amount_refunded = object['amount_refunded']
-        @app_fee = object['app_fee']
         @charge_date = object['charge_date']
         @created_at = object['created_at']
         @currency = object['currency']
