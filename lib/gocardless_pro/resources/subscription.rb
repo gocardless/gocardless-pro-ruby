@@ -142,7 +142,7 @@ module GoCardlessPro
       # return the links that the resource has
       def links
         valid_link_keys = %w(mandate )
-        valid_links = @links.select { |key, _| valid_link_keys.include?(key) }
+        valid_links = (@links || {}).select { |key, _| valid_link_keys.include?(key) }
 
         links_class = Struct.new(
           *{
