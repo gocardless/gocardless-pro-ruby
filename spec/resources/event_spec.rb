@@ -113,6 +113,11 @@ describe GoCardlessPro::Resources::Event do
       data["links"]["foo"] = "bar"
       expect { described_class.new(data) }.to_not raise_error
     end
+
+    it "can handle a nil links value" do
+      data["links"] = nil
+      expect { described_class.new(data).links }.to_not raise_error
+    end
     
 
     describe "#to_h" do
@@ -122,4 +127,3 @@ describe GoCardlessPro::Resources::Event do
     end
   end
 end
-

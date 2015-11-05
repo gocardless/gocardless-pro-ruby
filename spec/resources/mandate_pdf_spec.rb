@@ -43,4 +43,3 @@ describe GoCardlessPro::Resources::MandatePdf do
     end
   end
 end
-

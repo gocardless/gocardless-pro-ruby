@@ -51,4 +51,3 @@ describe GoCardlessPro::Resources::BankDetailsLookup do
     end
   end
 end
-

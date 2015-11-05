@@ -155,4 +155,3 @@ describe GoCardlessPro::Resources::Customer do
     end
   end
 end
-
