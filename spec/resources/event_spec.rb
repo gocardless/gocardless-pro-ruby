@@ -28,6 +28,8 @@ describe GoCardlessPro::Resources::Event do
           
             "new_customer_bank_account" => "new_customer_bank_account-input",
           
+            "organisation" => "organisation-input",
+          
             "parent_event" => "parent_event-input",
           
             "payment" => "payment-input",
@@ -78,6 +80,8 @@ describe GoCardlessPro::Resources::Event do
            expect(resource.links.mandate).to eq("mandate-input")
          
            expect(resource.links.new_customer_bank_account).to eq("new_customer_bank_account-input")
+         
+           expect(resource.links.organisation).to eq("organisation-input")
          
            expect(resource.links.parent_event).to eq("parent_event-input")
          
