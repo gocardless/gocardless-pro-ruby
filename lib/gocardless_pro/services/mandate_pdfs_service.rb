@@ -21,7 +21,7 @@ module GoCardlessPro
       # header to the relevant [ISO
       # 639-1](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes#Partial_ISO_639_table)
       # language code. Supported languages are Dutch, English, French, German,
-      # Italian, Portuguese and Spanish.
+      # Italian, Portuguese, Spanish and Swedish.
       # Example URL: /mandate_pdfs
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
