@@ -51,7 +51,7 @@ If you need to pass any options, the last (or in the absence of URL params, the 
 A call to `list` returns an instance of `GoCardlessPro::ListResponse`. You can call `records` on this to iterate through results:
 
 ```rb
-@client.customers.list.records do |customer|
+@client.customers.list.records.each do |customer|
   p customer.given_name
 end
 ```
