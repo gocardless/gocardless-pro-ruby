@@ -2,13 +2,13 @@ require 'spec_helper'
 require 'json'
 
 describe GoCardlessPro::ApiResponse do
-  describe "wrapping a Faraday response" do
+  describe 'wrapping a Faraday response' do
     let(:content_type) { 'application/json' }
 
     let(:stubbed) do
       Faraday::Adapter::Test::Stubs.new do |stub|
-        stub.get('/testing') do |env|
-          [200, { 'Content-Type' => content_type}, { test: true }.to_json]
+        stub.get('/testing') do |_env|
+          [200, { 'Content-Type' => content_type }, { test: true }.to_json]
         end
       end
     end
@@ -23,6 +23,6 @@ describe GoCardlessPro::ApiResponse do
     specify do
       expect(api_response.headers).to eql('Content-Type' => content_type)
     end
-    specify { expect(api_response.body).to eql("test" => true) }
+    specify { expect(api_response.body).to eql('test' => true) }
   end
 end

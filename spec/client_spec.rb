@@ -10,10 +10,10 @@ describe GoCardlessPro::Client do
     }
   end
 
-  context "when initialised without an Access Token" do
+  context 'when initialised without an Access Token' do
     let(:environment) { :live }
     let(:token) { nil }
 
-    it { is_expected.to raise_error("No Access Token given to GoCardless Client") }
+    it { is_expected.to raise_error('No Access Token given to GoCardless Client') }
   end
 end
