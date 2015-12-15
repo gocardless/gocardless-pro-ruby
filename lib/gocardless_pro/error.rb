@@ -19,6 +19,8 @@ module GoCardlessPro
       @error['message']
     end
 
+    alias_method :to_s, :message
+
     # access the type from the response
     def type
       @error['type']

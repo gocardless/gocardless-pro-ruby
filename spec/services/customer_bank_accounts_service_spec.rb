@@ -385,7 +385,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
     describe "#disable" do
       
       
-        subject(:post_response) { client.customer_bank_accounts.disable(resource_id) }
+      subject(:post_response) { client.customer_bank_accounts.disable(resource_id) }
       
       let(:resource_id) { "ABC123" }
 
@@ -420,9 +420,9 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
 
       context "when the request needs a body and custom header" do
         
-          let(:body) { { foo: 'bar' } }
-          let(:headers) { { 'Foo' => 'Bar' } }
-          subject(:post_response) { client.customer_bank_accounts.disable(resource_id, body, headers) }
+        let(:body) { { foo: 'bar' } }
+        let(:headers) { { 'Foo' => 'Bar' } }
+        subject(:post_response) { client.customer_bank_accounts.disable(resource_id, body, headers) }
         
         let(:resource_id) { "ABC123" }
 

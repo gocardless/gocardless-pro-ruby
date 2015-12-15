@@ -398,7 +398,7 @@ describe GoCardlessPro::Services::PaymentsService do
     describe "#cancel" do
       
       
-        subject(:post_response) { client.payments.cancel(resource_id) }
+      subject(:post_response) { client.payments.cancel(resource_id) }
       
       let(:resource_id) { "ABC123" }
 
@@ -434,9 +434,9 @@ describe GoCardlessPro::Services::PaymentsService do
 
       context "when the request needs a body and custom header" do
         
-          let(:body) { { foo: 'bar' } }
-          let(:headers) { { 'Foo' => 'Bar' } }
-          subject(:post_response) { client.payments.cancel(resource_id, body, headers) }
+        let(:body) { { foo: 'bar' } }
+        let(:headers) { { 'Foo' => 'Bar' } }
+        subject(:post_response) { client.payments.cancel(resource_id, body, headers) }
         
         let(:resource_id) { "ABC123" }
 
@@ -477,7 +477,7 @@ describe GoCardlessPro::Services::PaymentsService do
     describe "#retry" do
       
       
-        subject(:post_response) { client.payments.retry(resource_id) }
+      subject(:post_response) { client.payments.retry(resource_id) }
       
       let(:resource_id) { "ABC123" }
 
@@ -513,9 +513,9 @@ describe GoCardlessPro::Services::PaymentsService do
 
       context "when the request needs a body and custom header" do
         
-          let(:body) { { foo: 'bar' } }
-          let(:headers) { { 'Foo' => 'Bar' } }
-          subject(:post_response) { client.payments.retry(resource_id, body, headers) }
+        let(:body) { { foo: 'bar' } }
+        let(:headers) { { 'Foo' => 'Bar' } }
+        subject(:post_response) { client.payments.retry(resource_id, body, headers) }
         
         let(:resource_id) { "ABC123" }
 

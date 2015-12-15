@@ -359,7 +359,7 @@ describe GoCardlessPro::Services::MandatesService do
     describe "#cancel" do
       
       
-        subject(:post_response) { client.mandates.cancel(resource_id) }
+      subject(:post_response) { client.mandates.cancel(resource_id) }
       
       let(:resource_id) { "ABC123" }
 
@@ -392,9 +392,9 @@ describe GoCardlessPro::Services::MandatesService do
 
       context "when the request needs a body and custom header" do
         
-          let(:body) { { foo: 'bar' } }
-          let(:headers) { { 'Foo' => 'Bar' } }
-          subject(:post_response) { client.mandates.cancel(resource_id, body, headers) }
+        let(:body) { { foo: 'bar' } }
+        let(:headers) { { 'Foo' => 'Bar' } }
+        subject(:post_response) { client.mandates.cancel(resource_id, body, headers) }
         
         let(:resource_id) { "ABC123" }
 
@@ -432,7 +432,7 @@ describe GoCardlessPro::Services::MandatesService do
     describe "#reinstate" do
       
       
-        subject(:post_response) { client.mandates.reinstate(resource_id) }
+      subject(:post_response) { client.mandates.reinstate(resource_id) }
       
       let(:resource_id) { "ABC123" }
 
@@ -465,9 +465,9 @@ describe GoCardlessPro::Services::MandatesService do
 
       context "when the request needs a body and custom header" do
         
-          let(:body) { { foo: 'bar' } }
-          let(:headers) { { 'Foo' => 'Bar' } }
-          subject(:post_response) { client.mandates.reinstate(resource_id, body, headers) }
+        let(:body) { { foo: 'bar' } }
+        let(:headers) { { 'Foo' => 'Bar' } }
+        subject(:post_response) { client.mandates.reinstate(resource_id, body, headers) }
         
         let(:resource_id) { "ABC123" }
 

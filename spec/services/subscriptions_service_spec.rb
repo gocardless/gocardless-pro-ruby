@@ -476,7 +476,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
     describe "#cancel" do
       
       
-        subject(:post_response) { client.subscriptions.cancel(resource_id) }
+      subject(:post_response) { client.subscriptions.cancel(resource_id) }
       
       let(:resource_id) { "ABC123" }
 
@@ -518,9 +518,9 @@ describe GoCardlessPro::Services::SubscriptionsService do
 
       context "when the request needs a body and custom header" do
         
-          let(:body) { { foo: 'bar' } }
-          let(:headers) { { 'Foo' => 'Bar' } }
-          subject(:post_response) { client.subscriptions.cancel(resource_id, body, headers) }
+        let(:body) { { foo: 'bar' } }
+        let(:headers) { { 'Foo' => 'Bar' } }
+        subject(:post_response) { client.subscriptions.cancel(resource_id, body, headers) }
         
         let(:resource_id) { "ABC123" }
 

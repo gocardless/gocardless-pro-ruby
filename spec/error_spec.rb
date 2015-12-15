@@ -27,6 +27,7 @@ describe GoCardlessPro::Error do
   end
 
   specify { expect(error.message).to eq("Validation failed") }
+  specify { expect(error.to_s).to eq("Validation failed") }
   specify { expect(error.type).to eq("validation_failed") }
   specify { expect(error.code).to eq(422) }
   specify { expect(error.request_id).to eq("dd50eaaf-8213-48fe-90d6-5466872efbc4") }
