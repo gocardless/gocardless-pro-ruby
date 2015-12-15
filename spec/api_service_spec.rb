@@ -46,13 +46,13 @@ describe GoCardlessPro::ApiService do
                headers: { 'Foo' => 'Bar' }
              )
 
-      service.make_request(:post, '/customers',         params: {
+      service.make_request(:post, '/customers', params: {
                              given_name: 'Jack',
                              family_name: 'Franklin'
                            },
-                                                        headers: {
-                                                          'Foo' => 'Bar'
-                                                        })
+                                                headers: {
+                                                  'Foo' => 'Bar'
+                                                })
       expect(stub).to have_been_requested
     end
   end

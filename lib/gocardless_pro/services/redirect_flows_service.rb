@@ -32,7 +32,7 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "RE".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/redirect_flows/:identity',           'identity' => identity)
+        path = sub_url('/redirect_flows/:identity', 'identity' => identity)
 
         response = make_request(:get, path, options)
 
@@ -56,7 +56,7 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "RE".
       # @param options [Hash] parameters as a hash, under a params key.
       def complete(identity, options = {})
-        path = sub_url('/redirect_flows/:identity/actions/complete',           'identity' => identity)
+        path = sub_url('/redirect_flows/:identity/actions/complete', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}

@@ -65,7 +65,7 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/payments/:identity',           'identity' => identity)
+        path = sub_url('/payments/:identity', 'identity' => identity)
 
         response = make_request(:get, path, options)
 
@@ -79,7 +79,7 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
-        path = sub_url('/payments/:identity',           'identity' => identity)
+        path = sub_url('/payments/:identity', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -101,7 +101,7 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
-        path = sub_url('/payments/:identity/actions/cancel',           'identity' => identity)
+        path = sub_url('/payments/:identity/actions/cancel', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -129,7 +129,7 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def retry(identity, options = {})
-        path = sub_url('/payments/:identity/actions/retry',           'identity' => identity)
+        path = sub_url('/payments/:identity/actions/retry', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}

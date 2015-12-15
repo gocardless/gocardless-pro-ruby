@@ -59,7 +59,7 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/subscriptions/:identity',           'identity' => identity)
+        path = sub_url('/subscriptions/:identity', 'identity' => identity)
 
         response = make_request(:get, path, options)
 
@@ -73,7 +73,7 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
-        path = sub_url('/subscriptions/:identity',           'identity' => identity)
+        path = sub_url('/subscriptions/:identity', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -95,7 +95,7 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
-        path = sub_url('/subscriptions/:identity/actions/cancel',           'identity' => identity)
+        path = sub_url('/subscriptions/:identity/actions/cancel', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}

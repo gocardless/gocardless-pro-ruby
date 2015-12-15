@@ -125,7 +125,7 @@ module GoCardlessPro
         begin
           gem_name = 'gocardless_pro'
           gem_info = "#{gem_name}"
-          gem_info += "/v#{ GoCardlessPro::VERSION}" if defined?(GoCardlessPro::VERSION)
+          gem_info += "/v#{GoCardlessPro::VERSION}" if defined?(GoCardlessPro::VERSION)
 
           ruby_engine = defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'
 

@@ -43,7 +43,7 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "EV".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/events/:identity',           'identity' => identity)
+        path = sub_url('/events/:identity', 'identity' => identity)
 
         response = make_request(:get, path, options)
 
