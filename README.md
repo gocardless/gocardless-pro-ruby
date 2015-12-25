@@ -3,6 +3,11 @@
 - [GoCardless Pro API Docs](https://developer.gocardless.com/pro/)
 - [RubyGems](https://rubygems.org/gems/gocardless_pro)
 
+[![Gem Version](https://badge.fury.io/rb/statesman.png)](http://badge.fury.io/rb/gocardless_pro)
+[![Build Status](https://travis-ci.org/gocardless/gocardless-pro-ruby.svg?branch=master)](https://travis-ci.org/gocardless/gocardless-pro-ruby)
+
+## Installation
+
 Add this line to your application's Gemfile:
 
 ```ruby
