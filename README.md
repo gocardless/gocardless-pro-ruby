@@ -1,12 +1,17 @@
-# Ruby Client for GoCardless Pro API
+# Ruby Client for the GoCardless Pro API
 
-- [GoCardless Pro API Docs](https://developer.gocardless.com/pro/)
-- [RubyGems](https://rubygems.org/gems/gocardless_pro)
+A Ruby client for the GoCardless Pro API. For full details of the GoCardless Pro API, see the [API docs](https://developer.gocardless.com/pro/).
 
 [![Gem Version](https://badge.fury.io/rb/statesman.png)](http://badge.fury.io/rb/gocardless_pro)
 [![Build Status](https://travis-ci.org/gocardless/gocardless-pro-ruby.svg?branch=master)](https://travis-ci.org/gocardless/gocardless-pro-ruby)
 
-## Installation
+
+## Usage Examples
+
+This README will use `customers` throughout but each of the resources in the
+[API](https://developer.gocardless.com/pro/) is available in this library.
+
+### Installation
 
 Add this line to your application's Gemfile:
 
@@ -20,16 +25,11 @@ And then load it into your application:
 require 'gocardless_pro'
 ```
 
-## Usage Examples
-
-- In the case of a single response, the client will return you an instance of the resource
-- In the case of a list response, the client will return an instance of `ListResponse`
-- You can also call `#all` to get a lazily paginated list of resource that will deal with making extra API requests to paginate through all the data
-
 ### Initialising the client
 
 The client is initialised with an Access Token.
-You can also pass in `environment` as `:sandbox` to make requests to the sandbox environment rather than production.
+You can also pass in `environment` as `:sandbox` to make requests to the sandbox
+environment rather than production.
 
 ```rb
 @client = GoCardlessPro::Client.new(
@@ -39,18 +39,29 @@ You can also pass in `environment` as `:sandbox` to make requests to the sandbox
 
 ### GET requests
 
-You can make a request to get a list of resources using the `list` method:
+You can get details about one or many resources in the API by calling the
+`#get`, `#list` and `#all` methods.
+
+#### Getting a single resource
+
+To request a single resource, use the `#get` method:
+
+```rb
+@client.customers.get(customer_id)
+```
+
+A call to `get` returns an instance of the resource:
+
+```rb
+p @client.customers.get(customer_id).given_name
+```
+
+#### Getting a list of resources
+
+To get a list of resources, use the `#list` method:
 
 ```rb
 @client.customers.list
-```
-
-This README will use `customers` throughout but each of the resources in the API is available in this library.
-
-If you need to pass any options, the last (or in the absence of URL params, the only) argument is an options hash. This is used to pass query parameters for `GET` requests:
-
-```rb
-@client.customers.list(params: { limit: 400 })
 ```
 
 A call to `list` returns an instance of `GoCardlessPro::ListResponse`. You can call `records` on this to iterate through results:
@@ -61,19 +72,28 @@ A call to `list` returns an instance of `GoCardlessPro::ListResponse`. You can c
 end
 ```
 
-In the case where a url parameter is needed, the method signature will contain required arguments:
+If you need to pass any options, the last (or in the absence of URL params, the only) argument is an options hash. This is used to pass query parameters for `GET` requests:
 
 ```rb
-@client.customers.get(customers_id)
+@client.customers.list(params: { limit: 400 })
 ```
 
-As with list, the last argument can be an options hash, with any URL parameters given under the `params` key:
+#### Getting all resources
+
+If you want to get all of the records for a given resource type, you can use the
+`#all` method to get a lazily paginated list. `#all` will deal with making extra
+API requests to paginate through all the data for you:
 
 ```rb
-@client.customers.get(customers_id, params: { limit: 200 })
+@client.customers.all.each do |customer|
+  p customer.given_name
+end
 ```
 
-Both individual resource and `ListResponse` instances provide an `api_response` method, which lets you access the following properties of the request:
+#### Raw response details
+
+In addition to providing details of the requested resource(s), all GET requests
+give you access the following properties of the response:
 
 - `status`
 - `headers`
@@ -93,7 +113,7 @@ For POST and PUT requests you need to pass in the body in under the `params` key
 )
 ```
 
-As with GET requests, if any parameters are required they come first:
+If any parameters are required they come first:
 
 ```rb
 @client.customers.update(customer_id, {...})
