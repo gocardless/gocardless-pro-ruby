@@ -18,7 +18,7 @@ require 'gocardless_pro'
 ## Usage Examples
 
 - In the case of a single response, the client will return you an instance of the resource
-- In the case of list responses, the client will return an instance of `ListResponse`.
+- In the case of a list response, the client will return an instance of `ListResponse`
 - You can also call `#all` to get a lazily paginated list of resource that will deal with making extra API requests to paginate through all the data
 
 ### Initialising the client
@@ -40,7 +40,7 @@ You can make a request to get a list of resources using the `list` method:
 @client.customers.list
 ```
 
-This README will use `customers` throughout but each of the resources in the API is available in this library. They are defined in [`gocardless.rb`](https://github.com/gocardless/pro-client-ruby/blob/master/lib/gocardless_pro.rb#L87).
+This README will use `customers` throughout but each of the resources in the API is available in this library.
 
 If you need to pass any options, the last (or in the absence of URL params, the only) argument is an options hash. This is used to pass query parameters for `GET` requests:
 
@@ -96,7 +96,7 @@ As with GET requests, if any parameters are required they come first:
 
 ### Handling failures
 
-When an API returns an error, the client __will raise__ an error that corresponds to the type of error. All errors subclass `GoCardlessPro::Error`. There are four errors that could be thrown:
+When the API returns an error, the client will raise a corresponding one. There are four classes of error which could be thrown, allof which subclass `GoCardlessPro::Error`:
 
 - `GoCardlessPro::GoCardlessError`
 - `GoCardlessPro::InvalidApiUsageError`
@@ -105,7 +105,7 @@ When an API returns an error, the client __will raise__ an error that correspond
 
 These errors are fully documented in the [API documentation](https://developer.gocardless.com/pro/#overview-errors).
 
-The error has the following methods to allow you to access the information from the API response:
+All errors have the following methods to facilitate access to information in the API response:
 
 - `#documentation_url`
 - `#message`
@@ -123,12 +123,11 @@ OAuth simply provides a means by which you obtain an access token - once you hav
 We recommend using the [oauth2](https://github.com/intridea/oauth2) gem to handle the authorisation process and gain a token. For an example of this in action, see our [open-source OAuth demo app](https://github.com/gocardless/oauth-demo/blob/master/app.rb#L46).
 
 ## Supporting Ruby < 2.0.0
-
 The client only supports Ruby >= 2.0.0 out of the box due to our use of
 Enumerable::Lazy for lazy loading of paginated API resources.
 
-However, support for previous ruby versions can be added using a gem such as
-[backports](https://github.com/marcandre/backports).
+If you wish to use this gem with a previous ruby version, you should be able to
+do so with the [backports](https://github.com/marcandre/backports) gem:
 
 1. Add backports to your Gemfile
    ```gem 'backports'```
@@ -137,4 +136,4 @@ However, support for previous ruby versions can be added using a gem such as
 
 ## Contributing
 
-This client is auto-generated from Crank, a toolchain that we hope to soon open source. Issues should for now be reported on this repository. __Please do not modify the source code yourself, your changes will be overriden!__
+This client is auto-generated from Crank, a toolchain that we hope to open source soon. For now, issues should be reported on this repository. __Please do not modify the source code yourself, your changes will be overriden!__
