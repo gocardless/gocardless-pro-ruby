@@ -49,20 +49,23 @@ describe GoCardlessPro::Services::CreditorsService do
           )
           .to_return(
             body: {
-              'creditors' => {
+              'creditors' =>
 
-                'address_line1' => 'address_line1-input',
-                'address_line2' => 'address_line2-input',
-                'address_line3' => 'address_line3-input',
-                'city' => 'city-input',
-                'country_code' => 'country_code-input',
-                'created_at' => 'created_at-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'name' => 'name-input',
-                'postal_code' => 'postal_code-input',
-                'region' => 'region-input'
-              }
+                {
+
+                  'address_line1' => 'address_line1-input',
+                  'address_line2' => 'address_line2-input',
+                  'address_line3' => 'address_line3-input',
+                  'city' => 'city-input',
+                  'country_code' => 'country_code-input',
+                  'created_at' => 'created_at-input',
+                  'id' => 'id-input',
+                  'links' => 'links-input',
+                  'name' => 'name-input',
+                  'postal_code' => 'postal_code-input',
+                  'region' => 'region-input'
+                }
+
             }.to_json,
             headers: { 'Content-Type' => 'application/json' }
           )

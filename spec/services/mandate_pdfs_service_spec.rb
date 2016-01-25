@@ -31,11 +31,14 @@ describe GoCardlessPro::Services::MandatePdfsService do
           )
           .to_return(
             body: {
-              'mandate_pdfs' => {
+              'mandate_pdfs' =>
 
-                'expires_at' => 'expires_at-input',
-                'url' => 'url-input'
-              }
+                {
+
+                  'expires_at' => 'expires_at-input',
+                  'url' => 'url-input'
+                }
+
             }.to_json,
             headers: { 'Content-Type' => 'application/json' }
           )

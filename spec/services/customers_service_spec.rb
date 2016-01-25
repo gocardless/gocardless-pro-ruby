@@ -59,25 +59,28 @@ describe GoCardlessPro::Services::CustomersService do
           )
           .to_return(
             body: {
-              'customers' => {
+              'customers' =>
 
-                'address_line1' => 'address_line1-input',
-                'address_line2' => 'address_line2-input',
-                'address_line3' => 'address_line3-input',
-                'city' => 'city-input',
-                'company_name' => 'company_name-input',
-                'country_code' => 'country_code-input',
-                'created_at' => 'created_at-input',
-                'email' => 'email-input',
-                'family_name' => 'family_name-input',
-                'given_name' => 'given_name-input',
-                'id' => 'id-input',
-                'language' => 'language-input',
-                'metadata' => 'metadata-input',
-                'postal_code' => 'postal_code-input',
-                'region' => 'region-input',
-                'swedish_identity_number' => 'swedish_identity_number-input'
-              }
+                {
+
+                  'address_line1' => 'address_line1-input',
+                  'address_line2' => 'address_line2-input',
+                  'address_line3' => 'address_line3-input',
+                  'city' => 'city-input',
+                  'company_name' => 'company_name-input',
+                  'country_code' => 'country_code-input',
+                  'created_at' => 'created_at-input',
+                  'email' => 'email-input',
+                  'family_name' => 'family_name-input',
+                  'given_name' => 'given_name-input',
+                  'id' => 'id-input',
+                  'language' => 'language-input',
+                  'metadata' => 'metadata-input',
+                  'postal_code' => 'postal_code-input',
+                  'region' => 'region-input',
+                  'swedish_identity_number' => 'swedish_identity_number-input'
+                }
+
             }.to_json,
             headers: { 'Content-Type' => 'application/json' }
           )

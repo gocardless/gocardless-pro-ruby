@@ -47,19 +47,22 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
           )
           .to_return(
             body: {
-              'creditor_bank_accounts' => {
+              'creditor_bank_accounts' =>
 
-                'account_holder_name' => 'account_holder_name-input',
-                'account_number_ending' => 'account_number_ending-input',
-                'bank_name' => 'bank_name-input',
-                'country_code' => 'country_code-input',
-                'created_at' => 'created_at-input',
-                'currency' => 'currency-input',
-                'enabled' => 'enabled-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'metadata' => 'metadata-input'
-              }
+                {
+
+                  'account_holder_name' => 'account_holder_name-input',
+                  'account_number_ending' => 'account_number_ending-input',
+                  'bank_name' => 'bank_name-input',
+                  'country_code' => 'country_code-input',
+                  'created_at' => 'created_at-input',
+                  'currency' => 'currency-input',
+                  'enabled' => 'enabled-input',
+                  'id' => 'id-input',
+                  'links' => 'links-input',
+                  'metadata' => 'metadata-input'
+                }
+
             }.to_json,
             headers: { 'Content-Type' => 'application/json' }
           )

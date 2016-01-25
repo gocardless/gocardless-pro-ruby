@@ -48,6 +48,7 @@ module GoCardlessPro
         response = make_request(:get, path, options)
 
         return if response.body.nil?
+
         Resources::Event.new(unenvelope_body(response.body), response)
       end
 

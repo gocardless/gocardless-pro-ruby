@@ -25,6 +25,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
+
         Resources::BankDetailsLookup.new(unenvelope_body(response.body), response)
       end
 

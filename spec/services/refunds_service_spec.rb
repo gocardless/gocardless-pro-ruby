@@ -41,16 +41,19 @@ describe GoCardlessPro::Services::RefundsService do
           )
           .to_return(
             body: {
-              'refunds' => {
+              'refunds' =>
 
-                'amount' => 'amount-input',
-                'created_at' => 'created_at-input',
-                'currency' => 'currency-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'metadata' => 'metadata-input',
-                'reference' => 'reference-input'
-              }
+                {
+
+                  'amount' => 'amount-input',
+                  'created_at' => 'created_at-input',
+                  'currency' => 'currency-input',
+                  'id' => 'id-input',
+                  'links' => 'links-input',
+                  'metadata' => 'metadata-input',
+                  'reference' => 'reference-input'
+                }
+
             }.to_json,
             headers: { 'Content-Type' => 'application/json' }
           )

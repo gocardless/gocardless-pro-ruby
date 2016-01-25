@@ -43,17 +43,20 @@ describe GoCardlessPro::Services::MandatesService do
           )
           .to_return(
             body: {
-              'mandates' => {
+              'mandates' =>
 
-                'created_at' => 'created_at-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'metadata' => 'metadata-input',
-                'next_possible_charge_date' => 'next_possible_charge_date-input',
-                'reference' => 'reference-input',
-                'scheme' => 'scheme-input',
-                'status' => 'status-input'
-              }
+                {
+
+                  'created_at' => 'created_at-input',
+                  'id' => 'id-input',
+                  'links' => 'links-input',
+                  'metadata' => 'metadata-input',
+                  'next_possible_charge_date' => 'next_possible_charge_date-input',
+                  'reference' => 'reference-input',
+                  'scheme' => 'scheme-input',
+                  'status' => 'status-input'
+                }
+
             }.to_json,
             headers: { 'Content-Type' => 'application/json' }
           )

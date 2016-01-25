@@ -22,6 +22,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
+
         Resources::CreditorBankAccount.new(unenvelope_body(response.body), response)
       end
 
@@ -64,6 +65,7 @@ module GoCardlessPro
         response = make_request(:get, path, options)
 
         return if response.body.nil?
+
         Resources::CreditorBankAccount.new(unenvelope_body(response.body), response)
       end
 
@@ -88,6 +90,7 @@ module GoCardlessPro
         response = make_request(:post, path, options)
 
         return if response.body.nil?
+
         Resources::CreditorBankAccount.new(unenvelope_body(response.body), response)
       end
 

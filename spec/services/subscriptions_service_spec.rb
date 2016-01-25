@@ -61,26 +61,29 @@ describe GoCardlessPro::Services::SubscriptionsService do
           )
           .to_return(
             body: {
-              'subscriptions' => {
+              'subscriptions' =>
 
-                'amount' => 'amount-input',
-                'count' => 'count-input',
-                'created_at' => 'created_at-input',
-                'currency' => 'currency-input',
-                'day_of_month' => 'day_of_month-input',
-                'end_date' => 'end_date-input',
-                'id' => 'id-input',
-                'interval' => 'interval-input',
-                'interval_unit' => 'interval_unit-input',
-                'links' => 'links-input',
-                'metadata' => 'metadata-input',
-                'month' => 'month-input',
-                'name' => 'name-input',
-                'payment_reference' => 'payment_reference-input',
-                'start_date' => 'start_date-input',
-                'status' => 'status-input',
-                'upcoming_payments' => 'upcoming_payments-input'
-              }
+                {
+
+                  'amount' => 'amount-input',
+                  'count' => 'count-input',
+                  'created_at' => 'created_at-input',
+                  'currency' => 'currency-input',
+                  'day_of_month' => 'day_of_month-input',
+                  'end_date' => 'end_date-input',
+                  'id' => 'id-input',
+                  'interval' => 'interval-input',
+                  'interval_unit' => 'interval_unit-input',
+                  'links' => 'links-input',
+                  'metadata' => 'metadata-input',
+                  'month' => 'month-input',
+                  'name' => 'name-input',
+                  'payment_reference' => 'payment_reference-input',
+                  'start_date' => 'start_date-input',
+                  'status' => 'status-input',
+                  'upcoming_payments' => 'upcoming_payments-input'
+                }
+
             }.to_json,
             headers: { 'Content-Type' => 'application/json' }
           )

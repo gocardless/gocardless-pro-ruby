@@ -43,17 +43,20 @@ describe GoCardlessPro::Services::RedirectFlowsService do
           )
           .to_return(
             body: {
-              'redirect_flows' => {
+              'redirect_flows' =>
 
-                'created_at' => 'created_at-input',
-                'description' => 'description-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'redirect_url' => 'redirect_url-input',
-                'scheme' => 'scheme-input',
-                'session_token' => 'session_token-input',
-                'success_redirect_url' => 'success_redirect_url-input'
-              }
+                {
+
+                  'created_at' => 'created_at-input',
+                  'description' => 'description-input',
+                  'id' => 'id-input',
+                  'links' => 'links-input',
+                  'redirect_url' => 'redirect_url-input',
+                  'scheme' => 'scheme-input',
+                  'session_token' => 'session_token-input',
+                  'success_redirect_url' => 'success_redirect_url-input'
+                }
+
             }.to_json,
             headers: { 'Content-Type' => 'application/json' }
           )

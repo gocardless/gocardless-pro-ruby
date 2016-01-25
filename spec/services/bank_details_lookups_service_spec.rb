@@ -33,12 +33,15 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
           )
           .to_return(
             body: {
-              'bank_details_lookups' => {
+              'bank_details_lookups' =>
 
-                'available_debit_schemes' => 'available_debit_schemes-input',
-                'bank_name' => 'bank_name-input',
-                'bic' => 'bic-input'
-              }
+                {
+
+                  'available_debit_schemes' => 'available_debit_schemes-input',
+                  'bank_name' => 'bank_name-input',
+                  'bic' => 'bic-input'
+                }
+
             }.to_json,
             headers: { 'Content-Type' => 'application/json' }
           )
