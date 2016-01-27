@@ -20,7 +20,9 @@ module GoCardlessPro
       @url = url
       root_url, @path_prefix = unpack_url(url)
       http_adapter = options[:http_adapter] || [:net_http]
-      @connection = Faraday.new(url: root_url) do |faraday|
+      connection_options = options[:connection_options]
+
+      @connection = Faraday.new(root_url, connection_options) do |faraday|
         faraday.adapter(*http_adapter)
       end
 
