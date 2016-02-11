@@ -17,6 +17,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'payouts' => [{
 
               'amount' => 'amount-input',
+              'arrival_date' => 'arrival_date-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'id' => 'id-input',
@@ -39,6 +40,8 @@ describe GoCardlessPro::Services::PayoutsService do
         expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Payout)
 
         expect(get_list_response.records.first.amount).to eq('amount-input')
+
+        expect(get_list_response.records.first.arrival_date).to eq('arrival_date-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
@@ -67,6 +70,7 @@ describe GoCardlessPro::Services::PayoutsService do
           'payouts' => [{
 
             'amount' => 'amount-input',
+            'arrival_date' => 'arrival_date-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'id' => 'id-input',
@@ -89,6 +93,7 @@ describe GoCardlessPro::Services::PayoutsService do
           'payouts' => [{
 
             'amount' => 'amount-input',
+            'arrival_date' => 'arrival_date-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'id' => 'id-input',
@@ -127,6 +132,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'payouts' => {
 
                 'amount' => 'amount-input',
+                'arrival_date' => 'arrival_date-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'id' => 'id-input',
@@ -159,6 +165,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'payouts' => {
 
               'amount' => 'amount-input',
+              'arrival_date' => 'arrival_date-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'id' => 'id-input',

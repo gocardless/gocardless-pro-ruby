@@ -20,6 +20,8 @@ module GoCardlessPro
     class Payout
       attr_reader :amount
 
+      attr_reader :arrival_date
+
       attr_reader :created_at
 
       attr_reader :currency
@@ -35,6 +37,7 @@ module GoCardlessPro
         @object = object
 
         @amount = object['amount']
+        @arrival_date = object['arrival_date']
         @created_at = object['created_at']
         @currency = object['currency']
         @id = object['id']

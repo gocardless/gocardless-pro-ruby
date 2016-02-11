@@ -7,6 +7,8 @@ describe GoCardlessPro::Resources::Payout do
 
         'amount' => 'amount-input',
 
+        'arrival_date' => 'arrival_date-input',
+
         'created_at' => 'created_at-input',
 
         'currency' => 'currency-input',
@@ -32,6 +34,8 @@ describe GoCardlessPro::Resources::Payout do
       resource = described_class.new(data)
 
       expect(resource.amount).to eq('amount-input')
+
+      expect(resource.arrival_date).to eq('arrival_date-input')
 
       expect(resource.created_at).to eq('created_at-input')
 

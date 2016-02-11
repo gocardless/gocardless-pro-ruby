@@ -119,6 +119,25 @@ If any parameters are required they come first:
 @client.customers.update(customer_id, {...})
 ```
 
+### Custom headers
+
+Custom headers can be provided for a POST request under the `headers` key.
+
+The most common use of a custom header would be to set an [idempotency key](https://developer.gocardless.com/pro/#making-requests-idempotency-keys) when making a request:
+
+```rb
+@client.customers.create(
+  params: {
+    first_name: "Pete",
+    last_name: "Hamilton",
+    ...
+  },
+  headers: {
+    "Idempotency-Key": "1f9630a9-0487-418d-bd37-8b77793c9985"
+  }
+)
+```
+
 ### Handling failures
 
 When the API returns an error, the client will raise a corresponding one. There are four classes of error which could be thrown, allof which subclass `GoCardlessPro::Error`:
