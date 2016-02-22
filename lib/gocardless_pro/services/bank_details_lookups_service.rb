@@ -12,8 +12,17 @@ module GoCardlessPro
     class BankDetailsLookupsService < BaseService
       # Performs a bank details lookup.
       #
+      # As part of the lookup a modulus check and
+      # reachability check are performed.
+      #
       # Bank account details may be supplied
       # using [local details](#appendix-local-bank-details) or an IBAN.
+      #
+      # _Note:_
+      # Usage of this endpoint is monitored. If your organisation relies on GoCardless
+      # for
+      # modulus or reachability checking but not for payment collection, please
+      # get in touch.
       # Example URL: /bank_details_lookups
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
