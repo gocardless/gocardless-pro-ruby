@@ -19,7 +19,16 @@ module GoCardlessPro
       @error['message']
     end
 
-    alias_method :to_s, :message
+    def to_s
+      if errors.any?
+        details = errors
+                  .map { |err| "#{err['field']} #{err['message']}" }
+                  .join(', ')
+        "#{message}: #{details}"
+      else
+        @error['message']
+      end
+    end
 
     # access the type from the response
     def type
@@ -38,7 +47,7 @@ module GoCardlessPro
 
     # access the errors from the response
     def errors
-      @error['errors']
+      @error.fetch('errors', [])
     end
   end
 end
