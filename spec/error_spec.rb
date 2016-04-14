@@ -29,7 +29,7 @@ describe GoCardlessPro::Error do
   specify { expect(error.message).to eq('Validation failed') }
   specify do
     expect(error.to_s)
-      .to eq('Validation failed: branch_code must be a number, '\
+      .to eq('branch_code must be a number, '\
           'branch_code is the wrong length (should be 8 characters)')
   end
   specify { expect(error.type).to eq('validation_failed') }
@@ -45,5 +45,9 @@ describe GoCardlessPro::Error do
         'field' => 'branch_code'
       }
     ])
+  end
+
+  context 'when initializing an error with a string' do
+    specify { expect { described_class.new('FOO') }.to raise_error(ArgumentError) }
   end
 end

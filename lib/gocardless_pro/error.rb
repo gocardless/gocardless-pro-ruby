@@ -6,6 +6,7 @@ module GoCardlessPro
     # intialize a new error
     #  @param error the error from the API
     def initialize(error)
+      fail ArgumentError, 'GoCardless errors expect a hash' unless error.is_a?(Hash)
       @error = error
     end
 
@@ -21,10 +22,9 @@ module GoCardlessPro
 
     def to_s
       if errors.any?
-        details = errors
-                  .map { |err| "#{err['field']} #{err['message']}" }
-                  .join(', ')
-        "#{message}: #{details}"
+        errors
+          .map { |err| "#{err['field']} #{err['message']}" }
+          .join(', ')
       else
         @error['message']
       end
