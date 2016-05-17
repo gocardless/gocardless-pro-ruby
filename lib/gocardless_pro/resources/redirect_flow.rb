@@ -11,7 +11,7 @@ require 'uri'
 module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
-    # Redirect flows enable you to use GoCardless Pro's [hosted payment
+    # Redirect flows enable you to use GoCardless' [hosted payment
     # pages](https://pay-sandbox.gocardless.com/AL000000AKFPFF) to set up mandates
     # with your customers. These pages are fully compliant and have been
     # translated into Dutch, French, German, Italian, Portuguese, Spanish and

@@ -11,7 +11,7 @@ module GoCardlessPro
     # Service for making requests to the RedirectFlow endpoints
     class RedirectFlowsService < BaseService
       # Creates a redirect flow object which can then be used to redirect your
-      # customer to the GoCardless Pro hosted payment pages.
+      # customer to the GoCardless hosted payment pages.
       # Example URL: /redirect_flows
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})

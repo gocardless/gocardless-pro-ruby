@@ -1,6 +1,6 @@
-# Ruby Client for the GoCardless Pro API
+# Ruby Client for the GoCardless API
 
-A Ruby client for the GoCardless Pro API. For full details of the GoCardless Pro API, see the [API docs](https://developer.gocardless.com/pro/).
+A Ruby client for the GoCardless API. For full details of the GoCardless API, see the [API docs](https://developer.gocardless.com/pro/).
 
 [![Gem Version](https://badge.fury.io/rb/statesman.png)](http://badge.fury.io/rb/gocardless_pro)
 [![Build Status](https://travis-ci.org/gocardless/gocardless-pro-ruby.svg?branch=master)](https://travis-ci.org/gocardless/gocardless-pro-ruby)
