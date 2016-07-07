@@ -18,6 +18,7 @@ describe GoCardlessPro::Services::MandatesService do
           'links' => 'links-input',
           'metadata' => 'metadata-input',
           'next_possible_charge_date' => 'next_possible_charge_date-input',
+          'payments_require_approval' => 'payments_require_approval-input',
           'reference' => 'reference-input',
           'scheme' => 'scheme-input',
           'status' => 'status-input'
@@ -35,6 +36,7 @@ describe GoCardlessPro::Services::MandatesService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'next_possible_charge_date' => 'next_possible_charge_date-input',
+                'payments_require_approval' => 'payments_require_approval-input',
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input'
@@ -52,6 +54,7 @@ describe GoCardlessPro::Services::MandatesService do
                   'links' => 'links-input',
                   'metadata' => 'metadata-input',
                   'next_possible_charge_date' => 'next_possible_charge_date-input',
+                  'payments_require_approval' => 'payments_require_approval-input',
                   'reference' => 'reference-input',
                   'scheme' => 'scheme-input',
                   'status' => 'status-input'
@@ -106,6 +109,7 @@ describe GoCardlessPro::Services::MandatesService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'next_possible_charge_date' => 'next_possible_charge_date-input',
+              'payments_require_approval' => 'payments_require_approval-input',
               'reference' => 'reference-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input'
@@ -131,6 +135,8 @@ describe GoCardlessPro::Services::MandatesService do
         expect(get_list_response.records.first.metadata).to eq('metadata-input')
 
         expect(get_list_response.records.first.next_possible_charge_date).to eq('next_possible_charge_date-input')
+
+        expect(get_list_response.records.first.payments_require_approval).to eq('payments_require_approval-input')
 
         expect(get_list_response.records.first.reference).to eq('reference-input')
 
@@ -159,6 +165,7 @@ describe GoCardlessPro::Services::MandatesService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'next_possible_charge_date' => 'next_possible_charge_date-input',
+            'payments_require_approval' => 'payments_require_approval-input',
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input'
@@ -182,6 +189,7 @@ describe GoCardlessPro::Services::MandatesService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'next_possible_charge_date' => 'next_possible_charge_date-input',
+            'payments_require_approval' => 'payments_require_approval-input',
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input'
@@ -221,6 +229,7 @@ describe GoCardlessPro::Services::MandatesService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'next_possible_charge_date' => 'next_possible_charge_date-input',
+                'payments_require_approval' => 'payments_require_approval-input',
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input'
@@ -254,6 +263,7 @@ describe GoCardlessPro::Services::MandatesService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'next_possible_charge_date' => 'next_possible_charge_date-input',
+              'payments_require_approval' => 'payments_require_approval-input',
               'reference' => 'reference-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input'
@@ -301,6 +311,7 @@ describe GoCardlessPro::Services::MandatesService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'next_possible_charge_date' => 'next_possible_charge_date-input',
+              'payments_require_approval' => 'payments_require_approval-input',
               'reference' => 'reference-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input'
@@ -334,6 +345,7 @@ describe GoCardlessPro::Services::MandatesService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'next_possible_charge_date' => 'next_possible_charge_date-input',
+            'payments_require_approval' => 'payments_require_approval-input',
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input'
@@ -372,6 +384,7 @@ describe GoCardlessPro::Services::MandatesService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'next_possible_charge_date' => 'next_possible_charge_date-input',
+                'payments_require_approval' => 'payments_require_approval-input',
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input'
@@ -400,6 +413,7 @@ describe GoCardlessPro::Services::MandatesService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'next_possible_charge_date' => 'next_possible_charge_date-input',
+            'payments_require_approval' => 'payments_require_approval-input',
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input'
@@ -438,6 +452,7 @@ describe GoCardlessPro::Services::MandatesService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'next_possible_charge_date' => 'next_possible_charge_date-input',
+                'payments_require_approval' => 'payments_require_approval-input',
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input'

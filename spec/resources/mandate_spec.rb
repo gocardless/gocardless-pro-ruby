@@ -21,6 +21,8 @@ describe GoCardlessPro::Resources::Mandate do
 
         'next_possible_charge_date' => 'next_possible_charge_date-input',
 
+        'payments_require_approval' => 'payments_require_approval-input',
+
         'reference' => 'reference-input',
 
         'scheme' => 'scheme-input',
@@ -44,6 +46,8 @@ describe GoCardlessPro::Resources::Mandate do
       expect(resource.metadata).to eq('metadata-input')
 
       expect(resource.next_possible_charge_date).to eq('next_possible_charge_date-input')
+
+      expect(resource.payments_require_approval).to eq('payments_require_approval-input')
 
       expect(resource.reference).to eq('reference-input')
 

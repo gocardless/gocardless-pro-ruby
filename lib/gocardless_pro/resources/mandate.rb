@@ -26,6 +26,8 @@ module GoCardlessPro
 
       attr_reader :next_possible_charge_date
 
+      attr_reader :payments_require_approval
+
       attr_reader :reference
 
       attr_reader :scheme
@@ -41,6 +43,7 @@ module GoCardlessPro
         @links = object['links']
         @metadata = object['metadata']
         @next_possible_charge_date = object['next_possible_charge_date']
+        @payments_require_approval = object['payments_require_approval']
         @reference = object['reference']
         @scheme = object['scheme']
         @status = object['status']
