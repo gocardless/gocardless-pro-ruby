@@ -66,9 +66,7 @@ module GoCardlessPro
       def all(options = {})
         Paginator.new(
           service: self,
-          path: '/refunds',
-          options: options,
-          resource_class: Resources::Refund
+          options: options
         ).enumerator
       end
 
@@ -105,14 +103,14 @@ module GoCardlessPro
         Resources::Refund.new(unenvelope_body(response.body), response)
       end
 
+      private
+
       # Unenvelope the response of the body using the service's `envelope_key`
       #
       # @param body [Hash]
       def unenvelope_body(body)
         body[envelope_key] || body['data']
       end
-
-      private
 
       # return the key which API responses will envelope data under
       def envelope_key

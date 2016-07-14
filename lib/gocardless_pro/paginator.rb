@@ -4,12 +4,9 @@ module GoCardlessPro
     # initialize a paginator
     # @param options [Hash]
     # @option options :service the service class to use to make requests to
-    # @option options :path the path to make the request to
     # @option options :options additional options to send with the requests
     def initialize(options = {})
       @service = options.fetch(:service)
-      @resource_class = options.fetch(:resource_class)
-      @path = options.fetch(:path)
       @options = options.fetch(:options)
     end
 
@@ -18,18 +15,14 @@ module GoCardlessPro
       response = get_initial_response
       Enumerator.new do |yielder|
         loop do
-          items = @service.unenvelope_body(response.body).map do |item|
-            @resource_class.new(item)
-          end
+          response.records.each { |item| yielder << item }
 
-          items.each { |item| yielder << item }
-
-          after_cursor = response.meta['cursors']['after']
+          after_cursor = response.after
           break if after_cursor.nil?
 
           @options[:params] ||= {}
           @options[:params] = @options[:params].merge(after: after_cursor)
-          response = @service.make_request(:get, @path, @options.merge(after: after_cursor))
+          response = @service.list(@options.merge(after: after_cursor))
         end
       end.lazy
     end
@@ -37,7 +30,7 @@ module GoCardlessPro
     private
 
     def get_initial_response
-      @initial_response ||= @service.make_request(:get, @path, @options)
+      @initial_response ||= @service.list(@options)
     end
   end
 end
