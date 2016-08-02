@@ -26,6 +26,8 @@ module GoCardlessPro
 
       attr_reader :currency
 
+      attr_reader :deducted_fees
+
       attr_reader :id
 
       attr_reader :reference
@@ -40,6 +42,7 @@ module GoCardlessPro
         @arrival_date = object['arrival_date']
         @created_at = object['created_at']
         @currency = object['currency']
+        @deducted_fees = object['deducted_fees']
         @id = object['id']
         @links = object['links']
         @reference = object['reference']

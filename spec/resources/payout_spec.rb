@@ -13,6 +13,8 @@ describe GoCardlessPro::Resources::Payout do
 
         'currency' => 'currency-input',
 
+        'deducted_fees' => 'deducted_fees-input',
+
         'id' => 'id-input',
 
         'links' => {
@@ -40,6 +42,8 @@ describe GoCardlessPro::Resources::Payout do
       expect(resource.created_at).to eq('created_at-input')
 
       expect(resource.currency).to eq('currency-input')
+
+      expect(resource.deducted_fees).to eq('deducted_fees-input')
 
       expect(resource.id).to eq('id-input')
 

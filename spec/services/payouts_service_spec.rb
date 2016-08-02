@@ -20,6 +20,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'arrival_date' => 'arrival_date-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
+              'deducted_fees' => 'deducted_fees-input',
               'id' => 'id-input',
               'links' => 'links-input',
               'reference' => 'reference-input',
@@ -47,6 +48,8 @@ describe GoCardlessPro::Services::PayoutsService do
 
         expect(get_list_response.records.first.currency).to eq('currency-input')
 
+        expect(get_list_response.records.first.deducted_fees).to eq('deducted_fees-input')
+
         expect(get_list_response.records.first.id).to eq('id-input')
 
         expect(get_list_response.records.first.reference).to eq('reference-input')
@@ -73,6 +76,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'arrival_date' => 'arrival_date-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
+            'deducted_fees' => 'deducted_fees-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'reference' => 'reference-input',
@@ -96,6 +100,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'arrival_date' => 'arrival_date-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
+            'deducted_fees' => 'deducted_fees-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'reference' => 'reference-input',
@@ -135,6 +140,7 @@ describe GoCardlessPro::Services::PayoutsService do
                 'arrival_date' => 'arrival_date-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
+                'deducted_fees' => 'deducted_fees-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'reference' => 'reference-input',
@@ -168,6 +174,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'arrival_date' => 'arrival_date-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
+              'deducted_fees' => 'deducted_fees-input',
               'id' => 'id-input',
               'links' => 'links-input',
               'reference' => 'reference-input',
