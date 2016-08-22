@@ -1,4 +1,5 @@
 require_relative './base_service'
+require 'uri'
 
 # encoding: utf-8
 #
@@ -67,12 +68,12 @@ module GoCardlessPro
         'payouts'
       end
 
-      # take a URL with placeholder params and substitute them out for the acutal value
+      # take a URL with placeholder params and substitute them out for the actual value
       # @param url [String] the URL with placeholders in
-      # @param param_map [Hash] a hash of placeholders and their actual values
+      # @param param_map [Hash] a hash of placeholders and their actual values (which will be escaped)
       def sub_url(url, param_map)
         param_map.reduce(url) do |new_url, (param, value)|
-          new_url.gsub(":#{param}", value)
+          new_url.gsub(":#{param}", URI.escape(value))
         end
       end
     end

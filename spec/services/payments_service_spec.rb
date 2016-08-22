@@ -311,6 +311,14 @@ describe GoCardlessPro::Services::PaymentsService do
         expect(get_response).to be_nil
       end
     end
+
+    context "when an ID is specified which can't be included in a valid URI" do
+      let(:id) { '`' }
+
+      it "doesn't raise an error" do
+        expect { get_response }.to_not raise_error(/bad URI/)
+      end
+    end
   end
 
   describe '#update' do
