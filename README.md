@@ -5,11 +5,13 @@ A Ruby client for the GoCardless API. For full details of the GoCardless API, se
 [![Gem Version](https://badge.fury.io/rb/statesman.png)](http://badge.fury.io/rb/gocardless_pro)
 [![Build Status](https://travis-ci.org/gocardless/gocardless-pro-ruby.svg?branch=master)](https://travis-ci.org/gocardless/gocardless-pro-ruby)
 
+- ["Getting started" guide](https://developer.gocardless.com/getting-started/api/introduction/?lang=ruby) with copy and paste Ruby code samples
+- [API Reference](https://developer.gocardless.com/api-reference/2015-07-06)
 
 ## Usage Examples
 
 This README will use `customers` throughout but each of the resources in the
-[API](https://developer.gocardless.com/pro/) is available in this library.
+[API](https://developer.gocardless.com/api-reference/) is available in this library.
 
 ### Installation
 
@@ -147,7 +149,7 @@ When the API returns an error, the client will raise a corresponding one. There 
 - `GoCardlessPro::InvalidStateError`
 - `GoCardlessPro::ValidationError`
 
-These errors are fully documented in the [API documentation](https://developer.gocardless.com/pro/#overview-errors).
+These errors are fully documented in the [API documentation](https://developer.gocardless.com/api-reference/#overview-errors).
 
 All errors have the following methods to facilitate access to information in the API response:
 
