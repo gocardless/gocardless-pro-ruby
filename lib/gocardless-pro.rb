@@ -5,6 +5,18 @@
 #   https://github.com/gocardless/crank
 #
 
+puts %(
+###########################################################################
+#### WARNING ##############################################################
+# The Ruby Gem `gocardless-pro` is deprecated, in favour of `gocardless_pro`
+# Change your Gemfile to say...
+#
+#   gem 'gocardless_pro'
+#
+# ...to benefit from the latest API features and security updates.
+###########################################################################
+)
+
 require 'json'
 require 'zlib'
 require 'faraday'
