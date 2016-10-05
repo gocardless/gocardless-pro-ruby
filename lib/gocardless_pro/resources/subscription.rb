@@ -14,23 +14,24 @@ module GoCardlessPro
     # Subscriptions create [payments](#core-endpoints-payments) according to a
     # schedule.
     #
-    # #### Recurrence Rules
+    # ### Recurrence Rules
     #
     # The following rules apply
     # when specifying recurrence:
-    # - The first payment must be charged within 1
-    # year.
-    # - When neither `month` nor `day_of_month` are present, the
-    # subscription will recur from the `start_date` based on the `interval_unit`.
-
-    #  # - If `month` or `day_of_month` are present, the recurrence rules will be
-    # applied from the `start_date`, and the following validations apply:
     #
+    # - The first payment must be charged
+    # within 1 year.
+    # - When neither `month` nor `day_of_month` are present,
+    # the subscription will recur from the `start_date` based on the
+    # `interval_unit`.
+    # - If `month` or `day_of_month` are present, the
+    # recurrence rules will be applied from the `start_date`, and the following
+    # validations apply:
     #
-    # | interval_unit   | month                                          |
-    # day_of_month                            |
-    # | :-------------- |
-    # :--------------------------------------------- |
+    # | interval_unit   | month
+    #                   | day_of_month                            |
+    # |
+    # :-------------- | :--------------------------------------------- |
     # :-------------------------------------- |
     # | yearly          | optional
     # (required if `day_of_month` provided) | optional (required if `month`
@@ -64,7 +65,7 @@ module GoCardlessPro
     # | weekly          | 2          | october | 10
     #        | invalid - `month` and `day_of_month` must be blank |
     #
-    # ####
+    # ###
     # Rolling dates
     #
     # When a charge date falls on a non-business day, one
