@@ -22,11 +22,11 @@ module GoCardlessPro
       # - IBAN
       #
       # - [Customer Bank
-      # Account Tokens](#js-flow-create-a-customer-bank-account-token)
+      # Account Tokens](#javascript-flow-create-a-customer-bank-account-token)
       #
-      # For more
-      # information on the different fields required in each country, see [local bank
-      # details](#appendix-local-bank-details).
+      #
+      # For more information on the different fields required in each country, see
+      # [local bank details](#appendix-local-bank-details).
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -42,7 +42,7 @@ module GoCardlessPro
         Resources::CustomerBankAccount.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#overview-cursor-pagination) list of your bank
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your bank
       # accounts.
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.

@@ -17,7 +17,8 @@ module GoCardlessPro
     # Debit [mandate](#core-endpoints-mandates).
     #
     # GoCardless will notify
-    # you via a [webhook](#webhooks) whenever the state of a payment changes.
+    # you via a [webhook](#appendix-webhooks) whenever the state of a payment
+    # changes.
     # Represents an instance of a payment resource returned from the API
     class Payment
       attr_reader :amount

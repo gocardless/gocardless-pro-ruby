@@ -27,7 +27,7 @@ module GoCardlessPro
         Resources::Customer.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#overview-cursor-pagination) list of your
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
       # customers.
       # Example URL: /customers
       # @param options [Hash] parameters as a hash, under a params key.

@@ -11,7 +11,8 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Event endpoints
     class EventsService < BaseService
-      # Returns a [cursor-paginated](#overview-cursor-pagination) list of your events.
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      # events.
       # Example URL: /events
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

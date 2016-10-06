@@ -27,7 +27,7 @@ module GoCardlessPro
         Resources::Creditor.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#overview-cursor-pagination) list of your
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
       # creditors.
       # Example URL: /creditors
       # @param options [Hash] parameters as a hash, under a params key.

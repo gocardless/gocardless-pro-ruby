@@ -12,12 +12,12 @@ module GoCardlessPro
   # A module containing classes for each of the resources in the GC Api
   module Resources
     # Refund objects represent (partial) refunds of a
-    # [payment](#core-endpoints-payment) back to the
+    # [payment](#core-endpoints-payments) back to the
     # [customer](#core-endpoints-customers).
     #
     # GoCardless will notify you
-    # via a [webhook](#webhooks) whenever a refund is created, and will update the
-    # `amount_refunded` property of the payment.
+    # via a [webhook](#appendix-webhooks) whenever a refund is created, and will
+    # update the `amount_refunded` property of the payment.
     # Represents an instance of a refund resource returned from the API
     class Refund
       attr_reader :amount

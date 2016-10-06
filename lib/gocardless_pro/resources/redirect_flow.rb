@@ -20,8 +20,8 @@ module GoCardlessPro
     # The overall flow is:
     #
     # 1. You
-    # [create](#create-a-redirect-flow) a redirect flow for your customer, and
-    # redirect them to the returned redirect url, e.g.
+    # [create](#redirect-flows-create-a-redirect-flow) a redirect flow for your
+    # customer, and redirect them to the returned redirect url, e.g.
     # `https://pay.gocardless.com/flow/RE123`.
     #
     # 2. Your customer supplies
@@ -30,9 +30,9 @@ module GoCardlessPro
     # `success_redirect_url` with `redirect_flow_id=RE123` in the querystring.
     #
     #
-    # 3. You [complete](#complete-a-redirect-flow) the redirect flow, which
-    # creates a [customer](#core-endpoints-customers), [customer bank
-    # account](#core-endpoints-customer-bank-accounts), and
+    # 3. You [complete](#redirect-flows-complete-a-redirect-flow) the
+    # redirect flow, which creates a [customer](#core-endpoints-customers),
+    # [customer bank account](#core-endpoints-customer-bank-accounts), and
     # [mandate](#core-endpoints-mandates), and returns the ID of the mandate. You
     # may wish to create a [subscription](#core-endpoints-subscriptions) or
     # [payment](#core-endpoints-payments) at this point.

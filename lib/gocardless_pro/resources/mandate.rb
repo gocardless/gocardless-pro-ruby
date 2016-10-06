@@ -15,7 +15,8 @@ module GoCardlessPro
     # [customer](#core-endpoints-customers).
     #
     # GoCardless will notify you
-    # via a [webhook](#webhooks) whenever the status of a mandate changes.
+    # via a [webhook](#appendix-webhooks) whenever the status of a mandate
+    # changes.
     # Represents an instance of a mandate resource returned from the API
     class Mandate
       attr_reader :created_at
