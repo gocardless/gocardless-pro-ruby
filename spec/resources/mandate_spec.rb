@@ -13,6 +13,8 @@ describe GoCardlessPro::Resources::Mandate do
 
           'creditor' => 'creditor-input',
 
+          'customer' => 'customer-input',
+
           'customer_bank_account' => 'customer_bank_account-input',
 
           'new_mandate' => 'new_mandate-input'
@@ -42,6 +44,8 @@ describe GoCardlessPro::Resources::Mandate do
       expect(resource.id).to eq('id-input')
 
       expect(resource.links.creditor).to eq('creditor-input')
+
+      expect(resource.links.customer).to eq('customer-input')
 
       expect(resource.links.customer_bank_account).to eq('customer_bank_account-input')
 

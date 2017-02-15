@@ -57,13 +57,15 @@ module GoCardlessPro
 
       # return the links that the resource has
       def links
-        valid_link_keys = %w(creditor customer_bank_account new_mandate )
+        valid_link_keys = %w(creditor customer customer_bank_account new_mandate )
         valid_links = (@links || {}).select { |key, _| valid_link_keys.include?(key) }
 
         links_class = Struct.new(
           *{
 
             creditor: '',
+
+            customer: '',
 
             customer_bank_account: '',
 
