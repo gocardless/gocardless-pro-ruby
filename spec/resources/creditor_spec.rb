@@ -33,7 +33,9 @@ describe GoCardlessPro::Resources::Creditor do
 
         'postal_code' => 'postal_code-input',
 
-        'region' => 'region-input'
+        'region' => 'region-input',
+
+        'scheme_identifiers' => 'scheme_identifiers-input'
 
       }
     end
@@ -66,6 +68,8 @@ describe GoCardlessPro::Resources::Creditor do
       expect(resource.postal_code).to eq('postal_code-input')
 
       expect(resource.region).to eq('region-input')
+
+      expect(resource.scheme_identifiers).to eq('scheme_identifiers-input')
     end
 
     it 'can handle new attributes without erroring' do

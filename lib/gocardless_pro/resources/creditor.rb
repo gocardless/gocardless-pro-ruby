@@ -40,6 +40,8 @@ module GoCardlessPro
       attr_reader :postal_code
 
       attr_reader :region
+
+      attr_reader :scheme_identifiers
       # initialize a resource instance
       # @param object [Hash] an object returned from the API
       def initialize(object, response = nil)
@@ -56,6 +58,7 @@ module GoCardlessPro
         @name = object['name']
         @postal_code = object['postal_code']
         @region = object['region']
+        @scheme_identifiers = object['scheme_identifiers']
         @response = response
       end
 
