@@ -29,6 +29,8 @@ describe GoCardlessPro::Resources::Creditor do
 
         },
 
+        'logo_url' => 'logo_url-input',
+
         'name' => 'name-input',
 
         'postal_code' => 'postal_code-input',
@@ -62,6 +64,8 @@ describe GoCardlessPro::Resources::Creditor do
       expect(resource.links.default_gbp_payout_account).to eq('default_gbp_payout_account-input')
 
       expect(resource.links.default_sek_payout_account).to eq('default_sek_payout_account-input')
+
+      expect(resource.logo_url).to eq('logo_url-input')
 
       expect(resource.name).to eq('name-input')
 

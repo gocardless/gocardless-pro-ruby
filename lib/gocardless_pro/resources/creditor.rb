@@ -35,6 +35,8 @@ module GoCardlessPro
 
       attr_reader :id
 
+      attr_reader :logo_url
+
       attr_reader :name
 
       attr_reader :postal_code
@@ -55,6 +57,7 @@ module GoCardlessPro
         @created_at = object['created_at']
         @id = object['id']
         @links = object['links']
+        @logo_url = object['logo_url']
         @name = object['name']
         @postal_code = object['postal_code']
         @region = object['region']

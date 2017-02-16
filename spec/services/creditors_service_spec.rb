@@ -21,6 +21,7 @@ describe GoCardlessPro::Services::CreditorsService do
           'created_at' => 'created_at-input',
           'id' => 'id-input',
           'links' => 'links-input',
+          'logo_url' => 'logo_url-input',
           'name' => 'name-input',
           'postal_code' => 'postal_code-input',
           'region' => 'region-input',
@@ -42,6 +43,7 @@ describe GoCardlessPro::Services::CreditorsService do
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
+                'logo_url' => 'logo_url-input',
                 'name' => 'name-input',
                 'postal_code' => 'postal_code-input',
                 'region' => 'region-input',
@@ -63,6 +65,7 @@ describe GoCardlessPro::Services::CreditorsService do
                   'created_at' => 'created_at-input',
                   'id' => 'id-input',
                   'links' => 'links-input',
+                  'logo_url' => 'logo_url-input',
                   'name' => 'name-input',
                   'postal_code' => 'postal_code-input',
                   'region' => 'region-input',
@@ -121,6 +124,7 @@ describe GoCardlessPro::Services::CreditorsService do
               'created_at' => 'created_at-input',
               'id' => 'id-input',
               'links' => 'links-input',
+              'logo_url' => 'logo_url-input',
               'name' => 'name-input',
               'postal_code' => 'postal_code-input',
               'region' => 'region-input',
@@ -154,6 +158,8 @@ describe GoCardlessPro::Services::CreditorsService do
 
         expect(get_list_response.records.first.id).to eq('id-input')
 
+        expect(get_list_response.records.first.logo_url).to eq('logo_url-input')
+
         expect(get_list_response.records.first.name).to eq('name-input')
 
         expect(get_list_response.records.first.postal_code).to eq('postal_code-input')
@@ -186,6 +192,7 @@ describe GoCardlessPro::Services::CreditorsService do
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
+            'logo_url' => 'logo_url-input',
             'name' => 'name-input',
             'postal_code' => 'postal_code-input',
             'region' => 'region-input',
@@ -213,6 +220,7 @@ describe GoCardlessPro::Services::CreditorsService do
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
+            'logo_url' => 'logo_url-input',
             'name' => 'name-input',
             'postal_code' => 'postal_code-input',
             'region' => 'region-input',
@@ -256,6 +264,7 @@ describe GoCardlessPro::Services::CreditorsService do
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
+                'logo_url' => 'logo_url-input',
                 'name' => 'name-input',
                 'postal_code' => 'postal_code-input',
                 'region' => 'region-input',
@@ -293,6 +302,7 @@ describe GoCardlessPro::Services::CreditorsService do
               'created_at' => 'created_at-input',
               'id' => 'id-input',
               'links' => 'links-input',
+              'logo_url' => 'logo_url-input',
               'name' => 'name-input',
               'postal_code' => 'postal_code-input',
               'region' => 'region-input',
@@ -352,6 +362,7 @@ describe GoCardlessPro::Services::CreditorsService do
               'created_at' => 'created_at-input',
               'id' => 'id-input',
               'links' => 'links-input',
+              'logo_url' => 'logo_url-input',
               'name' => 'name-input',
               'postal_code' => 'postal_code-input',
               'region' => 'region-input',
