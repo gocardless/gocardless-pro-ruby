@@ -14,7 +14,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
         {
 
           'amount' => 'amount-input',
-          'count' => 'count-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
           'day_of_month' => 'day_of_month-input',
@@ -40,7 +39,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
               'subscriptions' => {
 
                 'amount' => 'amount-input',
-                'count' => 'count-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',
@@ -66,7 +64,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
                 {
 
                   'amount' => 'amount-input',
-                  'count' => 'count-input',
                   'created_at' => 'created_at-input',
                   'currency' => 'currency-input',
                   'day_of_month' => 'day_of_month-input',
@@ -129,7 +126,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
             'subscriptions' => [{
 
               'amount' => 'amount-input',
-              'count' => 'count-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'day_of_month' => 'day_of_month-input',
@@ -161,8 +157,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
         expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Subscription)
 
         expect(get_list_response.records.first.amount).to eq('amount-input')
-
-        expect(get_list_response.records.first.count).to eq('count-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
@@ -209,7 +203,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
           'subscriptions' => [{
 
             'amount' => 'amount-input',
-            'count' => 'count-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'day_of_month' => 'day_of_month-input',
@@ -241,7 +234,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
           'subscriptions' => [{
 
             'amount' => 'amount-input',
-            'count' => 'count-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'day_of_month' => 'day_of_month-input',
@@ -289,7 +281,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
               'subscriptions' => {
 
                 'amount' => 'amount-input',
-                'count' => 'count-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',
@@ -331,7 +322,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
             'subscriptions' => {
 
               'amount' => 'amount-input',
-              'count' => 'count-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'day_of_month' => 'day_of_month-input',
@@ -395,7 +385,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
             'subscriptions' => {
 
               'amount' => 'amount-input',
-              'count' => 'count-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'day_of_month' => 'day_of_month-input',
@@ -437,7 +426,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
           'subscriptions' => {
 
             'amount' => 'amount-input',
-            'count' => 'count-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'day_of_month' => 'day_of_month-input',
@@ -484,7 +472,6 @@ describe GoCardlessPro::Services::SubscriptionsService do
               'subscriptions' => {
 
                 'amount' => 'amount-input',
-                'count' => 'count-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',

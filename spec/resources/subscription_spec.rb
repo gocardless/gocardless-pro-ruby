@@ -7,8 +7,6 @@ describe GoCardlessPro::Resources::Subscription do
 
         'amount' => 'amount-input',
 
-        'count' => 'count-input',
-
         'created_at' => 'created_at-input',
 
         'currency' => 'currency-input',
@@ -50,8 +48,6 @@ describe GoCardlessPro::Resources::Subscription do
       resource = described_class.new(data)
 
       expect(resource.amount).to eq('amount-input')
-
-      expect(resource.count).to eq('count-input')
 
       expect(resource.created_at).to eq('created_at-input')
 
