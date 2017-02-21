@@ -13,12 +13,12 @@ module GoCardlessPro
 
     # Payment objects represent payments from a
     # [customer](#core-endpoints-customers) to a
-    # [creditor](#whitelabel-partner-endpoints-creditors), taken against a
-    # Direct Debit [mandate](#core-endpoints-mandates).
+    # [creditor](#core-endpoints-creditors), taken against a Direct Debit
+    # [mandate](#core-endpoints-mandates).
     #
-    # GoCardless
-    # will notify you via a [webhook](#appendix-webhooks) whenever the state of
-    # a payment changes.
+    # GoCardless will notify
+    # you via a [webhook](#appendix-webhooks) whenever the state of a payment
+    # changes.
     class Payment
       attr_reader :amount
       attr_reader :amount_refunded

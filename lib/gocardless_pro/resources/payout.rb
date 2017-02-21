@@ -12,10 +12,9 @@ module GoCardlessPro
     # Represents an instance of a payout resource returned from the API
 
     # Payouts represent transfers from GoCardless to a
-    # [creditor](#whitelabel-partner-endpoints-creditors). Each payout contains
-    # the funds collected from one or many [payments](#core-endpoints-payments).
-    # Payouts are created automatically after a payment has been successfully
-    # collected.
+    # [creditor](#core-endpoints-creditors). Each payout contains the funds
+    # collected from one or many [payments](#core-endpoints-payments). Payouts
+    # are created automatically after a payment has been successfully collected.
     class Payout
       attr_reader :amount
       attr_reader :arrival_date
