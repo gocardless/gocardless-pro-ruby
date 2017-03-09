@@ -43,7 +43,7 @@ module GoCardlessPro
 
       # Return the links that the resource has
       def links
-        @links_links ||= Links.new(@links)
+        @event_links ||= Links.new(@links)
       end
 
       # Provides the event resource as a hash of all its readable attributes
@@ -53,7 +53,7 @@ module GoCardlessPro
 
       class Links
         def initialize(links)
-          @links = links
+          @links = links || {}
         end
 
         def mandate

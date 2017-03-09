@@ -57,7 +57,7 @@ module GoCardlessPro
 
       # Return the links that the resource has
       def links
-        @links_links ||= Links.new(@links)
+        @customer_bank_account_links ||= Links.new(@links)
       end
 
       # Provides the customer_bank_account resource as a hash of all its readable attributes
@@ -67,7 +67,7 @@ module GoCardlessPro
 
       class Links
         def initialize(links)
-          @links = links
+          @links = links || {}
         end
 
         def customer
