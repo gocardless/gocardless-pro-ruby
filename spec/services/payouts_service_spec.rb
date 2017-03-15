@@ -23,6 +23,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'deducted_fees' => 'deducted_fees-input',
               'id' => 'id-input',
               'links' => 'links-input',
+              'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input'
             }],
@@ -52,6 +53,8 @@ describe GoCardlessPro::Services::PayoutsService do
 
         expect(get_list_response.records.first.id).to eq('id-input')
 
+        expect(get_list_response.records.first.payout_type).to eq('payout_type-input')
+
         expect(get_list_response.records.first.reference).to eq('reference-input')
 
         expect(get_list_response.records.first.status).to eq('status-input')
@@ -79,6 +82,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'deducted_fees' => 'deducted_fees-input',
             'id' => 'id-input',
             'links' => 'links-input',
+            'payout_type' => 'payout_type-input',
             'reference' => 'reference-input',
             'status' => 'status-input'
           }],
@@ -103,6 +107,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'deducted_fees' => 'deducted_fees-input',
             'id' => 'id-input',
             'links' => 'links-input',
+            'payout_type' => 'payout_type-input',
             'reference' => 'reference-input',
             'status' => 'status-input'
           }],
@@ -143,6 +148,7 @@ describe GoCardlessPro::Services::PayoutsService do
                 'deducted_fees' => 'deducted_fees-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
+                'payout_type' => 'payout_type-input',
                 'reference' => 'reference-input',
                 'status' => 'status-input'
               }
@@ -177,6 +183,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'deducted_fees' => 'deducted_fees-input',
               'id' => 'id-input',
               'links' => 'links-input',
+              'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input'
             }

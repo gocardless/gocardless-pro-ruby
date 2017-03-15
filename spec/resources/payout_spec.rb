@@ -25,6 +25,8 @@ describe GoCardlessPro::Resources::Payout do
 
         },
 
+        'payout_type' => 'payout_type-input',
+
         'reference' => 'reference-input',
 
         'status' => 'status-input'
@@ -50,6 +52,8 @@ describe GoCardlessPro::Resources::Payout do
       expect(resource.links.creditor).to eq('creditor-input')
 
       expect(resource.links.creditor_bank_account).to eq('creditor_bank_account-input')
+
+      expect(resource.payout_type).to eq('payout_type-input')
 
       expect(resource.reference).to eq('reference-input')
 
