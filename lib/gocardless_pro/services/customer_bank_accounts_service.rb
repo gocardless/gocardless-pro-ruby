@@ -35,7 +35,19 @@ module GoCardlessPro
         params = options.delete(:params) || {}
         options[:params] = {}
         options[:params][envelope_key] = params
-        response = make_request(:post, path, options)
+
+        options[:retry_failures] = true
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          return get(e.conflicting_resource_id) if e.idempotent_creation_conflict?
+
+          raise e
+        end
 
         return if response.body.nil?
 
@@ -49,7 +61,10 @@ module GoCardlessPro
       def list(options = {})
         path = '/customer_bank_accounts'
 
+        options[:retry_failures] = true
+
         response = make_request(:get, path, options)
+
         ListResponse.new(
           response: response,
           unenveloped_body: unenvelope_body(response.body),
@@ -76,6 +91,8 @@ module GoCardlessPro
       def get(identity, options = {})
         path = sub_url('/customer_bank_accounts/:identity', 'identity' => identity)
 
+        options[:retry_failures] = true
+
         response = make_request(:get, path, options)
 
         return if response.body.nil?
@@ -95,6 +112,9 @@ module GoCardlessPro
         params = options.delete(:params) || {}
         options[:params] = {}
         options[:params][envelope_key] = params
+
+        options[:retry_failures] = true
+
         response = make_request(:put, path, options)
 
         return if response.body.nil?
@@ -120,7 +140,19 @@ module GoCardlessPro
         params = options.delete(:params) || {}
         options[:params] = {}
         options[:params]['data'] = params
-        response = make_request(:post, path, options)
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          return get(e.conflicting_resource_id) if e.idempotent_creation_conflict?
+
+          raise e
+        end
 
         return if response.body.nil?
 

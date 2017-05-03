@@ -7,6 +7,8 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
     )
   end
 
+  let(:response_headers) { { 'Content-Type' => 'application/json' } }
+
   describe '#create' do
     subject(:post_create_response) { client.customer_bank_accounts.create(params: new_resource) }
     context 'with a valid request' do
@@ -64,12 +66,35 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
                 }
 
             }.to_json,
-            headers: { 'Content-Type' => 'application/json' }
+            headers: response_headers
           )
       end
 
       it 'creates and returns the resource' do
         expect(post_create_response).to be_a(GoCardlessPro::Resources::CustomerBankAccount)
+      end
+
+      describe 'retry behaviour' do
+        before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+        it 'retries timeouts' do
+          stub = stub_request(:post, %r{.*api.gocardless.com/customer_bank_accounts})
+                 .to_timeout.then.to_return(status: 200, headers: response_headers)
+
+          post_create_response
+          expect(stub).to have_been_requested.twice
+        end
+
+        it 'retries 5XX errors' do
+          stub = stub_request(:post, %r{.*api.gocardless.com/customer_bank_accounts})
+                 .to_return(status: 502,
+                            headers: { 'Content-Type' => 'text/html' },
+                            body: '<html><body>Response from Cloudflare</body></html>')
+                 .then.to_return(status: 200, headers: response_headers)
+
+          post_create_response
+          expect(stub).to have_been_requested.twice
+        end
       end
     end
 
@@ -87,7 +112,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
               ]
             }
           }.to_json,
-          headers: { 'Content-Type' => 'application/json' },
+          headers: response_headers,
           status: 422
         )
       end
@@ -96,36 +121,111 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
         expect { post_create_response }.to raise_error(GoCardlessPro::ValidationError)
       end
     end
+
+    context 'with a request that returns an idempotent creation conflict error' do
+      let(:id) { 'ID123' }
+
+      let(:new_resource) do
+        {
+
+          'account_holder_name' => 'account_holder_name-input',
+          'account_number_ending' => 'account_number_ending-input',
+          'bank_name' => 'bank_name-input',
+          'country_code' => 'country_code-input',
+          'created_at' => 'created_at-input',
+          'currency' => 'currency-input',
+          'enabled' => 'enabled-input',
+          'id' => 'id-input',
+          'links' => 'links-input',
+          'metadata' => 'metadata-input'
+        }
+      end
+
+      let!(:post_stub) do
+        stub_request(:post, %r{.*api.gocardless.com/customer_bank_accounts}).to_return(
+          body: {
+            error: {
+              type: 'invalid_state',
+              code: 409,
+              errors: [
+                {
+                  message: 'A resource has already been created with this idempotency key',
+                  reason: 'idempotent_creation_conflict',
+                  links: {
+                    conflicting_resource_id: id
+                  }
+                }
+              ]
+            }
+          }.to_json,
+          headers: response_headers,
+          status: 409
+        )
+      end
+
+      let!(:get_stub) do
+        stub_url = "/customer_bank_accounts/#{id}"
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .to_return(
+            body: {
+              'customer_bank_accounts' => {
+
+                'account_holder_name' => 'account_holder_name-input',
+                'account_number_ending' => 'account_number_ending-input',
+                'bank_name' => 'bank_name-input',
+                'country_code' => 'country_code-input',
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'enabled' => 'enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input'
+              }
+            }.to_json,
+            headers: response_headers
+          )
+      end
+
+      it 'fetches the already-created resource' do
+        post_create_response
+        expect(post_stub).to have_been_requested
+        expect(get_stub).to have_been_requested
+      end
+    end
   end
 
   describe '#list' do
     describe 'with no filters' do
       subject(:get_list_response) { client.customer_bank_accounts.list }
 
+      let(:body) do
+        {
+          'customer_bank_accounts' => [{
+
+            'account_holder_name' => 'account_holder_name-input',
+            'account_number_ending' => 'account_number_ending-input',
+            'bank_name' => 'bank_name-input',
+            'country_code' => 'country_code-input',
+            'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
+            'enabled' => 'enabled-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'metadata' => 'metadata-input'
+          }],
+          meta: {
+            cursors: {
+              before: nil,
+              after: 'ABC123'
+            }
+          }
+        }.to_json
+      end
+
       before do
         stub_request(:get, %r{.*api.gocardless.com/customer_bank_accounts}).to_return(
-          body: {
-            'customer_bank_accounts' => [{
-
-              'account_holder_name' => 'account_holder_name-input',
-              'account_number_ending' => 'account_number_ending-input',
-              'bank_name' => 'bank_name-input',
-              'country_code' => 'country_code-input',
-              'created_at' => 'created_at-input',
-              'currency' => 'currency-input',
-              'enabled' => 'enabled-input',
-              'id' => 'id-input',
-              'links' => 'links-input',
-              'metadata' => 'metadata-input'
-            }],
-            meta: {
-              cursors: {
-                before: nil,
-                after: 'ABC123'
-              }
-            }
-          }.to_json,
-          headers: { 'Content-Type' => 'application/json' }
+          body: body,
+          headers: response_headers
         )
       end
 
@@ -157,6 +257,29 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
       end
 
       specify { expect(get_list_response.api_response.headers).to eql('content-type' => 'application/json') }
+
+      describe 'retry behaviour' do
+        before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+        it 'retries timeouts' do
+          stub = stub_request(:get, %r{.*api.gocardless.com/customer_bank_accounts})
+                 .to_timeout.then.to_return(status: 200, headers: response_headers, body: body)
+
+          get_list_response
+          expect(stub).to have_been_requested.twice
+        end
+
+        it 'retries 5XX errors' do
+          stub = stub_request(:get, %r{.*api.gocardless.com/customer_bank_accounts})
+                 .to_return(status: 502,
+                            headers: { 'Content-Type' => 'text/html' },
+                            body: '<html><body>Response from Cloudflare</body></html>')
+                 .then.to_return(status: 200, headers: response_headers, body: body)
+
+          get_list_response
+          expect(stub).to have_been_requested.twice
+        end
+      end
     end
   end
 
@@ -182,7 +305,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
             limit: 1
           }
         }.to_json,
-        headers: { 'Content-Type' => 'application/json' }
+        headers: response_headers
       )
     end
 
@@ -207,7 +330,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
             cursors: {}
           }
         }.to_json,
-        headers: { 'Content-Type' => 'application/json' }
+        headers: response_headers
       )
     end
 
@@ -215,6 +338,123 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
       expect(client.customer_bank_accounts.all.to_a.length).to eq(2)
       expect(first_response_stub).to have_been_requested
       expect(second_response_stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+      it 'retries timeouts' do
+        first_response_stub = stub_request(:get, %r{.*api.gocardless.com/customer_bank_accounts$}).to_return(
+          body: {
+            'customer_bank_accounts' => [{
+
+              'account_holder_name' => 'account_holder_name-input',
+              'account_number_ending' => 'account_number_ending-input',
+              'bank_name' => 'bank_name-input',
+              'country_code' => 'country_code-input',
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'enabled' => 'enabled-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'metadata' => 'metadata-input'
+            }],
+            meta: {
+              cursors: { after: 'AB345' },
+              limit: 1
+            }
+          }.to_json,
+          headers: response_headers
+        )
+
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/customer_bank_accounts\?after=AB345})
+                               .to_timeout.then
+                               .to_return(
+                                 body: {
+                                   'customer_bank_accounts' => [{
+
+                                     'account_holder_name' => 'account_holder_name-input',
+                                     'account_number_ending' => 'account_number_ending-input',
+                                     'bank_name' => 'bank_name-input',
+                                     'country_code' => 'country_code-input',
+                                     'created_at' => 'created_at-input',
+                                     'currency' => 'currency-input',
+                                     'enabled' => 'enabled-input',
+                                     'id' => 'id-input',
+                                     'links' => 'links-input',
+                                     'metadata' => 'metadata-input'
+                                   }],
+                                   meta: {
+                                     limit: 2,
+                                     cursors: {}
+                                   }
+                                 }.to_json,
+                                 headers: response_headers
+                               )
+
+        client.customer_bank_accounts.all.to_a
+
+        expect(first_response_stub).to have_been_requested
+        expect(second_response_stub).to have_been_requested.twice
+      end
+
+      it 'retries 5XX errors' do
+        first_response_stub = stub_request(:get, %r{.*api.gocardless.com/customer_bank_accounts$}).to_return(
+          body: {
+            'customer_bank_accounts' => [{
+
+              'account_holder_name' => 'account_holder_name-input',
+              'account_number_ending' => 'account_number_ending-input',
+              'bank_name' => 'bank_name-input',
+              'country_code' => 'country_code-input',
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'enabled' => 'enabled-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'metadata' => 'metadata-input'
+            }],
+            meta: {
+              cursors: { after: 'AB345' },
+              limit: 1
+            }
+          }.to_json,
+          headers: response_headers
+        )
+
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/customer_bank_accounts\?after=AB345})
+                               .to_return(
+                                 status: 502,
+                                 body: '<html><body>Response from Cloudflare</body></html>',
+                                 headers: { 'Content-Type' => 'text/html' }
+                               ).then.to_return(
+                                 body: {
+                                   'customer_bank_accounts' => [{
+
+                                     'account_holder_name' => 'account_holder_name-input',
+                                     'account_number_ending' => 'account_number_ending-input',
+                                     'bank_name' => 'bank_name-input',
+                                     'country_code' => 'country_code-input',
+                                     'created_at' => 'created_at-input',
+                                     'currency' => 'currency-input',
+                                     'enabled' => 'enabled-input',
+                                     'id' => 'id-input',
+                                     'links' => 'links-input',
+                                     'metadata' => 'metadata-input'
+                                   }],
+                                   meta: {
+                                     limit: 2,
+                                     cursors: {}
+                                   }
+                                 }.to_json,
+                                 headers: response_headers
+                               )
+
+        client.customer_bank_accounts.all.to_a
+
+        expect(first_response_stub).to have_been_requested
+        expect(second_response_stub).to have_been_requested.twice
+      end
     end
   end
 
@@ -244,7 +484,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
                 'metadata' => 'metadata-input'
               }
             }.to_json,
-            headers: { 'Content-Type' => 'application/json' }
+            headers: response_headers
           )
       end
 
@@ -279,7 +519,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
               'metadata' => 'metadata-input'
             }
           }.to_json,
-          headers: { 'Content-Type' => 'application/json' }
+          headers: response_headers
         )
       end
 
@@ -293,7 +533,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
         stub_url = '/customer_bank_accounts/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
           body: '',
-          headers: { 'Content-Type' => 'application/json' }
+          headers: response_headers
         )
       end
 
@@ -307,6 +547,33 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
 
       it "doesn't raise an error" do
         expect { get_response }.to_not raise_error(/bad URI/)
+      end
+    end
+
+    describe 'retry behaviour' do
+      before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+      it 'retries timeouts' do
+        stub_url = '/customer_bank_accounts/:identity'.gsub(':identity', id)
+
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout.then.to_return(status: 200, headers: response_headers)
+
+        get_response
+        expect(stub).to have_been_requested.twice
+      end
+
+      it 'retries 5XX errors' do
+        stub_url = '/customer_bank_accounts/:identity'.gsub(':identity', id)
+
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+               .to_return(status: 502,
+                          headers: { 'Content-Type' => 'text/html' },
+                          body: '<html><body>Response from Cloudflare</body></html>')
+               .then.to_return(status: 200, headers: response_headers)
+
+        get_response
+        expect(stub).to have_been_requested.twice
       end
     end
   end
@@ -336,13 +603,38 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
               'metadata' => 'metadata-input'
             }
           }.to_json,
-          headers: { 'Content-Type' => 'application/json' }
+          headers: response_headers
         )
       end
 
       it 'updates and returns the resource' do
         expect(put_update_response).to be_a(GoCardlessPro::Resources::CustomerBankAccount)
         expect(stub).to have_been_requested
+      end
+
+      describe 'retry behaviour' do
+        before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+        it 'retries timeouts' do
+          stub_url = '/customer_bank_accounts/:identity'.gsub(':identity', id)
+          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/)
+                 .to_timeout.then.to_return(status: 200, headers: response_headers)
+
+          put_update_response
+          expect(stub).to have_been_requested.twice
+        end
+
+        it 'retries 5XX errors' do
+          stub_url = '/customer_bank_accounts/:identity'.gsub(':identity', id)
+          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/)
+                 .to_return(status: 502,
+                            headers: { 'Content-Type' => 'text/html' },
+                            body: '<html><body>Response from Cloudflare</body></html>')
+                 .then.to_return(status: 200, headers: response_headers)
+
+          put_update_response
+          expect(stub).to have_been_requested.twice
+        end
       end
     end
   end
@@ -371,7 +663,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
             'metadata' => 'metadata-input'
           }
         }.to_json,
-        headers: { 'Content-Type' => 'application/json' }
+        headers: response_headers
       )
     end
 
@@ -379,6 +671,17 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
       expect(post_response).to be_a(GoCardlessPro::Resources::CustomerBankAccount)
 
       expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/customer_bank_accounts/:identity/actions/disable'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout
+
+        expect { post_response }.to raise_error(Faraday::TimeoutError)
+        expect(stub).to have_been_requested
+      end
     end
 
     context 'when the request needs a body and custom header' do
@@ -411,7 +714,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
                 'metadata' => 'metadata-input'
               }
             }.to_json,
-            headers: { 'Content-Type' => 'application/json' }
+            headers: response_headers
           )
       end
     end

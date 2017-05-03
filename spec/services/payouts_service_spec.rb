@@ -7,34 +7,40 @@ describe GoCardlessPro::Services::PayoutsService do
     )
   end
 
+  let(:response_headers) { { 'Content-Type' => 'application/json' } }
+
   describe '#list' do
     describe 'with no filters' do
       subject(:get_list_response) { client.payouts.list }
 
+      let(:body) do
+        {
+          'payouts' => [{
+
+            'amount' => 'amount-input',
+            'arrival_date' => 'arrival_date-input',
+            'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
+            'deducted_fees' => 'deducted_fees-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'payout_type' => 'payout_type-input',
+            'reference' => 'reference-input',
+            'status' => 'status-input'
+          }],
+          meta: {
+            cursors: {
+              before: nil,
+              after: 'ABC123'
+            }
+          }
+        }.to_json
+      end
+
       before do
         stub_request(:get, %r{.*api.gocardless.com/payouts}).to_return(
-          body: {
-            'payouts' => [{
-
-              'amount' => 'amount-input',
-              'arrival_date' => 'arrival_date-input',
-              'created_at' => 'created_at-input',
-              'currency' => 'currency-input',
-              'deducted_fees' => 'deducted_fees-input',
-              'id' => 'id-input',
-              'links' => 'links-input',
-              'payout_type' => 'payout_type-input',
-              'reference' => 'reference-input',
-              'status' => 'status-input'
-            }],
-            meta: {
-              cursors: {
-                before: nil,
-                after: 'ABC123'
-              }
-            }
-          }.to_json,
-          headers: { 'Content-Type' => 'application/json' }
+          body: body,
+          headers: response_headers
         )
       end
 
@@ -66,6 +72,29 @@ describe GoCardlessPro::Services::PayoutsService do
       end
 
       specify { expect(get_list_response.api_response.headers).to eql('content-type' => 'application/json') }
+
+      describe 'retry behaviour' do
+        before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+        it 'retries timeouts' do
+          stub = stub_request(:get, %r{.*api.gocardless.com/payouts})
+                 .to_timeout.then.to_return(status: 200, headers: response_headers, body: body)
+
+          get_list_response
+          expect(stub).to have_been_requested.twice
+        end
+
+        it 'retries 5XX errors' do
+          stub = stub_request(:get, %r{.*api.gocardless.com/payouts})
+                 .to_return(status: 502,
+                            headers: { 'Content-Type' => 'text/html' },
+                            body: '<html><body>Response from Cloudflare</body></html>')
+                 .then.to_return(status: 200, headers: response_headers, body: body)
+
+          get_list_response
+          expect(stub).to have_been_requested.twice
+        end
+      end
     end
   end
 
@@ -91,7 +120,7 @@ describe GoCardlessPro::Services::PayoutsService do
             limit: 1
           }
         }.to_json,
-        headers: { 'Content-Type' => 'application/json' }
+        headers: response_headers
       )
     end
 
@@ -116,7 +145,7 @@ describe GoCardlessPro::Services::PayoutsService do
             cursors: {}
           }
         }.to_json,
-        headers: { 'Content-Type' => 'application/json' }
+        headers: response_headers
       )
     end
 
@@ -124,6 +153,123 @@ describe GoCardlessPro::Services::PayoutsService do
       expect(client.payouts.all.to_a.length).to eq(2)
       expect(first_response_stub).to have_been_requested
       expect(second_response_stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+      it 'retries timeouts' do
+        first_response_stub = stub_request(:get, %r{.*api.gocardless.com/payouts$}).to_return(
+          body: {
+            'payouts' => [{
+
+              'amount' => 'amount-input',
+              'arrival_date' => 'arrival_date-input',
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'deducted_fees' => 'deducted_fees-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'payout_type' => 'payout_type-input',
+              'reference' => 'reference-input',
+              'status' => 'status-input'
+            }],
+            meta: {
+              cursors: { after: 'AB345' },
+              limit: 1
+            }
+          }.to_json,
+          headers: response_headers
+        )
+
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/payouts\?after=AB345})
+                               .to_timeout.then
+                               .to_return(
+                                 body: {
+                                   'payouts' => [{
+
+                                     'amount' => 'amount-input',
+                                     'arrival_date' => 'arrival_date-input',
+                                     'created_at' => 'created_at-input',
+                                     'currency' => 'currency-input',
+                                     'deducted_fees' => 'deducted_fees-input',
+                                     'id' => 'id-input',
+                                     'links' => 'links-input',
+                                     'payout_type' => 'payout_type-input',
+                                     'reference' => 'reference-input',
+                                     'status' => 'status-input'
+                                   }],
+                                   meta: {
+                                     limit: 2,
+                                     cursors: {}
+                                   }
+                                 }.to_json,
+                                 headers: response_headers
+                               )
+
+        client.payouts.all.to_a
+
+        expect(first_response_stub).to have_been_requested
+        expect(second_response_stub).to have_been_requested.twice
+      end
+
+      it 'retries 5XX errors' do
+        first_response_stub = stub_request(:get, %r{.*api.gocardless.com/payouts$}).to_return(
+          body: {
+            'payouts' => [{
+
+              'amount' => 'amount-input',
+              'arrival_date' => 'arrival_date-input',
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'deducted_fees' => 'deducted_fees-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'payout_type' => 'payout_type-input',
+              'reference' => 'reference-input',
+              'status' => 'status-input'
+            }],
+            meta: {
+              cursors: { after: 'AB345' },
+              limit: 1
+            }
+          }.to_json,
+          headers: response_headers
+        )
+
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/payouts\?after=AB345})
+                               .to_return(
+                                 status: 502,
+                                 body: '<html><body>Response from Cloudflare</body></html>',
+                                 headers: { 'Content-Type' => 'text/html' }
+                               ).then.to_return(
+                                 body: {
+                                   'payouts' => [{
+
+                                     'amount' => 'amount-input',
+                                     'arrival_date' => 'arrival_date-input',
+                                     'created_at' => 'created_at-input',
+                                     'currency' => 'currency-input',
+                                     'deducted_fees' => 'deducted_fees-input',
+                                     'id' => 'id-input',
+                                     'links' => 'links-input',
+                                     'payout_type' => 'payout_type-input',
+                                     'reference' => 'reference-input',
+                                     'status' => 'status-input'
+                                   }],
+                                   meta: {
+                                     limit: 2,
+                                     cursors: {}
+                                   }
+                                 }.to_json,
+                                 headers: response_headers
+                               )
+
+        client.payouts.all.to_a
+
+        expect(first_response_stub).to have_been_requested
+        expect(second_response_stub).to have_been_requested.twice
+      end
     end
   end
 
@@ -153,7 +299,7 @@ describe GoCardlessPro::Services::PayoutsService do
                 'status' => 'status-input'
               }
             }.to_json,
-            headers: { 'Content-Type' => 'application/json' }
+            headers: response_headers
           )
       end
 
@@ -188,7 +334,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'status' => 'status-input'
             }
           }.to_json,
-          headers: { 'Content-Type' => 'application/json' }
+          headers: response_headers
         )
       end
 
@@ -202,7 +348,7 @@ describe GoCardlessPro::Services::PayoutsService do
         stub_url = '/payouts/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
           body: '',
-          headers: { 'Content-Type' => 'application/json' }
+          headers: response_headers
         )
       end
 
@@ -216,6 +362,33 @@ describe GoCardlessPro::Services::PayoutsService do
 
       it "doesn't raise an error" do
         expect { get_response }.to_not raise_error(/bad URI/)
+      end
+    end
+
+    describe 'retry behaviour' do
+      before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+      it 'retries timeouts' do
+        stub_url = '/payouts/:identity'.gsub(':identity', id)
+
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout.then.to_return(status: 200, headers: response_headers)
+
+        get_response
+        expect(stub).to have_been_requested.twice
+      end
+
+      it 'retries 5XX errors' do
+        stub_url = '/payouts/:identity'.gsub(':identity', id)
+
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+               .to_return(status: 502,
+                          headers: { 'Content-Type' => 'text/html' },
+                          body: '<html><body>Response from Cloudflare</body></html>')
+               .then.to_return(status: 200, headers: response_headers)
+
+        get_response
+        expect(stub).to have_been_requested.twice
       end
     end
   end

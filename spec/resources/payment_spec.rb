@@ -1,95 +1,578 @@
 require 'spec_helper'
 
 describe GoCardlessPro::Resources::Payment do
-  describe 'initialising' do
-    let(:data) do
-      {
+  let(:client) do
+    GoCardlessPro::Client.new(
+      access_token: 'SECRET_TOKEN'
+    )
+  end
 
-        'amount' => 'amount-input',
+  let(:response_headers) { { 'Content-Type' => 'application/json' } }
 
-        'amount_refunded' => 'amount_refunded-input',
+  describe '#create' do
+    subject(:post_create_response) { client.payments.create(params: new_resource) }
+    context 'with a valid request' do
+      let(:new_resource) do
+        {
 
-        'charge_date' => 'charge_date-input',
+          'amount' => 'amount-input',
+          'amount_refunded' => 'amount_refunded-input',
+          'charge_date' => 'charge_date-input',
+          'created_at' => 'created_at-input',
+          'currency' => 'currency-input',
+          'description' => 'description-input',
+          'id' => 'id-input',
+          'links' => 'links-input',
+          'metadata' => 'metadata-input',
+          'reference' => 'reference-input',
+          'status' => 'status-input'
+        }
+      end
 
-        'created_at' => 'created_at-input',
+      before do
+        stub_request(:post, %r{.*api.gocardless.com/payments})
+          .with(
+            body: {
+              'payments' => {
 
-        'currency' => 'currency-input',
+                'amount' => 'amount-input',
+                'amount_refunded' => 'amount_refunded-input',
+                'charge_date' => 'charge_date-input',
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'description' => 'description-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'reference' => 'reference-input',
+                'status' => 'status-input'
+              }
+            }
+          )
+          .to_return(
+            body: {
+              'payments' =>
 
-        'description' => 'description-input',
+                {
 
-        'id' => 'id-input',
+                  'amount' => 'amount-input',
+                  'amount_refunded' => 'amount_refunded-input',
+                  'charge_date' => 'charge_date-input',
+                  'created_at' => 'created_at-input',
+                  'currency' => 'currency-input',
+                  'description' => 'description-input',
+                  'id' => 'id-input',
+                  'links' => 'links-input',
+                  'metadata' => 'metadata-input',
+                  'reference' => 'reference-input',
+                  'status' => 'status-input'
+                }
 
-        'links' => {
+            }.to_json,
+            headers: response_headers
+          )
+      end
 
-          'creditor' => 'creditor-input',
-
-          'mandate' => 'mandate-input',
-
-          'payout' => 'payout-input',
-
-          'subscription' => 'subscription-input'
-
-        },
-
-        'metadata' => 'metadata-input',
-
-        'reference' => 'reference-input',
-
-        'status' => 'status-input'
-
-      }
+      it 'creates and returns the resource' do
+        expect(post_create_response).to be_a(GoCardlessPro::Resources::Payment)
+      end
     end
 
-    it 'can be initialized from an unenveloped response' do
-      resource = described_class.new(data)
+    context 'with a request that returns a validation error' do
+      let(:new_resource) { {} }
 
-      expect(resource.amount).to eq('amount-input')
+      before do
+        stub_request(:post, %r{.*api.gocardless.com/payments}).to_return(
+          body: {
+            error: {
+              type: 'validation_failed',
+              code: 422,
+              errors: [
+                { message: 'test error message', field: 'test_field' }
+              ]
+            }
+          }.to_json,
+          headers: response_headers,
+          status: 422
+        )
+      end
 
-      expect(resource.amount_refunded).to eq('amount_refunded-input')
-
-      expect(resource.charge_date).to eq('charge_date-input')
-
-      expect(resource.created_at).to eq('created_at-input')
-
-      expect(resource.currency).to eq('currency-input')
-
-      expect(resource.description).to eq('description-input')
-
-      expect(resource.id).to eq('id-input')
-
-      expect(resource.links.creditor).to eq('creditor-input')
-
-      expect(resource.links.mandate).to eq('mandate-input')
-
-      expect(resource.links.payout).to eq('payout-input')
-
-      expect(resource.links.subscription).to eq('subscription-input')
-
-      expect(resource.metadata).to eq('metadata-input')
-
-      expect(resource.reference).to eq('reference-input')
-
-      expect(resource.status).to eq('status-input')
+      it 'throws the correct error' do
+        expect { post_create_response }.to raise_error(GoCardlessPro::ValidationError)
+      end
     end
 
-    it 'can handle new attributes without erroring' do
-      data['foo'] = 'bar'
-      expect { described_class.new(data) }.to_not raise_error
+    context 'with a request that returns an idempotent creation conflict error' do
+      let(:id) { 'ID123' }
+
+      let(:new_resource) do
+        {
+
+          'amount' => 'amount-input',
+          'amount_refunded' => 'amount_refunded-input',
+          'charge_date' => 'charge_date-input',
+          'created_at' => 'created_at-input',
+          'currency' => 'currency-input',
+          'description' => 'description-input',
+          'id' => 'id-input',
+          'links' => 'links-input',
+          'metadata' => 'metadata-input',
+          'reference' => 'reference-input',
+          'status' => 'status-input'
+        }
+      end
+
+      let!(:post_stub) do
+        stub_request(:post, %r{.*api.gocardless.com/payments}).to_return(
+          body: {
+            error: {
+              type: 'invalid_state',
+              code: 409,
+              errors: [
+                {
+                  message: 'A resource has already been created with this idempotency key',
+                  reason: 'idempotent_creation_conflict',
+                  links: {
+                    conflicting_resource_id: id
+                  }
+                }
+              ]
+            }
+          }.to_json,
+          headers: response_headers,
+          status: 409
+        )
+      end
+
+      let!(:get_stub) do
+        stub_url = "/payments/#{id}"
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .to_return(
+            body: {
+              'payments' => {
+
+                'amount' => 'amount-input',
+                'amount_refunded' => 'amount_refunded-input',
+                'charge_date' => 'charge_date-input',
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'description' => 'description-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'reference' => 'reference-input',
+                'status' => 'status-input'
+              }
+            }.to_json,
+            headers: response_headers
+          )
+      end
+
+      it 'fetches the already-created resource' do
+        post_create_response
+        expect(post_stub).to have_been_requested
+        expect(get_stub).to have_been_requested
+      end
+    end
+  end
+
+  describe '#list' do
+    describe 'with no filters' do
+      subject(:get_list_response) { client.payments.list }
+
+      before do
+        stub_request(:get, %r{.*api.gocardless.com/payments}).to_return(
+          body: {
+            'payments' => [{
+
+              'amount' => 'amount-input',
+              'amount_refunded' => 'amount_refunded-input',
+              'charge_date' => 'charge_date-input',
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'description' => 'description-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'metadata' => 'metadata-input',
+              'reference' => 'reference-input',
+              'status' => 'status-input'
+            }],
+            meta: {
+              cursors: {
+                before: nil,
+                after: 'ABC123'
+              }
+            }
+          }.to_json,
+          headers: response_headers
+        )
+      end
+
+      it 'wraps each item in the resource class' do
+        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Payment)
+
+        expect(get_list_response.records.first.amount).to eq('amount-input')
+
+        expect(get_list_response.records.first.amount_refunded).to eq('amount_refunded-input')
+
+        expect(get_list_response.records.first.charge_date).to eq('charge_date-input')
+
+        expect(get_list_response.records.first.created_at).to eq('created_at-input')
+
+        expect(get_list_response.records.first.currency).to eq('currency-input')
+
+        expect(get_list_response.records.first.description).to eq('description-input')
+
+        expect(get_list_response.records.first.id).to eq('id-input')
+
+        expect(get_list_response.records.first.metadata).to eq('metadata-input')
+
+        expect(get_list_response.records.first.reference).to eq('reference-input')
+
+        expect(get_list_response.records.first.status).to eq('status-input')
+      end
+
+      it 'exposes the cursors for before and after' do
+        expect(get_list_response.before).to eq(nil)
+        expect(get_list_response.after).to eq('ABC123')
+      end
+
+      specify { expect(get_list_response.api_response.headers).to eql('content-type' => 'application/json') }
+    end
+  end
+
+  describe '#all' do
+    let!(:first_response_stub) do
+      stub_request(:get, %r{.*api.gocardless.com/payments$}).to_return(
+        body: {
+          'payments' => [{
+
+            'amount' => 'amount-input',
+            'amount_refunded' => 'amount_refunded-input',
+            'charge_date' => 'charge_date-input',
+            'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
+            'description' => 'description-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'metadata' => 'metadata-input',
+            'reference' => 'reference-input',
+            'status' => 'status-input'
+          }],
+          meta: {
+            cursors: { after: 'AB345' },
+            limit: 1
+          }
+        }.to_json,
+        headers: response_headers
+      )
     end
 
-    it 'can handle new link attributes without erroring' do
-      data['links']['foo'] = 'bar'
-      expect { described_class.new(data) }.to_not raise_error
+    let!(:second_response_stub) do
+      stub_request(:get, %r{.*api.gocardless.com/payments\?after=AB345}).to_return(
+        body: {
+          'payments' => [{
+
+            'amount' => 'amount-input',
+            'amount_refunded' => 'amount_refunded-input',
+            'charge_date' => 'charge_date-input',
+            'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
+            'description' => 'description-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'metadata' => 'metadata-input',
+            'reference' => 'reference-input',
+            'status' => 'status-input'
+          }],
+          meta: {
+            limit: 2,
+            cursors: {}
+          }
+        }.to_json,
+        headers: response_headers
+      )
     end
 
-    it 'can handle a nil links value' do
-      data['links'] = nil
-      expect { described_class.new(data).links }.to_not raise_error
+    it 'automatically makes the extra requests' do
+      expect(client.payments.all.to_a.length).to eq(2)
+      expect(first_response_stub).to have_been_requested
+      expect(second_response_stub).to have_been_requested
+    end
+  end
+
+  describe '#get' do
+    let(:id) { 'ID123' }
+
+    subject(:get_response) { client.payments.get(id) }
+
+    context 'passing in a custom header' do
+      let!(:stub) do
+        stub_url = '/payments/:identity'.gsub(':identity', id)
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .with(headers: { 'Foo' => 'Bar' })
+          .to_return(
+            body: {
+              'payments' => {
+
+                'amount' => 'amount-input',
+                'amount_refunded' => 'amount_refunded-input',
+                'charge_date' => 'charge_date-input',
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'description' => 'description-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'reference' => 'reference-input',
+                'status' => 'status-input'
+              }
+            }.to_json,
+            headers: response_headers
+          )
+      end
+
+      subject(:get_response) do
+        client.payments.get(id, headers: {
+                              'Foo' => 'Bar'
+                            })
+      end
+
+      it 'includes the header' do
+        get_response
+        expect(stub).to have_been_requested
+      end
     end
 
-    describe '#to_h' do
-      it 'returns a hash representing the resource' do
-        expect(described_class.new(data).to_h).to eq(data)
+    context 'when there is a payment to return' do
+      before do
+        stub_url = '/payments/:identity'.gsub(':identity', id)
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
+          body: {
+            'payments' => {
+
+              'amount' => 'amount-input',
+              'amount_refunded' => 'amount_refunded-input',
+              'charge_date' => 'charge_date-input',
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'description' => 'description-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'metadata' => 'metadata-input',
+              'reference' => 'reference-input',
+              'status' => 'status-input'
+            }
+          }.to_json,
+          headers: response_headers
+        )
+      end
+
+      it 'wraps the response in a resource' do
+        expect(get_response).to be_a(GoCardlessPro::Resources::Payment)
+      end
+    end
+
+    context 'when nothing is returned' do
+      before do
+        stub_url = '/payments/:identity'.gsub(':identity', id)
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
+          body: '',
+          headers: response_headers
+        )
+      end
+
+      it 'returns nil' do
+        expect(get_response).to be_nil
+      end
+    end
+
+    context "when an ID is specified which can't be included in a valid URI" do
+      let(:id) { '`' }
+
+      it "doesn't raise an error" do
+        expect { get_response }.to_not raise_error(/bad URI/)
+      end
+    end
+  end
+
+  describe '#update' do
+    subject(:put_update_response) { client.payments.update(id, params: update_params) }
+    let(:id) { 'ABC123' }
+
+    context 'with a valid request' do
+      let(:update_params) { { 'hello' => 'world' } }
+
+      let!(:stub) do
+        stub_url = '/payments/:identity'.gsub(':identity', id)
+        stub_request(:put, /.*api.gocardless.com#{stub_url}/).to_return(
+          body: {
+            'payments' => {
+
+              'amount' => 'amount-input',
+              'amount_refunded' => 'amount_refunded-input',
+              'charge_date' => 'charge_date-input',
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'description' => 'description-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'metadata' => 'metadata-input',
+              'reference' => 'reference-input',
+              'status' => 'status-input'
+            }
+          }.to_json,
+          headers: response_headers
+        )
+      end
+
+      it 'updates and returns the resource' do
+        expect(put_update_response).to be_a(GoCardlessPro::Resources::Payment)
+        expect(stub).to have_been_requested
+      end
+    end
+  end
+
+  describe '#cancel' do
+    subject(:post_response) { client.payments.cancel(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /payments/%v/actions/cancel
+      stub_url = '/payments/:identity/actions/cancel'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'payments' => {
+
+            'amount' => 'amount-input',
+            'amount_refunded' => 'amount_refunded-input',
+            'charge_date' => 'charge_date-input',
+            'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
+            'description' => 'description-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'metadata' => 'metadata-input',
+            'reference' => 'reference-input',
+            'status' => 'status-input'
+          }
+        }.to_json,
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::Payment)
+
+      expect(stub).to have_been_requested
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.payments.cancel(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /payments/%v/actions/cancel
+        stub_url = '/payments/:identity/actions/cancel'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'payments' => {
+
+                'amount' => 'amount-input',
+                'amount_refunded' => 'amount_refunded-input',
+                'charge_date' => 'charge_date-input',
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'description' => 'description-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'reference' => 'reference-input',
+                'status' => 'status-input'
+              }
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
+  describe '#retry' do
+    subject(:post_response) { client.payments.retry(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /payments/%v/actions/retry
+      stub_url = '/payments/:identity/actions/retry'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'payments' => {
+
+            'amount' => 'amount-input',
+            'amount_refunded' => 'amount_refunded-input',
+            'charge_date' => 'charge_date-input',
+            'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
+            'description' => 'description-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'metadata' => 'metadata-input',
+            'reference' => 'reference-input',
+            'status' => 'status-input'
+          }
+        }.to_json,
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::Payment)
+
+      expect(stub).to have_been_requested
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.payments.retry(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /payments/%v/actions/retry
+        stub_url = '/payments/:identity/actions/retry'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'payments' => {
+
+                'amount' => 'amount-input',
+                'amount_refunded' => 'amount_refunded-input',
+                'charge_date' => 'charge_date-input',
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'description' => 'description-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'reference' => 'reference-input',
+                'status' => 'status-input'
+              }
+            }.to_json,
+            headers: response_headers
+          )
       end
     end
   end

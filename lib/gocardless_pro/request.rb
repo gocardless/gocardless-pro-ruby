@@ -1,6 +1,11 @@
+require 'securerandom'
+
 module GoCardlessPro
   # A class that wraps an API request
   class Request
+    MAX_NETWORK_RETRIES = 3
+    RETRY_DELAY = 0.5
+
     # Initialize a request class, which makes calls to the API
     # @param connection
     # @param method [Symbol] the method to make the request with
@@ -13,6 +18,7 @@ module GoCardlessPro
       @path = path
       @headers = options.delete(:headers) || {}
       @envelope_name = options.delete(:envelope_key)
+      @retry_failures = options.delete(:retry_failures) { true }
       @given_options = options
 
       @request_body = request_body
@@ -21,11 +27,34 @@ module GoCardlessPro
         @request_body = @request_body.to_json
         @headers['Content-Type'] ||= 'application/json'
       end
+
+      @headers['Idempotency-Key'] ||= SecureRandom.uuid if @method == :post
     end
 
     # Make the request and wrap it in a Response object
     def request
-      Response.new(make_request)
+      if @retry_failures
+        with_retries { Response.new(make_request) }
+      else
+        Response.new(make_request)
+      end
+    end
+
+    def with_retries
+      requests_attempted = 0
+      total_requests_allowed = MAX_NETWORK_RETRIES + 1
+
+      begin
+        yield
+      rescue => exception
+        if requests_attempted < total_requests_allowed && should_retry?(exception)
+          requests_attempted += 1
+          sleep(RETRY_DELAY)
+          retry
+        else
+          raise exception
+        end
+      end
     end
 
     # Make the API request
@@ -56,6 +85,14 @@ module GoCardlessPro
       else
         {}
       end
+    end
+
+    private
+
+    def should_retry?(exception)
+      return true if exception.is_a?(Faraday::TimeoutError)
+      return true if exception.is_a?(Faraday::ConnectionFailed)
+      return true if exception.is_a?(GoCardlessPro::ApiError)
     end
   end
 end

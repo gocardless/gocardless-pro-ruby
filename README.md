@@ -115,6 +115,11 @@ For POST and PUT requests you need to pass in the body in under the `params` key
 )
 ```
 
+When creating a resource, the library will automatically include a randomly-generated
+[idempotency key](https://developer.gocardless.com/api-reference/#making-requests-idempotency-keys)
+- this means that if a request appears to fail but is in fact successful (for example due
+to a timeout), you will not end up creating multiple duplicates of the resource.
+
 If any parameters are required they come first:
 
 ```rb
@@ -125,7 +130,7 @@ If any parameters are required they come first:
 
 Custom headers can be provided for a POST request under the `headers` key.
 
-The most common use of a custom header would be to set an [idempotency key](https://developer.gocardless.com/pro/#making-requests-idempotency-keys) when making a request:
+The most common use of a custom header would be to set a custom [idempotency key](https://developer.gocardless.com/pro/#making-requests-idempotency-keys) when making a request:
 
 ```rb
 @client.customers.create(
@@ -142,7 +147,7 @@ The most common use of a custom header would be to set an [idempotency key](http
 
 ### Handling failures
 
-When the API returns an error, the client will raise a corresponding one. There are four classes of error which could be thrown, allof which subclass `GoCardlessPro::Error`:
+When the API returns an error, the client will raise a corresponding one. There are four classes of error which could be thrown, all of which subclass `GoCardlessPro::Error`:
 
 - `GoCardlessPro::GoCardlessError`
 - `GoCardlessPro::InvalidApiUsageError`
@@ -150,6 +155,8 @@ When the API returns an error, the client will raise a corresponding one. There 
 - `GoCardlessPro::ValidationError`
 
 These errors are fully documented in the [API documentation](https://developer.gocardless.com/api-reference/#overview-errors).
+
+When the API returns an `invalid_state` error due to an `idempotent_creation_conflict`, where possible, the library will automatically retrieve the existing record which was created using the idempotency key.
 
 All errors have the following methods to facilitate access to information in the API response:
 
@@ -159,6 +166,8 @@ All errors have the following methods to facilitate access to information in the
 - `#code`
 - `#request_id`
 - `#errors`
+
+If a timeout occurs, and the request being made is idempotent, the library will automatically retry the request up to 3 times before giving up and raising a `Faraday::TimeoutError` error.
 
 ### Using the OAuth API
 

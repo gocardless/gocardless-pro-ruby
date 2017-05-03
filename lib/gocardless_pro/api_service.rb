@@ -23,6 +23,8 @@ module GoCardlessPro
       connection_options = options[:connection_options]
 
       @connection = Faraday.new(root_url, connection_options) do |faraday|
+        faraday.response :raise_gocardless_errors
+
         faraday.adapter(*http_adapter)
       end
 

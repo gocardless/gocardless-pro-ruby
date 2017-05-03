@@ -24,6 +24,7 @@ end
 
 require_relative 'gocardless_pro/api_service'
 require_relative 'gocardless_pro/list_response'
+require_relative 'gocardless_pro/middlewares/raise_gocardless_errors'
 require_relative 'gocardless_pro/error'
 require_relative 'gocardless_pro/error/validation_error'
 require_relative 'gocardless_pro/error/gocardless_error'
