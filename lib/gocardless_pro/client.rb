@@ -116,7 +116,9 @@ module GoCardlessPro
         default_headers: {
           'GoCardless-Version' => '2015-07-06',
           'User-Agent' => "#{user_agent}",
-          'Content-Type' => 'application/json'
+          'Content-Type' => 'application/json',
+          'GoCardless-Client-Library' => 'gocardless-pro-ruby',
+          'GoCardless-Client-Version' => '2.0.0'
         }
       }
     end
@@ -124,8 +126,7 @@ module GoCardlessPro
     def user_agent
       @user_agent ||=
         begin
-          gem_name = 'gocardless_pro'
-          gem_info = "#{gem_name}"
+          gem_info = 'gocardless-pro-ruby'
           gem_info += "/v#{GoCardlessPro::VERSION}" if defined?(GoCardlessPro::VERSION)
 
           ruby_engine = defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'

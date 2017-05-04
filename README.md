@@ -6,7 +6,7 @@ A Ruby client for the GoCardless API. For full details of the GoCardless API, se
 [![Build Status](https://travis-ci.org/gocardless/gocardless-pro-ruby.svg?branch=master)](https://travis-ci.org/gocardless/gocardless-pro-ruby)
 
 - ["Getting started" guide](https://developer.gocardless.com/getting-started/api/introduction/?lang=ruby) with copy and paste Ruby code samples
-- [API Reference](https://developer.gocardless.com/api-reference/2015-07-06)
+- [API Reference](https://developer.gocardless.com/api-reference)
 
 ## Usage Examples
 
