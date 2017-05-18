@@ -27,7 +27,8 @@ describe GoCardlessPro::Services::CreditorsService do
           'name' => 'name-input',
           'postal_code' => 'postal_code-input',
           'region' => 'region-input',
-          'scheme_identifiers' => 'scheme_identifiers-input'
+          'scheme_identifiers' => 'scheme_identifiers-input',
+          'verification_status' => 'verification_status-input'
         }
       end
 
@@ -49,7 +50,8 @@ describe GoCardlessPro::Services::CreditorsService do
                 'name' => 'name-input',
                 'postal_code' => 'postal_code-input',
                 'region' => 'region-input',
-                'scheme_identifiers' => 'scheme_identifiers-input'
+                'scheme_identifiers' => 'scheme_identifiers-input',
+                'verification_status' => 'verification_status-input'
               }
             }
           )
@@ -71,7 +73,8 @@ describe GoCardlessPro::Services::CreditorsService do
                   'name' => 'name-input',
                   'postal_code' => 'postal_code-input',
                   'region' => 'region-input',
-                  'scheme_identifiers' => 'scheme_identifiers-input'
+                  'scheme_identifiers' => 'scheme_identifiers-input',
+                  'verification_status' => 'verification_status-input'
                 }
 
             }.to_json,
@@ -149,7 +152,8 @@ describe GoCardlessPro::Services::CreditorsService do
           'name' => 'name-input',
           'postal_code' => 'postal_code-input',
           'region' => 'region-input',
-          'scheme_identifiers' => 'scheme_identifiers-input'
+          'scheme_identifiers' => 'scheme_identifiers-input',
+          'verification_status' => 'verification_status-input'
         }
       end
 
@@ -194,7 +198,8 @@ describe GoCardlessPro::Services::CreditorsService do
                 'name' => 'name-input',
                 'postal_code' => 'postal_code-input',
                 'region' => 'region-input',
-                'scheme_identifiers' => 'scheme_identifiers-input'
+                'scheme_identifiers' => 'scheme_identifiers-input',
+                'verification_status' => 'verification_status-input'
               }
             }.to_json,
             headers: response_headers
@@ -229,7 +234,8 @@ describe GoCardlessPro::Services::CreditorsService do
             'name' => 'name-input',
             'postal_code' => 'postal_code-input',
             'region' => 'region-input',
-            'scheme_identifiers' => 'scheme_identifiers-input'
+            'scheme_identifiers' => 'scheme_identifiers-input',
+            'verification_status' => 'verification_status-input'
           }],
           meta: {
             cursors: {
@@ -273,6 +279,8 @@ describe GoCardlessPro::Services::CreditorsService do
         expect(get_list_response.records.first.region).to eq('region-input')
 
         expect(get_list_response.records.first.scheme_identifiers).to eq('scheme_identifiers-input')
+
+        expect(get_list_response.records.first.verification_status).to eq('verification_status-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -325,7 +333,8 @@ describe GoCardlessPro::Services::CreditorsService do
             'name' => 'name-input',
             'postal_code' => 'postal_code-input',
             'region' => 'region-input',
-            'scheme_identifiers' => 'scheme_identifiers-input'
+            'scheme_identifiers' => 'scheme_identifiers-input',
+            'verification_status' => 'verification_status-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -353,7 +362,8 @@ describe GoCardlessPro::Services::CreditorsService do
             'name' => 'name-input',
             'postal_code' => 'postal_code-input',
             'region' => 'region-input',
-            'scheme_identifiers' => 'scheme_identifiers-input'
+            'scheme_identifiers' => 'scheme_identifiers-input',
+            'verification_status' => 'verification_status-input'
           }],
           meta: {
             limit: 2,
@@ -390,7 +400,8 @@ describe GoCardlessPro::Services::CreditorsService do
               'name' => 'name-input',
               'postal_code' => 'postal_code-input',
               'region' => 'region-input',
-              'scheme_identifiers' => 'scheme_identifiers-input'
+              'scheme_identifiers' => 'scheme_identifiers-input',
+              'verification_status' => 'verification_status-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -418,7 +429,8 @@ describe GoCardlessPro::Services::CreditorsService do
                                      'name' => 'name-input',
                                      'postal_code' => 'postal_code-input',
                                      'region' => 'region-input',
-                                     'scheme_identifiers' => 'scheme_identifiers-input'
+                                     'scheme_identifiers' => 'scheme_identifiers-input',
+                                     'verification_status' => 'verification_status-input'
                                    }],
                                    meta: {
                                      limit: 2,
@@ -451,7 +463,8 @@ describe GoCardlessPro::Services::CreditorsService do
               'name' => 'name-input',
               'postal_code' => 'postal_code-input',
               'region' => 'region-input',
-              'scheme_identifiers' => 'scheme_identifiers-input'
+              'scheme_identifiers' => 'scheme_identifiers-input',
+              'verification_status' => 'verification_status-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -482,7 +495,8 @@ describe GoCardlessPro::Services::CreditorsService do
                                      'name' => 'name-input',
                                      'postal_code' => 'postal_code-input',
                                      'region' => 'region-input',
-                                     'scheme_identifiers' => 'scheme_identifiers-input'
+                                     'scheme_identifiers' => 'scheme_identifiers-input',
+                                     'verification_status' => 'verification_status-input'
                                    }],
                                    meta: {
                                      limit: 2,
@@ -526,7 +540,8 @@ describe GoCardlessPro::Services::CreditorsService do
                 'name' => 'name-input',
                 'postal_code' => 'postal_code-input',
                 'region' => 'region-input',
-                'scheme_identifiers' => 'scheme_identifiers-input'
+                'scheme_identifiers' => 'scheme_identifiers-input',
+                'verification_status' => 'verification_status-input'
               }
             }.to_json,
             headers: response_headers
@@ -564,7 +579,8 @@ describe GoCardlessPro::Services::CreditorsService do
               'name' => 'name-input',
               'postal_code' => 'postal_code-input',
               'region' => 'region-input',
-              'scheme_identifiers' => 'scheme_identifiers-input'
+              'scheme_identifiers' => 'scheme_identifiers-input',
+              'verification_status' => 'verification_status-input'
             }
           }.to_json,
           headers: response_headers
@@ -651,7 +667,8 @@ describe GoCardlessPro::Services::CreditorsService do
               'name' => 'name-input',
               'postal_code' => 'postal_code-input',
               'region' => 'region-input',
-              'scheme_identifiers' => 'scheme_identifiers-input'
+              'scheme_identifiers' => 'scheme_identifiers-input',
+              'verification_status' => 'verification_status-input'
             }
           }.to_json,
           headers: response_headers
