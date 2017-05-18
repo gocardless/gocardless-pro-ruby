@@ -33,6 +33,7 @@ module GoCardlessPro
       attr_reader :postal_code
       attr_reader :region
       attr_reader :scheme_identifiers
+      attr_reader :verification_status
 
       # Initialize a creditor resource instance
       # @param object [Hash] an object returned from the API
@@ -52,6 +53,7 @@ module GoCardlessPro
         @postal_code = object['postal_code']
         @region = object['region']
         @scheme_identifiers = object['scheme_identifiers']
+        @verification_status = object['verification_status']
         @response = response
       end
 
