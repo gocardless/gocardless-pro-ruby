@@ -14,8 +14,7 @@ describe GoCardlessPro::Response do
       double('response',
              headers: default_headers,
              status: 200,
-             body: { customers: [] }.to_json
-            )
+             body: { customers: [] }.to_json)
     end
 
     it 'returns the body parsed into a hash' do

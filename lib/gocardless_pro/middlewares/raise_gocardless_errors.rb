@@ -6,13 +6,13 @@ module GoCardlessPro
 
       def on_complete(env)
         if !json?(env) || API_ERROR_STATUSES.include?(env.status)
-          fail ApiError, generate_error_data(env)
+          raise ApiError, generate_error_data(env)
         end
 
         if CLIENT_ERROR_STATUSES.include?(env.status)
           json_body ||= JSON.parse(env.body) unless env.body.empty?
           error_type = json_body['error']['type']
-          fail(error_class_for_type(error_type), json_body['error'])
+          raise(error_class_for_type(error_type), json_body['error'])
         end
       end
 
@@ -23,7 +23,7 @@ module GoCardlessPro
           validation_failed: GoCardlessPro::ValidationError,
           gocardless: GoCardlessPro::GoCardlessError,
           invalid_api_usage: GoCardlessPro::InvalidApiUsageError,
-          invalid_state: GoCardlessPro::InvalidStateError
+          invalid_state: GoCardlessPro::InvalidStateError,
         }.fetch(type.to_sym)
       end
 
@@ -33,7 +33,7 @@ module GoCardlessPro
                        "code: #{env.status}\n" \
                        "headers: #{env.response_headers}\n" \
                        "body: #{env.body}",
-          'code' => env.status
+          'code' => env.status,
         }
       end
 

@@ -79,7 +79,7 @@ module GoCardlessPro
     #   authentication.
     #
     def initialize(options)
-      access_token = options.delete(:access_token) || fail('No Access Token given to GoCardless Client')
+      access_token = options.delete(:access_token) || raise('No Access Token given to GoCardless Client')
       environment = options.delete(:environment) || :live
       url = options.delete(:url) || url_for_environment(environment)
       options = custom_options(options)
@@ -94,7 +94,7 @@ module GoCardlessPro
       elsif environment === :sandbox
         'https://api-sandbox.gocardless.com'
       else
-        fail "Unknown environment key: #{environment}"
+        raise "Unknown environment key: #{environment}"
       end
     end
 
@@ -115,11 +115,11 @@ module GoCardlessPro
       {
         default_headers: {
           'GoCardless-Version' => '2015-07-06',
-          'User-Agent' => "#{user_agent}",
+          'User-Agent' => user_agent.to_s,
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.1.0'
-        }
+          'GoCardless-Client-Version' => '2.1.0',
+        },
       }
     end
 
@@ -139,7 +139,7 @@ module GoCardlessPro
           comment = [
             "#{ruby_engine}/#{ruby_version}",
             "#{RUBY_ENGINE}/#{interpreter_version}",
-            "#{RUBY_PLATFORM}"
+            RUBY_PLATFORM.to_s,
           ]
           comment << "faraday/#{Faraday::VERSION}"
           "#{gem_info} #{comment.join(' ')}"

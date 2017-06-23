@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 #
 # This client is automatically generated from a template and JSON schema definition.
 # See https://github.com/gocardless/gocardless-pro-ruby#contributing before editing.
@@ -38,7 +39,7 @@ module GoCardlessPro
     # @param path [String] the URL (without the base domain) to make the request to
     # @param options [Hash] the options hash
     def make_request(method, path, options = {})
-      fail ArgumentError, 'options must be a hash' unless options.is_a?(Hash)
+      raise ArgumentError, 'options must be a hash' unless options.is_a?(Hash)
       options[:headers] ||= {}
       options[:headers] = @headers.merge(options[:headers])
       Request.new(@connection, method, @path_prefix + path, options).request
@@ -50,7 +51,7 @@ module GoCardlessPro
       url.password = 'REDACTED' unless url.password.nil?
       "#<GoCardlessPro::Client url=\"#{url}\">"
     end
-    alias_method :to_s, :inspect
+    alias to_s inspect
 
     private
 

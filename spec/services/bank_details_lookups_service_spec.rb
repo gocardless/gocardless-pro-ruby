@@ -17,23 +17,23 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
 
           'available_debit_schemes' => 'available_debit_schemes-input',
           'bank_name' => 'bank_name-input',
-          'bic' => 'bic-input'
+          'bic' => 'bic-input',
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/bank_details_lookups})
-          .with(
+        stub_request(:post, %r{.*api.gocardless.com/bank_details_lookups}).
+          with(
             body: {
               'bank_details_lookups' => {
 
                 'available_debit_schemes' => 'available_debit_schemes-input',
                 'bank_name' => 'bank_name-input',
-                'bic' => 'bic-input'
-              }
+                'bic' => 'bic-input',
+              },
             }
-          )
-          .to_return(
+          ).
+          to_return(
             body: {
               'bank_details_lookups' =>
 
@@ -41,8 +41,8 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
 
                   'available_debit_schemes' => 'available_debit_schemes-input',
                   'bank_name' => 'bank_name-input',
-                  'bic' => 'bic-input'
-                }
+                  'bic' => 'bic-input',
+                },
 
             }.to_json,
             headers: response_headers
@@ -57,19 +57,19 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/bank_details_lookups})
-                 .to_timeout.then.to_return(status: 200, headers: response_headers)
+          stub = stub_request(:post, %r{.*api.gocardless.com/bank_details_lookups}).
+                 to_timeout.then.to_return(status: 200, headers: response_headers)
 
           post_create_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/bank_details_lookups})
-                 .to_return(status: 502,
-                            headers: { 'Content-Type' => 'text/html' },
-                            body: '<html><body>Response from Cloudflare</body></html>')
-                 .then.to_return(status: 200, headers: response_headers)
+          stub = stub_request(:post, %r{.*api.gocardless.com/bank_details_lookups}).
+                 to_return(status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>').
+                 then.to_return(status: 200, headers: response_headers)
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -87,9 +87,9 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' }
-              ]
-            }
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 422
@@ -109,7 +109,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
 
           'available_debit_schemes' => 'available_debit_schemes-input',
           'bank_name' => 'bank_name-input',
-          'bic' => 'bic-input'
+          'bic' => 'bic-input',
         }
       end
 
@@ -124,11 +124,11 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id
-                  }
-                }
-              ]
-            }
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 409

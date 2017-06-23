@@ -13,12 +13,12 @@ describe GoCardlessPro::Error do
       'errors' => [
         {
           'message' => 'must be a number',
-          'field' => 'branch_code'
+          'field' => 'branch_code',
         }, {
           'message' => 'is the wrong length (should be 8 characters)',
-          'field' => 'branch_code'
+          'field' => 'branch_code',
         }
-      ]
+      ],
     }
   end
 
@@ -28,8 +28,8 @@ describe GoCardlessPro::Error do
 
   specify { expect(error.message).to eq('Validation failed') }
   specify do
-    expect(error.to_s)
-      .to eq('branch_code must be a number, '\
+    expect(error.to_s).
+      to eq('branch_code must be a number, '\
           'branch_code is the wrong length (should be 8 characters)')
   end
   specify { expect(error.type).to eq('validation_failed') }
@@ -37,14 +37,14 @@ describe GoCardlessPro::Error do
   specify { expect(error.request_id).to eq('dd50eaaf-8213-48fe-90d6-5466872efbc4') }
   specify do
     expect(error.errors).to eq([
-      {
-        'message' => 'must be a number',
-        'field' => 'branch_code'
-      }, {
-        'message' => 'is the wrong length (should be 8 characters)',
-        'field' => 'branch_code'
-      }
-    ])
+                                 {
+                                   'message' => 'must be a number',
+                                   'field' => 'branch_code',
+                                 }, {
+                                   'message' => 'is the wrong length (should be 8 characters)',
+                                   'field' => 'branch_code',
+                                 }
+                               ])
   end
 
   context 'when initializing an error with a string' do

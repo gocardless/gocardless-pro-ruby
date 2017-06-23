@@ -71,10 +71,10 @@ module GoCardlessPro
     def request_body
       if @method == :get
         nil
-      elsif [:post, :put, :delete].include?(@method)
+      elsif %i[post put delete].include?(@method)
         @given_options.fetch(:params, {})
       else
-        fail "Unknown request method #{@method}"
+        raise "Unknown request method #{@method}"
       end
     end
 
