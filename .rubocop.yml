@@ -1,0 +1,5 @@
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma

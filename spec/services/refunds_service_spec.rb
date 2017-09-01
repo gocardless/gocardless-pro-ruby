@@ -21,13 +21,13 @@ describe GoCardlessPro::Services::RefundsService do
           'id' => 'id-input',
           'links' => 'links-input',
           'metadata' => 'metadata-input',
-          'reference' => 'reference-input'
+          'reference' => 'reference-input',
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/refunds})
-          .with(
+        stub_request(:post, %r{.*api.gocardless.com/refunds}).
+          with(
             body: {
               'refunds' => {
 
@@ -37,11 +37,11 @@ describe GoCardlessPro::Services::RefundsService do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
-                'reference' => 'reference-input'
-              }
+                'reference' => 'reference-input',
+              },
             }
-          )
-          .to_return(
+          ).
+          to_return(
             body: {
               'refunds' =>
 
@@ -53,8 +53,8 @@ describe GoCardlessPro::Services::RefundsService do
                   'id' => 'id-input',
                   'links' => 'links-input',
                   'metadata' => 'metadata-input',
-                  'reference' => 'reference-input'
-                }
+                  'reference' => 'reference-input',
+                },
 
             }.to_json,
             headers: response_headers
@@ -69,19 +69,19 @@ describe GoCardlessPro::Services::RefundsService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/refunds})
-                 .to_timeout.then.to_return(status: 200, headers: response_headers)
+          stub = stub_request(:post, %r{.*api.gocardless.com/refunds}).
+                 to_timeout.then.to_return(status: 200, headers: response_headers)
 
           post_create_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/refunds})
-                 .to_return(status: 502,
-                            headers: { 'Content-Type' => 'text/html' },
-                            body: '<html><body>Response from Cloudflare</body></html>')
-                 .then.to_return(status: 200, headers: response_headers)
+          stub = stub_request(:post, %r{.*api.gocardless.com/refunds}).
+                 to_return(status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>').
+                 then.to_return(status: 200, headers: response_headers)
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -99,9 +99,9 @@ describe GoCardlessPro::Services::RefundsService do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' }
-              ]
-            }
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 422
@@ -125,7 +125,7 @@ describe GoCardlessPro::Services::RefundsService do
           'id' => 'id-input',
           'links' => 'links-input',
           'metadata' => 'metadata-input',
-          'reference' => 'reference-input'
+          'reference' => 'reference-input',
         }
       end
 
@@ -140,11 +140,11 @@ describe GoCardlessPro::Services::RefundsService do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id
-                  }
-                }
-              ]
-            }
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 409
@@ -153,8 +153,8 @@ describe GoCardlessPro::Services::RefundsService do
 
       let!(:get_stub) do
         stub_url = "/refunds/#{id}"
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          to_return(
             body: {
               'refunds' => {
 
@@ -164,8 +164,8 @@ describe GoCardlessPro::Services::RefundsService do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
-                'reference' => 'reference-input'
-              }
+                'reference' => 'reference-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -193,14 +193,14 @@ describe GoCardlessPro::Services::RefundsService do
             'id' => 'id-input',
             'links' => 'links-input',
             'metadata' => 'metadata-input',
-            'reference' => 'reference-input'
+            'reference' => 'reference-input',
           }],
           meta: {
             cursors: {
               before: nil,
-              after: 'ABC123'
-            }
-          }
+              after: 'ABC123',
+            },
+          },
         }.to_json
       end
 
@@ -238,19 +238,19 @@ describe GoCardlessPro::Services::RefundsService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/refunds})
-                 .to_timeout.then.to_return(status: 200, headers: response_headers, body: body)
+          stub = stub_request(:get, %r{.*api.gocardless.com/refunds}).
+                 to_timeout.then.to_return(status: 200, headers: response_headers, body: body)
 
           get_list_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/refunds})
-                 .to_return(status: 502,
-                            headers: { 'Content-Type' => 'text/html' },
-                            body: '<html><body>Response from Cloudflare</body></html>')
-                 .then.to_return(status: 200, headers: response_headers, body: body)
+          stub = stub_request(:get, %r{.*api.gocardless.com/refunds}).
+                 to_return(status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>').
+                 then.to_return(status: 200, headers: response_headers, body: body)
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -271,12 +271,12 @@ describe GoCardlessPro::Services::RefundsService do
             'id' => 'id-input',
             'links' => 'links-input',
             'metadata' => 'metadata-input',
-            'reference' => 'reference-input'
+            'reference' => 'reference-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -293,12 +293,12 @@ describe GoCardlessPro::Services::RefundsService do
             'id' => 'id-input',
             'links' => 'links-input',
             'metadata' => 'metadata-input',
-            'reference' => 'reference-input'
+            'reference' => 'reference-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )
@@ -324,19 +324,19 @@ describe GoCardlessPro::Services::RefundsService do
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
-              'reference' => 'reference-input'
+              'reference' => 'reference-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1
-            }
+              limit: 1,
+            },
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/refunds\?after=AB345})
-                               .to_timeout.then
-                               .to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/refunds\?after=AB345}).
+                               to_timeout.then.
+                               to_return(
                                  body: {
                                    'refunds' => [{
 
@@ -346,12 +346,12 @@ describe GoCardlessPro::Services::RefundsService do
                                      'id' => 'id-input',
                                      'links' => 'links-input',
                                      'metadata' => 'metadata-input',
-                                     'reference' => 'reference-input'
+                                     'reference' => 'reference-input',
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {}
-                                   }
+                                     cursors: {},
+                                   },
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -373,18 +373,18 @@ describe GoCardlessPro::Services::RefundsService do
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
-              'reference' => 'reference-input'
+              'reference' => 'reference-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1
-            }
+              limit: 1,
+            },
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/refunds\?after=AB345})
-                               .to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/refunds\?after=AB345}).
+                               to_return(
                                  status: 502,
                                  body: '<html><body>Response from Cloudflare</body></html>',
                                  headers: { 'Content-Type' => 'text/html' }
@@ -398,12 +398,12 @@ describe GoCardlessPro::Services::RefundsService do
                                      'id' => 'id-input',
                                      'links' => 'links-input',
                                      'metadata' => 'metadata-input',
-                                     'reference' => 'reference-input'
+                                     'reference' => 'reference-input',
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {}
-                                   }
+                                     cursors: {},
+                                   },
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -424,9 +424,9 @@ describe GoCardlessPro::Services::RefundsService do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/refunds/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
               'refunds' => {
 
@@ -436,8 +436,8 @@ describe GoCardlessPro::Services::RefundsService do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
-                'reference' => 'reference-input'
-              }
+                'reference' => 'reference-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -445,7 +445,7 @@ describe GoCardlessPro::Services::RefundsService do
 
       subject(:get_response) do
         client.refunds.get(id, headers: {
-                             'Foo' => 'Bar'
+                             'Foo' => 'Bar',
                            })
       end
 
@@ -468,8 +468,8 @@ describe GoCardlessPro::Services::RefundsService do
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
-              'reference' => 'reference-input'
-            }
+              'reference' => 'reference-input',
+            },
           }.to_json,
           headers: response_headers
         )
@@ -508,8 +508,8 @@ describe GoCardlessPro::Services::RefundsService do
       it 'retries timeouts' do
         stub_url = '/refunds/:identity'.gsub(':identity', id)
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-               .to_timeout.then.to_return(status: 200, headers: response_headers)
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+               to_timeout.then.to_return(status: 200, headers: response_headers)
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -518,11 +518,11 @@ describe GoCardlessPro::Services::RefundsService do
       it 'retries 5XX errors' do
         stub_url = '/refunds/:identity'.gsub(':identity', id)
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-               .to_return(status: 502,
-                          headers: { 'Content-Type' => 'text/html' },
-                          body: '<html><body>Response from Cloudflare</body></html>')
-               .then.to_return(status: 200, headers: response_headers)
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+               to_return(status: 502,
+                         headers: { 'Content-Type' => 'text/html' },
+                         body: '<html><body>Response from Cloudflare</body></html>').
+               then.to_return(status: 200, headers: response_headers)
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -549,8 +549,8 @@ describe GoCardlessPro::Services::RefundsService do
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
-              'reference' => 'reference-input'
-            }
+              'reference' => 'reference-input',
+            },
           }.to_json,
           headers: response_headers
         )
@@ -566,8 +566,8 @@ describe GoCardlessPro::Services::RefundsService do
 
         it 'retries timeouts' do
           stub_url = '/refunds/:identity'.gsub(':identity', id)
-          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/)
-                 .to_timeout.then.to_return(status: 200, headers: response_headers)
+          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/).
+                 to_timeout.then.to_return(status: 200, headers: response_headers)
 
           put_update_response
           expect(stub).to have_been_requested.twice
@@ -575,11 +575,11 @@ describe GoCardlessPro::Services::RefundsService do
 
         it 'retries 5XX errors' do
           stub_url = '/refunds/:identity'.gsub(':identity', id)
-          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/)
-                 .to_return(status: 502,
-                            headers: { 'Content-Type' => 'text/html' },
-                            body: '<html><body>Response from Cloudflare</body></html>')
-                 .then.to_return(status: 200, headers: response_headers)
+          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/).
+                 to_return(status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>').
+                 then.to_return(status: 200, headers: response_headers)
 
           put_update_response
           expect(stub).to have_been_requested.twice

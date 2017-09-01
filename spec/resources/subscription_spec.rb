@@ -30,13 +30,13 @@ describe GoCardlessPro::Resources::Subscription do
           'payment_reference' => 'payment_reference-input',
           'start_date' => 'start_date-input',
           'status' => 'status-input',
-          'upcoming_payments' => 'upcoming_payments-input'
+          'upcoming_payments' => 'upcoming_payments-input',
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/subscriptions})
-          .with(
+        stub_request(:post, %r{.*api.gocardless.com/subscriptions}).
+          with(
             body: {
               'subscriptions' => {
 
@@ -55,11 +55,11 @@ describe GoCardlessPro::Resources::Subscription do
                 'payment_reference' => 'payment_reference-input',
                 'start_date' => 'start_date-input',
                 'status' => 'status-input',
-                'upcoming_payments' => 'upcoming_payments-input'
-              }
+                'upcoming_payments' => 'upcoming_payments-input',
+              },
             }
-          )
-          .to_return(
+          ).
+          to_return(
             body: {
               'subscriptions' =>
 
@@ -80,8 +80,8 @@ describe GoCardlessPro::Resources::Subscription do
                   'payment_reference' => 'payment_reference-input',
                   'start_date' => 'start_date-input',
                   'status' => 'status-input',
-                  'upcoming_payments' => 'upcoming_payments-input'
-                }
+                  'upcoming_payments' => 'upcoming_payments-input',
+                },
 
             }.to_json,
             headers: response_headers
@@ -103,9 +103,9 @@ describe GoCardlessPro::Resources::Subscription do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' }
-              ]
-            }
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 422
@@ -138,7 +138,7 @@ describe GoCardlessPro::Resources::Subscription do
           'payment_reference' => 'payment_reference-input',
           'start_date' => 'start_date-input',
           'status' => 'status-input',
-          'upcoming_payments' => 'upcoming_payments-input'
+          'upcoming_payments' => 'upcoming_payments-input',
         }
       end
 
@@ -153,11 +153,11 @@ describe GoCardlessPro::Resources::Subscription do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id
-                  }
-                }
-              ]
-            }
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 409
@@ -166,8 +166,8 @@ describe GoCardlessPro::Resources::Subscription do
 
       let!(:get_stub) do
         stub_url = "/subscriptions/#{id}"
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          to_return(
             body: {
               'subscriptions' => {
 
@@ -186,8 +186,8 @@ describe GoCardlessPro::Resources::Subscription do
                 'payment_reference' => 'payment_reference-input',
                 'start_date' => 'start_date-input',
                 'status' => 'status-input',
-                'upcoming_payments' => 'upcoming_payments-input'
-              }
+                'upcoming_payments' => 'upcoming_payments-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -225,14 +225,14 @@ describe GoCardlessPro::Resources::Subscription do
               'payment_reference' => 'payment_reference-input',
               'start_date' => 'start_date-input',
               'status' => 'status-input',
-              'upcoming_payments' => 'upcoming_payments-input'
+              'upcoming_payments' => 'upcoming_payments-input',
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123'
-              }
-            }
+                after: 'ABC123',
+              },
+            },
           }.to_json,
           headers: response_headers
         )
@@ -302,12 +302,12 @@ describe GoCardlessPro::Resources::Subscription do
             'payment_reference' => 'payment_reference-input',
             'start_date' => 'start_date-input',
             'status' => 'status-input',
-            'upcoming_payments' => 'upcoming_payments-input'
+            'upcoming_payments' => 'upcoming_payments-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -333,12 +333,12 @@ describe GoCardlessPro::Resources::Subscription do
             'payment_reference' => 'payment_reference-input',
             'start_date' => 'start_date-input',
             'status' => 'status-input',
-            'upcoming_payments' => 'upcoming_payments-input'
+            'upcoming_payments' => 'upcoming_payments-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )
@@ -359,9 +359,9 @@ describe GoCardlessPro::Resources::Subscription do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/subscriptions/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
               'subscriptions' => {
 
@@ -380,8 +380,8 @@ describe GoCardlessPro::Resources::Subscription do
                 'payment_reference' => 'payment_reference-input',
                 'start_date' => 'start_date-input',
                 'status' => 'status-input',
-                'upcoming_payments' => 'upcoming_payments-input'
-              }
+                'upcoming_payments' => 'upcoming_payments-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -389,7 +389,7 @@ describe GoCardlessPro::Resources::Subscription do
 
       subject(:get_response) do
         client.subscriptions.get(id, headers: {
-                                   'Foo' => 'Bar'
+                                   'Foo' => 'Bar',
                                  })
       end
 
@@ -421,8 +421,8 @@ describe GoCardlessPro::Resources::Subscription do
               'payment_reference' => 'payment_reference-input',
               'start_date' => 'start_date-input',
               'status' => 'status-input',
-              'upcoming_payments' => 'upcoming_payments-input'
-            }
+              'upcoming_payments' => 'upcoming_payments-input',
+            },
           }.to_json,
           headers: response_headers
         )
@@ -484,8 +484,8 @@ describe GoCardlessPro::Resources::Subscription do
               'payment_reference' => 'payment_reference-input',
               'start_date' => 'start_date-input',
               'status' => 'status-input',
-              'upcoming_payments' => 'upcoming_payments-input'
-            }
+              'upcoming_payments' => 'upcoming_payments-input',
+            },
           }.to_json,
           headers: response_headers
         )
@@ -525,8 +525,8 @@ describe GoCardlessPro::Resources::Subscription do
             'payment_reference' => 'payment_reference-input',
             'start_date' => 'start_date-input',
             'status' => 'status-input',
-            'upcoming_payments' => 'upcoming_payments-input'
-          }
+            'upcoming_payments' => 'upcoming_payments-input',
+          },
         }.to_json,
         headers: response_headers
       )
@@ -548,8 +548,8 @@ describe GoCardlessPro::Resources::Subscription do
       let!(:stub) do
         # /subscriptions/%v/actions/cancel
         stub_url = '/subscriptions/:identity/actions/cancel'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
-          .with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -571,8 +571,8 @@ describe GoCardlessPro::Resources::Subscription do
                 'payment_reference' => 'payment_reference-input',
                 'start_date' => 'start_date-input',
                 'status' => 'status-input',
-                'upcoming_payments' => 'upcoming_payments-input'
-              }
+                'upcoming_payments' => 'upcoming_payments-input',
+              },
             }.to_json,
             headers: response_headers
           )

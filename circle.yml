@@ -1,3 +1,11 @@
-machine:
-  ruby:
-    version: 2.0.0-p353
+dependencies:
+  override:
+    - 'rvm-exec 2.2.7 bundle install'
+    - 'rvm-exec 2.3.4 bundle install'
+    - 'rvm-exec 2.4.1 bundle install'
+
+test:
+  override:
+    - 'rvm-exec 2.2.7 bundle exec rspec'
+    - 'rvm-exec 2.3.4 bundle exec rspec'
+    - 'rvm-exec 2.4.1 bundle exec rspec'

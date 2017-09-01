@@ -25,13 +25,13 @@ describe GoCardlessPro::Resources::Payment do
           'links' => 'links-input',
           'metadata' => 'metadata-input',
           'reference' => 'reference-input',
-          'status' => 'status-input'
+          'status' => 'status-input',
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/payments})
-          .with(
+        stub_request(:post, %r{.*api.gocardless.com/payments}).
+          with(
             body: {
               'payments' => {
 
@@ -45,11 +45,11 @@ describe GoCardlessPro::Resources::Payment do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
-                'status' => 'status-input'
-              }
+                'status' => 'status-input',
+              },
             }
-          )
-          .to_return(
+          ).
+          to_return(
             body: {
               'payments' =>
 
@@ -65,8 +65,8 @@ describe GoCardlessPro::Resources::Payment do
                   'links' => 'links-input',
                   'metadata' => 'metadata-input',
                   'reference' => 'reference-input',
-                  'status' => 'status-input'
-                }
+                  'status' => 'status-input',
+                },
 
             }.to_json,
             headers: response_headers
@@ -88,9 +88,9 @@ describe GoCardlessPro::Resources::Payment do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' }
-              ]
-            }
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 422
@@ -118,7 +118,7 @@ describe GoCardlessPro::Resources::Payment do
           'links' => 'links-input',
           'metadata' => 'metadata-input',
           'reference' => 'reference-input',
-          'status' => 'status-input'
+          'status' => 'status-input',
         }
       end
 
@@ -133,11 +133,11 @@ describe GoCardlessPro::Resources::Payment do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id
-                  }
-                }
-              ]
-            }
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 409
@@ -146,8 +146,8 @@ describe GoCardlessPro::Resources::Payment do
 
       let!(:get_stub) do
         stub_url = "/payments/#{id}"
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          to_return(
             body: {
               'payments' => {
 
@@ -161,8 +161,8 @@ describe GoCardlessPro::Resources::Payment do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
-                'status' => 'status-input'
-              }
+                'status' => 'status-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -195,14 +195,14 @@ describe GoCardlessPro::Resources::Payment do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
-              'status' => 'status-input'
+              'status' => 'status-input',
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123'
-              }
-            }
+                after: 'ABC123',
+              },
+            },
           }.to_json,
           headers: response_headers
         )
@@ -257,12 +257,12 @@ describe GoCardlessPro::Resources::Payment do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -283,12 +283,12 @@ describe GoCardlessPro::Resources::Payment do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )
@@ -309,9 +309,9 @@ describe GoCardlessPro::Resources::Payment do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/payments/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
               'payments' => {
 
@@ -325,8 +325,8 @@ describe GoCardlessPro::Resources::Payment do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
-                'status' => 'status-input'
-              }
+                'status' => 'status-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -334,7 +334,7 @@ describe GoCardlessPro::Resources::Payment do
 
       subject(:get_response) do
         client.payments.get(id, headers: {
-                              'Foo' => 'Bar'
+                              'Foo' => 'Bar',
                             })
       end
 
@@ -361,8 +361,8 @@ describe GoCardlessPro::Resources::Payment do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
-              'status' => 'status-input'
-            }
+              'status' => 'status-input',
+            },
           }.to_json,
           headers: response_headers
         )
@@ -419,8 +419,8 @@ describe GoCardlessPro::Resources::Payment do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
-              'status' => 'status-input'
-            }
+              'status' => 'status-input',
+            },
           }.to_json,
           headers: response_headers
         )
@@ -455,8 +455,8 @@ describe GoCardlessPro::Resources::Payment do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
-            'status' => 'status-input'
-          }
+            'status' => 'status-input',
+          },
         }.to_json,
         headers: response_headers
       )
@@ -478,8 +478,8 @@ describe GoCardlessPro::Resources::Payment do
       let!(:stub) do
         # /payments/%v/actions/cancel
         stub_url = '/payments/:identity/actions/cancel'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
-          .with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -496,8 +496,8 @@ describe GoCardlessPro::Resources::Payment do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
-                'status' => 'status-input'
-              }
+                'status' => 'status-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -527,8 +527,8 @@ describe GoCardlessPro::Resources::Payment do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
-            'status' => 'status-input'
-          }
+            'status' => 'status-input',
+          },
         }.to_json,
         headers: response_headers
       )
@@ -550,8 +550,8 @@ describe GoCardlessPro::Resources::Payment do
       let!(:stub) do
         # /payments/%v/actions/retry
         stub_url = '/payments/:identity/actions/retry'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
-          .with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -568,8 +568,8 @@ describe GoCardlessPro::Resources::Payment do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
-                'status' => 'status-input'
-              }
+                'status' => 'status-input',
+              },
             }.to_json,
             headers: response_headers
           )

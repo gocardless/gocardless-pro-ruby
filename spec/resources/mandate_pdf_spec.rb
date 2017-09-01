@@ -16,30 +16,30 @@ describe GoCardlessPro::Resources::MandatePdf do
         {
 
           'expires_at' => 'expires_at-input',
-          'url' => 'url-input'
+          'url' => 'url-input',
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/mandate_pdfs})
-          .with(
+        stub_request(:post, %r{.*api.gocardless.com/mandate_pdfs}).
+          with(
             body: {
               'mandate_pdfs' => {
 
                 'expires_at' => 'expires_at-input',
-                'url' => 'url-input'
-              }
+                'url' => 'url-input',
+              },
             }
-          )
-          .to_return(
+          ).
+          to_return(
             body: {
               'mandate_pdfs' =>
 
                 {
 
                   'expires_at' => 'expires_at-input',
-                  'url' => 'url-input'
-                }
+                  'url' => 'url-input',
+                },
 
             }.to_json,
             headers: response_headers
@@ -61,9 +61,9 @@ describe GoCardlessPro::Resources::MandatePdf do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' }
-              ]
-            }
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 422
@@ -82,7 +82,7 @@ describe GoCardlessPro::Resources::MandatePdf do
         {
 
           'expires_at' => 'expires_at-input',
-          'url' => 'url-input'
+          'url' => 'url-input',
         }
       end
 
@@ -97,11 +97,11 @@ describe GoCardlessPro::Resources::MandatePdf do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id
-                  }
-                }
-              ]
-            }
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 409
