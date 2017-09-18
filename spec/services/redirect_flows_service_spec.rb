@@ -15,6 +15,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
       let(:new_resource) do
         {
 
+          'confirmation_url' => 'confirmation_url-input',
           'created_at' => 'created_at-input',
           'description' => 'description-input',
           'id' => 'id-input',
@@ -32,6 +33,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
             body: {
               'redirect_flows' => {
 
+                'confirmation_url' => 'confirmation_url-input',
                 'created_at' => 'created_at-input',
                 'description' => 'description-input',
                 'id' => 'id-input',
@@ -49,6 +51,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
 
                 {
 
+                  'confirmation_url' => 'confirmation_url-input',
                   'created_at' => 'created_at-input',
                   'description' => 'description-input',
                   'id' => 'id-input',
@@ -122,6 +125,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
       let(:new_resource) do
         {
 
+          'confirmation_url' => 'confirmation_url-input',
           'created_at' => 'created_at-input',
           'description' => 'description-input',
           'id' => 'id-input',
@@ -162,6 +166,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
             body: {
               'redirect_flows' => {
 
+                'confirmation_url' => 'confirmation_url-input',
                 'created_at' => 'created_at-input',
                 'description' => 'description-input',
                 'id' => 'id-input',
@@ -198,6 +203,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
             body: {
               'redirect_flows' => {
 
+                'confirmation_url' => 'confirmation_url-input',
                 'created_at' => 'created_at-input',
                 'description' => 'description-input',
                 'id' => 'id-input',
@@ -231,6 +237,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
           body: {
             'redirect_flows' => {
 
+              'confirmation_url' => 'confirmation_url-input',
               'created_at' => 'created_at-input',
               'description' => 'description-input',
               'id' => 'id-input',
@@ -312,6 +319,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
         body: {
           'redirect_flows' => {
 
+            'confirmation_url' => 'confirmation_url-input',
             'created_at' => 'created_at-input',
             'description' => 'description-input',
             'id' => 'id-input',
@@ -361,6 +369,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
             body: {
               'redirect_flows' => {
 
+                'confirmation_url' => 'confirmation_url-input',
                 'created_at' => 'created_at-input',
                 'description' => 'description-input',
                 'id' => 'id-input',
