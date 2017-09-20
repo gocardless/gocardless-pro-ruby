@@ -13,17 +13,14 @@ module GoCardlessPro
     class CustomerBankAccountsService < BaseService
       # Creates a new customer bank account object.
       #
-      # There are three different
-      # ways to supply bank account details:
+      # There are three different ways to supply bank account details:
       #
-      # - [Local
-      # details](#appendix-local-bank-details)
+      # - [Local details](#appendix-local-bank-details)
       #
       # - IBAN
       #
-      # - [Customer Bank
-      # Account Tokens](#javascript-flow-create-a-customer-bank-account-token)
-      #
+      # - [Customer Bank Account
+      # Tokens](#javascript-flow-create-a-customer-bank-account-token)
       #
       # For more information on the different fields required in each country, see
       # [local bank details](#appendix-local-bank-details).
@@ -124,12 +121,11 @@ module GoCardlessPro
 
       # Immediately cancels all associated mandates and cancellable payments.
       #
-      #
       # This will return a `disable_failed` error if the bank account has already been
       # disabled.
       #
-      # A disabled bank account can be re-enabled by creating a new
-      # bank account resource with the same details.
+      # A disabled bank account can be re-enabled by creating a new bank account
+      # resource with the same details.
       # Example URL: /customer_bank_accounts/:identity/actions/disable
       #
       # @param identity       # Unique identifier, beginning with "BA".

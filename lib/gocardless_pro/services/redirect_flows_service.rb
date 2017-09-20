@@ -62,12 +62,11 @@ module GoCardlessPro
       # [mandate](#core-endpoints-mandates) using the details supplied by your
       # customer and returns the ID of the created mandate.
       #
-      # This will return a
-      # `redirect_flow_incomplete` error if your customer has not yet been redirected
-      # back to your site, and a `redirect_flow_already_completed` error if your
-      # integration has already completed this flow. It will return a `bad_request`
-      # error if the `session_token` differs to the one supplied when the redirect
-      # flow was created.
+      # This will return a `redirect_flow_incomplete` error if your customer has not
+      # yet been redirected back to your site, and a `redirect_flow_already_completed`
+      # error if your integration has already completed this flow. It will return a
+      # `bad_request` error if the `session_token` differs to the one supplied when
+      # the redirect flow was created.
       # Example URL: /redirect_flows/:identity/actions/complete
       #
       # @param identity       # Unique identifier, beginning with "RE".

@@ -17,9 +17,8 @@ module GoCardlessPro
     # [creditor](#core-endpoints-creditors), taken against a Direct Debit
     # [mandate](#core-endpoints-mandates).
     #
-    # GoCardless will notify
-    # you via a [webhook](#appendix-webhooks) whenever the state of a payment
-    # changes.
+    # GoCardless will notify you via a [webhook](#appendix-webhooks) whenever
+    # the state of a payment changes.
     class Payment
       attr_reader :amount
       attr_reader :amount_refunded

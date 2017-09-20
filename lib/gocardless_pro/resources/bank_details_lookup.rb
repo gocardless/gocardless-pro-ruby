@@ -12,7 +12,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a bank_details_lookup resource returned from the API
 
-    # Look up the name and reachability of a bank.
+    # Look up the name and reachability of a bank account.
     class BankDetailsLookup
       attr_reader :available_debit_schemes
       attr_reader :bank_name

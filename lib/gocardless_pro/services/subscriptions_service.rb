@@ -86,6 +86,22 @@ module GoCardlessPro
       end
 
       # Updates a subscription object.
+      #
+      # This fails with:
+      #
+      # - `validation_failed` if invalid data is provided when attempting to update a
+      # subscription.
+      #
+      # - `subscription_not_active` if the subscription is no longer active.
+      #
+      # - `subscription_already_ended` if the subscription has taken all payments.
+      #
+      # - `mandate_payments_require_approval` if the amount is being changed and the
+      # mandate requires approval.
+      #
+      # - `exceeded_max_amendments` error if the amount is being changed and the
+      #   subscription amount has already been changed 10 times.
+      #
       # Example URL: /subscriptions/:identity
       #
       # @param identity       # Unique identifier, beginning with "SB".
@@ -110,8 +126,8 @@ module GoCardlessPro
       # Any metadata supplied to this endpoint will be stored on the payment
       # cancellation event it causes.
       #
-      # This will fail with a cancellation_failed
-      # error if the subscription is already cancelled or finished.
+      # This will fail with a cancellation_failed error if the subscription is already
+      # cancelled or finished.
       # Example URL: /subscriptions/:identity/actions/cancel
       #
       # @param identity       # Unique identifier, beginning with "SB".
