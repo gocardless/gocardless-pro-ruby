@@ -13,8 +13,7 @@ module GoCardlessPro
     class PaymentsService < BaseService
       # <a name="mandate_is_inactive"></a>Creates a new payment object.
       #
-      # This
-      # fails with a `mandate_is_inactive` error if the linked
+      # This fails with a `mandate_is_inactive` error if the linked
       # [mandate](#core-endpoints-mandates) is cancelled or has failed. Payments can
       # be created against mandates with status of: `pending_customer_approval`,
       # `pending_submission`, `submitted`, and `active`.
@@ -116,8 +115,8 @@ module GoCardlessPro
       # metadata supplied to this endpoint will be stored on the payment cancellation
       # event it causes.
       #
-      # This will fail with a `cancellation_failed` error unless
-      # the payment's status is `pending_submission`.
+      # This will fail with a `cancellation_failed` error unless the payment's status
+      # is `pending_submission`.
       # Example URL: /payments/:identity/actions/cancel
       #
       # @param identity       # Unique identifier, beginning with "PM".
@@ -154,11 +153,9 @@ module GoCardlessPro
       # event. Any metadata supplied to this endpoint will be stored against the
       # payment submission event it causes.
       #
-      # This will return a `retry_failed`
-      # error if the payment has not failed.
+      # This will return a `retry_failed` error if the payment has not failed.
       #
-      # Payments can be retried up to 3
-      # times.
+      # Payments can be retried up to 3 times.
       # Example URL: /payments/:identity/actions/retry
       #
       # @param identity       # Unique identifier, beginning with "PM".

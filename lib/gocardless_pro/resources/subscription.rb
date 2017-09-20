@@ -17,70 +17,54 @@ module GoCardlessPro
     #
     # ### Recurrence Rules
     #
-    # The following
-    # rules apply when specifying recurrence:
+    # The following rules apply when specifying recurrence:
     #
-    # - The first payment
-    # must be charged within 1 year.
-    # - When neither `month` nor
-    # `day_of_month` are present, the subscription will recur from the
-    # `start_date` based on the `interval_unit`.
-    # - If `month` or
-    # `day_of_month` are present, the recurrence rules will be applied from the
-    # `start_date`, and the following validations apply:
+    # - The first payment must be charged within 1 year.
+    # - When neither `month` nor `day_of_month` are present, the subscription
+    # will recur from the `start_date` based on the `interval_unit`.
+    # - If `month` or `day_of_month` are present, the recurrence rules will be
+    # applied from the `start_date`, and the following validations apply:
     #
-    # |
-    # interval_unit   | month                                          |
+    # | interval_unit   | month                                          |
     # day_of_month                            |
-    # | :-------------- |
-    # :--------------------------------------------- |
+    # | :-------------- | :--------------------------------------------- |
     # :-------------------------------------- |
-    # | yearly          |
-    # optional (required if `day_of_month` provided) | optional (required if
-    # `month` provided) |
-    # | monthly         | invalid
-    #                   | required                                |
-    # |
-    # weekly          | invalid                                        | invalid
-    #                                 |
+    # | yearly          | optional (required if `day_of_month` provided) |
+    # optional (required if `month` provided) |
+    # | monthly         | invalid                                        |
+    # required                                |
+    # | weekly          | invalid                                        |
+    # invalid                                 |
     #
     # Examples:
     #
-    # |
-    # interval_unit   | interval   | month   | day_of_month   | valid?
-    #                                   |
-    # | :-------------- | :--------- |
-    # :------ | :------------- |
+    # | interval_unit   | interval   | month   | day_of_month   | valid?
+    #                                     |
+    # | :-------------- | :--------- | :------ | :------------- |
     # :------------------------------------------------- |
-    # | yearly
-    #   | 1          | january | -1             | valid
-    #                     |
-    # | yearly          | 1          | march   |
-    #            | invalid - missing `day_of_month`                   |
-    # |
-    # monthly         | 6          |         | 12             | valid
-    #                                   |
-    # | monthly         | 6          |
-    # august  | 12             | invalid - `month` must be blank
-    #    |
-    # | weekly          | 2          |         |                |
-    # valid                                              |
-    # | weekly
-    #   | 2          | october | 10             | invalid - `month` and
-    # `day_of_month` must be blank |
+    # | yearly          | 1          | january | -1             | valid
+    #                                     |
+    # | yearly          | 1          | march   |                | invalid -
+    # missing `day_of_month`                   |
+    # | monthly         | 6          |         | 12             | valid
+    #                                     |
+    # | monthly         | 6          | august  | 12             | invalid -
+    # `month` must be blank                    |
+    # | weekly          | 2          |         |                | valid
+    #                                     |
+    # | weekly          | 2          | october | 10             | invalid -
+    # `month` and `day_of_month` must be blank |
     #
     # ### Rolling dates
-    #
     #
     # When a charge date falls on a non-business day, one of two things will
     # happen:
     #
-    # - if the recurrence rule specified `-1` as the
-    # `day_of_month`, the charge date will be rolled __backwards__ to the
-    # previous business day (i.e., the last working day of the month).
-    # -
-    # otherwise the charge date will be rolled __forwards__ to the next business
-    # day.
+    # - if the recurrence rule specified `-1` as the `day_of_month`, the charge
+    # date will be rolled __backwards__ to the previous business day (i.e., the
+    # last working day of the month).
+    # - otherwise the charge date will be rolled __forwards__ to the next
+    # business day.
     #
     class Subscription
       attr_reader :amount

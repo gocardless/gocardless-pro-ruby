@@ -15,9 +15,8 @@ module GoCardlessPro
     # Mandates represent the Direct Debit mandate with a
     # [customer](#core-endpoints-customers).
     #
-    # GoCardless will notify
-    # you via a [webhook](#appendix-webhooks) whenever the status of a mandate
-    # changes.
+    # GoCardless will notify you via a [webhook](#appendix-webhooks) whenever
+    # the status of a mandate changes.
     class Mandate
       attr_reader :created_at
       attr_reader :id
