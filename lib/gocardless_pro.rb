@@ -67,6 +67,9 @@ require_relative 'gocardless_pro/services/payments_service'
 require_relative 'gocardless_pro/resources/payout'
 require_relative 'gocardless_pro/services/payouts_service'
 
+require_relative 'gocardless_pro/resources/payout_item'
+require_relative 'gocardless_pro/services/payout_items_service'
+
 require_relative 'gocardless_pro/resources/redirect_flow'
 require_relative 'gocardless_pro/services/redirect_flows_service'
 
