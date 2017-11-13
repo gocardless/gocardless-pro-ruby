@@ -53,6 +53,11 @@ module GoCardlessPro
       @payouts ||= Services::PayoutsService.new(@api_service)
     end
 
+    # Access to the service for payout_item to make API calls
+    def payout_items
+      @payout_items ||= Services::PayoutItemsService.new(@api_service)
+    end
+
     # Access to the service for redirect_flow to make API calls
     def redirect_flows
       @redirect_flows ||= Services::RedirectFlowsService.new(@api_service)
