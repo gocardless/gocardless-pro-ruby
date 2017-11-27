@@ -34,7 +34,7 @@ module GoCardlessPro
     # beta, and is
     # subject to <a href="#overview-backwards-compatibility">backwards
     # incompatible changes</a>
-    # with 30 days notice. Before making any breaking changes, we will contact
+    # with 30 days' notice. Before making any breaking changes, we will contact
     # all integrators
     # who have used the API.</p>
     #
