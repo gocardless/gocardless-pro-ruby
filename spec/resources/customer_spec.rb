@@ -22,6 +22,7 @@ describe GoCardlessPro::Resources::Customer do
           'company_name' => 'company_name-input',
           'country_code' => 'country_code-input',
           'created_at' => 'created_at-input',
+          'danish_identity_number' => 'danish_identity_number-input',
           'email' => 'email-input',
           'family_name' => 'family_name-input',
           'given_name' => 'given_name-input',
@@ -47,6 +48,7 @@ describe GoCardlessPro::Resources::Customer do
                 'company_name' => 'company_name-input',
                 'country_code' => 'country_code-input',
                 'created_at' => 'created_at-input',
+                'danish_identity_number' => 'danish_identity_number-input',
                 'email' => 'email-input',
                 'family_name' => 'family_name-input',
                 'given_name' => 'given_name-input',
@@ -72,6 +74,7 @@ describe GoCardlessPro::Resources::Customer do
                   'company_name' => 'company_name-input',
                   'country_code' => 'country_code-input',
                   'created_at' => 'created_at-input',
+                  'danish_identity_number' => 'danish_identity_number-input',
                   'email' => 'email-input',
                   'family_name' => 'family_name-input',
                   'given_name' => 'given_name-input',
@@ -130,6 +133,7 @@ describe GoCardlessPro::Resources::Customer do
           'company_name' => 'company_name-input',
           'country_code' => 'country_code-input',
           'created_at' => 'created_at-input',
+          'danish_identity_number' => 'danish_identity_number-input',
           'email' => 'email-input',
           'family_name' => 'family_name-input',
           'given_name' => 'given_name-input',
@@ -178,6 +182,7 @@ describe GoCardlessPro::Resources::Customer do
                 'company_name' => 'company_name-input',
                 'country_code' => 'country_code-input',
                 'created_at' => 'created_at-input',
+                'danish_identity_number' => 'danish_identity_number-input',
                 'email' => 'email-input',
                 'family_name' => 'family_name-input',
                 'given_name' => 'given_name-input',
@@ -217,6 +222,7 @@ describe GoCardlessPro::Resources::Customer do
               'company_name' => 'company_name-input',
               'country_code' => 'country_code-input',
               'created_at' => 'created_at-input',
+              'danish_identity_number' => 'danish_identity_number-input',
               'email' => 'email-input',
               'family_name' => 'family_name-input',
               'given_name' => 'given_name-input',
@@ -254,6 +260,8 @@ describe GoCardlessPro::Resources::Customer do
         expect(get_list_response.records.first.country_code).to eq('country_code-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
+
+        expect(get_list_response.records.first.danish_identity_number).to eq('danish_identity_number-input')
 
         expect(get_list_response.records.first.email).to eq('email-input')
 
@@ -296,6 +304,7 @@ describe GoCardlessPro::Resources::Customer do
             'company_name' => 'company_name-input',
             'country_code' => 'country_code-input',
             'created_at' => 'created_at-input',
+            'danish_identity_number' => 'danish_identity_number-input',
             'email' => 'email-input',
             'family_name' => 'family_name-input',
             'given_name' => 'given_name-input',
@@ -327,6 +336,7 @@ describe GoCardlessPro::Resources::Customer do
             'company_name' => 'company_name-input',
             'country_code' => 'country_code-input',
             'created_at' => 'created_at-input',
+            'danish_identity_number' => 'danish_identity_number-input',
             'email' => 'email-input',
             'family_name' => 'family_name-input',
             'given_name' => 'given_name-input',
@@ -374,6 +384,7 @@ describe GoCardlessPro::Resources::Customer do
                 'company_name' => 'company_name-input',
                 'country_code' => 'country_code-input',
                 'created_at' => 'created_at-input',
+                'danish_identity_number' => 'danish_identity_number-input',
                 'email' => 'email-input',
                 'family_name' => 'family_name-input',
                 'given_name' => 'given_name-input',
@@ -415,6 +426,7 @@ describe GoCardlessPro::Resources::Customer do
               'company_name' => 'company_name-input',
               'country_code' => 'country_code-input',
               'created_at' => 'created_at-input',
+              'danish_identity_number' => 'danish_identity_number-input',
               'email' => 'email-input',
               'family_name' => 'family_name-input',
               'given_name' => 'given_name-input',
@@ -478,6 +490,7 @@ describe GoCardlessPro::Resources::Customer do
               'company_name' => 'company_name-input',
               'country_code' => 'country_code-input',
               'created_at' => 'created_at-input',
+              'danish_identity_number' => 'danish_identity_number-input',
               'email' => 'email-input',
               'family_name' => 'family_name-input',
               'given_name' => 'given_name-input',

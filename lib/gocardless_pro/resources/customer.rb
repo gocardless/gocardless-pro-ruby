@@ -17,8 +17,12 @@ module GoCardlessPro
     # accounts](#core-endpoints-customer-bank-accounts), which in turn can have
     # several Direct Debit [mandates](#core-endpoints-mandates).
     #
-    # Note: the `swedish_identity_number` field may only be supplied for Swedish
+    # Notes:
+    # - the `swedish_identity_number` field may only be supplied for Swedish
     # customers, and must be supplied if you intend to set up an Autogiro
+    # mandate with the customer.
+    # - the `danish_identity_number` field may only be supplied for Danish
+    # customers, and must be supplied if you intend to set up a Betalingsservice
     # mandate with the customer.
     class Customer
       attr_reader :address_line1
@@ -28,6 +32,7 @@ module GoCardlessPro
       attr_reader :company_name
       attr_reader :country_code
       attr_reader :created_at
+      attr_reader :danish_identity_number
       attr_reader :email
       attr_reader :family_name
       attr_reader :given_name
@@ -50,6 +55,7 @@ module GoCardlessPro
         @company_name = object['company_name']
         @country_code = object['country_code']
         @created_at = object['created_at']
+        @danish_identity_number = object['danish_identity_number']
         @email = object['email']
         @family_name = object['family_name']
         @given_name = object['given_name']
