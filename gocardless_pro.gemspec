@@ -17,10 +17,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'rspec', '~> 3.1'
+  spec.add_development_dependency 'rspec', '~> 3.7.0'
   spec.add_development_dependency 'webmock', '~> 1.18'
   spec.add_development_dependency 'rubocop', '~> 0.49.1'
-  spec.add_development_dependency 'yard', '~> 0.8.7.6'
+  spec.add_development_dependency 'yard', '~> 0.9.11'
 
   spec.add_dependency 'faraday', ['>= 0.9.2', '< 1.0']
 end
