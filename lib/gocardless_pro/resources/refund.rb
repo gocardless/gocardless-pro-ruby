@@ -61,6 +61,10 @@ module GoCardlessPro
           @links = links || {}
         end
 
+        def mandate
+          @links['mandate']
+        end
+
         def payment
           @links['payment']
         end
