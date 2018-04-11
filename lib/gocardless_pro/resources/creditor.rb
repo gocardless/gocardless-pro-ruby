@@ -78,6 +78,10 @@ module GoCardlessPro
           @links = links || {}
         end
 
+        def default_aud_payout_account
+          @links['default_aud_payout_account']
+        end
+
         def default_dkk_payout_account
           @links['default_dkk_payout_account']
         end
