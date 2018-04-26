@@ -58,6 +58,12 @@ require_relative 'gocardless_pro/services/events_service'
 require_relative 'gocardless_pro/resources/mandate'
 require_relative 'gocardless_pro/services/mandates_service'
 
+require_relative 'gocardless_pro/resources/mandate_import'
+require_relative 'gocardless_pro/services/mandate_imports_service'
+
+require_relative 'gocardless_pro/resources/mandate_import_entry'
+require_relative 'gocardless_pro/services/mandate_import_entries_service'
+
 require_relative 'gocardless_pro/resources/mandate_pdf'
 require_relative 'gocardless_pro/services/mandate_pdfs_service'
 
