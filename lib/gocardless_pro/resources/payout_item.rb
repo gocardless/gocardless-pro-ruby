@@ -30,14 +30,6 @@ module GoCardlessPro
     # and debit
     # items that make up that payout's amount.
     #
-    # <p class="beta-notice"><strong>Beta</strong>:	The Payout Items API is in
-    # beta, and is
-    # subject to <a href="#overview-backwards-compatibility">backwards
-    # incompatible changes</a>
-    # with 30 days' notice. Before making any breaking changes, we will contact
-    # all integrators
-    # who have used the API.</p>
-    #
     class PayoutItem
       attr_reader :amount
       attr_reader :type
