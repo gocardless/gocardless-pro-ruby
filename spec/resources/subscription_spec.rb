@@ -16,6 +16,7 @@ describe GoCardlessPro::Resources::Subscription do
         {
 
           'amount' => 'amount-input',
+          'app_fee' => 'app_fee-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
           'day_of_month' => 'day_of_month-input',
@@ -41,6 +42,7 @@ describe GoCardlessPro::Resources::Subscription do
               'subscriptions' => {
 
                 'amount' => 'amount-input',
+                'app_fee' => 'app_fee-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',
@@ -66,6 +68,7 @@ describe GoCardlessPro::Resources::Subscription do
                 {
 
                   'amount' => 'amount-input',
+                  'app_fee' => 'app_fee-input',
                   'created_at' => 'created_at-input',
                   'currency' => 'currency-input',
                   'day_of_month' => 'day_of_month-input',
@@ -124,6 +127,7 @@ describe GoCardlessPro::Resources::Subscription do
         {
 
           'amount' => 'amount-input',
+          'app_fee' => 'app_fee-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
           'day_of_month' => 'day_of_month-input',
@@ -172,6 +176,7 @@ describe GoCardlessPro::Resources::Subscription do
               'subscriptions' => {
 
                 'amount' => 'amount-input',
+                'app_fee' => 'app_fee-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',
@@ -211,6 +216,7 @@ describe GoCardlessPro::Resources::Subscription do
             'subscriptions' => [{
 
               'amount' => 'amount-input',
+              'app_fee' => 'app_fee-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'day_of_month' => 'day_of_month-input',
@@ -242,6 +248,8 @@ describe GoCardlessPro::Resources::Subscription do
         expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Subscription)
 
         expect(get_list_response.records.first.amount).to eq('amount-input')
+
+        expect(get_list_response.records.first.app_fee).to eq('app_fee-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
@@ -288,6 +296,7 @@ describe GoCardlessPro::Resources::Subscription do
           'subscriptions' => [{
 
             'amount' => 'amount-input',
+            'app_fee' => 'app_fee-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'day_of_month' => 'day_of_month-input',
@@ -319,6 +328,7 @@ describe GoCardlessPro::Resources::Subscription do
           'subscriptions' => [{
 
             'amount' => 'amount-input',
+            'app_fee' => 'app_fee-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'day_of_month' => 'day_of_month-input',
@@ -366,6 +376,7 @@ describe GoCardlessPro::Resources::Subscription do
               'subscriptions' => {
 
                 'amount' => 'amount-input',
+                'app_fee' => 'app_fee-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',
@@ -407,6 +418,7 @@ describe GoCardlessPro::Resources::Subscription do
             'subscriptions' => {
 
               'amount' => 'amount-input',
+              'app_fee' => 'app_fee-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'day_of_month' => 'day_of_month-input',
@@ -470,6 +482,7 @@ describe GoCardlessPro::Resources::Subscription do
             'subscriptions' => {
 
               'amount' => 'amount-input',
+              'app_fee' => 'app_fee-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'day_of_month' => 'day_of_month-input',
@@ -511,6 +524,7 @@ describe GoCardlessPro::Resources::Subscription do
           'subscriptions' => {
 
             'amount' => 'amount-input',
+            'app_fee' => 'app_fee-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'day_of_month' => 'day_of_month-input',
@@ -557,6 +571,7 @@ describe GoCardlessPro::Resources::Subscription do
               'subscriptions' => {
 
                 'amount' => 'amount-input',
+                'app_fee' => 'app_fee-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',

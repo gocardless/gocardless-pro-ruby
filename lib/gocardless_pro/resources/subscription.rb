@@ -68,6 +68,7 @@ module GoCardlessPro
     #
     class Subscription
       attr_reader :amount
+      attr_reader :app_fee
       attr_reader :created_at
       attr_reader :currency
       attr_reader :day_of_month
@@ -89,6 +90,7 @@ module GoCardlessPro
         @object = object
 
         @amount = object['amount']
+        @app_fee = object['app_fee']
         @created_at = object['created_at']
         @currency = object['currency']
         @day_of_month = object['day_of_month']
