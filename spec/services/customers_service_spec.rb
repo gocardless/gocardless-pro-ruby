@@ -677,13 +677,41 @@ describe GoCardlessPro::Services::CustomersService do
         expect(stub).to have_been_requested.twice
       end
 
-      it 'retries 5XX errors' do
+      it 'retries 5XX errors, other than 500s' do
         stub_url = '/customers/:identity'.gsub(':identity', id)
 
         stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
                to_return(status: 502,
                          headers: { 'Content-Type' => 'text/html' },
                          body: '<html><body>Response from Cloudflare</body></html>').
+               then.to_return(status: 200, headers: response_headers)
+
+        get_response
+        expect(stub).to have_been_requested.twice
+      end
+
+      it 'retries 500 errors returned by the API' do
+        stub_url = '/customers/:identity'.gsub(':identity', id)
+
+        gocardless_error = {
+          'error' => {
+            'message' => 'Internal server error',
+            'documentation_url' => 'https://developer.gocardless.com/#gocardless',
+            'errors' => [{
+              'message' => 'Internal server error',
+              'reason' => 'internal_server_error',
+            }],
+            'type' => 'gocardless',
+            'code' => 500,
+            'request_id' => 'dummy_request_id',
+            'id' => 'dummy_exception_id',
+          },
+        }
+
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+               to_return(status: 500,
+                         headers: response_headers,
+                         body: gocardless_error.to_json).
                then.to_return(status: 200, headers: response_headers)
 
         get_response

@@ -147,18 +147,14 @@ The most common use of a custom header would be to set a custom [idempotency key
 
 ### Handling failures
 
-When the API returns an error, the client will raise a corresponding one. There are four classes of error which could be thrown, all of which subclass `GoCardlessPro::Error`:
+When the API itself returns an error, the client will raise a corresponding exception. There are four classes of exception which could be thrown, all of which subclass `GoCardlessPro::Error`:
 
 - `GoCardlessPro::GoCardlessError`
 - `GoCardlessPro::InvalidApiUsageError`
 - `GoCardlessPro::InvalidStateError`
 - `GoCardlessPro::ValidationError`
 
-These errors are fully documented in the [API documentation](https://developer.gocardless.com/api-reference/#overview-errors).
-
-When the API returns an `invalid_state` error due to an `idempotent_creation_conflict`, where possible, the library will automatically retrieve the existing record which was created using the idempotency key.
-
-All errors have the following methods to facilitate access to information in the API response:
+These different types of error are fully documented in the [API documentation](https://developer.gocardless.com/api-reference/#overview-errors). Exceptions raised by the library have the following methods to provide access to information in the API response:
 
 - `#documentation_url`
 - `#message`
@@ -167,7 +163,15 @@ All errors have the following methods to facilitate access to information in the
 - `#request_id`
 - `#errors`
 
-If a timeout occurs, and the request being made is idempotent, the library will automatically retry the request up to 3 times before giving up and raising a `Faraday::TimeoutError` error.
+When the API returns an `invalid_state` error due to an `idempotent_creation_conflict`, where possible, the library will automatically retrieve the existing record which was created using the idempotency key.
+
+If the client is unable to connect to GoCardless, an appropriate exception will be raised, for example:
+
+* `Faraday::TimeoutError`, in case of a timeout
+* `Faraday::ConnectionFailed`, in case of a connection issue (e.g. problems with DNS resolution)
+* `GoCardlessPro::ApiError`, for `5xx` errors returned from our infrastructure, but not by the API itself
+
+If an error occurs which is likely to be resolved with a retry (e.g. a timeout or connection error), and the request being made is idempotent, the library will automatically retry the request twice (i.e. it will make up to 3 attempts) before giving up and raising an exception.
 
 ### Using the OAuth API
 

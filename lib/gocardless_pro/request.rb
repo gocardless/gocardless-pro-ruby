@@ -3,8 +3,12 @@ require 'securerandom'
 module GoCardlessPro
   # A class that wraps an API request
   class Request
-    MAX_NETWORK_RETRIES = 3
+    MAX_RETRIES = 3
     RETRY_DELAY = 0.5
+    RETRYABLE_EXCEPTIONS = [Faraday::TimeoutError,
+                            Faraday::ConnectionFailed,
+                            GoCardlessPro::ApiError,
+                            GoCardlessPro::GoCardlessError].freeze
 
     # Initialize a request class, which makes calls to the API
     # @param connection
@@ -42,13 +46,14 @@ module GoCardlessPro
 
     def with_retries
       requests_attempted = 0
-      total_requests_allowed = MAX_NETWORK_RETRIES + 1
+      total_requests_allowed = MAX_RETRIES
 
       begin
         yield
       rescue => exception
+        requests_attempted += 1
+
         if requests_attempted < total_requests_allowed && should_retry?(exception)
-          requests_attempted += 1
           sleep(RETRY_DELAY)
           retry
         else
@@ -90,9 +95,7 @@ module GoCardlessPro
     private
 
     def should_retry?(exception)
-      return true if exception.is_a?(Faraday::TimeoutError)
-      return true if exception.is_a?(Faraday::ConnectionFailed)
-      return true if exception.is_a?(GoCardlessPro::ApiError)
+      RETRYABLE_EXCEPTIONS.include?(exception.class)
     end
   end
 end
