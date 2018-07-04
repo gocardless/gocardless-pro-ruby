@@ -21,6 +21,10 @@ module GoCardlessPro
     # account. You may wish to handle this by updating the existing record
     # instead, the ID of which will be provided as
     # `links[creditor_bank_account]` in the error response.
+    #
+    # <p class="restricted-notice"><strong>Restricted</strong>: This API is not
+    # available for
+    # partner integrations.</p>
     class CreditorBankAccount
       attr_reader :account_holder_name
       attr_reader :account_number_ending
