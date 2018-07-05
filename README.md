@@ -173,6 +173,60 @@ If the client is unable to connect to GoCardless, an appropriate exception will 
 
 If an error occurs which is likely to be resolved with a retry (e.g. a timeout or connection error), and the request being made is idempotent, the library will automatically retry the request twice (i.e. it will make up to 3 attempts) before giving up and raising an exception.
 
+### Handling webhooks
+
+GoCardless supports webhooks, allowing you to receive real-time notifications when things happen in your account, so you can take automatic actions in response, for example:
+
+* When a customer cancels their mandate with the bank, suspend their club membership
+* When a payment fails due to lack of funds, mark their invoice as unpaid
+* When a customer’s subscription generates a new payment, log it in their “past payments” list
+
+The client allows you to validate that a webhook you receive is genuinely from GoCardless, and to parse it into `GoCardlessPro::Resources::Event` objects which are easy to work with:
+
+```ruby
+class WebhooksController < ApplicationController
+  include ActionController::Live
+
+  protect_from_forgery except: :create
+
+  def create
+    # When you create a webhook endpoint, you can specify a secret. When GoCardless sends
+    # you a webhook, it'll sign the body using that secret. Since only you and GoCardless
+    # know the secret, you can check the signature and ensure that the webhook is truly
+    # from GoCardless.
+    #
+    # We recommend storing your webhook endpoint secret in an environment variable
+    # for security, but you could include it as a string directly in your code
+    webhook_endpoint_secret = ENV['GOCARDLESS_WEBHOOK_ENDPOINT_SECRET']
+
+    begin
+      # This example is for Rails. In a Rack app (e.g. Sinatra), access the POST body with
+      # `request.body.tap(&:rewind).read` and the Webhook-Signature header with
+      # `request.env['HTTP_WEBHOOK_SIGNATURE']`.
+      events = GoCardlessPro::Webhook.parse(
+        request_body: request.raw_post,
+        signature_header: request.headers['Webhook-Signature'],
+        webhook_endpoint_secret: webhook_endpoint_secret
+      )
+
+      events.each do |event|
+        # You can access each event in the webhook.
+        puts event.id
+      end
+
+      render status: 200, nothing: true
+    rescue GoCardlessPro::Webhook::InvalidSignatureError
+      # The webhook doesn't appear to be genuinely from GoCardless, as the signature
+      # included in the `Webhook-Signature` header doesn't match one computed with your
+      # webhook endpoint secret and the body
+      render status: 498, nothing: true
+    end
+  end
+end
+```
+
+For more details on working with webhooks, see our ["Getting started" guide](https://developer.gocardless.com/getting-started/api/introduction/?lang=ruby).
+
 ### Using the OAuth API
 
 The API includes [OAuth](https://developer.gocardless.com/pro/2015-07-06/#guides-oauth) functionality, which allows you to work with other users' GoCardless accounts. Once a user approves you, you can use the GoCardless API on their behalf and receive their webhooks.

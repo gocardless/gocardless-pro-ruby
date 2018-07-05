@@ -36,6 +36,7 @@ require_relative 'gocardless_pro/paginator'
 require_relative 'gocardless_pro/request'
 require_relative 'gocardless_pro/response'
 require_relative 'gocardless_pro/api_response'
+require_relative 'gocardless_pro/webhook'
 
 require_relative 'gocardless_pro/resources/bank_details_lookup'
 require_relative 'gocardless_pro/services/bank_details_lookups_service'
