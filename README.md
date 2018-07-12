@@ -108,8 +108,9 @@ For POST and PUT requests you need to pass in the body in under the `params` key
 ```rb
 @client.customers.create(
   params: {
-    first_name: "Pete",
-    last_name: "Hamilton",
+    given_name: "Pete",
+    family_name: "Hamilton",
+    email: "pete@hamilton.enterprises",
     ...
   }
 )
@@ -135,8 +136,8 @@ The most common use of a custom header would be to set a custom [idempotency key
 ```rb
 @client.customers.create(
   params: {
-    first_name: "Pete",
-    last_name: "Hamilton",
+    given_name: "Pete",
+    family_name: "Hamilton",
     ...
   },
   headers: {
