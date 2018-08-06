@@ -54,7 +54,7 @@ module GoCardlessPro
     #
     # <p class="restricted-notice"><strong>Restricted</strong>: This API is
     # currently
-    # only available for approved partners - please <a
+    # only available for approved integrators - please <a
     # href="mailto:help@gocardless.com">get
     # in touch</a> if you would like to use this API.</p>
     class MandateImport
