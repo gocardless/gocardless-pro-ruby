@@ -53,6 +53,9 @@ require_relative 'gocardless_pro/services/customers_service'
 require_relative 'gocardless_pro/resources/customer_bank_account'
 require_relative 'gocardless_pro/services/customer_bank_accounts_service'
 
+require_relative 'gocardless_pro/resources/customer_notification'
+require_relative 'gocardless_pro/services/customer_notifications_service'
+
 require_relative 'gocardless_pro/resources/event'
 require_relative 'gocardless_pro/services/events_service'
 

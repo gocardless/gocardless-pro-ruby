@@ -28,6 +28,11 @@ module GoCardlessPro
       @customer_bank_accounts ||= Services::CustomerBankAccountsService.new(@api_service)
     end
 
+    # Access to the service for customer_notification to make API calls
+    def customer_notifications
+      @customer_notifications ||= Services::CustomerNotificationsService.new(@api_service)
+    end
+
     # Access to the service for event to make API calls
     def events
       @events ||= Services::EventsService.new(@api_service)

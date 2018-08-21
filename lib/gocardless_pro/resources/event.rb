@@ -18,6 +18,7 @@ module GoCardlessPro
     class Event
       attr_reader :action
       attr_reader :created_at
+      attr_reader :customer_notifications
       attr_reader :details
       attr_reader :id
       attr_reader :metadata
@@ -30,6 +31,7 @@ module GoCardlessPro
 
         @action = object['action']
         @created_at = object['created_at']
+        @customer_notifications = object['customer_notifications']
         @details = object['details']
         @id = object['id']
         @links = object['links']
