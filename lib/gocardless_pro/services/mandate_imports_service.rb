@@ -64,6 +64,13 @@ module GoCardlessPro
       # GoCardless team. Once the import has been submitted, it can no longer have
       # entries
       # added to it.
+      #
+      # In our sandbox environment, to aid development, we automatically process
+      # mandate
+      # imports approximately 10 seconds after they are submitted. This will allow you
+      # to
+      # test both the "submitted" response and wait for the webhook to confirm the
+      # processing has begun.
       # Example URL: /mandate_imports/:identity/actions/submit
       #
       # @param identity       # Unique identifier, beginning with "IM".
@@ -97,9 +104,9 @@ module GoCardlessPro
       # mandates
       # being set up in GoCardless. Once the import has been cancelled, it can no
       # longer have
-      # entries added to it. Mandate imports which have already been submitted cannot
-      # be
-      # cancelled.
+      # entries added to it. Mandate imports which have already been submitted or
+      # processed
+      # cannot be cancelled.
       # Example URL: /mandate_imports/:identity/actions/cancel
       #
       # @param identity       # Unique identifier, beginning with "IM".
