@@ -1,0 +1,50 @@
+version: 2
+references:
+  test_library: &test_library
+    parallelism: 1
+    steps:
+      - checkout
+      - run: |
+          bundle install
+          bundle exec rspec
+jobs:
+  test_ruby_2_5:
+    <<: *test_library
+    docker:
+      - image: ruby:2.5
+
+  test_ruby_2_4:
+    <<: *test_library
+    docker:
+      - image: ruby:2.4
+
+  test_ruby_2_3:
+    <<: *test_library
+    docker:
+      - image: ruby:2.3
+
+  test_ruby_2_2:
+    <<: *test_library
+    docker:
+      - image: ruby:2.2
+
+  test_ruby_2_1:
+    <<: *test_library
+    docker:
+      - image: ruby:2.1
+
+  test_ruby_2_0:
+    <<: *test_library
+    docker:
+      - image: ruby:2.0
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test_ruby_2_5
+      - test_ruby_2_4
+      - test_ruby_2_3
+      - test_ruby_2_2
+      - test_ruby_2_1
+      - test_ruby_2_0
