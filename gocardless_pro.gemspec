@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'rspec', '~> 3.7.0'
+  # Used by webmock and newer versions require ruby 2.1
+  spec.add_development_dependency 'public_suffix', '~> 2.0.5'
   spec.add_development_dependency 'webmock', '~> 1.18'
   spec.add_development_dependency 'rubocop', '~> 0.49.1'
   spec.add_development_dependency 'yard', '~> 0.9.11'
