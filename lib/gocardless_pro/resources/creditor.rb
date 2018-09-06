@@ -94,6 +94,10 @@ module GoCardlessPro
           @links['default_gbp_payout_account']
         end
 
+        def default_nzd_payout_account
+          @links['default_nzd_payout_account']
+        end
+
         def default_sek_payout_account
           @links['default_sek_payout_account']
         end
