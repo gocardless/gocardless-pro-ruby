@@ -29,6 +29,7 @@ describe GoCardlessPro::Resources::Customer do
           'id' => 'id-input',
           'language' => 'language-input',
           'metadata' => 'metadata-input',
+          'phone_number' => 'phone_number-input',
           'postal_code' => 'postal_code-input',
           'region' => 'region-input',
           'swedish_identity_number' => 'swedish_identity_number-input',
@@ -55,6 +56,7 @@ describe GoCardlessPro::Resources::Customer do
                 'id' => 'id-input',
                 'language' => 'language-input',
                 'metadata' => 'metadata-input',
+                'phone_number' => 'phone_number-input',
                 'postal_code' => 'postal_code-input',
                 'region' => 'region-input',
                 'swedish_identity_number' => 'swedish_identity_number-input',
@@ -81,6 +83,7 @@ describe GoCardlessPro::Resources::Customer do
                   'id' => 'id-input',
                   'language' => 'language-input',
                   'metadata' => 'metadata-input',
+                  'phone_number' => 'phone_number-input',
                   'postal_code' => 'postal_code-input',
                   'region' => 'region-input',
                   'swedish_identity_number' => 'swedish_identity_number-input',
@@ -140,6 +143,7 @@ describe GoCardlessPro::Resources::Customer do
           'id' => 'id-input',
           'language' => 'language-input',
           'metadata' => 'metadata-input',
+          'phone_number' => 'phone_number-input',
           'postal_code' => 'postal_code-input',
           'region' => 'region-input',
           'swedish_identity_number' => 'swedish_identity_number-input',
@@ -189,6 +193,7 @@ describe GoCardlessPro::Resources::Customer do
                 'id' => 'id-input',
                 'language' => 'language-input',
                 'metadata' => 'metadata-input',
+                'phone_number' => 'phone_number-input',
                 'postal_code' => 'postal_code-input',
                 'region' => 'region-input',
                 'swedish_identity_number' => 'swedish_identity_number-input',
@@ -229,6 +234,7 @@ describe GoCardlessPro::Resources::Customer do
               'id' => 'id-input',
               'language' => 'language-input',
               'metadata' => 'metadata-input',
+              'phone_number' => 'phone_number-input',
               'postal_code' => 'postal_code-input',
               'region' => 'region-input',
               'swedish_identity_number' => 'swedish_identity_number-input',
@@ -275,6 +281,8 @@ describe GoCardlessPro::Resources::Customer do
 
         expect(get_list_response.records.first.metadata).to eq('metadata-input')
 
+        expect(get_list_response.records.first.phone_number).to eq('phone_number-input')
+
         expect(get_list_response.records.first.postal_code).to eq('postal_code-input')
 
         expect(get_list_response.records.first.region).to eq('region-input')
@@ -311,6 +319,7 @@ describe GoCardlessPro::Resources::Customer do
             'id' => 'id-input',
             'language' => 'language-input',
             'metadata' => 'metadata-input',
+            'phone_number' => 'phone_number-input',
             'postal_code' => 'postal_code-input',
             'region' => 'region-input',
             'swedish_identity_number' => 'swedish_identity_number-input',
@@ -343,6 +352,7 @@ describe GoCardlessPro::Resources::Customer do
             'id' => 'id-input',
             'language' => 'language-input',
             'metadata' => 'metadata-input',
+            'phone_number' => 'phone_number-input',
             'postal_code' => 'postal_code-input',
             'region' => 'region-input',
             'swedish_identity_number' => 'swedish_identity_number-input',
@@ -391,6 +401,7 @@ describe GoCardlessPro::Resources::Customer do
                 'id' => 'id-input',
                 'language' => 'language-input',
                 'metadata' => 'metadata-input',
+                'phone_number' => 'phone_number-input',
                 'postal_code' => 'postal_code-input',
                 'region' => 'region-input',
                 'swedish_identity_number' => 'swedish_identity_number-input',
@@ -433,6 +444,7 @@ describe GoCardlessPro::Resources::Customer do
               'id' => 'id-input',
               'language' => 'language-input',
               'metadata' => 'metadata-input',
+              'phone_number' => 'phone_number-input',
               'postal_code' => 'postal_code-input',
               'region' => 'region-input',
               'swedish_identity_number' => 'swedish_identity_number-input',
@@ -497,6 +509,7 @@ describe GoCardlessPro::Resources::Customer do
               'id' => 'id-input',
               'language' => 'language-input',
               'metadata' => 'metadata-input',
+              'phone_number' => 'phone_number-input',
               'postal_code' => 'postal_code-input',
               'region' => 'region-input',
               'swedish_identity_number' => 'swedish_identity_number-input',

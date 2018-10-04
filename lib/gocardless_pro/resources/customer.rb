@@ -18,6 +18,9 @@ module GoCardlessPro
     # several Direct Debit [mandates](#core-endpoints-mandates).
     #
     # Notes:
+    # - the `phone_number` field may only be supplied for New Zealand customers,
+    # and must be supplied if you intend to set up an BECS NZ mandate with the
+    # customer.
     # - the `swedish_identity_number` field may only be supplied for Swedish
     # customers, and must be supplied if you intend to set up an Autogiro
     # mandate with the customer.
@@ -39,6 +42,7 @@ module GoCardlessPro
       attr_reader :id
       attr_reader :language
       attr_reader :metadata
+      attr_reader :phone_number
       attr_reader :postal_code
       attr_reader :region
       attr_reader :swedish_identity_number
@@ -62,6 +66,7 @@ module GoCardlessPro
         @id = object['id']
         @language = object['language']
         @metadata = object['metadata']
+        @phone_number = object['phone_number']
         @postal_code = object['postal_code']
         @region = object['region']
         @swedish_identity_number = object['swedish_identity_number']
