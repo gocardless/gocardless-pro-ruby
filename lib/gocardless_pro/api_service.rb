@@ -11,6 +11,8 @@ require 'base64'
 module GoCardlessPro
   # GoCardless API
   class ApiService
+    attr_reader :raise_on_idempotency_conflict
+
     # Initialize an APIService
     #
     # @param url [String] the URL to make requests to
@@ -19,6 +21,7 @@ module GoCardlessPro
     # @param options [Hash] additional options to use when creating the service
     def initialize(url, token, options = {})
       @url = url
+      @raise_on_idempotency_conflict = options.delete(:raise_on_idempotency_conflict)
       root_url, @path_prefix = unpack_url(url)
       http_adapter = options[:http_adapter] || [:net_http]
       connection_options = options[:connection_options]

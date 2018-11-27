@@ -8,6 +8,8 @@ require 'uri'
 #
 
 module GoCardlessPro
+  IdempotencyConflict = Class.new(StandardError)
+
   module Services
     # Service for making requests to the Payment endpoints
     class PaymentsService < BaseService
@@ -34,7 +36,10 @@ module GoCardlessPro
           # Response doesn't raise any errors until #body is called
           response.tap(&:body)
         rescue InvalidStateError => e
-          return get(e.conflicting_resource_id) if e.idempotent_creation_conflict?
+          if e.idempotent_creation_conflict?
+            raise IdempotencyConflict if @api_service.raise_on_idempotency_conflict
+            return get(e.conflicting_resource_id)
+          end
 
           raise e
         end
