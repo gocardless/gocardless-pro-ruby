@@ -19,4 +19,6 @@ module GoCardlessPro
       errors.find { |error| error['reason'] == IDEMPOTENT_CREATION_CONFLICT }
     end
   end
+
+  IdempotencyConflict = Class.new(Error)
 end

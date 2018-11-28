@@ -29,7 +29,16 @@ module GoCardlessPro
           # Response doesn't raise any errors until #body is called
           response.tap(&:body)
         rescue InvalidStateError => e
-          return get(e.conflicting_resource_id) if e.idempotent_creation_conflict?
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            else
+              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
+            end
+          end
 
           raise e
         end
@@ -112,7 +121,16 @@ module GoCardlessPro
           # Response doesn't raise any errors until #body is called
           response.tap(&:body)
         rescue InvalidStateError => e
-          return get(e.conflicting_resource_id) if e.idempotent_creation_conflict?
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            else
+              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
+            end
+          end
 
           raise e
         end
