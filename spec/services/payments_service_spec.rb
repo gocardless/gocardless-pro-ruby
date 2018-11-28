@@ -191,10 +191,39 @@ describe GoCardlessPro::Services::PaymentsService do
           )
       end
 
-      it 'fetches the already-created resource' do
-        post_create_response
-        expect(post_stub).to have_been_requested
-        expect(get_stub).to have_been_requested
+      context 'with default behaviour' do
+        it 'fetches the already-created resource' do
+          post_create_response
+          expect(post_stub).to have_been_requested
+          expect(get_stub).to have_been_requested
+        end
+      end
+
+      context 'with on_idempotency_conflict: :raise' do
+        let(:client) do
+          GoCardlessPro::Client.new(
+            access_token: 'SECRET_TOKEN',
+            on_idempotency_conflict: :raise
+          )
+        end
+
+        it 'raises an IdempotencyConflict error' do
+          expect { post_create_response }.
+            to raise_error(GoCardlessPro::IdempotencyConflict)
+        end
+      end
+
+      context 'with on_idempotency_conflict: :unknown' do
+        let(:client) do
+          GoCardlessPro::Client.new(
+            access_token: 'SECRET_TOKEN',
+            on_idempotency_conflict: :unknown
+          )
+        end
+
+        it 'raises an ArgumentError' do
+          expect { post_create_response }.to raise_error(ArgumentError)
+        end
       end
     end
   end

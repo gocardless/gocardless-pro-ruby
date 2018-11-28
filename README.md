@@ -164,7 +164,21 @@ These different types of error are fully documented in the [API documentation](h
 - `#request_id`
 - `#errors`
 
-When the API returns an `invalid_state` error due to an `idempotent_creation_conflict`, where possible, the library will automatically retrieve the existing record which was created using the idempotency key.
+When the API returns an `invalid_state` error due to an `idempotent_creation_conflict`,
+this library will attempt to retrieve the existing record which was created using the
+idempotency key, however you can also configure the library to raise an exception instead:
+
+```ruby
+@client = GoCardlessPro::Client.new(
+  on_idempotency_conflict: :raise
+)
+
+begin
+  @client.payments.create(...)
+rescue GoCardlessPro::IdempotencyConflict => e
+  # do something useful
+end
+```
 
 If the client is unable to connect to GoCardless, an appropriate exception will be raised, for example:
 

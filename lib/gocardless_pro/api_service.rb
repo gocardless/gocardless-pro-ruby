@@ -11,6 +11,8 @@ require 'base64'
 module GoCardlessPro
   # GoCardless API
   class ApiService
+    attr_reader :on_idempotency_conflict
+
     # Initialize an APIService
     #
     # @param url [String] the URL to make requests to
@@ -31,6 +33,7 @@ module GoCardlessPro
 
       @headers = options[:default_headers] || {}
       @headers['Authorization'] = "Bearer #{token}"
+      @on_idempotency_conflict = options[:on_idempotency_conflict] || :fetch
     end
 
     # Make a request to the API
