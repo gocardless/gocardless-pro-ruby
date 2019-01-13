@@ -141,7 +141,7 @@ The most common use of a custom header would be to set a custom [idempotency key
     ...
   },
   headers: {
-    "Idempotency-Key": "1f9630a9-0487-418d-bd37-8b77793c9985"
+    "Idempotency-Key" => "1f9630a9-0487-418d-bd37-8b77793c9985"
   }
 )
 ```
