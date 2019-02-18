@@ -16,17 +16,6 @@ module GoCardlessPro
     # have several [customer bank
     # accounts](#core-endpoints-customer-bank-accounts), which in turn can have
     # several Direct Debit [mandates](#core-endpoints-mandates).
-    #
-    # Notes:
-    # - the `phone_number` field may only be supplied for New Zealand customers,
-    # and must be supplied if you intend to set up an BECS NZ mandate with the
-    # customer.
-    # - the `swedish_identity_number` field may only be supplied for Swedish
-    # customers, and must be supplied if you intend to set up an Autogiro
-    # mandate with the customer.
-    # - the `danish_identity_number` field may only be supplied for Danish
-    # customers, and must be supplied if you intend to set up a Betalingsservice
-    # mandate with the customer.
     class Customer
       attr_reader :address_line1
       attr_reader :address_line2
