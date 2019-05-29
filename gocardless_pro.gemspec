@@ -17,12 +17,18 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
+  spec.add_dependency 'faraday', ['>= 0.9.2', '< 1.0']
+
   spec.add_development_dependency 'rspec', '~> 3.7.0'
-  # Used by webmock and newer versions require ruby 2.1
-  spec.add_development_dependency 'public_suffix', '~> 2.0.5'
   spec.add_development_dependency 'webmock', '~> 1.18'
   spec.add_development_dependency 'rubocop', '~> 0.49.1'
   spec.add_development_dependency 'yard', '~> 0.9.11'
 
-  spec.add_dependency 'faraday', ['>= 0.9.2', '< 1.0']
+  # Pin the version of the 'public_suffix' gem, which is a transitive dependency
+  # of 'webmock' (newer versions require Ruby 2.1+).
+  spec.add_development_dependency 'public_suffix', '~> 2.0.5'
+
+  # Pin the version of the 'parallel' gem, which is a transitive dependency of
+  # 'rubocop' (newer versions require Ruby 2.2+).
+  spec.add_development_dependency 'parallel', '~> 1.13.0'
 end
