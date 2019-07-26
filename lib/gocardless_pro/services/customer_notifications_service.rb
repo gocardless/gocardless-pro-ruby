@@ -17,7 +17,7 @@ module GoCardlessPro
       # If the notification has already been actioned, or the deadline to notify has
       # passed,
       # this endpoint will return an `already_actioned` error and you should not take
-      # further action.
+      # further action. This endpoint takes no additional parameters.
       #
       # Example URL: /customer_notifications/:identity/actions/handle
       #

@@ -116,6 +116,31 @@ module GoCardlessPro
         Resources::Customer.new(unenvelope_body(response.body), response)
       end
 
+      # Removed customers will not appear in search results or lists of customers (in
+      # our API
+      # or exports), and it will not be possible to load an individually removed
+      # customer by
+      # ID.
+      #
+      # <p class="restricted-notice"><strong>The action of removing a customer cannot
+      # be
+      # reversed, so please use with care.</strong></p>
+      # Example URL: /customers/:identity
+      #
+      # @param identity       # Unique identifier, beginning with "CU".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def remove(identity, options = {})
+        path = sub_url('/customers/:identity', 'identity' => identity)
+
+        options[:retry_failures] = false
+
+        response = make_request(:delete, path, options)
+
+        return if response.body.nil?
+
+        Resources::Customer.new(unenvelope_body(response.body), response)
+      end
+
       private
 
       # Unenvelope the response of the body using the service's `envelope_key`

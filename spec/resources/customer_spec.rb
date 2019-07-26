@@ -525,4 +525,90 @@ describe GoCardlessPro::Resources::Customer do
       end
     end
   end
+
+  describe '#remove' do
+    subject(:delete_response) { client.customers.remove(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /customers/%v
+      stub_url = '/customers/:identity'.gsub(':identity', resource_id)
+      stub_request(:delete, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'customers' => {
+
+            'address_line1' => 'address_line1-input',
+            'address_line2' => 'address_line2-input',
+            'address_line3' => 'address_line3-input',
+            'city' => 'city-input',
+            'company_name' => 'company_name-input',
+            'country_code' => 'country_code-input',
+            'created_at' => 'created_at-input',
+            'danish_identity_number' => 'danish_identity_number-input',
+            'email' => 'email-input',
+            'family_name' => 'family_name-input',
+            'given_name' => 'given_name-input',
+            'id' => 'id-input',
+            'language' => 'language-input',
+            'metadata' => 'metadata-input',
+            'phone_number' => 'phone_number-input',
+            'postal_code' => 'postal_code-input',
+            'region' => 'region-input',
+            'swedish_identity_number' => 'swedish_identity_number-input',
+          },
+        }.to_json,
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(delete_response).to be_a(GoCardlessPro::Resources::Customer)
+
+      expect(stub).to have_been_requested
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:delete_response) { client.customers.remove(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /customers/%v
+        stub_url = '/customers/:identity'.gsub(':identity', resource_id)
+        stub_request(:delete, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'customers' => {
+
+                'address_line1' => 'address_line1-input',
+                'address_line2' => 'address_line2-input',
+                'address_line3' => 'address_line3-input',
+                'city' => 'city-input',
+                'company_name' => 'company_name-input',
+                'country_code' => 'country_code-input',
+                'created_at' => 'created_at-input',
+                'danish_identity_number' => 'danish_identity_number-input',
+                'email' => 'email-input',
+                'family_name' => 'family_name-input',
+                'given_name' => 'given_name-input',
+                'id' => 'id-input',
+                'language' => 'language-input',
+                'metadata' => 'metadata-input',
+                'phone_number' => 'phone_number-input',
+                'postal_code' => 'postal_code-input',
+                'region' => 'region-input',
+                'swedish_identity_number' => 'swedish_identity_number-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
 end

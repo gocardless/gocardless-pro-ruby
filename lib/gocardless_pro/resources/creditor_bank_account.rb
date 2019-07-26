@@ -28,6 +28,7 @@ module GoCardlessPro
     class CreditorBankAccount
       attr_reader :account_holder_name
       attr_reader :account_number_ending
+      attr_reader :account_type
       attr_reader :bank_name
       attr_reader :country_code
       attr_reader :created_at
@@ -43,6 +44,7 @@ module GoCardlessPro
 
         @account_holder_name = object['account_holder_name']
         @account_number_ending = object['account_number_ending']
+        @account_type = object['account_type']
         @bank_name = object['bank_name']
         @country_code = object['country_code']
         @created_at = object['created_at']
