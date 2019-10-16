@@ -22,6 +22,7 @@ module GoCardlessPro
       attr_reader :created_at
       attr_reader :currency
       attr_reader :deducted_fees
+      attr_reader :fx
       attr_reader :id
       attr_reader :payout_type
       attr_reader :reference
@@ -37,6 +38,7 @@ module GoCardlessPro
         @created_at = object['created_at']
         @currency = object['currency']
         @deducted_fees = object['deducted_fees']
+        @fx = object['fx']
         @id = object['id']
         @links = object['links']
         @payout_type = object['payout_type']

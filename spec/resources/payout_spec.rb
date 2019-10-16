@@ -23,6 +23,7 @@ describe GoCardlessPro::Resources::Payout do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'deducted_fees' => 'deducted_fees-input',
+              'fx' => 'fx-input',
               'id' => 'id-input',
               'links' => 'links-input',
               'payout_type' => 'payout_type-input',
@@ -53,6 +54,8 @@ describe GoCardlessPro::Resources::Payout do
 
         expect(get_list_response.records.first.deducted_fees).to eq('deducted_fees-input')
 
+        expect(get_list_response.records.first.fx).to eq('fx-input')
+
         expect(get_list_response.records.first.id).to eq('id-input')
 
         expect(get_list_response.records.first.payout_type).to eq('payout_type-input')
@@ -82,6 +85,7 @@ describe GoCardlessPro::Resources::Payout do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'deducted_fees' => 'deducted_fees-input',
+            'fx' => 'fx-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'payout_type' => 'payout_type-input',
@@ -107,6 +111,7 @@ describe GoCardlessPro::Resources::Payout do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'deducted_fees' => 'deducted_fees-input',
+            'fx' => 'fx-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'payout_type' => 'payout_type-input',
@@ -148,6 +153,7 @@ describe GoCardlessPro::Resources::Payout do
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'deducted_fees' => 'deducted_fees-input',
+                'fx' => 'fx-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'payout_type' => 'payout_type-input',
@@ -183,6 +189,7 @@ describe GoCardlessPro::Resources::Payout do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'deducted_fees' => 'deducted_fees-input',
+              'fx' => 'fx-input',
               'id' => 'id-input',
               'links' => 'links-input',
               'payout_type' => 'payout_type-input',

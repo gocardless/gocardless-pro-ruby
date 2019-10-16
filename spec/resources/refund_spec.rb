@@ -18,6 +18,7 @@ describe GoCardlessPro::Resources::Refund do
           'amount' => 'amount-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
+          'fx' => 'fx-input',
           'id' => 'id-input',
           'links' => 'links-input',
           'metadata' => 'metadata-input',
@@ -34,6 +35,7 @@ describe GoCardlessPro::Resources::Refund do
                 'amount' => 'amount-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
+                'fx' => 'fx-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
@@ -50,6 +52,7 @@ describe GoCardlessPro::Resources::Refund do
                   'amount' => 'amount-input',
                   'created_at' => 'created_at-input',
                   'currency' => 'currency-input',
+                  'fx' => 'fx-input',
                   'id' => 'id-input',
                   'links' => 'links-input',
                   'metadata' => 'metadata-input',
@@ -99,6 +102,7 @@ describe GoCardlessPro::Resources::Refund do
           'amount' => 'amount-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
+          'fx' => 'fx-input',
           'id' => 'id-input',
           'links' => 'links-input',
           'metadata' => 'metadata-input',
@@ -138,6 +142,7 @@ describe GoCardlessPro::Resources::Refund do
                 'amount' => 'amount-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
+                'fx' => 'fx-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
@@ -168,6 +173,7 @@ describe GoCardlessPro::Resources::Refund do
               'amount' => 'amount-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
+              'fx' => 'fx-input',
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
@@ -192,6 +198,8 @@ describe GoCardlessPro::Resources::Refund do
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
         expect(get_list_response.records.first.currency).to eq('currency-input')
+
+        expect(get_list_response.records.first.fx).to eq('fx-input')
 
         expect(get_list_response.records.first.id).to eq('id-input')
 
@@ -218,6 +226,7 @@ describe GoCardlessPro::Resources::Refund do
             'amount' => 'amount-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
+            'fx' => 'fx-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'metadata' => 'metadata-input',
@@ -240,6 +249,7 @@ describe GoCardlessPro::Resources::Refund do
             'amount' => 'amount-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
+            'fx' => 'fx-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'metadata' => 'metadata-input',
@@ -278,6 +288,7 @@ describe GoCardlessPro::Resources::Refund do
                 'amount' => 'amount-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
+                'fx' => 'fx-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
@@ -310,6 +321,7 @@ describe GoCardlessPro::Resources::Refund do
               'amount' => 'amount-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
+              'fx' => 'fx-input',
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
@@ -364,6 +376,7 @@ describe GoCardlessPro::Resources::Refund do
               'amount' => 'amount-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
+              'fx' => 'fx-input',
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
