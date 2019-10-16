@@ -28,6 +28,7 @@ module GoCardlessPro
       attr_reader :city
       attr_reader :country_code
       attr_reader :created_at
+      attr_reader :fx_payout_currency
       attr_reader :id
       attr_reader :logo_url
       attr_reader :name
@@ -48,6 +49,7 @@ module GoCardlessPro
         @city = object['city']
         @country_code = object['country_code']
         @created_at = object['created_at']
+        @fx_payout_currency = object['fx_payout_currency']
         @id = object['id']
         @links = object['links']
         @logo_url = object['logo_url']

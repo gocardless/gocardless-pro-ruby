@@ -23,6 +23,7 @@ module GoCardlessPro
       attr_reader :amount
       attr_reader :created_at
       attr_reader :currency
+      attr_reader :fx
       attr_reader :id
       attr_reader :metadata
       attr_reader :reference
@@ -35,6 +36,7 @@ module GoCardlessPro
         @amount = object['amount']
         @created_at = object['created_at']
         @currency = object['currency']
+        @fx = object['fx']
         @id = object['id']
         @links = object['links']
         @metadata = object['metadata']
