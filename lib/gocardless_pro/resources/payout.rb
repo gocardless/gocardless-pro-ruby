@@ -14,8 +14,10 @@ module GoCardlessPro
 
     # Payouts represent transfers from GoCardless to a
     # [creditor](#core-endpoints-creditors). Each payout contains the funds
-    # collected from one or many [payments](#core-endpoints-payments). Payouts
-    # are created automatically after a payment has been successfully collected.
+    # collected from one or many [payments](#core-endpoints-payments). All the
+    # payments in a payout will have been collected in the same currency.
+    # Payouts are created automatically after a payment has been successfully
+    # collected.
     class Payout
       attr_reader :amount
       attr_reader :arrival_date
