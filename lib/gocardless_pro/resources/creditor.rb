@@ -107,6 +107,10 @@ module GoCardlessPro
         def default_sek_payout_account
           @links['default_sek_payout_account']
         end
+
+        def default_usd_payout_account
+          @links['default_usd_payout_account']
+        end
       end
     end
   end
