@@ -20,7 +20,9 @@ module GoCardlessPro
       @connection = connection
       @method = method
       @path = path
-      @headers = options.delete(:headers) || {}
+      @headers = (options.delete(:headers) || {}).each_with_object({}) do |(k, v), hsh|
+        hsh[k.to_s] = v
+      end
       @envelope_name = options.delete(:envelope_key)
       @retry_failures = options.delete(:retry_failures) { true }
       @given_options = options
