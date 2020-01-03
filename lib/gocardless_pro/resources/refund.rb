@@ -27,6 +27,7 @@ module GoCardlessPro
       attr_reader :id
       attr_reader :metadata
       attr_reader :reference
+      attr_reader :status
 
       # Initialize a refund resource instance
       # @param object [Hash] an object returned from the API
@@ -41,6 +42,7 @@ module GoCardlessPro
         @links = object['links']
         @metadata = object['metadata']
         @reference = object['reference']
+        @status = object['status']
         @response = response
       end
 

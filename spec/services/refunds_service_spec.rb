@@ -23,6 +23,7 @@ describe GoCardlessPro::Services::RefundsService do
           'links' => 'links-input',
           'metadata' => 'metadata-input',
           'reference' => 'reference-input',
+          'status' => 'status-input',
         }
       end
 
@@ -40,6 +41,7 @@ describe GoCardlessPro::Services::RefundsService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
+                'status' => 'status-input',
               },
             }
           ).
@@ -57,6 +59,7 @@ describe GoCardlessPro::Services::RefundsService do
                   'links' => 'links-input',
                   'metadata' => 'metadata-input',
                   'reference' => 'reference-input',
+                  'status' => 'status-input',
                 },
 
             }.to_json,
@@ -130,6 +133,7 @@ describe GoCardlessPro::Services::RefundsService do
           'links' => 'links-input',
           'metadata' => 'metadata-input',
           'reference' => 'reference-input',
+          'status' => 'status-input',
         }
       end
 
@@ -170,6 +174,7 @@ describe GoCardlessPro::Services::RefundsService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
+                'status' => 'status-input',
               },
             }.to_json,
             headers: response_headers
@@ -229,6 +234,7 @@ describe GoCardlessPro::Services::RefundsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
+            'status' => 'status-input',
           }],
           meta: {
             cursors: {
@@ -262,6 +268,8 @@ describe GoCardlessPro::Services::RefundsService do
         expect(get_list_response.records.first.metadata).to eq('metadata-input')
 
         expect(get_list_response.records.first.reference).to eq('reference-input')
+
+        expect(get_list_response.records.first.status).to eq('status-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -310,6 +318,7 @@ describe GoCardlessPro::Services::RefundsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
+            'status' => 'status-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -333,6 +342,7 @@ describe GoCardlessPro::Services::RefundsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
+            'status' => 'status-input',
           }],
           meta: {
             limit: 2,
@@ -365,6 +375,7 @@ describe GoCardlessPro::Services::RefundsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
+              'status' => 'status-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -388,6 +399,7 @@ describe GoCardlessPro::Services::RefundsService do
                                      'links' => 'links-input',
                                      'metadata' => 'metadata-input',
                                      'reference' => 'reference-input',
+                                     'status' => 'status-input',
                                    }],
                                    meta: {
                                      limit: 2,
@@ -416,6 +428,7 @@ describe GoCardlessPro::Services::RefundsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
+              'status' => 'status-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -442,6 +455,7 @@ describe GoCardlessPro::Services::RefundsService do
                                      'links' => 'links-input',
                                      'metadata' => 'metadata-input',
                                      'reference' => 'reference-input',
+                                     'status' => 'status-input',
                                    }],
                                    meta: {
                                      limit: 2,
@@ -481,6 +495,7 @@ describe GoCardlessPro::Services::RefundsService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
+                'status' => 'status-input',
               },
             }.to_json,
             headers: response_headers
@@ -514,6 +529,7 @@ describe GoCardlessPro::Services::RefundsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
+              'status' => 'status-input',
             },
           }.to_json,
           headers: response_headers
@@ -624,6 +640,7 @@ describe GoCardlessPro::Services::RefundsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
+              'status' => 'status-input',
             },
           }.to_json,
           headers: response_headers
