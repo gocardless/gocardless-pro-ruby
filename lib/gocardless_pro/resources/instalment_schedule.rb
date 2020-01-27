@@ -83,10 +83,6 @@ module GoCardlessPro
           @links['mandate']
         end
 
-        def organisation
-          @links['organisation']
-        end
-
         def payments
           @links['payments']
         end
