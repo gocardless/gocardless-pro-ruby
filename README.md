@@ -120,6 +120,16 @@ When creating a resource, the library will automatically include a randomly-gene
 [idempotency key](https://developer.gocardless.com/api-reference/#making-requests-idempotency-keys)
 - this means that if a request appears to fail but is in fact successful (for example due
 to a timeout), you will not end up creating multiple duplicates of the resource.
+- By default if a request results in an Idempotency Key conflict
+  the library will make a second request and return the object that was
+  originally created with the Idempotency Key. If you wish, you can instead configure
+  the client to raise the conflict for you to handle. e.g
+  ```
+  @client = GoCardlessPro::Client.new(
+    access_token: ENV["GOCARDLESS_TOKEN"],
+    on_idempotency_conflict: :raise,
+  )
+  ```
 
 If any parameters are required they come first:
 

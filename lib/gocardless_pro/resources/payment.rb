@@ -75,6 +75,10 @@ module GoCardlessPro
           @links['creditor']
         end
 
+        def instalment_schedule
+          @links['instalment_schedule']
+        end
+
         def mandate
           @links['mandate']
         end
