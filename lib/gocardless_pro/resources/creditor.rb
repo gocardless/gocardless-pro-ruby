@@ -28,9 +28,12 @@ module GoCardlessPro
       attr_reader :city
       attr_reader :country_code
       attr_reader :created_at
+      attr_reader :custom_payment_pages_enabled
       attr_reader :fx_payout_currency
       attr_reader :id
       attr_reader :logo_url
+      attr_reader :mandate_imports_enabled
+      attr_reader :merchant_responsible_for_notifications
       attr_reader :name
       attr_reader :postal_code
       attr_reader :region
@@ -49,10 +52,13 @@ module GoCardlessPro
         @city = object['city']
         @country_code = object['country_code']
         @created_at = object['created_at']
+        @custom_payment_pages_enabled = object['custom_payment_pages_enabled']
         @fx_payout_currency = object['fx_payout_currency']
         @id = object['id']
         @links = object['links']
         @logo_url = object['logo_url']
+        @mandate_imports_enabled = object['mandate_imports_enabled']
+        @merchant_responsible_for_notifications = object['merchant_responsible_for_notifications']
         @name = object['name']
         @postal_code = object['postal_code']
         @region = object['region']
