@@ -29,6 +29,7 @@ describe GoCardlessPro::Resources::Subscription do
           'month' => 'month-input',
           'name' => 'name-input',
           'payment_reference' => 'payment_reference-input',
+          'retry_if_possible' => 'retry_if_possible-input',
           'start_date' => 'start_date-input',
           'status' => 'status-input',
           'upcoming_payments' => 'upcoming_payments-input',
@@ -55,6 +56,7 @@ describe GoCardlessPro::Resources::Subscription do
                 'month' => 'month-input',
                 'name' => 'name-input',
                 'payment_reference' => 'payment_reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
                 'start_date' => 'start_date-input',
                 'status' => 'status-input',
                 'upcoming_payments' => 'upcoming_payments-input',
@@ -81,6 +83,7 @@ describe GoCardlessPro::Resources::Subscription do
                   'month' => 'month-input',
                   'name' => 'name-input',
                   'payment_reference' => 'payment_reference-input',
+                  'retry_if_possible' => 'retry_if_possible-input',
                   'start_date' => 'start_date-input',
                   'status' => 'status-input',
                   'upcoming_payments' => 'upcoming_payments-input',
@@ -140,6 +143,7 @@ describe GoCardlessPro::Resources::Subscription do
           'month' => 'month-input',
           'name' => 'name-input',
           'payment_reference' => 'payment_reference-input',
+          'retry_if_possible' => 'retry_if_possible-input',
           'start_date' => 'start_date-input',
           'status' => 'status-input',
           'upcoming_payments' => 'upcoming_payments-input',
@@ -189,6 +193,7 @@ describe GoCardlessPro::Resources::Subscription do
                 'month' => 'month-input',
                 'name' => 'name-input',
                 'payment_reference' => 'payment_reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
                 'start_date' => 'start_date-input',
                 'status' => 'status-input',
                 'upcoming_payments' => 'upcoming_payments-input',
@@ -229,6 +234,7 @@ describe GoCardlessPro::Resources::Subscription do
               'month' => 'month-input',
               'name' => 'name-input',
               'payment_reference' => 'payment_reference-input',
+              'retry_if_possible' => 'retry_if_possible-input',
               'start_date' => 'start_date-input',
               'status' => 'status-input',
               'upcoming_payments' => 'upcoming_payments-input',
@@ -273,6 +279,8 @@ describe GoCardlessPro::Resources::Subscription do
 
         expect(get_list_response.records.first.payment_reference).to eq('payment_reference-input')
 
+        expect(get_list_response.records.first.retry_if_possible).to eq('retry_if_possible-input')
+
         expect(get_list_response.records.first.start_date).to eq('start_date-input')
 
         expect(get_list_response.records.first.status).to eq('status-input')
@@ -309,6 +317,7 @@ describe GoCardlessPro::Resources::Subscription do
             'month' => 'month-input',
             'name' => 'name-input',
             'payment_reference' => 'payment_reference-input',
+            'retry_if_possible' => 'retry_if_possible-input',
             'start_date' => 'start_date-input',
             'status' => 'status-input',
             'upcoming_payments' => 'upcoming_payments-input',
@@ -341,6 +350,7 @@ describe GoCardlessPro::Resources::Subscription do
             'month' => 'month-input',
             'name' => 'name-input',
             'payment_reference' => 'payment_reference-input',
+            'retry_if_possible' => 'retry_if_possible-input',
             'start_date' => 'start_date-input',
             'status' => 'status-input',
             'upcoming_payments' => 'upcoming_payments-input',
@@ -389,6 +399,7 @@ describe GoCardlessPro::Resources::Subscription do
                 'month' => 'month-input',
                 'name' => 'name-input',
                 'payment_reference' => 'payment_reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
                 'start_date' => 'start_date-input',
                 'status' => 'status-input',
                 'upcoming_payments' => 'upcoming_payments-input',
@@ -431,6 +442,7 @@ describe GoCardlessPro::Resources::Subscription do
               'month' => 'month-input',
               'name' => 'name-input',
               'payment_reference' => 'payment_reference-input',
+              'retry_if_possible' => 'retry_if_possible-input',
               'start_date' => 'start_date-input',
               'status' => 'status-input',
               'upcoming_payments' => 'upcoming_payments-input',
@@ -495,6 +507,7 @@ describe GoCardlessPro::Resources::Subscription do
               'month' => 'month-input',
               'name' => 'name-input',
               'payment_reference' => 'payment_reference-input',
+              'retry_if_possible' => 'retry_if_possible-input',
               'start_date' => 'start_date-input',
               'status' => 'status-input',
               'upcoming_payments' => 'upcoming_payments-input',
@@ -537,6 +550,7 @@ describe GoCardlessPro::Resources::Subscription do
             'month' => 'month-input',
             'name' => 'name-input',
             'payment_reference' => 'payment_reference-input',
+            'retry_if_possible' => 'retry_if_possible-input',
             'start_date' => 'start_date-input',
             'status' => 'status-input',
             'upcoming_payments' => 'upcoming_payments-input',
@@ -584,6 +598,7 @@ describe GoCardlessPro::Resources::Subscription do
                 'month' => 'month-input',
                 'name' => 'name-input',
                 'payment_reference' => 'payment_reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
                 'start_date' => 'start_date-input',
                 'status' => 'status-input',
                 'upcoming_payments' => 'upcoming_payments-input',

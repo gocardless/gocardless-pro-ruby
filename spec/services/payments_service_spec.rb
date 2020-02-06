@@ -26,6 +26,7 @@ describe GoCardlessPro::Services::PaymentsService do
           'links' => 'links-input',
           'metadata' => 'metadata-input',
           'reference' => 'reference-input',
+          'retry_if_possible' => 'retry_if_possible-input',
           'status' => 'status-input',
         }
       end
@@ -47,6 +48,7 @@ describe GoCardlessPro::Services::PaymentsService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
                 'status' => 'status-input',
               },
             }
@@ -68,6 +70,7 @@ describe GoCardlessPro::Services::PaymentsService do
                   'links' => 'links-input',
                   'metadata' => 'metadata-input',
                   'reference' => 'reference-input',
+                  'retry_if_possible' => 'retry_if_possible-input',
                   'status' => 'status-input',
                 },
 
@@ -145,6 +148,7 @@ describe GoCardlessPro::Services::PaymentsService do
           'links' => 'links-input',
           'metadata' => 'metadata-input',
           'reference' => 'reference-input',
+          'retry_if_possible' => 'retry_if_possible-input',
           'status' => 'status-input',
         }
       end
@@ -189,6 +193,7 @@ describe GoCardlessPro::Services::PaymentsService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
                 'status' => 'status-input',
               },
             }.to_json,
@@ -252,6 +257,7 @@ describe GoCardlessPro::Services::PaymentsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
+            'retry_if_possible' => 'retry_if_possible-input',
             'status' => 'status-input',
           }],
           meta: {
@@ -292,6 +298,8 @@ describe GoCardlessPro::Services::PaymentsService do
         expect(get_list_response.records.first.metadata).to eq('metadata-input')
 
         expect(get_list_response.records.first.reference).to eq('reference-input')
+
+        expect(get_list_response.records.first.retry_if_possible).to eq('retry_if_possible-input')
 
         expect(get_list_response.records.first.status).to eq('status-input')
       end
@@ -345,6 +353,7 @@ describe GoCardlessPro::Services::PaymentsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
+            'retry_if_possible' => 'retry_if_possible-input',
             'status' => 'status-input',
           }],
           meta: {
@@ -372,6 +381,7 @@ describe GoCardlessPro::Services::PaymentsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
+            'retry_if_possible' => 'retry_if_possible-input',
             'status' => 'status-input',
           }],
           meta: {
@@ -408,6 +418,7 @@ describe GoCardlessPro::Services::PaymentsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
+              'retry_if_possible' => 'retry_if_possible-input',
               'status' => 'status-input',
             }],
             meta: {
@@ -435,6 +446,7 @@ describe GoCardlessPro::Services::PaymentsService do
                                      'links' => 'links-input',
                                      'metadata' => 'metadata-input',
                                      'reference' => 'reference-input',
+                                     'retry_if_possible' => 'retry_if_possible-input',
                                      'status' => 'status-input',
                                    }],
                                    meta: {
@@ -467,6 +479,7 @@ describe GoCardlessPro::Services::PaymentsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
+              'retry_if_possible' => 'retry_if_possible-input',
               'status' => 'status-input',
             }],
             meta: {
@@ -497,6 +510,7 @@ describe GoCardlessPro::Services::PaymentsService do
                                      'links' => 'links-input',
                                      'metadata' => 'metadata-input',
                                      'reference' => 'reference-input',
+                                     'retry_if_possible' => 'retry_if_possible-input',
                                      'status' => 'status-input',
                                    }],
                                    meta: {
@@ -540,6 +554,7 @@ describe GoCardlessPro::Services::PaymentsService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
                 'status' => 'status-input',
               },
             }.to_json,
@@ -577,6 +592,7 @@ describe GoCardlessPro::Services::PaymentsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
+              'retry_if_possible' => 'retry_if_possible-input',
               'status' => 'status-input',
             },
           }.to_json,
@@ -691,6 +707,7 @@ describe GoCardlessPro::Services::PaymentsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'reference' => 'reference-input',
+              'retry_if_possible' => 'retry_if_possible-input',
               'status' => 'status-input',
             },
           }.to_json,
@@ -753,6 +770,7 @@ describe GoCardlessPro::Services::PaymentsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
+            'retry_if_possible' => 'retry_if_possible-input',
             'status' => 'status-input',
           },
         }.to_json,
@@ -806,6 +824,7 @@ describe GoCardlessPro::Services::PaymentsService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
                 'status' => 'status-input',
               },
             }.to_json,
@@ -838,6 +857,7 @@ describe GoCardlessPro::Services::PaymentsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'reference' => 'reference-input',
+            'retry_if_possible' => 'retry_if_possible-input',
             'status' => 'status-input',
           },
         }.to_json,
@@ -891,6 +911,7 @@ describe GoCardlessPro::Services::PaymentsService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'reference' => 'reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
                 'status' => 'status-input',
               },
             }.to_json,

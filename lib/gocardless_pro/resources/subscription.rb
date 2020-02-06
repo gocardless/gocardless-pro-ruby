@@ -80,6 +80,7 @@ module GoCardlessPro
       attr_reader :month
       attr_reader :name
       attr_reader :payment_reference
+      attr_reader :retry_if_possible
       attr_reader :start_date
       attr_reader :status
       attr_reader :upcoming_payments
@@ -103,6 +104,7 @@ module GoCardlessPro
         @month = object['month']
         @name = object['name']
         @payment_reference = object['payment_reference']
+        @retry_if_possible = object['retry_if_possible']
         @start_date = object['start_date']
         @status = object['status']
         @upcoming_payments = object['upcoming_payments']
