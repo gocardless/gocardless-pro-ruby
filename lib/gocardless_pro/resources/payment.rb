@@ -30,6 +30,7 @@ module GoCardlessPro
       attr_reader :id
       attr_reader :metadata
       attr_reader :reference
+      attr_reader :retry_if_possible
       attr_reader :status
 
       # Initialize a payment resource instance
@@ -48,6 +49,7 @@ module GoCardlessPro
         @links = object['links']
         @metadata = object['metadata']
         @reference = object['reference']
+        @retry_if_possible = object['retry_if_possible']
         @status = object['status']
         @response = response
       end
