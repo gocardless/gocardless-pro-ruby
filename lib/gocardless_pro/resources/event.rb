@@ -59,6 +59,10 @@ module GoCardlessPro
           @links = links || {}
         end
 
+        def creditor
+          @links['creditor']
+        end
+
         def instalment_schedule
           @links['instalment_schedule']
         end
