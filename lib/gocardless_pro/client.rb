@@ -18,6 +18,11 @@ module GoCardlessPro
       @creditor_bank_accounts ||= Services::CreditorBankAccountsService.new(@api_service)
     end
 
+    # Access to the service for currency_exchange_rate to make API calls
+    def currency_exchange_rates
+      @currency_exchange_rates ||= Services::CurrencyExchangeRatesService.new(@api_service)
+    end
+
     # Access to the service for customer to make API calls
     def customers
       @customers ||= Services::CustomersService.new(@api_service)
@@ -143,7 +148,7 @@ module GoCardlessPro
           'User-Agent' => user_agent.to_s,
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.17.1',
+          'GoCardless-Client-Version' => '2.17.2',
         },
       }
     end
