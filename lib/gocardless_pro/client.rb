@@ -18,6 +18,11 @@ module GoCardlessPro
       @creditor_bank_accounts ||= Services::CreditorBankAccountsService.new(@api_service)
     end
 
+    # Access to the service for currency_exchange_rate to make API calls
+    def currency_exchange_rates
+      @currency_exchange_rates ||= Services::CurrencyExchangeRatesService.new(@api_service)
+    end
+
     # Access to the service for customer to make API calls
     def customers
       @customers ||= Services::CustomersService.new(@api_service)
