@@ -10,7 +10,216 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
   let(:response_headers) { { 'Content-Type' => 'application/json' } }
 
   describe '#create' do
-    subject(:post_create_response) { client.instalment_schedules.create(params: new_resource) }
+    subject(:post_create_response) { client.instalment_schedules.create_with_dates(params: new_resource) }
+    context 'with a valid request' do
+      let(:new_resource) do
+        {
+
+          'created_at' => 'created_at-input',
+          'currency' => 'currency-input',
+          'id' => 'id-input',
+          'links' => 'links-input',
+          'metadata' => 'metadata-input',
+          'name' => 'name-input',
+          'payment_errors' => 'payment_errors-input',
+          'status' => 'status-input',
+          'total_amount' => 'total_amount-input',
+        }
+      end
+
+      before do
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+          with(
+            body: {
+              'instalment_schedules' => {
+
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'name' => 'name-input',
+                'payment_errors' => 'payment_errors-input',
+                'status' => 'status-input',
+                'total_amount' => 'total_amount-input',
+              },
+            }
+          ).
+          to_return(
+            body: {
+              'instalment_schedules' =>
+
+                {
+
+                  'created_at' => 'created_at-input',
+                  'currency' => 'currency-input',
+                  'id' => 'id-input',
+                  'links' => 'links-input',
+                  'metadata' => 'metadata-input',
+                  'name' => 'name-input',
+                  'payment_errors' => 'payment_errors-input',
+                  'status' => 'status-input',
+                  'total_amount' => 'total_amount-input',
+                },
+
+            }.to_json,
+            headers: response_headers
+          )
+      end
+
+      it 'creates and returns the resource' do
+        expect(post_create_response).to be_a(GoCardlessPro::Resources::InstalmentSchedule)
+      end
+
+      describe 'retry behaviour' do
+        before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+        it 'retries timeouts' do
+          stub = stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+                 to_timeout.then.to_return(status: 200, headers: response_headers)
+
+          post_create_response
+          expect(stub).to have_been_requested.twice
+        end
+
+        it 'retries 5XX errors' do
+          stub = stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+                 to_return(status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>').
+                 then.to_return(status: 200, headers: response_headers)
+
+          post_create_response
+          expect(stub).to have_been_requested.twice
+        end
+      end
+    end
+
+    context 'with a request that returns a validation error' do
+      let(:new_resource) { {} }
+
+      before do
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).to_return(
+          body: {
+            error: {
+              type: 'validation_failed',
+              code: 422,
+              errors: [
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
+          }.to_json,
+          headers: response_headers,
+          status: 422
+        )
+      end
+
+      it 'throws the correct error' do
+        expect { post_create_response }.to raise_error(GoCardlessPro::ValidationError)
+      end
+    end
+
+    context 'with a request that returns an idempotent creation conflict error' do
+      let(:id) { 'ID123' }
+
+      let(:new_resource) do
+        {
+
+          'created_at' => 'created_at-input',
+          'currency' => 'currency-input',
+          'id' => 'id-input',
+          'links' => 'links-input',
+          'metadata' => 'metadata-input',
+          'name' => 'name-input',
+          'payment_errors' => 'payment_errors-input',
+          'status' => 'status-input',
+          'total_amount' => 'total_amount-input',
+        }
+      end
+
+      let!(:post_stub) do
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).to_return(
+          body: {
+            error: {
+              type: 'invalid_state',
+              code: 409,
+              errors: [
+                {
+                  message: 'A resource has already been created with this idempotency key',
+                  reason: 'idempotent_creation_conflict',
+                  links: {
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
+          }.to_json,
+          headers: response_headers,
+          status: 409
+        )
+      end
+
+      let!(:get_stub) do
+        stub_url = "/instalment_schedules/#{id}"
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          to_return(
+            body: {
+              'instalment_schedules' => {
+
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'name' => 'name-input',
+                'payment_errors' => 'payment_errors-input',
+                'status' => 'status-input',
+                'total_amount' => 'total_amount-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+
+      context 'with default behaviour' do
+        it 'fetches the already-created resource' do
+          post_create_response
+          expect(post_stub).to have_been_requested
+          expect(get_stub).to have_been_requested
+        end
+      end
+
+      context 'with on_idempotency_conflict: :raise' do
+        let(:client) do
+          GoCardlessPro::Client.new(
+            access_token: 'SECRET_TOKEN',
+            on_idempotency_conflict: :raise
+          )
+        end
+
+        it 'raises an IdempotencyConflict error' do
+          expect { post_create_response }.
+            to raise_error(GoCardlessPro::IdempotencyConflict)
+        end
+      end
+
+      context 'with on_idempotency_conflict: :unknown' do
+        let(:client) do
+          GoCardlessPro::Client.new(
+            access_token: 'SECRET_TOKEN',
+            on_idempotency_conflict: :unknown
+          )
+        end
+
+        it 'raises an ArgumentError' do
+          expect { post_create_response }.to raise_error(ArgumentError)
+        end
+      end
+    end
+  end
+
+  describe '#create' do
+    subject(:post_create_response) { client.instalment_schedules.create_with_schedule(params: new_resource) }
     context 'with a valid request' do
       let(:new_resource) do
         {
