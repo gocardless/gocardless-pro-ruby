@@ -211,6 +211,9 @@ module GoCardlessPro
       #
       # - `subscription_not_paused` if the subscription is not paused.
       #
+      # - `subscription_already_scheduled_to_resume` if a subscription already has a
+      # scheduled resume date.
+      #
       # Example URL: /subscriptions/:identity/actions/resume
       #
       # @param identity       # Unique identifier, beginning with "SB".
