@@ -73,6 +73,7 @@ module GoCardlessPro
       attr_reader :created_at
       attr_reader :currency
       attr_reader :day_of_month
+      attr_reader :earliest_charge_date_after_resume
       attr_reader :end_date
       attr_reader :id
       attr_reader :interval
@@ -97,6 +98,7 @@ module GoCardlessPro
         @created_at = object['created_at']
         @currency = object['currency']
         @day_of_month = object['day_of_month']
+        @earliest_charge_date_after_resume = object['earliest_charge_date_after_resume']
         @end_date = object['end_date']
         @id = object['id']
         @interval = object['interval']
