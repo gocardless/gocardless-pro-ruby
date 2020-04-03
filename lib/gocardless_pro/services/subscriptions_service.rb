@@ -138,6 +138,117 @@ module GoCardlessPro
         Resources::Subscription.new(unenvelope_body(response.body), response)
       end
 
+      # Pause a subscription object.
+      # No payments will be created until it is resumed.
+      #
+      # This can only be used with subscriptions created with `count` or
+      # subscriptions without `count` and `end_date`
+      # If the subscription has `count` its `end_date` will be `null` after pausing.
+      #
+      # This fails with:
+      #
+      # - `forbidden` if the subscription was created by an app and you are not
+      # authenticated as that app, or if the subscription was not created by an app
+      # and you are authenticated as an app
+      #
+      # - `validation_failed` if invalid data is provided when attempting to pause a
+      # subscription.
+      #
+      # - `subscription_not_active` if the subscription is no longer active.
+      #
+      # - `subscription_already_ended` if the subscription has taken all payments.
+      #
+      # Example URL: /subscriptions/:identity/actions/pause
+      #
+      # @param identity       # Unique identifier, beginning with "SB".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def pause(identity, options = {})
+        path = sub_url('/subscriptions/:identity/actions/pause', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            else
+              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::Subscription.new(unenvelope_body(response.body), response)
+      end
+
+      # Resume a subscription object.
+      # Payments will start to be created again based on the subscriptions recurrence
+      # rules.
+      #
+      # This fails with:
+      #
+      # - `forbidden` if the subscription was created by an app and you are not
+      # authenticated as that app, or if the subscription was not created by an app
+      # and you are authenticated as an app
+      #
+      # - `validation_failed` if invalid data is provided when attempting to resume a
+      # subscription.
+      #
+      # - `subscription_not_paused` if the subscription is not paused.
+      #
+      # Example URL: /subscriptions/:identity/actions/resume
+      #
+      # @param identity       # Unique identifier, beginning with "SB".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def resume(identity, options = {})
+        path = sub_url('/subscriptions/:identity/actions/resume', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            else
+              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::Subscription.new(unenvelope_body(response.body), response)
+      end
+
       # Immediately cancels a subscription; no more payments will be created under it.
       # Any metadata supplied to this endpoint will be stored on the payment
       # cancellation event it causes.
