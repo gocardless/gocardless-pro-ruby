@@ -47,16 +47,13 @@ module GoCardlessPro
     # system](#mandate-import-entries-list-all-mandate-import-entries).
     #
     # <p class="notice">Note that all Mandate Imports have an upper limit of
-    # 30,000 entries, so
-    # we recommend you split your import into several smaller imports if you're
-    # planning to
-    # exceed this threshold.</p>
+    # 30,000 entries, so we recommend you split your import into several smaller
+    # imports if you're planning to exceed this threshold.</p>
     #
     # <p class="restricted-notice"><strong>Restricted</strong>: This API is
-    # currently
-    # only available for approved integrators - please <a
-    # href="mailto:help@gocardless.com">get
-    # in touch</a> if you would like to use this API.</p>
+    # currently only available for approved integrators - please <a
+    # href="mailto:help@gocardless.com">get in touch</a> if you would like to
+    # use this API.</p>
     class MandateImport
       attr_reader :created_at
       attr_reader :id
