@@ -21,6 +21,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
           'day_of_month' => 'day_of_month-input',
+          'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
           'end_date' => 'end_date-input',
           'id' => 'id-input',
           'interval' => 'interval-input',
@@ -49,6 +50,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',
+                'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
                 'end_date' => 'end_date-input',
                 'id' => 'id-input',
                 'interval' => 'interval-input',
@@ -77,6 +79,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
                   'created_at' => 'created_at-input',
                   'currency' => 'currency-input',
                   'day_of_month' => 'day_of_month-input',
+                  'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
                   'end_date' => 'end_date-input',
                   'id' => 'id-input',
                   'interval' => 'interval-input',
@@ -161,6 +164,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
           'day_of_month' => 'day_of_month-input',
+          'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
           'end_date' => 'end_date-input',
           'id' => 'id-input',
           'interval' => 'interval-input',
@@ -212,6 +216,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',
+                'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
                 'end_date' => 'end_date-input',
                 'id' => 'id-input',
                 'interval' => 'interval-input',
@@ -282,6 +287,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'day_of_month' => 'day_of_month-input',
+            'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
             'end_date' => 'end_date-input',
             'id' => 'id-input',
             'interval' => 'interval-input',
@@ -326,6 +332,8 @@ describe GoCardlessPro::Services::SubscriptionsService do
         expect(get_list_response.records.first.currency).to eq('currency-input')
 
         expect(get_list_response.records.first.day_of_month).to eq('day_of_month-input')
+
+        expect(get_list_response.records.first.earliest_charge_date_after_resume).to eq('earliest_charge_date_after_resume-input')
 
         expect(get_list_response.records.first.end_date).to eq('end_date-input')
 
@@ -396,6 +404,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'day_of_month' => 'day_of_month-input',
+            'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
             'end_date' => 'end_date-input',
             'id' => 'id-input',
             'interval' => 'interval-input',
@@ -430,6 +439,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'day_of_month' => 'day_of_month-input',
+            'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
             'end_date' => 'end_date-input',
             'id' => 'id-input',
             'interval' => 'interval-input',
@@ -473,6 +483,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'day_of_month' => 'day_of_month-input',
+              'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
               'end_date' => 'end_date-input',
               'id' => 'id-input',
               'interval' => 'interval-input',
@@ -507,6 +518,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
                                      'created_at' => 'created_at-input',
                                      'currency' => 'currency-input',
                                      'day_of_month' => 'day_of_month-input',
+                                     'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
                                      'end_date' => 'end_date-input',
                                      'id' => 'id-input',
                                      'interval' => 'interval-input',
@@ -546,6 +558,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'day_of_month' => 'day_of_month-input',
+              'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
               'end_date' => 'end_date-input',
               'id' => 'id-input',
               'interval' => 'interval-input',
@@ -583,6 +596,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
                                      'created_at' => 'created_at-input',
                                      'currency' => 'currency-input',
                                      'day_of_month' => 'day_of_month-input',
+                                     'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
                                      'end_date' => 'end_date-input',
                                      'id' => 'id-input',
                                      'interval' => 'interval-input',
@@ -633,6 +647,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',
+                'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
                 'end_date' => 'end_date-input',
                 'id' => 'id-input',
                 'interval' => 'interval-input',
@@ -677,6 +692,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'day_of_month' => 'day_of_month-input',
+              'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
               'end_date' => 'end_date-input',
               'id' => 'id-input',
               'interval' => 'interval-input',
@@ -798,6 +814,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'day_of_month' => 'day_of_month-input',
+              'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
               'end_date' => 'end_date-input',
               'id' => 'id-input',
               'interval' => 'interval-input',
@@ -849,6 +866,208 @@ describe GoCardlessPro::Services::SubscriptionsService do
     end
   end
 
+  describe '#pause' do
+    subject(:post_response) { client.subscriptions.pause(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /subscriptions/%v/actions/pause
+      stub_url = '/subscriptions/:identity/actions/pause'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'subscriptions' => {
+
+            'amount' => 'amount-input',
+            'app_fee' => 'app_fee-input',
+            'count' => 'count-input',
+            'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
+            'day_of_month' => 'day_of_month-input',
+            'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
+            'end_date' => 'end_date-input',
+            'id' => 'id-input',
+            'interval' => 'interval-input',
+            'interval_unit' => 'interval_unit-input',
+            'links' => 'links-input',
+            'metadata' => 'metadata-input',
+            'month' => 'month-input',
+            'name' => 'name-input',
+            'payment_reference' => 'payment_reference-input',
+            'retry_if_possible' => 'retry_if_possible-input',
+            'start_date' => 'start_date-input',
+            'status' => 'status-input',
+            'upcoming_payments' => 'upcoming_payments-input',
+          },
+        }.to_json,
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::Subscription)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/subscriptions/:identity/actions/pause'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { post_response }.to raise_error(Faraday::TimeoutError)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.subscriptions.pause(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /subscriptions/%v/actions/pause
+        stub_url = '/subscriptions/:identity/actions/pause'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'subscriptions' => {
+
+                'amount' => 'amount-input',
+                'app_fee' => 'app_fee-input',
+                'count' => 'count-input',
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'day_of_month' => 'day_of_month-input',
+                'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
+                'end_date' => 'end_date-input',
+                'id' => 'id-input',
+                'interval' => 'interval-input',
+                'interval_unit' => 'interval_unit-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'month' => 'month-input',
+                'name' => 'name-input',
+                'payment_reference' => 'payment_reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
+                'start_date' => 'start_date-input',
+                'status' => 'status-input',
+                'upcoming_payments' => 'upcoming_payments-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
+  describe '#resume' do
+    subject(:post_response) { client.subscriptions.resume(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /subscriptions/%v/actions/resume
+      stub_url = '/subscriptions/:identity/actions/resume'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'subscriptions' => {
+
+            'amount' => 'amount-input',
+            'app_fee' => 'app_fee-input',
+            'count' => 'count-input',
+            'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
+            'day_of_month' => 'day_of_month-input',
+            'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
+            'end_date' => 'end_date-input',
+            'id' => 'id-input',
+            'interval' => 'interval-input',
+            'interval_unit' => 'interval_unit-input',
+            'links' => 'links-input',
+            'metadata' => 'metadata-input',
+            'month' => 'month-input',
+            'name' => 'name-input',
+            'payment_reference' => 'payment_reference-input',
+            'retry_if_possible' => 'retry_if_possible-input',
+            'start_date' => 'start_date-input',
+            'status' => 'status-input',
+            'upcoming_payments' => 'upcoming_payments-input',
+          },
+        }.to_json,
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::Subscription)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/subscriptions/:identity/actions/resume'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { post_response }.to raise_error(Faraday::TimeoutError)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.subscriptions.resume(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /subscriptions/%v/actions/resume
+        stub_url = '/subscriptions/:identity/actions/resume'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'subscriptions' => {
+
+                'amount' => 'amount-input',
+                'app_fee' => 'app_fee-input',
+                'count' => 'count-input',
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'day_of_month' => 'day_of_month-input',
+                'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
+                'end_date' => 'end_date-input',
+                'id' => 'id-input',
+                'interval' => 'interval-input',
+                'interval_unit' => 'interval_unit-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'month' => 'month-input',
+                'name' => 'name-input',
+                'payment_reference' => 'payment_reference-input',
+                'retry_if_possible' => 'retry_if_possible-input',
+                'start_date' => 'start_date-input',
+                'status' => 'status-input',
+                'upcoming_payments' => 'upcoming_payments-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
   describe '#cancel' do
     subject(:post_response) { client.subscriptions.cancel(resource_id) }
 
@@ -867,6 +1086,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'day_of_month' => 'day_of_month-input',
+            'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
             'end_date' => 'end_date-input',
             'id' => 'id-input',
             'interval' => 'interval-input',
@@ -927,6 +1147,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'day_of_month' => 'day_of_month-input',
+                'earliest_charge_date_after_resume' => 'earliest_charge_date_after_resume-input',
                 'end_date' => 'end_date-input',
                 'id' => 'id-input',
                 'interval' => 'interval-input',

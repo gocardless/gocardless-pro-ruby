@@ -49,6 +49,7 @@ module GoCardlessPro
       attr_reader :created_at
       attr_reader :description
       attr_reader :id
+      attr_reader :metadata
       attr_reader :redirect_url
       attr_reader :scheme
       attr_reader :session_token
@@ -64,6 +65,7 @@ module GoCardlessPro
         @description = object['description']
         @id = object['id']
         @links = object['links']
+        @metadata = object['metadata']
         @redirect_url = object['redirect_url']
         @scheme = object['scheme']
         @session_token = object['session_token']
