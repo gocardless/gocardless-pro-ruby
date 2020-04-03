@@ -123,8 +123,7 @@ module GoCardlessPro
       # ID.
       #
       # <p class="restricted-notice"><strong>The action of removing a customer cannot
-      # be
-      # reversed, so please use with care.</strong></p>
+      # be reversed, so please use with care.</strong></p>
       # Example URL: /customers/:identity
       #
       # @param identity       # Unique identifier, beginning with "CU".
