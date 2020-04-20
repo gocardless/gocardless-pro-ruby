@@ -25,6 +25,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'fx' => 'fx-input',
             'id' => 'id-input',
             'links' => 'links-input',
+            'metadata' => 'metadata-input',
             'payout_type' => 'payout_type-input',
             'reference' => 'reference-input',
             'status' => 'status-input',
@@ -61,6 +62,8 @@ describe GoCardlessPro::Services::PayoutsService do
         expect(get_list_response.records.first.fx).to eq('fx-input')
 
         expect(get_list_response.records.first.id).to eq('id-input')
+
+        expect(get_list_response.records.first.metadata).to eq('metadata-input')
 
         expect(get_list_response.records.first.payout_type).to eq('payout_type-input')
 
@@ -115,6 +118,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'fx' => 'fx-input',
             'id' => 'id-input',
             'links' => 'links-input',
+            'metadata' => 'metadata-input',
             'payout_type' => 'payout_type-input',
             'reference' => 'reference-input',
             'status' => 'status-input',
@@ -141,6 +145,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'fx' => 'fx-input',
             'id' => 'id-input',
             'links' => 'links-input',
+            'metadata' => 'metadata-input',
             'payout_type' => 'payout_type-input',
             'reference' => 'reference-input',
             'status' => 'status-input',
@@ -176,6 +181,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'fx' => 'fx-input',
               'id' => 'id-input',
               'links' => 'links-input',
+              'metadata' => 'metadata-input',
               'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input',
@@ -202,6 +208,7 @@ describe GoCardlessPro::Services::PayoutsService do
                                      'fx' => 'fx-input',
                                      'id' => 'id-input',
                                      'links' => 'links-input',
+                                     'metadata' => 'metadata-input',
                                      'payout_type' => 'payout_type-input',
                                      'reference' => 'reference-input',
                                      'status' => 'status-input',
@@ -233,6 +240,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'fx' => 'fx-input',
               'id' => 'id-input',
               'links' => 'links-input',
+              'metadata' => 'metadata-input',
               'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input',
@@ -262,6 +270,7 @@ describe GoCardlessPro::Services::PayoutsService do
                                      'fx' => 'fx-input',
                                      'id' => 'id-input',
                                      'links' => 'links-input',
+                                     'metadata' => 'metadata-input',
                                      'payout_type' => 'payout_type-input',
                                      'reference' => 'reference-input',
                                      'status' => 'status-input',
@@ -304,6 +313,7 @@ describe GoCardlessPro::Services::PayoutsService do
                 'fx' => 'fx-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
+                'metadata' => 'metadata-input',
                 'payout_type' => 'payout_type-input',
                 'reference' => 'reference-input',
                 'status' => 'status-input',
@@ -340,6 +350,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'fx' => 'fx-input',
               'id' => 'id-input',
               'links' => 'links-input',
+              'metadata' => 'metadata-input',
               'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input',
@@ -428,6 +439,69 @@ describe GoCardlessPro::Services::PayoutsService do
 
         get_response
         expect(stub).to have_been_requested.twice
+      end
+    end
+  end
+
+  describe '#update' do
+    subject(:put_update_response) { client.payouts.update(id, params: update_params) }
+    let(:id) { 'ABC123' }
+
+    context 'with a valid request' do
+      let(:update_params) { { 'hello' => 'world' } }
+
+      let!(:stub) do
+        stub_url = '/payouts/:identity'.gsub(':identity', id)
+        stub_request(:put, /.*api.gocardless.com#{stub_url}/).to_return(
+          body: {
+            'payouts' => {
+
+              'amount' => 'amount-input',
+              'arrival_date' => 'arrival_date-input',
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'deducted_fees' => 'deducted_fees-input',
+              'fx' => 'fx-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'metadata' => 'metadata-input',
+              'payout_type' => 'payout_type-input',
+              'reference' => 'reference-input',
+              'status' => 'status-input',
+            },
+          }.to_json,
+          headers: response_headers
+        )
+      end
+
+      it 'updates and returns the resource' do
+        expect(put_update_response).to be_a(GoCardlessPro::Resources::Payout)
+        expect(stub).to have_been_requested
+      end
+
+      describe 'retry behaviour' do
+        before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+        it 'retries timeouts' do
+          stub_url = '/payouts/:identity'.gsub(':identity', id)
+          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/).
+                 to_timeout.then.to_return(status: 200, headers: response_headers)
+
+          put_update_response
+          expect(stub).to have_been_requested.twice
+        end
+
+        it 'retries 5XX errors' do
+          stub_url = '/payouts/:identity'.gsub(':identity', id)
+          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/).
+                 to_return(status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>').
+                 then.to_return(status: 200, headers: response_headers)
+
+          put_update_response
+          expect(stub).to have_been_requested.twice
+        end
       end
     end
   end
