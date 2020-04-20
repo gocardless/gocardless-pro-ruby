@@ -26,6 +26,7 @@ module GoCardlessPro
       attr_reader :deducted_fees
       attr_reader :fx
       attr_reader :id
+      attr_reader :metadata
       attr_reader :payout_type
       attr_reader :reference
       attr_reader :status
@@ -43,6 +44,7 @@ module GoCardlessPro
         @fx = object['fx']
         @id = object['id']
         @links = object['links']
+        @metadata = object['metadata']
         @payout_type = object['payout_type']
         @reference = object['reference']
         @status = object['status']
