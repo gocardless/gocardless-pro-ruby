@@ -215,6 +215,8 @@ module GoCardlessPro
       # Resume a subscription object.
       # Payments will start to be created again based on the subscriptions recurrence
       # rules.
+      # The `charge_date` on the next payment will be the same as the subscriptions
+      # `earliest_charge_date_after_resume`
       #
       # This fails with:
       #
@@ -226,9 +228,6 @@ module GoCardlessPro
       # subscription.
       #
       # - `subscription_not_paused` if the subscription is not paused.
-      #
-      # - `subscription_already_scheduled_to_resume` if a subscription already has a
-      # scheduled resume date.
       #
       # Example URL: /subscriptions/:identity/actions/resume
       #

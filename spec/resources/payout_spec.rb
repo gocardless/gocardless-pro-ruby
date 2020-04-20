@@ -26,6 +26,7 @@ describe GoCardlessPro::Resources::Payout do
               'fx' => 'fx-input',
               'id' => 'id-input',
               'links' => 'links-input',
+              'metadata' => 'metadata-input',
               'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input',
@@ -58,6 +59,8 @@ describe GoCardlessPro::Resources::Payout do
 
         expect(get_list_response.records.first.id).to eq('id-input')
 
+        expect(get_list_response.records.first.metadata).to eq('metadata-input')
+
         expect(get_list_response.records.first.payout_type).to eq('payout_type-input')
 
         expect(get_list_response.records.first.reference).to eq('reference-input')
@@ -88,6 +91,7 @@ describe GoCardlessPro::Resources::Payout do
             'fx' => 'fx-input',
             'id' => 'id-input',
             'links' => 'links-input',
+            'metadata' => 'metadata-input',
             'payout_type' => 'payout_type-input',
             'reference' => 'reference-input',
             'status' => 'status-input',
@@ -114,6 +118,7 @@ describe GoCardlessPro::Resources::Payout do
             'fx' => 'fx-input',
             'id' => 'id-input',
             'links' => 'links-input',
+            'metadata' => 'metadata-input',
             'payout_type' => 'payout_type-input',
             'reference' => 'reference-input',
             'status' => 'status-input',
@@ -156,6 +161,7 @@ describe GoCardlessPro::Resources::Payout do
                 'fx' => 'fx-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
+                'metadata' => 'metadata-input',
                 'payout_type' => 'payout_type-input',
                 'reference' => 'reference-input',
                 'status' => 'status-input',
@@ -192,6 +198,7 @@ describe GoCardlessPro::Resources::Payout do
               'fx' => 'fx-input',
               'id' => 'id-input',
               'links' => 'links-input',
+              'metadata' => 'metadata-input',
               'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input',
@@ -225,6 +232,44 @@ describe GoCardlessPro::Resources::Payout do
 
       it "doesn't raise an error" do
         expect { get_response }.to_not raise_error(/bad URI/)
+      end
+    end
+  end
+
+  describe '#update' do
+    subject(:put_update_response) { client.payouts.update(id, params: update_params) }
+    let(:id) { 'ABC123' }
+
+    context 'with a valid request' do
+      let(:update_params) { { 'hello' => 'world' } }
+
+      let!(:stub) do
+        stub_url = '/payouts/:identity'.gsub(':identity', id)
+        stub_request(:put, /.*api.gocardless.com#{stub_url}/).to_return(
+          body: {
+            'payouts' => {
+
+              'amount' => 'amount-input',
+              'arrival_date' => 'arrival_date-input',
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'deducted_fees' => 'deducted_fees-input',
+              'fx' => 'fx-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'metadata' => 'metadata-input',
+              'payout_type' => 'payout_type-input',
+              'reference' => 'reference-input',
+              'status' => 'status-input',
+            },
+          }.to_json,
+          headers: response_headers
+        )
+      end
+
+      it 'updates and returns the resource' do
+        expect(put_update_response).to be_a(GoCardlessPro::Resources::Payout)
+        expect(stub).to have_been_requested
       end
     end
   end

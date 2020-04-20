@@ -59,6 +59,27 @@ module GoCardlessPro
         Resources::Payout.new(unenvelope_body(response.body), response)
       end
 
+      # Updates a payout object. This accepts only the metadata parameter.
+      # Example URL: /payouts/:identity
+      #
+      # @param identity       # Unique identifier, beginning with "PO".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def update(identity, options = {})
+        path = sub_url('/payouts/:identity', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params][envelope_key] = params
+
+        options[:retry_failures] = true
+
+        response = make_request(:put, path, options)
+
+        return if response.body.nil?
+
+        Resources::Payout.new(unenvelope_body(response.body), response)
+      end
+
       private
 
       # Unenvelope the response of the body using the service's `envelope_key`
