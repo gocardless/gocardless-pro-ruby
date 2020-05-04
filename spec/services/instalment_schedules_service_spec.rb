@@ -828,6 +828,66 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
     end
   end
 
+  describe '#update' do
+    subject(:put_update_response) { client.instalment_schedules.update(id, params: update_params) }
+    let(:id) { 'ABC123' }
+
+    context 'with a valid request' do
+      let(:update_params) { { 'hello' => 'world' } }
+
+      let!(:stub) do
+        stub_url = '/instalment_schedules/:identity'.gsub(':identity', id)
+        stub_request(:put, /.*api.gocardless.com#{stub_url}/).to_return(
+          body: {
+            'instalment_schedules' => {
+
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'metadata' => 'metadata-input',
+              'name' => 'name-input',
+              'payment_errors' => 'payment_errors-input',
+              'status' => 'status-input',
+              'total_amount' => 'total_amount-input',
+            },
+          }.to_json,
+          headers: response_headers
+        )
+      end
+
+      it 'updates and returns the resource' do
+        expect(put_update_response).to be_a(GoCardlessPro::Resources::InstalmentSchedule)
+        expect(stub).to have_been_requested
+      end
+
+      describe 'retry behaviour' do
+        before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+        it 'retries timeouts' do
+          stub_url = '/instalment_schedules/:identity'.gsub(':identity', id)
+          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/).
+                 to_timeout.then.to_return(status: 200, headers: response_headers)
+
+          put_update_response
+          expect(stub).to have_been_requested.twice
+        end
+
+        it 'retries 5XX errors' do
+          stub_url = '/instalment_schedules/:identity'.gsub(':identity', id)
+          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/).
+                 to_return(status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>').
+                 then.to_return(status: 200, headers: response_headers)
+
+          put_update_response
+          expect(stub).to have_been_requested.twice
+        end
+      end
+    end
+  end
+
   describe '#cancel' do
     subject(:post_response) { client.instalment_schedules.cancel(resource_id) }
 
