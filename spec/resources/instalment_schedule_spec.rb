@@ -529,6 +529,41 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
     end
   end
 
+  describe '#update' do
+    subject(:put_update_response) { client.instalment_schedules.update(id, params: update_params) }
+    let(:id) { 'ABC123' }
+
+    context 'with a valid request' do
+      let(:update_params) { { 'hello' => 'world' } }
+
+      let!(:stub) do
+        stub_url = '/instalment_schedules/:identity'.gsub(':identity', id)
+        stub_request(:put, /.*api.gocardless.com#{stub_url}/).to_return(
+          body: {
+            'instalment_schedules' => {
+
+              'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'metadata' => 'metadata-input',
+              'name' => 'name-input',
+              'payment_errors' => 'payment_errors-input',
+              'status' => 'status-input',
+              'total_amount' => 'total_amount-input',
+            },
+          }.to_json,
+          headers: response_headers
+        )
+      end
+
+      it 'updates and returns the resource' do
+        expect(put_update_response).to be_a(GoCardlessPro::Resources::InstalmentSchedule)
+        expect(stub).to have_been_requested
+      end
+    end
+  end
+
   describe '#cancel' do
     subject(:post_response) { client.instalment_schedules.cancel(resource_id) }
 

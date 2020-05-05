@@ -162,6 +162,27 @@ module GoCardlessPro
         Resources::InstalmentSchedule.new(unenvelope_body(response.body), response)
       end
 
+      # Updates an instalment schedule. This accepts only the metadata parameter.
+      # Example URL: /instalment_schedules/:identity
+      #
+      # @param identity       # Unique identifier, beginning with "IS".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def update(identity, options = {})
+        path = sub_url('/instalment_schedules/:identity', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params][envelope_key] = params
+
+        options[:retry_failures] = true
+
+        response = make_request(:put, path, options)
+
+        return if response.body.nil?
+
+        Resources::InstalmentSchedule.new(unenvelope_body(response.body), response)
+      end
+
       # Immediately cancels an instalment schedule; no further payments will be
       # collected for it.
       #
