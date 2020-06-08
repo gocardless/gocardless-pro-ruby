@@ -23,7 +23,7 @@ module GoCardlessPro
       @url = url
       root_url, @path_prefix = unpack_url(url)
       http_adapter = options[:http_adapter] || [:net_http]
-      connection_options = options[:connection_options]
+      connection_options = options.fetch(:connection_options, {})
 
       @connection = Faraday.new(root_url, connection_options) do |faraday|
         faraday.response :raise_gocardless_errors
