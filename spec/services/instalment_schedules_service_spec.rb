@@ -927,7 +927,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
         stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
                to_timeout
 
-        expect { post_response }.to raise_error(Faraday::TimeoutError)
+        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
         expect(stub).to have_been_requested
       end
     end

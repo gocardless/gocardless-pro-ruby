@@ -882,7 +882,7 @@ describe GoCardlessPro::Services::CustomersService do
         stub = stub_request(:delete, /.*api.gocardless.com#{stub_url}/).
                to_timeout
 
-        expect { delete_response }.to raise_error(Faraday::TimeoutError)
+        expect { delete_response }.to raise_error(Faraday::ConnectionFailed)
         expect(stub).to have_been_requested
       end
     end
