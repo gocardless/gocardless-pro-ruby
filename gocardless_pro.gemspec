@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'faraday', ['>= 0.9.2', '< 2']
 
-  spec.add_development_dependency 'rspec', '~> 3.7.0'
+  spec.add_development_dependency 'rspec', '~> 3.9.0'
   spec.add_development_dependency 'webmock', '~> 3.8.3'
   spec.add_development_dependency 'rubocop', '~> 0.49.1'
   spec.add_development_dependency 'yard', '~> 0.9.11'
