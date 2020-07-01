@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
 
   # Pin the version of the 'parallel' gem, which is a transitive dependency of
   # 'rubocop' (newer versions require Ruby 2.2+).
-  spec.add_development_dependency 'parallel', '~> 1.13.0'
+  spec.add_development_dependency 'parallel', '~> 1.19.2'
 
   # Pin the version of the 'rake' gem, which is a transitive dependency of
   # 'rainbow' (newer versions require Ruby 2.2+).
