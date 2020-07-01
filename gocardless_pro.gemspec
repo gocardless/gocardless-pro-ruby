@@ -34,5 +34,5 @@ Gem::Specification.new do |spec|
 
   # Pin the version of the 'rake' gem, which is a transitive dependency of
   # 'rainbow' (newer versions require Ruby 2.2+).
-  spec.add_development_dependency 'rake', '< 13'
+  spec.add_development_dependency 'rake', '< 14'
 end
