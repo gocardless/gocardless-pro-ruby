@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'rspec', '~> 3.7.0'
   spec.add_development_dependency 'webmock', '~> 3.8.3'
-  spec.add_development_dependency 'rubocop', '~> 0.49.1'
+  spec.add_development_dependency 'rubocop', '~> 0.86.0'
   spec.add_development_dependency 'yard', '~> 0.9.11'
 
   # Pin the version of the 'public_suffix' gem, which is a transitive dependency
