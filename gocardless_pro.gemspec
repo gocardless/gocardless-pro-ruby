@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
 
   # Pin the version of the 'public_suffix' gem, which is a transitive dependency
   # of 'webmock' (newer versions require Ruby 2.1+).
-  spec.add_development_dependency 'public_suffix', '~> 2.0.5'
+  spec.add_development_dependency 'public_suffix', '~> 4.0.5'
 
   # Pin the version of the 'parallel' gem, which is a transitive dependency of
   # 'rubocop' (newer versions require Ruby 2.2+).
