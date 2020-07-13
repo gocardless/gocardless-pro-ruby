@@ -19,6 +19,7 @@ describe GoCardlessPro::Services::PayoutItemsService do
 
             'amount' => 'amount-input',
             'links' => 'links-input',
+            'taxes' => 'taxes-input',
             'type' => 'type-input',
           }],
           meta: {
@@ -41,6 +42,8 @@ describe GoCardlessPro::Services::PayoutItemsService do
         expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::PayoutItem)
 
         expect(get_list_response.records.first.amount).to eq('amount-input')
+
+        expect(get_list_response.records.first.taxes).to eq('taxes-input')
 
         expect(get_list_response.records.first.type).to eq('type-input')
       end
@@ -85,6 +88,7 @@ describe GoCardlessPro::Services::PayoutItemsService do
 
             'amount' => 'amount-input',
             'links' => 'links-input',
+            'taxes' => 'taxes-input',
             'type' => 'type-input',
           }],
           meta: {
@@ -103,6 +107,7 @@ describe GoCardlessPro::Services::PayoutItemsService do
 
             'amount' => 'amount-input',
             'links' => 'links-input',
+            'taxes' => 'taxes-input',
             'type' => 'type-input',
           }],
           meta: {
@@ -130,6 +135,7 @@ describe GoCardlessPro::Services::PayoutItemsService do
 
               'amount' => 'amount-input',
               'links' => 'links-input',
+              'taxes' => 'taxes-input',
               'type' => 'type-input',
             }],
             meta: {
@@ -148,6 +154,7 @@ describe GoCardlessPro::Services::PayoutItemsService do
 
                                      'amount' => 'amount-input',
                                      'links' => 'links-input',
+                                     'taxes' => 'taxes-input',
                                      'type' => 'type-input',
                                    }],
                                    meta: {
@@ -171,6 +178,7 @@ describe GoCardlessPro::Services::PayoutItemsService do
 
               'amount' => 'amount-input',
               'links' => 'links-input',
+              'taxes' => 'taxes-input',
               'type' => 'type-input',
             }],
             meta: {
@@ -192,6 +200,7 @@ describe GoCardlessPro::Services::PayoutItemsService do
 
                                      'amount' => 'amount-input',
                                      'links' => 'links-input',
+                                     'taxes' => 'taxes-input',
                                      'type' => 'type-input',
                                    }],
                                    meta: {

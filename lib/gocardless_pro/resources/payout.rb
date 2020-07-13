@@ -30,6 +30,7 @@ module GoCardlessPro
       attr_reader :payout_type
       attr_reader :reference
       attr_reader :status
+      attr_reader :tax_currency
 
       # Initialize a payout resource instance
       # @param object [Hash] an object returned from the API
@@ -48,6 +49,7 @@ module GoCardlessPro
         @payout_type = object['payout_type']
         @reference = object['reference']
         @status = object['status']
+        @tax_currency = object['tax_currency']
         @response = response
       end
 

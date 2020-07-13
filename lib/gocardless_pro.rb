@@ -95,4 +95,7 @@ require_relative 'gocardless_pro/services/refunds_service'
 require_relative 'gocardless_pro/resources/subscription'
 require_relative 'gocardless_pro/services/subscriptions_service'
 
+require_relative 'gocardless_pro/resources/tax_rate'
+require_relative 'gocardless_pro/services/tax_rates_service'
+
 require_relative 'gocardless_pro/client.rb'
