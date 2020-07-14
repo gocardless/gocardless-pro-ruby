@@ -32,6 +32,7 @@ module GoCardlessPro
     #
     class PayoutItem
       attr_reader :amount
+      attr_reader :taxes
       attr_reader :type
 
       # Initialize a payout_item resource instance
@@ -41,6 +42,7 @@ module GoCardlessPro
 
         @amount = object['amount']
         @links = object['links']
+        @taxes = object['taxes']
         @type = object['type']
         @response = response
       end

@@ -29,6 +29,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'payout_type' => 'payout_type-input',
             'reference' => 'reference-input',
             'status' => 'status-input',
+            'tax_currency' => 'tax_currency-input',
           }],
           meta: {
             cursors: {
@@ -70,6 +71,8 @@ describe GoCardlessPro::Services::PayoutsService do
         expect(get_list_response.records.first.reference).to eq('reference-input')
 
         expect(get_list_response.records.first.status).to eq('status-input')
+
+        expect(get_list_response.records.first.tax_currency).to eq('tax_currency-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -122,6 +125,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'payout_type' => 'payout_type-input',
             'reference' => 'reference-input',
             'status' => 'status-input',
+            'tax_currency' => 'tax_currency-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -149,6 +153,7 @@ describe GoCardlessPro::Services::PayoutsService do
             'payout_type' => 'payout_type-input',
             'reference' => 'reference-input',
             'status' => 'status-input',
+            'tax_currency' => 'tax_currency-input',
           }],
           meta: {
             limit: 2,
@@ -185,6 +190,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input',
+              'tax_currency' => 'tax_currency-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -212,6 +218,7 @@ describe GoCardlessPro::Services::PayoutsService do
                                      'payout_type' => 'payout_type-input',
                                      'reference' => 'reference-input',
                                      'status' => 'status-input',
+                                     'tax_currency' => 'tax_currency-input',
                                    }],
                                    meta: {
                                      limit: 2,
@@ -244,6 +251,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input',
+              'tax_currency' => 'tax_currency-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -274,6 +282,7 @@ describe GoCardlessPro::Services::PayoutsService do
                                      'payout_type' => 'payout_type-input',
                                      'reference' => 'reference-input',
                                      'status' => 'status-input',
+                                     'tax_currency' => 'tax_currency-input',
                                    }],
                                    meta: {
                                      limit: 2,
@@ -317,6 +326,7 @@ describe GoCardlessPro::Services::PayoutsService do
                 'payout_type' => 'payout_type-input',
                 'reference' => 'reference-input',
                 'status' => 'status-input',
+                'tax_currency' => 'tax_currency-input',
               },
             }.to_json,
             headers: response_headers
@@ -354,6 +364,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input',
+              'tax_currency' => 'tax_currency-input',
             },
           }.to_json,
           headers: response_headers
@@ -468,6 +479,7 @@ describe GoCardlessPro::Services::PayoutsService do
               'payout_type' => 'payout_type-input',
               'reference' => 'reference-input',
               'status' => 'status-input',
+              'tax_currency' => 'tax_currency-input',
             },
           }.to_json,
           headers: response_headers

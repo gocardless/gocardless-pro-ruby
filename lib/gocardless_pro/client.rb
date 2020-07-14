@@ -98,6 +98,11 @@ module GoCardlessPro
       @subscriptions ||= Services::SubscriptionsService.new(@api_service)
     end
 
+    # Access to the service for tax_rate to make API calls
+    def tax_rates
+      @tax_rates ||= Services::TaxRatesService.new(@api_service)
+    end
+
     # Get a Client configured to use HTTP Basic authentication with the GC Api
     #
     # @param options [Hash<Symbol,String>] configuration for creating the client
@@ -148,7 +153,7 @@ module GoCardlessPro
           'User-Agent' => user_agent.to_s,
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.22.1',
+          'GoCardless-Client-Version' => '2.23.0',
         },
       }
     end
