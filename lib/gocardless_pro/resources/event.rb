@@ -64,6 +64,14 @@ module GoCardlessPro
           @links['creditor']
         end
 
+        def customer
+          @links['customer']
+        end
+
+        def customer_bank_account
+          @links['customer_bank_account']
+        end
+
         def instalment_schedule
           @links['instalment_schedule']
         end
@@ -86,6 +94,10 @@ module GoCardlessPro
 
         def parent_event
           @links['parent_event']
+        end
+
+        def payer_authorisation
+          @links['payer_authorisation']
         end
 
         def payment
