@@ -73,6 +73,10 @@ module GoCardlessPro
         def payment
           @links['payment']
         end
+
+        def refund
+          @links['refund']
+        end
       end
     end
   end
