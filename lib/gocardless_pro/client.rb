@@ -68,6 +68,11 @@ module GoCardlessPro
       @mandate_pdfs ||= Services::MandatePdfsService.new(@api_service)
     end
 
+    # Access to the service for payer_authorisation to make API calls
+    def payer_authorisations
+      @payer_authorisations ||= Services::PayerAuthorisationsService.new(@api_service)
+    end
+
     # Access to the service for payment to make API calls
     def payments
       @payments ||= Services::PaymentsService.new(@api_service)
@@ -153,7 +158,7 @@ module GoCardlessPro
           'User-Agent' => user_agent.to_s,
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.24.0',
+          'GoCardless-Client-Version' => '2.25.0',
         },
       }
     end
