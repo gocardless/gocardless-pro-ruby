@@ -108,6 +108,11 @@ module GoCardlessPro
       @tax_rates ||= Services::TaxRatesService.new(@api_service)
     end
 
+    # Access to the service for webhook to make API calls
+    def webhooks
+      @webhooks ||= Services::WebhooksService.new(@api_service)
+    end
+
     # Get a Client configured to use HTTP Basic authentication with the GC Api
     #
     # @param options [Hash<Symbol,String>] configuration for creating the client
