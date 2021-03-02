@@ -71,7 +71,7 @@ module GoCardlessPro
       end
 
       # Updates a Payer Authorisation. Updates the Payer Authorisation with the
-      # request data.Can be invoked as many times as needed. Only fields present in
+      # request data. Can be invoked as many times as needed. Only fields present in
       # the request will be modified. An empty array of incomplete_fields means that
       # the resource is valid. This endpoint has been designed this way so you do not
       # need to save any payer data on your servers or the browser while still being
@@ -100,8 +100,8 @@ module GoCardlessPro
       end
 
       # Submits all the data previously pushed to this PayerAuthorisation for
-      # verification.This time, a 200 HTTP status is returned if the resource is valid
-      # and a 422 error response in case of validation errors. After it is
+      # verification. This time, a 200 HTTP status is returned if the resource is
+      # valid and a 422 error response in case of validation errors. After it is
       # successfully submitted, the Payer Authorisation can no longer be edited.
       # Example URL: /payer_authorisations/:identity/actions/submit
       #
@@ -149,8 +149,8 @@ module GoCardlessPro
       #   The main use of the confirm endpoint is to enable integrators to acknowledge
       # the end of the setup process.
       #   They might want to make the payers go through some other steps after they go
-      # through our flow or make them go through the necessary verification
-      # mechanism(upcomming feature).
+      # through our flow or make them go through the necessary verification mechanism
+      # (upcoming feature).
       # </p>
       # Example URL: /payer_authorisations/:identity/actions/confirm
       #
