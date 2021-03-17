@@ -98,6 +98,11 @@ module GoCardlessPro
       @refunds ||= Services::RefundsService.new(@api_service)
     end
 
+    # Access to the service for scenario_simulator to make API calls
+    def scenario_simulators
+      @scenario_simulators ||= Services::ScenarioSimulatorsService.new(@api_service)
+    end
+
     # Access to the service for subscription to make API calls
     def subscriptions
       @subscriptions ||= Services::SubscriptionsService.new(@api_service)
