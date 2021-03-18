@@ -18,20 +18,14 @@ module GoCardlessPro
     # active in the
     # sandbox environment.
     class ScenarioSimulator
-      attr_reader :description
       attr_reader :id
-      attr_reader :name
-      attr_reader :resource_type
 
       # Initialize a scenario_simulator resource instance
       # @param object [Hash] an object returned from the API
       def initialize(object, response = nil)
         @object = object
 
-        @description = object['description']
         @id = object['id']
-        @name = object['name']
-        @resource_type = object['resource_type']
         @response = response
       end
 

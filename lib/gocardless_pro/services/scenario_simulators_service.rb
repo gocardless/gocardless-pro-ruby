@@ -10,34 +10,6 @@ module GoCardlessPro
   module Services
     # Service for making requests to the ScenarioSimulator endpoints
     class ScenarioSimulatorsService < BaseService
-      # Returns a list of all the available scenario simulators
-      # Example URL: /scenario_simulators
-      # @param options [Hash] parameters as a hash, under a params key.
-      def list(options = {})
-        path = '/scenario_simulators'
-
-        options[:retry_failures] = true
-
-        response = make_request(:get, path, options)
-
-        ListResponse.new(
-          response: response,
-          unenveloped_body: unenvelope_body(response.body),
-          resource_class: Resources::ScenarioSimulator
-        )
-      end
-
-      # Get a lazily enumerated list of all the items returned. This is simmilar to the `list` method but will paginate for you automatically.
-      #
-      # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
-      # Otherwise they will be the body of the request.
-      def all(options = {})
-        Paginator.new(
-          service: self,
-          options: options
-        ).enumerator
-      end
-
       # Runs the specific scenario simulator against the specific resource
       # Example URL: /scenario_simulators/:identity/actions/run
       #
