@@ -3,6 +3,11 @@ module GoCardlessPro
   class Client
     extend Forwardable
 
+    # Access to the service for bank_authorisation to make API calls
+    def bank_authorisations
+      @bank_authorisations ||= Services::BankAuthorisationsService.new(@api_service)
+    end
+
     # Access to the service for bank_details_lookup to make API calls
     def bank_details_lookups
       @bank_details_lookups ||= Services::BankDetailsLookupsService.new(@api_service)
