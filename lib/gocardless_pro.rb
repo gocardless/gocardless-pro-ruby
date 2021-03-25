@@ -41,6 +41,9 @@ require_relative 'gocardless_pro/webhook'
 require_relative 'gocardless_pro/resources/bank_details_lookup'
 require_relative 'gocardless_pro/services/bank_details_lookups_service'
 
+require_relative 'gocardless_pro/resources/billing_request'
+require_relative 'gocardless_pro/services/billing_requests_service'
+
 require_relative 'gocardless_pro/resources/creditor'
 require_relative 'gocardless_pro/services/creditors_service'
 

@@ -8,6 +8,11 @@ module GoCardlessPro
       @bank_details_lookups ||= Services::BankDetailsLookupsService.new(@api_service)
     end
 
+    # Access to the service for billing_request to make API calls
+    def billing_requests
+      @billing_requests ||= Services::BillingRequestsService.new(@api_service)
+    end
+
     # Access to the service for creditor to make API calls
     def creditors
       @creditors ||= Services::CreditorsService.new(@api_service)
