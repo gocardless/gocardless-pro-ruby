@@ -58,6 +58,11 @@ module GoCardlessPro
       @instalment_schedules ||= Services::InstalmentSchedulesService.new(@api_service)
     end
 
+    # Access to the service for institution to make API calls
+    def institutions
+      @institutions ||= Services::InstitutionsService.new(@api_service)
+    end
+
     # Access to the service for mandate to make API calls
     def mandates
       @mandates ||= Services::MandatesService.new(@api_service)
