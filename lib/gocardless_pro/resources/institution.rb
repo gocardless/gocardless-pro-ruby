@@ -13,7 +13,7 @@ module GoCardlessPro
     # Represents an instance of a institution resource returned from the API
 
     # Institutions that are supported when creating [Bank
-    # Authorisations](#core-endpoints-bank-authorisations).
+    # Authorisations](#billing-requests-bank-authorisations).
     class Institution
       attr_reader :icon_url
       attr_reader :id
