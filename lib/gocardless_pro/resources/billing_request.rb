@@ -72,6 +72,14 @@ module GoCardlessPro
         def customer_billing_detail
           @links['customer_billing_detail']
         end
+
+        def mandate_bank_authorisation
+          @links['mandate_bank_authorisation']
+        end
+
+        def payment_bank_authorisation
+          @links['payment_bank_authorisation']
+        end
       end
     end
   end
