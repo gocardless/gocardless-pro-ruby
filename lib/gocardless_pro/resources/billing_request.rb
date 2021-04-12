@@ -12,7 +12,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a billing_request resource returned from the API
 
-    #
+    # Billing Requests
     class BillingRequest
       attr_reader :actions
       attr_reader :auto_fulfil
