@@ -3,9 +3,24 @@ module GoCardlessPro
   class Client
     extend Forwardable
 
+    # Access to the service for bank_authorisation to make API calls
+    def bank_authorisations
+      @bank_authorisations ||= Services::BankAuthorisationsService.new(@api_service)
+    end
+
     # Access to the service for bank_details_lookup to make API calls
     def bank_details_lookups
       @bank_details_lookups ||= Services::BankDetailsLookupsService.new(@api_service)
+    end
+
+    # Access to the service for billing_request to make API calls
+    def billing_requests
+      @billing_requests ||= Services::BillingRequestsService.new(@api_service)
+    end
+
+    # Access to the service for billing_request_flow to make API calls
+    def billing_request_flows
+      @billing_request_flows ||= Services::BillingRequestFlowsService.new(@api_service)
     end
 
     # Access to the service for creditor to make API calls
@@ -46,6 +61,11 @@ module GoCardlessPro
     # Access to the service for instalment_schedule to make API calls
     def instalment_schedules
       @instalment_schedules ||= Services::InstalmentSchedulesService.new(@api_service)
+    end
+
+    # Access to the service for institution to make API calls
+    def institutions
+      @institutions ||= Services::InstitutionsService.new(@api_service)
     end
 
     # Access to the service for mandate to make API calls
@@ -96,6 +116,11 @@ module GoCardlessPro
     # Access to the service for refund to make API calls
     def refunds
       @refunds ||= Services::RefundsService.new(@api_service)
+    end
+
+    # Access to the service for scenario_simulator to make API calls
+    def scenario_simulators
+      @scenario_simulators ||= Services::ScenarioSimulatorsService.new(@api_service)
     end
 
     # Access to the service for subscription to make API calls
@@ -163,7 +188,7 @@ module GoCardlessPro
           'User-Agent' => user_agent.to_s,
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.26.0',
+          'GoCardless-Client-Version' => '2.27.0',
         },
       }
     end

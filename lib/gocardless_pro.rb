@@ -38,8 +38,17 @@ require_relative 'gocardless_pro/response'
 require_relative 'gocardless_pro/api_response'
 require_relative 'gocardless_pro/webhook'
 
+require_relative 'gocardless_pro/resources/bank_authorisation'
+require_relative 'gocardless_pro/services/bank_authorisations_service'
+
 require_relative 'gocardless_pro/resources/bank_details_lookup'
 require_relative 'gocardless_pro/services/bank_details_lookups_service'
+
+require_relative 'gocardless_pro/resources/billing_request'
+require_relative 'gocardless_pro/services/billing_requests_service'
+
+require_relative 'gocardless_pro/resources/billing_request_flow'
+require_relative 'gocardless_pro/services/billing_request_flows_service'
 
 require_relative 'gocardless_pro/resources/creditor'
 require_relative 'gocardless_pro/services/creditors_service'
@@ -64,6 +73,9 @@ require_relative 'gocardless_pro/services/events_service'
 
 require_relative 'gocardless_pro/resources/instalment_schedule'
 require_relative 'gocardless_pro/services/instalment_schedules_service'
+
+require_relative 'gocardless_pro/resources/institution'
+require_relative 'gocardless_pro/services/institutions_service'
 
 require_relative 'gocardless_pro/resources/mandate'
 require_relative 'gocardless_pro/services/mandates_service'
@@ -94,6 +106,9 @@ require_relative 'gocardless_pro/services/redirect_flows_service'
 
 require_relative 'gocardless_pro/resources/refund'
 require_relative 'gocardless_pro/services/refunds_service'
+
+require_relative 'gocardless_pro/resources/scenario_simulator'
+require_relative 'gocardless_pro/services/scenario_simulators_service'
 
 require_relative 'gocardless_pro/resources/subscription'
 require_relative 'gocardless_pro/services/subscriptions_service'
