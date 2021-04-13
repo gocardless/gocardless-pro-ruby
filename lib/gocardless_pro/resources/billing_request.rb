@@ -61,6 +61,10 @@ module GoCardlessPro
           @links = links || {}
         end
 
+        def bank_authorisation
+          @links['bank_authorisation']
+        end
+
         def customer
           @links['customer']
         end
@@ -71,14 +75,6 @@ module GoCardlessPro
 
         def customer_billing_detail
           @links['customer_billing_detail']
-        end
-
-        def mandate_bank_authorisation
-          @links['mandate_bank_authorisation']
-        end
-
-        def payment_bank_authorisation
-          @links['payment_bank_authorisation']
         end
       end
     end
