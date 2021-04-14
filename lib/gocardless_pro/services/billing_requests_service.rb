@@ -79,7 +79,7 @@ module GoCardlessPro
       # Fetches a billing request
       # Example URL: /billing_requests/:identity
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/billing_requests/:identity', 'identity' => identity)
@@ -105,7 +105,7 @@ module GoCardlessPro
       # successful.
       # Example URL: /billing_requests/:identity/actions/collect_customer_details
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def collect_customer_details(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/collect_customer_details', 'identity' => identity)
@@ -150,7 +150,7 @@ module GoCardlessPro
       # and attaching it.
       # Example URL: /billing_requests/:identity/actions/collect_bank_account_details
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def collect_bank_account_details(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/collect_bank_account_details', 'identity' => identity)
@@ -190,7 +190,7 @@ module GoCardlessPro
       # it to fulfil, executing the payment.
       # Example URL: /billing_requests/:identity/actions/fulfil
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def fulfil(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/fulfil', 'identity' => identity)
@@ -230,7 +230,7 @@ module GoCardlessPro
       # to expire.
       # Example URL: /billing_requests/:identity/actions/cancel
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/cancel', 'identity' => identity)
@@ -271,7 +271,7 @@ module GoCardlessPro
       # Currently, the customer can only be notified by email.
       # Example URL: /billing_requests/:identity/actions/notify
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def notify(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/notify', 'identity' => identity)
