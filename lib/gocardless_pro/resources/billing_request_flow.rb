@@ -19,7 +19,9 @@ module GoCardlessPro
       attr_reader :authorisation_url
       attr_reader :created_at
       attr_reader :expires_at
+      attr_reader :id
       attr_reader :redirect_uri
+      attr_reader :session_token
 
       # Initialize a billing_request_flow resource instance
       # @param object [Hash] an object returned from the API
@@ -29,8 +31,10 @@ module GoCardlessPro
         @authorisation_url = object['authorisation_url']
         @created_at = object['created_at']
         @expires_at = object['expires_at']
+        @id = object['id']
         @links = object['links']
         @redirect_uri = object['redirect_uri']
+        @session_token = object['session_token']
         @response = response
       end
 
