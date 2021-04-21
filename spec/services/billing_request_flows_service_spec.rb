@@ -16,10 +16,13 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
         {
 
           'authorisation_url' => 'authorisation_url-input',
+          'auto_fulfil' => 'auto_fulfil-input',
           'created_at' => 'created_at-input',
           'expires_at' => 'expires_at-input',
           'id' => 'id-input',
           'links' => 'links-input',
+          'lock_bank_account_details' => 'lock_bank_account_details-input',
+          'lock_customer_details' => 'lock_customer_details-input',
           'redirect_uri' => 'redirect_uri-input',
           'session_token' => 'session_token-input',
         }
@@ -32,10 +35,13 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
               'billing_request_flows' => {
 
                 'authorisation_url' => 'authorisation_url-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
+                'lock_bank_account_details' => 'lock_bank_account_details-input',
+                'lock_customer_details' => 'lock_customer_details-input',
                 'redirect_uri' => 'redirect_uri-input',
                 'session_token' => 'session_token-input',
               },
@@ -48,10 +54,13 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
                 {
 
                   'authorisation_url' => 'authorisation_url-input',
+                  'auto_fulfil' => 'auto_fulfil-input',
                   'created_at' => 'created_at-input',
                   'expires_at' => 'expires_at-input',
                   'id' => 'id-input',
                   'links' => 'links-input',
+                  'lock_bank_account_details' => 'lock_bank_account_details-input',
+                  'lock_customer_details' => 'lock_customer_details-input',
                   'redirect_uri' => 'redirect_uri-input',
                   'session_token' => 'session_token-input',
                 },
@@ -120,10 +129,13 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
         {
 
           'authorisation_url' => 'authorisation_url-input',
+          'auto_fulfil' => 'auto_fulfil-input',
           'created_at' => 'created_at-input',
           'expires_at' => 'expires_at-input',
           'id' => 'id-input',
           'links' => 'links-input',
+          'lock_bank_account_details' => 'lock_bank_account_details-input',
+          'lock_customer_details' => 'lock_customer_details-input',
           'redirect_uri' => 'redirect_uri-input',
           'session_token' => 'session_token-input',
         }
@@ -171,10 +183,13 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
           'billing_request_flows' => {
 
             'authorisation_url' => 'authorisation_url-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'expires_at' => 'expires_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
+            'lock_bank_account_details' => 'lock_bank_account_details-input',
+            'lock_customer_details' => 'lock_customer_details-input',
             'redirect_uri' => 'redirect_uri-input',
             'session_token' => 'session_token-input',
           },
@@ -219,10 +234,13 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
               'billing_request_flows' => {
 
                 'authorisation_url' => 'authorisation_url-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
+                'lock_bank_account_details' => 'lock_bank_account_details-input',
+                'lock_customer_details' => 'lock_customer_details-input',
                 'redirect_uri' => 'redirect_uri-input',
                 'session_token' => 'session_token-input',
               },

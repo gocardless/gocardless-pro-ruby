@@ -17,9 +17,12 @@ module GoCardlessPro
     # authorisation (such as open banking single payments).
     class BillingRequestFlow
       attr_reader :authorisation_url
+      attr_reader :auto_fulfil
       attr_reader :created_at
       attr_reader :expires_at
       attr_reader :id
+      attr_reader :lock_bank_account_details
+      attr_reader :lock_customer_details
       attr_reader :redirect_uri
       attr_reader :session_token
 
@@ -29,10 +32,13 @@ module GoCardlessPro
         @object = object
 
         @authorisation_url = object['authorisation_url']
+        @auto_fulfil = object['auto_fulfil']
         @created_at = object['created_at']
         @expires_at = object['expires_at']
         @id = object['id']
         @links = object['links']
+        @lock_bank_account_details = object['lock_bank_account_details']
+        @lock_customer_details = object['lock_customer_details']
         @redirect_uri = object['redirect_uri']
         @session_token = object['session_token']
         @response = response
