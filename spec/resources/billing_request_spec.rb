@@ -440,14 +440,14 @@ describe GoCardlessPro::Resources::BillingRequest do
     end
   end
 
-  describe '#collect_bank_account_details' do
-    subject(:post_response) { client.billing_requests.collect_bank_account_details(resource_id) }
+  describe '#collect_bank_account' do
+    subject(:post_response) { client.billing_requests.collect_bank_account(resource_id) }
 
     let(:resource_id) { 'ABC123' }
 
     let!(:stub) do
-      # /billing_requests/%v/actions/collect_bank_account_details
-      stub_url = '/billing_requests/:identity/actions/collect_bank_account_details'.gsub(':identity', resource_id)
+      # /billing_requests/%v/actions/collect_bank_account
+      stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
         body: {
           'billing_requests' => {
@@ -476,13 +476,13 @@ describe GoCardlessPro::Resources::BillingRequest do
     context 'when the request needs a body and custom header' do
       let(:body) { { foo: 'bar' } }
       let(:headers) { { 'Foo' => 'Bar' } }
-      subject(:post_response) { client.billing_requests.collect_bank_account_details(resource_id, body, headers) }
+      subject(:post_response) { client.billing_requests.collect_bank_account(resource_id, body, headers) }
 
       let(:resource_id) { 'ABC123' }
 
       let!(:stub) do
-        # /billing_requests/%v/actions/collect_bank_account_details
-        stub_url = '/billing_requests/:identity/actions/collect_bank_account_details'.gsub(':identity', resource_id)
+        # /billing_requests/%v/actions/collect_bank_account
+        stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
         stub_request(:post, /.*api.gocardless.com#{stub_url}/).
           with(
             body: { foo: 'bar' },

@@ -142,18 +142,18 @@ module GoCardlessPro
       end
 
       # If the billing request has a pending
-      # <code>collect_bank_account_details</code> action, this endpoint can be
+      # <code>collect_bank_account</code> action, this endpoint can be
       # used to collect the details in order to complete it.
       #
       # The endpoint takes the same payload as Customer Bank Accounts, but check
       # the bank account is valid for the billing request scheme before creating
       # and attaching it.
-      # Example URL: /billing_requests/:identity/actions/collect_bank_account_details
+      # Example URL: /billing_requests/:identity/actions/collect_bank_account
       #
       # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
-      def collect_bank_account_details(identity, options = {})
-        path = sub_url('/billing_requests/:identity/actions/collect_bank_account_details', 'identity' => identity)
+      def collect_bank_account(identity, options = {})
+        path = sub_url('/billing_requests/:identity/actions/collect_bank_account', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}
