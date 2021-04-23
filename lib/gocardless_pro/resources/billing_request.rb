@@ -15,7 +15,6 @@ module GoCardlessPro
     # Billing Requests
     class BillingRequest
       attr_reader :actions
-      attr_reader :auto_fulfil
       attr_reader :created_at
       attr_reader :id
       attr_reader :mandate_request
@@ -30,7 +29,6 @@ module GoCardlessPro
         @object = object
 
         @actions = object['actions']
-        @auto_fulfil = object['auto_fulfil']
         @created_at = object['created_at']
         @id = object['id']
         @links = object['links']
