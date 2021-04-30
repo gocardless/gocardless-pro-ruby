@@ -46,8 +46,6 @@ module GoCardlessPro
               raise IdempotencyConflict, e.error
             when :fetch
               return get(e.conflicting_resource_id)
-            else
-              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
             end
           end
 
@@ -159,8 +157,6 @@ module GoCardlessPro
               raise IdempotencyConflict, e.error
             when :fetch
               return get(e.conflicting_resource_id)
-            else
-              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
             end
           end
 

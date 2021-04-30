@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe GoCardlessPro::ApiService do
-  subject(:service) { described_class.new('https://api.example.com', 'secret_token') }
+  subject(:service) do
+    described_class.new('https://api.example.com', 'secret_token', options)
+  end
 
+  let(:options) { {} }
   let(:default_response) do
     {
       status: 200,
@@ -172,6 +175,14 @@ describe GoCardlessPro::ApiService do
                              family_name: 'Franklin',
                            })
       expect(stub).to have_been_requested
+    end
+  end
+
+  describe 'when passing an invalid :on_idempotency_conflict' do
+    let(:options) { { on_idempotency_conflict: :junk } }
+
+    it 'raises an error' do
+      expect { service }.to raise_error(ArgumentError)
     end
   end
 end

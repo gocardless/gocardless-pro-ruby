@@ -12,11 +12,22 @@ module GoCardlessPro
         if CLIENT_ERROR_STATUSES.include?(env.status)
           json_body ||= JSON.parse(env.body) unless env.body.empty?
           error_type = json_body['error']['type']
-          raise(error_class_for_type(error_type), json_body['error'])
+
+          error_class = error_class_for_status(env.status) || error_class_for_type(error_type)
+
+          raise(error_class, json_body['error'])
         end
       end
 
       private
+
+      def error_class_for_status(code)
+        {
+          401 => GoCardlessPro::AuthenticationError,
+          403 => GoCardlessPro::PermissionError,
+          429 => GoCardlessPro::RateLimitError,
+        }.fetch(code, nil)
+      end
 
       def error_class_for_type(type)
         {

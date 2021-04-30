@@ -207,19 +207,6 @@ describe GoCardlessPro::Services::RedirectFlowsService do
             to raise_error(GoCardlessPro::IdempotencyConflict)
         end
       end
-
-      context 'with on_idempotency_conflict: :unknown' do
-        let(:client) do
-          GoCardlessPro::Client.new(
-            access_token: 'SECRET_TOKEN',
-            on_idempotency_conflict: :unknown
-          )
-        end
-
-        it 'raises an ArgumentError' do
-          expect { post_create_response }.to raise_error(ArgumentError)
-        end
-      end
     end
   end
 
