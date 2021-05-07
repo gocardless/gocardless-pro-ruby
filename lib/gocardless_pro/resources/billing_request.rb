@@ -63,6 +63,10 @@ module GoCardlessPro
           @links['bank_authorisation']
         end
 
+        def creditor
+          @links['creditor']
+        end
+
         def customer
           @links['customer']
         end
