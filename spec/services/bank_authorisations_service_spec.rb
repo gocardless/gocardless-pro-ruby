@@ -30,7 +30,6 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
                 'last_visited_at' => 'last_visited_at-input',
                 'links' => 'links-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'short_url' => 'short_url-input',
                 'url' => 'url-input',
               },
             }.to_json,
@@ -64,7 +63,6 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
               'last_visited_at' => 'last_visited_at-input',
               'links' => 'links-input',
               'redirect_uri' => 'redirect_uri-input',
-              'short_url' => 'short_url-input',
               'url' => 'url-input',
             },
           }.to_json,
@@ -168,7 +166,6 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
           'last_visited_at' => 'last_visited_at-input',
           'links' => 'links-input',
           'redirect_uri' => 'redirect_uri-input',
-          'short_url' => 'short_url-input',
           'url' => 'url-input',
         }
       end
@@ -186,7 +183,6 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
                 'last_visited_at' => 'last_visited_at-input',
                 'links' => 'links-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'short_url' => 'short_url-input',
                 'url' => 'url-input',
               },
             }
@@ -204,7 +200,6 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
                   'last_visited_at' => 'last_visited_at-input',
                   'links' => 'links-input',
                   'redirect_uri' => 'redirect_uri-input',
-                  'short_url' => 'short_url-input',
                   'url' => 'url-input',
                 },
 
@@ -278,7 +273,6 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
           'last_visited_at' => 'last_visited_at-input',
           'links' => 'links-input',
           'redirect_uri' => 'redirect_uri-input',
-          'short_url' => 'short_url-input',
           'url' => 'url-input',
         }
       end
@@ -319,7 +313,6 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
                 'last_visited_at' => 'last_visited_at-input',
                 'links' => 'links-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'short_url' => 'short_url-input',
                 'url' => 'url-input',
               },
             }.to_json,

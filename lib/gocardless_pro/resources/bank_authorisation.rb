@@ -31,7 +31,6 @@ module GoCardlessPro
       attr_reader :id
       attr_reader :last_visited_at
       attr_reader :redirect_uri
-      attr_reader :short_url
       attr_reader :url
 
       # Initialize a bank_authorisation resource instance
@@ -46,7 +45,6 @@ module GoCardlessPro
         @last_visited_at = object['last_visited_at']
         @links = object['links']
         @redirect_uri = object['redirect_uri']
-        @short_url = object['short_url']
         @url = object['url']
         @response = response
       end
