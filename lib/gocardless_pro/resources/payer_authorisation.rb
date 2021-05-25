@@ -12,7 +12,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a payer_authorisation resource returned from the API
 
-    # <p class="warning">
+    # <p class="restricted-notice">
     #   Payer Authorisations is deprecated in favour of
     #   <a
     # href="https://developer.gocardless.com/getting-started/billing-requests/overview/">
