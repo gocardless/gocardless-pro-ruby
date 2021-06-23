@@ -24,6 +24,7 @@ module GoCardlessPro
     # checkout flows.
     class BankAuthorisation
       attr_reader :authorisation_type
+      attr_reader :authorised_at
       attr_reader :created_at
       attr_reader :expires_at
       attr_reader :id
@@ -37,6 +38,7 @@ module GoCardlessPro
         @object = object
 
         @authorisation_type = object['authorisation_type']
+        @authorised_at = object['authorised_at']
         @created_at = object['created_at']
         @expires_at = object['expires_at']
         @id = object['id']

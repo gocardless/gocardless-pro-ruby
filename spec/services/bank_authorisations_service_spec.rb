@@ -24,6 +24,7 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
               'bank_authorisations' => {
 
                 'authorisation_type' => 'authorisation_type-input',
+                'authorised_at' => 'authorised_at-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
@@ -57,6 +58,7 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
             'bank_authorisations' => {
 
               'authorisation_type' => 'authorisation_type-input',
+              'authorised_at' => 'authorised_at-input',
               'created_at' => 'created_at-input',
               'expires_at' => 'expires_at-input',
               'id' => 'id-input',
@@ -160,6 +162,7 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
         {
 
           'authorisation_type' => 'authorisation_type-input',
+          'authorised_at' => 'authorised_at-input',
           'created_at' => 'created_at-input',
           'expires_at' => 'expires_at-input',
           'id' => 'id-input',
@@ -177,6 +180,7 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
               'bank_authorisations' => {
 
                 'authorisation_type' => 'authorisation_type-input',
+                'authorised_at' => 'authorised_at-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
@@ -194,6 +198,7 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
                 {
 
                   'authorisation_type' => 'authorisation_type-input',
+                  'authorised_at' => 'authorised_at-input',
                   'created_at' => 'created_at-input',
                   'expires_at' => 'expires_at-input',
                   'id' => 'id-input',
@@ -267,6 +272,7 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
         {
 
           'authorisation_type' => 'authorisation_type-input',
+          'authorised_at' => 'authorised_at-input',
           'created_at' => 'created_at-input',
           'expires_at' => 'expires_at-input',
           'id' => 'id-input',
@@ -307,6 +313,7 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
               'bank_authorisations' => {
 
                 'authorisation_type' => 'authorisation_type-input',
+                'authorised_at' => 'authorised_at-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
