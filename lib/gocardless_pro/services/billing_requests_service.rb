@@ -218,6 +218,45 @@ module GoCardlessPro
         Resources::BillingRequest.new(unenvelope_body(response.body), response)
       end
 
+      # This is needed when you have mandate_request. As a scheme compliance rule we
+      # are required to
+      # allow the payer to crosscheck the details entered by them and confirm it.
+      # Example URL: /billing_requests/:identity/actions/confirm_payer_details
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def confirm_payer_details(identity, options = {})
+        path = sub_url('/billing_requests/:identity/actions/confirm_payer_details', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::BillingRequest.new(unenvelope_body(response.body), response)
+      end
+
       # Immediately cancels a billing request, causing all billing request flows
       # to expire.
       # Example URL: /billing_requests/:identity/actions/cancel
