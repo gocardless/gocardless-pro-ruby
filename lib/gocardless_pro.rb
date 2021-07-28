@@ -53,6 +53,9 @@ require_relative 'gocardless_pro/services/billing_requests_service'
 require_relative 'gocardless_pro/resources/billing_request_flow'
 require_relative 'gocardless_pro/services/billing_request_flows_service'
 
+require_relative 'gocardless_pro/resources/billing_request_template'
+require_relative 'gocardless_pro/services/billing_request_templates_service'
+
 require_relative 'gocardless_pro/resources/creditor'
 require_relative 'gocardless_pro/services/creditors_service'
 

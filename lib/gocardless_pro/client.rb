@@ -23,6 +23,11 @@ module GoCardlessPro
       @billing_request_flows ||= Services::BillingRequestFlowsService.new(@api_service)
     end
 
+    # Access to the service for billing_request_template to make API calls
+    def billing_request_templates
+      @billing_request_templates ||= Services::BillingRequestTemplatesService.new(@api_service)
+    end
+
     # Access to the service for creditor to make API calls
     def creditors
       @creditors ||= Services::CreditorsService.new(@api_service)
