@@ -457,4 +457,46 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
       end
     end
   end
+
+  describe '#update' do
+    subject(:put_update_response) { client.billing_request_templates.update(id, params: update_params) }
+    let(:id) { 'ABC123' }
+
+    context 'with a valid request' do
+      let(:update_params) { { 'hello' => 'world' } }
+
+      let!(:stub) do
+        stub_url = '/billing_requests/:identity'.gsub(':identity', id)
+        stub_request(:put, /.*api.gocardless.com#{stub_url}/).to_return(
+          body: {
+            'billing_request_templates' => {
+
+              'authorisation_url' => 'authorisation_url-input',
+              'created_at' => 'created_at-input',
+              'id' => 'id-input',
+              'mandate_request_currency' => 'mandate_request_currency-input',
+              'mandate_request_metadata' => 'mandate_request_metadata-input',
+              'mandate_request_scheme' => 'mandate_request_scheme-input',
+              'mandate_request_verify' => 'mandate_request_verify-input',
+              'metadata' => 'metadata-input',
+              'name' => 'name-input',
+              'payment_request_amount' => 'payment_request_amount-input',
+              'payment_request_currency' => 'payment_request_currency-input',
+              'payment_request_description' => 'payment_request_description-input',
+              'payment_request_metadata' => 'payment_request_metadata-input',
+              'payment_request_scheme' => 'payment_request_scheme-input',
+              'redirect_uri' => 'redirect_uri-input',
+              'updated_at' => 'updated_at-input',
+            },
+          }.to_json,
+          headers: response_headers
+        )
+      end
+
+      it 'updates and returns the resource' do
+        expect(put_update_response).to be_a(GoCardlessPro::Resources::BillingRequestTemplate)
+        expect(stub).to have_been_requested
+      end
+    end
+  end
 end

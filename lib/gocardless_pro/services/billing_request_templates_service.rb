@@ -91,6 +91,28 @@ module GoCardlessPro
         Resources::BillingRequestTemplate.new(unenvelope_body(response.body), response)
       end
 
+      # Updates a Billing Request Template, which will affect all future Billing
+      # Requests created by this template.
+      # Example URL: /billing_requests/:identity
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def update(identity, options = {})
+        path = sub_url('/billing_requests/:identity', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params][envelope_key] = params
+
+        options[:retry_failures] = true
+
+        response = make_request(:put, path, options)
+
+        return if response.body.nil?
+
+        Resources::BillingRequestTemplate.new(unenvelope_body(response.body), response)
+      end
+
       private
 
       # Unenvelope the response of the body using the service's `envelope_key`
