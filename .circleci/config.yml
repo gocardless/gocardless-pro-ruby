@@ -27,6 +27,7 @@ jobs:
           gem build *.gemspec
           cat $HOME/.gem/credentials
           gem push *.gem
+          
 workflows:
   version: 2
   tests:
