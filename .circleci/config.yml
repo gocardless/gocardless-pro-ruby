@@ -13,7 +13,20 @@ jobs:
     steps:
       - checkout
       - run: bundle install && bundle exec rspec
-
+  publish: &publish
+    docker:
+      - image: ruby:2.6
+    steps:
+      - checkout
+      - run: |
+          echo ${RUBYGEM_PUBLISH_API_KEY}
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: $RUBYGEM_PUBLISH_API_KEY\n" > $HOME/.gem/credentials
+          gem build *.gemspec
+          cat $HOME/.gem/credentials
+          gem push *.gem
 workflows:
   version: 2
   tests:
@@ -30,3 +43,6 @@ workflows:
                 ruby-version: "2.2"
               - faraday-version: "0.9.2"
                 ruby-version: "3.0"
+      - publish:
+          requires:
+            - test
