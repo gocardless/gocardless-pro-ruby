@@ -728,7 +728,7 @@ describe GoCardlessPro::Services::BillingRequestTemplatesService do
       let(:update_params) { { 'hello' => 'world' } }
 
       let!(:stub) do
-        stub_url = '/billing_requests/:identity'.gsub(':identity', id)
+        stub_url = '/billing_request_templates/:identity'.gsub(':identity', id)
         stub_request(:put, /.*api.gocardless.com#{stub_url}/).to_return(
           body: {
             'billing_request_templates' => {
@@ -764,7 +764,7 @@ describe GoCardlessPro::Services::BillingRequestTemplatesService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub_url = '/billing_requests/:identity'.gsub(':identity', id)
+          stub_url = '/billing_request_templates/:identity'.gsub(':identity', id)
           stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/).
                  to_timeout.then.to_return(status: 200, headers: response_headers)
 
@@ -773,7 +773,7 @@ describe GoCardlessPro::Services::BillingRequestTemplatesService do
         end
 
         it 'retries 5XX errors' do
-          stub_url = '/billing_requests/:identity'.gsub(':identity', id)
+          stub_url = '/billing_request_templates/:identity'.gsub(':identity', id)
           stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/).
                  to_return(status: 502,
                            headers: { 'Content-Type' => 'text/html' },

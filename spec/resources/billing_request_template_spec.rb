@@ -466,7 +466,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
       let(:update_params) { { 'hello' => 'world' } }
 
       let!(:stub) do
-        stub_url = '/billing_requests/:identity'.gsub(':identity', id)
+        stub_url = '/billing_request_templates/:identity'.gsub(':identity', id)
         stub_request(:put, /.*api.gocardless.com#{stub_url}/).to_return(
           body: {
             'billing_request_templates' => {
