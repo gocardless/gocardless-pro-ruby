@@ -8,14 +8,14 @@ require_relative './base_service'
 
 module GoCardlessPro
   module Services
-    # Service for making requests to the Webhook endpoints
-    class WebhooksService < BaseService
+    # Service for making requests to the BillingRequestTemplate endpoints
+    class BillingRequestTemplatesService < BaseService
       # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # webhooks.
-      # Example URL: /webhooks
+      # Billing Request Templates.
+      # Example URL: /billing_request_templates
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
-        path = '/webhooks'
+        path = '/billing_request_templates'
 
         options[:retry_failures] = true
 
@@ -24,7 +24,7 @@ module GoCardlessPro
         ListResponse.new(
           response: response,
           unenveloped_body: unenvelope_body(response.body),
-          resource_class: Resources::Webhook
+          resource_class: Resources::BillingRequestTemplate
         )
       end
 
@@ -39,13 +39,13 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Retrieves the details of an existing webhook.
-      # Example URL: /webhooks/:identity
+      # Fetches a Billing Request Template
+      # Example URL: /billing_request_templates/:identity
       #
-      # @param identity       # Unique identifier, beginning with "WB".
+      # @param identity       # Unique identifier, beginning with "BRT".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/webhooks/:identity', 'identity' => identity)
+        path = sub_url('/billing_request_templates/:identity', 'identity' => identity)
 
         options[:retry_failures] = true
 
@@ -53,22 +53,20 @@ module GoCardlessPro
 
         return if response.body.nil?
 
-        Resources::Webhook.new(unenvelope_body(response.body), response)
+        Resources::BillingRequestTemplate.new(unenvelope_body(response.body), response)
       end
 
-      # Requests for a previous webhook to be sent again
-      # Example URL: /webhooks/:identity/actions/retry
       #
-      # @param identity       # Unique identifier, beginning with "WB".
+      # Example URL: /billing_request_templates
       # @param options [Hash] parameters as a hash, under a params key.
-      def retry(identity, options = {})
-        path = sub_url('/webhooks/:identity/actions/retry', 'identity' => identity)
+      def create(options = {})
+        path = '/billing_request_templates'
 
         params = options.delete(:params) || {}
         options[:params] = {}
-        options[:params]['data'] = params
+        options[:params][envelope_key] = params
 
-        options[:retry_failures] = false
+        options[:retry_failures] = true
 
         begin
           response = make_request(:post, path, options)
@@ -90,7 +88,29 @@ module GoCardlessPro
 
         return if response.body.nil?
 
-        Resources::Webhook.new(unenvelope_body(response.body), response)
+        Resources::BillingRequestTemplate.new(unenvelope_body(response.body), response)
+      end
+
+      # Updates a Billing Request Template, which will affect all future Billing
+      # Requests created by this template.
+      # Example URL: /billing_requests/:identity
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def update(identity, options = {})
+        path = sub_url('/billing_requests/:identity', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params][envelope_key] = params
+
+        options[:retry_failures] = true
+
+        response = make_request(:put, path, options)
+
+        return if response.body.nil?
+
+        Resources::BillingRequestTemplate.new(unenvelope_body(response.body), response)
       end
 
       private
@@ -104,7 +124,7 @@ module GoCardlessPro
 
       # return the key which API responses will envelope data under
       def envelope_key
-        'webhooks'
+        'billing_request_templates'
       end
     end
   end

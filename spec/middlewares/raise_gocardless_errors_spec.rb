@@ -74,6 +74,36 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
       end
     end
 
+    context 'for a Permission error' do
+      let(:status) { 403 }
+      let(:body) { { error: { type: 'invalid_api_usage' } }.to_json }
+
+      it 'raises a GoCardlessError' do
+        expect { connection.post('https://api.gocardless.com/widgets') }.
+          to raise_error(GoCardlessPro::PermissionError)
+      end
+    end
+
+    context 'for a RateLimit error' do
+      let(:status) { 429 }
+      let(:body) { { error: { type: 'invalid_api_usage' } }.to_json }
+
+      it 'raises a GoCardlessError' do
+        expect { connection.post('https://api.gocardless.com/widgets') }.
+          to raise_error(GoCardlessPro::RateLimitError)
+      end
+    end
+
+    context 'for a Authentication error' do
+      let(:status) { 401 }
+      let(:body) { { error: { type: 'invalid_api_usage' } }.to_json }
+
+      it 'raises a GoCardlessError' do
+        expect { connection.post('https://api.gocardless.com/widgets') }.
+          to raise_error(GoCardlessPro::AuthenticationError)
+      end
+    end
+
     context 'for an invalid API usage error' do
       let(:status) { 400 }
       let(:body) { { error: { type: 'invalid_api_usage' } }.to_json }

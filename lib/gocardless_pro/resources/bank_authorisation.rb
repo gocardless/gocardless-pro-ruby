@@ -21,17 +21,15 @@ module GoCardlessPro
     # Creation of Bank Authorisations is only permitted from GoCardless hosted
     # UIs
     # (see Billing Request Flows) to ensure we meet regulatory requirements for
-    # checkout flows. The exceptions are integrators with the custom payment
-    # pages
-    # upgrade, who have been audited to check their flows meet requirements.
+    # checkout flows.
     class BankAuthorisation
       attr_reader :authorisation_type
+      attr_reader :authorised_at
       attr_reader :created_at
       attr_reader :expires_at
       attr_reader :id
       attr_reader :last_visited_at
       attr_reader :redirect_uri
-      attr_reader :short_url
       attr_reader :url
 
       # Initialize a bank_authorisation resource instance
@@ -40,13 +38,13 @@ module GoCardlessPro
         @object = object
 
         @authorisation_type = object['authorisation_type']
+        @authorised_at = object['authorised_at']
         @created_at = object['created_at']
         @expires_at = object['expires_at']
         @id = object['id']
         @last_visited_at = object['last_visited_at']
         @links = object['links']
         @redirect_uri = object['redirect_uri']
-        @short_url = object['short_url']
         @url = object['url']
         @response = response
       end

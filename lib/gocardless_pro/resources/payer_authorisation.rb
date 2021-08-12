@@ -12,6 +12,15 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a payer_authorisation resource returned from the API
 
+    # <p class="restricted-notice">
+    #   Payer Authorisations is deprecated in favour of
+    #   <a
+    # href="https://developer.gocardless.com/getting-started/billing-requests/overview/">
+    #   Billing Requests</a>. Please consider using Billing Requests to build
+    # any
+    #   future integrations.
+    # </p>
+    #
     # Payer Authorisation resource acts as a wrapper for creating customer, bank
     # account and mandate details in a single request.
     # PayerAuthorisation API enables the integrators to build their own custom

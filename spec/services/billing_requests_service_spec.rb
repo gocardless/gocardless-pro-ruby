@@ -18,7 +18,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
           'billing_requests' => [{
 
             'actions' => 'actions-input',
-            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
@@ -48,8 +47,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
         expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::BillingRequest)
 
         expect(get_list_response.records.first.actions).to eq('actions-input')
-
-        expect(get_list_response.records.first.auto_fulfil).to eq('auto_fulfil-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
@@ -105,7 +102,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
           'billing_requests' => [{
 
             'actions' => 'actions-input',
-            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
@@ -130,7 +126,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
           'billing_requests' => [{
 
             'actions' => 'actions-input',
-            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
@@ -164,7 +159,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'billing_requests' => [{
 
               'actions' => 'actions-input',
-              'auto_fulfil' => 'auto_fulfil-input',
               'created_at' => 'created_at-input',
               'id' => 'id-input',
               'links' => 'links-input',
@@ -189,7 +183,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
                                    'billing_requests' => [{
 
                                      'actions' => 'actions-input',
-                                     'auto_fulfil' => 'auto_fulfil-input',
                                      'created_at' => 'created_at-input',
                                      'id' => 'id-input',
                                      'links' => 'links-input',
@@ -219,7 +212,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'billing_requests' => [{
 
               'actions' => 'actions-input',
-              'auto_fulfil' => 'auto_fulfil-input',
               'created_at' => 'created_at-input',
               'id' => 'id-input',
               'links' => 'links-input',
@@ -247,7 +239,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
                                    'billing_requests' => [{
 
                                      'actions' => 'actions-input',
-                                     'auto_fulfil' => 'auto_fulfil-input',
                                      'created_at' => 'created_at-input',
                                      'id' => 'id-input',
                                      'links' => 'links-input',
@@ -280,7 +271,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
         {
 
           'actions' => 'actions-input',
-          'auto_fulfil' => 'auto_fulfil-input',
           'created_at' => 'created_at-input',
           'id' => 'id-input',
           'links' => 'links-input',
@@ -299,7 +289,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
-                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
@@ -318,7 +307,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 {
 
                   'actions' => 'actions-input',
-                  'auto_fulfil' => 'auto_fulfil-input',
                   'created_at' => 'created_at-input',
                   'id' => 'id-input',
                   'links' => 'links-input',
@@ -393,7 +381,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
         {
 
           'actions' => 'actions-input',
-          'auto_fulfil' => 'auto_fulfil-input',
           'created_at' => 'created_at-input',
           'id' => 'id-input',
           'links' => 'links-input',
@@ -435,7 +422,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
-                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
@@ -471,19 +457,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
             to raise_error(GoCardlessPro::IdempotencyConflict)
         end
       end
-
-      context 'with on_idempotency_conflict: :unknown' do
-        let(:client) do
-          GoCardlessPro::Client.new(
-            access_token: 'SECRET_TOKEN',
-            on_idempotency_conflict: :unknown
-          )
-        end
-
-        it 'raises an ArgumentError' do
-          expect { post_create_response }.to raise_error(ArgumentError)
-        end
-      end
     end
   end
 
@@ -502,7 +475,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
-                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
@@ -537,7 +509,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'billing_requests' => {
 
               'actions' => 'actions-input',
-              'auto_fulfil' => 'auto_fulfil-input',
               'created_at' => 'created_at-input',
               'id' => 'id-input',
               'links' => 'links-input',
@@ -648,7 +619,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
           'billing_requests' => {
 
             'actions' => 'actions-input',
-            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
@@ -699,7 +669,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
-                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
@@ -716,20 +685,19 @@ describe GoCardlessPro::Services::BillingRequestsService do
     end
   end
 
-  describe '#collect_bank_account_details' do
-    subject(:post_response) { client.billing_requests.collect_bank_account_details(resource_id) }
+  describe '#collect_bank_account' do
+    subject(:post_response) { client.billing_requests.collect_bank_account(resource_id) }
 
     let(:resource_id) { 'ABC123' }
 
     let!(:stub) do
-      # /billing_requests/%v/actions/collect_bank_account_details
-      stub_url = '/billing_requests/:identity/actions/collect_bank_account_details'.gsub(':identity', resource_id)
+      # /billing_requests/%v/actions/collect_bank_account
+      stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
         body: {
           'billing_requests' => {
 
             'actions' => 'actions-input',
-            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
@@ -752,7 +720,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
 
     describe 'retry behaviour' do
       it "doesn't retry errors" do
-        stub_url = '/billing_requests/:identity/actions/collect_bank_account_details'.gsub(':identity', resource_id)
+        stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
         stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
                to_timeout
 
@@ -764,13 +732,13 @@ describe GoCardlessPro::Services::BillingRequestsService do
     context 'when the request needs a body and custom header' do
       let(:body) { { foo: 'bar' } }
       let(:headers) { { 'Foo' => 'Bar' } }
-      subject(:post_response) { client.billing_requests.collect_bank_account_details(resource_id, body, headers) }
+      subject(:post_response) { client.billing_requests.collect_bank_account(resource_id, body, headers) }
 
       let(:resource_id) { 'ABC123' }
 
       let!(:stub) do
-        # /billing_requests/%v/actions/collect_bank_account_details
-        stub_url = '/billing_requests/:identity/actions/collect_bank_account_details'.gsub(':identity', resource_id)
+        # /billing_requests/%v/actions/collect_bank_account
+        stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
         stub_request(:post, /.*api.gocardless.com#{stub_url}/).
           with(
             body: { foo: 'bar' },
@@ -780,7 +748,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
-                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
@@ -810,7 +777,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
           'billing_requests' => {
 
             'actions' => 'actions-input',
-            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
@@ -861,7 +827,85 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
-                'auto_fulfil' => 'auto_fulfil-input',
+                'created_at' => 'created_at-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
+  describe '#confirm_payer_details' do
+    subject(:post_response) { client.billing_requests.confirm_payer_details(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /billing_requests/%v/actions/confirm_payer_details
+      stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'billing_requests' => {
+
+            'actions' => 'actions-input',
+            'created_at' => 'created_at-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'mandate_request' => 'mandate_request-input',
+            'metadata' => 'metadata-input',
+            'payment_request' => 'payment_request-input',
+            'resources' => 'resources-input',
+            'status' => 'status-input',
+          },
+        }.to_json,
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.billing_requests.confirm_payer_details(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /billing_requests/%v/actions/confirm_payer_details
+        stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
@@ -891,7 +935,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
           'billing_requests' => {
 
             'actions' => 'actions-input',
-            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
@@ -942,7 +985,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
-                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
@@ -972,7 +1014,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
           'billing_requests' => {
 
             'actions' => 'actions-input',
-            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
@@ -1023,7 +1064,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
-                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',

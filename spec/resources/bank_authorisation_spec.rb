@@ -24,13 +24,13 @@ describe GoCardlessPro::Resources::BankAuthorisation do
               'bank_authorisations' => {
 
                 'authorisation_type' => 'authorisation_type-input',
+                'authorised_at' => 'authorised_at-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
                 'last_visited_at' => 'last_visited_at-input',
                 'links' => 'links-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'short_url' => 'short_url-input',
                 'url' => 'url-input',
               },
             }.to_json,
@@ -58,13 +58,13 @@ describe GoCardlessPro::Resources::BankAuthorisation do
             'bank_authorisations' => {
 
               'authorisation_type' => 'authorisation_type-input',
+              'authorised_at' => 'authorised_at-input',
               'created_at' => 'created_at-input',
               'expires_at' => 'expires_at-input',
               'id' => 'id-input',
               'last_visited_at' => 'last_visited_at-input',
               'links' => 'links-input',
               'redirect_uri' => 'redirect_uri-input',
-              'short_url' => 'short_url-input',
               'url' => 'url-input',
             },
           }.to_json,
@@ -107,13 +107,13 @@ describe GoCardlessPro::Resources::BankAuthorisation do
         {
 
           'authorisation_type' => 'authorisation_type-input',
+          'authorised_at' => 'authorised_at-input',
           'created_at' => 'created_at-input',
           'expires_at' => 'expires_at-input',
           'id' => 'id-input',
           'last_visited_at' => 'last_visited_at-input',
           'links' => 'links-input',
           'redirect_uri' => 'redirect_uri-input',
-          'short_url' => 'short_url-input',
           'url' => 'url-input',
         }
       end
@@ -125,13 +125,13 @@ describe GoCardlessPro::Resources::BankAuthorisation do
               'bank_authorisations' => {
 
                 'authorisation_type' => 'authorisation_type-input',
+                'authorised_at' => 'authorised_at-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
                 'last_visited_at' => 'last_visited_at-input',
                 'links' => 'links-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'short_url' => 'short_url-input',
                 'url' => 'url-input',
               },
             }
@@ -143,13 +143,13 @@ describe GoCardlessPro::Resources::BankAuthorisation do
                 {
 
                   'authorisation_type' => 'authorisation_type-input',
+                  'authorised_at' => 'authorised_at-input',
                   'created_at' => 'created_at-input',
                   'expires_at' => 'expires_at-input',
                   'id' => 'id-input',
                   'last_visited_at' => 'last_visited_at-input',
                   'links' => 'links-input',
                   'redirect_uri' => 'redirect_uri-input',
-                  'short_url' => 'short_url-input',
                   'url' => 'url-input',
                 },
 
@@ -194,13 +194,13 @@ describe GoCardlessPro::Resources::BankAuthorisation do
         {
 
           'authorisation_type' => 'authorisation_type-input',
+          'authorised_at' => 'authorised_at-input',
           'created_at' => 'created_at-input',
           'expires_at' => 'expires_at-input',
           'id' => 'id-input',
           'last_visited_at' => 'last_visited_at-input',
           'links' => 'links-input',
           'redirect_uri' => 'redirect_uri-input',
-          'short_url' => 'short_url-input',
           'url' => 'url-input',
         }
       end
@@ -235,13 +235,13 @@ describe GoCardlessPro::Resources::BankAuthorisation do
               'bank_authorisations' => {
 
                 'authorisation_type' => 'authorisation_type-input',
+                'authorised_at' => 'authorised_at-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
                 'last_visited_at' => 'last_visited_at-input',
                 'links' => 'links-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'short_url' => 'short_url-input',
                 'url' => 'url-input',
               },
             }.to_json,

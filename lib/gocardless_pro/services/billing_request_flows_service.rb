@@ -29,6 +29,29 @@ module GoCardlessPro
         Resources::BillingRequestFlow.new(unenvelope_body(response.body), response)
       end
 
+      # Returns the flow having generated a fresh session token which can be used to
+      # power
+      # integrations that manipulate the flow.
+      # Example URL: /billing_request_flows/:identity/actions/initialise
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def initialise(identity, options = {})
+        path = sub_url('/billing_request_flows/:identity/actions/initialise', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        response = make_request(:post, path, options)
+
+        return if response.body.nil?
+
+        Resources::BillingRequestFlow.new(unenvelope_body(response.body), response)
+      end
+
       private
 
       # Unenvelope the response of the body using the service's `envelope_key`

@@ -63,8 +63,6 @@ module GoCardlessPro
               raise IdempotencyConflict, e.error
             when :fetch
               return get(e.conflicting_resource_id)
-            else
-              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
             end
           end
 
@@ -79,7 +77,7 @@ module GoCardlessPro
       # Fetches a billing request
       # Example URL: /billing_requests/:identity
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/billing_requests/:identity', 'identity' => identity)
@@ -105,7 +103,7 @@ module GoCardlessPro
       # successful.
       # Example URL: /billing_requests/:identity/actions/collect_customer_details
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def collect_customer_details(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/collect_customer_details', 'identity' => identity)
@@ -128,8 +126,6 @@ module GoCardlessPro
               raise IdempotencyConflict, e.error
             when :fetch
               return get(e.conflicting_resource_id)
-            else
-              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
             end
           end
 
@@ -142,18 +138,18 @@ module GoCardlessPro
       end
 
       # If the billing request has a pending
-      # <code>collect_bank_account_details</code> action, this endpoint can be
+      # <code>collect_bank_account</code> action, this endpoint can be
       # used to collect the details in order to complete it.
       #
       # The endpoint takes the same payload as Customer Bank Accounts, but check
       # the bank account is valid for the billing request scheme before creating
       # and attaching it.
-      # Example URL: /billing_requests/:identity/actions/collect_bank_account_details
+      # Example URL: /billing_requests/:identity/actions/collect_bank_account
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
-      def collect_bank_account_details(identity, options = {})
-        path = sub_url('/billing_requests/:identity/actions/collect_bank_account_details', 'identity' => identity)
+      def collect_bank_account(identity, options = {})
+        path = sub_url('/billing_requests/:identity/actions/collect_bank_account', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -173,8 +169,6 @@ module GoCardlessPro
               raise IdempotencyConflict, e.error
             when :fetch
               return get(e.conflicting_resource_id)
-            else
-              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
             end
           end
 
@@ -190,7 +184,7 @@ module GoCardlessPro
       # it to fulfil, executing the payment.
       # Example URL: /billing_requests/:identity/actions/fulfil
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def fulfil(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/fulfil', 'identity' => identity)
@@ -213,8 +207,45 @@ module GoCardlessPro
               raise IdempotencyConflict, e.error
             when :fetch
               return get(e.conflicting_resource_id)
-            else
-              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::BillingRequest.new(unenvelope_body(response.body), response)
+      end
+
+      # This is needed when you have mandate_request. As a scheme compliance rule we
+      # are required to
+      # allow the payer to crosscheck the details entered by them and confirm it.
+      # Example URL: /billing_requests/:identity/actions/confirm_payer_details
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def confirm_payer_details(identity, options = {})
+        path = sub_url('/billing_requests/:identity/actions/confirm_payer_details', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
             end
           end
 
@@ -230,7 +261,7 @@ module GoCardlessPro
       # to expire.
       # Example URL: /billing_requests/:identity/actions/cancel
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/cancel', 'identity' => identity)
@@ -253,8 +284,6 @@ module GoCardlessPro
               raise IdempotencyConflict, e.error
             when :fetch
               return get(e.conflicting_resource_id)
-            else
-              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
             end
           end
 
@@ -271,7 +300,7 @@ module GoCardlessPro
       # Currently, the customer can only be notified by email.
       # Example URL: /billing_requests/:identity/actions/notify
       #
-      # @param identity       # Unique identifier, beginning with "PY".
+      # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def notify(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/notify', 'identity' => identity)
@@ -294,8 +323,6 @@ module GoCardlessPro
               raise IdempotencyConflict, e.error
             when :fetch
               return get(e.conflicting_resource_id)
-            else
-              raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
             end
           end
 

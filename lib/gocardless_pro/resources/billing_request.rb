@@ -12,10 +12,17 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a billing_request resource returned from the API
 
-    # Billing Requests
+    # Billing Requests help create resources that require input or action from a
+    # customer. An example of required input might be additional customer
+    # billing
+    # details, while an action would be asking a customer to authorise a payment
+    # using their mobile banking app.
+    #
+    # See [Billing Requests:
+    # Overview](https://developer.gocardless.com/getting-started/billing-requests/overview/)
+    # for how-to's, explanations and tutorials.
     class BillingRequest
       attr_reader :actions
-      attr_reader :auto_fulfil
       attr_reader :created_at
       attr_reader :id
       attr_reader :mandate_request
@@ -30,7 +37,6 @@ module GoCardlessPro
         @object = object
 
         @actions = object['actions']
-        @auto_fulfil = object['auto_fulfil']
         @created_at = object['created_at']
         @id = object['id']
         @links = object['links']
@@ -61,6 +67,14 @@ module GoCardlessPro
           @links = links || {}
         end
 
+        def bank_authorisation
+          @links['bank_authorisation']
+        end
+
+        def creditor
+          @links['creditor']
+        end
+
         def customer
           @links['customer']
         end
@@ -73,12 +87,20 @@ module GoCardlessPro
           @links['customer_billing_detail']
         end
 
-        def mandate_bank_authorisation
-          @links['mandate_bank_authorisation']
+        def mandate_request
+          @links['mandate_request']
         end
 
-        def payment_bank_authorisation
-          @links['payment_bank_authorisation']
+        def mandate_request_mandate
+          @links['mandate_request_mandate']
+        end
+
+        def payment_request
+          @links['payment_request']
+        end
+
+        def payment_request_payment
+          @links['payment_request_payment']
         end
       end
     end

@@ -24,13 +24,13 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
               'bank_authorisations' => {
 
                 'authorisation_type' => 'authorisation_type-input',
+                'authorised_at' => 'authorised_at-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
                 'last_visited_at' => 'last_visited_at-input',
                 'links' => 'links-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'short_url' => 'short_url-input',
                 'url' => 'url-input',
               },
             }.to_json,
@@ -58,13 +58,13 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
             'bank_authorisations' => {
 
               'authorisation_type' => 'authorisation_type-input',
+              'authorised_at' => 'authorised_at-input',
               'created_at' => 'created_at-input',
               'expires_at' => 'expires_at-input',
               'id' => 'id-input',
               'last_visited_at' => 'last_visited_at-input',
               'links' => 'links-input',
               'redirect_uri' => 'redirect_uri-input',
-              'short_url' => 'short_url-input',
               'url' => 'url-input',
             },
           }.to_json,
@@ -162,13 +162,13 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
         {
 
           'authorisation_type' => 'authorisation_type-input',
+          'authorised_at' => 'authorised_at-input',
           'created_at' => 'created_at-input',
           'expires_at' => 'expires_at-input',
           'id' => 'id-input',
           'last_visited_at' => 'last_visited_at-input',
           'links' => 'links-input',
           'redirect_uri' => 'redirect_uri-input',
-          'short_url' => 'short_url-input',
           'url' => 'url-input',
         }
       end
@@ -180,13 +180,13 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
               'bank_authorisations' => {
 
                 'authorisation_type' => 'authorisation_type-input',
+                'authorised_at' => 'authorised_at-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
                 'last_visited_at' => 'last_visited_at-input',
                 'links' => 'links-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'short_url' => 'short_url-input',
                 'url' => 'url-input',
               },
             }
@@ -198,13 +198,13 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
                 {
 
                   'authorisation_type' => 'authorisation_type-input',
+                  'authorised_at' => 'authorised_at-input',
                   'created_at' => 'created_at-input',
                   'expires_at' => 'expires_at-input',
                   'id' => 'id-input',
                   'last_visited_at' => 'last_visited_at-input',
                   'links' => 'links-input',
                   'redirect_uri' => 'redirect_uri-input',
-                  'short_url' => 'short_url-input',
                   'url' => 'url-input',
                 },
 
@@ -272,13 +272,13 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
         {
 
           'authorisation_type' => 'authorisation_type-input',
+          'authorised_at' => 'authorised_at-input',
           'created_at' => 'created_at-input',
           'expires_at' => 'expires_at-input',
           'id' => 'id-input',
           'last_visited_at' => 'last_visited_at-input',
           'links' => 'links-input',
           'redirect_uri' => 'redirect_uri-input',
-          'short_url' => 'short_url-input',
           'url' => 'url-input',
         }
       end
@@ -313,13 +313,13 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
               'bank_authorisations' => {
 
                 'authorisation_type' => 'authorisation_type-input',
+                'authorised_at' => 'authorised_at-input',
                 'created_at' => 'created_at-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
                 'last_visited_at' => 'last_visited_at-input',
                 'links' => 'links-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'short_url' => 'short_url-input',
                 'url' => 'url-input',
               },
             }.to_json,
@@ -346,19 +346,6 @@ describe GoCardlessPro::Services::BankAuthorisationsService do
         it 'raises an IdempotencyConflict error' do
           expect { post_create_response }.
             to raise_error(GoCardlessPro::IdempotencyConflict)
-        end
-      end
-
-      context 'with on_idempotency_conflict: :unknown' do
-        let(:client) do
-          GoCardlessPro::Client.new(
-            access_token: 'SECRET_TOKEN',
-            on_idempotency_conflict: :unknown
-          )
-        end
-
-        it 'raises an ArgumentError' do
-          expect { post_create_response }.to raise_error(ArgumentError)
         end
       end
     end

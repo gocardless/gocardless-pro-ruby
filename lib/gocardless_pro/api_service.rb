@@ -34,6 +34,10 @@ module GoCardlessPro
       @headers = options[:default_headers] || {}
       @headers['Authorization'] = "Bearer #{token}"
       @on_idempotency_conflict = options[:on_idempotency_conflict] || :fetch
+
+      unless %i[fetch raise].include?(@on_idempotency_conflict)
+        raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
+      end
     end
 
     # Make a request to the API
