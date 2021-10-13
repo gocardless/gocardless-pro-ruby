@@ -15,6 +15,7 @@ module GoCardlessPro
     # Institutions that are supported when creating [Bank
     # Authorisations](#billing-requests-bank-authorisations).
     class Institution
+      attr_reader :country_code
       attr_reader :icon_url
       attr_reader :id
       attr_reader :logo_url
@@ -25,6 +26,7 @@ module GoCardlessPro
       def initialize(object, response = nil)
         @object = object
 
+        @country_code = object['country_code']
         @icon_url = object['icon_url']
         @id = object['id']
         @logo_url = object['logo_url']
