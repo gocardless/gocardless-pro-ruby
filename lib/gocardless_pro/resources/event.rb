@@ -60,6 +60,18 @@ module GoCardlessPro
           @links = links || {}
         end
 
+        def bank_authorisation
+          @links['bank_authorisation']
+        end
+
+        def billing_request
+          @links['billing_request']
+        end
+
+        def billing_request_flow
+          @links['billing_request_flow']
+        end
+
         def creditor
           @links['creditor']
         end
@@ -78,6 +90,10 @@ module GoCardlessPro
 
         def mandate
           @links['mandate']
+        end
+
+        def mandate_request_mandate
+          @links['mandate_request_mandate']
         end
 
         def new_customer_bank_account
@@ -102,6 +118,10 @@ module GoCardlessPro
 
         def payment
           @links['payment']
+        end
+
+        def payment_request_payment
+          @links['payment_request_payment']
         end
 
         def payout
