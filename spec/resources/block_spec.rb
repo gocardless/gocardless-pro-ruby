@@ -504,7 +504,7 @@ describe GoCardlessPro::Resources::Block do
       stub_url = '/block_by_ref'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
         body: {
-          'blocks' => {
+          'blocks' =>  [{
 
             'active' => 'active-input',
             'block_type' => 'block_type-input',
@@ -514,14 +514,14 @@ describe GoCardlessPro::Resources::Block do
             'reason_type' => 'reason_type-input',
             'resource_reference' => 'resource_reference-input',
             'updated_at' => 'updated_at-input',
-          },
+          }],
         }.to_json,
         headers: response_headers
       )
     end
 
     it 'wraps the response and calls the right endpoint' do
-      expect(post_response).to be_a(GoCardlessPro::Resources::Block)
+      expect(post_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Block)
 
       expect(stub).to have_been_requested
     end

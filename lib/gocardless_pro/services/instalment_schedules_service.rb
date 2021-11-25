@@ -129,7 +129,7 @@ module GoCardlessPro
         )
       end
 
-      # Get a lazily enumerated list of all the items returned. This is simmilar to the `list` method but will paginate for you automatically.
+      # Get a lazily enumerated list of all the items returned. This is similar to the `list` method but will paginate for you automatically.
       #
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
       # Otherwise they will be the body of the request.

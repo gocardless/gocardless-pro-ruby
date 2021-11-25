@@ -80,7 +80,7 @@ module GoCardlessPro
         )
       end
 
-      # Get a lazily enumerated list of all the items returned. This is simmilar to the `list` method but will paginate for you automatically.
+      # Get a lazily enumerated list of all the items returned. This is similar to the `list` method but will paginate for you automatically.
       #
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
       # Otherwise they will be the body of the request.
@@ -198,9 +198,11 @@ module GoCardlessPro
           raise e
         end
 
-        return if response.body.nil?
-
-        Resources::Block.new(unenvelope_body(response.body), response)
+        ListResponse.new(
+          response: response,
+          unenveloped_body: unenvelope_body(response.body),
+          resource_class: Resources::Block
+        )
       end
 
       private
