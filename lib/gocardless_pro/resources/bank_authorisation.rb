@@ -75,10 +75,6 @@ module GoCardlessPro
         def institution
           @links['institution']
         end
-
-        def payment_request
-          @links['payment_request']
-        end
       end
     end
   end

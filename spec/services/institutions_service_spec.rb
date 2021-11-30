@@ -17,6 +17,7 @@ describe GoCardlessPro::Services::InstitutionsService do
         {
           'institutions' => [{
 
+            'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
@@ -40,6 +41,8 @@ describe GoCardlessPro::Services::InstitutionsService do
 
       it 'wraps each item in the resource class' do
         expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Institution)
+
+        expect(get_list_response.records.first.country_code).to eq('country_code-input')
 
         expect(get_list_response.records.first.icon_url).to eq('icon_url-input')
 
@@ -88,6 +91,7 @@ describe GoCardlessPro::Services::InstitutionsService do
         body: {
           'institutions' => [{
 
+            'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
@@ -107,6 +111,7 @@ describe GoCardlessPro::Services::InstitutionsService do
         body: {
           'institutions' => [{
 
+            'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
@@ -135,6 +140,7 @@ describe GoCardlessPro::Services::InstitutionsService do
           body: {
             'institutions' => [{
 
+              'country_code' => 'country_code-input',
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
               'logo_url' => 'logo_url-input',
@@ -154,6 +160,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                                  body: {
                                    'institutions' => [{
 
+                                     'country_code' => 'country_code-input',
                                      'icon_url' => 'icon_url-input',
                                      'id' => 'id-input',
                                      'logo_url' => 'logo_url-input',
@@ -178,6 +185,7 @@ describe GoCardlessPro::Services::InstitutionsService do
           body: {
             'institutions' => [{
 
+              'country_code' => 'country_code-input',
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
               'logo_url' => 'logo_url-input',
@@ -200,6 +208,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                                  body: {
                                    'institutions' => [{
 
+                                     'country_code' => 'country_code-input',
                                      'icon_url' => 'icon_url-input',
                                      'id' => 'id-input',
                                      'logo_url' => 'logo_url-input',

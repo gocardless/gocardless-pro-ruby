@@ -28,7 +28,7 @@ module GoCardlessPro
         )
       end
 
-      # Get a lazily enumerated list of all the items returned. This is simmilar to the `list` method but will paginate for you automatically.
+      # Get a lazily enumerated list of all the items returned. This is similar to the `list` method but will paginate for you automatically.
       #
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
       # Otherwise they will be the body of the request.
@@ -93,12 +93,12 @@ module GoCardlessPro
 
       # Updates a Billing Request Template, which will affect all future Billing
       # Requests created by this template.
-      # Example URL: /billing_requests/:identity
+      # Example URL: /billing_request_templates/:identity
       #
       # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
-        path = sub_url('/billing_requests/:identity', 'identity' => identity)
+        path = sub_url('/billing_request_templates/:identity', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}

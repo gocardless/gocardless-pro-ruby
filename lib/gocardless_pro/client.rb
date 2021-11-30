@@ -28,6 +28,11 @@ module GoCardlessPro
       @billing_request_templates ||= Services::BillingRequestTemplatesService.new(@api_service)
     end
 
+    # Access to the service for block to make API calls
+    def blocks
+      @blocks ||= Services::BlocksService.new(@api_service)
+    end
+
     # Access to the service for creditor to make API calls
     def creditors
       @creditors ||= Services::CreditorsService.new(@api_service)
@@ -193,7 +198,7 @@ module GoCardlessPro
           'User-Agent' => user_agent.to_s,
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.28.0',
+          'GoCardless-Client-Version' => '2.29.0',
         },
       }
     end

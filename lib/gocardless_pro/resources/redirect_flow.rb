@@ -49,6 +49,7 @@ module GoCardlessPro
       attr_reader :created_at
       attr_reader :description
       attr_reader :id
+      attr_reader :mandate_reference
       attr_reader :metadata
       attr_reader :redirect_url
       attr_reader :scheme
@@ -65,6 +66,7 @@ module GoCardlessPro
         @description = object['description']
         @id = object['id']
         @links = object['links']
+        @mandate_reference = object['mandate_reference']
         @metadata = object['metadata']
         @redirect_url = object['redirect_url']
         @scheme = object['scheme']

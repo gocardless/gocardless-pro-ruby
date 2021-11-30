@@ -8,18 +8,13 @@ require_relative './base_service'
 
 module GoCardlessPro
   module Services
-    # Service for making requests to the Payment endpoints
-    class PaymentsService < BaseService
-      # <a name="mandate_is_inactive"></a>Creates a new payment object.
-      #
-      # This fails with a `mandate_is_inactive` error if the linked
-      # [mandate](#core-endpoints-mandates) is cancelled or has failed. Payments can
-      # be created against mandates with status of: `pending_customer_approval`,
-      # `pending_submission`, `submitted`, and `active`.
-      # Example URL: /payments
+    # Service for making requests to the Block endpoints
+    class BlocksService < BaseService
+      # Creates a new Block of a given type. By default it will be active.
+      # Example URL: /blocks
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
-        path = '/payments'
+        path = '/blocks'
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -47,15 +42,32 @@ module GoCardlessPro
 
         return if response.body.nil?
 
-        Resources::Payment.new(unenvelope_body(response.body), response)
+        Resources::Block.new(unenvelope_body(response.body), response)
+      end
+
+      # Retrieves the details of an existing block.
+      # Example URL: /blocks/:identity
+      #
+      # @param identity       # Unique identifier, beginning with "BLC".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def get(identity, options = {})
+        path = sub_url('/blocks/:identity', 'identity' => identity)
+
+        options[:retry_failures] = true
+
+        response = make_request(:get, path, options)
+
+        return if response.body.nil?
+
+        Resources::Block.new(unenvelope_body(response.body), response)
       end
 
       # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # payments.
-      # Example URL: /payments
+      # blocks.
+      # Example URL: /blocks
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
-        path = '/payments'
+        path = '/blocks'
 
         options[:retry_failures] = true
 
@@ -64,7 +76,7 @@ module GoCardlessPro
         ListResponse.new(
           response: response,
           unenveloped_body: unenvelope_body(response.body),
-          resource_class: Resources::Payment
+          resource_class: Resources::Block
         )
       end
 
@@ -79,56 +91,13 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Retrieves the details of a single existing payment.
-      # Example URL: /payments/:identity
+      # Disables a block so that it no longer will prevent mandate creation.
+      # Example URL: /blocks/:identity/actions/disable
       #
-      # @param identity       # Unique identifier, beginning with "PM".
+      # @param identity       # Unique identifier, beginning with "BLC".
       # @param options [Hash] parameters as a hash, under a params key.
-      def get(identity, options = {})
-        path = sub_url('/payments/:identity', 'identity' => identity)
-
-        options[:retry_failures] = true
-
-        response = make_request(:get, path, options)
-
-        return if response.body.nil?
-
-        Resources::Payment.new(unenvelope_body(response.body), response)
-      end
-
-      # Updates a payment object. This accepts only the metadata parameter.
-      # Example URL: /payments/:identity
-      #
-      # @param identity       # Unique identifier, beginning with "PM".
-      # @param options [Hash] parameters as a hash, under a params key.
-      def update(identity, options = {})
-        path = sub_url('/payments/:identity', 'identity' => identity)
-
-        params = options.delete(:params) || {}
-        options[:params] = {}
-        options[:params][envelope_key] = params
-
-        options[:retry_failures] = true
-
-        response = make_request(:put, path, options)
-
-        return if response.body.nil?
-
-        Resources::Payment.new(unenvelope_body(response.body), response)
-      end
-
-      # Cancels the payment if it has not already been submitted to the banks. Any
-      # metadata supplied to this endpoint will be stored on the payment cancellation
-      # event it causes.
-      #
-      # This will fail with a `cancellation_failed` error unless the payment's status
-      # is `pending_submission`.
-      # Example URL: /payments/:identity/actions/cancel
-      #
-      # @param identity       # Unique identifier, beginning with "PM".
-      # @param options [Hash] parameters as a hash, under a params key.
-      def cancel(identity, options = {})
-        path = sub_url('/payments/:identity/actions/cancel', 'identity' => identity)
+      def disable(identity, options = {})
+        path = sub_url('/blocks/:identity/actions/disable', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -156,25 +125,16 @@ module GoCardlessPro
 
         return if response.body.nil?
 
-        Resources::Payment.new(unenvelope_body(response.body), response)
+        Resources::Block.new(unenvelope_body(response.body), response)
       end
 
-      # <a name="retry_failed"></a>Retries a failed payment if the underlying mandate
-      # is active. You will receive a `resubmission_requested` webhook, but after that
-      # retrying the payment follows the same process as its initial creation, so you
-      # will receive a `submitted` webhook, followed by a `confirmed` or `failed`
-      # event. Any metadata supplied to this endpoint will be stored against the
-      # payment submission event it causes.
+      # Enables a previously disabled block so that it will prevent mandate creation
+      # Example URL: /blocks/:identity/actions/enable
       #
-      # This will return a `retry_failed` error if the payment has not failed.
-      #
-      # Payments can be retried up to 3 times.
-      # Example URL: /payments/:identity/actions/retry
-      #
-      # @param identity       # Unique identifier, beginning with "PM".
+      # @param identity       # Unique identifier, beginning with "BLC".
       # @param options [Hash] parameters as a hash, under a params key.
-      def retry(identity, options = {})
-        path = sub_url('/payments/:identity/actions/retry', 'identity' => identity)
+      def enable(identity, options = {})
+        path = sub_url('/blocks/:identity/actions/enable', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -202,7 +162,47 @@ module GoCardlessPro
 
         return if response.body.nil?
 
-        Resources::Payment.new(unenvelope_body(response.body), response)
+        Resources::Block.new(unenvelope_body(response.body), response)
+      end
+
+      # Creates new blocks for a given reference. By default blocks will be active.
+      # Returns 201 if at least one block was created. Returns 200 if there were no
+      # new
+      # blocks created.
+      # Example URL: /block_by_ref
+      # @param options [Hash] parameters as a hash, under a params key.
+      def block_by_ref(options = {})
+        path = '/block_by_ref'
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            end
+          end
+
+          raise e
+        end
+
+        ListResponse.new(
+          response: response,
+          unenveloped_body: unenvelope_body(response.body),
+          resource_class: Resources::Block
+        )
       end
 
       private
@@ -216,7 +216,7 @@ module GoCardlessPro
 
       # return the key which API responses will envelope data under
       def envelope_key
-        'payments'
+        'blocks'
       end
     end
   end
