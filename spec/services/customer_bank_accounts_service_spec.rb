@@ -709,6 +709,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
       # /customer_bank_accounts/%v/actions/disable
       stub_url = '/customer_bank_accounts/:identity/actions/disable'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'customer_bank_accounts' => {
 
@@ -725,6 +726,7 @@ describe GoCardlessPro::Services::CustomerBankAccountsService do
             'metadata' => 'metadata-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end

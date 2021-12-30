@@ -535,6 +535,7 @@ describe GoCardlessPro::Resources::Customer do
       # /customers/%v
       stub_url = '/customers/:identity'.gsub(':identity', resource_id)
       stub_request(:delete, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'customers' => {
 
@@ -558,6 +559,7 @@ describe GoCardlessPro::Resources::Customer do
             'swedish_identity_number' => 'swedish_identity_number-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end

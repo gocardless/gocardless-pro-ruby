@@ -18,12 +18,14 @@ describe GoCardlessPro::Resources::ScenarioSimulator do
       # /scenario_simulators/%v/actions/run
       stub_url = '/scenario_simulators/:identity/actions/run'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'scenario_simulators' => {
 
             'id' => 'id-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end

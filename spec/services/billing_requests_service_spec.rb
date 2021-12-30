@@ -615,6 +615,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
       # /billing_requests/%v/actions/collect_customer_details
       stub_url = '/billing_requests/:identity/actions/collect_customer_details'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'billing_requests' => {
 
@@ -629,6 +630,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'status' => 'status-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -694,6 +696,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
       # /billing_requests/%v/actions/collect_bank_account
       stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'billing_requests' => {
 
@@ -708,6 +711,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'status' => 'status-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -773,6 +777,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
       # /billing_requests/%v/actions/fulfil
       stub_url = '/billing_requests/:identity/actions/fulfil'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'billing_requests' => {
 
@@ -787,6 +792,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'status' => 'status-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -852,6 +858,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
       # /billing_requests/%v/actions/confirm_payer_details
       stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'billing_requests' => {
 
@@ -866,6 +873,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'status' => 'status-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -931,6 +939,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
       # /billing_requests/%v/actions/cancel
       stub_url = '/billing_requests/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'billing_requests' => {
 
@@ -945,6 +954,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'status' => 'status-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -1010,6 +1020,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
       # /billing_requests/%v/actions/notify
       stub_url = '/billing_requests/:identity/actions/notify'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'billing_requests' => {
 
@@ -1024,6 +1035,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'status' => 'status-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end

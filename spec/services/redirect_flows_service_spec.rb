@@ -374,6 +374,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
       # /redirect_flows/%v/actions/complete
       stub_url = '/redirect_flows/:identity/actions/complete'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'redirect_flows' => {
 
@@ -390,6 +391,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
             'success_redirect_url' => 'success_redirect_url-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end

@@ -468,6 +468,7 @@ describe GoCardlessPro::Resources::Payment do
       # /payments/%v/actions/cancel
       stub_url = '/payments/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'payments' => {
 
@@ -486,6 +487,7 @@ describe GoCardlessPro::Resources::Payment do
             'status' => 'status-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -544,6 +546,7 @@ describe GoCardlessPro::Resources::Payment do
       # /payments/%v/actions/retry
       stub_url = '/payments/:identity/actions/retry'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'payments' => {
 
@@ -562,6 +565,7 @@ describe GoCardlessPro::Resources::Payment do
             'status' => 'status-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end

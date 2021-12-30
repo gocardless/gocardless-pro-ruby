@@ -416,6 +416,7 @@ describe GoCardlessPro::Resources::Mandate do
       # /mandates/%v/actions/cancel
       stub_url = '/mandates/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'mandates' => {
 
@@ -430,6 +431,7 @@ describe GoCardlessPro::Resources::Mandate do
             'status' => 'status-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -484,6 +486,7 @@ describe GoCardlessPro::Resources::Mandate do
       # /mandates/%v/actions/reinstate
       stub_url = '/mandates/:identity/actions/reinstate'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'mandates' => {
 
@@ -498,6 +501,7 @@ describe GoCardlessPro::Resources::Mandate do
             'status' => 'status-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end

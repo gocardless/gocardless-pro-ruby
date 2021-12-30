@@ -862,6 +862,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
       # /subscriptions/%v/actions/pause
       stub_url = '/subscriptions/:identity/actions/pause'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'subscriptions' => {
 
@@ -887,6 +888,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
             'upcoming_payments' => 'upcoming_payments-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -963,6 +965,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
       # /subscriptions/%v/actions/resume
       stub_url = '/subscriptions/:identity/actions/resume'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'subscriptions' => {
 
@@ -988,6 +991,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
             'upcoming_payments' => 'upcoming_payments-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -1064,6 +1068,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
       # /subscriptions/%v/actions/cancel
       stub_url = '/subscriptions/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'subscriptions' => {
 
@@ -1089,6 +1094,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
             'upcoming_payments' => 'upcoming_payments-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end

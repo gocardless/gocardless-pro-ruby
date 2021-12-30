@@ -183,6 +183,7 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
       # /billing_request_flows/%v/actions/initialise
       stub_url = '/billing_request_flows/:identity/actions/initialise'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'billing_request_flows' => {
 
@@ -199,6 +200,7 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
             'session_token' => 'session_token-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end

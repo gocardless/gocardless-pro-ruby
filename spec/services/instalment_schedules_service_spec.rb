@@ -871,6 +871,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
       # /instalment_schedules/%v/actions/cancel
       stub_url = '/instalment_schedules/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'instalment_schedules' => {
 
@@ -885,6 +886,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
             'total_amount' => 'total_amount-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
