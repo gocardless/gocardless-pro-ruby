@@ -34,7 +34,7 @@ module GoCardlessPro
       # integrations that manipulate the flow.
       # Example URL: /billing_request_flows/:identity/actions/initialise
       #
-      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param identity       # Unique identifier, beginning with "BRF".
       # @param options [Hash] parameters as a hash, under a params key.
       def initialise(identity, options = {})
         path = sub_url('/billing_request_flows/:identity/actions/initialise', 'identity' => identity)
