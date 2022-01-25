@@ -12,17 +12,27 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a block resource returned from the API
 
-    # A block object is a simple rule, when matched, pushes a newly created
-    # mandate to a blocked state. These details can be an exact match, like a
-    # bank account
-    # or an email, or a more generic match such as an email domain. New block
-    # types may be added
-    # over time. Payments and subscriptions can't be created against mandates in
-    # blocked state.
+    # Blocks are created to prevent certain customer details from being used
+    # when creating
+    # mandates.
+    #
+    # The details used to create blocks can be exact matches, like a bank
+    # account or an email,
+    # or a more generic match such as an email domain. New block types may be
+    # added over time.
+    #
+    # A block object is in essence a simple rule that is used to match against
+    # details in a
+    # newly created mandate. If there is a successful match then the mandate is
+    # transitioned
+    # to a "blocked" state.
+    #
+    # Payments and subscriptions cannot be created against a mandate in blocked
+    # state.
+    #
+    # A mandate can never be transitioned out of the blocked state.
     #
     # <p class="notice">
-    #   Client libraries have not yet been updated for this API but will be
-    # released soon.
     #   This API is currently only available for approved integrators - please
     # <a href="mailto:help@gocardless.com">get in touch</a> if you would like to
     # use this API.
