@@ -22,6 +22,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
+            'roles' => 'roles-input',
           }],
           meta: {
             cursors: {
@@ -51,6 +52,8 @@ describe GoCardlessPro::Services::InstitutionsService do
         expect(get_list_response.records.first.logo_url).to eq('logo_url-input')
 
         expect(get_list_response.records.first.name).to eq('name-input')
+
+        expect(get_list_response.records.first.roles).to eq('roles-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -96,6 +99,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
+            'roles' => 'roles-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -116,6 +120,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
+            'roles' => 'roles-input',
           }],
           meta: {
             limit: 2,
@@ -145,6 +150,7 @@ describe GoCardlessPro::Services::InstitutionsService do
               'id' => 'id-input',
               'logo_url' => 'logo_url-input',
               'name' => 'name-input',
+              'roles' => 'roles-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -165,6 +171,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                                      'id' => 'id-input',
                                      'logo_url' => 'logo_url-input',
                                      'name' => 'name-input',
+                                     'roles' => 'roles-input',
                                    }],
                                    meta: {
                                      limit: 2,
@@ -190,6 +197,7 @@ describe GoCardlessPro::Services::InstitutionsService do
               'id' => 'id-input',
               'logo_url' => 'logo_url-input',
               'name' => 'name-input',
+              'roles' => 'roles-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -213,6 +221,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                                      'id' => 'id-input',
                                      'logo_url' => 'logo_url-input',
                                      'name' => 'name-input',
+                                     'roles' => 'roles-input',
                                    }],
                                    meta: {
                                      limit: 2,
