@@ -11,7 +11,7 @@ module GoCardlessPro
     # Service for making requests to the BillingRequest endpoints
     class BillingRequestsService < BaseService
       # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # billing_requests.
+      # billing requests.
       # Example URL: /billing_requests
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -218,7 +218,7 @@ module GoCardlessPro
         Resources::BillingRequest.new(unenvelope_body(response.body), response)
       end
 
-      # This is needed when you have mandate_request. As a scheme compliance rule we
+      # This is needed when you have a mandate request. As a scheme compliance rule we
       # are required to
       # allow the payer to crosscheck the details entered by them and confirm it.
       # Example URL: /billing_requests/:identity/actions/confirm_payer_details

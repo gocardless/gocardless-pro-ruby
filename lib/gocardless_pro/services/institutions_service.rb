@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Institution endpoints
     class InstitutionsService < BaseService
-      # Returns a list of all supported institutions.
+      # Returns a list of supported institutions.
       # Example URL: /institutions
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
