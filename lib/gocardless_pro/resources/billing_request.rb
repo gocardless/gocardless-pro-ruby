@@ -24,6 +24,7 @@ module GoCardlessPro
     class BillingRequest
       attr_reader :actions
       attr_reader :created_at
+      attr_reader :fallback_enabled
       attr_reader :id
       attr_reader :mandate_request
       attr_reader :metadata
@@ -38,6 +39,7 @@ module GoCardlessPro
 
         @actions = object['actions']
         @created_at = object['created_at']
+        @fallback_enabled = object['fallback_enabled']
         @id = object['id']
         @links = object['links']
         @mandate_request = object['mandate_request']

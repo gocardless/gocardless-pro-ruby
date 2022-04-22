@@ -334,6 +334,44 @@ module GoCardlessPro
         Resources::BillingRequest.new(unenvelope_body(response.body), response)
       end
 
+      # Triggers a fallback from the open-banking flow to direct debit. Note, the
+      # billing request must have fallback enabled.
+      # Example URL: /billing_requests/:identity/actions/fallback
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def fallback(identity, options = {})
+        path = sub_url('/billing_requests/:identity/actions/fallback', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::BillingRequest.new(unenvelope_body(response.body), response)
+      end
+
       private
 
       # Unenvelope the response of the body using the service's `envelope_key`

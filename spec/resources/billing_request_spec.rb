@@ -20,6 +20,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
               'actions' => 'actions-input',
               'created_at' => 'created_at-input',
+              'fallback_enabled' => 'fallback_enabled-input',
               'id' => 'id-input',
               'links' => 'links-input',
               'mandate_request' => 'mandate_request-input',
@@ -45,6 +46,8 @@ describe GoCardlessPro::Resources::BillingRequest do
         expect(get_list_response.records.first.actions).to eq('actions-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
+
+        expect(get_list_response.records.first.fallback_enabled).to eq('fallback_enabled-input')
 
         expect(get_list_response.records.first.id).to eq('id-input')
 
@@ -76,6 +79,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
@@ -100,6 +104,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
@@ -132,6 +137,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
           'actions' => 'actions-input',
           'created_at' => 'created_at-input',
+          'fallback_enabled' => 'fallback_enabled-input',
           'id' => 'id-input',
           'links' => 'links-input',
           'mandate_request' => 'mandate_request-input',
@@ -150,6 +156,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
@@ -168,6 +175,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                   'actions' => 'actions-input',
                   'created_at' => 'created_at-input',
+                  'fallback_enabled' => 'fallback_enabled-input',
                   'id' => 'id-input',
                   'links' => 'links-input',
                   'mandate_request' => 'mandate_request-input',
@@ -219,6 +227,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
           'actions' => 'actions-input',
           'created_at' => 'created_at-input',
+          'fallback_enabled' => 'fallback_enabled-input',
           'id' => 'id-input',
           'links' => 'links-input',
           'mandate_request' => 'mandate_request-input',
@@ -260,6 +269,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
@@ -297,6 +307,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
@@ -331,6 +342,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
               'actions' => 'actions-input',
               'created_at' => 'created_at-input',
+              'fallback_enabled' => 'fallback_enabled-input',
               'id' => 'id-input',
               'links' => 'links-input',
               'mandate_request' => 'mandate_request-input',
@@ -387,6 +399,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
@@ -427,6 +440,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
@@ -457,6 +471,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
@@ -497,6 +512,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
@@ -527,6 +543,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
@@ -567,6 +584,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
@@ -597,6 +615,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
@@ -637,6 +656,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
@@ -667,6 +687,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
@@ -707,6 +728,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
@@ -737,6 +759,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
@@ -777,6 +800,79 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
+  describe '#fallback' do
+    subject(:post_response) { client.billing_requests.fallback(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /billing_requests/%v/actions/fallback
+      stub_url = '/billing_requests/:identity/actions/fallback'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
+        body: {
+          'billing_requests' => {
+
+            'actions' => 'actions-input',
+            'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'mandate_request' => 'mandate_request-input',
+            'metadata' => 'metadata-input',
+            'payment_request' => 'payment_request-input',
+            'resources' => 'resources-input',
+            'status' => 'status-input',
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
+
+      expect(stub).to have_been_requested
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.billing_requests.fallback(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /billing_requests/%v/actions/fallback
+        stub_url = '/billing_requests/:identity/actions/fallback'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
+                'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
