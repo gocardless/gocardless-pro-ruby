@@ -371,6 +371,7 @@ describe GoCardlessPro::Resources::Block do
       # /blocks/%v/actions/disable
       stub_url = '/blocks/:identity/actions/disable'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'blocks' => {
 
@@ -384,6 +385,7 @@ describe GoCardlessPro::Resources::Block do
             'updated_at' => 'updated_at-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -437,6 +439,7 @@ describe GoCardlessPro::Resources::Block do
       # /blocks/%v/actions/enable
       stub_url = '/blocks/:identity/actions/enable'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'blocks' => {
 
@@ -450,6 +453,7 @@ describe GoCardlessPro::Resources::Block do
             'updated_at' => 'updated_at-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -503,8 +507,9 @@ describe GoCardlessPro::Resources::Block do
       # /block_by_ref
       stub_url = '/block_by_ref'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
-          'blocks' =>  [{
+          'blocks' => [{
 
             'active' => 'active-input',
             'block_type' => 'block_type-input',
@@ -515,7 +520,14 @@ describe GoCardlessPro::Resources::Block do
             'resource_reference' => 'resource_reference-input',
             'updated_at' => 'updated_at-input',
           }],
+          meta: {
+            cursors: {
+              before: nil,
+              after: 'ABC123',
+            },
+          },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -524,6 +536,11 @@ describe GoCardlessPro::Resources::Block do
       expect(post_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Block)
 
       expect(stub).to have_been_requested
+    end
+
+    it 'exposes the cursors for before and after' do
+      expect(post_response.before).to eq(nil)
+      expect(post_response.after).to eq('ABC123')
     end
 
     context 'when the request needs a body and custom header' do

@@ -13,7 +13,11 @@ module GoCardlessPro
     # Represents an instance of a institution resource returned from the API
 
     # Institutions that are supported when creating [Bank
-    # Authorisations](#billing-requests-bank-authorisations).
+    # Authorisations](#billing-requests-bank-authorisations) for a particular
+    # country or purpose.
+    #
+    # Not all institutions support both Payment Initiation (PIS) and Account
+    # Information (AIS) services.
     class Institution
       attr_reader :country_code
       attr_reader :icon_url

@@ -94,6 +94,10 @@ module GoCardlessPro
           @links = links || {}
         end
 
+        def billing_request
+          @links['billing_request']
+        end
+
         def creditor
           @links['creditor']
         end

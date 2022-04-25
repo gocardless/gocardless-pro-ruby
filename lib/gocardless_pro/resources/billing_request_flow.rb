@@ -19,12 +19,14 @@ module GoCardlessPro
       attr_reader :authorisation_url
       attr_reader :auto_fulfil
       attr_reader :created_at
+      attr_reader :exit_uri
       attr_reader :expires_at
       attr_reader :id
       attr_reader :lock_bank_account
       attr_reader :lock_customer_details
       attr_reader :redirect_uri
       attr_reader :session_token
+      attr_reader :show_redirect_buttons
 
       # Initialize a billing_request_flow resource instance
       # @param object [Hash] an object returned from the API
@@ -34,6 +36,7 @@ module GoCardlessPro
         @authorisation_url = object['authorisation_url']
         @auto_fulfil = object['auto_fulfil']
         @created_at = object['created_at']
+        @exit_uri = object['exit_uri']
         @expires_at = object['expires_at']
         @id = object['id']
         @links = object['links']
@@ -41,6 +44,7 @@ module GoCardlessPro
         @lock_customer_details = object['lock_customer_details']
         @redirect_uri = object['redirect_uri']
         @session_token = object['session_token']
+        @show_redirect_buttons = object['show_redirect_buttons']
         @response = response
       end
 

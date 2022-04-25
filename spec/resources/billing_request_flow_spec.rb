@@ -18,6 +18,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
           'authorisation_url' => 'authorisation_url-input',
           'auto_fulfil' => 'auto_fulfil-input',
           'created_at' => 'created_at-input',
+          'exit_uri' => 'exit_uri-input',
           'expires_at' => 'expires_at-input',
           'id' => 'id-input',
           'links' => 'links-input',
@@ -25,6 +26,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
           'lock_customer_details' => 'lock_customer_details-input',
           'redirect_uri' => 'redirect_uri-input',
           'session_token' => 'session_token-input',
+          'show_redirect_buttons' => 'show_redirect_buttons-input',
         }
       end
 
@@ -37,6 +39,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                 'authorisation_url' => 'authorisation_url-input',
                 'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
+                'exit_uri' => 'exit_uri-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
@@ -44,6 +47,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                 'lock_customer_details' => 'lock_customer_details-input',
                 'redirect_uri' => 'redirect_uri-input',
                 'session_token' => 'session_token-input',
+                'show_redirect_buttons' => 'show_redirect_buttons-input',
               },
             }
           ).
@@ -56,6 +60,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                   'authorisation_url' => 'authorisation_url-input',
                   'auto_fulfil' => 'auto_fulfil-input',
                   'created_at' => 'created_at-input',
+                  'exit_uri' => 'exit_uri-input',
                   'expires_at' => 'expires_at-input',
                   'id' => 'id-input',
                   'links' => 'links-input',
@@ -63,6 +68,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                   'lock_customer_details' => 'lock_customer_details-input',
                   'redirect_uri' => 'redirect_uri-input',
                   'session_token' => 'session_token-input',
+                  'show_redirect_buttons' => 'show_redirect_buttons-input',
                 },
 
             }.to_json,
@@ -108,6 +114,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
           'authorisation_url' => 'authorisation_url-input',
           'auto_fulfil' => 'auto_fulfil-input',
           'created_at' => 'created_at-input',
+          'exit_uri' => 'exit_uri-input',
           'expires_at' => 'expires_at-input',
           'id' => 'id-input',
           'links' => 'links-input',
@@ -115,6 +122,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
           'lock_customer_details' => 'lock_customer_details-input',
           'redirect_uri' => 'redirect_uri-input',
           'session_token' => 'session_token-input',
+          'show_redirect_buttons' => 'show_redirect_buttons-input',
         }
       end
 
@@ -156,12 +164,14 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
       # /billing_request_flows/%v/actions/initialise
       stub_url = '/billing_request_flows/:identity/actions/initialise'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'billing_request_flows' => {
 
             'authorisation_url' => 'authorisation_url-input',
             'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
+            'exit_uri' => 'exit_uri-input',
             'expires_at' => 'expires_at-input',
             'id' => 'id-input',
             'links' => 'links-input',
@@ -169,8 +179,10 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
             'lock_customer_details' => 'lock_customer_details-input',
             'redirect_uri' => 'redirect_uri-input',
             'session_token' => 'session_token-input',
+            'show_redirect_buttons' => 'show_redirect_buttons-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
@@ -202,6 +214,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                 'authorisation_url' => 'authorisation_url-input',
                 'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
+                'exit_uri' => 'exit_uri-input',
                 'expires_at' => 'expires_at-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
@@ -209,6 +222,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                 'lock_customer_details' => 'lock_customer_details-input',
                 'redirect_uri' => 'redirect_uri-input',
                 'session_token' => 'session_token-input',
+                'show_redirect_buttons' => 'show_redirect_buttons-input',
               },
             }.to_json,
             headers: response_headers

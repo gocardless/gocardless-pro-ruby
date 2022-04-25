@@ -465,6 +465,7 @@ describe GoCardlessPro::Services::WebhooksService do
       # /webhooks/%v/actions/retry
       stub_url = '/webhooks/:identity/actions/retry'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
         body: {
           'webhooks' => {
 
@@ -483,6 +484,7 @@ describe GoCardlessPro::Services::WebhooksService do
             'url' => 'url-input',
           },
         }.to_json,
+
         headers: response_headers
       )
     end
