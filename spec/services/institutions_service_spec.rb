@@ -17,6 +17,7 @@ describe GoCardlessPro::Services::InstitutionsService do
         {
           'institutions' => [{
 
+            'bank_redirect' => 'bank_redirect-input',
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
@@ -41,6 +42,8 @@ describe GoCardlessPro::Services::InstitutionsService do
 
       it 'wraps each item in the resource class' do
         expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Institution)
+
+        expect(get_list_response.records.first.bank_redirect).to eq('bank_redirect-input')
 
         expect(get_list_response.records.first.country_code).to eq('country_code-input')
 
@@ -91,6 +94,7 @@ describe GoCardlessPro::Services::InstitutionsService do
         body: {
           'institutions' => [{
 
+            'bank_redirect' => 'bank_redirect-input',
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
@@ -111,6 +115,7 @@ describe GoCardlessPro::Services::InstitutionsService do
         body: {
           'institutions' => [{
 
+            'bank_redirect' => 'bank_redirect-input',
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
@@ -140,6 +145,7 @@ describe GoCardlessPro::Services::InstitutionsService do
           body: {
             'institutions' => [{
 
+              'bank_redirect' => 'bank_redirect-input',
               'country_code' => 'country_code-input',
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
@@ -160,6 +166,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                                  body: {
                                    'institutions' => [{
 
+                                     'bank_redirect' => 'bank_redirect-input',
                                      'country_code' => 'country_code-input',
                                      'icon_url' => 'icon_url-input',
                                      'id' => 'id-input',
@@ -185,6 +192,7 @@ describe GoCardlessPro::Services::InstitutionsService do
           body: {
             'institutions' => [{
 
+              'bank_redirect' => 'bank_redirect-input',
               'country_code' => 'country_code-input',
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
@@ -208,6 +216,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                                  body: {
                                    'institutions' => [{
 
+                                     'bank_redirect' => 'bank_redirect-input',
                                      'country_code' => 'country_code-input',
                                      'icon_url' => 'icon_url-input',
                                      'id' => 'id-input',
