@@ -23,6 +23,7 @@ module GoCardlessPro
       attr_reader :expires_at
       attr_reader :id
       attr_reader :lock_bank_account
+      attr_reader :lock_currency
       attr_reader :lock_customer_details
       attr_reader :redirect_uri
       attr_reader :session_token
@@ -41,6 +42,7 @@ module GoCardlessPro
         @id = object['id']
         @links = object['links']
         @lock_bank_account = object['lock_bank_account']
+        @lock_currency = object['lock_currency']
         @lock_customer_details = object['lock_customer_details']
         @redirect_uri = object['redirect_uri']
         @session_token = object['session_token']
