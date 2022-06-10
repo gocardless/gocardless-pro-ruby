@@ -97,6 +97,10 @@ module GoCardlessPro
           @links['mandate_request_mandate']
         end
 
+        def organisation
+          @links['organisation']
+        end
+
         def payment_request
           @links['payment_request']
         end
