@@ -25,6 +25,8 @@ module GoCardlessPro
       attr_reader :lock_bank_account
       attr_reader :lock_currency
       attr_reader :lock_customer_details
+      attr_reader :prefilled_bank_account
+      attr_reader :prefilled_customer
       attr_reader :redirect_uri
       attr_reader :session_token
       attr_reader :show_redirect_buttons
@@ -44,6 +46,8 @@ module GoCardlessPro
         @lock_bank_account = object['lock_bank_account']
         @lock_currency = object['lock_currency']
         @lock_customer_details = object['lock_customer_details']
+        @prefilled_bank_account = object['prefilled_bank_account']
+        @prefilled_customer = object['prefilled_customer']
         @redirect_uri = object['redirect_uri']
         @session_token = object['session_token']
         @show_redirect_buttons = object['show_redirect_buttons']
