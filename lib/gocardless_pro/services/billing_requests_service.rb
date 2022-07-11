@@ -144,6 +144,12 @@ module GoCardlessPro
       # The endpoint takes the same payload as Customer Bank Accounts, but check
       # the bank account is valid for the billing request scheme before creating
       # and attaching it.
+      #
+      # _ACH scheme_ For compliance reasons, an extra validation step is done using
+      # a third-party provider to make sure the customer's bank account can accept
+      # Direct Debit. If a bank account is discovered to be closed or invalid, the
+      # customer is requested to adjust the account number/routing number and
+      # succeed in this check to continue with the flow.
       # Example URL: /billing_requests/:identity/actions/collect_bank_account
       #
       # @param identity       # Unique identifier, beginning with "BRQ".
@@ -188,6 +194,46 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def fulfil(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/fulfil', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::BillingRequest.new(unenvelope_body(response.body), response)
+      end
+
+      # This will allow for the updating of the currency and subsequently the scheme
+      # if needed for a billing request
+      # this will only be available for mandate only flows, it will not support
+      # payments requests or plans
+      # Example URL: /billing_requests/:identity/actions/choose_currency
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def choose_currency(identity, options = {})
+        path = sub_url('/billing_requests/:identity/actions/choose_currency', 'identity' => identity)
 
         params = options.delete(:params) || {}
         options[:params] = {}
