@@ -1,6 +1,6 @@
 module GoCardlessPro
   module Middlewares
-    class RaiseGoCardlessErrors < Faraday::Response::Middleware
+    class RaiseGoCardlessErrors < Faraday::Middleware
       API_ERROR_STATUSES = 501..599
       CLIENT_ERROR_STATUSES = 400..500
 

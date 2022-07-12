@@ -25,7 +25,7 @@ jobs:
           printf -- "---\n:rubygems_api_key: $RUBYGEM_PUBLISH_API_KEY\n" > $HOME/.gem/credentials
           gem build *.gemspec
           gem push *.gem
-          
+
 workflows:
   version: 2
   tests:
@@ -33,19 +33,12 @@ workflows:
       - test:
           matrix:
             parameters:
-              faraday-version: ["0.9.2", "1.0"]
-              ruby-version: ["2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7", "3.0"]
-            exclude:
-              - faraday-version: "1.0"
-                ruby-version: "2.1"
-              - faraday-version: "1.0"
-                ruby-version: "2.2"
-              - faraday-version: "0.9.2"
-                ruby-version: "3.0"
+              faraday-version: ["2.0"]
+              ruby-version: ["2.6", "2.7", "3.0", "3.1"]
       - publish:
           filters:
             branches:
               only:
-                - master      
+                - master
           requires:
             - test

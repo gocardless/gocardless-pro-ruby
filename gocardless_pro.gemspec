@@ -17,7 +17,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'faraday', ['>= 0.9.2', '< 2']
+  spec.required_ruby_version = '>= 2.6'
+  spec.add_dependency 'faraday', ['>= 2', '< 3']
 
   spec.add_development_dependency 'rspec', '~> 3.7.0'
   spec.add_development_dependency 'webmock', '~> 3.8.3'
