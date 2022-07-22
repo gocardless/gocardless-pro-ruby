@@ -43,7 +43,8 @@ module GoCardlessPro
     # `confirmation_url` attribute of the redirect flow.
     #
     # Redirect flows expire 30 minutes after they are first created. You cannot
-    # complete an expired redirect flow.
+    # complete an expired redirect flow. For an integrator this is shorter and
+    # they will expire after 10 minutes.
     class RedirectFlow
       attr_reader :confirmation_url
       attr_reader :created_at
