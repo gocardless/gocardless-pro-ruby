@@ -46,7 +46,8 @@ module GoCardlessPro
       end
 
       # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # subscriptions.
+      # subscriptions. Please note if the subscriptions are related to customers who
+      # have been removed, they will not be shown in the response.
       # Example URL: /subscriptions
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
