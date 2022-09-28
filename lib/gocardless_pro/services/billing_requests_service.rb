@@ -225,12 +225,9 @@ module GoCardlessPro
       end
 
       # This will allow for the updating of the currency and subsequently the scheme
-      # if
-      # needed for a Billing Request. This will only be available for mandate only
-      # flows
-      # which do not have the lock_currency flag set to true on the Billing Request
-      # Flow. It
-      # will also not support any request which has a payments request.
+      # if needed for a billing request
+      # this will only be available for mandate only flows, it will not support
+      # payments requests or plans
       # Example URL: /billing_requests/:identity/actions/choose_currency
       #
       # @param identity       # Unique identifier, beginning with "BRQ".
