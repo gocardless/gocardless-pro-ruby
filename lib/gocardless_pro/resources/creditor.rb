@@ -20,6 +20,7 @@ module GoCardlessPro
     # Currently, for Anti Money Laundering reasons, any creditors you add must
     # be directly related to your organisation.
     class Creditor
+      attr_reader :activated
       attr_reader :address_line1
       attr_reader :address_line2
       attr_reader :address_line3
@@ -44,6 +45,7 @@ module GoCardlessPro
       def initialize(object, response = nil)
         @object = object
 
+        @activated = object['activated']
         @address_line1 = object['address_line1']
         @address_line2 = object['address_line2']
         @address_line3 = object['address_line3']

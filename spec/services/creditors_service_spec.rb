@@ -15,6 +15,7 @@ describe GoCardlessPro::Services::CreditorsService do
       let(:new_resource) do
         {
 
+          'activated' => 'activated-input',
           'address_line1' => 'address_line1-input',
           'address_line2' => 'address_line2-input',
           'address_line3' => 'address_line3-input',
@@ -43,6 +44,7 @@ describe GoCardlessPro::Services::CreditorsService do
             body: {
               'creditors' => {
 
+                'activated' => 'activated-input',
                 'address_line1' => 'address_line1-input',
                 'address_line2' => 'address_line2-input',
                 'address_line3' => 'address_line3-input',
@@ -71,6 +73,7 @@ describe GoCardlessPro::Services::CreditorsService do
 
                 {
 
+                  'activated' => 'activated-input',
                   'address_line1' => 'address_line1-input',
                   'address_line2' => 'address_line2-input',
                   'address_line3' => 'address_line3-input',
@@ -155,6 +158,7 @@ describe GoCardlessPro::Services::CreditorsService do
       let(:new_resource) do
         {
 
+          'activated' => 'activated-input',
           'address_line1' => 'address_line1-input',
           'address_line2' => 'address_line2-input',
           'address_line3' => 'address_line3-input',
@@ -206,6 +210,7 @@ describe GoCardlessPro::Services::CreditorsService do
             body: {
               'creditors' => {
 
+                'activated' => 'activated-input',
                 'address_line1' => 'address_line1-input',
                 'address_line2' => 'address_line2-input',
                 'address_line3' => 'address_line3-input',
@@ -263,6 +268,7 @@ describe GoCardlessPro::Services::CreditorsService do
         {
           'creditors' => [{
 
+            'activated' => 'activated-input',
             'address_line1' => 'address_line1-input',
             'address_line2' => 'address_line2-input',
             'address_line3' => 'address_line3-input',
@@ -301,6 +307,8 @@ describe GoCardlessPro::Services::CreditorsService do
 
       it 'wraps each item in the resource class' do
         expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Creditor)
+
+        expect(get_list_response.records.first.activated).to eq('activated-input')
 
         expect(get_list_response.records.first.address_line1).to eq('address_line1-input')
 
@@ -377,6 +385,7 @@ describe GoCardlessPro::Services::CreditorsService do
         body: {
           'creditors' => [{
 
+            'activated' => 'activated-input',
             'address_line1' => 'address_line1-input',
             'address_line2' => 'address_line2-input',
             'address_line3' => 'address_line3-input',
@@ -411,6 +420,7 @@ describe GoCardlessPro::Services::CreditorsService do
         body: {
           'creditors' => [{
 
+            'activated' => 'activated-input',
             'address_line1' => 'address_line1-input',
             'address_line2' => 'address_line2-input',
             'address_line3' => 'address_line3-input',
@@ -454,6 +464,7 @@ describe GoCardlessPro::Services::CreditorsService do
           body: {
             'creditors' => [{
 
+              'activated' => 'activated-input',
               'address_line1' => 'address_line1-input',
               'address_line2' => 'address_line2-input',
               'address_line3' => 'address_line3-input',
@@ -488,6 +499,7 @@ describe GoCardlessPro::Services::CreditorsService do
                                  body: {
                                    'creditors' => [{
 
+                                     'activated' => 'activated-input',
                                      'address_line1' => 'address_line1-input',
                                      'address_line2' => 'address_line2-input',
                                      'address_line3' => 'address_line3-input',
@@ -527,6 +539,7 @@ describe GoCardlessPro::Services::CreditorsService do
           body: {
             'creditors' => [{
 
+              'activated' => 'activated-input',
               'address_line1' => 'address_line1-input',
               'address_line2' => 'address_line2-input',
               'address_line3' => 'address_line3-input',
@@ -564,6 +577,7 @@ describe GoCardlessPro::Services::CreditorsService do
                                  body: {
                                    'creditors' => [{
 
+                                     'activated' => 'activated-input',
                                      'address_line1' => 'address_line1-input',
                                      'address_line2' => 'address_line2-input',
                                      'address_line3' => 'address_line3-input',
@@ -614,6 +628,7 @@ describe GoCardlessPro::Services::CreditorsService do
             body: {
               'creditors' => {
 
+                'activated' => 'activated-input',
                 'address_line1' => 'address_line1-input',
                 'address_line2' => 'address_line2-input',
                 'address_line3' => 'address_line3-input',
@@ -658,6 +673,7 @@ describe GoCardlessPro::Services::CreditorsService do
           body: {
             'creditors' => {
 
+              'activated' => 'activated-input',
               'address_line1' => 'address_line1-input',
               'address_line2' => 'address_line2-input',
               'address_line3' => 'address_line3-input',
@@ -779,6 +795,7 @@ describe GoCardlessPro::Services::CreditorsService do
           body: {
             'creditors' => {
 
+              'activated' => 'activated-input',
               'address_line1' => 'address_line1-input',
               'address_line2' => 'address_line2-input',
               'address_line3' => 'address_line3-input',
