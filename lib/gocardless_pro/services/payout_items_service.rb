@@ -13,6 +13,12 @@ module GoCardlessPro
       # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of items in
       # the payout.
       #
+      # <div class="notice notice--warning u-block">
+      #   <strong>Note</strong>: From 1 March 2023 onwards, we will only serve
+      # requests for payout items created in the last 6 months. Requests for older
+      # payouts will return an HTTP status <code>410 Gone</code>.
+      # </div>
+      #
       # Example URL: /payout_items
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
