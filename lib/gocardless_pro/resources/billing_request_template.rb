@@ -18,6 +18,7 @@ module GoCardlessPro
       attr_reader :created_at
       attr_reader :id
       attr_reader :mandate_request_currency
+      attr_reader :mandate_request_description
       attr_reader :mandate_request_metadata
       attr_reader :mandate_request_scheme
       attr_reader :mandate_request_verify
@@ -40,6 +41,7 @@ module GoCardlessPro
         @created_at = object['created_at']
         @id = object['id']
         @mandate_request_currency = object['mandate_request_currency']
+        @mandate_request_description = object['mandate_request_description']
         @mandate_request_metadata = object['mandate_request_metadata']
         @mandate_request_scheme = object['mandate_request_scheme']
         @mandate_request_verify = object['mandate_request_verify']

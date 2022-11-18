@@ -22,6 +22,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
               'created_at' => 'created_at-input',
               'id' => 'id-input',
               'mandate_request_currency' => 'mandate_request_currency-input',
+              'mandate_request_description' => 'mandate_request_description-input',
               'mandate_request_metadata' => 'mandate_request_metadata-input',
               'mandate_request_scheme' => 'mandate_request_scheme-input',
               'mandate_request_verify' => 'mandate_request_verify-input',
@@ -56,6 +57,8 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
         expect(get_list_response.records.first.id).to eq('id-input')
 
         expect(get_list_response.records.first.mandate_request_currency).to eq('mandate_request_currency-input')
+
+        expect(get_list_response.records.first.mandate_request_description).to eq('mandate_request_description-input')
 
         expect(get_list_response.records.first.mandate_request_metadata).to eq('mandate_request_metadata-input')
 
@@ -101,6 +104,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'mandate_request_currency' => 'mandate_request_currency-input',
+            'mandate_request_description' => 'mandate_request_description-input',
             'mandate_request_metadata' => 'mandate_request_metadata-input',
             'mandate_request_scheme' => 'mandate_request_scheme-input',
             'mandate_request_verify' => 'mandate_request_verify-input',
@@ -132,6 +136,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
             'created_at' => 'created_at-input',
             'id' => 'id-input',
             'mandate_request_currency' => 'mandate_request_currency-input',
+            'mandate_request_description' => 'mandate_request_description-input',
             'mandate_request_metadata' => 'mandate_request_metadata-input',
             'mandate_request_scheme' => 'mandate_request_scheme-input',
             'mandate_request_verify' => 'mandate_request_verify-input',
@@ -179,6 +184,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'mandate_request_currency' => 'mandate_request_currency-input',
+                'mandate_request_description' => 'mandate_request_description-input',
                 'mandate_request_metadata' => 'mandate_request_metadata-input',
                 'mandate_request_scheme' => 'mandate_request_scheme-input',
                 'mandate_request_verify' => 'mandate_request_verify-input',
@@ -220,6 +226,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
               'created_at' => 'created_at-input',
               'id' => 'id-input',
               'mandate_request_currency' => 'mandate_request_currency-input',
+              'mandate_request_description' => 'mandate_request_description-input',
               'mandate_request_metadata' => 'mandate_request_metadata-input',
               'mandate_request_scheme' => 'mandate_request_scheme-input',
               'mandate_request_verify' => 'mandate_request_verify-input',
@@ -276,6 +283,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
           'created_at' => 'created_at-input',
           'id' => 'id-input',
           'mandate_request_currency' => 'mandate_request_currency-input',
+          'mandate_request_description' => 'mandate_request_description-input',
           'mandate_request_metadata' => 'mandate_request_metadata-input',
           'mandate_request_scheme' => 'mandate_request_scheme-input',
           'mandate_request_verify' => 'mandate_request_verify-input',
@@ -301,6 +309,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'mandate_request_currency' => 'mandate_request_currency-input',
+                'mandate_request_description' => 'mandate_request_description-input',
                 'mandate_request_metadata' => 'mandate_request_metadata-input',
                 'mandate_request_scheme' => 'mandate_request_scheme-input',
                 'mandate_request_verify' => 'mandate_request_verify-input',
@@ -326,6 +335,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
                   'created_at' => 'created_at-input',
                   'id' => 'id-input',
                   'mandate_request_currency' => 'mandate_request_currency-input',
+                  'mandate_request_description' => 'mandate_request_description-input',
                   'mandate_request_metadata' => 'mandate_request_metadata-input',
                   'mandate_request_scheme' => 'mandate_request_scheme-input',
                   'mandate_request_verify' => 'mandate_request_verify-input',
@@ -384,6 +394,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
           'created_at' => 'created_at-input',
           'id' => 'id-input',
           'mandate_request_currency' => 'mandate_request_currency-input',
+          'mandate_request_description' => 'mandate_request_description-input',
           'mandate_request_metadata' => 'mandate_request_metadata-input',
           'mandate_request_scheme' => 'mandate_request_scheme-input',
           'mandate_request_verify' => 'mandate_request_verify-input',
@@ -432,6 +443,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
                 'mandate_request_currency' => 'mandate_request_currency-input',
+                'mandate_request_description' => 'mandate_request_description-input',
                 'mandate_request_metadata' => 'mandate_request_metadata-input',
                 'mandate_request_scheme' => 'mandate_request_scheme-input',
                 'mandate_request_verify' => 'mandate_request_verify-input',
@@ -475,6 +487,7 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
               'created_at' => 'created_at-input',
               'id' => 'id-input',
               'mandate_request_currency' => 'mandate_request_currency-input',
+              'mandate_request_description' => 'mandate_request_description-input',
               'mandate_request_metadata' => 'mandate_request_metadata-input',
               'mandate_request_scheme' => 'mandate_request_scheme-input',
               'mandate_request_verify' => 'mandate_request_verify-input',
