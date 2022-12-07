@@ -98,11 +98,6 @@ module GoCardlessPro
       @mandate_pdfs ||= Services::MandatePdfsService.new(@api_service)
     end
 
-    # Access to the service for mandate_request_constraints to make API calls
-    def mandate_request_constraints
-      @mandate_request_constraints ||= Services::MandateRequestConstraintsService.new(@api_service)
-    end
-
     # Access to the service for payer_authorisation to make API calls
     def payer_authorisations
       @payer_authorisations ||= Services::PayerAuthorisationsService.new(@api_service)

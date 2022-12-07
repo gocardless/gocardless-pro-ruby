@@ -98,9 +98,6 @@ require_relative 'gocardless_pro/services/mandate_import_entries_service'
 require_relative 'gocardless_pro/resources/mandate_pdf'
 require_relative 'gocardless_pro/services/mandate_pdfs_service'
 
-require_relative 'gocardless_pro/resources/mandate_request_constraints'
-require_relative 'gocardless_pro/services/mandate_request_constraints_service'
-
 require_relative 'gocardless_pro/resources/payer_authorisation'
 require_relative 'gocardless_pro/services/payer_authorisations_service'
 
