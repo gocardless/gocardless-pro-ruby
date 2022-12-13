@@ -28,6 +28,7 @@ module GoCardlessPro
       attr_reader :city
       attr_reader :country_code
       attr_reader :created_at
+      attr_reader :creditor_type
       attr_reader :custom_payment_pages_enabled
       attr_reader :fx_payout_currency
       attr_reader :id
@@ -53,6 +54,7 @@ module GoCardlessPro
         @city = object['city']
         @country_code = object['country_code']
         @created_at = object['created_at']
+        @creditor_type = object['creditor_type']
         @custom_payment_pages_enabled = object['custom_payment_pages_enabled']
         @fx_payout_currency = object['fx_payout_currency']
         @id = object['id']

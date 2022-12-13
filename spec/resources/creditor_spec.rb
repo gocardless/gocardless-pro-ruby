@@ -23,6 +23,7 @@ describe GoCardlessPro::Resources::Creditor do
           'city' => 'city-input',
           'country_code' => 'country_code-input',
           'created_at' => 'created_at-input',
+          'creditor_type' => 'creditor_type-input',
           'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
           'fx_payout_currency' => 'fx_payout_currency-input',
           'id' => 'id-input',
@@ -52,6 +53,7 @@ describe GoCardlessPro::Resources::Creditor do
                 'city' => 'city-input',
                 'country_code' => 'country_code-input',
                 'created_at' => 'created_at-input',
+                'creditor_type' => 'creditor_type-input',
                 'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
                 'fx_payout_currency' => 'fx_payout_currency-input',
                 'id' => 'id-input',
@@ -81,6 +83,7 @@ describe GoCardlessPro::Resources::Creditor do
                   'city' => 'city-input',
                   'country_code' => 'country_code-input',
                   'created_at' => 'created_at-input',
+                  'creditor_type' => 'creditor_type-input',
                   'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
                   'fx_payout_currency' => 'fx_payout_currency-input',
                   'id' => 'id-input',
@@ -143,6 +146,7 @@ describe GoCardlessPro::Resources::Creditor do
           'city' => 'city-input',
           'country_code' => 'country_code-input',
           'created_at' => 'created_at-input',
+          'creditor_type' => 'creditor_type-input',
           'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
           'fx_payout_currency' => 'fx_payout_currency-input',
           'id' => 'id-input',
@@ -195,6 +199,7 @@ describe GoCardlessPro::Resources::Creditor do
                 'city' => 'city-input',
                 'country_code' => 'country_code-input',
                 'created_at' => 'created_at-input',
+                'creditor_type' => 'creditor_type-input',
                 'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
                 'fx_payout_currency' => 'fx_payout_currency-input',
                 'id' => 'id-input',
@@ -238,6 +243,7 @@ describe GoCardlessPro::Resources::Creditor do
               'city' => 'city-input',
               'country_code' => 'country_code-input',
               'created_at' => 'created_at-input',
+              'creditor_type' => 'creditor_type-input',
               'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
               'fx_payout_currency' => 'fx_payout_currency-input',
               'id' => 'id-input',
@@ -280,6 +286,8 @@ describe GoCardlessPro::Resources::Creditor do
         expect(get_list_response.records.first.country_code).to eq('country_code-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
+
+        expect(get_list_response.records.first.creditor_type).to eq('creditor_type-input')
 
         expect(get_list_response.records.first.custom_payment_pages_enabled).to eq('custom_payment_pages_enabled-input')
 
@@ -327,6 +335,7 @@ describe GoCardlessPro::Resources::Creditor do
             'city' => 'city-input',
             'country_code' => 'country_code-input',
             'created_at' => 'created_at-input',
+            'creditor_type' => 'creditor_type-input',
             'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
             'fx_payout_currency' => 'fx_payout_currency-input',
             'id' => 'id-input',
@@ -362,6 +371,7 @@ describe GoCardlessPro::Resources::Creditor do
             'city' => 'city-input',
             'country_code' => 'country_code-input',
             'created_at' => 'created_at-input',
+            'creditor_type' => 'creditor_type-input',
             'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
             'fx_payout_currency' => 'fx_payout_currency-input',
             'id' => 'id-input',
@@ -413,6 +423,7 @@ describe GoCardlessPro::Resources::Creditor do
                 'city' => 'city-input',
                 'country_code' => 'country_code-input',
                 'created_at' => 'created_at-input',
+                'creditor_type' => 'creditor_type-input',
                 'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
                 'fx_payout_currency' => 'fx_payout_currency-input',
                 'id' => 'id-input',
@@ -458,6 +469,7 @@ describe GoCardlessPro::Resources::Creditor do
               'city' => 'city-input',
               'country_code' => 'country_code-input',
               'created_at' => 'created_at-input',
+              'creditor_type' => 'creditor_type-input',
               'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
               'fx_payout_currency' => 'fx_payout_currency-input',
               'id' => 'id-input',
@@ -525,6 +537,7 @@ describe GoCardlessPro::Resources::Creditor do
               'city' => 'city-input',
               'country_code' => 'country_code-input',
               'created_at' => 'created_at-input',
+              'creditor_type' => 'creditor_type-input',
               'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
               'fx_payout_currency' => 'fx_payout_currency-input',
               'id' => 'id-input',
