@@ -756,8 +756,8 @@ describe GoCardlessPro::Services::BlocksService do
     let(:resource_id) { 'ABC123' }
 
     let!(:stub) do
-      # /block_by_ref
-      stub_url = '/block_by_ref'.gsub(':identity', resource_id)
+      # /blocks/block_by_ref
+      stub_url = '/blocks/block_by_ref'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
 
         body: {
@@ -797,7 +797,7 @@ describe GoCardlessPro::Services::BlocksService do
 
     describe 'retry behaviour' do
       it "doesn't retry errors" do
-        stub_url = '/block_by_ref'.gsub(':identity', resource_id)
+        stub_url = '/blocks/block_by_ref'.gsub(':identity', resource_id)
         stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
                to_timeout
 
@@ -812,8 +812,8 @@ describe GoCardlessPro::Services::BlocksService do
       let(:resource_id) { 'ABC123' }
 
       let!(:stub) do
-        # /block_by_ref
-        stub_url = '/block_by_ref'.gsub(':identity', resource_id)
+        # /blocks/block_by_ref
+        stub_url = '/blocks/block_by_ref'.gsub(':identity', resource_id)
         stub_request(:post, /.*api.gocardless.com#{stub_url}/).
           with(
             body: { foo: 'bar' },

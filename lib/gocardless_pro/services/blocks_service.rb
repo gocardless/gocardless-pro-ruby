@@ -169,10 +169,10 @@ module GoCardlessPro
       # Returns 201 if at least one block was created. Returns 200 if there were no
       # new
       # blocks created.
-      # Example URL: /block_by_ref
+      # Example URL: /blocks/block_by_ref
       # @param options [Hash] parameters as a hash, under a params key.
       def block_by_ref(options = {})
-        path = '/block_by_ref'
+        path = '/blocks/block_by_ref'
 
         params = options.delete(:params) || {}
         options[:params] = {}
