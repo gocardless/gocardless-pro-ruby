@@ -504,8 +504,8 @@ describe GoCardlessPro::Resources::Block do
     let(:resource_id) { 'ABC123' }
 
     let!(:stub) do
-      # /block_by_ref
-      stub_url = '/block_by_ref'.gsub(':identity', resource_id)
+      # /blocks/block_by_ref
+      stub_url = '/blocks/block_by_ref'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
 
         body: {
@@ -549,8 +549,8 @@ describe GoCardlessPro::Resources::Block do
       let(:resource_id) { 'ABC123' }
 
       let!(:stub) do
-        # /block_by_ref
-        stub_url = '/block_by_ref'.gsub(':identity', resource_id)
+        # /blocks/block_by_ref
+        stub_url = '/blocks/block_by_ref'.gsub(':identity', resource_id)
         stub_request(:post, /.*api.gocardless.com#{stub_url}/).
           with(
             body: { foo: 'bar' },
