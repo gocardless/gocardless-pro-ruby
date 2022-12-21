@@ -15,6 +15,7 @@ describe GoCardlessPro::Resources::Mandate do
       let(:new_resource) do
         {
 
+          'authorisation_source' => 'authorisation_source-input',
           'consent_parameters' => 'consent_parameters-input',
           'created_at' => 'created_at-input',
           'id' => 'id-input',
@@ -34,6 +35,7 @@ describe GoCardlessPro::Resources::Mandate do
             body: {
               'mandates' => {
 
+                'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
@@ -53,6 +55,7 @@ describe GoCardlessPro::Resources::Mandate do
 
                 {
 
+                  'authorisation_source' => 'authorisation_source-input',
                   'consent_parameters' => 'consent_parameters-input',
                   'created_at' => 'created_at-input',
                   'id' => 'id-input',
@@ -105,6 +108,7 @@ describe GoCardlessPro::Resources::Mandate do
       let(:new_resource) do
         {
 
+          'authorisation_source' => 'authorisation_source-input',
           'consent_parameters' => 'consent_parameters-input',
           'created_at' => 'created_at-input',
           'id' => 'id-input',
@@ -147,6 +151,7 @@ describe GoCardlessPro::Resources::Mandate do
             body: {
               'mandates' => {
 
+                'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
@@ -180,6 +185,7 @@ describe GoCardlessPro::Resources::Mandate do
           body: {
             'mandates' => [{
 
+              'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
               'created_at' => 'created_at-input',
               'id' => 'id-input',
@@ -204,6 +210,8 @@ describe GoCardlessPro::Resources::Mandate do
 
       it 'wraps each item in the resource class' do
         expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Mandate)
+
+        expect(get_list_response.records.first.authorisation_source).to eq('authorisation_source-input')
 
         expect(get_list_response.records.first.consent_parameters).to eq('consent_parameters-input')
 
@@ -239,6 +247,7 @@ describe GoCardlessPro::Resources::Mandate do
         body: {
           'mandates' => [{
 
+            'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
@@ -264,6 +273,7 @@ describe GoCardlessPro::Resources::Mandate do
         body: {
           'mandates' => [{
 
+            'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
@@ -305,6 +315,7 @@ describe GoCardlessPro::Resources::Mandate do
             body: {
               'mandates' => {
 
+                'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
@@ -340,6 +351,7 @@ describe GoCardlessPro::Resources::Mandate do
           body: {
             'mandates' => {
 
+              'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
               'created_at' => 'created_at-input',
               'id' => 'id-input',
@@ -397,6 +409,7 @@ describe GoCardlessPro::Resources::Mandate do
           body: {
             'mandates' => {
 
+              'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
               'created_at' => 'created_at-input',
               'id' => 'id-input',
@@ -433,6 +446,7 @@ describe GoCardlessPro::Resources::Mandate do
         body: {
           'mandates' => {
 
+            'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
@@ -474,6 +488,7 @@ describe GoCardlessPro::Resources::Mandate do
             body: {
               'mandates' => {
 
+                'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
@@ -505,6 +520,7 @@ describe GoCardlessPro::Resources::Mandate do
         body: {
           'mandates' => {
 
+            'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
             'created_at' => 'created_at-input',
             'id' => 'id-input',
@@ -546,6 +562,7 @@ describe GoCardlessPro::Resources::Mandate do
             body: {
               'mandates' => {
 
+                'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',

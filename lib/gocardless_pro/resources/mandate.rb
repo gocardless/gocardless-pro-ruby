@@ -18,6 +18,7 @@ module GoCardlessPro
     # GoCardless will notify you via a [webhook](#appendix-webhooks) whenever
     # the status of a mandate changes.
     class Mandate
+      attr_reader :authorisation_source
       attr_reader :consent_parameters
       attr_reader :created_at
       attr_reader :id
@@ -33,6 +34,7 @@ module GoCardlessPro
       def initialize(object, response = nil)
         @object = object
 
+        @authorisation_source = object['authorisation_source']
         @consent_parameters = object['consent_parameters']
         @created_at = object['created_at']
         @id = object['id']
