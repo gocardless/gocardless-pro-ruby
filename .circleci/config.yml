@@ -1,0 +1,44 @@
+version: 2.1
+
+jobs:
+  test: &test
+    parallelism: 1
+    parameters:
+      faraday-version: { type: string }
+      ruby-version: { type: string }
+    docker:
+      - image: ruby:<<parameters.ruby-version>>
+        environment:
+          - FARADAY_VERSION=<<parameters.faraday-version>>
+    steps:
+      - checkout
+      - run: bundle install && bundle exec rspec
+  publish: &publish
+    docker:
+      - image: ruby:2.6
+    steps:
+      - checkout
+      - run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: $RUBYGEM_PUBLISH_API_KEY\n" > $HOME/.gem/credentials
+          gem build *.gemspec
+          gem push *.gem
+
+workflows:
+  version: 2
+  tests:
+    jobs:
+      - test:
+          matrix:
+            parameters:
+              faraday-version: ["2.0"]
+              ruby-version: ["2.6", "2.7", "3.0", "3.1"]
+      - publish:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test
