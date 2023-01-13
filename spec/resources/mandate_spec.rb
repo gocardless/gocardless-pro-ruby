@@ -26,6 +26,7 @@ describe GoCardlessPro::Resources::Mandate do
           'reference' => 'reference-input',
           'scheme' => 'scheme-input',
           'status' => 'status-input',
+          'verified_at' => 'verified_at-input',
         }
       end
 
@@ -46,6 +47,7 @@ describe GoCardlessPro::Resources::Mandate do
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
+                'verified_at' => 'verified_at-input',
               },
             }
           ).
@@ -66,6 +68,7 @@ describe GoCardlessPro::Resources::Mandate do
                   'reference' => 'reference-input',
                   'scheme' => 'scheme-input',
                   'status' => 'status-input',
+                  'verified_at' => 'verified_at-input',
                 },
 
             }.to_json,
@@ -119,6 +122,7 @@ describe GoCardlessPro::Resources::Mandate do
           'reference' => 'reference-input',
           'scheme' => 'scheme-input',
           'status' => 'status-input',
+          'verified_at' => 'verified_at-input',
         }
       end
 
@@ -162,6 +166,7 @@ describe GoCardlessPro::Resources::Mandate do
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
+                'verified_at' => 'verified_at-input',
               },
             }.to_json,
             headers: response_headers
@@ -196,6 +201,7 @@ describe GoCardlessPro::Resources::Mandate do
               'reference' => 'reference-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input',
+              'verified_at' => 'verified_at-input',
             }],
             meta: {
               cursors: {
@@ -230,6 +236,8 @@ describe GoCardlessPro::Resources::Mandate do
         expect(get_list_response.records.first.scheme).to eq('scheme-input')
 
         expect(get_list_response.records.first.status).to eq('status-input')
+
+        expect(get_list_response.records.first.verified_at).to eq('verified_at-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -258,6 +266,7 @@ describe GoCardlessPro::Resources::Mandate do
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
+            'verified_at' => 'verified_at-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -284,6 +293,7 @@ describe GoCardlessPro::Resources::Mandate do
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
+            'verified_at' => 'verified_at-input',
           }],
           meta: {
             limit: 2,
@@ -326,6 +336,7 @@ describe GoCardlessPro::Resources::Mandate do
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
+                'verified_at' => 'verified_at-input',
               },
             }.to_json,
             headers: response_headers
@@ -362,6 +373,7 @@ describe GoCardlessPro::Resources::Mandate do
               'reference' => 'reference-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input',
+              'verified_at' => 'verified_at-input',
             },
           }.to_json,
           headers: response_headers
@@ -420,6 +432,7 @@ describe GoCardlessPro::Resources::Mandate do
               'reference' => 'reference-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input',
+              'verified_at' => 'verified_at-input',
             },
           }.to_json,
           headers: response_headers
@@ -457,6 +470,7 @@ describe GoCardlessPro::Resources::Mandate do
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
+            'verified_at' => 'verified_at-input',
           },
         }.to_json,
 
@@ -499,6 +513,7 @@ describe GoCardlessPro::Resources::Mandate do
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
+                'verified_at' => 'verified_at-input',
               },
             }.to_json,
             headers: response_headers
@@ -531,6 +546,7 @@ describe GoCardlessPro::Resources::Mandate do
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
+            'verified_at' => 'verified_at-input',
           },
         }.to_json,
 
@@ -573,6 +589,7 @@ describe GoCardlessPro::Resources::Mandate do
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
+                'verified_at' => 'verified_at-input',
               },
             }.to_json,
             headers: response_headers
