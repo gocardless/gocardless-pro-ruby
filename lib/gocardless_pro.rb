@@ -119,6 +119,9 @@ require_relative 'gocardless_pro/services/refunds_service'
 require_relative 'gocardless_pro/resources/scenario_simulator'
 require_relative 'gocardless_pro/services/scenario_simulators_service'
 
+require_relative 'gocardless_pro/resources/scheme_identifier'
+require_relative 'gocardless_pro/services/scheme_identifiers_service'
+
 require_relative 'gocardless_pro/resources/subscription'
 require_relative 'gocardless_pro/services/subscriptions_service'
 

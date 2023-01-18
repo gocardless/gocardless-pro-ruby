@@ -133,6 +133,11 @@ module GoCardlessPro
       @scenario_simulators ||= Services::ScenarioSimulatorsService.new(@api_service)
     end
 
+    # Access to the service for scheme_identifier to make API calls
+    def scheme_identifiers
+      @scheme_identifiers ||= Services::SchemeIdentifiersService.new(@api_service)
+    end
+
     # Access to the service for subscription to make API calls
     def subscriptions
       @subscriptions ||= Services::SubscriptionsService.new(@api_service)

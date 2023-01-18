@@ -1,0 +1,72 @@
+# encoding: utf-8
+
+#
+# This client is automatically generated from a template and JSON schema definition.
+# See https://github.com/gocardless/gocardless-pro-ruby#contributing before editing.
+#
+
+require 'uri'
+
+module GoCardlessPro
+  # A module containing classes for each of the resources in the GC Api
+  module Resources
+    # Represents an instance of a scheme_identifier resource returned from the API
+
+    #
+    class SchemeIdentifier
+      attr_reader :address_line1
+      attr_reader :address_line2
+      attr_reader :address_line3
+      attr_reader :can_specify_mandate_reference
+      attr_reader :city
+      attr_reader :country_code
+      attr_reader :created_at
+      attr_reader :currency
+      attr_reader :email
+      attr_reader :id
+      attr_reader :minimum_advance_notice
+      attr_reader :name
+      attr_reader :phone_number
+      attr_reader :postal_code
+      attr_reader :reference
+      attr_reader :region
+      attr_reader :scheme
+      attr_reader :status
+
+      # Initialize a scheme_identifier resource instance
+      # @param object [Hash] an object returned from the API
+      def initialize(object, response = nil)
+        @object = object
+
+        @address_line1 = object['address_line1']
+        @address_line2 = object['address_line2']
+        @address_line3 = object['address_line3']
+        @can_specify_mandate_reference = object['can_specify_mandate_reference']
+        @city = object['city']
+        @country_code = object['country_code']
+        @created_at = object['created_at']
+        @currency = object['currency']
+        @email = object['email']
+        @id = object['id']
+        @minimum_advance_notice = object['minimum_advance_notice']
+        @name = object['name']
+        @phone_number = object['phone_number']
+        @postal_code = object['postal_code']
+        @reference = object['reference']
+        @region = object['region']
+        @scheme = object['scheme']
+        @status = object['status']
+        @response = response
+      end
+
+      def api_response
+        ApiResponse.new(@response)
+      end
+
+      # Provides the scheme_identifier resource as a hash of all its readable attributes
+      def to_h
+        @object
+      end
+    end
+  end
+end
