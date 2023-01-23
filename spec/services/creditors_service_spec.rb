@@ -869,4 +869,109 @@ describe GoCardlessPro::Services::CreditorsService do
       end
     end
   end
+
+  describe '#apply_scheme_identifier' do
+    subject(:post_response) { client.creditors.apply_scheme_identifier(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /creditors/%v/actions/apply_scheme_identifier
+      stub_url = '/creditors/:identity/actions/apply_scheme_identifier'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+
+        body: {
+          'creditors' => {
+
+            'activated' => 'activated-input',
+            'address_line1' => 'address_line1-input',
+            'address_line2' => 'address_line2-input',
+            'address_line3' => 'address_line3-input',
+            'can_create_refunds' => 'can_create_refunds-input',
+            'city' => 'city-input',
+            'country_code' => 'country_code-input',
+            'created_at' => 'created_at-input',
+            'creditor_type' => 'creditor_type-input',
+            'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
+            'fx_payout_currency' => 'fx_payout_currency-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'logo_url' => 'logo_url-input',
+            'mandate_imports_enabled' => 'mandate_imports_enabled-input',
+            'merchant_responsible_for_notifications' => 'merchant_responsible_for_notifications-input',
+            'name' => 'name-input',
+            'postal_code' => 'postal_code-input',
+            'region' => 'region-input',
+            'scheme_identifiers' => 'scheme_identifiers-input',
+            'verification_status' => 'verification_status-input',
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::Creditor)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/creditors/:identity/actions/apply_scheme_identifier'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.creditors.apply_scheme_identifier(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /creditors/%v/actions/apply_scheme_identifier
+        stub_url = '/creditors/:identity/actions/apply_scheme_identifier'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'creditors' => {
+
+                'activated' => 'activated-input',
+                'address_line1' => 'address_line1-input',
+                'address_line2' => 'address_line2-input',
+                'address_line3' => 'address_line3-input',
+                'can_create_refunds' => 'can_create_refunds-input',
+                'city' => 'city-input',
+                'country_code' => 'country_code-input',
+                'created_at' => 'created_at-input',
+                'creditor_type' => 'creditor_type-input',
+                'custom_payment_pages_enabled' => 'custom_payment_pages_enabled-input',
+                'fx_payout_currency' => 'fx_payout_currency-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'logo_url' => 'logo_url-input',
+                'mandate_imports_enabled' => 'mandate_imports_enabled-input',
+                'merchant_responsible_for_notifications' => 'merchant_responsible_for_notifications-input',
+                'name' => 'name-input',
+                'postal_code' => 'postal_code-input',
+                'region' => 'region-input',
+                'scheme_identifiers' => 'scheme_identifiers-input',
+                'verification_status' => 'verification_status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
 end

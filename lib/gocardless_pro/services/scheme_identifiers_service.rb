@@ -10,6 +10,46 @@ module GoCardlessPro
   module Services
     # Service for making requests to the SchemeIdentifier endpoints
     class SchemeIdentifiersService < BaseService
+      # Creates a new scheme identifier. The scheme identifier must be [applied to a
+      # creditor](#creditors-apply-a-scheme-identifier) before payments are taken
+      # using it. The scheme identifier must also have the `status` of active before
+      # it can be used. For some schemes e.g. faster_payments this will happen
+      # instantly. For other schemes e.g. bacs this can take several days.
+      #
+      # Example URL: /scheme_identifiers
+      # @param options [Hash] parameters as a hash, under a params key.
+      def create(options = {})
+        path = '/scheme_identifiers'
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params][envelope_key] = params
+
+        options[:retry_failures] = true
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::SchemeIdentifier.new(unenvelope_body(response.body), response)
+      end
+
       # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your scheme
       # identifiers.
       # Example URL: /scheme_identifiers

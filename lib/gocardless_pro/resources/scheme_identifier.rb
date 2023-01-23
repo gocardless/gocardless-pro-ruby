@@ -12,6 +12,9 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a scheme_identifier resource returned from the API
 
+    # This represents a scheme identifier (e.g. a SUN in Bacs or a CID in SEPA).
+    # Scheme identifiers are used to specify the beneficiary name that appears
+    # on customers' bank statements.
     #
     class SchemeIdentifier
       attr_reader :address_line1
