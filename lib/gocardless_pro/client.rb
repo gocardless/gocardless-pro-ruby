@@ -148,6 +148,11 @@ module GoCardlessPro
       @tax_rates ||= Services::TaxRatesService.new(@api_service)
     end
 
+    # Access to the service for verification_detail to make API calls
+    def verification_details
+      @verification_details ||= Services::VerificationDetailsService.new(@api_service)
+    end
+
     # Access to the service for webhook to make API calls
     def webhooks
       @webhooks ||= Services::WebhooksService.new(@api_service)

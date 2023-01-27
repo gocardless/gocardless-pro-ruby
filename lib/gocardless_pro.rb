@@ -128,6 +128,9 @@ require_relative 'gocardless_pro/services/subscriptions_service'
 require_relative 'gocardless_pro/resources/tax_rate'
 require_relative 'gocardless_pro/services/tax_rates_service'
 
+require_relative 'gocardless_pro/resources/verification_detail'
+require_relative 'gocardless_pro/services/verification_details_service'
+
 require_relative 'gocardless_pro/resources/webhook'
 require_relative 'gocardless_pro/services/webhooks_service'
 
