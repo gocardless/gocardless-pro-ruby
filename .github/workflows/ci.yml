@@ -1,13 +1,14 @@
-name: gocardless/gocardless-pro-ruby/tests
+name: CI
 on:
   pull_request:
     types: [opened, reopened, synchronize]
   push:
     branches:
-    - master
+      - master
 
 env:
   RUBYGEM_PUBLISH_API_KEY: ${{ secrets.RUBYGEM_PUBLISH_API_KEY }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -18,28 +19,28 @@ jobs:
     strategy:
       matrix:
         faraday-version:
-        - '2.0'
+          - '2.0'
         ruby-version:
-        - '2.6'
-        - '2.7'
-        - '3.0'
-        - '3.1'
+          - '2.6'
+          - '2.7'
+          - '3.0'
+          - '3.1'
     steps:
-    - uses: actions/checkout@v2
-    - run: bundle install && bundle exec rspec
+      - uses: actions/checkout@v2
+      - run: bundle install && bundle exec rspec
   publish:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     container:
       image: ruby:2.6
     needs:
-    - test
+      - test
     steps:
-    - uses: actions/checkout@v2
-    - run: |
-        mkdir -p $HOME/.gem
-        touch $HOME/.gem/credentials
-        chmod 0600 $HOME/.gem/credentials
-        printf -- "---\n:rubygems_api_key: $RUBYGEM_PUBLISH_API_KEY\n" > $HOME/.gem/credentials
-        gem build *.gemspec
-        gem push *.gem
+      - uses: actions/checkout@v2
+      - run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: $RUBYGEM_PUBLISH_API_KEY\n" > $HOME/.gem/credentials
+          gem build *.gemspec
+          gem push *.gem
