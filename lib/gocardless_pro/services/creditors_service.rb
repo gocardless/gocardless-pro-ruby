@@ -113,6 +113,50 @@ module GoCardlessPro
         Resources::Creditor.new(unenvelope_body(response.body), response)
       end
 
+      # Applies a [scheme identifier](#core-endpoints-scheme-identifiers) to a
+      # creditor.
+      # If the creditor already has a scheme identifier for the scheme, it will be
+      # replaced,
+      # and any mandates attached to it transferred asynchronously.
+      # For some schemes, the application of the scheme identifier will be performed
+      # asynchronously.
+      #
+      # Example URL: /creditors/:identity/actions/apply_scheme_identifier
+      #
+      # @param identity       # Unique identifier, beginning with "CR".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def apply_scheme_identifier(identity, options = {})
+        path = sub_url('/creditors/:identity/actions/apply_scheme_identifier', 'identity' => identity)
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::Creditor.new(unenvelope_body(response.body), response)
+      end
+
       private
 
       # Unenvelope the response of the body using the service's `envelope_key`

@@ -28,6 +28,7 @@ module GoCardlessPro
       attr_reader :reference
       attr_reader :scheme
       attr_reader :status
+      attr_reader :verified_at
 
       # Initialize a mandate resource instance
       # @param object [Hash] an object returned from the API
@@ -45,6 +46,7 @@ module GoCardlessPro
         @reference = object['reference']
         @scheme = object['scheme']
         @status = object['status']
+        @verified_at = object['verified_at']
         @response = response
       end
 

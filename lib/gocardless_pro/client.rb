@@ -133,6 +133,11 @@ module GoCardlessPro
       @scenario_simulators ||= Services::ScenarioSimulatorsService.new(@api_service)
     end
 
+    # Access to the service for scheme_identifier to make API calls
+    def scheme_identifiers
+      @scheme_identifiers ||= Services::SchemeIdentifiersService.new(@api_service)
+    end
+
     # Access to the service for subscription to make API calls
     def subscriptions
       @subscriptions ||= Services::SubscriptionsService.new(@api_service)
@@ -141,6 +146,11 @@ module GoCardlessPro
     # Access to the service for tax_rate to make API calls
     def tax_rates
       @tax_rates ||= Services::TaxRatesService.new(@api_service)
+    end
+
+    # Access to the service for verification_detail to make API calls
+    def verification_details
+      @verification_details ||= Services::VerificationDetailsService.new(@api_service)
     end
 
     # Access to the service for webhook to make API calls
@@ -198,7 +208,7 @@ module GoCardlessPro
           'User-Agent' => user_agent.to_s,
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.40.0',
+          'GoCardless-Client-Version' => '2.41.0',
         },
       }
     end
