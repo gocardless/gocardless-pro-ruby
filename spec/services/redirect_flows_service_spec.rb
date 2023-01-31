@@ -82,7 +82,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
 
         it 'retries timeouts' do
           stub = stub_request(:post, %r{.*api.gocardless.com/redirect_flows}).
-                 to_timeout.then.to_return(status: 200, headers: response_headers)
+                 to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -90,10 +90,10 @@ describe GoCardlessPro::Services::RedirectFlowsService do
 
         it 'retries 5XX errors' do
           stub = stub_request(:post, %r{.*api.gocardless.com/redirect_flows}).
-                 to_return(status: 502,
-                           headers: { 'Content-Type' => 'text/html' },
-                           body: '<html><body>Response from Cloudflare</body></html>').
-                 then.to_return(status: 200, headers: response_headers)
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -316,7 +316,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
         stub_url = '/redirect_flows/:identity'.gsub(':identity', id)
 
         stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_timeout.then.to_return(status: 200, headers: response_headers)
+               to_timeout.then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -326,10 +326,10 @@ describe GoCardlessPro::Services::RedirectFlowsService do
         stub_url = '/redirect_flows/:identity'.gsub(':identity', id)
 
         stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_return(status: 502,
-                         headers: { 'Content-Type' => 'text/html' },
-                         body: '<html><body>Response from Cloudflare</body></html>').
-               then.to_return(status: 200, headers: response_headers)
+               to_return({ status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>' }).
+               then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -354,10 +354,10 @@ describe GoCardlessPro::Services::RedirectFlowsService do
         }
 
         stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_return(status: 500,
-                         headers: response_headers,
-                         body: gocardless_error.to_json).
-               then.to_return(status: 200, headers: response_headers)
+               to_return({ status: 500,
+                           headers: response_headers,
+                           body: gocardless_error.to_json }).
+               then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -374,7 +374,6 @@ describe GoCardlessPro::Services::RedirectFlowsService do
       # /redirect_flows/%v/actions/complete
       stub_url = '/redirect_flows/:identity/actions/complete'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'redirect_flows' => {
 

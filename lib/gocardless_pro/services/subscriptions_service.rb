@@ -81,7 +81,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/subscriptions/:identity', 'identity' => identity)
+        path = sub_url('/subscriptions/:identity', {
+                         'identity' => identity,
+                       })
 
         options[:retry_failures] = true
 
@@ -121,7 +123,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
-        path = sub_url('/subscriptions/:identity', 'identity' => identity)
+        path = sub_url('/subscriptions/:identity', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -182,7 +186,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def pause(identity, options = {})
-        path = sub_url('/subscriptions/:identity/actions/pause', 'identity' => identity)
+        path = sub_url('/subscriptions/:identity/actions/pause', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -235,7 +241,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def resume(identity, options = {})
-        path = sub_url('/subscriptions/:identity/actions/resume', 'identity' => identity)
+        path = sub_url('/subscriptions/:identity/actions/resume', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -277,7 +285,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "SB".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
-        path = sub_url('/subscriptions/:identity/actions/cancel', 'identity' => identity)
+        path = sub_url('/subscriptions/:identity/actions/cancel', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}

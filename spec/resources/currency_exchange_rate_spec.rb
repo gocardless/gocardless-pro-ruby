@@ -35,7 +35,9 @@ describe GoCardlessPro::Resources::CurrencyExchangeRate do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::CurrencyExchangeRate)
+        expect(get_list_response.records.map do |x|
+                 x.class
+               end.uniq.first).to eq(GoCardlessPro::Resources::CurrencyExchangeRate)
 
         expect(get_list_response.records.first.rate).to eq('rate-input')
 

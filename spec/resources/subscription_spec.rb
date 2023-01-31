@@ -263,7 +263,7 @@ describe GoCardlessPro::Resources::Subscription do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Subscription)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Subscription)
 
         expect(get_list_response.records.first.amount).to eq('amount-input')
 
@@ -559,7 +559,6 @@ describe GoCardlessPro::Resources::Subscription do
       # /subscriptions/%v/actions/pause
       stub_url = '/subscriptions/:identity/actions/pause'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'subscriptions' => {
 
@@ -651,7 +650,6 @@ describe GoCardlessPro::Resources::Subscription do
       # /subscriptions/%v/actions/resume
       stub_url = '/subscriptions/:identity/actions/resume'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'subscriptions' => {
 
@@ -743,7 +741,6 @@ describe GoCardlessPro::Resources::Subscription do
       # /subscriptions/%v/actions/cancel
       stub_url = '/subscriptions/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'subscriptions' => {
 

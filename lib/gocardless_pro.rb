@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #
 # This client is automatically generated from a template and JSON schema definition.
 # See https://github.com/gocardless/gocardless-pro-ruby#contributing before editing.
@@ -20,7 +18,7 @@ version_file = 'gocardless_pro/version'
 if File.file? File.expand_path("#{version_file}.rb", File.dirname(__FILE__))
   require_relative version_file
 else
-  GoCardlessPro::VERSION = ''.freeze
+  GoCardlessPro::VERSION = ''
 end
 
 require_relative 'gocardless_pro/api_service'
@@ -134,4 +132,4 @@ require_relative 'gocardless_pro/services/verification_details_service'
 require_relative 'gocardless_pro/resources/webhook'
 require_relative 'gocardless_pro/services/webhooks_service'
 
-require_relative 'gocardless_pro/client.rb'
+require_relative 'gocardless_pro/client'

@@ -231,7 +231,6 @@ describe GoCardlessPro::Resources::MandateImport do
       # /mandate_imports/%v/actions/submit
       stub_url = '/mandate_imports/:identity/actions/submit'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'mandate_imports' => {
 
@@ -291,7 +290,6 @@ describe GoCardlessPro::Resources::MandateImport do
       # /mandate_imports/%v/actions/cancel
       stub_url = '/mandate_imports/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'mandate_imports' => {
 

@@ -17,7 +17,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "PA".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/payer_authorisations/:identity', 'identity' => identity)
+        path = sub_url('/payer_authorisations/:identity', {
+                         'identity' => identity,
+                       })
 
         options[:retry_failures] = true
 
@@ -82,7 +84,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "PA".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
-        path = sub_url('/payer_authorisations/:identity', 'identity' => identity)
+        path = sub_url('/payer_authorisations/:identity', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -106,7 +110,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "PA".
       # @param options [Hash] parameters as a hash, under a params key.
       def submit(identity, options = {})
-        path = sub_url('/payer_authorisations/:identity/actions/submit', 'identity' => identity)
+        path = sub_url('/payer_authorisations/:identity/actions/submit', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -153,7 +159,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "PA".
       # @param options [Hash] parameters as a hash, under a params key.
       def confirm(identity, options = {})
-        path = sub_url('/payer_authorisations/:identity/actions/confirm', 'identity' => identity)
+        path = sub_url('/payer_authorisations/:identity/actions/confirm', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}

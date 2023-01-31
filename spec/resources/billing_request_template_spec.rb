@@ -48,7 +48,9 @@ describe GoCardlessPro::Resources::BillingRequestTemplate do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::BillingRequestTemplate)
+        expect(get_list_response.records.map do |x|
+                 x.class
+               end.uniq.first).to eq(GoCardlessPro::Resources::BillingRequestTemplate)
 
         expect(get_list_response.records.first.authorisation_url).to eq('authorisation_url-input')
 

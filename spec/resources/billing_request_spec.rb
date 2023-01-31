@@ -41,7 +41,9 @@ describe GoCardlessPro::Resources::BillingRequest do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::BillingRequest)
+        expect(get_list_response.records.map do |x|
+                 x.class
+               end.uniq.first).to eq(GoCardlessPro::Resources::BillingRequest)
 
         expect(get_list_response.records.first.actions).to eq('actions-input')
 
@@ -393,7 +395,6 @@ describe GoCardlessPro::Resources::BillingRequest do
       # /billing_requests/%v/actions/collect_customer_details
       stub_url = '/billing_requests/:identity/actions/collect_customer_details'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'billing_requests' => {
 
@@ -465,7 +466,6 @@ describe GoCardlessPro::Resources::BillingRequest do
       # /billing_requests/%v/actions/collect_bank_account
       stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'billing_requests' => {
 
@@ -537,7 +537,6 @@ describe GoCardlessPro::Resources::BillingRequest do
       # /billing_requests/%v/actions/fulfil
       stub_url = '/billing_requests/:identity/actions/fulfil'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'billing_requests' => {
 
@@ -609,7 +608,6 @@ describe GoCardlessPro::Resources::BillingRequest do
       # /billing_requests/%v/actions/choose_currency
       stub_url = '/billing_requests/:identity/actions/choose_currency'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'billing_requests' => {
 
@@ -681,7 +679,6 @@ describe GoCardlessPro::Resources::BillingRequest do
       # /billing_requests/%v/actions/confirm_payer_details
       stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'billing_requests' => {
 
@@ -753,7 +750,6 @@ describe GoCardlessPro::Resources::BillingRequest do
       # /billing_requests/%v/actions/cancel
       stub_url = '/billing_requests/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'billing_requests' => {
 
@@ -825,7 +821,6 @@ describe GoCardlessPro::Resources::BillingRequest do
       # /billing_requests/%v/actions/notify
       stub_url = '/billing_requests/:identity/actions/notify'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'billing_requests' => {
 
@@ -897,7 +892,6 @@ describe GoCardlessPro::Resources::BillingRequest do
       # /billing_requests/%v/actions/fallback
       stub_url = '/billing_requests/:identity/actions/fallback'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'billing_requests' => {
 

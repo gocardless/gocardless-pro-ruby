@@ -5,18 +5,16 @@ module GoCardlessPro
       CLIENT_ERROR_STATUSES = 400..500
 
       def on_complete(env)
-        if !json?(env) || API_ERROR_STATUSES.include?(env.status)
-          raise ApiError, generate_error_data(env)
-        end
+        raise ApiError, generate_error_data(env) if !json?(env) || API_ERROR_STATUSES.include?(env.status)
 
-        if CLIENT_ERROR_STATUSES.include?(env.status)
-          json_body ||= JSON.parse(env.body) unless env.body.empty?
-          error_type = json_body['error']['type']
+        return unless CLIENT_ERROR_STATUSES.include?(env.status)
 
-          error_class = error_class_for_status(env.status) || error_class_for_type(error_type)
+        json_body ||= JSON.parse(env.body) unless env.body.empty?
+        error_type = json_body['error']['type']
 
-          raise(error_class, json_body['error'])
-        end
+        error_class = error_class_for_status(env.status) || error_class_for_type(error_type)
+
+        raise(error_class, json_body['error'])
       end
 
       private

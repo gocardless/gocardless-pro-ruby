@@ -205,7 +205,7 @@ module GoCardlessPro
       {
         default_headers: {
           'GoCardless-Version' => '2015-07-06',
-          'User-Agent' => user_agent.to_s,
+          'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
           'GoCardless-Client-Version' => '2.41.0',
@@ -229,7 +229,7 @@ module GoCardlessPro
           comment = [
             "#{ruby_engine}/#{ruby_version}",
             "#{RUBY_ENGINE}/#{interpreter_version}",
-            RUBY_PLATFORM.to_s,
+            "#{RUBY_PLATFORM}",
           ]
           comment << "faraday/#{Faraday::VERSION}"
           "#{gem_info} #{comment.join(' ')}"

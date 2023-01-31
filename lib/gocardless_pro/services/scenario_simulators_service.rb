@@ -140,7 +140,9 @@ module GoCardlessPro
       # </ul>
       # @param options [Hash] parameters as a hash, under a params key.
       def run(identity, options = {})
-        path = sub_url('/scenario_simulators/:identity/actions/run', 'identity' => identity)
+        path = sub_url('/scenario_simulators/:identity/actions/run', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}

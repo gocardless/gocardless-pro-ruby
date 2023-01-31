@@ -80,7 +80,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "CR".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/creditors/:identity', 'identity' => identity)
+        path = sub_url('/creditors/:identity', {
+                         'identity' => identity,
+                       })
 
         options[:retry_failures] = true
 
@@ -98,7 +100,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "CR".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
-        path = sub_url('/creditors/:identity', 'identity' => identity)
+        path = sub_url('/creditors/:identity', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -126,7 +130,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "CR".
       # @param options [Hash] parameters as a hash, under a params key.
       def apply_scheme_identifier(identity, options = {})
-        path = sub_url('/creditors/:identity/actions/apply_scheme_identifier', 'identity' => identity)
+        path = sub_url('/creditors/:identity/actions/apply_scheme_identifier', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}

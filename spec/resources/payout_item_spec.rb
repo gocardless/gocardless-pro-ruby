@@ -35,7 +35,7 @@ describe GoCardlessPro::Resources::PayoutItem do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::PayoutItem)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::PayoutItem)
 
         expect(get_list_response.records.first.amount).to eq('amount-input')
 

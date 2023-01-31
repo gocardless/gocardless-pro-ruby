@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #
 # This client is automatically generated from a template and JSON schema definition.
 # See https://github.com/gocardless/gocardless-pro-ruby#contributing before editing.
@@ -35,9 +33,9 @@ module GoCardlessPro
       @headers['Authorization'] = "Bearer #{token}"
       @on_idempotency_conflict = options[:on_idempotency_conflict] || :fetch
 
-      unless %i[fetch raise].include?(@on_idempotency_conflict)
-        raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
-      end
+      return if %i[fetch raise].include?(@on_idempotency_conflict)
+
+      raise ArgumentError, 'Unknown mode for :on_idempotency_conflict'
     end
 
     # Make a request to the API
@@ -47,6 +45,7 @@ module GoCardlessPro
     # @param options [Hash] the options hash
     def make_request(method, path, options = {})
       raise ArgumentError, 'options must be a hash' unless options.is_a?(Hash)
+
       options[:headers] ||= {}
       options[:headers] = @headers.merge(options[:headers])
       Request.new(@connection, method, @path_prefix + path, options).request

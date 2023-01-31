@@ -103,7 +103,7 @@ describe GoCardlessPro::Services::SchemeIdentifiersService do
 
         it 'retries timeouts' do
           stub = stub_request(:post, %r{.*api.gocardless.com/scheme_identifiers}).
-                 to_timeout.then.to_return(status: 200, headers: response_headers)
+                 to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -111,10 +111,10 @@ describe GoCardlessPro::Services::SchemeIdentifiersService do
 
         it 'retries 5XX errors' do
           stub = stub_request(:post, %r{.*api.gocardless.com/scheme_identifiers}).
-                 to_return(status: 502,
-                           headers: { 'Content-Type' => 'text/html' },
-                           body: '<html><body>Response from Cloudflare</body></html>').
-                 then.to_return(status: 200, headers: response_headers)
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -294,7 +294,9 @@ describe GoCardlessPro::Services::SchemeIdentifiersService do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::SchemeIdentifier)
+        expect(get_list_response.records.map do |x|
+                 x.class
+               end.uniq.first).to eq(GoCardlessPro::Resources::SchemeIdentifier)
 
         expect(get_list_response.records.first.address_line1).to eq('address_line1-input')
 
@@ -345,7 +347,7 @@ describe GoCardlessPro::Services::SchemeIdentifiersService do
 
         it 'retries timeouts' do
           stub = stub_request(:get, %r{.*api.gocardless.com/scheme_identifiers}).
-                 to_timeout.then.to_return(status: 200, headers: response_headers, body: body)
+                 to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -353,10 +355,10 @@ describe GoCardlessPro::Services::SchemeIdentifiersService do
 
         it 'retries 5XX errors' do
           stub = stub_request(:get, %r{.*api.gocardless.com/scheme_identifiers}).
-                 to_return(status: 502,
-                           headers: { 'Content-Type' => 'text/html' },
-                           body: '<html><body>Response from Cloudflare</body></html>').
-                 then.to_return(status: 200, headers: response_headers, body: body)
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -703,7 +705,7 @@ describe GoCardlessPro::Services::SchemeIdentifiersService do
         stub_url = '/scheme_identifiers/:identity'.gsub(':identity', id)
 
         stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_timeout.then.to_return(status: 200, headers: response_headers)
+               to_timeout.then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -713,10 +715,10 @@ describe GoCardlessPro::Services::SchemeIdentifiersService do
         stub_url = '/scheme_identifiers/:identity'.gsub(':identity', id)
 
         stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_return(status: 502,
-                         headers: { 'Content-Type' => 'text/html' },
-                         body: '<html><body>Response from Cloudflare</body></html>').
-               then.to_return(status: 200, headers: response_headers)
+               to_return({ status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>' }).
+               then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -741,10 +743,10 @@ describe GoCardlessPro::Services::SchemeIdentifiersService do
         }
 
         stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_return(status: 500,
-                         headers: response_headers,
-                         body: gocardless_error.to_json).
-               then.to_return(status: 200, headers: response_headers)
+               to_return({ status: 500,
+                           headers: response_headers,
+                           body: gocardless_error.to_json }).
+               then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice

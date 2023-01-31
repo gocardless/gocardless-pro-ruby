@@ -70,6 +70,7 @@ module GoCardlessPro
       # Neukirchen.
       def secure_compare(a, b)
         return false unless a.bytesize == b.bytesize
+
         l = a.unpack('C*')
 
         r = 0
@@ -87,10 +88,10 @@ module GoCardlessPro
           raise ArgumentError, 'signature_header must be provided and must be a string'
         end
 
-        unless options[:webhook_endpoint_secret].is_a?(String)
-          raise ArgumentError, 'webhook_endpoint_secret must be provided and must be a ' \
-                               'string'
-        end
+        return if options[:webhook_endpoint_secret].is_a?(String)
+
+        raise ArgumentError, 'webhook_endpoint_secret must be provided and must be a ' \
+                             'string'
       end
     end
   end
