@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/gocardless/gocardless-pro-ruby'
   spec.license       = 'MIT'
 
-  spec.files         = Dir['README.md', 'Gemfile', 'lib/**/*']
+  spec.files         = Dir['README.md', 'LICENSE.txt', 'lib/**/*']
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
