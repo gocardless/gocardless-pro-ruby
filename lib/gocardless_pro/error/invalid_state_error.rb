@@ -10,6 +10,7 @@ module GoCardlessPro
 
     def conflicting_resource_id
       return unless idempotent_creation_conflict?
+
       idempotent_creation_conflict_error['links'][CONFLICTING_RESOURCE_ID]
     end
 

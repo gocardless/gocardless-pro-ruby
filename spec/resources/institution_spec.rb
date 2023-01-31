@@ -37,7 +37,7 @@ describe GoCardlessPro::Resources::Institution do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Institution)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Institution)
 
         expect(get_list_response.records.first.bank_redirect).to eq('bank_redirect-input')
 

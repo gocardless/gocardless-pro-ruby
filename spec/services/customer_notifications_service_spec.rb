@@ -18,7 +18,6 @@ describe GoCardlessPro::Services::CustomerNotificationsService do
       # /customer_notifications/%v/actions/handle
       stub_url = '/customer_notifications/:identity/actions/handle'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'customer_notifications' => {
 

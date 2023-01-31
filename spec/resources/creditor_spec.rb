@@ -269,7 +269,7 @@ describe GoCardlessPro::Resources::Creditor do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Creditor)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Creditor)
 
         expect(get_list_response.records.first.activated).to eq('activated-input')
 
@@ -572,7 +572,6 @@ describe GoCardlessPro::Resources::Creditor do
       # /creditors/%v/actions/apply_scheme_identifier
       stub_url = '/creditors/:identity/actions/apply_scheme_identifier'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'creditors' => {
 

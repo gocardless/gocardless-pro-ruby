@@ -39,7 +39,9 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::CurrencyExchangeRate)
+        expect(get_list_response.records.map do |x|
+                 x.class
+               end.uniq.first).to eq(GoCardlessPro::Resources::CurrencyExchangeRate)
 
         expect(get_list_response.records.first.rate).to eq('rate-input')
 
@@ -62,7 +64,7 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
 
         it 'retries timeouts' do
           stub = stub_request(:get, %r{.*api.gocardless.com/currency_exchange_rates}).
-                 to_timeout.then.to_return(status: 200, headers: response_headers, body: body)
+                 to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -70,10 +72,10 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
 
         it 'retries 5XX errors' do
           stub = stub_request(:get, %r{.*api.gocardless.com/currency_exchange_rates}).
-                 to_return(status: 502,
-                           headers: { 'Content-Type' => 'text/html' },
-                           body: '<html><body>Response from Cloudflare</body></html>').
-                 then.to_return(status: 200, headers: response_headers, body: body)
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice

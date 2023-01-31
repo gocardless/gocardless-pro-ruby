@@ -280,7 +280,7 @@ describe GoCardlessPro::Resources::Block do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Block)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Block)
 
         expect(get_list_response.records.first.active).to eq('active-input')
 
@@ -371,7 +371,6 @@ describe GoCardlessPro::Resources::Block do
       # /blocks/%v/actions/disable
       stub_url = '/blocks/:identity/actions/disable'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'blocks' => {
 
@@ -439,7 +438,6 @@ describe GoCardlessPro::Resources::Block do
       # /blocks/%v/actions/enable
       stub_url = '/blocks/:identity/actions/enable'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'blocks' => {
 
@@ -507,7 +505,6 @@ describe GoCardlessPro::Resources::Block do
       # /blocks/block_by_ref
       stub_url = '/blocks/block_by_ref'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'blocks' => [{
 
@@ -533,7 +530,7 @@ describe GoCardlessPro::Resources::Block do
     end
 
     it 'wraps the response and calls the right endpoint' do
-      expect(post_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Block)
+      expect(post_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Block)
 
       expect(stub).to have_been_requested
     end

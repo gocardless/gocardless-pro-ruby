@@ -45,7 +45,9 @@ module GoCardlessPro
       # @param identity       # The unique identifier created by the jurisdiction, tax type and version
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/tax_rates/:identity', 'identity' => identity)
+        path = sub_url('/tax_rates/:identity', {
+                         'identity' => identity,
+                       })
 
         options[:retry_failures] = true
 

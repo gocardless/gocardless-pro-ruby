@@ -81,7 +81,9 @@ module GoCardlessPro
       # apply to mandates created before 2016.
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/mandates/:identity', 'identity' => identity)
+        path = sub_url('/mandates/:identity', {
+                         'identity' => identity,
+                       })
 
         options[:retry_failures] = true
 
@@ -99,7 +101,9 @@ module GoCardlessPro
       # apply to mandates created before 2016.
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
-        path = sub_url('/mandates/:identity', 'identity' => identity)
+        path = sub_url('/mandates/:identity', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -126,7 +130,9 @@ module GoCardlessPro
       # apply to mandates created before 2016.
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
-        path = sub_url('/mandates/:identity/actions/cancel', 'identity' => identity)
+        path = sub_url('/mandates/:identity/actions/cancel', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -174,7 +180,9 @@ module GoCardlessPro
       # apply to mandates created before 2016.
       # @param options [Hash] parameters as a hash, under a params key.
       def reinstate(identity, options = {})
-        path = sub_url('/mandates/:identity/actions/reinstate', 'identity' => identity)
+        path = sub_url('/mandates/:identity/actions/reinstate', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}

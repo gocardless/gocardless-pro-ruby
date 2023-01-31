@@ -7,6 +7,7 @@ module GoCardlessPro
     #  @param error the error from the API
     def initialize(error)
       raise ArgumentError, 'GoCardless errors expect a hash' unless error.is_a?(Hash)
+
       @error = error
     end
 

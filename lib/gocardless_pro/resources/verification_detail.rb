@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #
 # This client is automatically generated from a template and JSON schema definition.
 # See https://github.com/gocardless/gocardless-pro-ruby#contributing before editing.

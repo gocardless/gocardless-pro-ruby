@@ -215,7 +215,7 @@ describe GoCardlessPro::Resources::Mandate do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Mandate)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Mandate)
 
         expect(get_list_response.records.first.authorisation_source).to eq('authorisation_source-input')
 
@@ -455,7 +455,6 @@ describe GoCardlessPro::Resources::Mandate do
       # /mandates/%v/actions/cancel
       stub_url = '/mandates/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'mandates' => {
 
@@ -531,7 +530,6 @@ describe GoCardlessPro::Resources::Mandate do
       # /mandates/%v/actions/reinstate
       stub_url = '/mandates/:identity/actions/reinstate'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'mandates' => {
 

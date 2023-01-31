@@ -44,7 +44,7 @@ describe GoCardlessPro::Resources::Webhook do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Webhook)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Webhook)
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
@@ -254,7 +254,6 @@ describe GoCardlessPro::Resources::Webhook do
       # /webhooks/%v/actions/retry
       stub_url = '/webhooks/:identity/actions/retry'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'webhooks' => {
 

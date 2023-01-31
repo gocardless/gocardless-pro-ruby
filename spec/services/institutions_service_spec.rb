@@ -41,7 +41,7 @@ describe GoCardlessPro::Services::InstitutionsService do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Institution)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Institution)
 
         expect(get_list_response.records.first.bank_redirect).to eq('bank_redirect-input')
 
@@ -68,7 +68,7 @@ describe GoCardlessPro::Services::InstitutionsService do
 
         it 'retries timeouts' do
           stub = stub_request(:get, %r{.*api.gocardless.com/institutions}).
-                 to_timeout.then.to_return(status: 200, headers: response_headers, body: body)
+                 to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -76,10 +76,10 @@ describe GoCardlessPro::Services::InstitutionsService do
 
         it 'retries 5XX errors' do
           stub = stub_request(:get, %r{.*api.gocardless.com/institutions}).
-                 to_return(status: 502,
-                           headers: { 'Content-Type' => 'text/html' },
-                           body: '<html><body>Response from Cloudflare</body></html>').
-                 then.to_return(status: 200, headers: response_headers, body: body)
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice

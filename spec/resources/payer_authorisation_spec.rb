@@ -293,7 +293,6 @@ describe GoCardlessPro::Resources::PayerAuthorisation do
       # /payer_authorisations/%v/actions/submit
       stub_url = '/payer_authorisations/:identity/actions/submit'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'payer_authorisations' => {
 
@@ -361,7 +360,6 @@ describe GoCardlessPro::Resources::PayerAuthorisation do
       # /payer_authorisations/%v/actions/confirm
       stub_url = '/payer_authorisations/:identity/actions/confirm'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'payer_authorisations' => {
 

@@ -52,15 +52,13 @@ module GoCardlessPro
 
       begin
         yield
-      rescue => exception
+      rescue StandardError => e
         requests_attempted += 1
 
-        if requests_attempted < total_requests_allowed && should_retry?(exception)
-          sleep(RETRY_DELAY)
-          retry
-        else
-          raise exception
-        end
+        raise e unless requests_attempted < total_requests_allowed && should_retry?(e)
+
+        sleep(RETRY_DELAY)
+        retry
       end
     end
 

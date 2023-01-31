@@ -180,7 +180,6 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
       # /billing_request_flows/%v/actions/initialise
       stub_url = '/billing_request_flows/:identity/actions/initialise'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'billing_request_flows' => {
 

@@ -16,7 +16,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "BAU".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/bank_authorisations/:identity', 'identity' => identity)
+        path = sub_url('/bank_authorisations/:identity', {
+                         'identity' => identity,
+                       })
 
         options[:retry_failures] = true
 

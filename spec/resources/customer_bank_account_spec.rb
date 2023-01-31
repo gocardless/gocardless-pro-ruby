@@ -209,7 +209,9 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::CustomerBankAccount)
+        expect(get_list_response.records.map do |x|
+                 x.class
+               end.uniq.first).to eq(GoCardlessPro::Resources::CustomerBankAccount)
 
         expect(get_list_response.records.first.account_holder_name).to eq('account_holder_name-input')
 
@@ -442,7 +444,6 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
       # /customer_bank_accounts/%v/actions/disable
       stub_url = '/customer_bank_accounts/:identity/actions/disable'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'customer_bank_accounts' => {
 
