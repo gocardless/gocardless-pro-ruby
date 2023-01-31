@@ -37,7 +37,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "BRF".
       # @param options [Hash] parameters as a hash, under a params key.
       def initialise(identity, options = {})
-        path = sub_url('/billing_request_flows/:identity/actions/initialise', 'identity' => identity)
+        path = sub_url('/billing_request_flows/:identity/actions/initialise', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}

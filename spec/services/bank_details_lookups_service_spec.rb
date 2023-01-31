@@ -58,7 +58,7 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
 
         it 'retries timeouts' do
           stub = stub_request(:post, %r{.*api.gocardless.com/bank_details_lookups}).
-                 to_timeout.then.to_return(status: 200, headers: response_headers)
+                 to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -66,10 +66,10 @@ describe GoCardlessPro::Services::BankDetailsLookupsService do
 
         it 'retries 5XX errors' do
           stub = stub_request(:post, %r{.*api.gocardless.com/bank_details_lookups}).
-                 to_return(status: 502,
-                           headers: { 'Content-Type' => 'text/html' },
-                           body: '<html><body>Response from Cloudflare</body></html>').
-                 then.to_return(status: 200, headers: response_headers)
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice

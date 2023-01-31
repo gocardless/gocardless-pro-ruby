@@ -221,7 +221,7 @@ describe GoCardlessPro::Resources::Payment do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Payment)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Payment)
 
         expect(get_list_response.records.first.amount).to eq('amount-input')
 
@@ -468,7 +468,6 @@ describe GoCardlessPro::Resources::Payment do
       # /payments/%v/actions/cancel
       stub_url = '/payments/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'payments' => {
 
@@ -546,7 +545,6 @@ describe GoCardlessPro::Resources::Payment do
       # /payments/%v/actions/retry
       stub_url = '/payments/:identity/actions/retry'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'payments' => {
 

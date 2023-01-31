@@ -92,7 +92,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/customer_bank_accounts/:identity', 'identity' => identity)
+        path = sub_url('/customer_bank_accounts/:identity', {
+                         'identity' => identity,
+                       })
 
         options[:retry_failures] = true
 
@@ -110,7 +112,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
-        path = sub_url('/customer_bank_accounts/:identity', 'identity' => identity)
+        path = sub_url('/customer_bank_accounts/:identity', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -137,7 +141,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def disable(identity, options = {})
-        path = sub_url('/customer_bank_accounts/:identity/actions/disable', 'identity' => identity)
+        path = sub_url('/customer_bank_accounts/:identity/actions/disable', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}

@@ -39,7 +39,7 @@ describe GoCardlessPro::Resources::Event do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Event)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Event)
 
         expect(get_list_response.records.first.action).to eq('action-input')
 

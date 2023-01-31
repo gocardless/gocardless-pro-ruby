@@ -45,7 +45,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "BRT".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
-        path = sub_url('/billing_request_templates/:identity', 'identity' => identity)
+        path = sub_url('/billing_request_templates/:identity', {
+                         'identity' => identity,
+                       })
 
         options[:retry_failures] = true
 
@@ -98,7 +100,9 @@ module GoCardlessPro
       # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
-        path = sub_url('/billing_request_templates/:identity', 'identity' => identity)
+        path = sub_url('/billing_request_templates/:identity', {
+                         'identity' => identity,
+                       })
 
         params = options.delete(:params) || {}
         options[:params] = {}

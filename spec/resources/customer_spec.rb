@@ -251,7 +251,7 @@ describe GoCardlessPro::Resources::Customer do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::Customer)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Customer)
 
         expect(get_list_response.records.first.address_line1).to eq('address_line1-input')
 
@@ -535,7 +535,6 @@ describe GoCardlessPro::Resources::Customer do
       # /customers/%v
       stub_url = '/customers/:identity'.gsub(':identity', resource_id)
       stub_request(:delete, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'customers' => {
 

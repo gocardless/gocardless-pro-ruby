@@ -354,7 +354,9 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map(&:class).uniq.first).to eq(GoCardlessPro::Resources::InstalmentSchedule)
+        expect(get_list_response.records.map do |x|
+                 x.class
+               end.uniq.first).to eq(GoCardlessPro::Resources::InstalmentSchedule)
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
@@ -573,7 +575,6 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
       # /instalment_schedules/%v/actions/cancel
       stub_url = '/instalment_schedules/:identity/actions/cancel'.gsub(':identity', resource_id)
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-
         body: {
           'instalment_schedules' => {
 
