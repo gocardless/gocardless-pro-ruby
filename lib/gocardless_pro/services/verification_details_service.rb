@@ -10,6 +10,34 @@ module GoCardlessPro
   module Services
     # Service for making requests to the VerificationDetail endpoints
     class VerificationDetailsService < BaseService
+      # Returns a list of a creditors verification details.
+      # Example URL: /verification_details
+      # @param options [Hash] parameters as a hash, under a params key.
+      def list(options = {})
+        path = '/verification_details'
+
+        options[:retry_failures] = true
+
+        response = make_request(:get, path, options)
+
+        ListResponse.new(
+          response: response,
+          unenveloped_body: unenvelope_body(response.body),
+          resource_class: Resources::VerificationDetail
+        )
+      end
+
+      # Get a lazily enumerated list of all the items returned. This is similar to the `list` method but will paginate for you automatically.
+      #
+      # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Otherwise they will be the body of the request.
+      def all(options = {})
+        Paginator.new(
+          service: self,
+          options: options
+        ).enumerator
+      end
+
       # Verification details represent any information needed by GoCardless to verify
       # a creditor.
       # Currently, only UK-based companies are supported.
