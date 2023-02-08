@@ -27,7 +27,6 @@ module GoCardlessPro
       attr_reader :mandate_request
       attr_reader :metadata
       attr_reader :payment_request
-      attr_reader :purpose_code
       attr_reader :resources
       attr_reader :status
 
@@ -44,7 +43,6 @@ module GoCardlessPro
         @mandate_request = object['mandate_request']
         @metadata = object['metadata']
         @payment_request = object['payment_request']
-        @purpose_code = object['purpose_code']
         @resources = object['resources']
         @status = object['status']
         @response = response
