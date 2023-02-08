@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the VerificationDetail endpoints
     class VerificationDetailsService < BaseService
-      # Returns a list of a creditors verification details.
+      # Returns a list of verification details belonging to a creditor.
       # Example URL: /verification_details
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
