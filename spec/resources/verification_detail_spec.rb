@@ -26,6 +26,7 @@ describe GoCardlessPro::Resources::VerificationDetail do
               'description' => 'description-input',
               'directors' => 'directors-input',
               'links' => 'links-input',
+              'name' => 'name-input',
               'postal_code' => 'postal_code-input',
             }],
             meta: {
@@ -58,6 +59,8 @@ describe GoCardlessPro::Resources::VerificationDetail do
 
         expect(get_list_response.records.first.directors).to eq('directors-input')
 
+        expect(get_list_response.records.first.name).to eq('name-input')
+
         expect(get_list_response.records.first.postal_code).to eq('postal_code-input')
       end
 
@@ -84,6 +87,7 @@ describe GoCardlessPro::Resources::VerificationDetail do
             'description' => 'description-input',
             'directors' => 'directors-input',
             'links' => 'links-input',
+            'name' => 'name-input',
             'postal_code' => 'postal_code-input',
           }],
           meta: {
@@ -108,6 +112,7 @@ describe GoCardlessPro::Resources::VerificationDetail do
             'description' => 'description-input',
             'directors' => 'directors-input',
             'links' => 'links-input',
+            'name' => 'name-input',
             'postal_code' => 'postal_code-input',
           }],
           meta: {
@@ -140,6 +145,7 @@ describe GoCardlessPro::Resources::VerificationDetail do
           'description' => 'description-input',
           'directors' => 'directors-input',
           'links' => 'links-input',
+          'name' => 'name-input',
           'postal_code' => 'postal_code-input',
         }
       end
@@ -158,6 +164,7 @@ describe GoCardlessPro::Resources::VerificationDetail do
                 'description' => 'description-input',
                 'directors' => 'directors-input',
                 'links' => 'links-input',
+                'name' => 'name-input',
                 'postal_code' => 'postal_code-input',
               },
             }
@@ -176,6 +183,7 @@ describe GoCardlessPro::Resources::VerificationDetail do
                   'description' => 'description-input',
                   'directors' => 'directors-input',
                   'links' => 'links-input',
+                  'name' => 'name-input',
                   'postal_code' => 'postal_code-input',
                 },
 
@@ -227,6 +235,7 @@ describe GoCardlessPro::Resources::VerificationDetail do
           'description' => 'description-input',
           'directors' => 'directors-input',
           'links' => 'links-input',
+          'name' => 'name-input',
           'postal_code' => 'postal_code-input',
         }
       end
