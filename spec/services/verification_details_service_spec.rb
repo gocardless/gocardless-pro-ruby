@@ -25,6 +25,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
             'description' => 'description-input',
             'directors' => 'directors-input',
             'links' => 'links-input',
+            'name' => 'name-input',
             'postal_code' => 'postal_code-input',
           }],
           meta: {
@@ -61,6 +62,8 @@ describe GoCardlessPro::Services::VerificationDetailsService do
         expect(get_list_response.records.first.description).to eq('description-input')
 
         expect(get_list_response.records.first.directors).to eq('directors-input')
+
+        expect(get_list_response.records.first.name).to eq('name-input')
 
         expect(get_list_response.records.first.postal_code).to eq('postal_code-input')
       end
@@ -111,6 +114,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
             'description' => 'description-input',
             'directors' => 'directors-input',
             'links' => 'links-input',
+            'name' => 'name-input',
             'postal_code' => 'postal_code-input',
           }],
           meta: {
@@ -135,6 +139,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
             'description' => 'description-input',
             'directors' => 'directors-input',
             'links' => 'links-input',
+            'name' => 'name-input',
             'postal_code' => 'postal_code-input',
           }],
           meta: {
@@ -168,6 +173,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
               'description' => 'description-input',
               'directors' => 'directors-input',
               'links' => 'links-input',
+              'name' => 'name-input',
               'postal_code' => 'postal_code-input',
             }],
             meta: {
@@ -192,6 +198,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
                                      'description' => 'description-input',
                                      'directors' => 'directors-input',
                                      'links' => 'links-input',
+                                     'name' => 'name-input',
                                      'postal_code' => 'postal_code-input',
                                    }],
                                    meta: {
@@ -221,6 +228,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
               'description' => 'description-input',
               'directors' => 'directors-input',
               'links' => 'links-input',
+              'name' => 'name-input',
               'postal_code' => 'postal_code-input',
             }],
             meta: {
@@ -248,6 +256,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
                                      'description' => 'description-input',
                                      'directors' => 'directors-input',
                                      'links' => 'links-input',
+                                     'name' => 'name-input',
                                      'postal_code' => 'postal_code-input',
                                    }],
                                    meta: {
@@ -280,6 +289,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
           'description' => 'description-input',
           'directors' => 'directors-input',
           'links' => 'links-input',
+          'name' => 'name-input',
           'postal_code' => 'postal_code-input',
         }
       end
@@ -298,6 +308,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
                 'description' => 'description-input',
                 'directors' => 'directors-input',
                 'links' => 'links-input',
+                'name' => 'name-input',
                 'postal_code' => 'postal_code-input',
               },
             }
@@ -316,6 +327,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
                   'description' => 'description-input',
                   'directors' => 'directors-input',
                   'links' => 'links-input',
+                  'name' => 'name-input',
                   'postal_code' => 'postal_code-input',
                 },
 
@@ -390,6 +402,7 @@ describe GoCardlessPro::Services::VerificationDetailsService do
           'description' => 'description-input',
           'directors' => 'directors-input',
           'links' => 'links-input',
+          'name' => 'name-input',
           'postal_code' => 'postal_code-input',
         }
       end

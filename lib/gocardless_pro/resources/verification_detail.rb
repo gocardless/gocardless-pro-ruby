@@ -19,6 +19,7 @@ module GoCardlessPro
       attr_reader :company_number
       attr_reader :description
       attr_reader :directors
+      attr_reader :name
       attr_reader :postal_code
 
       # Initialize a verification_detail resource instance
@@ -34,6 +35,7 @@ module GoCardlessPro
         @description = object['description']
         @directors = object['directors']
         @links = object['links']
+        @name = object['name']
         @postal_code = object['postal_code']
         @response = response
       end
