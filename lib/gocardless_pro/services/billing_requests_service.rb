@@ -10,35 +10,6 @@ module GoCardlessPro
   module Services
     # Service for making requests to the BillingRequest endpoints
     class BillingRequestsService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # billing requests.
-      # Example URL: /billing_requests
-      # @param options [Hash] parameters as a hash, under a params key.
-      def list(options = {})
-        path = '/billing_requests'
-
-        options[:retry_failures] = true
-
-        response = make_request(:get, path, options)
-
-        ListResponse.new(
-          response: response,
-          unenveloped_body: unenvelope_body(response.body),
-          resource_class: Resources::BillingRequest
-        )
-      end
-
-      # Get a lazily enumerated list of all the items returned. This is similar to the `list` method but will paginate for you automatically.
-      #
-      # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
-      # Otherwise they will be the body of the request.
-      def all(options = {})
-        Paginator.new(
-          service: self,
-          options: options
-        ).enumerator
-      end
-
       #
       # Example URL: /billing_requests
       # @param options [Hash] parameters as a hash, under a params key.
@@ -68,25 +39,6 @@ module GoCardlessPro
 
           raise e
         end
-
-        return if response.body.nil?
-
-        Resources::BillingRequest.new(unenvelope_body(response.body), response)
-      end
-
-      # Fetches a billing request
-      # Example URL: /billing_requests/:identity
-      #
-      # @param identity       # Unique identifier, beginning with "BRQ".
-      # @param options [Hash] parameters as a hash, under a params key.
-      def get(identity, options = {})
-        path = sub_url('/billing_requests/:identity', {
-                         'identity' => identity,
-                       })
-
-        options[:retry_failures] = true
-
-        response = make_request(:get, path, options)
 
         return if response.body.nil?
 
@@ -192,91 +144,6 @@ module GoCardlessPro
         Resources::BillingRequest.new(unenvelope_body(response.body), response)
       end
 
-      # If a billing request is ready to be fulfilled, call this endpoint to cause
-      # it to fulfil, executing the payment.
-      # Example URL: /billing_requests/:identity/actions/fulfil
-      #
-      # @param identity       # Unique identifier, beginning with "BRQ".
-      # @param options [Hash] parameters as a hash, under a params key.
-      def fulfil(identity, options = {})
-        path = sub_url('/billing_requests/:identity/actions/fulfil', {
-                         'identity' => identity,
-                       })
-
-        params = options.delete(:params) || {}
-        options[:params] = {}
-        options[:params]['data'] = params
-
-        options[:retry_failures] = false
-
-        begin
-          response = make_request(:post, path, options)
-
-          # Response doesn't raise any errors until #body is called
-          response.tap(&:body)
-        rescue InvalidStateError => e
-          if e.idempotent_creation_conflict?
-            case @api_service.on_idempotency_conflict
-            when :raise
-              raise IdempotencyConflict, e.error
-            when :fetch
-              return get(e.conflicting_resource_id)
-            end
-          end
-
-          raise e
-        end
-
-        return if response.body.nil?
-
-        Resources::BillingRequest.new(unenvelope_body(response.body), response)
-      end
-
-      # This will allow for the updating of the currency and subsequently the scheme
-      # if
-      # needed for a Billing Request. This will only be available for mandate only
-      # flows
-      # which do not have the lock_currency flag set to true on the Billing Request
-      # Flow. It
-      # will also not support any request which has a payments request.
-      # Example URL: /billing_requests/:identity/actions/choose_currency
-      #
-      # @param identity       # Unique identifier, beginning with "BRQ".
-      # @param options [Hash] parameters as a hash, under a params key.
-      def choose_currency(identity, options = {})
-        path = sub_url('/billing_requests/:identity/actions/choose_currency', {
-                         'identity' => identity,
-                       })
-
-        params = options.delete(:params) || {}
-        options[:params] = {}
-        options[:params]['data'] = params
-
-        options[:retry_failures] = false
-
-        begin
-          response = make_request(:post, path, options)
-
-          # Response doesn't raise any errors until #body is called
-          response.tap(&:body)
-        rescue InvalidStateError => e
-          if e.idempotent_creation_conflict?
-            case @api_service.on_idempotency_conflict
-            when :raise
-              raise IdempotencyConflict, e.error
-            when :fetch
-              return get(e.conflicting_resource_id)
-            end
-          end
-
-          raise e
-        end
-
-        return if response.body.nil?
-
-        Resources::BillingRequest.new(unenvelope_body(response.body), response)
-      end
-
       # This is needed when you have a mandate request. As a scheme compliance rule we
       # are required to
       # allow the payer to crosscheck the details entered by them and confirm it.
@@ -286,6 +153,46 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def confirm_payer_details(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/confirm_payer_details', {
+                         'identity' => identity,
+                       })
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::BillingRequest.new(unenvelope_body(response.body), response)
+      end
+
+      # If a billing request is ready to be fulfilled, call this endpoint to cause
+      # it to fulfil, executing the payment.
+      # Example URL: /billing_requests/:identity/actions/fulfil
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def fulfil(identity, options = {})
+        path = sub_url('/billing_requests/:identity/actions/fulfil', {
                          'identity' => identity,
                        })
 
@@ -358,6 +265,54 @@ module GoCardlessPro
         Resources::BillingRequest.new(unenvelope_body(response.body), response)
       end
 
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      # billing requests.
+      # Example URL: /billing_requests
+      # @param options [Hash] parameters as a hash, under a params key.
+      def list(options = {})
+        path = '/billing_requests'
+
+        options[:retry_failures] = true
+
+        response = make_request(:get, path, options)
+
+        ListResponse.new(
+          response: response,
+          unenveloped_body: unenvelope_body(response.body),
+          resource_class: Resources::BillingRequest
+        )
+      end
+
+      # Get a lazily enumerated list of all the items returned. This is similar to the `list` method but will paginate for you automatically.
+      #
+      # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
+      # Otherwise they will be the body of the request.
+      def all(options = {})
+        Paginator.new(
+          service: self,
+          options: options
+        ).enumerator
+      end
+
+      # Fetches a billing request
+      # Example URL: /billing_requests/:identity
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def get(identity, options = {})
+        path = sub_url('/billing_requests/:identity', {
+                         'identity' => identity,
+                       })
+
+        options[:retry_failures] = true
+
+        response = make_request(:get, path, options)
+
+        return if response.body.nil?
+
+        Resources::BillingRequest.new(unenvelope_body(response.body), response)
+      end
+
       # Notifies the customer linked to the billing request, asking them to authorise
       # it.
       # Currently, the customer can only be notified by email.
@@ -407,6 +362,51 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def fallback(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/fallback', {
+                         'identity' => identity,
+                       })
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::BillingRequest.new(unenvelope_body(response.body), response)
+      end
+
+      # This will allow for the updating of the currency and subsequently the scheme
+      # if
+      # needed for a Billing Request. This will only be available for mandate only
+      # flows
+      # which do not have the lock_currency flag set to true on the Billing Request
+      # Flow. It
+      # will also not support any request which has a payments request.
+      # Example URL: /billing_requests/:identity/actions/choose_currency
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def choose_currency(identity, options = {})
+        path = sub_url('/billing_requests/:identity/actions/choose_currency', {
                          'identity' => identity,
                        })
 

@@ -9,6 +9,632 @@ describe GoCardlessPro::Services::BillingRequestsService do
 
   let(:response_headers) { { 'Content-Type' => 'application/json' } }
 
+  describe '#create' do
+    subject(:post_create_response) { client.billing_requests.create(params: new_resource) }
+    context 'with a valid request' do
+      let(:new_resource) do
+        {
+
+          'actions' => 'actions-input',
+          'created_at' => 'created_at-input',
+          'fallback_enabled' => 'fallback_enabled-input',
+          'id' => 'id-input',
+          'links' => 'links-input',
+          'mandate_request' => 'mandate_request-input',
+          'metadata' => 'metadata-input',
+          'payment_request' => 'payment_request-input',
+          'purpose_code' => 'purpose_code-input',
+          'resources' => 'resources-input',
+          'status' => 'status-input',
+        }
+      end
+
+      before do
+        stub_request(:post, %r{.*api.gocardless.com/billing_requests}).
+          with(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
+                'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'purpose_code' => 'purpose_code-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }
+          ).
+          to_return(
+            body: {
+              'billing_requests' =>
+
+                {
+
+                  'actions' => 'actions-input',
+                  'created_at' => 'created_at-input',
+                  'fallback_enabled' => 'fallback_enabled-input',
+                  'id' => 'id-input',
+                  'links' => 'links-input',
+                  'mandate_request' => 'mandate_request-input',
+                  'metadata' => 'metadata-input',
+                  'payment_request' => 'payment_request-input',
+                  'purpose_code' => 'purpose_code-input',
+                  'resources' => 'resources-input',
+                  'status' => 'status-input',
+                },
+
+            }.to_json,
+            headers: response_headers
+          )
+      end
+
+      it 'creates and returns the resource' do
+        expect(post_create_response).to be_a(GoCardlessPro::Resources::BillingRequest)
+      end
+
+      describe 'retry behaviour' do
+        before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
+
+        it 'retries timeouts' do
+          stub = stub_request(:post, %r{.*api.gocardless.com/billing_requests}).
+                 to_timeout.then.to_return({ status: 200, headers: response_headers })
+
+          post_create_response
+          expect(stub).to have_been_requested.twice
+        end
+
+        it 'retries 5XX errors' do
+          stub = stub_request(:post, %r{.*api.gocardless.com/billing_requests}).
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers })
+
+          post_create_response
+          expect(stub).to have_been_requested.twice
+        end
+      end
+    end
+
+    context 'with a request that returns a validation error' do
+      let(:new_resource) { {} }
+
+      before do
+        stub_request(:post, %r{.*api.gocardless.com/billing_requests}).to_return(
+          body: {
+            error: {
+              type: 'validation_failed',
+              code: 422,
+              errors: [
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
+          }.to_json,
+          headers: response_headers,
+          status: 422
+        )
+      end
+
+      it 'throws the correct error' do
+        expect { post_create_response }.to raise_error(GoCardlessPro::ValidationError)
+      end
+    end
+
+    context 'with a request that returns an idempotent creation conflict error' do
+      let(:id) { 'ID123' }
+
+      let(:new_resource) do
+        {
+
+          'actions' => 'actions-input',
+          'created_at' => 'created_at-input',
+          'fallback_enabled' => 'fallback_enabled-input',
+          'id' => 'id-input',
+          'links' => 'links-input',
+          'mandate_request' => 'mandate_request-input',
+          'metadata' => 'metadata-input',
+          'payment_request' => 'payment_request-input',
+          'purpose_code' => 'purpose_code-input',
+          'resources' => 'resources-input',
+          'status' => 'status-input',
+        }
+      end
+
+      let!(:post_stub) do
+        stub_request(:post, %r{.*api.gocardless.com/billing_requests}).to_return(
+          body: {
+            error: {
+              type: 'invalid_state',
+              code: 409,
+              errors: [
+                {
+                  message: 'A resource has already been created with this idempotency key',
+                  reason: 'idempotent_creation_conflict',
+                  links: {
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
+          }.to_json,
+          headers: response_headers,
+          status: 409
+        )
+      end
+
+      let!(:get_stub) do
+        stub_url = "/billing_requests/#{id}"
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          to_return(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
+                'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'purpose_code' => 'purpose_code-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+
+      context 'with default behaviour' do
+        it 'fetches the already-created resource' do
+          post_create_response
+          expect(post_stub).to have_been_requested
+          expect(get_stub).to have_been_requested
+        end
+      end
+
+      context 'with on_idempotency_conflict: :raise' do
+        let(:client) do
+          GoCardlessPro::Client.new(
+            access_token: 'SECRET_TOKEN',
+            on_idempotency_conflict: :raise
+          )
+        end
+
+        it 'raises an IdempotencyConflict error' do
+          expect { post_create_response }.
+            to raise_error(GoCardlessPro::IdempotencyConflict)
+        end
+      end
+    end
+  end
+
+  describe '#collect_customer_details' do
+    subject(:post_response) { client.billing_requests.collect_customer_details(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /billing_requests/%v/actions/collect_customer_details
+      stub_url = '/billing_requests/:identity/actions/collect_customer_details'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'billing_requests' => {
+
+            'actions' => 'actions-input',
+            'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'mandate_request' => 'mandate_request-input',
+            'metadata' => 'metadata-input',
+            'payment_request' => 'payment_request-input',
+            'purpose_code' => 'purpose_code-input',
+            'resources' => 'resources-input',
+            'status' => 'status-input',
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/billing_requests/:identity/actions/collect_customer_details'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.billing_requests.collect_customer_details(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /billing_requests/%v/actions/collect_customer_details
+        stub_url = '/billing_requests/:identity/actions/collect_customer_details'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
+                'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'purpose_code' => 'purpose_code-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
+  describe '#collect_bank_account' do
+    subject(:post_response) { client.billing_requests.collect_bank_account(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /billing_requests/%v/actions/collect_bank_account
+      stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'billing_requests' => {
+
+            'actions' => 'actions-input',
+            'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'mandate_request' => 'mandate_request-input',
+            'metadata' => 'metadata-input',
+            'payment_request' => 'payment_request-input',
+            'purpose_code' => 'purpose_code-input',
+            'resources' => 'resources-input',
+            'status' => 'status-input',
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.billing_requests.collect_bank_account(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /billing_requests/%v/actions/collect_bank_account
+        stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
+                'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'purpose_code' => 'purpose_code-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
+  describe '#confirm_payer_details' do
+    subject(:post_response) { client.billing_requests.confirm_payer_details(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /billing_requests/%v/actions/confirm_payer_details
+      stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'billing_requests' => {
+
+            'actions' => 'actions-input',
+            'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'mandate_request' => 'mandate_request-input',
+            'metadata' => 'metadata-input',
+            'payment_request' => 'payment_request-input',
+            'purpose_code' => 'purpose_code-input',
+            'resources' => 'resources-input',
+            'status' => 'status-input',
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.billing_requests.confirm_payer_details(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /billing_requests/%v/actions/confirm_payer_details
+        stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
+                'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'purpose_code' => 'purpose_code-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
+  describe '#fulfil' do
+    subject(:post_response) { client.billing_requests.fulfil(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /billing_requests/%v/actions/fulfil
+      stub_url = '/billing_requests/:identity/actions/fulfil'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'billing_requests' => {
+
+            'actions' => 'actions-input',
+            'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'mandate_request' => 'mandate_request-input',
+            'metadata' => 'metadata-input',
+            'payment_request' => 'payment_request-input',
+            'purpose_code' => 'purpose_code-input',
+            'resources' => 'resources-input',
+            'status' => 'status-input',
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/billing_requests/:identity/actions/fulfil'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.billing_requests.fulfil(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /billing_requests/%v/actions/fulfil
+        stub_url = '/billing_requests/:identity/actions/fulfil'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
+                'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'purpose_code' => 'purpose_code-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
+  describe '#cancel' do
+    subject(:post_response) { client.billing_requests.cancel(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /billing_requests/%v/actions/cancel
+      stub_url = '/billing_requests/:identity/actions/cancel'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'billing_requests' => {
+
+            'actions' => 'actions-input',
+            'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'mandate_request' => 'mandate_request-input',
+            'metadata' => 'metadata-input',
+            'payment_request' => 'payment_request-input',
+            'purpose_code' => 'purpose_code-input',
+            'resources' => 'resources-input',
+            'status' => 'status-input',
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/billing_requests/:identity/actions/cancel'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.billing_requests.cancel(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /billing_requests/%v/actions/cancel
+        stub_url = '/billing_requests/:identity/actions/cancel'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
+                'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'purpose_code' => 'purpose_code-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
   describe '#list' do
     describe 'with no filters' do
       subject(:get_list_response) { client.billing_requests.list }
@@ -284,212 +910,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
     end
   end
 
-  describe '#create' do
-    subject(:post_create_response) { client.billing_requests.create(params: new_resource) }
-    context 'with a valid request' do
-      let(:new_resource) do
-        {
-
-          'actions' => 'actions-input',
-          'created_at' => 'created_at-input',
-          'fallback_enabled' => 'fallback_enabled-input',
-          'id' => 'id-input',
-          'links' => 'links-input',
-          'mandate_request' => 'mandate_request-input',
-          'metadata' => 'metadata-input',
-          'payment_request' => 'payment_request-input',
-          'purpose_code' => 'purpose_code-input',
-          'resources' => 'resources-input',
-          'status' => 'status-input',
-        }
-      end
-
-      before do
-        stub_request(:post, %r{.*api.gocardless.com/billing_requests}).
-          with(
-            body: {
-              'billing_requests' => {
-
-                'actions' => 'actions-input',
-                'created_at' => 'created_at-input',
-                'fallback_enabled' => 'fallback_enabled-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'mandate_request' => 'mandate_request-input',
-                'metadata' => 'metadata-input',
-                'payment_request' => 'payment_request-input',
-                'purpose_code' => 'purpose_code-input',
-                'resources' => 'resources-input',
-                'status' => 'status-input',
-              },
-            }
-          ).
-          to_return(
-            body: {
-              'billing_requests' =>
-
-                {
-
-                  'actions' => 'actions-input',
-                  'created_at' => 'created_at-input',
-                  'fallback_enabled' => 'fallback_enabled-input',
-                  'id' => 'id-input',
-                  'links' => 'links-input',
-                  'mandate_request' => 'mandate_request-input',
-                  'metadata' => 'metadata-input',
-                  'payment_request' => 'payment_request-input',
-                  'purpose_code' => 'purpose_code-input',
-                  'resources' => 'resources-input',
-                  'status' => 'status-input',
-                },
-
-            }.to_json,
-            headers: response_headers
-          )
-      end
-
-      it 'creates and returns the resource' do
-        expect(post_create_response).to be_a(GoCardlessPro::Resources::BillingRequest)
-      end
-
-      describe 'retry behaviour' do
-        before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
-
-        it 'retries timeouts' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/billing_requests}).
-                 to_timeout.then.to_return({ status: 200, headers: response_headers })
-
-          post_create_response
-          expect(stub).to have_been_requested.twice
-        end
-
-        it 'retries 5XX errors' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/billing_requests}).
-                 to_return({ status: 502,
-                             headers: { 'Content-Type' => 'text/html' },
-                             body: '<html><body>Response from Cloudflare</body></html>' }).
-                 then.to_return({ status: 200, headers: response_headers })
-
-          post_create_response
-          expect(stub).to have_been_requested.twice
-        end
-      end
-    end
-
-    context 'with a request that returns a validation error' do
-      let(:new_resource) { {} }
-
-      before do
-        stub_request(:post, %r{.*api.gocardless.com/billing_requests}).to_return(
-          body: {
-            error: {
-              type: 'validation_failed',
-              code: 422,
-              errors: [
-                { message: 'test error message', field: 'test_field' },
-              ],
-            },
-          }.to_json,
-          headers: response_headers,
-          status: 422
-        )
-      end
-
-      it 'throws the correct error' do
-        expect { post_create_response }.to raise_error(GoCardlessPro::ValidationError)
-      end
-    end
-
-    context 'with a request that returns an idempotent creation conflict error' do
-      let(:id) { 'ID123' }
-
-      let(:new_resource) do
-        {
-
-          'actions' => 'actions-input',
-          'created_at' => 'created_at-input',
-          'fallback_enabled' => 'fallback_enabled-input',
-          'id' => 'id-input',
-          'links' => 'links-input',
-          'mandate_request' => 'mandate_request-input',
-          'metadata' => 'metadata-input',
-          'payment_request' => 'payment_request-input',
-          'purpose_code' => 'purpose_code-input',
-          'resources' => 'resources-input',
-          'status' => 'status-input',
-        }
-      end
-
-      let!(:post_stub) do
-        stub_request(:post, %r{.*api.gocardless.com/billing_requests}).to_return(
-          body: {
-            error: {
-              type: 'invalid_state',
-              code: 409,
-              errors: [
-                {
-                  message: 'A resource has already been created with this idempotency key',
-                  reason: 'idempotent_creation_conflict',
-                  links: {
-                    conflicting_resource_id: id,
-                  },
-                },
-              ],
-            },
-          }.to_json,
-          headers: response_headers,
-          status: 409
-        )
-      end
-
-      let!(:get_stub) do
-        stub_url = "/billing_requests/#{id}"
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          to_return(
-            body: {
-              'billing_requests' => {
-
-                'actions' => 'actions-input',
-                'created_at' => 'created_at-input',
-                'fallback_enabled' => 'fallback_enabled-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'mandate_request' => 'mandate_request-input',
-                'metadata' => 'metadata-input',
-                'payment_request' => 'payment_request-input',
-                'purpose_code' => 'purpose_code-input',
-                'resources' => 'resources-input',
-                'status' => 'status-input',
-              },
-            }.to_json,
-            headers: response_headers
-          )
-      end
-
-      context 'with default behaviour' do
-        it 'fetches the already-created resource' do
-          post_create_response
-          expect(post_stub).to have_been_requested
-          expect(get_stub).to have_been_requested
-        end
-      end
-
-      context 'with on_idempotency_conflict: :raise' do
-        let(:client) do
-          GoCardlessPro::Client.new(
-            access_token: 'SECRET_TOKEN',
-            on_idempotency_conflict: :raise
-          )
-        end
-
-        it 'raises an IdempotencyConflict error' do
-          expect { post_create_response }.
-            to raise_error(GoCardlessPro::IdempotencyConflict)
-        end
-      end
-    end
-  end
-
   describe '#get' do
     let(:id) { 'ID123' }
 
@@ -640,510 +1060,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
     end
   end
 
-  describe '#collect_customer_details' do
-    subject(:post_response) { client.billing_requests.collect_customer_details(resource_id) }
-
-    let(:resource_id) { 'ABC123' }
-
-    let!(:stub) do
-      # /billing_requests/%v/actions/collect_customer_details
-      stub_url = '/billing_requests/:identity/actions/collect_customer_details'.gsub(':identity', resource_id)
-      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-        body: {
-          'billing_requests' => {
-
-            'actions' => 'actions-input',
-            'created_at' => 'created_at-input',
-            'fallback_enabled' => 'fallback_enabled-input',
-            'id' => 'id-input',
-            'links' => 'links-input',
-            'mandate_request' => 'mandate_request-input',
-            'metadata' => 'metadata-input',
-            'payment_request' => 'payment_request-input',
-            'purpose_code' => 'purpose_code-input',
-            'resources' => 'resources-input',
-            'status' => 'status-input',
-          },
-        }.to_json,
-
-        headers: response_headers
-      )
-    end
-
-    it 'wraps the response and calls the right endpoint' do
-      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
-
-      expect(stub).to have_been_requested
-    end
-
-    describe 'retry behaviour' do
-      it "doesn't retry errors" do
-        stub_url = '/billing_requests/:identity/actions/collect_customer_details'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
-
-        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
-        expect(stub).to have_been_requested
-      end
-    end
-
-    context 'when the request needs a body and custom header' do
-      let(:body) { { foo: 'bar' } }
-      let(:headers) { { 'Foo' => 'Bar' } }
-      subject(:post_response) { client.billing_requests.collect_customer_details(resource_id, body, headers) }
-
-      let(:resource_id) { 'ABC123' }
-
-      let!(:stub) do
-        # /billing_requests/%v/actions/collect_customer_details
-        stub_url = '/billing_requests/:identity/actions/collect_customer_details'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
-            body: { foo: 'bar' },
-            headers: { 'Foo' => 'Bar' }
-          ).to_return(
-            body: {
-              'billing_requests' => {
-
-                'actions' => 'actions-input',
-                'created_at' => 'created_at-input',
-                'fallback_enabled' => 'fallback_enabled-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'mandate_request' => 'mandate_request-input',
-                'metadata' => 'metadata-input',
-                'payment_request' => 'payment_request-input',
-                'purpose_code' => 'purpose_code-input',
-                'resources' => 'resources-input',
-                'status' => 'status-input',
-              },
-            }.to_json,
-            headers: response_headers
-          )
-      end
-    end
-  end
-
-  describe '#collect_bank_account' do
-    subject(:post_response) { client.billing_requests.collect_bank_account(resource_id) }
-
-    let(:resource_id) { 'ABC123' }
-
-    let!(:stub) do
-      # /billing_requests/%v/actions/collect_bank_account
-      stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
-      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-        body: {
-          'billing_requests' => {
-
-            'actions' => 'actions-input',
-            'created_at' => 'created_at-input',
-            'fallback_enabled' => 'fallback_enabled-input',
-            'id' => 'id-input',
-            'links' => 'links-input',
-            'mandate_request' => 'mandate_request-input',
-            'metadata' => 'metadata-input',
-            'payment_request' => 'payment_request-input',
-            'purpose_code' => 'purpose_code-input',
-            'resources' => 'resources-input',
-            'status' => 'status-input',
-          },
-        }.to_json,
-
-        headers: response_headers
-      )
-    end
-
-    it 'wraps the response and calls the right endpoint' do
-      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
-
-      expect(stub).to have_been_requested
-    end
-
-    describe 'retry behaviour' do
-      it "doesn't retry errors" do
-        stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
-
-        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
-        expect(stub).to have_been_requested
-      end
-    end
-
-    context 'when the request needs a body and custom header' do
-      let(:body) { { foo: 'bar' } }
-      let(:headers) { { 'Foo' => 'Bar' } }
-      subject(:post_response) { client.billing_requests.collect_bank_account(resource_id, body, headers) }
-
-      let(:resource_id) { 'ABC123' }
-
-      let!(:stub) do
-        # /billing_requests/%v/actions/collect_bank_account
-        stub_url = '/billing_requests/:identity/actions/collect_bank_account'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
-            body: { foo: 'bar' },
-            headers: { 'Foo' => 'Bar' }
-          ).to_return(
-            body: {
-              'billing_requests' => {
-
-                'actions' => 'actions-input',
-                'created_at' => 'created_at-input',
-                'fallback_enabled' => 'fallback_enabled-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'mandate_request' => 'mandate_request-input',
-                'metadata' => 'metadata-input',
-                'payment_request' => 'payment_request-input',
-                'purpose_code' => 'purpose_code-input',
-                'resources' => 'resources-input',
-                'status' => 'status-input',
-              },
-            }.to_json,
-            headers: response_headers
-          )
-      end
-    end
-  end
-
-  describe '#fulfil' do
-    subject(:post_response) { client.billing_requests.fulfil(resource_id) }
-
-    let(:resource_id) { 'ABC123' }
-
-    let!(:stub) do
-      # /billing_requests/%v/actions/fulfil
-      stub_url = '/billing_requests/:identity/actions/fulfil'.gsub(':identity', resource_id)
-      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-        body: {
-          'billing_requests' => {
-
-            'actions' => 'actions-input',
-            'created_at' => 'created_at-input',
-            'fallback_enabled' => 'fallback_enabled-input',
-            'id' => 'id-input',
-            'links' => 'links-input',
-            'mandate_request' => 'mandate_request-input',
-            'metadata' => 'metadata-input',
-            'payment_request' => 'payment_request-input',
-            'purpose_code' => 'purpose_code-input',
-            'resources' => 'resources-input',
-            'status' => 'status-input',
-          },
-        }.to_json,
-
-        headers: response_headers
-      )
-    end
-
-    it 'wraps the response and calls the right endpoint' do
-      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
-
-      expect(stub).to have_been_requested
-    end
-
-    describe 'retry behaviour' do
-      it "doesn't retry errors" do
-        stub_url = '/billing_requests/:identity/actions/fulfil'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
-
-        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
-        expect(stub).to have_been_requested
-      end
-    end
-
-    context 'when the request needs a body and custom header' do
-      let(:body) { { foo: 'bar' } }
-      let(:headers) { { 'Foo' => 'Bar' } }
-      subject(:post_response) { client.billing_requests.fulfil(resource_id, body, headers) }
-
-      let(:resource_id) { 'ABC123' }
-
-      let!(:stub) do
-        # /billing_requests/%v/actions/fulfil
-        stub_url = '/billing_requests/:identity/actions/fulfil'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
-            body: { foo: 'bar' },
-            headers: { 'Foo' => 'Bar' }
-          ).to_return(
-            body: {
-              'billing_requests' => {
-
-                'actions' => 'actions-input',
-                'created_at' => 'created_at-input',
-                'fallback_enabled' => 'fallback_enabled-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'mandate_request' => 'mandate_request-input',
-                'metadata' => 'metadata-input',
-                'payment_request' => 'payment_request-input',
-                'purpose_code' => 'purpose_code-input',
-                'resources' => 'resources-input',
-                'status' => 'status-input',
-              },
-            }.to_json,
-            headers: response_headers
-          )
-      end
-    end
-  end
-
-  describe '#choose_currency' do
-    subject(:post_response) { client.billing_requests.choose_currency(resource_id) }
-
-    let(:resource_id) { 'ABC123' }
-
-    let!(:stub) do
-      # /billing_requests/%v/actions/choose_currency
-      stub_url = '/billing_requests/:identity/actions/choose_currency'.gsub(':identity', resource_id)
-      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-        body: {
-          'billing_requests' => {
-
-            'actions' => 'actions-input',
-            'created_at' => 'created_at-input',
-            'fallback_enabled' => 'fallback_enabled-input',
-            'id' => 'id-input',
-            'links' => 'links-input',
-            'mandate_request' => 'mandate_request-input',
-            'metadata' => 'metadata-input',
-            'payment_request' => 'payment_request-input',
-            'purpose_code' => 'purpose_code-input',
-            'resources' => 'resources-input',
-            'status' => 'status-input',
-          },
-        }.to_json,
-
-        headers: response_headers
-      )
-    end
-
-    it 'wraps the response and calls the right endpoint' do
-      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
-
-      expect(stub).to have_been_requested
-    end
-
-    describe 'retry behaviour' do
-      it "doesn't retry errors" do
-        stub_url = '/billing_requests/:identity/actions/choose_currency'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
-
-        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
-        expect(stub).to have_been_requested
-      end
-    end
-
-    context 'when the request needs a body and custom header' do
-      let(:body) { { foo: 'bar' } }
-      let(:headers) { { 'Foo' => 'Bar' } }
-      subject(:post_response) { client.billing_requests.choose_currency(resource_id, body, headers) }
-
-      let(:resource_id) { 'ABC123' }
-
-      let!(:stub) do
-        # /billing_requests/%v/actions/choose_currency
-        stub_url = '/billing_requests/:identity/actions/choose_currency'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
-            body: { foo: 'bar' },
-            headers: { 'Foo' => 'Bar' }
-          ).to_return(
-            body: {
-              'billing_requests' => {
-
-                'actions' => 'actions-input',
-                'created_at' => 'created_at-input',
-                'fallback_enabled' => 'fallback_enabled-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'mandate_request' => 'mandate_request-input',
-                'metadata' => 'metadata-input',
-                'payment_request' => 'payment_request-input',
-                'purpose_code' => 'purpose_code-input',
-                'resources' => 'resources-input',
-                'status' => 'status-input',
-              },
-            }.to_json,
-            headers: response_headers
-          )
-      end
-    end
-  end
-
-  describe '#confirm_payer_details' do
-    subject(:post_response) { client.billing_requests.confirm_payer_details(resource_id) }
-
-    let(:resource_id) { 'ABC123' }
-
-    let!(:stub) do
-      # /billing_requests/%v/actions/confirm_payer_details
-      stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
-      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-        body: {
-          'billing_requests' => {
-
-            'actions' => 'actions-input',
-            'created_at' => 'created_at-input',
-            'fallback_enabled' => 'fallback_enabled-input',
-            'id' => 'id-input',
-            'links' => 'links-input',
-            'mandate_request' => 'mandate_request-input',
-            'metadata' => 'metadata-input',
-            'payment_request' => 'payment_request-input',
-            'purpose_code' => 'purpose_code-input',
-            'resources' => 'resources-input',
-            'status' => 'status-input',
-          },
-        }.to_json,
-
-        headers: response_headers
-      )
-    end
-
-    it 'wraps the response and calls the right endpoint' do
-      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
-
-      expect(stub).to have_been_requested
-    end
-
-    describe 'retry behaviour' do
-      it "doesn't retry errors" do
-        stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
-
-        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
-        expect(stub).to have_been_requested
-      end
-    end
-
-    context 'when the request needs a body and custom header' do
-      let(:body) { { foo: 'bar' } }
-      let(:headers) { { 'Foo' => 'Bar' } }
-      subject(:post_response) { client.billing_requests.confirm_payer_details(resource_id, body, headers) }
-
-      let(:resource_id) { 'ABC123' }
-
-      let!(:stub) do
-        # /billing_requests/%v/actions/confirm_payer_details
-        stub_url = '/billing_requests/:identity/actions/confirm_payer_details'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
-            body: { foo: 'bar' },
-            headers: { 'Foo' => 'Bar' }
-          ).to_return(
-            body: {
-              'billing_requests' => {
-
-                'actions' => 'actions-input',
-                'created_at' => 'created_at-input',
-                'fallback_enabled' => 'fallback_enabled-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'mandate_request' => 'mandate_request-input',
-                'metadata' => 'metadata-input',
-                'payment_request' => 'payment_request-input',
-                'purpose_code' => 'purpose_code-input',
-                'resources' => 'resources-input',
-                'status' => 'status-input',
-              },
-            }.to_json,
-            headers: response_headers
-          )
-      end
-    end
-  end
-
-  describe '#cancel' do
-    subject(:post_response) { client.billing_requests.cancel(resource_id) }
-
-    let(:resource_id) { 'ABC123' }
-
-    let!(:stub) do
-      # /billing_requests/%v/actions/cancel
-      stub_url = '/billing_requests/:identity/actions/cancel'.gsub(':identity', resource_id)
-      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
-        body: {
-          'billing_requests' => {
-
-            'actions' => 'actions-input',
-            'created_at' => 'created_at-input',
-            'fallback_enabled' => 'fallback_enabled-input',
-            'id' => 'id-input',
-            'links' => 'links-input',
-            'mandate_request' => 'mandate_request-input',
-            'metadata' => 'metadata-input',
-            'payment_request' => 'payment_request-input',
-            'purpose_code' => 'purpose_code-input',
-            'resources' => 'resources-input',
-            'status' => 'status-input',
-          },
-        }.to_json,
-
-        headers: response_headers
-      )
-    end
-
-    it 'wraps the response and calls the right endpoint' do
-      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
-
-      expect(stub).to have_been_requested
-    end
-
-    describe 'retry behaviour' do
-      it "doesn't retry errors" do
-        stub_url = '/billing_requests/:identity/actions/cancel'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
-
-        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
-        expect(stub).to have_been_requested
-      end
-    end
-
-    context 'when the request needs a body and custom header' do
-      let(:body) { { foo: 'bar' } }
-      let(:headers) { { 'Foo' => 'Bar' } }
-      subject(:post_response) { client.billing_requests.cancel(resource_id, body, headers) }
-
-      let(:resource_id) { 'ABC123' }
-
-      let!(:stub) do
-        # /billing_requests/%v/actions/cancel
-        stub_url = '/billing_requests/:identity/actions/cancel'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
-            body: { foo: 'bar' },
-            headers: { 'Foo' => 'Bar' }
-          ).to_return(
-            body: {
-              'billing_requests' => {
-
-                'actions' => 'actions-input',
-                'created_at' => 'created_at-input',
-                'fallback_enabled' => 'fallback_enabled-input',
-                'id' => 'id-input',
-                'links' => 'links-input',
-                'mandate_request' => 'mandate_request-input',
-                'metadata' => 'metadata-input',
-                'payment_request' => 'payment_request-input',
-                'purpose_code' => 'purpose_code-input',
-                'resources' => 'resources-input',
-                'status' => 'status-input',
-              },
-            }.to_json,
-            headers: response_headers
-          )
-      end
-    end
-  end
-
   describe '#notify' do
     subject(:post_response) { client.billing_requests.notify(resource_id) }
 
@@ -1285,6 +1201,90 @@ describe GoCardlessPro::Services::BillingRequestsService do
       let!(:stub) do
         # /billing_requests/%v/actions/fallback
         stub_url = '/billing_requests/:identity/actions/fallback'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
+                'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'purpose_code' => 'purpose_code-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
+
+  describe '#choose_currency' do
+    subject(:post_response) { client.billing_requests.choose_currency(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /billing_requests/%v/actions/choose_currency
+      stub_url = '/billing_requests/:identity/actions/choose_currency'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'billing_requests' => {
+
+            'actions' => 'actions-input',
+            'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'mandate_request' => 'mandate_request-input',
+            'metadata' => 'metadata-input',
+            'payment_request' => 'payment_request-input',
+            'purpose_code' => 'purpose_code-input',
+            'resources' => 'resources-input',
+            'status' => 'status-input',
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::BillingRequest)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/billing_requests/:identity/actions/choose_currency'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:post_response) { client.billing_requests.choose_currency(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /billing_requests/%v/actions/choose_currency
+        stub_url = '/billing_requests/:identity/actions/choose_currency'.gsub(':identity', resource_id)
         stub_request(:post, /.*api.gocardless.com#{stub_url}/).
           with(
             body: { foo: 'bar' },

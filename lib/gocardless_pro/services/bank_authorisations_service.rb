@@ -10,25 +10,6 @@ module GoCardlessPro
   module Services
     # Service for making requests to the BankAuthorisation endpoints
     class BankAuthorisationsService < BaseService
-      # Fetches a bank authorisation
-      # Example URL: /bank_authorisations/:identity
-      #
-      # @param identity       # Unique identifier, beginning with "BAU".
-      # @param options [Hash] parameters as a hash, under a params key.
-      def get(identity, options = {})
-        path = sub_url('/bank_authorisations/:identity', {
-                         'identity' => identity,
-                       })
-
-        options[:retry_failures] = true
-
-        response = make_request(:get, path, options)
-
-        return if response.body.nil?
-
-        Resources::BankAuthorisation.new(unenvelope_body(response.body), response)
-      end
-
       # Create a Bank Authorisation.
       # Example URL: /bank_authorisations
       # @param options [Hash] parameters as a hash, under a params key.
@@ -58,6 +39,25 @@ module GoCardlessPro
 
           raise e
         end
+
+        return if response.body.nil?
+
+        Resources::BankAuthorisation.new(unenvelope_body(response.body), response)
+      end
+
+      # Get a single bank authorisation.
+      # Example URL: /bank_authorisations/:identity
+      #
+      # @param identity       # Unique identifier, beginning with "BAU".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def get(identity, options = {})
+        path = sub_url('/bank_authorisations/:identity', {
+                         'identity' => identity,
+                       })
+
+        options[:retry_failures] = true
+
+        response = make_request(:get, path, options)
 
         return if response.body.nil?
 
