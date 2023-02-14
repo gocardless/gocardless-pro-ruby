@@ -38,6 +38,10 @@ module GoCardlessPro
       # | faster_payments | 18 characters      | `a-zA-Z0-9/?:().,'+-`    | yes
       # |
       #
+      # The validation error that gets returned for an invalid name will contain a
+      # suggested name
+      # in the metadata that is guaranteed to pass name validations.
+      #
       # Example URL: /scheme_identifiers
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
