@@ -981,4 +981,77 @@ describe GoCardlessPro::Resources::BillingRequest do
       end
     end
   end
+
+  describe '#list_institutions' do
+    subject(:get_response) { client.billing_requests.list_institutions(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /billing_requests/%v/actions/list_institutions
+      stub_url = '/billing_requests/:identity/actions/list_institutions'.gsub(':identity', resource_id)
+      stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'billing_requests' => {
+
+            'actions' => 'actions-input',
+            'created_at' => 'created_at-input',
+            'fallback_enabled' => 'fallback_enabled-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'mandate_request' => 'mandate_request-input',
+            'metadata' => 'metadata-input',
+            'payment_request' => 'payment_request-input',
+            'purpose_code' => 'purpose_code-input',
+            'resources' => 'resources-input',
+            'status' => 'status-input',
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(get_response).to be_a(GoCardlessPro::Resources::BillingRequest)
+
+      expect(stub).to have_been_requested
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:get_response) { client.billing_requests.list_institutions(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /billing_requests/%v/actions/list_institutions
+        stub_url = '/billing_requests/:identity/actions/list_institutions'.gsub(':identity', resource_id)
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'billing_requests' => {
+
+                'actions' => 'actions-input',
+                'created_at' => 'created_at-input',
+                'fallback_enabled' => 'fallback_enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'mandate_request' => 'mandate_request-input',
+                'metadata' => 'metadata-input',
+                'payment_request' => 'payment_request-input',
+                'purpose_code' => 'purpose_code-input',
+                'resources' => 'resources-input',
+                'status' => 'status-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
 end
