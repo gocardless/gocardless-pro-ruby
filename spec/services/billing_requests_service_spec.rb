@@ -1318,8 +1318,8 @@ describe GoCardlessPro::Services::BillingRequestsService do
     let(:resource_id) { 'ABC123' }
 
     let!(:stub) do
-      # /billing_requests/%v/actions/list_institutions
-      stub_url = '/billing_requests/:identity/actions/list_institutions'.gsub(':identity', resource_id)
+      # /billing_requests/%v/list_institutions
+      stub_url = '/billing_requests/:identity/list_institutions'.gsub(':identity', resource_id)
       stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
         body: {
           'billing_requests' => {
@@ -1350,7 +1350,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
 
     describe 'retry behaviour' do
       it "doesn't retry errors" do
-        stub_url = '/billing_requests/:identity/actions/list_institutions'.gsub(':identity', resource_id)
+        stub_url = '/billing_requests/:identity/list_institutions'.gsub(':identity', resource_id)
         stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
                to_timeout
 
@@ -1367,8 +1367,8 @@ describe GoCardlessPro::Services::BillingRequestsService do
       let(:resource_id) { 'ABC123' }
 
       let!(:stub) do
-        # /billing_requests/%v/actions/list_institutions
-        stub_url = '/billing_requests/:identity/actions/list_institutions'.gsub(':identity', resource_id)
+        # /billing_requests/%v/list_institutions
+        stub_url = '/billing_requests/:identity/list_institutions'.gsub(':identity', resource_id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           with(
             body: { foo: 'bar' },

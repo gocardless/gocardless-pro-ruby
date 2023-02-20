@@ -442,12 +442,12 @@ module GoCardlessPro
       # Returns all institutions valid for a Billing Request.
       #
       # This endpoint is currently supported only for FasterPayments.
-      # Example URL: /billing_requests/:identity/actions/list_institutions
+      # Example URL: /billing_requests/:identity/list_institutions
       #
       # @param identity       # Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def list_institutions(identity, options = {})
-        path = sub_url('/billing_requests/:identity/actions/list_institutions', {
+        path = sub_url('/billing_requests/:identity/list_institutions', {
                          'identity' => identity,
                        })
 
