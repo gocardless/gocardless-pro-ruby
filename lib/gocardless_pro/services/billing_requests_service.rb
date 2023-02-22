@@ -316,6 +316,9 @@ module GoCardlessPro
       # Notifies the customer linked to the billing request, asking them to authorise
       # it.
       # Currently, the customer can only be notified by email.
+      #
+      # This endpoint is currently supported only for Instant Bank Pay Billing
+      # Requests.
       # Example URL: /billing_requests/:identity/actions/notify
       #
       # @param identity       # Unique identifier, beginning with "BRQ".
