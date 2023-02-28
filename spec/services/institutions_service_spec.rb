@@ -238,4 +238,89 @@ describe GoCardlessPro::Services::InstitutionsService do
       end
     end
   end
+
+  describe '#list_for_billing_request' do
+    subject(:get_response) { client.institutions.list_for_billing_request(resource_id) }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /billing_requests/%v/institutions
+      stub_url = '/billing_requests/:identity/institutions'.gsub(':identity', resource_id)
+      stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'institutions' => [{
+
+            'bank_redirect' => 'bank_redirect-input',
+            'country_code' => 'country_code-input',
+            'icon_url' => 'icon_url-input',
+            'id' => 'id-input',
+            'logo_url' => 'logo_url-input',
+            'name' => 'name-input',
+          }],
+          meta: {
+            cursors: {
+              before: nil,
+              after: 'ABC123',
+            },
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(get_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Institution)
+
+      expect(stub).to have_been_requested
+    end
+
+    it 'exposes the cursors for before and after' do
+      expect(get_response.before).to eq(nil)
+      expect(get_response.after).to eq('ABC123')
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/billing_requests/:identity/institutions'.gsub(':identity', resource_id)
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
+
+        expect { get_response }.to raise_error(Faraday::ConnectionFailed)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      let(:body) { { foo: 'bar' } }
+      let(:headers) { { 'Foo' => 'Bar' } }
+      subject(:get_response) { client.institutions.list_for_billing_request(resource_id, body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /billing_requests/%v/institutions
+        stub_url = '/billing_requests/:identity/institutions'.gsub(':identity', resource_id)
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'institutions' => {
+
+                'bank_redirect' => 'bank_redirect-input',
+                'country_code' => 'country_code-input',
+                'icon_url' => 'icon_url-input',
+                'id' => 'id-input',
+                'logo_url' => 'logo_url-input',
+                'name' => 'name-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
 end

@@ -38,6 +38,29 @@ module GoCardlessPro
         ).enumerator
       end
 
+      # Returns all institutions valid for a Billing Request.
+      #
+      # This endpoint is currently supported only for FasterPayments.
+      # Example URL: /billing_requests/:identity/institutions
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def list_for_billing_request(identity, options = {})
+        path = sub_url('/billing_requests/:identity/institutions', {
+                         'identity' => identity,
+                       })
+
+        options[:retry_failures] = false
+
+        response = make_request(:get, path, options)
+
+        ListResponse.new(
+          response: response,
+          unenveloped_body: unenvelope_body(response.body),
+          resource_class: Resources::Institution
+        )
+      end
+
       private
 
       # Unenvelope the response of the body using the service's `envelope_key`
