@@ -10,6 +10,12 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a redirect_flow resource returned from the API
 
+    # <p class="deprecated-notice"><strong>Deprecated</strong>: Redirect Flows
+    # are our legacy APIs for setting up
+    # mandates and will no longer be supported in the future. We strongly
+    # recommend using the
+    # [Billing Request flow](#billing-requests) instead.</p>
+    #
     # Redirect flows enable you to use GoCardless' [hosted payment
     # pages](https://pay-sandbox.gocardless.com/AL000000AKFPFF) to set up
     # mandates with your customers. These pages are fully compliant and have
