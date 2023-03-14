@@ -31,6 +31,7 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
           'redirect_uri' => 'redirect_uri-input',
           'session_token' => 'session_token-input',
           'show_redirect_buttons' => 'show_redirect_buttons-input',
+          'show_success_redirect_button' => 'show_success_redirect_button-input',
         }
       end
 
@@ -56,6 +57,7 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
                 'redirect_uri' => 'redirect_uri-input',
                 'session_token' => 'session_token-input',
                 'show_redirect_buttons' => 'show_redirect_buttons-input',
+                'show_success_redirect_button' => 'show_success_redirect_button-input',
               },
             }
           ).
@@ -81,6 +83,7 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
                   'redirect_uri' => 'redirect_uri-input',
                   'session_token' => 'session_token-input',
                   'show_redirect_buttons' => 'show_redirect_buttons-input',
+                  'show_success_redirect_button' => 'show_success_redirect_button-input',
                 },
 
             }.to_json,
@@ -162,6 +165,7 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
           'redirect_uri' => 'redirect_uri-input',
           'session_token' => 'session_token-input',
           'show_redirect_buttons' => 'show_redirect_buttons-input',
+          'show_success_redirect_button' => 'show_success_redirect_button-input',
         }
       end
 
@@ -222,6 +226,7 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
             'redirect_uri' => 'redirect_uri-input',
             'session_token' => 'session_token-input',
             'show_redirect_buttons' => 'show_redirect_buttons-input',
+            'show_success_redirect_button' => 'show_success_redirect_button-input',
           },
         }.to_json,
 
@@ -280,6 +285,7 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
                 'redirect_uri' => 'redirect_uri-input',
                 'session_token' => 'session_token-input',
                 'show_redirect_buttons' => 'show_redirect_buttons-input',
+                'show_success_redirect_button' => 'show_success_redirect_button-input',
               },
             }.to_json,
             headers: response_headers
