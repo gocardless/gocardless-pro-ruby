@@ -26,7 +26,11 @@ module GoCardlessPro
     #
     # The Payout Items API allows you to view, on a per-payout basis, the credit
     # and debit
-    # items that make up that payout's amount.
+    # items that make up that payout's amount.  Payout items can only be
+    # retrieved for payouts
+    # created in the last 6 months. Requests for older payouts will return an
+    # HTTP status
+    # <code>410 Gone</code>.
     #
     class PayoutItem
       attr_reader :amount

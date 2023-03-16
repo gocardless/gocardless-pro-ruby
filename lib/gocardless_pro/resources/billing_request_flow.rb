@@ -29,6 +29,7 @@ module GoCardlessPro
       attr_reader :redirect_uri
       attr_reader :session_token
       attr_reader :show_redirect_buttons
+      attr_reader :show_success_redirect_button
 
       # Initialize a billing_request_flow resource instance
       # @param object [Hash] an object returned from the API
@@ -51,6 +52,7 @@ module GoCardlessPro
         @redirect_uri = object['redirect_uri']
         @session_token = object['session_token']
         @show_redirect_buttons = object['show_redirect_buttons']
+        @show_success_redirect_button = object['show_success_redirect_button']
         @response = response
       end
 

@@ -136,6 +136,10 @@ module GoCardlessPro
           @links['refund']
         end
 
+        def scheme_identifier
+          @links['scheme_identifier']
+        end
+
         def subscription
           @links['subscription']
         end

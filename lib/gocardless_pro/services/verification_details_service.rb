@@ -10,6 +10,25 @@ module GoCardlessPro
   module Services
     # Service for making requests to the VerificationDetail endpoints
     class VerificationDetailsService < BaseService
+      # Creates a new verification detail
+      # Example URL: /verification_details
+      # @param options [Hash] parameters as a hash, under a params key.
+      def create(options = {})
+        path = '/verification_details'
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params][envelope_key] = params
+
+        options[:retry_failures] = true
+
+        response = make_request(:post, path, options)
+
+        return if response.body.nil?
+
+        Resources::VerificationDetail.new(unenvelope_body(response.body), response)
+      end
+
       # Returns a list of verification details belonging to a creditor.
       # Example URL: /verification_details
       # @param options [Hash] parameters as a hash, under a params key.
@@ -36,29 +55,6 @@ module GoCardlessPro
           service: self,
           options: options
         ).enumerator
-      end
-
-      # Verification details represent any information needed by GoCardless to verify
-      # a creditor.
-      # Currently, only UK-based companies are supported.
-      # In other words, to submit verification details for a creditor, their
-      # creditor_type must be company and their country_code must be GB.
-      # Example URL: /verification_details
-      # @param options [Hash] parameters as a hash, under a params key.
-      def create(options = {})
-        path = '/verification_details'
-
-        params = options.delete(:params) || {}
-        options[:params] = {}
-        options[:params][envelope_key] = params
-
-        options[:retry_failures] = true
-
-        response = make_request(:post, path, options)
-
-        return if response.body.nil?
-
-        Resources::VerificationDetail.new(unenvelope_body(response.body), response)
       end
 
       private

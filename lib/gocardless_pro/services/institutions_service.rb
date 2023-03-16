@@ -11,6 +11,13 @@ module GoCardlessPro
     # Service for making requests to the Institution endpoints
     class InstitutionsService < BaseService
       # Returns a list of supported institutions.
+      #
+      # <p class="deprecated-notice"><strong>Deprecated</strong>: This list
+      # institutions endpoint
+      # is no longer supported. We strongly recommend using the
+      # [List Institutions For Billing
+      # Request](#institutions-list-institutions-for-billing-request)
+      # instead.</p>
       # Example URL: /institutions
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -36,6 +43,29 @@ module GoCardlessPro
           service: self,
           options: options
         ).enumerator
+      end
+
+      # Returns all institutions valid for a Billing Request.
+      #
+      # This endpoint is currently supported only for FasterPayments.
+      # Example URL: /billing_requests/:identity/institutions
+      #
+      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param options [Hash] parameters as a hash, under a params key.
+      def list_for_billing_request(identity, options = {})
+        path = sub_url('/billing_requests/:identity/institutions', {
+                         'identity' => identity,
+                       })
+
+        options[:retry_failures] = false
+
+        response = make_request(:get, path, options)
+
+        ListResponse.new(
+          response: response,
+          unenveloped_body: unenvelope_body(response.body),
+          resource_class: Resources::Institution
+        )
       end
 
       private
