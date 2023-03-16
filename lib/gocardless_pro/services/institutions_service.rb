@@ -11,6 +11,13 @@ module GoCardlessPro
     # Service for making requests to the Institution endpoints
     class InstitutionsService < BaseService
       # Returns a list of supported institutions.
+      #
+      # <p class="deprecated-notice"><strong>Deprecated</strong>: This list
+      # institutions endpoint
+      # is no longer supported. We strongly recommend using the
+      # [List Institutions For Billing
+      # Request](#institutions-list-institutions-for-billing-request)
+      # instead.</p>
       # Example URL: /institutions
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
