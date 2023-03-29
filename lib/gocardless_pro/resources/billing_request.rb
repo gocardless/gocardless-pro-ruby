@@ -21,6 +21,7 @@ module GoCardlessPro
     # for how-to's, explanations and tutorials.
     class BillingRequest
       attr_reader :actions
+      attr_reader :auto_fulfil
       attr_reader :created_at
       attr_reader :fallback_enabled
       attr_reader :id
@@ -37,6 +38,7 @@ module GoCardlessPro
         @object = object
 
         @actions = object['actions']
+        @auto_fulfil = object['auto_fulfil']
         @created_at = object['created_at']
         @fallback_enabled = object['fallback_enabled']
         @id = object['id']

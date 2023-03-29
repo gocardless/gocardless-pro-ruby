@@ -16,6 +16,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         {
 
           'actions' => 'actions-input',
+          'auto_fulfil' => 'auto_fulfil-input',
           'created_at' => 'created_at-input',
           'fallback_enabled' => 'fallback_enabled-input',
           'id' => 'id-input',
@@ -36,6 +37,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -56,6 +58,7 @@ describe GoCardlessPro::Resources::BillingRequest do
                 {
 
                   'actions' => 'actions-input',
+                  'auto_fulfil' => 'auto_fulfil-input',
                   'created_at' => 'created_at-input',
                   'fallback_enabled' => 'fallback_enabled-input',
                   'id' => 'id-input',
@@ -109,6 +112,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         {
 
           'actions' => 'actions-input',
+          'auto_fulfil' => 'auto_fulfil-input',
           'created_at' => 'created_at-input',
           'fallback_enabled' => 'fallback_enabled-input',
           'id' => 'id-input',
@@ -152,6 +156,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -189,6 +194,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => {
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -231,6 +237,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -262,6 +269,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => {
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -304,6 +312,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -335,6 +344,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => {
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -377,6 +387,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -408,6 +419,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => {
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -450,6 +462,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -481,6 +494,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => {
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -523,6 +537,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -551,6 +566,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             'billing_requests' => [{
 
               'actions' => 'actions-input',
+              'auto_fulfil' => 'auto_fulfil-input',
               'created_at' => 'created_at-input',
               'fallback_enabled' => 'fallback_enabled-input',
               'id' => 'id-input',
@@ -579,6 +595,8 @@ describe GoCardlessPro::Resources::BillingRequest do
                end.uniq.first).to eq(GoCardlessPro::Resources::BillingRequest)
 
         expect(get_list_response.records.first.actions).to eq('actions-input')
+
+        expect(get_list_response.records.first.auto_fulfil).to eq('auto_fulfil-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
@@ -615,6 +633,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => [{
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -641,6 +660,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => [{
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -683,6 +703,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -719,6 +740,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             'billing_requests' => {
 
               'actions' => 'actions-input',
+              'auto_fulfil' => 'auto_fulfil-input',
               'created_at' => 'created_at-input',
               'fallback_enabled' => 'fallback_enabled-input',
               'id' => 'id-input',
@@ -776,6 +798,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => {
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -818,6 +841,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -849,6 +873,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => {
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -891,6 +916,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -922,6 +948,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => {
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -964,6 +991,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
@@ -995,6 +1023,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           'billing_requests' => {
 
             'actions' => 'actions-input',
+            'auto_fulfil' => 'auto_fulfil-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
             'id' => 'id-input',
@@ -1037,6 +1066,7 @@ describe GoCardlessPro::Resources::BillingRequest do
               'billing_requests' => {
 
                 'actions' => 'actions-input',
+                'auto_fulfil' => 'auto_fulfil-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
                 'id' => 'id-input',
