@@ -17,7 +17,6 @@ module GoCardlessPro
     #
     # The following rules apply when specifying recurrence:
     #
-    # - The first payment must be charged within 1 year.
     # - If `day_of_month` and `start_date` are not provided `start_date` will be
     # the [mandate](#core-endpoints-mandates)'s `next_possible_charge_date` and
     # the subscription will then recur based on the `interval` & `interval_unit`
