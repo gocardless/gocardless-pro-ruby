@@ -18,6 +18,7 @@ describe GoCardlessPro::Resources::Creditor do
           'address_line1' => 'address_line1-input',
           'address_line2' => 'address_line2-input',
           'address_line3' => 'address_line3-input',
+          'bank_reference_prefix' => 'bank_reference_prefix-input',
           'can_create_refunds' => 'can_create_refunds-input',
           'city' => 'city-input',
           'country_code' => 'country_code-input',
@@ -47,6 +48,7 @@ describe GoCardlessPro::Resources::Creditor do
                 'address_line1' => 'address_line1-input',
                 'address_line2' => 'address_line2-input',
                 'address_line3' => 'address_line3-input',
+                'bank_reference_prefix' => 'bank_reference_prefix-input',
                 'can_create_refunds' => 'can_create_refunds-input',
                 'city' => 'city-input',
                 'country_code' => 'country_code-input',
@@ -76,6 +78,7 @@ describe GoCardlessPro::Resources::Creditor do
                   'address_line1' => 'address_line1-input',
                   'address_line2' => 'address_line2-input',
                   'address_line3' => 'address_line3-input',
+                  'bank_reference_prefix' => 'bank_reference_prefix-input',
                   'can_create_refunds' => 'can_create_refunds-input',
                   'city' => 'city-input',
                   'country_code' => 'country_code-input',
@@ -138,6 +141,7 @@ describe GoCardlessPro::Resources::Creditor do
           'address_line1' => 'address_line1-input',
           'address_line2' => 'address_line2-input',
           'address_line3' => 'address_line3-input',
+          'bank_reference_prefix' => 'bank_reference_prefix-input',
           'can_create_refunds' => 'can_create_refunds-input',
           'city' => 'city-input',
           'country_code' => 'country_code-input',
@@ -190,6 +194,7 @@ describe GoCardlessPro::Resources::Creditor do
                 'address_line1' => 'address_line1-input',
                 'address_line2' => 'address_line2-input',
                 'address_line3' => 'address_line3-input',
+                'bank_reference_prefix' => 'bank_reference_prefix-input',
                 'can_create_refunds' => 'can_create_refunds-input',
                 'city' => 'city-input',
                 'country_code' => 'country_code-input',
@@ -233,6 +238,7 @@ describe GoCardlessPro::Resources::Creditor do
               'address_line1' => 'address_line1-input',
               'address_line2' => 'address_line2-input',
               'address_line3' => 'address_line3-input',
+              'bank_reference_prefix' => 'bank_reference_prefix-input',
               'can_create_refunds' => 'can_create_refunds-input',
               'city' => 'city-input',
               'country_code' => 'country_code-input',
@@ -270,6 +276,8 @@ describe GoCardlessPro::Resources::Creditor do
         expect(get_list_response.records.first.address_line2).to eq('address_line2-input')
 
         expect(get_list_response.records.first.address_line3).to eq('address_line3-input')
+
+        expect(get_list_response.records.first.bank_reference_prefix).to eq('bank_reference_prefix-input')
 
         expect(get_list_response.records.first.can_create_refunds).to eq('can_create_refunds-input')
 
@@ -322,6 +330,7 @@ describe GoCardlessPro::Resources::Creditor do
             'address_line1' => 'address_line1-input',
             'address_line2' => 'address_line2-input',
             'address_line3' => 'address_line3-input',
+            'bank_reference_prefix' => 'bank_reference_prefix-input',
             'can_create_refunds' => 'can_create_refunds-input',
             'city' => 'city-input',
             'country_code' => 'country_code-input',
@@ -357,6 +366,7 @@ describe GoCardlessPro::Resources::Creditor do
             'address_line1' => 'address_line1-input',
             'address_line2' => 'address_line2-input',
             'address_line3' => 'address_line3-input',
+            'bank_reference_prefix' => 'bank_reference_prefix-input',
             'can_create_refunds' => 'can_create_refunds-input',
             'city' => 'city-input',
             'country_code' => 'country_code-input',
@@ -408,6 +418,7 @@ describe GoCardlessPro::Resources::Creditor do
                 'address_line1' => 'address_line1-input',
                 'address_line2' => 'address_line2-input',
                 'address_line3' => 'address_line3-input',
+                'bank_reference_prefix' => 'bank_reference_prefix-input',
                 'can_create_refunds' => 'can_create_refunds-input',
                 'city' => 'city-input',
                 'country_code' => 'country_code-input',
@@ -453,6 +464,7 @@ describe GoCardlessPro::Resources::Creditor do
               'address_line1' => 'address_line1-input',
               'address_line2' => 'address_line2-input',
               'address_line3' => 'address_line3-input',
+              'bank_reference_prefix' => 'bank_reference_prefix-input',
               'can_create_refunds' => 'can_create_refunds-input',
               'city' => 'city-input',
               'country_code' => 'country_code-input',
@@ -520,6 +532,7 @@ describe GoCardlessPro::Resources::Creditor do
               'address_line1' => 'address_line1-input',
               'address_line2' => 'address_line2-input',
               'address_line3' => 'address_line3-input',
+              'bank_reference_prefix' => 'bank_reference_prefix-input',
               'can_create_refunds' => 'can_create_refunds-input',
               'city' => 'city-input',
               'country_code' => 'country_code-input',
@@ -565,6 +578,7 @@ describe GoCardlessPro::Resources::Creditor do
             'address_line1' => 'address_line1-input',
             'address_line2' => 'address_line2-input',
             'address_line3' => 'address_line3-input',
+            'bank_reference_prefix' => 'bank_reference_prefix-input',
             'can_create_refunds' => 'can_create_refunds-input',
             'city' => 'city-input',
             'country_code' => 'country_code-input',
@@ -616,6 +630,7 @@ describe GoCardlessPro::Resources::Creditor do
                 'address_line1' => 'address_line1-input',
                 'address_line2' => 'address_line2-input',
                 'address_line3' => 'address_line3-input',
+                'bank_reference_prefix' => 'bank_reference_prefix-input',
                 'can_create_refunds' => 'can_create_refunds-input',
                 'city' => 'city-input',
                 'country_code' => 'country_code-input',

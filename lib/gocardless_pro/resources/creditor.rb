@@ -21,6 +21,7 @@ module GoCardlessPro
       attr_reader :address_line1
       attr_reader :address_line2
       attr_reader :address_line3
+      attr_reader :bank_reference_prefix
       attr_reader :can_create_refunds
       attr_reader :city
       attr_reader :country_code
@@ -46,6 +47,7 @@ module GoCardlessPro
         @address_line1 = object['address_line1']
         @address_line2 = object['address_line2']
         @address_line3 = object['address_line3']
+        @bank_reference_prefix = object['bank_reference_prefix']
         @can_create_refunds = object['can_create_refunds']
         @city = object['city']
         @country_code = object['country_code']
