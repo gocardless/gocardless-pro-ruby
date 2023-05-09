@@ -17,7 +17,7 @@ module GoCardlessPro
     # Not all institutions support both Payment Initiation (PIS) and Account
     # Information (AIS) services.
     class Institution
-      attr_reader :bank_redirect
+      attr_reader :autocompletes_collect_bank_account
       attr_reader :country_code
       attr_reader :icon_url
       attr_reader :id
@@ -29,7 +29,7 @@ module GoCardlessPro
       def initialize(object, response = nil)
         @object = object
 
-        @bank_redirect = object['bank_redirect']
+        @autocompletes_collect_bank_account = object['autocompletes_collect_bank_account']
         @country_code = object['country_code']
         @icon_url = object['icon_url']
         @id = object['id']

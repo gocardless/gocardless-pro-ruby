@@ -18,7 +18,7 @@ describe GoCardlessPro::Resources::Institution do
           body: {
             'institutions' => [{
 
-              'bank_redirect' => 'bank_redirect-input',
+              'autocompletes_collect_bank_account' => 'autocompletes_collect_bank_account-input',
               'country_code' => 'country_code-input',
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
@@ -39,7 +39,7 @@ describe GoCardlessPro::Resources::Institution do
       it 'wraps each item in the resource class' do
         expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Institution)
 
-        expect(get_list_response.records.first.bank_redirect).to eq('bank_redirect-input')
+        expect(get_list_response.records.first.autocompletes_collect_bank_account).to eq('autocompletes_collect_bank_account-input')
 
         expect(get_list_response.records.first.country_code).to eq('country_code-input')
 
@@ -67,7 +67,7 @@ describe GoCardlessPro::Resources::Institution do
         body: {
           'institutions' => [{
 
-            'bank_redirect' => 'bank_redirect-input',
+            'autocompletes_collect_bank_account' => 'autocompletes_collect_bank_account-input',
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
@@ -88,7 +88,7 @@ describe GoCardlessPro::Resources::Institution do
         body: {
           'institutions' => [{
 
-            'bank_redirect' => 'bank_redirect-input',
+            'autocompletes_collect_bank_account' => 'autocompletes_collect_bank_account-input',
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
@@ -123,7 +123,7 @@ describe GoCardlessPro::Resources::Institution do
         body: {
           'institutions' => [{
 
-            'bank_redirect' => 'bank_redirect-input',
+            'autocompletes_collect_bank_account' => 'autocompletes_collect_bank_account-input',
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
@@ -171,7 +171,7 @@ describe GoCardlessPro::Resources::Institution do
             body: {
               'institutions' => {
 
-                'bank_redirect' => 'bank_redirect-input',
+                'autocompletes_collect_bank_account' => 'autocompletes_collect_bank_account-input',
                 'country_code' => 'country_code-input',
                 'icon_url' => 'icon_url-input',
                 'id' => 'id-input',
