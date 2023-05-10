@@ -98,6 +98,11 @@ module GoCardlessPro
       @mandate_pdfs ||= Services::MandatePdfsService.new(@api_service)
     end
 
+    # Access to the service for negative_balance_limit to make API calls
+    def negative_balance_limits
+      @negative_balance_limits ||= Services::NegativeBalanceLimitsService.new(@api_service)
+    end
+
     # Access to the service for payer_authorisation to make API calls
     def payer_authorisations
       @payer_authorisations ||= Services::PayerAuthorisationsService.new(@api_service)
@@ -208,7 +213,7 @@ module GoCardlessPro
           'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.45.0',
+          'GoCardless-Client-Version' => '2.46.0',
         },
       }
     end

@@ -27,6 +27,7 @@ module GoCardlessPro
       attr_reader :expires_at
       attr_reader :id
       attr_reader :last_visited_at
+      attr_reader :qr_code_url
       attr_reader :redirect_uri
       attr_reader :url
 
@@ -42,6 +43,7 @@ module GoCardlessPro
         @id = object['id']
         @last_visited_at = object['last_visited_at']
         @links = object['links']
+        @qr_code_url = object['qr_code_url']
         @redirect_uri = object['redirect_uri']
         @url = object['url']
         @response = response
