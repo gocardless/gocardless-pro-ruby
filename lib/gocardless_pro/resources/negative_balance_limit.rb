@@ -10,8 +10,11 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a negative_balance_limit resource returned from the API
 
-    # The negative balance limit for a creditor. If the creditor would exceed
-    # this limit, we will not allow the creation of refunds.
+    # The negative balance limit is a threshold for the creditor balance beyond
+    # which refunds are not permitted. The default limit is zero — refunds are
+    # not permitted if the creditor has a negative balance. The limit can be
+    # changed on a per-creditor basis.
+    #
     class NegativeBalanceLimit
       attr_reader :active
       attr_reader :balance_limit
