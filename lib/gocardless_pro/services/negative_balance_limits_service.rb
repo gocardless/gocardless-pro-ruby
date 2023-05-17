@@ -39,8 +39,9 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Creates a new negative balance limit, which also deactivates the existing
-      # limit (if present) for that currency and creditor combination.
+      # Creates a new negative balance limit, which replaces the existing limit (if
+      # present) for that currency and creditor combination.
+      #
       # Example URL: /negative_balance_limits
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})

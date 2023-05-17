@@ -16,7 +16,6 @@ module GoCardlessPro
     # changed on a per-creditor basis.
     #
     class NegativeBalanceLimit
-      attr_reader :active
       attr_reader :balance_limit
       attr_reader :created_at
       attr_reader :currency
@@ -28,7 +27,6 @@ module GoCardlessPro
       def initialize(object, response = nil)
         @object = object
 
-        @active = object['active']
         @balance_limit = object['balance_limit']
         @created_at = object['created_at']
         @currency = object['currency']

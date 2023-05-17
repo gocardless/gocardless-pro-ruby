@@ -18,7 +18,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
           body: {
             'negative_balance_limits' => [{
 
-              'active' => 'active-input',
               'balance_limit' => 'balance_limit-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
@@ -41,8 +40,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
         expect(get_list_response.records.map do |x|
                  x.class
                end.uniq.first).to eq(GoCardlessPro::Resources::NegativeBalanceLimit)
-
-        expect(get_list_response.records.first.active).to eq('active-input')
 
         expect(get_list_response.records.first.balance_limit).to eq('balance_limit-input')
 
@@ -70,7 +67,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
         body: {
           'negative_balance_limits' => [{
 
-            'active' => 'active-input',
             'balance_limit' => 'balance_limit-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
@@ -92,7 +88,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
         body: {
           'negative_balance_limits' => [{
 
-            'active' => 'active-input',
             'balance_limit' => 'balance_limit-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
@@ -122,7 +117,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
       let(:new_resource) do
         {
 
-          'active' => 'active-input',
           'balance_limit' => 'balance_limit-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
@@ -138,7 +132,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
             body: {
               'negative_balance_limits' => {
 
-                'active' => 'active-input',
                 'balance_limit' => 'balance_limit-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
@@ -154,7 +147,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
 
                 {
 
-                  'active' => 'active-input',
                   'balance_limit' => 'balance_limit-input',
                   'created_at' => 'created_at-input',
                   'currency' => 'currency-input',
@@ -203,7 +195,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
       let(:new_resource) do
         {
 
-          'active' => 'active-input',
           'balance_limit' => 'balance_limit-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
