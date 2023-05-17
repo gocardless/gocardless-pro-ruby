@@ -21,7 +21,6 @@ module GoCardlessPro
       attr_reader :created_at
       attr_reader :currency
       attr_reader :id
-      attr_reader :reason
       attr_reader :updated_at
 
       # Initialize a negative_balance_limit resource instance
@@ -35,7 +34,6 @@ module GoCardlessPro
         @currency = object['currency']
         @id = object['id']
         @links = object['links']
-        @reason = object['reason']
         @updated_at = object['updated_at']
         @response = response
       end

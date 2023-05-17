@@ -24,7 +24,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
               'currency' => 'currency-input',
               'id' => 'id-input',
               'links' => 'links-input',
-              'reason' => 'reason-input',
               'updated_at' => 'updated_at-input',
             }],
             meta: {
@@ -53,8 +52,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
 
         expect(get_list_response.records.first.id).to eq('id-input')
 
-        expect(get_list_response.records.first.reason).to eq('reason-input')
-
         expect(get_list_response.records.first.updated_at).to eq('updated_at-input')
       end
 
@@ -79,7 +76,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
             'currency' => 'currency-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'reason' => 'reason-input',
             'updated_at' => 'updated_at-input',
           }],
           meta: {
@@ -102,7 +98,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
             'currency' => 'currency-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'reason' => 'reason-input',
             'updated_at' => 'updated_at-input',
           }],
           meta: {
@@ -133,7 +128,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
           'currency' => 'currency-input',
           'id' => 'id-input',
           'links' => 'links-input',
-          'reason' => 'reason-input',
           'updated_at' => 'updated_at-input',
         }
       end
@@ -150,7 +144,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
                 'currency' => 'currency-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
-                'reason' => 'reason-input',
                 'updated_at' => 'updated_at-input',
               },
             }
@@ -167,7 +160,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
                   'currency' => 'currency-input',
                   'id' => 'id-input',
                   'links' => 'links-input',
-                  'reason' => 'reason-input',
                   'updated_at' => 'updated_at-input',
                 },
 
@@ -217,7 +209,6 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
           'currency' => 'currency-input',
           'id' => 'id-input',
           'links' => 'links-input',
-          'reason' => 'reason-input',
           'updated_at' => 'updated_at-input',
         }
       end
