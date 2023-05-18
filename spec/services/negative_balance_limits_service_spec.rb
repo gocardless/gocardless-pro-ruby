@@ -22,7 +22,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
             'currency' => 'currency-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'updated_at' => 'updated_at-input',
           }],
           meta: {
             cursors: {
@@ -52,8 +51,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
         expect(get_list_response.records.first.currency).to eq('currency-input')
 
         expect(get_list_response.records.first.id).to eq('id-input')
-
-        expect(get_list_response.records.first.updated_at).to eq('updated_at-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -99,7 +96,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
             'currency' => 'currency-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'updated_at' => 'updated_at-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -120,7 +116,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
             'currency' => 'currency-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'updated_at' => 'updated_at-input',
           }],
           meta: {
             limit: 2,
@@ -150,7 +145,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
               'currency' => 'currency-input',
               'id' => 'id-input',
               'links' => 'links-input',
-              'updated_at' => 'updated_at-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -171,7 +165,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
                                      'currency' => 'currency-input',
                                      'id' => 'id-input',
                                      'links' => 'links-input',
-                                     'updated_at' => 'updated_at-input',
                                    }],
                                    meta: {
                                      limit: 2,
@@ -197,7 +190,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
               'currency' => 'currency-input',
               'id' => 'id-input',
               'links' => 'links-input',
-              'updated_at' => 'updated_at-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -221,7 +213,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
                                      'currency' => 'currency-input',
                                      'id' => 'id-input',
                                      'links' => 'links-input',
-                                     'updated_at' => 'updated_at-input',
                                    }],
                                    meta: {
                                      limit: 2,
@@ -250,7 +241,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
           'currency' => 'currency-input',
           'id' => 'id-input',
           'links' => 'links-input',
-          'updated_at' => 'updated_at-input',
         }
       end
 
@@ -265,7 +255,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
                 'currency' => 'currency-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
-                'updated_at' => 'updated_at-input',
               },
             }
           ).
@@ -280,7 +269,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
                   'currency' => 'currency-input',
                   'id' => 'id-input',
                   'links' => 'links-input',
-                  'updated_at' => 'updated_at-input',
                 },
 
             }.to_json,
@@ -351,7 +339,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
           'currency' => 'currency-input',
           'id' => 'id-input',
           'links' => 'links-input',
-          'updated_at' => 'updated_at-input',
         }
       end
 

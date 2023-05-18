@@ -20,7 +20,6 @@ module GoCardlessPro
       attr_reader :created_at
       attr_reader :currency
       attr_reader :id
-      attr_reader :updated_at
 
       # Initialize a negative_balance_limit resource instance
       # @param object [Hash] an object returned from the API
@@ -32,7 +31,6 @@ module GoCardlessPro
         @currency = object['currency']
         @id = object['id']
         @links = object['links']
-        @updated_at = object['updated_at']
         @response = response
       end
 
