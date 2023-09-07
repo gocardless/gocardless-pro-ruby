@@ -65,6 +65,7 @@ module GoCardlessPro
 
         @created_at = object['created_at']
         @id = object['id']
+        @links = object['links']
         @scheme = object['scheme']
         @status = object['status']
         @response = response
@@ -74,9 +75,24 @@ module GoCardlessPro
         ApiResponse.new(@response)
       end
 
+      # Return the links that the resource has
+      def links
+        @mandate_import_links ||= Links.new(@links)
+      end
+
       # Provides the mandate_import resource as a hash of all its readable attributes
       def to_h
         @object
+      end
+
+      class Links
+        def initialize(links)
+          @links = links || {}
+        end
+
+        def creditor
+          @links['creditor']
+        end
       end
     end
   end
