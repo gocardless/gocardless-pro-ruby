@@ -25,6 +25,7 @@ describe GoCardlessPro::Resources::Event do
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
+              'resource_metadata' => 'resource_metadata-input',
               'resource_type' => 'resource_type-input',
             }],
             meta: {
@@ -53,6 +54,8 @@ describe GoCardlessPro::Resources::Event do
 
         expect(get_list_response.records.first.metadata).to eq('metadata-input')
 
+        expect(get_list_response.records.first.resource_metadata).to eq('resource_metadata-input')
+
         expect(get_list_response.records.first.resource_type).to eq('resource_type-input')
       end
 
@@ -78,6 +81,7 @@ describe GoCardlessPro::Resources::Event do
             'id' => 'id-input',
             'links' => 'links-input',
             'metadata' => 'metadata-input',
+            'resource_metadata' => 'resource_metadata-input',
             'resource_type' => 'resource_type-input',
           }],
           meta: {
@@ -101,6 +105,7 @@ describe GoCardlessPro::Resources::Event do
             'id' => 'id-input',
             'links' => 'links-input',
             'metadata' => 'metadata-input',
+            'resource_metadata' => 'resource_metadata-input',
             'resource_type' => 'resource_type-input',
           }],
           meta: {
@@ -140,6 +145,7 @@ describe GoCardlessPro::Resources::Event do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
+                'resource_metadata' => 'resource_metadata-input',
                 'resource_type' => 'resource_type-input',
               },
             }.to_json,
@@ -173,6 +179,7 @@ describe GoCardlessPro::Resources::Event do
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
+              'resource_metadata' => 'resource_metadata-input',
               'resource_type' => 'resource_type-input',
             },
           }.to_json,

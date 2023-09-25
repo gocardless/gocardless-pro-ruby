@@ -23,6 +23,7 @@ module GoCardlessPro
       attr_reader :details
       attr_reader :id
       attr_reader :metadata
+      attr_reader :resource_metadata
       attr_reader :resource_type
 
       # Initialize a event resource instance
@@ -37,6 +38,7 @@ module GoCardlessPro
         @id = object['id']
         @links = object['links']
         @metadata = object['metadata']
+        @resource_metadata = object['resource_metadata']
         @resource_type = object['resource_type']
         @response = response
       end

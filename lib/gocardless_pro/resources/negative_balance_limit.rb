@@ -16,27 +16,21 @@ module GoCardlessPro
     # changed on a per-creditor basis.
     #
     class NegativeBalanceLimit
-      attr_reader :active
       attr_reader :balance_limit
       attr_reader :created_at
       attr_reader :currency
       attr_reader :id
-      attr_reader :reason
-      attr_reader :updated_at
 
       # Initialize a negative_balance_limit resource instance
       # @param object [Hash] an object returned from the API
       def initialize(object, response = nil)
         @object = object
 
-        @active = object['active']
         @balance_limit = object['balance_limit']
         @created_at = object['created_at']
         @currency = object['currency']
         @id = object['id']
         @links = object['links']
-        @reason = object['reason']
-        @updated_at = object['updated_at']
         @response = response
       end
 

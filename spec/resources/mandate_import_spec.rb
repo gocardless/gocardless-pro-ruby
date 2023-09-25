@@ -17,6 +17,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
           'created_at' => 'created_at-input',
           'id' => 'id-input',
+          'links' => 'links-input',
           'scheme' => 'scheme-input',
           'status' => 'status-input',
         }
@@ -30,6 +31,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
+                'links' => 'links-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
               },
@@ -43,6 +45,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
                   'created_at' => 'created_at-input',
                   'id' => 'id-input',
+                  'links' => 'links-input',
                   'scheme' => 'scheme-input',
                   'status' => 'status-input',
                 },
@@ -89,6 +92,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
           'created_at' => 'created_at-input',
           'id' => 'id-input',
+          'links' => 'links-input',
           'scheme' => 'scheme-input',
           'status' => 'status-input',
         }
@@ -125,6 +129,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
+                'links' => 'links-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
               },
@@ -157,6 +162,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
+                'links' => 'links-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
               },
@@ -186,6 +192,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
               'created_at' => 'created_at-input',
               'id' => 'id-input',
+              'links' => 'links-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input',
             },
@@ -236,6 +243,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
             'created_at' => 'created_at-input',
             'id' => 'id-input',
+            'links' => 'links-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
           },
@@ -271,6 +279,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
+                'links' => 'links-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
               },
@@ -295,6 +304,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
             'created_at' => 'created_at-input',
             'id' => 'id-input',
+            'links' => 'links-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
           },
@@ -330,6 +340,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
                 'created_at' => 'created_at-input',
                 'id' => 'id-input',
+                'links' => 'links-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
               },

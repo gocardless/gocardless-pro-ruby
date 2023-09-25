@@ -19,6 +19,7 @@ module GoCardlessPro
       attr_reader :authorisation_source
       attr_reader :consent_parameters
       attr_reader :created_at
+      attr_reader :funds_settlement
       attr_reader :id
       attr_reader :metadata
       attr_reader :next_possible_charge_date
@@ -36,6 +37,7 @@ module GoCardlessPro
         @authorisation_source = object['authorisation_source']
         @consent_parameters = object['consent_parameters']
         @created_at = object['created_at']
+        @funds_settlement = object['funds_settlement']
         @id = object['id']
         @links = object['links']
         @metadata = object['metadata']

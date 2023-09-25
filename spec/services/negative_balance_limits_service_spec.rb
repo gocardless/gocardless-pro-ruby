@@ -17,14 +17,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
         {
           'negative_balance_limits' => [{
 
-            'active' => 'active-input',
             'balance_limit' => 'balance_limit-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'reason' => 'reason-input',
-            'updated_at' => 'updated_at-input',
           }],
           meta: {
             cursors: {
@@ -47,8 +44,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
                  x.class
                end.uniq.first).to eq(GoCardlessPro::Resources::NegativeBalanceLimit)
 
-        expect(get_list_response.records.first.active).to eq('active-input')
-
         expect(get_list_response.records.first.balance_limit).to eq('balance_limit-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
@@ -56,10 +51,6 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
         expect(get_list_response.records.first.currency).to eq('currency-input')
 
         expect(get_list_response.records.first.id).to eq('id-input')
-
-        expect(get_list_response.records.first.reason).to eq('reason-input')
-
-        expect(get_list_response.records.first.updated_at).to eq('updated_at-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -100,14 +91,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
         body: {
           'negative_balance_limits' => [{
 
-            'active' => 'active-input',
             'balance_limit' => 'balance_limit-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'reason' => 'reason-input',
-            'updated_at' => 'updated_at-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -123,14 +111,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
         body: {
           'negative_balance_limits' => [{
 
-            'active' => 'active-input',
             'balance_limit' => 'balance_limit-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'reason' => 'reason-input',
-            'updated_at' => 'updated_at-input',
           }],
           meta: {
             limit: 2,
@@ -155,14 +140,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
           body: {
             'negative_balance_limits' => [{
 
-              'active' => 'active-input',
               'balance_limit' => 'balance_limit-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'id' => 'id-input',
               'links' => 'links-input',
-              'reason' => 'reason-input',
-              'updated_at' => 'updated_at-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -178,14 +160,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
                                  body: {
                                    'negative_balance_limits' => [{
 
-                                     'active' => 'active-input',
                                      'balance_limit' => 'balance_limit-input',
                                      'created_at' => 'created_at-input',
                                      'currency' => 'currency-input',
                                      'id' => 'id-input',
                                      'links' => 'links-input',
-                                     'reason' => 'reason-input',
-                                     'updated_at' => 'updated_at-input',
                                    }],
                                    meta: {
                                      limit: 2,
@@ -206,14 +185,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
           body: {
             'negative_balance_limits' => [{
 
-              'active' => 'active-input',
               'balance_limit' => 'balance_limit-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'id' => 'id-input',
               'links' => 'links-input',
-              'reason' => 'reason-input',
-              'updated_at' => 'updated_at-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -232,14 +208,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
                                  body: {
                                    'negative_balance_limits' => [{
 
-                                     'active' => 'active-input',
                                      'balance_limit' => 'balance_limit-input',
                                      'created_at' => 'created_at-input',
                                      'currency' => 'currency-input',
                                      'id' => 'id-input',
                                      'links' => 'links-input',
-                                     'reason' => 'reason-input',
-                                     'updated_at' => 'updated_at-input',
                                    }],
                                    meta: {
                                      limit: 2,
@@ -263,14 +236,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
       let(:new_resource) do
         {
 
-          'active' => 'active-input',
           'balance_limit' => 'balance_limit-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
           'id' => 'id-input',
           'links' => 'links-input',
-          'reason' => 'reason-input',
-          'updated_at' => 'updated_at-input',
         }
       end
 
@@ -280,14 +250,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
             body: {
               'negative_balance_limits' => {
 
-                'active' => 'active-input',
                 'balance_limit' => 'balance_limit-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
-                'reason' => 'reason-input',
-                'updated_at' => 'updated_at-input',
               },
             }
           ).
@@ -297,14 +264,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
 
                 {
 
-                  'active' => 'active-input',
                   'balance_limit' => 'balance_limit-input',
                   'created_at' => 'created_at-input',
                   'currency' => 'currency-input',
                   'id' => 'id-input',
                   'links' => 'links-input',
-                  'reason' => 'reason-input',
-                  'updated_at' => 'updated_at-input',
                 },
 
             }.to_json,
@@ -370,14 +334,11 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
       let(:new_resource) do
         {
 
-          'active' => 'active-input',
           'balance_limit' => 'balance_limit-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
           'id' => 'id-input',
           'links' => 'links-input',
-          'reason' => 'reason-input',
-          'updated_at' => 'updated_at-input',
         }
       end
 
