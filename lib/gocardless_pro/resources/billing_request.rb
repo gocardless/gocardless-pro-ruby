@@ -101,6 +101,10 @@ module GoCardlessPro
           @links['organisation']
         end
 
+        def payment_provider
+          @links['payment_provider']
+        end
+
         def payment_request
           @links['payment_request']
         end
