@@ -33,6 +33,7 @@ module GoCardlessPro
       attr_reader :enabled
       attr_reader :id
       attr_reader :metadata
+      attr_reader :verification_status
 
       # Initialize a creditor_bank_account resource instance
       # @param object [Hash] an object returned from the API
@@ -50,6 +51,7 @@ module GoCardlessPro
         @id = object['id']
         @links = object['links']
         @metadata = object['metadata']
+        @verification_status = object['verification_status']
         @response = response
       end
 
