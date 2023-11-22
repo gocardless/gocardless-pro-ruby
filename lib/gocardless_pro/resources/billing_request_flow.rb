@@ -17,6 +17,7 @@ module GoCardlessPro
       attr_reader :authorisation_url
       attr_reader :auto_fulfil
       attr_reader :created_at
+      attr_reader :customer_details_captured
       attr_reader :exit_uri
       attr_reader :expires_at
       attr_reader :id
@@ -39,6 +40,7 @@ module GoCardlessPro
         @authorisation_url = object['authorisation_url']
         @auto_fulfil = object['auto_fulfil']
         @created_at = object['created_at']
+        @customer_details_captured = object['customer_details_captured']
         @exit_uri = object['exit_uri']
         @expires_at = object['expires_at']
         @id = object['id']
