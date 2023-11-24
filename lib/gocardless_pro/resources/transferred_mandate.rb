@@ -12,19 +12,19 @@ module GoCardlessPro
 
     # Mandates that have been transferred using Current Account Switch Service
     class TransferredMandate
-      attr_reader :encrypted_data
-      attr_reader :key
-      attr_reader :kid
+      attr_reader :encrypted_customer_bank_details
+      attr_reader :encrypted_decryption_key
+      attr_reader :public_key_id
 
       # Initialize a transferred_mandate resource instance
       # @param object [Hash] an object returned from the API
       def initialize(object, response = nil)
         @object = object
 
-        @encrypted_data = object['encrypted_data']
-        @key = object['key']
-        @kid = object['kid']
+        @encrypted_customer_bank_details = object['encrypted_customer_bank_details']
+        @encrypted_decryption_key = object['encrypted_decryption_key']
         @links = object['links']
+        @public_key_id = object['public_key_id']
         @response = response
       end
 
