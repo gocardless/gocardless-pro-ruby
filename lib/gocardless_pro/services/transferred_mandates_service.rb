@@ -10,14 +10,15 @@ module GoCardlessPro
   module Services
     # Service for making requests to the TransferredMandate endpoints
     class TransferredMandatesService < BaseService
-      # Returns encrypted bank details for the transferred mandate
-      # Example URL: /transferred_mandate/:identity
+      # Returns new customer bank details for a mandate that's been recently
+      # transferred
+      # Example URL: /transferred_mandates/:identity
       #
       # @param identity       # Unique identifier, beginning with "MD". Note that this prefix may not
       # apply to mandates created before 2016.
       # @param options [Hash] parameters as a hash, under a params key.
       def transferred_mandates(identity, options = {})
-        path = sub_url('/transferred_mandate/:identity', {
+        path = sub_url('/transferred_mandates/:identity', {
                          'identity' => identity,
                        })
 
@@ -41,7 +42,7 @@ module GoCardlessPro
 
       # return the key which API responses will envelope data under
       def envelope_key
-        'transferred_mandate'
+        'transferred_mandates'
       end
     end
   end

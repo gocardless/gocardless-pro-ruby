@@ -15,16 +15,16 @@ describe GoCardlessPro::Resources::TransferredMandate do
     let(:resource_id) { 'ABC123' }
 
     let!(:stub) do
-      # /transferred_mandate/%v
-      stub_url = '/transferred_mandate/:identity'.gsub(':identity', resource_id)
+      # /transferred_mandates/%v
+      stub_url = '/transferred_mandates/:identity'.gsub(':identity', resource_id)
       stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
         body: {
-          'transferred_mandate' => {
+          'transferred_mandates' => {
 
-            'encrypted_data' => 'encrypted_data-input',
-            'key' => 'key-input',
-            'kid' => 'kid-input',
+            'encrypted_customer_bank_details' => 'encrypted_customer_bank_details-input',
+            'encrypted_decryption_key' => 'encrypted_decryption_key-input',
             'links' => 'links-input',
+            'public_key_id' => 'public_key_id-input',
           },
         }.to_json,
 
@@ -46,20 +46,20 @@ describe GoCardlessPro::Resources::TransferredMandate do
       let(:resource_id) { 'ABC123' }
 
       let!(:stub) do
-        # /transferred_mandate/%v
-        stub_url = '/transferred_mandate/:identity'.gsub(':identity', resource_id)
+        # /transferred_mandates/%v
+        stub_url = '/transferred_mandates/:identity'.gsub(':identity', resource_id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
-              'transferred_mandate' => {
+              'transferred_mandates' => {
 
-                'encrypted_data' => 'encrypted_data-input',
-                'key' => 'key-input',
-                'kid' => 'kid-input',
+                'encrypted_customer_bank_details' => 'encrypted_customer_bank_details-input',
+                'encrypted_decryption_key' => 'encrypted_decryption_key-input',
                 'links' => 'links-input',
+                'public_key_id' => 'public_key_id-input',
               },
             }.to_json,
             headers: response_headers
