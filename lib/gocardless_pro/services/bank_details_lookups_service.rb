@@ -13,6 +13,11 @@ module GoCardlessPro
       # Performs a bank details lookup. As part of the lookup, a modulus check and
       # reachability check are performed.
       #
+      # In case an account holder name is provided (and an account number, a sort code
+      # or an iban
+      # are already present) an account holder name verification will also be
+      # performed.
+      #
       # If your request returns an [error](#api-usage-errors) or the
       # `available_debit_schemes`
       # attribute is an empty array, you will not be able to collect payments from the
