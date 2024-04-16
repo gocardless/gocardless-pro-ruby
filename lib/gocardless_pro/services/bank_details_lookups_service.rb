@@ -10,8 +10,10 @@ module GoCardlessPro
   module Services
     # Service for making requests to the BankDetailsLookup endpoints
     class BankDetailsLookupsService < BaseService
-      # Performs a bank details lookup. As part of the lookup, a modulus check and
-      # reachability check are performed.
+      # Performs a bank details lookup. As part of the lookup, some validations are
+      # performed such as a modulus check for GBP accounts and a reachability check
+      # for PayTo. These checks vary per scheme. Please reach out to us if you require
+      # more information about the checks.
       #
       # If your request returns an [error](#api-usage-errors) or the
       # `available_debit_schemes`
