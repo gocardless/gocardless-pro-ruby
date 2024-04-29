@@ -180,7 +180,6 @@ module GoCardlessPro
       #
       # - `pause_cycles_must_be_greater_than_or_equal_to` if the provided value for
       # `pause_cycles` cannot be satisfied.
-      #
       # Example URL: /subscriptions/:identity/actions/pause
       #
       # @param identity       # Unique identifier, beginning with "SB".
