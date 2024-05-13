@@ -67,7 +67,6 @@ module GoCardlessPro
     # last working day of the month).
     # - otherwise the charge date will be rolled __forwards__ to the next
     # business day.
-    #
     class Subscription
       attr_reader :amount
       attr_reader :app_fee

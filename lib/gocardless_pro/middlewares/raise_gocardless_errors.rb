@@ -3,9 +3,12 @@ module GoCardlessPro
     class RaiseGoCardlessErrors < Faraday::Middleware
       API_ERROR_STATUSES = 501..599
       CLIENT_ERROR_STATUSES = 400..500
+      API_STATUS_NO_CONTENT = 204
 
       def on_complete(env)
-        raise ApiError, generate_error_data(env) if !json?(env) || API_ERROR_STATUSES.include?(env.status)
+        if !(env.status == API_STATUS_NO_CONTENT || json?(env)) || API_ERROR_STATUSES.include?(env.status)
+          raise ApiError, generate_error_data(env)
+        end
 
         return unless CLIENT_ERROR_STATUSES.include?(env.status)
 
