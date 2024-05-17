@@ -84,6 +84,9 @@ require_relative 'gocardless_pro/services/instalment_schedules_service'
 require_relative 'gocardless_pro/resources/institution'
 require_relative 'gocardless_pro/services/institutions_service'
 
+require_relative 'gocardless_pro/resources/logo'
+require_relative 'gocardless_pro/services/logos_service'
+
 require_relative 'gocardless_pro/resources/mandate'
 require_relative 'gocardless_pro/services/mandates_service'
 

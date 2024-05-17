@@ -78,6 +78,11 @@ module GoCardlessPro
       @institutions ||= Services::InstitutionsService.new(@api_service)
     end
 
+    # Access to the service for logo to make API calls
+    def logos
+      @logos ||= Services::LogosService.new(@api_service)
+    end
+
     # Access to the service for mandate to make API calls
     def mandates
       @mandates ||= Services::MandatesService.new(@api_service)
