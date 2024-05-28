@@ -84,6 +84,9 @@ require_relative 'gocardless_pro/services/instalment_schedules_service'
 require_relative 'gocardless_pro/resources/institution'
 require_relative 'gocardless_pro/services/institutions_service'
 
+require_relative 'gocardless_pro/resources/logo'
+require_relative 'gocardless_pro/services/logos_service'
+
 require_relative 'gocardless_pro/resources/mandate'
 require_relative 'gocardless_pro/services/mandates_service'
 
@@ -101,6 +104,9 @@ require_relative 'gocardless_pro/services/negative_balance_limits_service'
 
 require_relative 'gocardless_pro/resources/payer_authorisation'
 require_relative 'gocardless_pro/services/payer_authorisations_service'
+
+require_relative 'gocardless_pro/resources/payer_theme'
+require_relative 'gocardless_pro/services/payer_themes_service'
 
 require_relative 'gocardless_pro/resources/payment'
 require_relative 'gocardless_pro/services/payments_service'

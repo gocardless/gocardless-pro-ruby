@@ -78,6 +78,11 @@ module GoCardlessPro
       @institutions ||= Services::InstitutionsService.new(@api_service)
     end
 
+    # Access to the service for logo to make API calls
+    def logos
+      @logos ||= Services::LogosService.new(@api_service)
+    end
+
     # Access to the service for mandate to make API calls
     def mandates
       @mandates ||= Services::MandatesService.new(@api_service)
@@ -106,6 +111,11 @@ module GoCardlessPro
     # Access to the service for payer_authorisation to make API calls
     def payer_authorisations
       @payer_authorisations ||= Services::PayerAuthorisationsService.new(@api_service)
+    end
+
+    # Access to the service for payer_theme to make API calls
+    def payer_themes
+      @payer_themes ||= Services::PayerThemesService.new(@api_service)
     end
 
     # Access to the service for payment to make API calls
@@ -218,7 +228,7 @@ module GoCardlessPro
           'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.55.0',
+          'GoCardless-Client-Version' => '2.56.0',
         },
       }
     end
