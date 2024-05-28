@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoCardlessPro::Resources::Logo do
+describe GoCardlessPro::Resources::PayerTheme do
   let(:client) do
     GoCardlessPro::Client.new(
       access_token: 'SECRET_TOKEN'
@@ -10,7 +10,7 @@ describe GoCardlessPro::Resources::Logo do
   let(:response_headers) { { 'Content-Type' => 'application/json' } }
 
   describe '#create' do
-    subject(:post_create_response) { client.logos.create_for_creditor(params: new_resource) }
+    subject(:post_create_response) { client.payer_themes.create_for_creditor(params: new_resource) }
     context 'with a valid request' do
       let(:new_resource) do
         {
@@ -20,10 +20,10 @@ describe GoCardlessPro::Resources::Logo do
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/branding/logos}).
+        stub_request(:post, %r{.*api.gocardless.com/branding/payer_themes}).
           with(
             body: {
-              'logos' => {
+              'payer_themes' => {
 
                 'id' => 'id-input',
               },
@@ -31,7 +31,7 @@ describe GoCardlessPro::Resources::Logo do
           ).
           to_return(
             body: {
-              'logos' =>
+              'payer_themes' =>
 
                 {
 
@@ -44,7 +44,7 @@ describe GoCardlessPro::Resources::Logo do
       end
 
       it 'creates and returns the resource' do
-        expect(post_create_response).to be_a(GoCardlessPro::Resources::Logo)
+        expect(post_create_response).to be_a(GoCardlessPro::Resources::PayerTheme)
       end
     end
 
@@ -52,7 +52,7 @@ describe GoCardlessPro::Resources::Logo do
       let(:new_resource) { {} }
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/branding/logos}).to_return(
+        stub_request(:post, %r{.*api.gocardless.com/branding/payer_themes}).to_return(
           body: {
             error: {
               type: 'validation_failed',
@@ -83,7 +83,7 @@ describe GoCardlessPro::Resources::Logo do
       end
 
       let!(:post_stub) do
-        stub_request(:post, %r{.*api.gocardless.com/branding/logos}).to_return(
+        stub_request(:post, %r{.*api.gocardless.com/branding/payer_themes}).to_return(
           body: {
             error: {
               type: 'invalid_state',

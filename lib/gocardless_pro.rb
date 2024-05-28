@@ -105,6 +105,9 @@ require_relative 'gocardless_pro/services/negative_balance_limits_service'
 require_relative 'gocardless_pro/resources/payer_authorisation'
 require_relative 'gocardless_pro/services/payer_authorisations_service'
 
+require_relative 'gocardless_pro/resources/payer_theme'
+require_relative 'gocardless_pro/services/payer_themes_service'
+
 require_relative 'gocardless_pro/resources/payment'
 require_relative 'gocardless_pro/services/payments_service'
 

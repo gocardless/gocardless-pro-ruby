@@ -8,14 +8,15 @@ require_relative './base_service'
 
 module GoCardlessPro
   module Services
-    # Service for making requests to the Logo endpoints
-    class LogosService < BaseService
-      # Creates a new logo associated with a creditor. If a creditor already has a
-      # logo, this will update the existing logo linked to the creditor.
-      # Example URL: /branding/logos
+    # Service for making requests to the PayerTheme endpoints
+    class PayerThemesService < BaseService
+      # Creates a new payer theme associated with a creditor. If a creditor already
+      # has payer themes, this will update the existing payer theme linked to the
+      # creditor.
+      # Example URL: /branding/payer_themes
       # @param options [Hash] parameters as a hash, under a params key.
       def create_for_creditor(options = {})
-        path = '/branding/logos'
+        path = '/branding/payer_themes'
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -27,7 +28,7 @@ module GoCardlessPro
 
         return if response.body.nil?
 
-        Resources::Logo.new(unenvelope_body(response.body), response)
+        Resources::PayerTheme.new(unenvelope_body(response.body), response)
       end
 
       private
@@ -41,7 +42,7 @@ module GoCardlessPro
 
       # return the key which API responses will envelope data under
       def envelope_key
-        'logos'
+        'payer_themes'
       end
     end
   end

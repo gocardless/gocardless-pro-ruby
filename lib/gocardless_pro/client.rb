@@ -113,6 +113,11 @@ module GoCardlessPro
       @payer_authorisations ||= Services::PayerAuthorisationsService.new(@api_service)
     end
 
+    # Access to the service for payer_theme to make API calls
+    def payer_themes
+      @payer_themes ||= Services::PayerThemesService.new(@api_service)
+    end
+
     # Access to the service for payment to make API calls
     def payments
       @payments ||= Services::PaymentsService.new(@api_service)
