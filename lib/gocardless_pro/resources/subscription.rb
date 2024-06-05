@@ -82,6 +82,7 @@ module GoCardlessPro
       attr_reader :metadata
       attr_reader :month
       attr_reader :name
+      attr_reader :parent_plan_paused
       attr_reader :payment_reference
       attr_reader :retry_if_possible
       attr_reader :start_date
@@ -108,6 +109,7 @@ module GoCardlessPro
         @metadata = object['metadata']
         @month = object['month']
         @name = object['name']
+        @parent_plan_paused = object['parent_plan_paused']
         @payment_reference = object['payment_reference']
         @retry_if_possible = object['retry_if_possible']
         @start_date = object['start_date']
