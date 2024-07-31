@@ -68,6 +68,11 @@ module GoCardlessPro
       @events ||= Services::EventsService.new(@api_service)
     end
 
+    # Access to the service for export to make API calls
+    def exports
+      @exports ||= Services::ExportsService.new(@api_service)
+    end
+
     # Access to the service for instalment_schedule to make API calls
     def instalment_schedules
       @instalment_schedules ||= Services::InstalmentSchedulesService.new(@api_service)
