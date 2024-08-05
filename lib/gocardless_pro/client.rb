@@ -68,6 +68,11 @@ module GoCardlessPro
       @events ||= Services::EventsService.new(@api_service)
     end
 
+    # Access to the service for export to make API calls
+    def exports
+      @exports ||= Services::ExportsService.new(@api_service)
+    end
+
     # Access to the service for instalment_schedule to make API calls
     def instalment_schedules
       @instalment_schedules ||= Services::InstalmentSchedulesService.new(@api_service)
@@ -228,7 +233,7 @@ module GoCardlessPro
           'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.56.0',
+          'GoCardless-Client-Version' => '2.57.0',
         },
       }
     end

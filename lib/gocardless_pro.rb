@@ -78,6 +78,9 @@ require_relative 'gocardless_pro/services/customer_notifications_service'
 require_relative 'gocardless_pro/resources/event'
 require_relative 'gocardless_pro/services/events_service'
 
+require_relative 'gocardless_pro/resources/export'
+require_relative 'gocardless_pro/services/exports_service'
+
 require_relative 'gocardless_pro/resources/instalment_schedule'
 require_relative 'gocardless_pro/services/instalment_schedules_service'
 
