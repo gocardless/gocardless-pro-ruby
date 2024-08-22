@@ -18,6 +18,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
           'account_holder_name' => 'account_holder_name-input',
           'account_number_ending' => 'account_number_ending-input',
           'account_type' => 'account_type-input',
+          'bank_account_token' => 'bank_account_token-input',
           'bank_name' => 'bank_name-input',
           'country_code' => 'country_code-input',
           'created_at' => 'created_at-input',
@@ -38,6 +39,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'account_holder_name' => 'account_holder_name-input',
                 'account_number_ending' => 'account_number_ending-input',
                 'account_type' => 'account_type-input',
+                'bank_account_token' => 'bank_account_token-input',
                 'bank_name' => 'bank_name-input',
                 'country_code' => 'country_code-input',
                 'created_at' => 'created_at-input',
@@ -58,6 +60,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                   'account_holder_name' => 'account_holder_name-input',
                   'account_number_ending' => 'account_number_ending-input',
                   'account_type' => 'account_type-input',
+                  'bank_account_token' => 'bank_account_token-input',
                   'bank_name' => 'bank_name-input',
                   'country_code' => 'country_code-input',
                   'created_at' => 'created_at-input',
@@ -111,6 +114,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
           'account_holder_name' => 'account_holder_name-input',
           'account_number_ending' => 'account_number_ending-input',
           'account_type' => 'account_type-input',
+          'bank_account_token' => 'bank_account_token-input',
           'bank_name' => 'bank_name-input',
           'country_code' => 'country_code-input',
           'created_at' => 'created_at-input',
@@ -154,6 +158,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'account_holder_name' => 'account_holder_name-input',
                 'account_number_ending' => 'account_number_ending-input',
                 'account_type' => 'account_type-input',
+                'bank_account_token' => 'bank_account_token-input',
                 'bank_name' => 'bank_name-input',
                 'country_code' => 'country_code-input',
                 'created_at' => 'created_at-input',
@@ -188,6 +193,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
               'account_holder_name' => 'account_holder_name-input',
               'account_number_ending' => 'account_number_ending-input',
               'account_type' => 'account_type-input',
+              'bank_account_token' => 'bank_account_token-input',
               'bank_name' => 'bank_name-input',
               'country_code' => 'country_code-input',
               'created_at' => 'created_at-input',
@@ -218,6 +224,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
         expect(get_list_response.records.first.account_number_ending).to eq('account_number_ending-input')
 
         expect(get_list_response.records.first.account_type).to eq('account_type-input')
+
+        expect(get_list_response.records.first.bank_account_token).to eq('bank_account_token-input')
 
         expect(get_list_response.records.first.bank_name).to eq('bank_name-input')
 
@@ -252,6 +260,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
             'account_holder_name' => 'account_holder_name-input',
             'account_number_ending' => 'account_number_ending-input',
             'account_type' => 'account_type-input',
+            'bank_account_token' => 'bank_account_token-input',
             'bank_name' => 'bank_name-input',
             'country_code' => 'country_code-input',
             'created_at' => 'created_at-input',
@@ -278,6 +287,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
             'account_holder_name' => 'account_holder_name-input',
             'account_number_ending' => 'account_number_ending-input',
             'account_type' => 'account_type-input',
+            'bank_account_token' => 'bank_account_token-input',
             'bank_name' => 'bank_name-input',
             'country_code' => 'country_code-input',
             'created_at' => 'created_at-input',
@@ -320,6 +330,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'account_holder_name' => 'account_holder_name-input',
                 'account_number_ending' => 'account_number_ending-input',
                 'account_type' => 'account_type-input',
+                'bank_account_token' => 'bank_account_token-input',
                 'bank_name' => 'bank_name-input',
                 'country_code' => 'country_code-input',
                 'created_at' => 'created_at-input',
@@ -356,6 +367,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
               'account_holder_name' => 'account_holder_name-input',
               'account_number_ending' => 'account_number_ending-input',
               'account_type' => 'account_type-input',
+              'bank_account_token' => 'bank_account_token-input',
               'bank_name' => 'bank_name-input',
               'country_code' => 'country_code-input',
               'created_at' => 'created_at-input',
@@ -414,6 +426,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
               'account_holder_name' => 'account_holder_name-input',
               'account_number_ending' => 'account_number_ending-input',
               'account_type' => 'account_type-input',
+              'bank_account_token' => 'bank_account_token-input',
               'bank_name' => 'bank_name-input',
               'country_code' => 'country_code-input',
               'created_at' => 'created_at-input',
@@ -450,6 +463,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
             'account_holder_name' => 'account_holder_name-input',
             'account_number_ending' => 'account_number_ending-input',
             'account_type' => 'account_type-input',
+            'bank_account_token' => 'bank_account_token-input',
             'bank_name' => 'bank_name-input',
             'country_code' => 'country_code-input',
             'created_at' => 'created_at-input',
@@ -492,6 +506,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'account_holder_name' => 'account_holder_name-input',
                 'account_number_ending' => 'account_number_ending-input',
                 'account_type' => 'account_type-input',
+                'bank_account_token' => 'bank_account_token-input',
                 'bank_name' => 'bank_name-input',
                 'country_code' => 'country_code-input',
                 'created_at' => 'created_at-input',
