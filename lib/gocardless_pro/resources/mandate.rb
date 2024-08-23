@@ -18,6 +18,7 @@ module GoCardlessPro
     class Mandate
       attr_reader :authorisation_source
       attr_reader :consent_parameters
+      attr_reader :consent_type
       attr_reader :created_at
       attr_reader :funds_settlement
       attr_reader :id
@@ -37,6 +38,7 @@ module GoCardlessPro
 
         @authorisation_source = object['authorisation_source']
         @consent_parameters = object['consent_parameters']
+        @consent_type = object['consent_type']
         @created_at = object['created_at']
         @funds_settlement = object['funds_settlement']
         @id = object['id']

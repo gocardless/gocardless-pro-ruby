@@ -17,6 +17,7 @@ describe GoCardlessPro::Services::MandatesService do
 
           'authorisation_source' => 'authorisation_source-input',
           'consent_parameters' => 'consent_parameters-input',
+          'consent_type' => 'consent_type-input',
           'created_at' => 'created_at-input',
           'funds_settlement' => 'funds_settlement-input',
           'id' => 'id-input',
@@ -40,6 +41,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                 'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
+                'consent_type' => 'consent_type-input',
                 'created_at' => 'created_at-input',
                 'funds_settlement' => 'funds_settlement-input',
                 'id' => 'id-input',
@@ -63,6 +65,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                   'authorisation_source' => 'authorisation_source-input',
                   'consent_parameters' => 'consent_parameters-input',
+                  'consent_type' => 'consent_type-input',
                   'created_at' => 'created_at-input',
                   'funds_settlement' => 'funds_settlement-input',
                   'id' => 'id-input',
@@ -142,6 +145,7 @@ describe GoCardlessPro::Services::MandatesService do
 
           'authorisation_source' => 'authorisation_source-input',
           'consent_parameters' => 'consent_parameters-input',
+          'consent_type' => 'consent_type-input',
           'created_at' => 'created_at-input',
           'funds_settlement' => 'funds_settlement-input',
           'id' => 'id-input',
@@ -188,6 +192,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                 'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
+                'consent_type' => 'consent_type-input',
                 'created_at' => 'created_at-input',
                 'funds_settlement' => 'funds_settlement-input',
                 'id' => 'id-input',
@@ -240,6 +245,7 @@ describe GoCardlessPro::Services::MandatesService do
 
             'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
+            'consent_type' => 'consent_type-input',
             'created_at' => 'created_at-input',
             'funds_settlement' => 'funds_settlement-input',
             'id' => 'id-input',
@@ -275,6 +281,8 @@ describe GoCardlessPro::Services::MandatesService do
         expect(get_list_response.records.first.authorisation_source).to eq('authorisation_source-input')
 
         expect(get_list_response.records.first.consent_parameters).to eq('consent_parameters-input')
+
+        expect(get_list_response.records.first.consent_type).to eq('consent_type-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
@@ -339,6 +347,7 @@ describe GoCardlessPro::Services::MandatesService do
 
             'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
+            'consent_type' => 'consent_type-input',
             'created_at' => 'created_at-input',
             'funds_settlement' => 'funds_settlement-input',
             'id' => 'id-input',
@@ -368,6 +377,7 @@ describe GoCardlessPro::Services::MandatesService do
 
             'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
+            'consent_type' => 'consent_type-input',
             'created_at' => 'created_at-input',
             'funds_settlement' => 'funds_settlement-input',
             'id' => 'id-input',
@@ -406,6 +416,7 @@ describe GoCardlessPro::Services::MandatesService do
 
               'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
+              'consent_type' => 'consent_type-input',
               'created_at' => 'created_at-input',
               'funds_settlement' => 'funds_settlement-input',
               'id' => 'id-input',
@@ -435,6 +446,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                                      'authorisation_source' => 'authorisation_source-input',
                                      'consent_parameters' => 'consent_parameters-input',
+                                     'consent_type' => 'consent_type-input',
                                      'created_at' => 'created_at-input',
                                      'funds_settlement' => 'funds_settlement-input',
                                      'id' => 'id-input',
@@ -469,6 +481,7 @@ describe GoCardlessPro::Services::MandatesService do
 
               'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
+              'consent_type' => 'consent_type-input',
               'created_at' => 'created_at-input',
               'funds_settlement' => 'funds_settlement-input',
               'id' => 'id-input',
@@ -501,6 +514,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                                      'authorisation_source' => 'authorisation_source-input',
                                      'consent_parameters' => 'consent_parameters-input',
+                                     'consent_type' => 'consent_type-input',
                                      'created_at' => 'created_at-input',
                                      'funds_settlement' => 'funds_settlement-input',
                                      'id' => 'id-input',
@@ -546,6 +560,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                 'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
+                'consent_type' => 'consent_type-input',
                 'created_at' => 'created_at-input',
                 'funds_settlement' => 'funds_settlement-input',
                 'id' => 'id-input',
@@ -585,6 +600,7 @@ describe GoCardlessPro::Services::MandatesService do
 
               'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
+              'consent_type' => 'consent_type-input',
               'created_at' => 'created_at-input',
               'funds_settlement' => 'funds_settlement-input',
               'id' => 'id-input',
@@ -701,6 +717,7 @@ describe GoCardlessPro::Services::MandatesService do
 
               'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
+              'consent_type' => 'consent_type-input',
               'created_at' => 'created_at-input',
               'funds_settlement' => 'funds_settlement-input',
               'id' => 'id-input',
@@ -765,6 +782,7 @@ describe GoCardlessPro::Services::MandatesService do
 
             'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
+            'consent_type' => 'consent_type-input',
             'created_at' => 'created_at-input',
             'funds_settlement' => 'funds_settlement-input',
             'id' => 'id-input',
@@ -821,6 +839,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                 'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
+                'consent_type' => 'consent_type-input',
                 'created_at' => 'created_at-input',
                 'funds_settlement' => 'funds_settlement-input',
                 'id' => 'id-input',
@@ -855,6 +874,7 @@ describe GoCardlessPro::Services::MandatesService do
 
             'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
+            'consent_type' => 'consent_type-input',
             'created_at' => 'created_at-input',
             'funds_settlement' => 'funds_settlement-input',
             'id' => 'id-input',
@@ -911,6 +931,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                 'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
+                'consent_type' => 'consent_type-input',
                 'created_at' => 'created_at-input',
                 'funds_settlement' => 'funds_settlement-input',
                 'id' => 'id-input',
