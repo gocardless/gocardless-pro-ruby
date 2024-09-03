@@ -23,8 +23,8 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
     let(:status) { 514 }
 
     it 'raises an error' do
-      expect { connection.post('https://api.gocardless.com/widgets') }.
-        to raise_error(GoCardlessPro::ApiError)
+      expect { connection.post('https://api.gocardless.com/widgets') }
+        .to raise_error(GoCardlessPro::ApiError)
     end
   end
 
@@ -32,8 +32,8 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
     let(:status) { 503 }
 
     it 'raises an error' do
-      expect { connection.post('https://api.gocardless.com/widgets') }.
-        to raise_error(GoCardlessPro::ApiError)
+      expect { connection.post('https://api.gocardless.com/widgets') }
+        .to raise_error(GoCardlessPro::ApiError)
     end
   end
 
@@ -41,8 +41,8 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
     let(:status) { 200 }
 
     it "doesn't raise an error" do
-      expect { connection.post('https://api.gocardless.com/widgets') }.
-        to_not raise_error(GoCardlessPro::ApiError)
+      expect { connection.post('https://api.gocardless.com/widgets') }
+        .to_not raise_error(GoCardlessPro::ApiError)
     end
   end
 
@@ -59,8 +59,8 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
       let(:body) { { error: { type: 'validation_failed' } }.to_json }
 
       it 'raises a ValidationError' do
-        expect { connection.post('https://api.gocardless.com/widgets') }.
-          to raise_error(GoCardlessPro::ValidationError)
+        expect { connection.post('https://api.gocardless.com/widgets') }
+          .to raise_error(GoCardlessPro::ValidationError)
       end
     end
 
@@ -69,8 +69,8 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
       let(:body) { { error: { type: 'gocardless' } }.to_json }
 
       it 'raises a GoCardlessError' do
-        expect { connection.post('https://api.gocardless.com/widgets') }.
-          to raise_error(GoCardlessPro::GoCardlessError)
+        expect { connection.post('https://api.gocardless.com/widgets') }
+          .to raise_error(GoCardlessPro::GoCardlessError)
       end
     end
 
@@ -79,8 +79,8 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
       let(:body) { { error: { type: 'invalid_api_usage' } }.to_json }
 
       it 'raises a GoCardlessError' do
-        expect { connection.post('https://api.gocardless.com/widgets') }.
-          to raise_error(GoCardlessPro::PermissionError)
+        expect { connection.post('https://api.gocardless.com/widgets') }
+          .to raise_error(GoCardlessPro::PermissionError)
       end
     end
 
@@ -89,8 +89,8 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
       let(:body) { { error: { type: 'invalid_api_usage' } }.to_json }
 
       it 'raises a GoCardlessError' do
-        expect { connection.post('https://api.gocardless.com/widgets') }.
-          to raise_error(GoCardlessPro::RateLimitError)
+        expect { connection.post('https://api.gocardless.com/widgets') }
+          .to raise_error(GoCardlessPro::RateLimitError)
       end
     end
 
@@ -99,8 +99,8 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
       let(:body) { { error: { type: 'invalid_api_usage' } }.to_json }
 
       it 'raises a GoCardlessError' do
-        expect { connection.post('https://api.gocardless.com/widgets') }.
-          to raise_error(GoCardlessPro::AuthenticationError)
+        expect { connection.post('https://api.gocardless.com/widgets') }
+          .to raise_error(GoCardlessPro::AuthenticationError)
       end
     end
 
@@ -109,8 +109,8 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
       let(:body) { { error: { type: 'invalid_api_usage' } }.to_json }
 
       it 'raises a InvalidApiUsageError' do
-        expect { connection.post('https://api.gocardless.com/widgets') }.
-          to raise_error(GoCardlessPro::InvalidApiUsageError)
+        expect { connection.post('https://api.gocardless.com/widgets') }
+          .to raise_error(GoCardlessPro::InvalidApiUsageError)
       end
     end
 
@@ -119,8 +119,8 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
       let(:body) { { error: { type: 'invalid_state' } }.to_json }
 
       it 'raises an InvalidStateError' do
-        expect { connection.post('https://api.gocardless.com/widgets') }.
-          to raise_error(GoCardlessPro::InvalidStateError)
+        expect { connection.post('https://api.gocardless.com/widgets') }
+          .to raise_error(GoCardlessPro::InvalidStateError)
       end
     end
   end

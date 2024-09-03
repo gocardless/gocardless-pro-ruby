@@ -22,14 +22,14 @@ describe GoCardlessPro::Services::InstitutionsService do
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
-            'name' => 'name-input',
+            'name' => 'name-input'
           }],
           meta: {
             cursors: {
               before: nil,
-              after: 'ABC123',
-            },
-          },
+              after: 'ABC123'
+            }
+          }
         }.to_json
       end
 
@@ -67,19 +67,19 @@ describe GoCardlessPro::Services::InstitutionsService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/institutions}).
-                 to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/institutions})
+                 .to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/institutions}).
-                 to_return({ status: 502,
-                             headers: { 'Content-Type' => 'text/html' },
-                             body: '<html><body>Response from Cloudflare</body></html>' }).
-                 then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/institutions})
+                 .to_return({ status: 502,
+                              headers: { 'Content-Type' => 'text/html' },
+                              body: '<html><body>Response from Cloudflare</body></html>' })
+                 .then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -99,12 +99,12 @@ describe GoCardlessPro::Services::InstitutionsService do
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
-            'name' => 'name-input',
+            'name' => 'name-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1,
-          },
+            limit: 1
+          }
         }.to_json,
         headers: response_headers
       )
@@ -120,12 +120,12 @@ describe GoCardlessPro::Services::InstitutionsService do
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
-            'name' => 'name-input',
+            'name' => 'name-input'
           }],
           meta: {
             limit: 2,
-            cursors: {},
-          },
+            cursors: {}
+          }
         }.to_json,
         headers: response_headers
       )
@@ -150,19 +150,19 @@ describe GoCardlessPro::Services::InstitutionsService do
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
               'logo_url' => 'logo_url-input',
-              'name' => 'name-input',
+              'name' => 'name-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1,
-            },
+              limit: 1
+            }
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/institutions\?after=AB345}).
-                               to_timeout.then.
-                               to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/institutions\?after=AB345})
+                               .to_timeout.then
+                               .to_return(
                                  body: {
                                    'institutions' => [{
 
@@ -171,12 +171,12 @@ describe GoCardlessPro::Services::InstitutionsService do
                                      'icon_url' => 'icon_url-input',
                                      'id' => 'id-input',
                                      'logo_url' => 'logo_url-input',
-                                     'name' => 'name-input',
+                                     'name' => 'name-input'
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {},
-                                   },
+                                     cursors: {}
+                                   }
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -197,18 +197,18 @@ describe GoCardlessPro::Services::InstitutionsService do
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
               'logo_url' => 'logo_url-input',
-              'name' => 'name-input',
+              'name' => 'name-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1,
-            },
+              limit: 1
+            }
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/institutions\?after=AB345}).
-                               to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/institutions\?after=AB345})
+                               .to_return(
                                  status: 502,
                                  body: '<html><body>Response from Cloudflare</body></html>',
                                  headers: { 'Content-Type' => 'text/html' }
@@ -221,12 +221,12 @@ describe GoCardlessPro::Services::InstitutionsService do
                                      'icon_url' => 'icon_url-input',
                                      'id' => 'id-input',
                                      'logo_url' => 'logo_url-input',
-                                     'name' => 'name-input',
+                                     'name' => 'name-input'
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {},
-                                   },
+                                     cursors: {}
+                                   }
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -256,14 +256,14 @@ describe GoCardlessPro::Services::InstitutionsService do
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
-            'name' => 'name-input',
+            'name' => 'name-input'
           }],
           meta: {
             cursors: {
               before: nil,
-              after: 'ABC123',
-            },
-          },
+              after: 'ABC123'
+            }
+          }
         }.to_json,
 
         headers: response_headers
@@ -284,8 +284,8 @@ describe GoCardlessPro::Services::InstitutionsService do
     describe 'retry behaviour' do
       it "doesn't retry errors" do
         stub_url = '/billing_requests/:identity/institutions'.gsub(':identity', resource_id)
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout
 
         expect { get_response }.to raise_error(Faraday::ConnectionFailed)
         expect(stub).to have_been_requested
@@ -302,8 +302,8 @@ describe GoCardlessPro::Services::InstitutionsService do
       let!(:stub) do
         # /billing_requests/%v/institutions
         stub_url = '/billing_requests/:identity/institutions'.gsub(':identity', resource_id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -315,8 +315,8 @@ describe GoCardlessPro::Services::InstitutionsService do
                 'icon_url' => 'icon_url-input',
                 'id' => 'id-input',
                 'logo_url' => 'logo_url-input',
-                'name' => 'name-input',
-              },
+                'name' => 'name-input'
+              }
             }.to_json,
             headers: response_headers
           )

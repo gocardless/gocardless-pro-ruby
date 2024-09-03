@@ -46,7 +46,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/webhooks/:identity', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         options[:retry_failures] = true
@@ -65,7 +65,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def retry(identity, options = {})
         path = sub_url('/webhooks/:identity/actions/retry', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}

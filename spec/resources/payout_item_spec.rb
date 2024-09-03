@@ -21,14 +21,14 @@ describe GoCardlessPro::Resources::PayoutItem do
               'amount' => 'amount-input',
               'links' => 'links-input',
               'taxes' => 'taxes-input',
-              'type' => 'type-input',
+              'type' => 'type-input'
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123',
-              },
-            },
+                after: 'ABC123'
+              }
+            }
           }.to_json,
           headers: response_headers
         )
@@ -62,12 +62,12 @@ describe GoCardlessPro::Resources::PayoutItem do
             'amount' => 'amount-input',
             'links' => 'links-input',
             'taxes' => 'taxes-input',
-            'type' => 'type-input',
+            'type' => 'type-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1,
-          },
+            limit: 1
+          }
         }.to_json,
         headers: response_headers
       )
@@ -81,12 +81,12 @@ describe GoCardlessPro::Resources::PayoutItem do
             'amount' => 'amount-input',
             'links' => 'links-input',
             'taxes' => 'taxes-input',
-            'type' => 'type-input',
+            'type' => 'type-input'
           }],
           meta: {
             limit: 2,
-            cursors: {},
-          },
+            cursors: {}
+          }
         }.to_json,
         headers: response_headers
       )

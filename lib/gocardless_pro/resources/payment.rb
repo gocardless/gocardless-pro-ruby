@@ -18,19 +18,8 @@ module GoCardlessPro
     # GoCardless will notify you via a [webhook](#appendix-webhooks) whenever
     # the state of a payment changes.
     class Payment
-      attr_reader :amount
-      attr_reader :amount_refunded
-      attr_reader :charge_date
-      attr_reader :created_at
-      attr_reader :currency
-      attr_reader :description
-      attr_reader :faster_ach
-      attr_reader :fx
-      attr_reader :id
-      attr_reader :metadata
-      attr_reader :reference
-      attr_reader :retry_if_possible
-      attr_reader :status
+      attr_reader :amount, :amount_refunded, :charge_date, :created_at, :currency, :description, :faster_ach, :fx, :id,
+                  :metadata, :reference, :retry_if_possible, :status
 
       # Initialize a payment resource instance
       # @param object [Hash] an object returned from the API

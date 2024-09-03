@@ -68,26 +68,8 @@ module GoCardlessPro
     # - otherwise the charge date will be rolled __forwards__ to the next
     # business day.
     class Subscription
-      attr_reader :amount
-      attr_reader :app_fee
-      attr_reader :count
-      attr_reader :created_at
-      attr_reader :currency
-      attr_reader :day_of_month
-      attr_reader :earliest_charge_date_after_resume
-      attr_reader :end_date
-      attr_reader :id
-      attr_reader :interval
-      attr_reader :interval_unit
-      attr_reader :metadata
-      attr_reader :month
-      attr_reader :name
-      attr_reader :parent_plan_paused
-      attr_reader :payment_reference
-      attr_reader :retry_if_possible
-      attr_reader :start_date
-      attr_reader :status
-      attr_reader :upcoming_payments
+      attr_reader :amount, :app_fee, :count, :created_at, :currency, :day_of_month, :earliest_charge_date_after_resume,
+                  :end_date, :id, :interval, :interval_unit, :metadata, :month, :name, :parent_plan_paused, :payment_reference, :retry_if_possible, :start_date, :status, :upcoming_payments
 
       # Initialize a subscription resource instance
       # @param object [Hash] an object returned from the API

@@ -18,14 +18,7 @@ module GoCardlessPro
     # refund is created, and will update the `amount_refunded` property of the
     # payment.
     class Refund
-      attr_reader :amount
-      attr_reader :created_at
-      attr_reader :currency
-      attr_reader :fx
-      attr_reader :id
-      attr_reader :metadata
-      attr_reader :reference
-      attr_reader :status
+      attr_reader :amount, :created_at, :currency, :fx, :id, :metadata, :reference, :status
 
       # Initialize a refund resource instance
       # @param object [Hash] an object returned from the API

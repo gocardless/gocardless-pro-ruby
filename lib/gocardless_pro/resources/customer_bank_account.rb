@@ -28,17 +28,8 @@ module GoCardlessPro
     # [bank_details_lookups](#bank-details-lookups-perform-a-bank-details-lookup),
     # before proceeding with creating the accounts
     class CustomerBankAccount
-      attr_reader :account_holder_name
-      attr_reader :account_number_ending
-      attr_reader :account_type
-      attr_reader :bank_account_token
-      attr_reader :bank_name
-      attr_reader :country_code
-      attr_reader :created_at
-      attr_reader :currency
-      attr_reader :enabled
-      attr_reader :id
-      attr_reader :metadata
+      attr_reader :account_holder_name, :account_number_ending, :account_type, :bank_account_token, :bank_name,
+                  :country_code, :created_at, :currency, :enabled, :id, :metadata
 
       # Initialize a customer_bank_account resource instance
       # @param object [Hash] an object returned from the API

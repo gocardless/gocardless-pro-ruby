@@ -15,28 +15,28 @@ describe GoCardlessPro::Resources::PayerTheme do
       let(:new_resource) do
         {
 
-          'id' => 'id-input',
+          'id' => 'id-input'
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/branding/payer_themes}).
-          with(
+        stub_request(:post, %r{.*api.gocardless.com/branding/payer_themes})
+          .with(
             body: {
               'payer_themes' => {
 
-                'id' => 'id-input',
-              },
+                'id' => 'id-input'
+              }
             }
-          ).
-          to_return(
+          )
+          .to_return(
             body: {
               'payer_themes' =>
 
                 {
 
-                  'id' => 'id-input',
-                },
+                  'id' => 'id-input'
+                }
 
             }.to_json,
             headers: response_headers
@@ -58,9 +58,9 @@ describe GoCardlessPro::Resources::PayerTheme do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' },
-              ],
-            },
+                { message: 'test error message', field: 'test_field' }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 422
@@ -78,7 +78,7 @@ describe GoCardlessPro::Resources::PayerTheme do
       let(:new_resource) do
         {
 
-          'id' => 'id-input',
+          'id' => 'id-input'
         }
       end
 
@@ -93,11 +93,11 @@ describe GoCardlessPro::Resources::PayerTheme do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id,
-                  },
-                },
-              ],
-            },
+                    conflicting_resource_id: id
+                  }
+                }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 409

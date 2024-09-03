@@ -33,9 +33,7 @@ module GoCardlessPro
     # <code>410 Gone</code>.
     #
     class PayoutItem
-      attr_reader :amount
-      attr_reader :taxes
-      attr_reader :type
+      attr_reader :amount, :taxes, :type
 
       # Initialize a payout_item resource instance
       # @param object [Hash] an object returned from the API

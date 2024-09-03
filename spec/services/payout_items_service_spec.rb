@@ -20,14 +20,14 @@ describe GoCardlessPro::Services::PayoutItemsService do
             'amount' => 'amount-input',
             'links' => 'links-input',
             'taxes' => 'taxes-input',
-            'type' => 'type-input',
+            'type' => 'type-input'
           }],
           meta: {
             cursors: {
               before: nil,
-              after: 'ABC123',
-            },
-          },
+              after: 'ABC123'
+            }
+          }
         }.to_json
       end
 
@@ -59,19 +59,19 @@ describe GoCardlessPro::Services::PayoutItemsService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/payout_items}).
-                 to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/payout_items})
+                 .to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/payout_items}).
-                 to_return({ status: 502,
-                             headers: { 'Content-Type' => 'text/html' },
-                             body: '<html><body>Response from Cloudflare</body></html>' }).
-                 then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/payout_items})
+                 .to_return({ status: 502,
+                              headers: { 'Content-Type' => 'text/html' },
+                              body: '<html><body>Response from Cloudflare</body></html>' })
+                 .then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -89,12 +89,12 @@ describe GoCardlessPro::Services::PayoutItemsService do
             'amount' => 'amount-input',
             'links' => 'links-input',
             'taxes' => 'taxes-input',
-            'type' => 'type-input',
+            'type' => 'type-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1,
-          },
+            limit: 1
+          }
         }.to_json,
         headers: response_headers
       )
@@ -108,12 +108,12 @@ describe GoCardlessPro::Services::PayoutItemsService do
             'amount' => 'amount-input',
             'links' => 'links-input',
             'taxes' => 'taxes-input',
-            'type' => 'type-input',
+            'type' => 'type-input'
           }],
           meta: {
             limit: 2,
-            cursors: {},
-          },
+            cursors: {}
+          }
         }.to_json,
         headers: response_headers
       )
@@ -136,31 +136,31 @@ describe GoCardlessPro::Services::PayoutItemsService do
               'amount' => 'amount-input',
               'links' => 'links-input',
               'taxes' => 'taxes-input',
-              'type' => 'type-input',
+              'type' => 'type-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1,
-            },
+              limit: 1
+            }
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/payout_items\?after=AB345}).
-                               to_timeout.then.
-                               to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/payout_items\?after=AB345})
+                               .to_timeout.then
+                               .to_return(
                                  body: {
                                    'payout_items' => [{
 
                                      'amount' => 'amount-input',
                                      'links' => 'links-input',
                                      'taxes' => 'taxes-input',
-                                     'type' => 'type-input',
+                                     'type' => 'type-input'
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {},
-                                   },
+                                     cursors: {}
+                                   }
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -179,18 +179,18 @@ describe GoCardlessPro::Services::PayoutItemsService do
               'amount' => 'amount-input',
               'links' => 'links-input',
               'taxes' => 'taxes-input',
-              'type' => 'type-input',
+              'type' => 'type-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1,
-            },
+              limit: 1
+            }
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/payout_items\?after=AB345}).
-                               to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/payout_items\?after=AB345})
+                               .to_return(
                                  status: 502,
                                  body: '<html><body>Response from Cloudflare</body></html>',
                                  headers: { 'Content-Type' => 'text/html' }
@@ -201,12 +201,12 @@ describe GoCardlessPro::Services::PayoutItemsService do
                                      'amount' => 'amount-input',
                                      'links' => 'links-input',
                                      'taxes' => 'taxes-input',
-                                     'type' => 'type-input',
+                                     'type' => 'type-input'
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {},
-                                   },
+                                     cursors: {}
+                                   }
                                  }.to_json,
                                  headers: response_headers
                                )

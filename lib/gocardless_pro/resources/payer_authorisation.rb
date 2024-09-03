@@ -69,13 +69,7 @@ module GoCardlessPro
     # your servers.
     # </p>
     class PayerAuthorisation
-      attr_reader :bank_account
-      attr_reader :created_at
-      attr_reader :customer
-      attr_reader :id
-      attr_reader :incomplete_fields
-      attr_reader :mandate
-      attr_reader :status
+      attr_reader :bank_account, :created_at, :customer, :id, :incomplete_fields, :mandate, :status
 
       # Initialize a payer_authorisation resource instance
       # @param object [Hash] an object returned from the API

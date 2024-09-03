@@ -15,12 +15,7 @@ module GoCardlessPro
     # We also maintain a [static list of the tax rates for each
     # jurisdiction](#appendix-tax-rates).
     class TaxRate
-      attr_reader :end_date
-      attr_reader :id
-      attr_reader :jurisdiction
-      attr_reader :percentage
-      attr_reader :start_date
-      attr_reader :type
+      attr_reader :end_date, :id, :jurisdiction, :percentage, :start_date, :type
 
       # Initialize a tax_rate resource instance
       # @param object [Hash] an object returned from the API

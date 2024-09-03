@@ -18,26 +18,8 @@ module GoCardlessPro
     # Currently, for Anti Money Laundering reasons, any creditors you add must
     # be directly related to your organisation.
     class Creditor
-      attr_reader :address_line1
-      attr_reader :address_line2
-      attr_reader :address_line3
-      attr_reader :bank_reference_prefix
-      attr_reader :can_create_refunds
-      attr_reader :city
-      attr_reader :country_code
-      attr_reader :created_at
-      attr_reader :creditor_type
-      attr_reader :custom_payment_pages_enabled
-      attr_reader :fx_payout_currency
-      attr_reader :id
-      attr_reader :logo_url
-      attr_reader :mandate_imports_enabled
-      attr_reader :merchant_responsible_for_notifications
-      attr_reader :name
-      attr_reader :postal_code
-      attr_reader :region
-      attr_reader :scheme_identifiers
-      attr_reader :verification_status
+      attr_reader :address_line1, :address_line2, :address_line3, :bank_reference_prefix, :can_create_refunds, :city,
+                  :country_code, :created_at, :creditor_type, :custom_payment_pages_enabled, :fx_payout_currency, :id, :logo_url, :mandate_imports_enabled, :merchant_responsible_for_notifications, :name, :postal_code, :region, :scheme_identifiers, :verification_status
 
       # Initialize a creditor resource instance
       # @param object [Hash] an object returned from the API

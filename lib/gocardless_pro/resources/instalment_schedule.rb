@@ -28,14 +28,7 @@ module GoCardlessPro
     # of collection.
     #
     class InstalmentSchedule
-      attr_reader :created_at
-      attr_reader :currency
-      attr_reader :id
-      attr_reader :metadata
-      attr_reader :name
-      attr_reader :payment_errors
-      attr_reader :status
-      attr_reader :total_amount
+      attr_reader :created_at, :currency, :id, :metadata, :name, :payment_errors, :status, :total_amount
 
       # Initialize a instalment_schedule resource instance
       # @param object [Hash] an object returned from the API

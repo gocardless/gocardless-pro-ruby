@@ -6,7 +6,7 @@ describe GoCardlessPro::Webhook do
     {
       request_body: request_body,
       signature_header: signature_header,
-      webhook_endpoint_secret: webhook_endpoint_secret,
+      webhook_endpoint_secret: webhook_endpoint_secret
     }
   end
 
@@ -40,8 +40,8 @@ describe GoCardlessPro::Webhook do
         expect(events.first.links.subscription).to eq('SB0003JJQ2MR06')
         expect(events.first.details['origin']).to eq('api')
         expect(events.first.details['cause']).to eq('subscription_created')
-        expect(events.first.details['description']).
-          to eq('Subscription created via the API.')
+        expect(events.first.details['description'])
+          .to eq('Subscription created via the API.')
         expect(events.first.metadata).to eq({})
 
         expect(events.last.id).to eq('EV00BD05TB8K63')
@@ -51,8 +51,8 @@ describe GoCardlessPro::Webhook do
         expect(events.last.links.mandate).to eq('MD000AMA19XGEC')
         expect(events.last.details['origin']).to eq('api')
         expect(events.last.details['cause']).to eq('mandate_created')
-        expect(events.last.details['description']).
-          to eq('Mandate created via the API.')
+        expect(events.last.details['description'])
+          .to eq('Mandate created via the API.')
         expect(events.last.metadata).to eq({})
       end
     end
@@ -61,9 +61,9 @@ describe GoCardlessPro::Webhook do
       let(:webhook_endpoint_secret) { 'foo' }
 
       it 'raises an InvalidSignatureError' do
-        expect { described_class.parse(options) }.
-          to raise_error(described_class::InvalidSignatureError,
-                         /doesn't appear to be a genuine webhook from GoCardless/)
+        expect { described_class.parse(options) }
+          .to raise_error(described_class::InvalidSignatureError,
+                          /doesn't appear to be a genuine webhook from GoCardless/)
       end
     end
 
@@ -71,9 +71,9 @@ describe GoCardlessPro::Webhook do
       before { options.delete(:request_body) }
 
       it 'raises an ArgumentError' do
-        expect { described_class.signature_valid?(options) }.
-          to raise_error(ArgumentError,
-                         'request_body must be provided and must be a string')
+        expect { described_class.signature_valid?(options) }
+          .to raise_error(ArgumentError,
+                          'request_body must be provided and must be a string')
       end
     end
 
@@ -81,9 +81,9 @@ describe GoCardlessPro::Webhook do
       let(:request_body) { StringIO.new }
 
       it 'raises an ArgumentError' do
-        expect { described_class.signature_valid?(options) }.
-          to raise_error(ArgumentError,
-                         'request_body must be provided and must be a string')
+        expect { described_class.signature_valid?(options) }
+          .to raise_error(ArgumentError,
+                          'request_body must be provided and must be a string')
       end
     end
   end
@@ -103,9 +103,9 @@ describe GoCardlessPro::Webhook do
       before { options.delete(:request_body) }
 
       it 'raises an ArgumentError' do
-        expect { described_class.signature_valid?(options) }.
-          to raise_error(ArgumentError,
-                         'request_body must be provided and must be a string')
+        expect { described_class.signature_valid?(options) }
+          .to raise_error(ArgumentError,
+                          'request_body must be provided and must be a string')
       end
     end
 
@@ -113,9 +113,9 @@ describe GoCardlessPro::Webhook do
       let(:request_body) { StringIO.new }
 
       it 'raises an ArgumentError' do
-        expect { described_class.signature_valid?(options) }.
-          to raise_error(ArgumentError,
-                         'request_body must be provided and must be a string')
+        expect { described_class.signature_valid?(options) }
+          .to raise_error(ArgumentError,
+                          'request_body must be provided and must be a string')
       end
     end
   end

@@ -21,8 +21,8 @@ describe GoCardlessPro::Services::ScenarioSimulatorsService do
         body: {
           'scenario_simulators' => {
 
-            'id' => 'id-input',
-          },
+            'id' => 'id-input'
+          }
         }.to_json,
 
         headers: response_headers
@@ -38,8 +38,8 @@ describe GoCardlessPro::Services::ScenarioSimulatorsService do
     describe 'retry behaviour' do
       it "doesn't retry errors" do
         stub_url = '/scenario_simulators/:identity/actions/run'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout
 
         expect { post_response }.to raise_error(Faraday::ConnectionFailed)
         expect(stub).to have_been_requested
@@ -56,16 +56,16 @@ describe GoCardlessPro::Services::ScenarioSimulatorsService do
       let!(:stub) do
         # /scenario_simulators/%v/actions/run
         stub_url = '/scenario_simulators/:identity/actions/run'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
             body: {
               'scenario_simulators' => {
 
-                'id' => 'id-input',
-              },
+                'id' => 'id-input'
+              }
             }.to_json,
             headers: response_headers
           )

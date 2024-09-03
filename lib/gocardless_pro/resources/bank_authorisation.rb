@@ -21,15 +21,8 @@ module GoCardlessPro
     # (see Billing Request Flows) to ensure we meet regulatory requirements for
     # checkout flows.
     class BankAuthorisation
-      attr_reader :authorisation_type
-      attr_reader :authorised_at
-      attr_reader :created_at
-      attr_reader :expires_at
-      attr_reader :id
-      attr_reader :last_visited_at
-      attr_reader :qr_code_url
-      attr_reader :redirect_uri
-      attr_reader :url
+      attr_reader :authorisation_type, :authorised_at, :created_at, :expires_at, :id, :last_visited_at, :qr_code_url,
+                  :redirect_uri, :url
 
       # Initialize a bank_authorisation resource instance
       # @param object [Hash] an object returned from the API

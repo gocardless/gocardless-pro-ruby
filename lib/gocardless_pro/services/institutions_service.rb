@@ -47,7 +47,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def list_for_billing_request(identity, options = {})
         path = sub_url('/billing_requests/:identity/institutions', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         options[:retry_failures] = false

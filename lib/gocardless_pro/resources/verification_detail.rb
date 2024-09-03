@@ -22,15 +22,8 @@ module GoCardlessPro
     # your
     #   account.</p>
     class VerificationDetail
-      attr_reader :address_line1
-      attr_reader :address_line2
-      attr_reader :address_line3
-      attr_reader :city
-      attr_reader :company_number
-      attr_reader :description
-      attr_reader :directors
-      attr_reader :name
-      attr_reader :postal_code
+      attr_reader :address_line1, :address_line2, :address_line3, :city, :company_number, :description, :directors,
+                  :name, :postal_code
 
       # Initialize a verification_detail resource instance
       # @param object [Hash] an object returned from the API

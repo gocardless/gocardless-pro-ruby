@@ -25,11 +25,7 @@ module GoCardlessPro
     # href="mailto:help@gocardless.com">get in touch</a> if you would like to
     # use this API.</p>
     class CustomerNotification
-      attr_reader :action_taken
-      attr_reader :action_taken_at
-      attr_reader :action_taken_by
-      attr_reader :id
-      attr_reader :type
+      attr_reader :action_taken, :action_taken_at, :action_taken_by, :id, :type
 
       # Initialize a customer_notification resource instance
       # @param object [Hash] an object returned from the API

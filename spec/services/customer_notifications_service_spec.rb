@@ -26,8 +26,8 @@ describe GoCardlessPro::Services::CustomerNotificationsService do
             'action_taken_by' => 'action_taken_by-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'type' => 'type-input',
-          },
+            'type' => 'type-input'
+          }
         }.to_json,
 
         headers: response_headers
@@ -43,8 +43,8 @@ describe GoCardlessPro::Services::CustomerNotificationsService do
     describe 'retry behaviour' do
       it "doesn't retry errors" do
         stub_url = '/customer_notifications/:identity/actions/handle'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout
 
         expect { post_response }.to raise_error(Faraday::ConnectionFailed)
         expect(stub).to have_been_requested
@@ -61,8 +61,8 @@ describe GoCardlessPro::Services::CustomerNotificationsService do
       let!(:stub) do
         # /customer_notifications/%v/actions/handle
         stub_url = '/customer_notifications/:identity/actions/handle'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -74,8 +74,8 @@ describe GoCardlessPro::Services::CustomerNotificationsService do
                 'action_taken_by' => 'action_taken_by-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
-                'type' => 'type-input',
-              },
+                'type' => 'type-input'
+              }
             }.to_json,
             headers: response_headers
           )

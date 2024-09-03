@@ -23,14 +23,14 @@ describe GoCardlessPro::Resources::Institution do
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
               'logo_url' => 'logo_url-input',
-              'name' => 'name-input',
+              'name' => 'name-input'
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123',
-              },
-            },
+                after: 'ABC123'
+              }
+            }
           }.to_json,
           headers: response_headers
         )
@@ -72,12 +72,12 @@ describe GoCardlessPro::Resources::Institution do
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
-            'name' => 'name-input',
+            'name' => 'name-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1,
-          },
+            limit: 1
+          }
         }.to_json,
         headers: response_headers
       )
@@ -93,12 +93,12 @@ describe GoCardlessPro::Resources::Institution do
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
-            'name' => 'name-input',
+            'name' => 'name-input'
           }],
           meta: {
             limit: 2,
-            cursors: {},
-          },
+            cursors: {}
+          }
         }.to_json,
         headers: response_headers
       )
@@ -128,14 +128,14 @@ describe GoCardlessPro::Resources::Institution do
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
-            'name' => 'name-input',
+            'name' => 'name-input'
           }],
           meta: {
             cursors: {
               before: nil,
-              after: 'ABC123',
-            },
-          },
+              after: 'ABC123'
+            }
+          }
         }.to_json,
 
         headers: response_headers
@@ -163,8 +163,8 @@ describe GoCardlessPro::Resources::Institution do
       let!(:stub) do
         # /billing_requests/%v/institutions
         stub_url = '/billing_requests/:identity/institutions'.gsub(':identity', resource_id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -176,8 +176,8 @@ describe GoCardlessPro::Resources::Institution do
                 'icon_url' => 'icon_url-input',
                 'id' => 'id-input',
                 'logo_url' => 'logo_url-input',
-                'name' => 'name-input',
-              },
+                'name' => 'name-input'
+              }
             }.to_json,
             headers: response_headers
           )

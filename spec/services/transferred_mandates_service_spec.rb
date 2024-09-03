@@ -24,8 +24,8 @@ describe GoCardlessPro::Services::TransferredMandatesService do
             'encrypted_customer_bank_details' => 'encrypted_customer_bank_details-input',
             'encrypted_decryption_key' => 'encrypted_decryption_key-input',
             'links' => 'links-input',
-            'public_key_id' => 'public_key_id-input',
-          },
+            'public_key_id' => 'public_key_id-input'
+          }
         }.to_json,
 
         headers: response_headers
@@ -41,8 +41,8 @@ describe GoCardlessPro::Services::TransferredMandatesService do
     describe 'retry behaviour' do
       it "doesn't retry errors" do
         stub_url = '/transferred_mandates/:identity'.gsub(':identity', resource_id)
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout
 
         expect { get_response }.to raise_error(Faraday::ConnectionFailed)
         expect(stub).to have_been_requested
@@ -59,8 +59,8 @@ describe GoCardlessPro::Services::TransferredMandatesService do
       let!(:stub) do
         # /transferred_mandates/%v
         stub_url = '/transferred_mandates/:identity'.gsub(':identity', resource_id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -70,8 +70,8 @@ describe GoCardlessPro::Services::TransferredMandatesService do
                 'encrypted_customer_bank_details' => 'encrypted_customer_bank_details-input',
                 'encrypted_decryption_key' => 'encrypted_decryption_key-input',
                 'links' => 'links-input',
-                'public_key_id' => 'public_key_id-input',
-              },
+                'public_key_id' => 'public_key_id-input'
+              }
             }.to_json,
             headers: response_headers
           )

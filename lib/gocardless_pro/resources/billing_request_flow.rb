@@ -14,23 +14,8 @@ module GoCardlessPro
     # payment created for a scheme with strong payer
     # authorisation (such as open banking single payments).
     class BillingRequestFlow
-      attr_reader :authorisation_url
-      attr_reader :auto_fulfil
-      attr_reader :created_at
-      attr_reader :customer_details_captured
-      attr_reader :exit_uri
-      attr_reader :expires_at
-      attr_reader :id
-      attr_reader :language
-      attr_reader :lock_bank_account
-      attr_reader :lock_currency
-      attr_reader :lock_customer_details
-      attr_reader :prefilled_bank_account
-      attr_reader :prefilled_customer
-      attr_reader :redirect_uri
-      attr_reader :session_token
-      attr_reader :show_redirect_buttons
-      attr_reader :show_success_redirect_button
+      attr_reader :authorisation_url, :auto_fulfil, :created_at, :customer_details_captured, :exit_uri, :expires_at,
+                  :id, :language, :lock_bank_account, :lock_currency, :lock_customer_details, :prefilled_bank_account, :prefilled_customer, :redirect_uri, :session_token, :show_redirect_buttons, :show_success_redirect_button
 
       # Initialize a billing_request_flow resource instance
       # @param object [Hash] an object returned from the API

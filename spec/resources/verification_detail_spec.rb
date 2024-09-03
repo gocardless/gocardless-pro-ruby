@@ -24,13 +24,13 @@ describe GoCardlessPro::Resources::VerificationDetail do
           'directors' => 'directors-input',
           'links' => 'links-input',
           'name' => 'name-input',
-          'postal_code' => 'postal_code-input',
+          'postal_code' => 'postal_code-input'
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/verification_details}).
-          with(
+        stub_request(:post, %r{.*api.gocardless.com/verification_details})
+          .with(
             body: {
               'verification_details' => {
 
@@ -43,11 +43,11 @@ describe GoCardlessPro::Resources::VerificationDetail do
                 'directors' => 'directors-input',
                 'links' => 'links-input',
                 'name' => 'name-input',
-                'postal_code' => 'postal_code-input',
-              },
+                'postal_code' => 'postal_code-input'
+              }
             }
-          ).
-          to_return(
+          )
+          .to_return(
             body: {
               'verification_details' =>
 
@@ -62,8 +62,8 @@ describe GoCardlessPro::Resources::VerificationDetail do
                   'directors' => 'directors-input',
                   'links' => 'links-input',
                   'name' => 'name-input',
-                  'postal_code' => 'postal_code-input',
-                },
+                  'postal_code' => 'postal_code-input'
+                }
 
             }.to_json,
             headers: response_headers
@@ -85,9 +85,9 @@ describe GoCardlessPro::Resources::VerificationDetail do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' },
-              ],
-            },
+                { message: 'test error message', field: 'test_field' }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 422
@@ -114,7 +114,7 @@ describe GoCardlessPro::Resources::VerificationDetail do
           'directors' => 'directors-input',
           'links' => 'links-input',
           'name' => 'name-input',
-          'postal_code' => 'postal_code-input',
+          'postal_code' => 'postal_code-input'
         }
       end
 
@@ -129,11 +129,11 @@ describe GoCardlessPro::Resources::VerificationDetail do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id,
-                  },
-                },
-              ],
-            },
+                    conflicting_resource_id: id
+                  }
+                }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 409
@@ -165,14 +165,14 @@ describe GoCardlessPro::Resources::VerificationDetail do
               'directors' => 'directors-input',
               'links' => 'links-input',
               'name' => 'name-input',
-              'postal_code' => 'postal_code-input',
+              'postal_code' => 'postal_code-input'
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123',
-              },
-            },
+                after: 'ABC123'
+              }
+            }
           }.to_json,
           headers: response_headers
         )
@@ -226,12 +226,12 @@ describe GoCardlessPro::Resources::VerificationDetail do
             'directors' => 'directors-input',
             'links' => 'links-input',
             'name' => 'name-input',
-            'postal_code' => 'postal_code-input',
+            'postal_code' => 'postal_code-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1,
-          },
+            limit: 1
+          }
         }.to_json,
         headers: response_headers
       )
@@ -251,12 +251,12 @@ describe GoCardlessPro::Resources::VerificationDetail do
             'directors' => 'directors-input',
             'links' => 'links-input',
             'name' => 'name-input',
-            'postal_code' => 'postal_code-input',
+            'postal_code' => 'postal_code-input'
           }],
           meta: {
             limit: 2,
-            cursors: {},
-          },
+            cursors: {}
+          }
         }.to_json,
         headers: response_headers
       )
