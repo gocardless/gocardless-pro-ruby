@@ -15,28 +15,28 @@ describe GoCardlessPro::Services::LogosService do
       let(:new_resource) do
         {
 
-          'id' => 'id-input',
+          'id' => 'id-input'
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/branding/logos}).
-          with(
+        stub_request(:post, %r{.*api.gocardless.com/branding/logos})
+          .with(
             body: {
               'logos' => {
 
-                'id' => 'id-input',
-              },
+                'id' => 'id-input'
+              }
             }
-          ).
-          to_return(
+          )
+          .to_return(
             body: {
               'logos' =>
 
                 {
 
-                  'id' => 'id-input',
-                },
+                  'id' => 'id-input'
+                }
 
             }.to_json,
             headers: response_headers
@@ -51,19 +51,19 @@ describe GoCardlessPro::Services::LogosService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/branding/logos}).
-                 to_timeout.then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:post, %r{.*api.gocardless.com/branding/logos})
+                 .to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/branding/logos}).
-                 to_return({ status: 502,
-                             headers: { 'Content-Type' => 'text/html' },
-                             body: '<html><body>Response from Cloudflare</body></html>' }).
-                 then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:post, %r{.*api.gocardless.com/branding/logos})
+                 .to_return({ status: 502,
+                              headers: { 'Content-Type' => 'text/html' },
+                              body: '<html><body>Response from Cloudflare</body></html>' })
+                 .then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -81,9 +81,9 @@ describe GoCardlessPro::Services::LogosService do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' },
-              ],
-            },
+                { message: 'test error message', field: 'test_field' }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 422
@@ -101,7 +101,7 @@ describe GoCardlessPro::Services::LogosService do
       let(:new_resource) do
         {
 
-          'id' => 'id-input',
+          'id' => 'id-input'
         }
       end
 
@@ -116,11 +116,11 @@ describe GoCardlessPro::Services::LogosService do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id,
-                  },
-                },
-              ],
-            },
+                    conflicting_resource_id: id
+                  }
+                }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 409

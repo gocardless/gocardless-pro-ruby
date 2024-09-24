@@ -24,7 +24,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def handle(identity, options = {})
         path = sub_url('/customer_notifications/:identity/actions/handle', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}

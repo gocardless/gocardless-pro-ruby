@@ -30,14 +30,14 @@ describe GoCardlessPro::Resources::Webhook do
               'response_headers_content_truncated' => 'response_headers_content_truncated-input',
               'response_headers_count_truncated' => 'response_headers_count_truncated-input',
               'successful' => 'successful-input',
-              'url' => 'url-input',
+              'url' => 'url-input'
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123',
-              },
-            },
+                after: 'ABC123'
+              }
+            }
           }.to_json,
           headers: response_headers
         )
@@ -100,12 +100,12 @@ describe GoCardlessPro::Resources::Webhook do
             'response_headers_content_truncated' => 'response_headers_content_truncated-input',
             'response_headers_count_truncated' => 'response_headers_count_truncated-input',
             'successful' => 'successful-input',
-            'url' => 'url-input',
+            'url' => 'url-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1,
-          },
+            limit: 1
+          }
         }.to_json,
         headers: response_headers
       )
@@ -128,12 +128,12 @@ describe GoCardlessPro::Resources::Webhook do
             'response_headers_content_truncated' => 'response_headers_content_truncated-input',
             'response_headers_count_truncated' => 'response_headers_count_truncated-input',
             'successful' => 'successful-input',
-            'url' => 'url-input',
+            'url' => 'url-input'
           }],
           meta: {
             limit: 2,
-            cursors: {},
-          },
+            cursors: {}
+          }
         }.to_json,
         headers: response_headers
       )
@@ -154,9 +154,9 @@ describe GoCardlessPro::Resources::Webhook do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/webhooks/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          with(headers: { 'Foo' => 'Bar' }).
-          to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .with(headers: { 'Foo' => 'Bar' })
+          .to_return(
             body: {
               'webhooks' => {
 
@@ -172,8 +172,8 @@ describe GoCardlessPro::Resources::Webhook do
                 'response_headers_content_truncated' => 'response_headers_content_truncated-input',
                 'response_headers_count_truncated' => 'response_headers_count_truncated-input',
                 'successful' => 'successful-input',
-                'url' => 'url-input',
-              },
+                'url' => 'url-input'
+              }
             }.to_json,
             headers: response_headers
           )
@@ -181,7 +181,7 @@ describe GoCardlessPro::Resources::Webhook do
 
       subject(:get_response) do
         client.webhooks.get(id, headers: {
-                              'Foo' => 'Bar',
+                              'Foo' => 'Bar'
                             })
       end
 
@@ -210,8 +210,8 @@ describe GoCardlessPro::Resources::Webhook do
               'response_headers_content_truncated' => 'response_headers_content_truncated-input',
               'response_headers_count_truncated' => 'response_headers_count_truncated-input',
               'successful' => 'successful-input',
-              'url' => 'url-input',
-            },
+              'url' => 'url-input'
+            }
           }.to_json,
           headers: response_headers
         )
@@ -269,8 +269,8 @@ describe GoCardlessPro::Resources::Webhook do
             'response_headers_content_truncated' => 'response_headers_content_truncated-input',
             'response_headers_count_truncated' => 'response_headers_count_truncated-input',
             'successful' => 'successful-input',
-            'url' => 'url-input',
-          },
+            'url' => 'url-input'
+          }
         }.to_json,
 
         headers: response_headers
@@ -293,8 +293,8 @@ describe GoCardlessPro::Resources::Webhook do
       let!(:stub) do
         # /webhooks/%v/actions/retry
         stub_url = '/webhooks/:identity/actions/retry'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -313,8 +313,8 @@ describe GoCardlessPro::Resources::Webhook do
                 'response_headers_content_truncated' => 'response_headers_content_truncated-input',
                 'response_headers_count_truncated' => 'response_headers_count_truncated-input',
                 'successful' => 'successful-input',
-                'url' => 'url-input',
-              },
+                'url' => 'url-input'
+              }
             }.to_json,
             headers: response_headers
           )

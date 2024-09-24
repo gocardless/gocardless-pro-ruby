@@ -12,10 +12,7 @@ module GoCardlessPro
 
     # Currency exchange rates from our foreign exchange provider.
     class CurrencyExchangeRate
-      attr_reader :rate
-      attr_reader :source
-      attr_reader :target
-      attr_reader :time
+      attr_reader :rate, :source, :target, :time
 
       # Initialize a currency_exchange_rate resource instance
       # @param object [Hash] an object returned from the API

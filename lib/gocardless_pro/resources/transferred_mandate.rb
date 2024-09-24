@@ -12,9 +12,7 @@ module GoCardlessPro
 
     # Mandates that have been transferred using Current Account Switch Service
     class TransferredMandate
-      attr_reader :encrypted_customer_bank_details
-      attr_reader :encrypted_decryption_key
-      attr_reader :public_key_id
+      attr_reader :encrypted_customer_bank_details, :encrypted_decryption_key, :public_key_id
 
       # Initialize a transferred_mandate resource instance
       # @param object [Hash] an object returned from the API

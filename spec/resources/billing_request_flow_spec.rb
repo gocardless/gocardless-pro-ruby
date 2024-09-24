@@ -32,13 +32,13 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
           'redirect_uri' => 'redirect_uri-input',
           'session_token' => 'session_token-input',
           'show_redirect_buttons' => 'show_redirect_buttons-input',
-          'show_success_redirect_button' => 'show_success_redirect_button-input',
+          'show_success_redirect_button' => 'show_success_redirect_button-input'
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/billing_request_flows}).
-          with(
+        stub_request(:post, %r{.*api.gocardless.com/billing_request_flows})
+          .with(
             body: {
               'billing_request_flows' => {
 
@@ -59,11 +59,11 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                 'redirect_uri' => 'redirect_uri-input',
                 'session_token' => 'session_token-input',
                 'show_redirect_buttons' => 'show_redirect_buttons-input',
-                'show_success_redirect_button' => 'show_success_redirect_button-input',
-              },
+                'show_success_redirect_button' => 'show_success_redirect_button-input'
+              }
             }
-          ).
-          to_return(
+          )
+          .to_return(
             body: {
               'billing_request_flows' =>
 
@@ -86,8 +86,8 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                   'redirect_uri' => 'redirect_uri-input',
                   'session_token' => 'session_token-input',
                   'show_redirect_buttons' => 'show_redirect_buttons-input',
-                  'show_success_redirect_button' => 'show_success_redirect_button-input',
-                },
+                  'show_success_redirect_button' => 'show_success_redirect_button-input'
+                }
 
             }.to_json,
             headers: response_headers
@@ -109,9 +109,9 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' },
-              ],
-            },
+                { message: 'test error message', field: 'test_field' }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 422
@@ -146,7 +146,7 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
           'redirect_uri' => 'redirect_uri-input',
           'session_token' => 'session_token-input',
           'show_redirect_buttons' => 'show_redirect_buttons-input',
-          'show_success_redirect_button' => 'show_success_redirect_button-input',
+          'show_success_redirect_button' => 'show_success_redirect_button-input'
         }
       end
 
@@ -161,11 +161,11 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id,
-                  },
-                },
-              ],
-            },
+                    conflicting_resource_id: id
+                  }
+                }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 409
@@ -208,8 +208,8 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
             'redirect_uri' => 'redirect_uri-input',
             'session_token' => 'session_token-input',
             'show_redirect_buttons' => 'show_redirect_buttons-input',
-            'show_success_redirect_button' => 'show_success_redirect_button-input',
-          },
+            'show_success_redirect_button' => 'show_success_redirect_button-input'
+          }
         }.to_json,
 
         headers: response_headers
@@ -232,8 +232,8 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
       let!(:stub) do
         # /billing_request_flows/%v/actions/initialise
         stub_url = '/billing_request_flows/:identity/actions/initialise'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -257,8 +257,8 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                 'redirect_uri' => 'redirect_uri-input',
                 'session_token' => 'session_token-input',
                 'show_redirect_buttons' => 'show_redirect_buttons-input',
-                'show_success_redirect_button' => 'show_success_redirect_button-input',
-              },
+                'show_success_redirect_button' => 'show_success_redirect_button-input'
+              }
             }.to_json,
             headers: response_headers
           )

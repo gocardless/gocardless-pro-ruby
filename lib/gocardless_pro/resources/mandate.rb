@@ -16,19 +16,8 @@ module GoCardlessPro
     # GoCardless will notify you via a [webhook](#appendix-webhooks) whenever
     # the status of a mandate changes.
     class Mandate
-      attr_reader :authorisation_source
-      attr_reader :consent_parameters
-      attr_reader :created_at
-      attr_reader :funds_settlement
-      attr_reader :id
-      attr_reader :metadata
-      attr_reader :next_possible_charge_date
-      attr_reader :next_possible_standard_ach_charge_date
-      attr_reader :payments_require_approval
-      attr_reader :reference
-      attr_reader :scheme
-      attr_reader :status
-      attr_reader :verified_at
+      attr_reader :authorisation_source, :consent_parameters, :consent_type, :created_at, :funds_settlement, :id,
+                  :metadata, :next_possible_charge_date, :next_possible_standard_ach_charge_date, :payments_require_approval, :reference, :scheme, :status, :verified_at
 
       # Initialize a mandate resource instance
       # @param object [Hash] an object returned from the API
@@ -37,6 +26,7 @@ module GoCardlessPro
 
         @authorisation_source = object['authorisation_source']
         @consent_parameters = object['consent_parameters']
+        @consent_type = object['consent_type']
         @created_at = object['created_at']
         @funds_settlement = object['funds_settlement']
         @id = object['id']

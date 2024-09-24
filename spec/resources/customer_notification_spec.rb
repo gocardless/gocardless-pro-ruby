@@ -26,8 +26,8 @@ describe GoCardlessPro::Resources::CustomerNotification do
             'action_taken_by' => 'action_taken_by-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'type' => 'type-input',
-          },
+            'type' => 'type-input'
+          }
         }.to_json,
 
         headers: response_headers
@@ -50,8 +50,8 @@ describe GoCardlessPro::Resources::CustomerNotification do
       let!(:stub) do
         # /customer_notifications/%v/actions/handle
         stub_url = '/customer_notifications/:identity/actions/handle'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -63,8 +63,8 @@ describe GoCardlessPro::Resources::CustomerNotification do
                 'action_taken_by' => 'action_taken_by-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
-                'type' => 'type-input',
-              },
+                'type' => 'type-input'
+              }
             }.to_json,
             headers: response_headers
           )

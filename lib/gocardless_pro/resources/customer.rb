@@ -15,24 +15,8 @@ module GoCardlessPro
     # accounts](#core-endpoints-customer-bank-accounts), which in turn can have
     # several Direct Debit [mandates](#core-endpoints-mandates).
     class Customer
-      attr_reader :address_line1
-      attr_reader :address_line2
-      attr_reader :address_line3
-      attr_reader :city
-      attr_reader :company_name
-      attr_reader :country_code
-      attr_reader :created_at
-      attr_reader :danish_identity_number
-      attr_reader :email
-      attr_reader :family_name
-      attr_reader :given_name
-      attr_reader :id
-      attr_reader :language
-      attr_reader :metadata
-      attr_reader :phone_number
-      attr_reader :postal_code
-      attr_reader :region
-      attr_reader :swedish_identity_number
+      attr_reader :address_line1, :address_line2, :address_line3, :city, :company_name, :country_code, :created_at,
+                  :danish_identity_number, :email, :family_name, :given_name, :id, :language, :metadata, :phone_number, :postal_code, :region, :swedish_identity_number
 
       # Initialize a customer resource instance
       # @param object [Hash] an object returned from the API

@@ -53,7 +53,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/redirect_flows/:identity', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         options[:retry_failures] = true
@@ -81,7 +81,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def complete(identity, options = {})
         path = sub_url('/redirect_flows/:identity/actions/complete', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}

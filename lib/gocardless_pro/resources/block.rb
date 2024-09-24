@@ -49,14 +49,8 @@ module GoCardlessPro
     # would like to use this API.
     # </p>
     class Block
-      attr_reader :active
-      attr_reader :block_type
-      attr_reader :created_at
-      attr_reader :id
-      attr_reader :reason_description
-      attr_reader :reason_type
-      attr_reader :resource_reference
-      attr_reader :updated_at
+      attr_reader :active, :block_type, :created_at, :id, :reason_description, :reason_type, :resource_reference,
+                  :updated_at
 
       # Initialize a block resource instance
       # @param object [Hash] an object returned from the API

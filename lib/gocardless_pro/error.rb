@@ -23,9 +23,9 @@ module GoCardlessPro
 
     def to_s
       if errors.any?
-        errors.
-          map { |err| "#{err['field']} #{err['message']}" }.
-          join(', ')
+        errors
+          .map { |err| "#{err['field']} #{err['message']}" }
+          .join(', ')
       else
         @error['message']
       end

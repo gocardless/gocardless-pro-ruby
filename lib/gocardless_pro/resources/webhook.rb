@@ -12,19 +12,8 @@ module GoCardlessPro
 
     # Basic description of a webhook
     class Webhook
-      attr_reader :created_at
-      attr_reader :id
-      attr_reader :is_test
-      attr_reader :request_body
-      attr_reader :request_headers
-      attr_reader :response_body
-      attr_reader :response_body_truncated
-      attr_reader :response_code
-      attr_reader :response_headers
-      attr_reader :response_headers_content_truncated
-      attr_reader :response_headers_count_truncated
-      attr_reader :successful
-      attr_reader :url
+      attr_reader :created_at, :id, :is_test, :request_body, :request_headers, :response_body,
+                  :response_body_truncated, :response_code, :response_headers, :response_headers_content_truncated, :response_headers_count_truncated, :successful, :url
 
       # Initialize a webhook resource instance
       # @param object [Hash] an object returned from the API

@@ -26,23 +26,8 @@ module GoCardlessPro
     # for single-use and is designed to cater to the unique needs of individual
     # customers.
     class BillingRequestTemplate
-      attr_reader :authorisation_url
-      attr_reader :created_at
-      attr_reader :id
-      attr_reader :mandate_request_currency
-      attr_reader :mandate_request_description
-      attr_reader :mandate_request_metadata
-      attr_reader :mandate_request_scheme
-      attr_reader :mandate_request_verify
-      attr_reader :metadata
-      attr_reader :name
-      attr_reader :payment_request_amount
-      attr_reader :payment_request_currency
-      attr_reader :payment_request_description
-      attr_reader :payment_request_metadata
-      attr_reader :payment_request_scheme
-      attr_reader :redirect_uri
-      attr_reader :updated_at
+      attr_reader :authorisation_url, :created_at, :id, :mandate_request_currency, :mandate_request_description,
+                  :mandate_request_metadata, :mandate_request_scheme, :mandate_request_verify, :metadata, :name, :payment_request_amount, :payment_request_currency, :payment_request_description, :payment_request_metadata, :payment_request_scheme, :redirect_uri, :updated_at
 
       # Initialize a billing_request_template resource instance
       # @param object [Hash] an object returned from the API

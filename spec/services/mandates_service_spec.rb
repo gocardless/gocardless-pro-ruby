@@ -17,6 +17,7 @@ describe GoCardlessPro::Services::MandatesService do
 
           'authorisation_source' => 'authorisation_source-input',
           'consent_parameters' => 'consent_parameters-input',
+          'consent_type' => 'consent_type-input',
           'created_at' => 'created_at-input',
           'funds_settlement' => 'funds_settlement-input',
           'id' => 'id-input',
@@ -28,18 +29,19 @@ describe GoCardlessPro::Services::MandatesService do
           'reference' => 'reference-input',
           'scheme' => 'scheme-input',
           'status' => 'status-input',
-          'verified_at' => 'verified_at-input',
+          'verified_at' => 'verified_at-input'
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/mandates}).
-          with(
+        stub_request(:post, %r{.*api.gocardless.com/mandates})
+          .with(
             body: {
               'mandates' => {
 
                 'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
+                'consent_type' => 'consent_type-input',
                 'created_at' => 'created_at-input',
                 'funds_settlement' => 'funds_settlement-input',
                 'id' => 'id-input',
@@ -51,11 +53,11 @@ describe GoCardlessPro::Services::MandatesService do
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
-                'verified_at' => 'verified_at-input',
-              },
+                'verified_at' => 'verified_at-input'
+              }
             }
-          ).
-          to_return(
+          )
+          .to_return(
             body: {
               'mandates' =>
 
@@ -63,6 +65,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                   'authorisation_source' => 'authorisation_source-input',
                   'consent_parameters' => 'consent_parameters-input',
+                  'consent_type' => 'consent_type-input',
                   'created_at' => 'created_at-input',
                   'funds_settlement' => 'funds_settlement-input',
                   'id' => 'id-input',
@@ -74,8 +77,8 @@ describe GoCardlessPro::Services::MandatesService do
                   'reference' => 'reference-input',
                   'scheme' => 'scheme-input',
                   'status' => 'status-input',
-                  'verified_at' => 'verified_at-input',
-                },
+                  'verified_at' => 'verified_at-input'
+                }
 
             }.to_json,
             headers: response_headers
@@ -90,19 +93,19 @@ describe GoCardlessPro::Services::MandatesService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/mandates}).
-                 to_timeout.then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:post, %r{.*api.gocardless.com/mandates})
+                 .to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/mandates}).
-                 to_return({ status: 502,
-                             headers: { 'Content-Type' => 'text/html' },
-                             body: '<html><body>Response from Cloudflare</body></html>' }).
-                 then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:post, %r{.*api.gocardless.com/mandates})
+                 .to_return({ status: 502,
+                              headers: { 'Content-Type' => 'text/html' },
+                              body: '<html><body>Response from Cloudflare</body></html>' })
+                 .then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -120,9 +123,9 @@ describe GoCardlessPro::Services::MandatesService do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' },
-              ],
-            },
+                { message: 'test error message', field: 'test_field' }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 422
@@ -142,6 +145,7 @@ describe GoCardlessPro::Services::MandatesService do
 
           'authorisation_source' => 'authorisation_source-input',
           'consent_parameters' => 'consent_parameters-input',
+          'consent_type' => 'consent_type-input',
           'created_at' => 'created_at-input',
           'funds_settlement' => 'funds_settlement-input',
           'id' => 'id-input',
@@ -153,7 +157,7 @@ describe GoCardlessPro::Services::MandatesService do
           'reference' => 'reference-input',
           'scheme' => 'scheme-input',
           'status' => 'status-input',
-          'verified_at' => 'verified_at-input',
+          'verified_at' => 'verified_at-input'
         }
       end
 
@@ -168,11 +172,11 @@ describe GoCardlessPro::Services::MandatesService do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id,
-                  },
-                },
-              ],
-            },
+                    conflicting_resource_id: id
+                  }
+                }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 409
@@ -181,13 +185,14 @@ describe GoCardlessPro::Services::MandatesService do
 
       let!(:get_stub) do
         stub_url = "/mandates/#{id}"
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .to_return(
             body: {
               'mandates' => {
 
                 'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
+                'consent_type' => 'consent_type-input',
                 'created_at' => 'created_at-input',
                 'funds_settlement' => 'funds_settlement-input',
                 'id' => 'id-input',
@@ -199,8 +204,8 @@ describe GoCardlessPro::Services::MandatesService do
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
-                'verified_at' => 'verified_at-input',
-              },
+                'verified_at' => 'verified_at-input'
+              }
             }.to_json,
             headers: response_headers
           )
@@ -223,8 +228,8 @@ describe GoCardlessPro::Services::MandatesService do
         end
 
         it 'raises an IdempotencyConflict error' do
-          expect { post_create_response }.
-            to raise_error(GoCardlessPro::IdempotencyConflict)
+          expect { post_create_response }
+            .to raise_error(GoCardlessPro::IdempotencyConflict)
         end
       end
     end
@@ -240,6 +245,7 @@ describe GoCardlessPro::Services::MandatesService do
 
             'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
+            'consent_type' => 'consent_type-input',
             'created_at' => 'created_at-input',
             'funds_settlement' => 'funds_settlement-input',
             'id' => 'id-input',
@@ -251,14 +257,14 @@ describe GoCardlessPro::Services::MandatesService do
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
-            'verified_at' => 'verified_at-input',
+            'verified_at' => 'verified_at-input'
           }],
           meta: {
             cursors: {
               before: nil,
-              after: 'ABC123',
-            },
-          },
+              after: 'ABC123'
+            }
+          }
         }.to_json
       end
 
@@ -275,6 +281,8 @@ describe GoCardlessPro::Services::MandatesService do
         expect(get_list_response.records.first.authorisation_source).to eq('authorisation_source-input')
 
         expect(get_list_response.records.first.consent_parameters).to eq('consent_parameters-input')
+
+        expect(get_list_response.records.first.consent_type).to eq('consent_type-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
@@ -310,19 +318,19 @@ describe GoCardlessPro::Services::MandatesService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/mandates}).
-                 to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/mandates})
+                 .to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/mandates}).
-                 to_return({ status: 502,
-                             headers: { 'Content-Type' => 'text/html' },
-                             body: '<html><body>Response from Cloudflare</body></html>' }).
-                 then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/mandates})
+                 .to_return({ status: 502,
+                              headers: { 'Content-Type' => 'text/html' },
+                              body: '<html><body>Response from Cloudflare</body></html>' })
+                 .then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -339,6 +347,7 @@ describe GoCardlessPro::Services::MandatesService do
 
             'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
+            'consent_type' => 'consent_type-input',
             'created_at' => 'created_at-input',
             'funds_settlement' => 'funds_settlement-input',
             'id' => 'id-input',
@@ -350,12 +359,12 @@ describe GoCardlessPro::Services::MandatesService do
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
-            'verified_at' => 'verified_at-input',
+            'verified_at' => 'verified_at-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1,
-          },
+            limit: 1
+          }
         }.to_json,
         headers: response_headers
       )
@@ -368,6 +377,7 @@ describe GoCardlessPro::Services::MandatesService do
 
             'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
+            'consent_type' => 'consent_type-input',
             'created_at' => 'created_at-input',
             'funds_settlement' => 'funds_settlement-input',
             'id' => 'id-input',
@@ -379,12 +389,12 @@ describe GoCardlessPro::Services::MandatesService do
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
-            'verified_at' => 'verified_at-input',
+            'verified_at' => 'verified_at-input'
           }],
           meta: {
             limit: 2,
-            cursors: {},
-          },
+            cursors: {}
+          }
         }.to_json,
         headers: response_headers
       )
@@ -406,6 +416,7 @@ describe GoCardlessPro::Services::MandatesService do
 
               'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
+              'consent_type' => 'consent_type-input',
               'created_at' => 'created_at-input',
               'funds_settlement' => 'funds_settlement-input',
               'id' => 'id-input',
@@ -417,24 +428,25 @@ describe GoCardlessPro::Services::MandatesService do
               'reference' => 'reference-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input',
-              'verified_at' => 'verified_at-input',
+              'verified_at' => 'verified_at-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1,
-            },
+              limit: 1
+            }
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/mandates\?after=AB345}).
-                               to_timeout.then.
-                               to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/mandates\?after=AB345})
+                               .to_timeout.then
+                               .to_return(
                                  body: {
                                    'mandates' => [{
 
                                      'authorisation_source' => 'authorisation_source-input',
                                      'consent_parameters' => 'consent_parameters-input',
+                                     'consent_type' => 'consent_type-input',
                                      'created_at' => 'created_at-input',
                                      'funds_settlement' => 'funds_settlement-input',
                                      'id' => 'id-input',
@@ -446,12 +458,12 @@ describe GoCardlessPro::Services::MandatesService do
                                      'reference' => 'reference-input',
                                      'scheme' => 'scheme-input',
                                      'status' => 'status-input',
-                                     'verified_at' => 'verified_at-input',
+                                     'verified_at' => 'verified_at-input'
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {},
-                                   },
+                                     cursors: {}
+                                   }
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -469,6 +481,7 @@ describe GoCardlessPro::Services::MandatesService do
 
               'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
+              'consent_type' => 'consent_type-input',
               'created_at' => 'created_at-input',
               'funds_settlement' => 'funds_settlement-input',
               'id' => 'id-input',
@@ -480,18 +493,18 @@ describe GoCardlessPro::Services::MandatesService do
               'reference' => 'reference-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input',
-              'verified_at' => 'verified_at-input',
+              'verified_at' => 'verified_at-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1,
-            },
+              limit: 1
+            }
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/mandates\?after=AB345}).
-                               to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/mandates\?after=AB345})
+                               .to_return(
                                  status: 502,
                                  body: '<html><body>Response from Cloudflare</body></html>',
                                  headers: { 'Content-Type' => 'text/html' }
@@ -501,6 +514,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                                      'authorisation_source' => 'authorisation_source-input',
                                      'consent_parameters' => 'consent_parameters-input',
+                                     'consent_type' => 'consent_type-input',
                                      'created_at' => 'created_at-input',
                                      'funds_settlement' => 'funds_settlement-input',
                                      'id' => 'id-input',
@@ -512,12 +526,12 @@ describe GoCardlessPro::Services::MandatesService do
                                      'reference' => 'reference-input',
                                      'scheme' => 'scheme-input',
                                      'status' => 'status-input',
-                                     'verified_at' => 'verified_at-input',
+                                     'verified_at' => 'verified_at-input'
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {},
-                                   },
+                                     cursors: {}
+                                   }
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -538,14 +552,15 @@ describe GoCardlessPro::Services::MandatesService do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/mandates/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          with(headers: { 'Foo' => 'Bar' }).
-          to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .with(headers: { 'Foo' => 'Bar' })
+          .to_return(
             body: {
               'mandates' => {
 
                 'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
+                'consent_type' => 'consent_type-input',
                 'created_at' => 'created_at-input',
                 'funds_settlement' => 'funds_settlement-input',
                 'id' => 'id-input',
@@ -557,8 +572,8 @@ describe GoCardlessPro::Services::MandatesService do
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
-                'verified_at' => 'verified_at-input',
-              },
+                'verified_at' => 'verified_at-input'
+              }
             }.to_json,
             headers: response_headers
           )
@@ -566,7 +581,7 @@ describe GoCardlessPro::Services::MandatesService do
 
       subject(:get_response) do
         client.mandates.get(id, headers: {
-                              'Foo' => 'Bar',
+                              'Foo' => 'Bar'
                             })
       end
 
@@ -585,6 +600,7 @@ describe GoCardlessPro::Services::MandatesService do
 
               'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
+              'consent_type' => 'consent_type-input',
               'created_at' => 'created_at-input',
               'funds_settlement' => 'funds_settlement-input',
               'id' => 'id-input',
@@ -596,8 +612,8 @@ describe GoCardlessPro::Services::MandatesService do
               'reference' => 'reference-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input',
-              'verified_at' => 'verified_at-input',
-            },
+              'verified_at' => 'verified_at-input'
+            }
           }.to_json,
           headers: response_headers
         )
@@ -636,8 +652,8 @@ describe GoCardlessPro::Services::MandatesService do
       it 'retries timeouts' do
         stub_url = '/mandates/:identity'.gsub(':identity', id)
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_timeout.then.to_return({ status: 200, headers: response_headers })
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout.then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -646,11 +662,11 @@ describe GoCardlessPro::Services::MandatesService do
       it 'retries 5XX errors, other than 500s' do
         stub_url = '/mandates/:identity'.gsub(':identity', id)
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_return({ status: 502,
-                           headers: { 'Content-Type' => 'text/html' },
-                           body: '<html><body>Response from Cloudflare</body></html>' }).
-               then.to_return({ status: 200, headers: response_headers })
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+               .to_return({ status: 502,
+                            headers: { 'Content-Type' => 'text/html' },
+                            body: '<html><body>Response from Cloudflare</body></html>' })
+               .then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -665,20 +681,20 @@ describe GoCardlessPro::Services::MandatesService do
             'documentation_url' => 'https://developer.gocardless.com/#gocardless',
             'errors' => [{
               'message' => 'Internal server error',
-              'reason' => 'internal_server_error',
+              'reason' => 'internal_server_error'
             }],
             'type' => 'gocardless',
             'code' => 500,
             'request_id' => 'dummy_request_id',
-            'id' => 'dummy_exception_id',
-          },
+            'id' => 'dummy_exception_id'
+          }
         }
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-               to_return({ status: 500,
-                           headers: response_headers,
-                           body: gocardless_error.to_json }).
-               then.to_return({ status: 200, headers: response_headers })
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+               .to_return({ status: 500,
+                            headers: response_headers,
+                            body: gocardless_error.to_json })
+               .then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -701,6 +717,7 @@ describe GoCardlessPro::Services::MandatesService do
 
               'authorisation_source' => 'authorisation_source-input',
               'consent_parameters' => 'consent_parameters-input',
+              'consent_type' => 'consent_type-input',
               'created_at' => 'created_at-input',
               'funds_settlement' => 'funds_settlement-input',
               'id' => 'id-input',
@@ -712,8 +729,8 @@ describe GoCardlessPro::Services::MandatesService do
               'reference' => 'reference-input',
               'scheme' => 'scheme-input',
               'status' => 'status-input',
-              'verified_at' => 'verified_at-input',
-            },
+              'verified_at' => 'verified_at-input'
+            }
           }.to_json,
           headers: response_headers
         )
@@ -729,8 +746,8 @@ describe GoCardlessPro::Services::MandatesService do
 
         it 'retries timeouts' do
           stub_url = '/mandates/:identity'.gsub(':identity', id)
-          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/).
-                 to_timeout.then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/)
+                 .to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           put_update_response
           expect(stub).to have_been_requested.twice
@@ -738,11 +755,11 @@ describe GoCardlessPro::Services::MandatesService do
 
         it 'retries 5XX errors' do
           stub_url = '/mandates/:identity'.gsub(':identity', id)
-          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/).
-                 to_return({ status: 502,
-                             headers: { 'Content-Type' => 'text/html' },
-                             body: '<html><body>Response from Cloudflare</body></html>' }).
-                 then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:put, /.*api.gocardless.com#{stub_url}/)
+                 .to_return({ status: 502,
+                              headers: { 'Content-Type' => 'text/html' },
+                              body: '<html><body>Response from Cloudflare</body></html>' })
+                 .then.to_return({ status: 200, headers: response_headers })
 
           put_update_response
           expect(stub).to have_been_requested.twice
@@ -765,6 +782,7 @@ describe GoCardlessPro::Services::MandatesService do
 
             'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
+            'consent_type' => 'consent_type-input',
             'created_at' => 'created_at-input',
             'funds_settlement' => 'funds_settlement-input',
             'id' => 'id-input',
@@ -776,8 +794,8 @@ describe GoCardlessPro::Services::MandatesService do
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
-            'verified_at' => 'verified_at-input',
-          },
+            'verified_at' => 'verified_at-input'
+          }
         }.to_json,
 
         headers: response_headers
@@ -793,8 +811,8 @@ describe GoCardlessPro::Services::MandatesService do
     describe 'retry behaviour' do
       it "doesn't retry errors" do
         stub_url = '/mandates/:identity/actions/cancel'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout
 
         expect { post_response }.to raise_error(Faraday::ConnectionFailed)
         expect(stub).to have_been_requested
@@ -811,8 +829,8 @@ describe GoCardlessPro::Services::MandatesService do
       let!(:stub) do
         # /mandates/%v/actions/cancel
         stub_url = '/mandates/:identity/actions/cancel'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -821,6 +839,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                 'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
+                'consent_type' => 'consent_type-input',
                 'created_at' => 'created_at-input',
                 'funds_settlement' => 'funds_settlement-input',
                 'id' => 'id-input',
@@ -832,8 +851,8 @@ describe GoCardlessPro::Services::MandatesService do
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
-                'verified_at' => 'verified_at-input',
-              },
+                'verified_at' => 'verified_at-input'
+              }
             }.to_json,
             headers: response_headers
           )
@@ -855,6 +874,7 @@ describe GoCardlessPro::Services::MandatesService do
 
             'authorisation_source' => 'authorisation_source-input',
             'consent_parameters' => 'consent_parameters-input',
+            'consent_type' => 'consent_type-input',
             'created_at' => 'created_at-input',
             'funds_settlement' => 'funds_settlement-input',
             'id' => 'id-input',
@@ -866,8 +886,8 @@ describe GoCardlessPro::Services::MandatesService do
             'reference' => 'reference-input',
             'scheme' => 'scheme-input',
             'status' => 'status-input',
-            'verified_at' => 'verified_at-input',
-          },
+            'verified_at' => 'verified_at-input'
+          }
         }.to_json,
 
         headers: response_headers
@@ -883,8 +903,8 @@ describe GoCardlessPro::Services::MandatesService do
     describe 'retry behaviour' do
       it "doesn't retry errors" do
         stub_url = '/mandates/:identity/actions/reinstate'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-               to_timeout
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout
 
         expect { post_response }.to raise_error(Faraday::ConnectionFailed)
         expect(stub).to have_been_requested
@@ -901,8 +921,8 @@ describe GoCardlessPro::Services::MandatesService do
       let!(:stub) do
         # /mandates/%v/actions/reinstate
         stub_url = '/mandates/:identity/actions/reinstate'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -911,6 +931,7 @@ describe GoCardlessPro::Services::MandatesService do
 
                 'authorisation_source' => 'authorisation_source-input',
                 'consent_parameters' => 'consent_parameters-input',
+                'consent_type' => 'consent_type-input',
                 'created_at' => 'created_at-input',
                 'funds_settlement' => 'funds_settlement-input',
                 'id' => 'id-input',
@@ -922,8 +943,8 @@ describe GoCardlessPro::Services::MandatesService do
                 'reference' => 'reference-input',
                 'scheme' => 'scheme-input',
                 'status' => 'status-input',
-                'verified_at' => 'verified_at-input',
-              },
+                'verified_at' => 'verified_at-input'
+              }
             }.to_json,
             headers: response_headers
           )

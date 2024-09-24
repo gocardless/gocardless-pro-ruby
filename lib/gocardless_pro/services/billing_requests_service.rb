@@ -61,7 +61,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def collect_customer_details(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/collect_customer_details', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}
@@ -122,7 +122,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def collect_bank_account(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/collect_bank_account', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}
@@ -163,7 +163,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def confirm_payer_details(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/confirm_payer_details', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}
@@ -203,7 +203,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def fulfil(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/fulfil', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}
@@ -243,7 +243,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/cancel', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}
@@ -311,7 +311,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/billing_requests/:identity', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         options[:retry_failures] = true
@@ -335,7 +335,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def notify(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/notify', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}
@@ -375,7 +375,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def fallback(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/fallback', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}
@@ -420,7 +420,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def choose_currency(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/choose_currency', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}
@@ -459,7 +459,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def select_institution(identity, options = {})
         path = sub_url('/billing_requests/:identity/actions/select_institution', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         params = options.delete(:params) || {}

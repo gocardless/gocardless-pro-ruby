@@ -17,18 +17,8 @@ module GoCardlessPro
     # Payouts are created automatically after a payment has been successfully
     # collected.
     class Payout
-      attr_reader :amount
-      attr_reader :arrival_date
-      attr_reader :created_at
-      attr_reader :currency
-      attr_reader :deducted_fees
-      attr_reader :fx
-      attr_reader :id
-      attr_reader :metadata
-      attr_reader :payout_type
-      attr_reader :reference
-      attr_reader :status
-      attr_reader :tax_currency
+      attr_reader :amount, :arrival_date, :created_at, :currency, :deducted_fees, :fx, :id, :metadata, :payout_type,
+                  :reference, :status, :tax_currency
 
       # Initialize a payout resource instance
       # @param object [Hash] an object returned from the API

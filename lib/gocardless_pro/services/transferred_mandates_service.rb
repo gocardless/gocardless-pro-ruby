@@ -19,7 +19,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def transferred_mandates(identity, options = {})
         path = sub_url('/transferred_mandates/:identity', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         options[:retry_failures] = false

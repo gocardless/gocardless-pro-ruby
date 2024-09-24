@@ -14,8 +14,7 @@ module GoCardlessPro
     # compliant](#appendix-compliance-requirements) Direct Debit mandates to
     # your customers.
     class MandatePdf
-      attr_reader :expires_at
-      attr_reader :url
+      attr_reader :expires_at, :url
 
       # Initialize a mandate_pdf resource instance
       # @param object [Hash] an object returned from the API

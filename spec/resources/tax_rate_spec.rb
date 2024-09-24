@@ -23,14 +23,14 @@ describe GoCardlessPro::Resources::TaxRate do
               'jurisdiction' => 'jurisdiction-input',
               'percentage' => 'percentage-input',
               'start_date' => 'start_date-input',
-              'type' => 'type-input',
+              'type' => 'type-input'
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123',
-              },
-            },
+                after: 'ABC123'
+              }
+            }
           }.to_json,
           headers: response_headers
         )
@@ -72,12 +72,12 @@ describe GoCardlessPro::Resources::TaxRate do
             'jurisdiction' => 'jurisdiction-input',
             'percentage' => 'percentage-input',
             'start_date' => 'start_date-input',
-            'type' => 'type-input',
+            'type' => 'type-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1,
-          },
+            limit: 1
+          }
         }.to_json,
         headers: response_headers
       )
@@ -93,12 +93,12 @@ describe GoCardlessPro::Resources::TaxRate do
             'jurisdiction' => 'jurisdiction-input',
             'percentage' => 'percentage-input',
             'start_date' => 'start_date-input',
-            'type' => 'type-input',
+            'type' => 'type-input'
           }],
           meta: {
             limit: 2,
-            cursors: {},
-          },
+            cursors: {}
+          }
         }.to_json,
         headers: response_headers
       )
@@ -119,9 +119,9 @@ describe GoCardlessPro::Resources::TaxRate do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/tax_rates/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          with(headers: { 'Foo' => 'Bar' }).
-          to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .with(headers: { 'Foo' => 'Bar' })
+          .to_return(
             body: {
               'tax_rates' => {
 
@@ -130,8 +130,8 @@ describe GoCardlessPro::Resources::TaxRate do
                 'jurisdiction' => 'jurisdiction-input',
                 'percentage' => 'percentage-input',
                 'start_date' => 'start_date-input',
-                'type' => 'type-input',
-              },
+                'type' => 'type-input'
+              }
             }.to_json,
             headers: response_headers
           )
@@ -139,7 +139,7 @@ describe GoCardlessPro::Resources::TaxRate do
 
       subject(:get_response) do
         client.tax_rates.get(id, headers: {
-                               'Foo' => 'Bar',
+                               'Foo' => 'Bar'
                              })
       end
 
@@ -161,8 +161,8 @@ describe GoCardlessPro::Resources::TaxRate do
               'jurisdiction' => 'jurisdiction-input',
               'percentage' => 'percentage-input',
               'start_date' => 'start_date-input',
-              'type' => 'type-input',
-            },
+              'type' => 'type-input'
+            }
           }.to_json,
           headers: response_headers
         )

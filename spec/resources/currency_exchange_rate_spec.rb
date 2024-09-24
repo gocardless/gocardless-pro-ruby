@@ -21,14 +21,14 @@ describe GoCardlessPro::Resources::CurrencyExchangeRate do
               'rate' => 'rate-input',
               'source' => 'source-input',
               'target' => 'target-input',
-              'time' => 'time-input',
+              'time' => 'time-input'
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123',
-              },
-            },
+                after: 'ABC123'
+              }
+            }
           }.to_json,
           headers: response_headers
         )
@@ -66,12 +66,12 @@ describe GoCardlessPro::Resources::CurrencyExchangeRate do
             'rate' => 'rate-input',
             'source' => 'source-input',
             'target' => 'target-input',
-            'time' => 'time-input',
+            'time' => 'time-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1,
-          },
+            limit: 1
+          }
         }.to_json,
         headers: response_headers
       )
@@ -85,12 +85,12 @@ describe GoCardlessPro::Resources::CurrencyExchangeRate do
             'rate' => 'rate-input',
             'source' => 'source-input',
             'target' => 'target-input',
-            'time' => 'time-input',
+            'time' => 'time-input'
           }],
           meta: {
             limit: 2,
-            cursors: {},
-          },
+            cursors: {}
+          }
         }.to_json,
         headers: response_headers
       )

@@ -233,8 +233,8 @@ module GoCardlessPro
           'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '2.57.0',
-        },
+          'GoCardless-Client-Version' => '3.0.0'
+        }
       }
     end
 
@@ -254,7 +254,7 @@ module GoCardlessPro
           comment = [
             "#{ruby_engine}/#{ruby_version}",
             "#{RUBY_ENGINE}/#{interpreter_version}",
-            "#{RUBY_PLATFORM}",
+            "#{RUBY_PLATFORM}"
           ]
           comment << "faraday/#{Faraday::VERSION}"
           "#{gem_info} #{comment.join(' ')}"

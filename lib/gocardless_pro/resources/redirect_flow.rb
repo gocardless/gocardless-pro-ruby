@@ -49,16 +49,8 @@ module GoCardlessPro
     # complete an expired redirect flow. For an integrator this is shorter and
     # they will expire after 10 minutes.
     class RedirectFlow
-      attr_reader :confirmation_url
-      attr_reader :created_at
-      attr_reader :description
-      attr_reader :id
-      attr_reader :mandate_reference
-      attr_reader :metadata
-      attr_reader :redirect_url
-      attr_reader :scheme
-      attr_reader :session_token
-      attr_reader :success_redirect_url
+      attr_reader :confirmation_url, :created_at, :description, :id, :mandate_reference, :metadata, :redirect_url,
+                  :scheme, :session_token, :success_redirect_url
 
       # Initialize a redirect_flow resource instance
       # @param object [Hash] an object returned from the API

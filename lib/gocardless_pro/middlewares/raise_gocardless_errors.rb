@@ -26,7 +26,7 @@ module GoCardlessPro
         {
           401 => GoCardlessPro::AuthenticationError,
           403 => GoCardlessPro::PermissionError,
-          429 => GoCardlessPro::RateLimitError,
+          429 => GoCardlessPro::RateLimitError
         }.fetch(code, nil)
       end
 
@@ -35,7 +35,7 @@ module GoCardlessPro
           validation_failed: GoCardlessPro::ValidationError,
           gocardless: GoCardlessPro::GoCardlessError,
           invalid_api_usage: GoCardlessPro::InvalidApiUsageError,
-          invalid_state: GoCardlessPro::InvalidStateError,
+          invalid_state: GoCardlessPro::InvalidStateError
         }.fetch(type.to_sym)
       end
 
@@ -45,7 +45,7 @@ module GoCardlessPro
                        "code: #{env.status}\n" \
                        "headers: #{env.response_headers}\n" \
                        "body: #{env.body}",
-          'code' => env.status,
+          'code' => env.status
         }
       end
 

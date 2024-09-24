@@ -17,7 +17,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/exports/:identity', {
-                         'identity' => identity,
+                         'identity' => identity
                        })
 
         options[:retry_failures] = true

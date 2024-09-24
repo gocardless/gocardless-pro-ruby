@@ -24,13 +24,13 @@ describe GoCardlessPro::Resources::BankAuthorisation do
           'links' => 'links-input',
           'qr_code_url' => 'qr_code_url-input',
           'redirect_uri' => 'redirect_uri-input',
-          'url' => 'url-input',
+          'url' => 'url-input'
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/bank_authorisations}).
-          with(
+        stub_request(:post, %r{.*api.gocardless.com/bank_authorisations})
+          .with(
             body: {
               'bank_authorisations' => {
 
@@ -43,11 +43,11 @@ describe GoCardlessPro::Resources::BankAuthorisation do
                 'links' => 'links-input',
                 'qr_code_url' => 'qr_code_url-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'url' => 'url-input',
-              },
+                'url' => 'url-input'
+              }
             }
-          ).
-          to_return(
+          )
+          .to_return(
             body: {
               'bank_authorisations' =>
 
@@ -62,8 +62,8 @@ describe GoCardlessPro::Resources::BankAuthorisation do
                   'links' => 'links-input',
                   'qr_code_url' => 'qr_code_url-input',
                   'redirect_uri' => 'redirect_uri-input',
-                  'url' => 'url-input',
-                },
+                  'url' => 'url-input'
+                }
 
             }.to_json,
             headers: response_headers
@@ -85,9 +85,9 @@ describe GoCardlessPro::Resources::BankAuthorisation do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' },
-              ],
-            },
+                { message: 'test error message', field: 'test_field' }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 422
@@ -114,7 +114,7 @@ describe GoCardlessPro::Resources::BankAuthorisation do
           'links' => 'links-input',
           'qr_code_url' => 'qr_code_url-input',
           'redirect_uri' => 'redirect_uri-input',
-          'url' => 'url-input',
+          'url' => 'url-input'
         }
       end
 
@@ -129,11 +129,11 @@ describe GoCardlessPro::Resources::BankAuthorisation do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id,
-                  },
-                },
-              ],
-            },
+                    conflicting_resource_id: id
+                  }
+                }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 409
@@ -142,8 +142,8 @@ describe GoCardlessPro::Resources::BankAuthorisation do
 
       let!(:get_stub) do
         stub_url = "/bank_authorisations/#{id}"
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .to_return(
             body: {
               'bank_authorisations' => {
 
@@ -156,8 +156,8 @@ describe GoCardlessPro::Resources::BankAuthorisation do
                 'links' => 'links-input',
                 'qr_code_url' => 'qr_code_url-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'url' => 'url-input',
-              },
+                'url' => 'url-input'
+              }
             }.to_json,
             headers: response_headers
           )
@@ -179,9 +179,9 @@ describe GoCardlessPro::Resources::BankAuthorisation do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/bank_authorisations/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          with(headers: { 'Foo' => 'Bar' }).
-          to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .with(headers: { 'Foo' => 'Bar' })
+          .to_return(
             body: {
               'bank_authorisations' => {
 
@@ -194,8 +194,8 @@ describe GoCardlessPro::Resources::BankAuthorisation do
                 'links' => 'links-input',
                 'qr_code_url' => 'qr_code_url-input',
                 'redirect_uri' => 'redirect_uri-input',
-                'url' => 'url-input',
-              },
+                'url' => 'url-input'
+              }
             }.to_json,
             headers: response_headers
           )
@@ -203,7 +203,7 @@ describe GoCardlessPro::Resources::BankAuthorisation do
 
       subject(:get_response) do
         client.bank_authorisations.get(id, headers: {
-                                         'Foo' => 'Bar',
+                                         'Foo' => 'Bar'
                                        })
       end
 
@@ -229,8 +229,8 @@ describe GoCardlessPro::Resources::BankAuthorisation do
               'links' => 'links-input',
               'qr_code_url' => 'qr_code_url-input',
               'redirect_uri' => 'redirect_uri-input',
-              'url' => 'url-input',
-            },
+              'url' => 'url-input'
+            }
           }.to_json,
           headers: response_headers
         )

@@ -19,13 +19,13 @@ describe GoCardlessPro::Resources::MandateImport do
           'id' => 'id-input',
           'links' => 'links-input',
           'scheme' => 'scheme-input',
-          'status' => 'status-input',
+          'status' => 'status-input'
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/mandate_imports}).
-          with(
+        stub_request(:post, %r{.*api.gocardless.com/mandate_imports})
+          .with(
             body: {
               'mandate_imports' => {
 
@@ -33,11 +33,11 @@ describe GoCardlessPro::Resources::MandateImport do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'scheme' => 'scheme-input',
-                'status' => 'status-input',
-              },
+                'status' => 'status-input'
+              }
             }
-          ).
-          to_return(
+          )
+          .to_return(
             body: {
               'mandate_imports' =>
 
@@ -47,8 +47,8 @@ describe GoCardlessPro::Resources::MandateImport do
                   'id' => 'id-input',
                   'links' => 'links-input',
                   'scheme' => 'scheme-input',
-                  'status' => 'status-input',
-                },
+                  'status' => 'status-input'
+                }
 
             }.to_json,
             headers: response_headers
@@ -70,9 +70,9 @@ describe GoCardlessPro::Resources::MandateImport do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' },
-              ],
-            },
+                { message: 'test error message', field: 'test_field' }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 422
@@ -94,7 +94,7 @@ describe GoCardlessPro::Resources::MandateImport do
           'id' => 'id-input',
           'links' => 'links-input',
           'scheme' => 'scheme-input',
-          'status' => 'status-input',
+          'status' => 'status-input'
         }
       end
 
@@ -109,11 +109,11 @@ describe GoCardlessPro::Resources::MandateImport do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id,
-                  },
-                },
-              ],
-            },
+                    conflicting_resource_id: id
+                  }
+                }
+              ]
+            }
           }.to_json,
           headers: response_headers,
           status: 409
@@ -122,8 +122,8 @@ describe GoCardlessPro::Resources::MandateImport do
 
       let!(:get_stub) do
         stub_url = "/mandate_imports/#{id}"
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .to_return(
             body: {
               'mandate_imports' => {
 
@@ -131,8 +131,8 @@ describe GoCardlessPro::Resources::MandateImport do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'scheme' => 'scheme-input',
-                'status' => 'status-input',
-              },
+                'status' => 'status-input'
+              }
             }.to_json,
             headers: response_headers
           )
@@ -154,9 +154,9 @@ describe GoCardlessPro::Resources::MandateImport do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/mandate_imports/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
-          with(headers: { 'Foo' => 'Bar' }).
-          to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
+          .with(headers: { 'Foo' => 'Bar' })
+          .to_return(
             body: {
               'mandate_imports' => {
 
@@ -164,8 +164,8 @@ describe GoCardlessPro::Resources::MandateImport do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'scheme' => 'scheme-input',
-                'status' => 'status-input',
-              },
+                'status' => 'status-input'
+              }
             }.to_json,
             headers: response_headers
           )
@@ -173,7 +173,7 @@ describe GoCardlessPro::Resources::MandateImport do
 
       subject(:get_response) do
         client.mandate_imports.get(id, headers: {
-                                     'Foo' => 'Bar',
+                                     'Foo' => 'Bar'
                                    })
       end
 
@@ -194,8 +194,8 @@ describe GoCardlessPro::Resources::MandateImport do
               'id' => 'id-input',
               'links' => 'links-input',
               'scheme' => 'scheme-input',
-              'status' => 'status-input',
-            },
+              'status' => 'status-input'
+            }
           }.to_json,
           headers: response_headers
         )
@@ -245,8 +245,8 @@ describe GoCardlessPro::Resources::MandateImport do
             'id' => 'id-input',
             'links' => 'links-input',
             'scheme' => 'scheme-input',
-            'status' => 'status-input',
-          },
+            'status' => 'status-input'
+          }
         }.to_json,
 
         headers: response_headers
@@ -269,8 +269,8 @@ describe GoCardlessPro::Resources::MandateImport do
       let!(:stub) do
         # /mandate_imports/%v/actions/submit
         stub_url = '/mandate_imports/:identity/actions/submit'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -281,8 +281,8 @@ describe GoCardlessPro::Resources::MandateImport do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'scheme' => 'scheme-input',
-                'status' => 'status-input',
-              },
+                'status' => 'status-input'
+              }
             }.to_json,
             headers: response_headers
           )
@@ -306,8 +306,8 @@ describe GoCardlessPro::Resources::MandateImport do
             'id' => 'id-input',
             'links' => 'links-input',
             'scheme' => 'scheme-input',
-            'status' => 'status-input',
-          },
+            'status' => 'status-input'
+          }
         }.to_json,
 
         headers: response_headers
@@ -330,8 +330,8 @@ describe GoCardlessPro::Resources::MandateImport do
       let!(:stub) do
         # /mandate_imports/%v/actions/cancel
         stub_url = '/mandate_imports/:identity/actions/cancel'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
-          with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -342,8 +342,8 @@ describe GoCardlessPro::Resources::MandateImport do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'scheme' => 'scheme-input',
-                'status' => 'status-input',
-              },
+                'status' => 'status-input'
+              }
             }.to_json,
             headers: response_headers
           )

@@ -15,24 +15,8 @@ module GoCardlessPro
     # on customers' bank statements.
     #
     class SchemeIdentifier
-      attr_reader :address_line1
-      attr_reader :address_line2
-      attr_reader :address_line3
-      attr_reader :can_specify_mandate_reference
-      attr_reader :city
-      attr_reader :country_code
-      attr_reader :created_at
-      attr_reader :currency
-      attr_reader :email
-      attr_reader :id
-      attr_reader :minimum_advance_notice
-      attr_reader :name
-      attr_reader :phone_number
-      attr_reader :postal_code
-      attr_reader :reference
-      attr_reader :region
-      attr_reader :scheme
-      attr_reader :status
+      attr_reader :address_line1, :address_line2, :address_line3, :can_specify_mandate_reference, :city, :country_code,
+                  :created_at, :currency, :email, :id, :minimum_advance_notice, :name, :phone_number, :postal_code, :reference, :region, :scheme, :status
 
       # Initialize a scheme_identifier resource instance
       # @param object [Hash] an object returned from the API
