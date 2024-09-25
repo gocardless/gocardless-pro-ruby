@@ -21,7 +21,7 @@ module GoCardlessPro
     # for how-to's, explanations and tutorials.
     class BillingRequest
       attr_reader :actions, :created_at, :fallback_enabled, :id, :mandate_request, :metadata, :payment_request,
-                  :purpose_code, :resources, :status, :subscription_request
+                  :purpose_code, :resources, :status
 
       # Initialize a billing_request resource instance
       # @param object [Hash] an object returned from the API
@@ -39,7 +39,6 @@ module GoCardlessPro
         @purpose_code = object['purpose_code']
         @resources = object['resources']
         @status = object['status']
-        @subscription_request = object['subscription_request']
         @response = response
       end
 
@@ -104,10 +103,6 @@ module GoCardlessPro
 
         def payment_request_payment
           @links['payment_request_payment']
-        end
-
-        def subscription_request
-          @links['subscription_request']
         end
       end
     end

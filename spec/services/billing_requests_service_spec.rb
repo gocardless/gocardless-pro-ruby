@@ -25,8 +25,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
           'payment_request' => 'payment_request-input',
           'purpose_code' => 'purpose_code-input',
           'resources' => 'resources-input',
-          'status' => 'status-input',
-          'subscription_request' => 'subscription_request-input'
+          'status' => 'status-input'
         }
       end
 
@@ -46,8 +45,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }
           )
@@ -67,8 +65,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                   'payment_request' => 'payment_request-input',
                   'purpose_code' => 'purpose_code-input',
                   'resources' => 'resources-input',
-                  'status' => 'status-input',
-                  'subscription_request' => 'subscription_request-input'
+                  'status' => 'status-input'
                 }
 
             }.to_json,
@@ -144,8 +141,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
           'payment_request' => 'payment_request-input',
           'purpose_code' => 'purpose_code-input',
           'resources' => 'resources-input',
-          'status' => 'status-input',
-          'subscription_request' => 'subscription_request-input'
+          'status' => 'status-input'
         }
       end
 
@@ -188,8 +184,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
@@ -242,8 +237,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }
         }.to_json,
 
@@ -296,8 +290,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
@@ -328,8 +321,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }
         }.to_json,
 
@@ -382,8 +374,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
@@ -414,8 +405,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }
         }.to_json,
 
@@ -468,8 +458,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
@@ -500,8 +489,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }
         }.to_json,
 
@@ -554,8 +542,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
@@ -586,8 +573,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }
         }.to_json,
 
@@ -640,8 +626,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
@@ -668,8 +653,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }],
           meta: {
             cursors: {
@@ -711,8 +695,6 @@ describe GoCardlessPro::Services::BillingRequestsService do
         expect(get_list_response.records.first.resources).to eq('resources-input')
 
         expect(get_list_response.records.first.status).to eq('status-input')
-
-        expect(get_list_response.records.first.subscription_request).to eq('subscription_request-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -763,8 +745,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -790,8 +771,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }],
           meta: {
             limit: 2,
@@ -826,8 +806,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'payment_request' => 'payment_request-input',
               'purpose_code' => 'purpose_code-input',
               'resources' => 'resources-input',
-              'status' => 'status-input',
-              'subscription_request' => 'subscription_request-input'
+              'status' => 'status-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -853,8 +832,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                                      'payment_request' => 'payment_request-input',
                                      'purpose_code' => 'purpose_code-input',
                                      'resources' => 'resources-input',
-                                     'status' => 'status-input',
-                                     'subscription_request' => 'subscription_request-input'
+                                     'status' => 'status-input'
                                    }],
                                    meta: {
                                      limit: 2,
@@ -885,8 +863,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'payment_request' => 'payment_request-input',
               'purpose_code' => 'purpose_code-input',
               'resources' => 'resources-input',
-              'status' => 'status-input',
-              'subscription_request' => 'subscription_request-input'
+              'status' => 'status-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -915,8 +892,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                                      'payment_request' => 'payment_request-input',
                                      'purpose_code' => 'purpose_code-input',
                                      'resources' => 'resources-input',
-                                     'status' => 'status-input',
-                                     'subscription_request' => 'subscription_request-input'
+                                     'status' => 'status-input'
                                    }],
                                    meta: {
                                      limit: 2,
@@ -958,8 +934,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
@@ -995,8 +970,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
               'payment_request' => 'payment_request-input',
               'purpose_code' => 'purpose_code-input',
               'resources' => 'resources-input',
-              'status' => 'status-input',
-              'subscription_request' => 'subscription_request-input'
+              'status' => 'status-input'
             }
           }.to_json,
           headers: response_headers
@@ -1108,8 +1082,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }
         }.to_json,
 
@@ -1162,8 +1135,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
@@ -1194,8 +1166,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }
         }.to_json,
 
@@ -1248,8 +1219,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
@@ -1280,8 +1250,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }
         }.to_json,
 
@@ -1334,8 +1303,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
@@ -1366,8 +1334,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input',
-            'subscription_request' => 'subscription_request-input'
+            'status' => 'status-input'
           }
         }.to_json,
 
@@ -1420,8 +1387,7 @@ describe GoCardlessPro::Services::BillingRequestsService do
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input',
-                'subscription_request' => 'subscription_request-input'
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
