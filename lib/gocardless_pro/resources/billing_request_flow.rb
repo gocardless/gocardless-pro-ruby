@@ -15,7 +15,7 @@ module GoCardlessPro
     # authorisation (such as open banking single payments).
     class BillingRequestFlow
       attr_reader :authorisation_url, :auto_fulfil, :created_at, :customer_details_captured, :exit_uri, :expires_at,
-                  :id, :language, :lock_bank_account, :lock_currency, :lock_customer_details, :prefilled_bank_account, :prefilled_customer, :redirect_uri, :session_token, :show_redirect_buttons, :show_success_redirect_button
+                  :id, :language, :lock_bank_account, :lock_currency, :lock_customer_details, :prefilled_bank_account, :prefilled_customer, :redirect_uri, :session_token, :show_redirect_buttons, :show_success_redirect_button, :skip_success_screen
 
       # Initialize a billing_request_flow resource instance
       # @param object [Hash] an object returned from the API
@@ -40,6 +40,7 @@ module GoCardlessPro
         @session_token = object['session_token']
         @show_redirect_buttons = object['show_redirect_buttons']
         @show_success_redirect_button = object['show_success_redirect_button']
+        @skip_success_screen = object['skip_success_screen']
         @response = response
       end
 

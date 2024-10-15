@@ -32,7 +32,8 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
           'redirect_uri' => 'redirect_uri-input',
           'session_token' => 'session_token-input',
           'show_redirect_buttons' => 'show_redirect_buttons-input',
-          'show_success_redirect_button' => 'show_success_redirect_button-input'
+          'show_success_redirect_button' => 'show_success_redirect_button-input',
+          'skip_success_screen' => 'skip_success_screen-input'
         }
       end
 
@@ -59,7 +60,8 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                 'redirect_uri' => 'redirect_uri-input',
                 'session_token' => 'session_token-input',
                 'show_redirect_buttons' => 'show_redirect_buttons-input',
-                'show_success_redirect_button' => 'show_success_redirect_button-input'
+                'show_success_redirect_button' => 'show_success_redirect_button-input',
+                'skip_success_screen' => 'skip_success_screen-input'
               }
             }
           )
@@ -86,7 +88,8 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                   'redirect_uri' => 'redirect_uri-input',
                   'session_token' => 'session_token-input',
                   'show_redirect_buttons' => 'show_redirect_buttons-input',
-                  'show_success_redirect_button' => 'show_success_redirect_button-input'
+                  'show_success_redirect_button' => 'show_success_redirect_button-input',
+                  'skip_success_screen' => 'skip_success_screen-input'
                 }
 
             }.to_json,
@@ -146,7 +149,8 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
           'redirect_uri' => 'redirect_uri-input',
           'session_token' => 'session_token-input',
           'show_redirect_buttons' => 'show_redirect_buttons-input',
-          'show_success_redirect_button' => 'show_success_redirect_button-input'
+          'show_success_redirect_button' => 'show_success_redirect_button-input',
+          'skip_success_screen' => 'skip_success_screen-input'
         }
       end
 
@@ -208,7 +212,8 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
             'redirect_uri' => 'redirect_uri-input',
             'session_token' => 'session_token-input',
             'show_redirect_buttons' => 'show_redirect_buttons-input',
-            'show_success_redirect_button' => 'show_success_redirect_button-input'
+            'show_success_redirect_button' => 'show_success_redirect_button-input',
+            'skip_success_screen' => 'skip_success_screen-input'
           }
         }.to_json,
 
@@ -257,7 +262,8 @@ describe GoCardlessPro::Resources::BillingRequestFlow do
                 'redirect_uri' => 'redirect_uri-input',
                 'session_token' => 'session_token-input',
                 'show_redirect_buttons' => 'show_redirect_buttons-input',
-                'show_success_redirect_button' => 'show_success_redirect_button-input'
+                'show_success_redirect_button' => 'show_success_redirect_button-input',
+                'skip_success_screen' => 'skip_success_screen-input'
               }
             }.to_json,
             headers: response_headers
