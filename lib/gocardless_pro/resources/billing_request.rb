@@ -20,8 +20,8 @@ module GoCardlessPro
     # Overview](https://developer.gocardless.com/getting-started/billing-requests/overview/)
     # for how-to's, explanations and tutorials.
     class BillingRequest
-      attr_reader :actions, :created_at, :fallback_enabled, :id, :mandate_request, :metadata, :payment_request,
-                  :purpose_code, :resources, :status
+      attr_reader :actions, :created_at, :fallback_enabled, :fallback_occurred, :id, :mandate_request, :metadata,
+                  :payment_request, :purpose_code, :resources, :status
 
       # Initialize a billing_request resource instance
       # @param object [Hash] an object returned from the API
@@ -31,6 +31,7 @@ module GoCardlessPro
         @actions = object['actions']
         @created_at = object['created_at']
         @fallback_enabled = object['fallback_enabled']
+        @fallback_occurred = object['fallback_occurred']
         @id = object['id']
         @links = object['links']
         @mandate_request = object['mandate_request']
