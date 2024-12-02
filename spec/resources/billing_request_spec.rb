@@ -20,13 +20,15 @@ describe GoCardlessPro::Resources::BillingRequest do
           'fallback_enabled' => 'fallback_enabled-input',
           'fallback_occurred' => 'fallback_occurred-input',
           'id' => 'id-input',
+          'instalment_schedule_request' => 'instalment_schedule_request-input',
           'links' => 'links-input',
           'mandate_request' => 'mandate_request-input',
           'metadata' => 'metadata-input',
           'payment_request' => 'payment_request-input',
           'purpose_code' => 'purpose_code-input',
           'resources' => 'resources-input',
-          'status' => 'status-input'
+          'status' => 'status-input',
+          'subscription_request' => 'subscription_request-input'
         }
       end
 
@@ -41,13 +43,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }
           )
@@ -62,13 +66,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                   'fallback_enabled' => 'fallback_enabled-input',
                   'fallback_occurred' => 'fallback_occurred-input',
                   'id' => 'id-input',
+                  'instalment_schedule_request' => 'instalment_schedule_request-input',
                   'links' => 'links-input',
                   'mandate_request' => 'mandate_request-input',
                   'metadata' => 'metadata-input',
                   'payment_request' => 'payment_request-input',
                   'purpose_code' => 'purpose_code-input',
                   'resources' => 'resources-input',
-                  'status' => 'status-input'
+                  'status' => 'status-input',
+                  'subscription_request' => 'subscription_request-input'
                 }
 
             }.to_json,
@@ -116,13 +122,15 @@ describe GoCardlessPro::Resources::BillingRequest do
           'fallback_enabled' => 'fallback_enabled-input',
           'fallback_occurred' => 'fallback_occurred-input',
           'id' => 'id-input',
+          'instalment_schedule_request' => 'instalment_schedule_request-input',
           'links' => 'links-input',
           'mandate_request' => 'mandate_request-input',
           'metadata' => 'metadata-input',
           'payment_request' => 'payment_request-input',
           'purpose_code' => 'purpose_code-input',
           'resources' => 'resources-input',
-          'status' => 'status-input'
+          'status' => 'status-input',
+          'subscription_request' => 'subscription_request-input'
         }
       end
 
@@ -160,13 +168,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
@@ -198,13 +208,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }
         }.to_json,
 
@@ -241,13 +253,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
@@ -273,13 +287,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }
         }.to_json,
 
@@ -316,13 +332,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
@@ -348,13 +366,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }
         }.to_json,
 
@@ -391,13 +411,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
@@ -423,13 +445,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }
         }.to_json,
 
@@ -466,13 +490,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
@@ -498,13 +524,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }
         }.to_json,
 
@@ -541,13 +569,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
@@ -570,13 +600,15 @@ describe GoCardlessPro::Resources::BillingRequest do
               'fallback_enabled' => 'fallback_enabled-input',
               'fallback_occurred' => 'fallback_occurred-input',
               'id' => 'id-input',
+              'instalment_schedule_request' => 'instalment_schedule_request-input',
               'links' => 'links-input',
               'mandate_request' => 'mandate_request-input',
               'metadata' => 'metadata-input',
               'payment_request' => 'payment_request-input',
               'purpose_code' => 'purpose_code-input',
               'resources' => 'resources-input',
-              'status' => 'status-input'
+              'status' => 'status-input',
+              'subscription_request' => 'subscription_request-input'
             }],
             meta: {
               cursors: {
@@ -604,6 +636,8 @@ describe GoCardlessPro::Resources::BillingRequest do
 
         expect(get_list_response.records.first.id).to eq('id-input')
 
+        expect(get_list_response.records.first.instalment_schedule_request).to eq('instalment_schedule_request-input')
+
         expect(get_list_response.records.first.mandate_request).to eq('mandate_request-input')
 
         expect(get_list_response.records.first.metadata).to eq('metadata-input')
@@ -615,6 +649,8 @@ describe GoCardlessPro::Resources::BillingRequest do
         expect(get_list_response.records.first.resources).to eq('resources-input')
 
         expect(get_list_response.records.first.status).to eq('status-input')
+
+        expect(get_list_response.records.first.subscription_request).to eq('subscription_request-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -637,13 +673,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -664,13 +702,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }],
           meta: {
             limit: 2,
@@ -707,13 +747,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
@@ -744,13 +786,15 @@ describe GoCardlessPro::Resources::BillingRequest do
               'fallback_enabled' => 'fallback_enabled-input',
               'fallback_occurred' => 'fallback_occurred-input',
               'id' => 'id-input',
+              'instalment_schedule_request' => 'instalment_schedule_request-input',
               'links' => 'links-input',
               'mandate_request' => 'mandate_request-input',
               'metadata' => 'metadata-input',
               'payment_request' => 'payment_request-input',
               'purpose_code' => 'purpose_code-input',
               'resources' => 'resources-input',
-              'status' => 'status-input'
+              'status' => 'status-input',
+              'subscription_request' => 'subscription_request-input'
             }
           }.to_json,
           headers: response_headers
@@ -802,13 +846,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }
         }.to_json,
 
@@ -845,13 +891,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
@@ -877,13 +925,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }
         }.to_json,
 
@@ -920,13 +970,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
@@ -952,13 +1004,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }
         }.to_json,
 
@@ -995,13 +1049,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
@@ -1027,13 +1083,15 @@ describe GoCardlessPro::Resources::BillingRequest do
             'fallback_enabled' => 'fallback_enabled-input',
             'fallback_occurred' => 'fallback_occurred-input',
             'id' => 'id-input',
+            'instalment_schedule_request' => 'instalment_schedule_request-input',
             'links' => 'links-input',
             'mandate_request' => 'mandate_request-input',
             'metadata' => 'metadata-input',
             'payment_request' => 'payment_request-input',
             'purpose_code' => 'purpose_code-input',
             'resources' => 'resources-input',
-            'status' => 'status-input'
+            'status' => 'status-input',
+            'subscription_request' => 'subscription_request-input'
           }
         }.to_json,
 
@@ -1070,13 +1128,15 @@ describe GoCardlessPro::Resources::BillingRequest do
                 'fallback_enabled' => 'fallback_enabled-input',
                 'fallback_occurred' => 'fallback_occurred-input',
                 'id' => 'id-input',
+                'instalment_schedule_request' => 'instalment_schedule_request-input',
                 'links' => 'links-input',
                 'mandate_request' => 'mandate_request-input',
                 'metadata' => 'metadata-input',
                 'payment_request' => 'payment_request-input',
                 'purpose_code' => 'purpose_code-input',
                 'resources' => 'resources-input',
-                'status' => 'status-input'
+                'status' => 'status-input',
+                'subscription_request' => 'subscription_request-input'
               }
             }.to_json,
             headers: response_headers
