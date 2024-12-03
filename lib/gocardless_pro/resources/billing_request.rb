@@ -10,18 +10,20 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a billing_request resource returned from the API
 
-    # Billing Requests help create resources that require input or action from a
-    # customer. An example of required input might be additional customer
-    # billing
-    # details, while an action would be asking a customer to authorise a payment
-    # using their mobile banking app.
+    #  Billing Requests help create resources that require input or action from
+    # a customer. An example of required input might be additional customer
+    # billing details, while an action would be asking a customer to authorise a
+    # payment using their mobile banking app.
     #
     # See [Billing Requests:
     # Overview](https://developer.gocardless.com/getting-started/billing-requests/overview/)
-    # for how-to's, explanations and tutorials.
+    # for how-to's, explanations and tutorials. <p
+    # class="notice"><strong>Important</strong>: All properties associated with
+    # `subscription_request` and `instalment_schedule_request` are only
+    # supported for ACH and PAD schemes.</p>
     class BillingRequest
-      attr_reader :actions, :created_at, :fallback_enabled, :id, :mandate_request, :metadata, :payment_request,
-                  :purpose_code, :resources, :status, :subscription_request
+      attr_reader :actions, :created_at, :fallback_enabled, :fallback_occurred, :id, :instalment_schedule_request,
+                  :mandate_request, :metadata, :payment_request, :purpose_code, :resources, :status, :subscription_request
 
       # Initialize a billing_request resource instance
       # @param object [Hash] an object returned from the API
@@ -31,7 +33,9 @@ module GoCardlessPro
         @actions = object['actions']
         @created_at = object['created_at']
         @fallback_enabled = object['fallback_enabled']
+        @fallback_occurred = object['fallback_occurred']
         @id = object['id']
+        @instalment_schedule_request = object['instalment_schedule_request']
         @links = object['links']
         @mandate_request = object['mandate_request']
         @metadata = object['metadata']
@@ -82,6 +86,14 @@ module GoCardlessPro
           @links['customer_billing_detail']
         end
 
+        def instalment_schedule_request
+          @links['instalment_schedule_request']
+        end
+
+        def instalment_schedule_request_instalment_schedule
+          @links['instalment_schedule_request_instalment_schedule']
+        end
+
         def mandate_request
           @links['mandate_request']
         end
@@ -108,6 +120,10 @@ module GoCardlessPro
 
         def subscription_request
           @links['subscription_request']
+        end
+
+        def subscription_request_subscription
+          @links['subscription_request_subscription']
         end
       end
     end

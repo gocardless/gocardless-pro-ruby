@@ -10,7 +10,9 @@ module GoCardlessPro
   module Services
     # Service for making requests to the BillingRequest endpoints
     class BillingRequestsService < BaseService
-      #
+      # <p class="notice"><strong>Important</strong>: All properties associated with
+      # `subscription_request` and `instalment_schedule_request` are only supported
+      # for ACH and PAD schemes.</p>
       # Example URL: /billing_requests
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
