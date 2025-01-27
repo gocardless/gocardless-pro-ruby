@@ -17,6 +17,7 @@ describe GoCardlessPro::Resources::MandateImportEntry do
 
           'created_at' => 'created_at-input',
           'links' => 'links-input',
+          'processing_errors' => 'processing_errors-input',
           'record_identifier' => 'record_identifier-input'
         }
       end
@@ -29,6 +30,7 @@ describe GoCardlessPro::Resources::MandateImportEntry do
 
                 'created_at' => 'created_at-input',
                 'links' => 'links-input',
+                'processing_errors' => 'processing_errors-input',
                 'record_identifier' => 'record_identifier-input'
               }
             }
@@ -41,6 +43,7 @@ describe GoCardlessPro::Resources::MandateImportEntry do
 
                   'created_at' => 'created_at-input',
                   'links' => 'links-input',
+                  'processing_errors' => 'processing_errors-input',
                   'record_identifier' => 'record_identifier-input'
                 }
 
@@ -86,6 +89,7 @@ describe GoCardlessPro::Resources::MandateImportEntry do
 
           'created_at' => 'created_at-input',
           'links' => 'links-input',
+          'processing_errors' => 'processing_errors-input',
           'record_identifier' => 'record_identifier-input'
         }
       end
@@ -130,6 +134,7 @@ describe GoCardlessPro::Resources::MandateImportEntry do
 
               'created_at' => 'created_at-input',
               'links' => 'links-input',
+              'processing_errors' => 'processing_errors-input',
               'record_identifier' => 'record_identifier-input'
             }],
             meta: {
@@ -149,6 +154,8 @@ describe GoCardlessPro::Resources::MandateImportEntry do
                end.uniq.first).to eq(GoCardlessPro::Resources::MandateImportEntry)
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
+
+        expect(get_list_response.records.first.processing_errors).to eq('processing_errors-input')
 
         expect(get_list_response.records.first.record_identifier).to eq('record_identifier-input')
       end
@@ -170,6 +177,7 @@ describe GoCardlessPro::Resources::MandateImportEntry do
 
             'created_at' => 'created_at-input',
             'links' => 'links-input',
+            'processing_errors' => 'processing_errors-input',
             'record_identifier' => 'record_identifier-input'
           }],
           meta: {
@@ -188,6 +196,7 @@ describe GoCardlessPro::Resources::MandateImportEntry do
 
             'created_at' => 'created_at-input',
             'links' => 'links-input',
+            'processing_errors' => 'processing_errors-input',
             'record_identifier' => 'record_identifier-input'
           }],
           meta: {
