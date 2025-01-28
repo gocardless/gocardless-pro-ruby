@@ -41,7 +41,7 @@ module GoCardlessPro
     # href="mailto:help@gocardless.com">get in touch</a> if you would like to
     # use this API.</p>
     class MandateImportEntry
-      attr_reader :created_at, :record_identifier
+      attr_reader :created_at, :processing_errors, :record_identifier
 
       # Initialize a mandate_import_entry resource instance
       # @param object [Hash] an object returned from the API
@@ -50,6 +50,7 @@ module GoCardlessPro
 
         @created_at = object['created_at']
         @links = object['links']
+        @processing_errors = object['processing_errors']
         @record_identifier = object['record_identifier']
         @response = response
       end
