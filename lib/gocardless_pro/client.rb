@@ -3,6 +3,11 @@ module GoCardlessPro
   class Client
     extend Forwardable
 
+    # Access to the service for balance to make API calls
+    def balances
+      @balances ||= Services::BalancesService.new(@api_service)
+    end
+
     # Access to the service for bank_authorisation to make API calls
     def bank_authorisations
       @bank_authorisations ||= Services::BankAuthorisationsService.new(@api_service)
@@ -233,7 +238,7 @@ module GoCardlessPro
           'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '3.2.0'
+          'GoCardless-Client-Version' => '3.3.0'
         }
       }
     end
