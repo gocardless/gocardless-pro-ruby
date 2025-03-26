@@ -23,7 +23,8 @@ describe GoCardlessPro::Resources::Institution do
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
               'logo_url' => 'logo_url-input',
-              'name' => 'name-input'
+              'name' => 'name-input',
+              'status' => 'status-input'
             }],
             meta: {
               cursors: {
@@ -50,6 +51,8 @@ describe GoCardlessPro::Resources::Institution do
         expect(get_list_response.records.first.logo_url).to eq('logo_url-input')
 
         expect(get_list_response.records.first.name).to eq('name-input')
+
+        expect(get_list_response.records.first.status).to eq('status-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -72,7 +75,8 @@ describe GoCardlessPro::Resources::Institution do
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
-            'name' => 'name-input'
+            'name' => 'name-input',
+            'status' => 'status-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -93,7 +97,8 @@ describe GoCardlessPro::Resources::Institution do
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
-            'name' => 'name-input'
+            'name' => 'name-input',
+            'status' => 'status-input'
           }],
           meta: {
             limit: 2,
@@ -128,7 +133,8 @@ describe GoCardlessPro::Resources::Institution do
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
             'logo_url' => 'logo_url-input',
-            'name' => 'name-input'
+            'name' => 'name-input',
+            'status' => 'status-input'
           }],
           meta: {
             cursors: {
@@ -176,7 +182,8 @@ describe GoCardlessPro::Resources::Institution do
                 'icon_url' => 'icon_url-input',
                 'id' => 'id-input',
                 'logo_url' => 'logo_url-input',
-                'name' => 'name-input'
+                'name' => 'name-input',
+                'status' => 'status-input'
               }
             }.to_json,
             headers: response_headers
