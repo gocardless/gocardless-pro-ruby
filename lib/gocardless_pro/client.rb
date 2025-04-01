@@ -8,6 +8,11 @@ module GoCardlessPro
       @balances ||= Services::BalancesService.new(@api_service)
     end
 
+    # Access to the service for bank_account_detail to make API calls
+    def bank_account_details
+      @bank_account_details ||= Services::BankAccountDetailsService.new(@api_service)
+    end
+
     # Access to the service for bank_authorisation to make API calls
     def bank_authorisations
       @bank_authorisations ||= Services::BankAuthorisationsService.new(@api_service)

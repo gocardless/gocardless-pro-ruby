@@ -42,6 +42,9 @@ require_relative 'gocardless_pro/webhook'
 require_relative 'gocardless_pro/resources/balance'
 require_relative 'gocardless_pro/services/balances_service'
 
+require_relative 'gocardless_pro/resources/bank_account_detail'
+require_relative 'gocardless_pro/services/bank_account_details_service'
+
 require_relative 'gocardless_pro/resources/bank_authorisation'
 require_relative 'gocardless_pro/services/bank_authorisations_service'
 
