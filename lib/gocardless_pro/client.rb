@@ -8,6 +8,11 @@ module GoCardlessPro
       @balances ||= Services::BalancesService.new(@api_service)
     end
 
+    # Access to the service for bank_account_detail to make API calls
+    def bank_account_details
+      @bank_account_details ||= Services::BankAccountDetailsService.new(@api_service)
+    end
+
     # Access to the service for bank_authorisation to make API calls
     def bank_authorisations
       @bank_authorisations ||= Services::BankAuthorisationsService.new(@api_service)
@@ -238,7 +243,7 @@ module GoCardlessPro
           'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '3.4.0'
+          'GoCardless-Client-Version' => '3.5.0'
         }
       }
     end
