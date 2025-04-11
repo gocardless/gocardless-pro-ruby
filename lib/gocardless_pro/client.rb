@@ -123,6 +123,11 @@ module GoCardlessPro
       @negative_balance_limits ||= Services::NegativeBalanceLimitsService.new(@api_service)
     end
 
+    # Access to the service for outbound_payment to make API calls
+    def outbound_payments
+      @outbound_payments ||= Services::OutboundPaymentsService.new(@api_service)
+    end
+
     # Access to the service for payer_authorisation to make API calls
     def payer_authorisations
       @payer_authorisations ||= Services::PayerAuthorisationsService.new(@api_service)
