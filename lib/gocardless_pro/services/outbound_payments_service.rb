@@ -123,8 +123,8 @@ module GoCardlessPro
         Resources::OutboundPayment.new(unenvelope_body(response.body), response)
       end
 
-      # Approves an outbound payment. Only outbound payments in the “pending_approval”
-      # state can be approved.
+      # Approves an outbound payment. Only outbound payments with the
+      # “pending_approval” status can be approved.
       # Example URL: /outbound_payments/:identity/actions/approve
       #
       # @param identity       # Unique identifier of the outbound payment.
