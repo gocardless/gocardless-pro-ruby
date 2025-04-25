@@ -21,6 +21,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
+            'limits' => 'limits-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
             'status' => 'status-input'
@@ -51,6 +52,8 @@ describe GoCardlessPro::Services::InstitutionsService do
         expect(get_list_response.records.first.icon_url).to eq('icon_url-input')
 
         expect(get_list_response.records.first.id).to eq('id-input')
+
+        expect(get_list_response.records.first.limits).to eq('limits-input')
 
         expect(get_list_response.records.first.logo_url).to eq('logo_url-input')
 
@@ -101,6 +104,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
+            'limits' => 'limits-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
             'status' => 'status-input'
@@ -123,6 +127,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
+            'limits' => 'limits-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
             'status' => 'status-input'
@@ -154,6 +159,7 @@ describe GoCardlessPro::Services::InstitutionsService do
               'country_code' => 'country_code-input',
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
+              'limits' => 'limits-input',
               'logo_url' => 'logo_url-input',
               'name' => 'name-input',
               'status' => 'status-input'
@@ -176,6 +182,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                                      'country_code' => 'country_code-input',
                                      'icon_url' => 'icon_url-input',
                                      'id' => 'id-input',
+                                     'limits' => 'limits-input',
                                      'logo_url' => 'logo_url-input',
                                      'name' => 'name-input',
                                      'status' => 'status-input'
@@ -203,6 +210,7 @@ describe GoCardlessPro::Services::InstitutionsService do
               'country_code' => 'country_code-input',
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
+              'limits' => 'limits-input',
               'logo_url' => 'logo_url-input',
               'name' => 'name-input',
               'status' => 'status-input'
@@ -228,6 +236,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                                      'country_code' => 'country_code-input',
                                      'icon_url' => 'icon_url-input',
                                      'id' => 'id-input',
+                                     'limits' => 'limits-input',
                                      'logo_url' => 'logo_url-input',
                                      'name' => 'name-input',
                                      'status' => 'status-input'
@@ -264,6 +273,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
+            'limits' => 'limits-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
             'status' => 'status-input'
@@ -324,6 +334,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                 'country_code' => 'country_code-input',
                 'icon_url' => 'icon_url-input',
                 'id' => 'id-input',
+                'limits' => 'limits-input',
                 'logo_url' => 'logo_url-input',
                 'name' => 'name-input',
                 'status' => 'status-input'
