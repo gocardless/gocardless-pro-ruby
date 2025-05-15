@@ -60,6 +60,9 @@ require_relative 'gocardless_pro/services/billing_request_flows_service'
 require_relative 'gocardless_pro/resources/billing_request_template'
 require_relative 'gocardless_pro/services/billing_request_templates_service'
 
+require_relative 'gocardless_pro/resources/billing_request_with_action'
+require_relative 'gocardless_pro/services/billing_request_with_actions_service'
+
 require_relative 'gocardless_pro/resources/block'
 require_relative 'gocardless_pro/services/blocks_service'
 

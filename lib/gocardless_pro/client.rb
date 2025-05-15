@@ -38,6 +38,11 @@ module GoCardlessPro
       @billing_request_templates ||= Services::BillingRequestTemplatesService.new(@api_service)
     end
 
+    # Access to the service for billing_request_with_action to make API calls
+    def billing_request_with_actions
+      @billing_request_with_actions ||= Services::BillingRequestWithActionsService.new(@api_service)
+    end
+
     # Access to the service for block to make API calls
     def blocks
       @blocks ||= Services::BlocksService.new(@api_service)
