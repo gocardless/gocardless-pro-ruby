@@ -17,6 +17,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
           'amount' => 'amount-input',
           'created_at' => 'created_at-input',
+          'currency' => 'currency-input',
           'description' => 'description-input',
           'execution_date' => 'execution_date-input',
           'id' => 'id-input',
@@ -38,6 +39,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
                 'amount' => 'amount-input',
                 'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
                 'description' => 'description-input',
                 'execution_date' => 'execution_date-input',
                 'id' => 'id-input',
@@ -59,6 +61,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
                   'amount' => 'amount-input',
                   'created_at' => 'created_at-input',
+                  'currency' => 'currency-input',
                   'description' => 'description-input',
                   'execution_date' => 'execution_date-input',
                   'id' => 'id-input',
@@ -136,6 +139,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
           'amount' => 'amount-input',
           'created_at' => 'created_at-input',
+          'currency' => 'currency-input',
           'description' => 'description-input',
           'execution_date' => 'execution_date-input',
           'id' => 'id-input',
@@ -180,6 +184,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
                 'amount' => 'amount-input',
                 'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
                 'description' => 'description-input',
                 'execution_date' => 'execution_date-input',
                 'id' => 'id-input',
@@ -234,6 +239,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
             'amount' => 'amount-input',
             'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
             'description' => 'description-input',
             'execution_date' => 'execution_date-input',
             'id' => 'id-input',
@@ -286,6 +292,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
                 'amount' => 'amount-input',
                 'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
                 'description' => 'description-input',
                 'execution_date' => 'execution_date-input',
                 'id' => 'id-input',
@@ -318,6 +325,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
             'amount' => 'amount-input',
             'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
             'description' => 'description-input',
             'execution_date' => 'execution_date-input',
             'id' => 'id-input',
@@ -372,6 +380,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
                 'amount' => 'amount-input',
                 'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
                 'description' => 'description-input',
                 'execution_date' => 'execution_date-input',
                 'id' => 'id-input',
@@ -404,6 +413,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
             'amount' => 'amount-input',
             'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
             'description' => 'description-input',
             'execution_date' => 'execution_date-input',
             'id' => 'id-input',
@@ -458,6 +468,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
                 'amount' => 'amount-input',
                 'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
                 'description' => 'description-input',
                 'execution_date' => 'execution_date-input',
                 'id' => 'id-input',
@@ -492,6 +503,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
                 'amount' => 'amount-input',
                 'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
                 'description' => 'description-input',
                 'execution_date' => 'execution_date-input',
                 'id' => 'id-input',
@@ -529,6 +541,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
               'amount' => 'amount-input',
               'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
               'description' => 'description-input',
               'execution_date' => 'execution_date-input',
               'id' => 'id-input',
@@ -638,6 +651,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
             'amount' => 'amount-input',
             'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
             'description' => 'description-input',
             'execution_date' => 'execution_date-input',
             'id' => 'id-input',
@@ -673,6 +687,8 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
         expect(get_list_response.records.first.amount).to eq('amount-input')
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
+
+        expect(get_list_response.records.first.currency).to eq('currency-input')
 
         expect(get_list_response.records.first.description).to eq('description-input')
 
@@ -733,6 +749,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
             'amount' => 'amount-input',
             'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
             'description' => 'description-input',
             'execution_date' => 'execution_date-input',
             'id' => 'id-input',
@@ -760,6 +777,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
             'amount' => 'amount-input',
             'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
             'description' => 'description-input',
             'execution_date' => 'execution_date-input',
             'id' => 'id-input',
@@ -796,6 +814,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
               'amount' => 'amount-input',
               'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
               'description' => 'description-input',
               'execution_date' => 'execution_date-input',
               'id' => 'id-input',
@@ -823,6 +842,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
                                      'amount' => 'amount-input',
                                      'created_at' => 'created_at-input',
+                                     'currency' => 'currency-input',
                                      'description' => 'description-input',
                                      'execution_date' => 'execution_date-input',
                                      'id' => 'id-input',
@@ -855,6 +875,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
               'amount' => 'amount-input',
               'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
               'description' => 'description-input',
               'execution_date' => 'execution_date-input',
               'id' => 'id-input',
@@ -885,6 +906,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
                                      'amount' => 'amount-input',
                                      'created_at' => 'created_at-input',
+                                     'currency' => 'currency-input',
                                      'description' => 'description-input',
                                      'execution_date' => 'execution_date-input',
                                      'id' => 'id-input',
@@ -927,6 +949,7 @@ describe GoCardlessPro::Services::OutboundPaymentsService do
 
               'amount' => 'amount-input',
               'created_at' => 'created_at-input',
+              'currency' => 'currency-input',
               'description' => 'description-input',
               'execution_date' => 'execution_date-input',
               'id' => 'id-input',
