@@ -23,8 +23,8 @@ module GoCardlessPro
     # refining our API to ensure it meets your needs and provides the best
     # experience.</p>
     class OutboundPayment
-      attr_reader :amount, :created_at, :description, :execution_date, :id, :is_withdrawal, :metadata, :reference,
-                  :scheme, :status, :verifications
+      attr_reader :amount, :created_at, :currency, :description, :execution_date, :id, :is_withdrawal, :metadata,
+                  :reference, :scheme, :status, :verifications
 
       # Initialize a outbound_payment resource instance
       # @param object [Hash] an object returned from the API
@@ -33,6 +33,7 @@ module GoCardlessPro
 
         @amount = object['amount']
         @created_at = object['created_at']
+        @currency = object['currency']
         @description = object['description']
         @execution_date = object['execution_date']
         @id = object['id']
