@@ -24,7 +24,7 @@ describe GoCardlessPro::Services::BillingRequestWithActionsService do
         stub_request(:post, %r{.*api.gocardless.com/billing_requests/create_with_actions})
           .with(
             body: {
-              'billing_requests' => {
+              'billing_request_with_actions' => {
 
                 'bank_authorisations' => 'bank_authorisations-input',
                 'billing_requests' => 'billing_requests-input'
@@ -33,7 +33,7 @@ describe GoCardlessPro::Services::BillingRequestWithActionsService do
           )
           .to_return(
             body: {
-              'billing_requests' =>
+              'billing_request_with_actions' =>
 
                 {
 

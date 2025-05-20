@@ -45,7 +45,7 @@ module GoCardlessPro
 
       # return the key which API responses will envelope data under
       def envelope_key
-        'billing_requests'
+        'billing_request_with_actions'
       end
     end
   end
