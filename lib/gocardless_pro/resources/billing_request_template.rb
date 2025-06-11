@@ -26,8 +26,8 @@ module GoCardlessPro
     # for single-use and is designed to cater to the unique needs of individual
     # customers.
     class BillingRequestTemplate
-      attr_reader :authorisation_url, :created_at, :id, :mandate_request_currency, :mandate_request_description,
-                  :mandate_request_metadata, :mandate_request_scheme, :mandate_request_verify, :metadata, :name, :payment_request_amount, :payment_request_currency, :payment_request_description, :payment_request_metadata, :payment_request_scheme, :redirect_uri, :updated_at
+      attr_reader :authorisation_url, :created_at, :id, :mandate_request_constraints, :mandate_request_currency,
+                  :mandate_request_description, :mandate_request_metadata, :mandate_request_scheme, :mandate_request_verify, :metadata, :name, :payment_request_amount, :payment_request_currency, :payment_request_description, :payment_request_metadata, :payment_request_scheme, :redirect_uri, :updated_at
 
       # Initialize a billing_request_template resource instance
       # @param object [Hash] an object returned from the API
@@ -37,6 +37,7 @@ module GoCardlessPro
         @authorisation_url = object['authorisation_url']
         @created_at = object['created_at']
         @id = object['id']
+        @mandate_request_constraints = object['mandate_request_constraints']
         @mandate_request_currency = object['mandate_request_currency']
         @mandate_request_description = object['mandate_request_description']
         @mandate_request_metadata = object['mandate_request_metadata']
