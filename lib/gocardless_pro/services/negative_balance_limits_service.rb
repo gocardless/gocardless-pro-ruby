@@ -39,27 +39,6 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Creates a new negative balance limit, which replaces the existing limit (if
-      # present) for that currency and creditor combination.
-      #
-      # Example URL: /negative_balance_limits
-      # @param options [Hash] parameters as a hash, under a params key.
-      def create(options = {})
-        path = '/negative_balance_limits'
-
-        params = options.delete(:params) || {}
-        options[:params] = {}
-        options[:params][envelope_key] = params
-
-        options[:retry_failures] = true
-
-        response = make_request(:post, path, options)
-
-        return if response.body.nil?
-
-        Resources::NegativeBalanceLimit.new(unenvelope_body(response.body), response)
-      end
-
       private
 
       # Unenvelope the response of the body using the service's `envelope_key`
