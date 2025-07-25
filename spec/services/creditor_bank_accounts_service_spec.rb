@@ -741,4 +741,88 @@ describe GoCardlessPro::Services::CreditorBankAccountsService do
       end
     end
   end
+
+  describe '#validate' do
+    subject(:post_response) { client.creditor_bank_accounts.validate }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /creditor_bank_accounts/validate
+      stub_url = '/creditor_bank_accounts/validate'.gsub(':identity', resource_id)
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'creditor_bank_accounts' => {
+
+            'account_holder_name' => 'account_holder_name-input',
+            'account_number_ending' => 'account_number_ending-input',
+            'account_type' => 'account_type-input',
+            'bank_name' => 'bank_name-input',
+            'country_code' => 'country_code-input',
+            'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
+            'enabled' => 'enabled-input',
+            'id' => 'id-input',
+            'links' => 'links-input',
+            'metadata' => 'metadata-input',
+            'verification_status' => 'verification_status-input'
+          }
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(post_response).to be_a(GoCardlessPro::Resources::CreditorBankAccount)
+
+      expect(stub).to have_been_requested
+    end
+
+    describe 'retry behaviour' do
+      it "doesn't retry errors" do
+        stub_url = '/creditor_bank_accounts/validate'.gsub(':identity', resource_id)
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+               .to_timeout
+
+        expect { post_response }.to raise_error(Faraday::ConnectionFailed)
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when the request needs a body and custom header' do
+      subject(:post_response) { client.creditor_bank_accounts.validate(body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /creditor_bank_accounts/validate
+        stub_url = '/creditor_bank_accounts/validate'.gsub(':identity', resource_id)
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
+          .with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'creditor_bank_accounts' => {
+
+                'account_holder_name' => 'account_holder_name-input',
+                'account_number_ending' => 'account_number_ending-input',
+                'account_type' => 'account_type-input',
+                'bank_name' => 'bank_name-input',
+                'country_code' => 'country_code-input',
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'enabled' => 'enabled-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'verification_status' => 'verification_status-input'
+              }
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
 end

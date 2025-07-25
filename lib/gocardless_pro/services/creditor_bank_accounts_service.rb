@@ -139,6 +139,41 @@ module GoCardlessPro
         Resources::CreditorBankAccount.new(unenvelope_body(response.body), response)
       end
 
+      # Validate bank details without creating a creditor bank account
+      # Example URL: /creditor_bank_accounts/validate
+      # @param options [Hash] parameters as a hash, under a params key.
+      def validate(options = {})
+        path = '/creditor_bank_accounts/validate'
+
+        params = options.delete(:params) || {}
+        options[:params] = {}
+        options[:params]['data'] = params
+
+        options[:retry_failures] = false
+
+        begin
+          response = make_request(:post, path, options)
+
+          # Response doesn't raise any errors until #body is called
+          response.tap(&:body)
+        rescue InvalidStateError => e
+          if e.idempotent_creation_conflict?
+            case @api_service.on_idempotency_conflict
+            when :raise
+              raise IdempotencyConflict, e.error
+            when :fetch
+              return get(e.conflicting_resource_id)
+            end
+          end
+
+          raise e
+        end
+
+        return if response.body.nil?
+
+        Resources::CreditorBankAccount.new(unenvelope_body(response.body), response)
+      end
+
       private
 
       # Unenvelope the response of the body using the service's `envelope_key`
