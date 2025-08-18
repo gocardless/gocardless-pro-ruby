@@ -19,7 +19,7 @@ module GoCardlessPro
     # the state of a payment changes.
     class Payment
       attr_reader :amount, :amount_refunded, :charge_date, :created_at, :currency, :description, :faster_ach, :fx, :id,
-                  :metadata, :reference, :retry_if_possible, :status
+                  :metadata, :reference, :retry_if_possible, :scheme, :status
 
       # Initialize a payment resource instance
       # @param object [Hash] an object returned from the API
@@ -39,6 +39,7 @@ module GoCardlessPro
         @metadata = object['metadata']
         @reference = object['reference']
         @retry_if_possible = object['retry_if_possible']
+        @scheme = object['scheme']
         @status = object['status']
         @response = response
       end
