@@ -72,9 +72,6 @@ require_relative 'gocardless_pro/services/creditors_service'
 require_relative 'gocardless_pro/resources/creditor_bank_account'
 require_relative 'gocardless_pro/services/creditor_bank_accounts_service'
 
-require_relative 'gocardless_pro/resources/creditor_bank_account_validate'
-require_relative 'gocardless_pro/services/creditor_bank_account_validates_service'
-
 require_relative 'gocardless_pro/resources/currency_exchange_rate'
 require_relative 'gocardless_pro/services/currency_exchange_rates_service'
 
