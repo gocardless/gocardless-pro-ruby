@@ -88,6 +88,10 @@ module GoCardlessPro
           @links['mandate']
         end
 
+        def mandate_request
+          @links['mandate_request']
+        end
+
         def mandate_request_mandate
           @links['mandate_request_mandate']
         end
