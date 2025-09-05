@@ -25,7 +25,8 @@ describe GoCardlessPro::Services::EventsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'resource_metadata' => 'resource_metadata-input',
-            'resource_type' => 'resource_type-input'
+            'resource_type' => 'resource_type-input',
+            'source' => 'source-input'
           }],
           meta: {
             cursors: {
@@ -61,6 +62,8 @@ describe GoCardlessPro::Services::EventsService do
         expect(get_list_response.records.first.resource_metadata).to eq('resource_metadata-input')
 
         expect(get_list_response.records.first.resource_type).to eq('resource_type-input')
+
+        expect(get_list_response.records.first.source).to eq('source-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -109,7 +112,8 @@ describe GoCardlessPro::Services::EventsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'resource_metadata' => 'resource_metadata-input',
-            'resource_type' => 'resource_type-input'
+            'resource_type' => 'resource_type-input',
+            'source' => 'source-input'
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -133,7 +137,8 @@ describe GoCardlessPro::Services::EventsService do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'resource_metadata' => 'resource_metadata-input',
-            'resource_type' => 'resource_type-input'
+            'resource_type' => 'resource_type-input',
+            'source' => 'source-input'
           }],
           meta: {
             limit: 2,
@@ -166,7 +171,8 @@ describe GoCardlessPro::Services::EventsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'resource_metadata' => 'resource_metadata-input',
-              'resource_type' => 'resource_type-input'
+              'resource_type' => 'resource_type-input',
+              'source' => 'source-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -190,7 +196,8 @@ describe GoCardlessPro::Services::EventsService do
                                      'links' => 'links-input',
                                      'metadata' => 'metadata-input',
                                      'resource_metadata' => 'resource_metadata-input',
-                                     'resource_type' => 'resource_type-input'
+                                     'resource_type' => 'resource_type-input',
+                                     'source' => 'source-input'
                                    }],
                                    meta: {
                                      limit: 2,
@@ -219,7 +226,8 @@ describe GoCardlessPro::Services::EventsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'resource_metadata' => 'resource_metadata-input',
-              'resource_type' => 'resource_type-input'
+              'resource_type' => 'resource_type-input',
+              'source' => 'source-input'
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -246,7 +254,8 @@ describe GoCardlessPro::Services::EventsService do
                                      'links' => 'links-input',
                                      'metadata' => 'metadata-input',
                                      'resource_metadata' => 'resource_metadata-input',
-                                     'resource_type' => 'resource_type-input'
+                                     'resource_type' => 'resource_type-input',
+                                     'source' => 'source-input'
                                    }],
                                    meta: {
                                      limit: 2,
@@ -286,7 +295,8 @@ describe GoCardlessPro::Services::EventsService do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'resource_metadata' => 'resource_metadata-input',
-                'resource_type' => 'resource_type-input'
+                'resource_type' => 'resource_type-input',
+                'source' => 'source-input'
               }
             }.to_json,
             headers: response_headers
@@ -320,7 +330,8 @@ describe GoCardlessPro::Services::EventsService do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'resource_metadata' => 'resource_metadata-input',
-              'resource_type' => 'resource_type-input'
+              'resource_type' => 'resource_type-input',
+              'source' => 'source-input'
             }
           }.to_json,
           headers: response_headers

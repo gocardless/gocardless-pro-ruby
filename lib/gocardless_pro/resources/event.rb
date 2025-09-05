@@ -18,7 +18,7 @@ module GoCardlessPro
     # [here](#event-actions) for a complete list of event types.
     class Event
       attr_reader :action, :created_at, :customer_notifications, :details, :id, :metadata, :resource_metadata,
-                  :resource_type
+                  :resource_type, :source
 
       # Initialize a event resource instance
       # @param object [Hash] an object returned from the API
@@ -34,6 +34,7 @@ module GoCardlessPro
         @metadata = object['metadata']
         @resource_metadata = object['resource_metadata']
         @resource_type = object['resource_type']
+        @source = object['source']
         @response = response
       end
 
