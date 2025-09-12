@@ -12,7 +12,11 @@ module GoCardlessPro
 
     # Retrieve bank account details in JWE encrypted format
     class BankAccountDetail
-      attr_reader :ciphertext, :encrypted_key, :iv, :protected, :tag
+      attr_reader :ciphertext
+      attr_reader :encrypted_key
+      attr_reader :iv
+      attr_reader :protected
+      attr_reader :tag
 
       # Initialize a bank_account_detail resource instance
       # @param object [Hash] an object returned from the API

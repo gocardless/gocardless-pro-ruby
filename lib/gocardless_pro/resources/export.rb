@@ -12,7 +12,11 @@ module GoCardlessPro
 
     # File-based exports of data
     class Export
-      attr_reader :created_at, :currency, :download_url, :export_type, :id
+      attr_reader :created_at
+      attr_reader :currency
+      attr_reader :download_url
+      attr_reader :export_type
+      attr_reader :id
 
       # Initialize a export resource instance
       # @param object [Hash] an object returned from the API

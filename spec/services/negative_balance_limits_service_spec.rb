@@ -21,14 +21,14 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'id' => 'id-input',
-            'links' => 'links-input'
+            'links' => 'links-input',
           }],
           meta: {
             cursors: {
               before: nil,
-              after: 'ABC123'
-            }
-          }
+              after: 'ABC123',
+            },
+          },
         }.to_json
       end
 
@@ -64,19 +64,19 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/negative_balance_limits})
-                 .to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/negative_balance_limits}).
+                 to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/negative_balance_limits})
-                 .to_return({ status: 502,
-                              headers: { 'Content-Type' => 'text/html' },
-                              body: '<html><body>Response from Cloudflare</body></html>' })
-                 .then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/negative_balance_limits}).
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -95,12 +95,12 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'id' => 'id-input',
-            'links' => 'links-input'
+            'links' => 'links-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -115,12 +115,12 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'id' => 'id-input',
-            'links' => 'links-input'
+            'links' => 'links-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )
@@ -144,19 +144,19 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'id' => 'id-input',
-              'links' => 'links-input'
+              'links' => 'links-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1
-            }
+              limit: 1,
+            },
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/negative_balance_limits\?after=AB345})
-                               .to_timeout.then
-                               .to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/negative_balance_limits\?after=AB345}).
+                               to_timeout.then.
+                               to_return(
                                  body: {
                                    'negative_balance_limits' => [{
 
@@ -164,12 +164,12 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
                                      'created_at' => 'created_at-input',
                                      'currency' => 'currency-input',
                                      'id' => 'id-input',
-                                     'links' => 'links-input'
+                                     'links' => 'links-input',
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {}
-                                   }
+                                     cursors: {},
+                                   },
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -189,18 +189,18 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'id' => 'id-input',
-              'links' => 'links-input'
+              'links' => 'links-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1
-            }
+              limit: 1,
+            },
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/negative_balance_limits\?after=AB345})
-                               .to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/negative_balance_limits\?after=AB345}).
+                               to_return(
                                  status: 502,
                                  body: '<html><body>Response from Cloudflare</body></html>',
                                  headers: { 'Content-Type' => 'text/html' }
@@ -212,12 +212,12 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
                                      'created_at' => 'created_at-input',
                                      'currency' => 'currency-input',
                                      'id' => 'id-input',
-                                     'links' => 'links-input'
+                                     'links' => 'links-input',
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {}
-                                   }
+                                     cursors: {},
+                                   },
                                  }.to_json,
                                  headers: response_headers
                                )

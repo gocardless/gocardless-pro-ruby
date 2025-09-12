@@ -22,14 +22,14 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'id' => 'id-input',
-              'links' => 'links-input'
+              'links' => 'links-input',
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123'
-              }
-            }
+                after: 'ABC123',
+              },
+            },
           }.to_json,
           headers: response_headers
         )
@@ -68,12 +68,12 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'id' => 'id-input',
-            'links' => 'links-input'
+            'links' => 'links-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -88,12 +88,12 @@ describe GoCardlessPro::Resources::NegativeBalanceLimit do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'id' => 'id-input',
-            'links' => 'links-input'
+            'links' => 'links-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )

@@ -22,8 +22,19 @@ module GoCardlessPro
     # `subscription_request` and `instalment_schedule_request` are only
     # supported for ACH and PAD schemes.</p>
     class BillingRequest
-      attr_reader :actions, :created_at, :fallback_enabled, :fallback_occurred, :id, :instalment_schedule_request,
-                  :mandate_request, :metadata, :payment_request, :purpose_code, :resources, :status, :subscription_request
+      attr_reader :actions
+      attr_reader :created_at
+      attr_reader :fallback_enabled
+      attr_reader :fallback_occurred
+      attr_reader :id
+      attr_reader :instalment_schedule_request
+      attr_reader :mandate_request
+      attr_reader :metadata
+      attr_reader :payment_request
+      attr_reader :purpose_code
+      attr_reader :resources
+      attr_reader :status
+      attr_reader :subscription_request
 
       # Initialize a billing_request resource instance
       # @param object [Hash] an object returned from the API

@@ -18,24 +18,24 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
           'created_at' => 'created_at-input',
           'links' => 'links-input',
           'processing_errors' => 'processing_errors-input',
-          'record_identifier' => 'record_identifier-input'
+          'record_identifier' => 'record_identifier-input',
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/mandate_import_entries})
-          .with(
+        stub_request(:post, %r{.*api.gocardless.com/mandate_import_entries}).
+          with(
             body: {
               'mandate_import_entries' => {
 
                 'created_at' => 'created_at-input',
                 'links' => 'links-input',
                 'processing_errors' => 'processing_errors-input',
-                'record_identifier' => 'record_identifier-input'
-              }
+                'record_identifier' => 'record_identifier-input',
+              },
             }
-          )
-          .to_return(
+          ).
+          to_return(
             body: {
               'mandate_import_entries' =>
 
@@ -44,8 +44,8 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
                   'created_at' => 'created_at-input',
                   'links' => 'links-input',
                   'processing_errors' => 'processing_errors-input',
-                  'record_identifier' => 'record_identifier-input'
-                }
+                  'record_identifier' => 'record_identifier-input',
+                },
 
             }.to_json,
             headers: response_headers
@@ -60,19 +60,19 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/mandate_import_entries})
-                 .to_timeout.then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:post, %r{.*api.gocardless.com/mandate_import_entries}).
+                 to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/mandate_import_entries})
-                 .to_return({ status: 502,
-                              headers: { 'Content-Type' => 'text/html' },
-                              body: '<html><body>Response from Cloudflare</body></html>' })
-                 .then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:post, %r{.*api.gocardless.com/mandate_import_entries}).
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -90,9 +90,9 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' }
-              ]
-            }
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 422
@@ -113,7 +113,7 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
           'created_at' => 'created_at-input',
           'links' => 'links-input',
           'processing_errors' => 'processing_errors-input',
-          'record_identifier' => 'record_identifier-input'
+          'record_identifier' => 'record_identifier-input',
         }
       end
 
@@ -128,11 +128,11 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id
-                  }
-                }
-              ]
-            }
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 409
@@ -157,14 +157,14 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
             'created_at' => 'created_at-input',
             'links' => 'links-input',
             'processing_errors' => 'processing_errors-input',
-            'record_identifier' => 'record_identifier-input'
+            'record_identifier' => 'record_identifier-input',
           }],
           meta: {
             cursors: {
               before: nil,
-              after: 'ABC123'
-            }
-          }
+              after: 'ABC123',
+            },
+          },
         }.to_json
       end
 
@@ -198,19 +198,19 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/mandate_import_entries})
-                 .to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/mandate_import_entries}).
+                 to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/mandate_import_entries})
-                 .to_return({ status: 502,
-                              headers: { 'Content-Type' => 'text/html' },
-                              body: '<html><body>Response from Cloudflare</body></html>' })
-                 .then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/mandate_import_entries}).
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -228,12 +228,12 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
             'created_at' => 'created_at-input',
             'links' => 'links-input',
             'processing_errors' => 'processing_errors-input',
-            'record_identifier' => 'record_identifier-input'
+            'record_identifier' => 'record_identifier-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -247,12 +247,12 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
             'created_at' => 'created_at-input',
             'links' => 'links-input',
             'processing_errors' => 'processing_errors-input',
-            'record_identifier' => 'record_identifier-input'
+            'record_identifier' => 'record_identifier-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )
@@ -275,31 +275,31 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
               'created_at' => 'created_at-input',
               'links' => 'links-input',
               'processing_errors' => 'processing_errors-input',
-              'record_identifier' => 'record_identifier-input'
+              'record_identifier' => 'record_identifier-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1
-            }
+              limit: 1,
+            },
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/mandate_import_entries\?after=AB345})
-                               .to_timeout.then
-                               .to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/mandate_import_entries\?after=AB345}).
+                               to_timeout.then.
+                               to_return(
                                  body: {
                                    'mandate_import_entries' => [{
 
                                      'created_at' => 'created_at-input',
                                      'links' => 'links-input',
                                      'processing_errors' => 'processing_errors-input',
-                                     'record_identifier' => 'record_identifier-input'
+                                     'record_identifier' => 'record_identifier-input',
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {}
-                                   }
+                                     cursors: {},
+                                   },
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -318,18 +318,18 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
               'created_at' => 'created_at-input',
               'links' => 'links-input',
               'processing_errors' => 'processing_errors-input',
-              'record_identifier' => 'record_identifier-input'
+              'record_identifier' => 'record_identifier-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1
-            }
+              limit: 1,
+            },
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/mandate_import_entries\?after=AB345})
-                               .to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/mandate_import_entries\?after=AB345}).
+                               to_return(
                                  status: 502,
                                  body: '<html><body>Response from Cloudflare</body></html>',
                                  headers: { 'Content-Type' => 'text/html' }
@@ -340,12 +340,12 @@ describe GoCardlessPro::Services::MandateImportEntriesService do
                                      'created_at' => 'created_at-input',
                                      'links' => 'links-input',
                                      'processing_errors' => 'processing_errors-input',
-                                     'record_identifier' => 'record_identifier-input'
+                                     'record_identifier' => 'record_identifier-input',
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {}
-                                   }
+                                     cursors: {},
+                                   },
                                  }.to_json,
                                  headers: response_headers
                                )

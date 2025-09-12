@@ -53,7 +53,10 @@ module GoCardlessPro
     # href="mailto:help@gocardless.com">get in touch</a> if you would like to
     # use this API.</p>
     class MandateImport
-      attr_reader :created_at, :id, :scheme, :status
+      attr_reader :created_at
+      attr_reader :id
+      attr_reader :scheme
+      attr_reader :status
 
       # Initialize a mandate_import resource instance
       # @param object [Hash] an object returned from the API

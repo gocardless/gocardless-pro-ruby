@@ -17,8 +17,15 @@ module GoCardlessPro
     # corresponding event getting included in API responses. See
     # [here](#event-actions) for a complete list of event types.
     class Event
-      attr_reader :action, :created_at, :customer_notifications, :details, :id, :metadata, :resource_metadata,
-                  :resource_type, :source
+      attr_reader :action
+      attr_reader :created_at
+      attr_reader :customer_notifications
+      attr_reader :details
+      attr_reader :id
+      attr_reader :metadata
+      attr_reader :resource_metadata
+      attr_reader :resource_type
+      attr_reader :source
 
       # Initialize a event resource instance
       # @param object [Hash] an object returned from the API

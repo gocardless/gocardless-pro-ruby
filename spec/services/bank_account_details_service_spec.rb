@@ -17,9 +17,9 @@ describe GoCardlessPro::Services::BankAccountDetailsService do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/bank_account_details/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
               'bank_account_details' => {
 
@@ -27,8 +27,8 @@ describe GoCardlessPro::Services::BankAccountDetailsService do
                 'encrypted_key' => 'encrypted_key-input',
                 'iv' => 'iv-input',
                 'protected' => 'protected-input',
-                'tag' => 'tag-input'
-              }
+                'tag' => 'tag-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -36,7 +36,7 @@ describe GoCardlessPro::Services::BankAccountDetailsService do
 
       subject(:get_response) do
         client.bank_account_details.get(id, headers: {
-                                          'Foo' => 'Bar'
+                                          'Foo' => 'Bar',
                                         })
       end
 
@@ -57,8 +57,8 @@ describe GoCardlessPro::Services::BankAccountDetailsService do
               'encrypted_key' => 'encrypted_key-input',
               'iv' => 'iv-input',
               'protected' => 'protected-input',
-              'tag' => 'tag-input'
-            }
+              'tag' => 'tag-input',
+            },
           }.to_json,
           headers: response_headers
         )
@@ -97,8 +97,8 @@ describe GoCardlessPro::Services::BankAccountDetailsService do
       it 'retries timeouts' do
         stub_url = '/bank_account_details/:identity'.gsub(':identity', id)
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-               .to_timeout.then.to_return({ status: 200, headers: response_headers })
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+               to_timeout.then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -107,11 +107,11 @@ describe GoCardlessPro::Services::BankAccountDetailsService do
       it 'retries 5XX errors, other than 500s' do
         stub_url = '/bank_account_details/:identity'.gsub(':identity', id)
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-               .to_return({ status: 502,
-                            headers: { 'Content-Type' => 'text/html' },
-                            body: '<html><body>Response from Cloudflare</body></html>' })
-               .then.to_return({ status: 200, headers: response_headers })
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+               to_return({ status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>' }).
+               then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -126,20 +126,20 @@ describe GoCardlessPro::Services::BankAccountDetailsService do
             'documentation_url' => 'https://developer.gocardless.com/#gocardless',
             'errors' => [{
               'message' => 'Internal server error',
-              'reason' => 'internal_server_error'
+              'reason' => 'internal_server_error',
             }],
             'type' => 'gocardless',
             'code' => 500,
             'request_id' => 'dummy_request_id',
-            'id' => 'dummy_exception_id'
-          }
+            'id' => 'dummy_exception_id',
+          },
         }
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-               .to_return({ status: 500,
-                            headers: response_headers,
-                            body: gocardless_error.to_json })
-               .then.to_return({ status: 200, headers: response_headers })
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+               to_return({ status: 500,
+                           headers: response_headers,
+                           body: gocardless_error.to_json }).
+               then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice

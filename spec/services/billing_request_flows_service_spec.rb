@@ -33,13 +33,13 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
           'session_token' => 'session_token-input',
           'show_redirect_buttons' => 'show_redirect_buttons-input',
           'show_success_redirect_button' => 'show_success_redirect_button-input',
-          'skip_success_screen' => 'skip_success_screen-input'
+          'skip_success_screen' => 'skip_success_screen-input',
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/billing_request_flows})
-          .with(
+        stub_request(:post, %r{.*api.gocardless.com/billing_request_flows}).
+          with(
             body: {
               'billing_request_flows' => {
 
@@ -61,11 +61,11 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
                 'session_token' => 'session_token-input',
                 'show_redirect_buttons' => 'show_redirect_buttons-input',
                 'show_success_redirect_button' => 'show_success_redirect_button-input',
-                'skip_success_screen' => 'skip_success_screen-input'
-              }
+                'skip_success_screen' => 'skip_success_screen-input',
+              },
             }
-          )
-          .to_return(
+          ).
+          to_return(
             body: {
               'billing_request_flows' =>
 
@@ -89,8 +89,8 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
                   'session_token' => 'session_token-input',
                   'show_redirect_buttons' => 'show_redirect_buttons-input',
                   'show_success_redirect_button' => 'show_success_redirect_button-input',
-                  'skip_success_screen' => 'skip_success_screen-input'
-                }
+                  'skip_success_screen' => 'skip_success_screen-input',
+                },
 
             }.to_json,
             headers: response_headers
@@ -105,19 +105,19 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/billing_request_flows})
-                 .to_timeout.then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:post, %r{.*api.gocardless.com/billing_request_flows}).
+                 to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/billing_request_flows})
-                 .to_return({ status: 502,
-                              headers: { 'Content-Type' => 'text/html' },
-                              body: '<html><body>Response from Cloudflare</body></html>' })
-                 .then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:post, %r{.*api.gocardless.com/billing_request_flows}).
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -135,9 +135,9 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' }
-              ]
-            }
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 422
@@ -173,7 +173,7 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
           'session_token' => 'session_token-input',
           'show_redirect_buttons' => 'show_redirect_buttons-input',
           'show_success_redirect_button' => 'show_success_redirect_button-input',
-          'skip_success_screen' => 'skip_success_screen-input'
+          'skip_success_screen' => 'skip_success_screen-input',
         }
       end
 
@@ -188,11 +188,11 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id
-                  }
-                }
-              ]
-            }
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 409
@@ -236,8 +236,8 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
             'session_token' => 'session_token-input',
             'show_redirect_buttons' => 'show_redirect_buttons-input',
             'show_success_redirect_button' => 'show_success_redirect_button-input',
-            'skip_success_screen' => 'skip_success_screen-input'
-          }
+            'skip_success_screen' => 'skip_success_screen-input',
+          },
         }.to_json,
 
         headers: response_headers
@@ -253,8 +253,8 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
     describe 'retry behaviour' do
       it "doesn't retry errors" do
         stub_url = '/billing_request_flows/:identity/actions/initialise'.gsub(':identity', resource_id)
-        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/)
-               .to_timeout
+        stub = stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+               to_timeout
 
         expect { post_response }.to raise_error(Faraday::ConnectionFailed)
         expect(stub).to have_been_requested
@@ -271,8 +271,8 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
       let!(:stub) do
         # /billing_request_flows/%v/actions/initialise
         stub_url = '/billing_request_flows/:identity/actions/initialise'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
-          .with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -297,8 +297,8 @@ describe GoCardlessPro::Services::BillingRequestFlowsService do
                 'session_token' => 'session_token-input',
                 'show_redirect_buttons' => 'show_redirect_buttons-input',
                 'show_success_redirect_button' => 'show_success_redirect_button-input',
-                'skip_success_screen' => 'skip_success_screen-input'
-              }
+                'skip_success_screen' => 'skip_success_screen-input',
+              },
             }.to_json,
             headers: response_headers
           )

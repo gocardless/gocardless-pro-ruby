@@ -26,14 +26,14 @@ describe GoCardlessPro::Services::EventsService do
             'metadata' => 'metadata-input',
             'resource_metadata' => 'resource_metadata-input',
             'resource_type' => 'resource_type-input',
-            'source' => 'source-input'
+            'source' => 'source-input',
           }],
           meta: {
             cursors: {
               before: nil,
-              after: 'ABC123'
-            }
-          }
+              after: 'ABC123',
+            },
+          },
         }.to_json
       end
 
@@ -77,19 +77,19 @@ describe GoCardlessPro::Services::EventsService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/events})
-                 .to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/events}).
+                 to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/events})
-                 .to_return({ status: 502,
-                              headers: { 'Content-Type' => 'text/html' },
-                              body: '<html><body>Response from Cloudflare</body></html>' })
-                 .then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/events}).
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -113,12 +113,12 @@ describe GoCardlessPro::Services::EventsService do
             'metadata' => 'metadata-input',
             'resource_metadata' => 'resource_metadata-input',
             'resource_type' => 'resource_type-input',
-            'source' => 'source-input'
+            'source' => 'source-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -138,12 +138,12 @@ describe GoCardlessPro::Services::EventsService do
             'metadata' => 'metadata-input',
             'resource_metadata' => 'resource_metadata-input',
             'resource_type' => 'resource_type-input',
-            'source' => 'source-input'
+            'source' => 'source-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )
@@ -172,19 +172,19 @@ describe GoCardlessPro::Services::EventsService do
               'metadata' => 'metadata-input',
               'resource_metadata' => 'resource_metadata-input',
               'resource_type' => 'resource_type-input',
-              'source' => 'source-input'
+              'source' => 'source-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1
-            }
+              limit: 1,
+            },
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/events\?after=AB345})
-                               .to_timeout.then
-                               .to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/events\?after=AB345}).
+                               to_timeout.then.
+                               to_return(
                                  body: {
                                    'events' => [{
 
@@ -197,12 +197,12 @@ describe GoCardlessPro::Services::EventsService do
                                      'metadata' => 'metadata-input',
                                      'resource_metadata' => 'resource_metadata-input',
                                      'resource_type' => 'resource_type-input',
-                                     'source' => 'source-input'
+                                     'source' => 'source-input',
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {}
-                                   }
+                                     cursors: {},
+                                   },
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -227,18 +227,18 @@ describe GoCardlessPro::Services::EventsService do
               'metadata' => 'metadata-input',
               'resource_metadata' => 'resource_metadata-input',
               'resource_type' => 'resource_type-input',
-              'source' => 'source-input'
+              'source' => 'source-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1
-            }
+              limit: 1,
+            },
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/events\?after=AB345})
-                               .to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/events\?after=AB345}).
+                               to_return(
                                  status: 502,
                                  body: '<html><body>Response from Cloudflare</body></html>',
                                  headers: { 'Content-Type' => 'text/html' }
@@ -255,12 +255,12 @@ describe GoCardlessPro::Services::EventsService do
                                      'metadata' => 'metadata-input',
                                      'resource_metadata' => 'resource_metadata-input',
                                      'resource_type' => 'resource_type-input',
-                                     'source' => 'source-input'
+                                     'source' => 'source-input',
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {}
-                                   }
+                                     cursors: {},
+                                   },
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -281,9 +281,9 @@ describe GoCardlessPro::Services::EventsService do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/events/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
               'events' => {
 
@@ -296,8 +296,8 @@ describe GoCardlessPro::Services::EventsService do
                 'metadata' => 'metadata-input',
                 'resource_metadata' => 'resource_metadata-input',
                 'resource_type' => 'resource_type-input',
-                'source' => 'source-input'
-              }
+                'source' => 'source-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -305,7 +305,7 @@ describe GoCardlessPro::Services::EventsService do
 
       subject(:get_response) do
         client.events.get(id, headers: {
-                            'Foo' => 'Bar'
+                            'Foo' => 'Bar',
                           })
       end
 
@@ -331,8 +331,8 @@ describe GoCardlessPro::Services::EventsService do
               'metadata' => 'metadata-input',
               'resource_metadata' => 'resource_metadata-input',
               'resource_type' => 'resource_type-input',
-              'source' => 'source-input'
-            }
+              'source' => 'source-input',
+            },
           }.to_json,
           headers: response_headers
         )
@@ -371,8 +371,8 @@ describe GoCardlessPro::Services::EventsService do
       it 'retries timeouts' do
         stub_url = '/events/:identity'.gsub(':identity', id)
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-               .to_timeout.then.to_return({ status: 200, headers: response_headers })
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+               to_timeout.then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -381,11 +381,11 @@ describe GoCardlessPro::Services::EventsService do
       it 'retries 5XX errors, other than 500s' do
         stub_url = '/events/:identity'.gsub(':identity', id)
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-               .to_return({ status: 502,
-                            headers: { 'Content-Type' => 'text/html' },
-                            body: '<html><body>Response from Cloudflare</body></html>' })
-               .then.to_return({ status: 200, headers: response_headers })
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+               to_return({ status: 502,
+                           headers: { 'Content-Type' => 'text/html' },
+                           body: '<html><body>Response from Cloudflare</body></html>' }).
+               then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice
@@ -400,20 +400,20 @@ describe GoCardlessPro::Services::EventsService do
             'documentation_url' => 'https://developer.gocardless.com/#gocardless',
             'errors' => [{
               'message' => 'Internal server error',
-              'reason' => 'internal_server_error'
+              'reason' => 'internal_server_error',
             }],
             'type' => 'gocardless',
             'code' => 500,
             'request_id' => 'dummy_request_id',
-            'id' => 'dummy_exception_id'
-          }
+            'id' => 'dummy_exception_id',
+          },
         }
 
-        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-               .to_return({ status: 500,
-                            headers: response_headers,
-                            body: gocardless_error.to_json })
-               .then.to_return({ status: 200, headers: response_headers })
+        stub = stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+               to_return({ status: 500,
+                           headers: response_headers,
+                           body: gocardless_error.to_json }).
+               then.to_return({ status: 200, headers: response_headers })
 
         get_response
         expect(stub).to have_been_requested.twice

@@ -18,7 +18,10 @@ module GoCardlessPro
     # likely won’t match what’s shown in the dashboard as the dashboard balances
     # are updated much less frequently (once per day).
     class Balance
-      attr_reader :amount, :balance_type, :currency, :last_updated_at
+      attr_reader :amount
+      attr_reader :balance_type
+      attr_reader :currency
+      attr_reader :last_updated_at
 
       # Initialize a balance resource instance
       # @param object [Hash] an object returned from the API

@@ -17,9 +17,9 @@ describe GoCardlessPro::Resources::BankAccountDetail do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/bank_account_details/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
               'bank_account_details' => {
 
@@ -27,8 +27,8 @@ describe GoCardlessPro::Resources::BankAccountDetail do
                 'encrypted_key' => 'encrypted_key-input',
                 'iv' => 'iv-input',
                 'protected' => 'protected-input',
-                'tag' => 'tag-input'
-              }
+                'tag' => 'tag-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -36,7 +36,7 @@ describe GoCardlessPro::Resources::BankAccountDetail do
 
       subject(:get_response) do
         client.bank_account_details.get(id, headers: {
-                                          'Foo' => 'Bar'
+                                          'Foo' => 'Bar',
                                         })
       end
 
@@ -57,8 +57,8 @@ describe GoCardlessPro::Resources::BankAccountDetail do
               'encrypted_key' => 'encrypted_key-input',
               'iv' => 'iv-input',
               'protected' => 'protected-input',
-              'tag' => 'tag-input'
-            }
+              'tag' => 'tag-input',
+            },
           }.to_json,
           headers: response_headers
         )
