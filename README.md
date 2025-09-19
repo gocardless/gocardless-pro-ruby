@@ -260,18 +260,6 @@ OAuth simply provides a means by which you obtain an access token - once you hav
 
 We recommend using the [oauth2](https://github.com/intridea/oauth2) gem to handle the authorisation process and gain a token. For an example of this in action, see our [open-source OAuth demo app](https://github.com/gocardless/oauth-demo/blob/master/app.rb#L46).
 
-## Supporting Ruby < 2.0.0
-The client only supports Ruby >= 2.0.0 out of the box due to our use of
-Enumerable::Lazy for lazy loading of paginated API resources.
-
-If you wish to use this gem with a previous ruby version, you should be able to
-do so with the [backports](https://github.com/marcandre/backports) gem:
-
-1. Add backports to your Gemfile
-   ```gem 'backports'```
-2. Require lazy enumerables
-   ```require 'backports/2.0.0/enumerable/lazy.rb'```
-
 ## Contributing
 
 This client is auto-generated from Crank, a toolchain that we hope to open source soon. For now, issues should be reported on this repository. __Please do not modify the source code yourself, your changes will be overriden!__
