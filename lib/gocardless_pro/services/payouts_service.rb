@@ -40,8 +40,7 @@ module GoCardlessPro
       end
 
       # Retrieves the details of a single payout. For an example of how to reconcile
-      # the transactions in a payout, see [this
-      # guide](#events-reconciling-payouts-with-events).
+      # the transactions in a payout, see [this guide](#webhooks-payouts-with-events).
       # Example URL: /payouts/:identity
       #
       # @param identity       # Unique identifier, beginning with "PO".
