@@ -15,7 +15,7 @@ module GoCardlessPro
     # mandate which has been transferred. Event creation is an asynchronous
     # process, so it can take some time between an action occurring and its
     # corresponding event getting included in API responses. See
-    # [here](#event-actions) for a complete list of event types.
+    # [here](#event-types) for a complete list of event types.
     class Event
       attr_reader :action
       attr_reader :created_at
