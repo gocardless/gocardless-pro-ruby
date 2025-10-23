@@ -97,7 +97,7 @@ module GoCardlessPro
       # Requests created by this template.
       # Example URL: /billing_request_templates/:identity
       #
-      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param identity       # Unique identifier, beginning with "BRT".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/billing_request_templates/:identity', {
