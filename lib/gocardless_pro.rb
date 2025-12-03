@@ -126,6 +126,9 @@ require_relative 'gocardless_pro/services/payer_themes_service'
 require_relative 'gocardless_pro/resources/payment'
 require_relative 'gocardless_pro/services/payments_service'
 
+require_relative 'gocardless_pro/resources/payment_account_transaction'
+require_relative 'gocardless_pro/services/payment_account_transactions_service'
+
 require_relative 'gocardless_pro/resources/payout'
 require_relative 'gocardless_pro/services/payouts_service'
 

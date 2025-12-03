@@ -148,6 +148,11 @@ module GoCardlessPro
       @payments ||= Services::PaymentsService.new(@api_service)
     end
 
+    # Access to the service for payment_account_transaction to make API calls
+    def payment_account_transactions
+      @payment_account_transactions ||= Services::PaymentAccountTransactionsService.new(@api_service)
+    end
+
     # Access to the service for payout to make API calls
     def payouts
       @payouts ||= Services::PayoutsService.new(@api_service)

@@ -15,13 +15,6 @@ module GoCardlessPro
     #
     # GoCardless will notify you via a [webhook](#appendix-webhooks) when the
     # status of the outbound payment [changes](#event-types-outbound-payment).
-    #
-    # <p class="restricted-notice"><strong>Restricted</strong>: Outbound
-    # Payments are currently in Early Access and available only to a limited
-    # list of organisations. If you are interested in using this feature, please
-    # stay tuned for our public launch announcement. We are actively testing and
-    # refining our API to ensure it meets your needs and provides the best
-    # experience.</p>
     class OutboundPayment
       attr_reader :amount
       attr_reader :created_at
