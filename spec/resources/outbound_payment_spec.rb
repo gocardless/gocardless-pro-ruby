@@ -689,4 +689,79 @@ describe GoCardlessPro::Resources::OutboundPayment do
       end
     end
   end
+
+  describe '#stats' do
+    subject(:get_response) { client.outbound_payments.stats }
+
+    let(:resource_id) { 'ABC123' }
+
+    let!(:stub) do
+      # /outbound_payments/stats
+      stub_url = '/outbound_payments/stats'.gsub(':identity', resource_id)
+      stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
+        body: {
+          'outbound_payments' => {
+
+            'amount' => 'amount-input',
+            'created_at' => 'created_at-input',
+            'currency' => 'currency-input',
+            'description' => 'description-input',
+            'execution_date' => 'execution_date-input',
+            'id' => 'id-input',
+            'is_withdrawal' => 'is_withdrawal-input',
+            'links' => 'links-input',
+            'metadata' => 'metadata-input',
+            'reference' => 'reference-input',
+            'scheme' => 'scheme-input',
+            'status' => 'status-input',
+            'verifications' => 'verifications-input',
+          },
+        }.to_json,
+
+        headers: response_headers
+      )
+    end
+
+    it 'wraps the response and calls the right endpoint' do
+      expect(get_response).to be_a(GoCardlessPro::Resources::OutboundPayment)
+
+      expect(stub).to have_been_requested
+    end
+
+    context 'when the request needs a body and custom header' do
+      subject(:get_response) { client.outbound_payments.stats(body, headers) }
+
+      let(:resource_id) { 'ABC123' }
+
+      let!(:stub) do
+        # /outbound_payments/stats
+        stub_url = '/outbound_payments/stats'.gsub(':identity', resource_id)
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(
+            body: { foo: 'bar' },
+            headers: { 'Foo' => 'Bar' }
+          ).to_return(
+            body: {
+              'outbound_payments' => {
+
+                'amount' => 'amount-input',
+                'created_at' => 'created_at-input',
+                'currency' => 'currency-input',
+                'description' => 'description-input',
+                'execution_date' => 'execution_date-input',
+                'id' => 'id-input',
+                'is_withdrawal' => 'is_withdrawal-input',
+                'links' => 'links-input',
+                'metadata' => 'metadata-input',
+                'reference' => 'reference-input',
+                'scheme' => 'scheme-input',
+                'status' => 'status-input',
+                'verifications' => 'verifications-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+    end
+  end
 end

@@ -234,6 +234,21 @@ module GoCardlessPro
         Resources::OutboundPayment.new(unenvelope_body(response.body), response)
       end
 
+      # Retrieve aggregate statistics on outbound payments.
+      # Example URL: /outbound_payments/stats
+      # @param options [Hash] parameters as a hash, under a params key.
+      def stats(options = {})
+        path = '/outbound_payments/stats'
+
+        options[:retry_failures] = false
+
+        response = make_request(:get, path, options)
+
+        return if response.body.nil?
+
+        Resources::OutboundPayment.new(unenvelope_body(response.body), response)
+      end
+
       private
 
       # Unenvelope the response of the body using the service's `envelope_key`
