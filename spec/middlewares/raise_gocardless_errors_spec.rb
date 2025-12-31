@@ -123,5 +123,16 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
           to raise_error(GoCardlessPro::InvalidStateError)
       end
     end
+
+    context 'for an unwrapped string error' do
+      let(:status) { 400 }
+      let(:body) { { error: 'unwrapped error' }.to_json }
+      it 'raises a wrapped error' do
+        expect { connection.post('https://api.gocardless.com/widgets') }.
+          to raise_error(GoCardlessPro::InvalidApiUsageError) do |error|
+            expect(error).to have_attributes({ message: 'unwrapped error' })
+          end
+      end
+    end
   end
 end

@@ -13,6 +13,13 @@ module GoCardlessPro
         return unless CLIENT_ERROR_STATUSES.include?(env.status)
 
         json_body ||= JSON.parse(env.body) unless env.body.empty?
+        if json_body['error'].is_a?(String)
+          # Some errors are returned as string rather than objects, wrap in standard format
+          json_body['error'] = {
+            'message' => json_body['error'],
+            'status' => env.status,
+          }
+        end
         error_type = json_body['error']['type']
 
         error_class = error_class_for_status(env.status) || error_class_for_type(error_type)
@@ -24,6 +31,7 @@ module GoCardlessPro
 
       def error_class_for_status(code)
         {
+          400 => GoCardlessPro::InvalidApiUsageError,
           401 => GoCardlessPro::AuthenticationError,
           403 => GoCardlessPro::PermissionError,
           429 => GoCardlessPro::RateLimitError,
