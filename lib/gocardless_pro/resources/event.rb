@@ -116,6 +116,10 @@ module GoCardlessPro
           @links['organisation']
         end
 
+        def outbound_payment
+          @links['outbound_payment']
+        end
+
         def parent_event
           @links['parent_event']
         end
