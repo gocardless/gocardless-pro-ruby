@@ -93,6 +93,9 @@ require_relative 'gocardless_pro/services/events_service'
 require_relative 'gocardless_pro/resources/export'
 require_relative 'gocardless_pro/services/exports_service'
 
+require_relative 'gocardless_pro/resources/funds_availability'
+require_relative 'gocardless_pro/services/funds_availabilities_service'
+
 require_relative 'gocardless_pro/resources/instalment_schedule'
 require_relative 'gocardless_pro/services/instalment_schedules_service'
 

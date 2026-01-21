@@ -93,6 +93,11 @@ module GoCardlessPro
       @exports ||= Services::ExportsService.new(@api_service)
     end
 
+    # Access to the service for funds_availability to make API calls
+    def funds_availabilities
+      @funds_availabilities ||= Services::FundsAvailabilitiesService.new(@api_service)
+    end
+
     # Access to the service for instalment_schedule to make API calls
     def instalment_schedules
       @instalment_schedules ||= Services::InstalmentSchedulesService.new(@api_service)
