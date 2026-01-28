@@ -30,6 +30,8 @@ module GoCardlessPro
       attr_reader :instalment_schedule_request
       attr_reader :mandate_request
       attr_reader :metadata
+      attr_reader :payment_context_code
+      attr_reader :payment_purpose_code
       attr_reader :payment_request
       attr_reader :purpose_code
       attr_reader :resources
@@ -50,6 +52,8 @@ module GoCardlessPro
         @links = object['links']
         @mandate_request = object['mandate_request']
         @metadata = object['metadata']
+        @payment_context_code = object['payment_context_code']
+        @payment_purpose_code = object['payment_purpose_code']
         @payment_request = object['payment_request']
         @purpose_code = object['purpose_code']
         @resources = object['resources']
