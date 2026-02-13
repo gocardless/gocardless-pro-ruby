@@ -10,13 +10,13 @@ module GoCardlessPro
   module Services
     # Service for making requests to the MandateImportEntry endpoints
     class MandateImportEntriesService < BaseService
-      # For an existing [mandate import](#core-endpoints-mandate-imports), this
-      # endpoint can
-      # be used to add individual mandates to be imported into GoCardless.
+      #  For an existing [mandate import](#core-endpoints-mandate-imports), this
+      #  endpoint can
+      #  be used to add individual mandates to be imported into GoCardless.
       #
-      # You can add no more than 30,000 rows to a single mandate import.
-      # If you attempt to go over this limit, the API will return a
-      # `record_limit_exceeded` error.
+      #  You can add no more than 30,000 rows to a single mandate import.
+      #  If you attempt to go over this limit, the API will return a
+      #  `record_limit_exceeded` error.
       # Example URL: /mandate_import_entries
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -35,14 +35,14 @@ module GoCardlessPro
         Resources::MandateImportEntry.new(unenvelope_body(response.body), response)
       end
 
-      # For an existing mandate import, this endpoint lists all of the entries
-      # attached.
+      #  For an existing mandate import, this endpoint lists all of the entries
+      #  attached.
       #
-      # After a mandate import has been submitted, you can use this endpoint to
-      # associate records
-      # in your system (using the `record_identifier` that you provided when creating
-      # the
-      # mandate import).
+      #  After a mandate import has been submitted, you can use this endpoint to
+      #  associate records
+      #  in your system (using the `record_identifier` that you provided when creating
+      #  the
+      #  mandate import).
       #
       # Example URL: /mandate_import_entries
       # @param options [Hash] parameters as a hash, under a params key.

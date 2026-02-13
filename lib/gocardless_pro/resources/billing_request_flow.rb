@@ -10,9 +10,9 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a billing_request_flow resource returned from the API
 
-    # Billing Request Flows can be created to enable a payer to authorise a
-    # payment created for a scheme with strong payer
-    # authorisation (such as open banking single payments).
+    #  Billing Request Flows can be created to enable a payer to authorise a
+    #  payment created for a scheme with strong payer
+    #  authorisation (such as open banking single payments).
     class BillingRequestFlow
       attr_reader :authorisation_url
       attr_reader :auto_fulfil

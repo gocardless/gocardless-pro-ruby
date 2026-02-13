@@ -10,13 +10,13 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a creditor resource returned from the API
 
-    # Each [payment](#core-endpoints-payments) taken through the API is linked
-    # to a "creditor", to whom the payment is then paid out. In most cases your
-    # organisation will have a single "creditor", but the API also supports
-    # collecting payments on behalf of others.
+    #  Each [payment](#core-endpoints-payments) taken through the API is linked
+    #  to a "creditor", to whom the payment is then paid out. In most cases your
+    #  organisation will have a single "creditor", but the API also supports
+    #  collecting payments on behalf of others.
     #
-    # Currently, for Anti Money Laundering reasons, any creditors you add must
-    # be directly related to your organisation.
+    #  Currently, for Anti Money Laundering reasons, any creditors you add must
+    #  be directly related to your organisation.
     class Creditor
       attr_reader :address_line1
       attr_reader :address_line2

@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the BillingRequestFlow endpoints
     class BillingRequestFlowsService < BaseService
-      # Creates a new billing request flow.
+      #  Creates a new billing request flow.
       # Example URL: /billing_request_flows
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -29,12 +29,12 @@ module GoCardlessPro
         Resources::BillingRequestFlow.new(unenvelope_body(response.body), response)
       end
 
-      # Returns the flow having generated a fresh session token which can be used to
-      # power
-      # integrations that manipulate the flow.
+      #  Returns the flow having generated a fresh session token which can be used to
+      #  power
+      #  integrations that manipulate the flow.
       # Example URL: /billing_request_flows/:identity/actions/initialise
       #
-      # @param identity       # Unique identifier, beginning with "BRF".
+      # @param identity       #  Unique identifier, beginning with "BRF".
       # @param options [Hash] parameters as a hash, under a params key.
       def initialise(identity, options = {})
         path = sub_url('/billing_request_flows/:identity/actions/initialise', {

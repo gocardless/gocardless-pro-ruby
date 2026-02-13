@@ -10,13 +10,13 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a balance resource returned from the API
 
-    # Returns the balances for a creditor. These balances are the same as what’s
-    # shown in the dashboard with one exception (mentioned below under
-    # balance_type).
+    #  Returns the balances for a creditor. These balances are the same as
+    #  what’s shown in the dashboard with one exception (mentioned below under
+    #  balance_type).
     #
-    # These balances will typically be 3-5 minutes old. The balance amounts
-    # likely won’t match what’s shown in the dashboard as the dashboard balances
-    # are updated much less frequently (once per day).
+    #  These balances will typically be 3-5 minutes old. The balance amounts
+    #  likely won’t match what’s shown in the dashboard as the dashboard
+    #  balances are updated much less frequently (once per day).
     class Balance
       attr_reader :amount
       attr_reader :balance_type

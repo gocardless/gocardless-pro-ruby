@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the CreditorBankAccount endpoints
     class CreditorBankAccountsService < BaseService
-      # Creates a new creditor bank account object.
+      #  Creates a new creditor bank account object.
       # Example URL: /creditor_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -45,8 +45,8 @@ module GoCardlessPro
         Resources::CreditorBankAccount.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # creditor bank accounts.
+      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      #  creditor bank accounts.
       # Example URL: /creditor_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -74,10 +74,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Retrieves the details of an existing creditor bank account.
+      #  Retrieves the details of an existing creditor bank account.
       # Example URL: /creditor_bank_accounts/:identity
       #
-      # @param identity       # Unique identifier, beginning with "BA".
+      # @param identity       #  Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/creditor_bank_accounts/:identity', {
@@ -93,17 +93,17 @@ module GoCardlessPro
         Resources::CreditorBankAccount.new(unenvelope_body(response.body), response)
       end
 
-      # Immediately disables the bank account, no money can be paid out to a disabled
-      # account.
+      #  Immediately disables the bank account, no money can be paid out to a disabled
+      #  account.
       #
-      # This will return a `disable_failed` error if the bank account has already been
-      # disabled.
+      #  This will return a `disable_failed` error if the bank account has already
+      #  been disabled.
       #
-      # A disabled bank account can be re-enabled by creating a new bank account
-      # resource with the same details.
+      #  A disabled bank account can be re-enabled by creating a new bank account
+      #  resource with the same details.
       # Example URL: /creditor_bank_accounts/:identity/actions/disable
       #
-      # @param identity       # Unique identifier, beginning with "BA".
+      # @param identity       #  Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def disable(identity, options = {})
         path = sub_url('/creditor_bank_accounts/:identity/actions/disable', {

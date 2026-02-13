@@ -10,7 +10,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a bank_account_holder_verification resource returned from the API
 
-    # Create a bank account holder verification for a bank account.
+    #  Create a bank account holder verification for a bank account.
     class BankAccountHolderVerification
       attr_reader :actual_account_name
       attr_reader :id

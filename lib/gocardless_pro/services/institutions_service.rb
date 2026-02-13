@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Institution endpoints
     class InstitutionsService < BaseService
-      # Returns a list of supported institutions.
+      #  Returns a list of supported institutions.
       # Example URL: /institutions
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -38,12 +38,12 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Returns all institutions valid for a Billing Request.
+      #  Returns all institutions valid for a Billing Request.
       #
-      # This endpoint is currently supported only for FasterPayments.
+      #  This endpoint is currently supported only for FasterPayments.
       # Example URL: /billing_requests/:identity/institutions
       #
-      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param identity       #  Unique identifier, beginning with "BRQ".
       # @param options [Hash] parameters as a hash, under a params key.
       def list_for_billing_request(identity, options = {})
         path = sub_url('/billing_requests/:identity/institutions', {

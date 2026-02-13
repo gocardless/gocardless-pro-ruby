@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Customer endpoints
     class CustomersService < BaseService
-      # Creates a new customer object.
+      #  Creates a new customer object.
       # Example URL: /customers
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -45,8 +45,8 @@ module GoCardlessPro
         Resources::Customer.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # customers.
+      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      #  customers.
       # Example URL: /customers
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -74,10 +74,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Retrieves the details of an existing customer.
+      #  Retrieves the details of an existing customer.
       # Example URL: /customers/:identity
       #
-      # @param identity       # Unique identifier, beginning with "CU".
+      # @param identity       #  Unique identifier, beginning with "CU".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/customers/:identity', {
@@ -93,11 +93,11 @@ module GoCardlessPro
         Resources::Customer.new(unenvelope_body(response.body), response)
       end
 
-      # Updates a customer object. Supports all of the fields supported when creating
-      # a customer.
+      #  Updates a customer object. Supports all of the fields supported when creating
+      #  a customer.
       # Example URL: /customers/:identity
       #
-      # @param identity       # Unique identifier, beginning with "CU".
+      # @param identity       #  Unique identifier, beginning with "CU".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/customers/:identity', {
@@ -117,17 +117,17 @@ module GoCardlessPro
         Resources::Customer.new(unenvelope_body(response.body), response)
       end
 
-      # Removed customers will not appear in search results or lists of customers (in
-      # our API
-      # or exports), and it will not be possible to load an individually removed
-      # customer by
-      # ID.
+      #  Removed customers will not appear in search results or lists of customers (in
+      #  our API
+      #  or exports), and it will not be possible to load an individually removed
+      #  customer by
+      #  ID.
       #
-      # <p class="restricted-notice"><strong>The action of removing a customer cannot
-      # be reversed, so please use with care.</strong></p>
+      #  <p class="restricted-notice"><strong>The action of removing a customer cannot
+      #  be reversed, so please use with care.</strong></p>
       # Example URL: /customers/:identity
       #
-      # @param identity       # Unique identifier, beginning with "CU".
+      # @param identity       #  Unique identifier, beginning with "CU".
       # @param options [Hash] parameters as a hash, under a params key.
       def remove(identity, options = {})
         path = sub_url('/customers/:identity', {

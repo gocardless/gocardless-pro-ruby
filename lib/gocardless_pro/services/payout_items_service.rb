@@ -10,12 +10,12 @@ module GoCardlessPro
   module Services
     # Service for making requests to the PayoutItem endpoints
     class PayoutItemsService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of items in
-      # the payout.
+      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of items in
+      #  the payout.
       #
-      # <strong>This endpoint only serves requests for payouts created in the last 6
-      # months. Requests for older payouts will return an HTTP status <code>410
-      # Gone</code>.</strong>
+      #  <strong>This endpoint only serves requests for payouts created in the last 6
+      #  months. Requests for older payouts will return an HTTP status <code>410
+      #  Gone</code>.</strong>
       #
       # Example URL: /payout_items
       # @param options [Hash] parameters as a hash, under a params key.

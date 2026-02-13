@@ -10,7 +10,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a payer_theme resource returned from the API
 
-    # Custom colour themes for payment pages and customer notifications.
+    #  Custom colour themes for payment pages and customer notifications.
     class PayerTheme
       attr_reader :id
 

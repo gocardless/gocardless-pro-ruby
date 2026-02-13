@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Block endpoints
     class BlocksService < BaseService
-      # Creates a new Block of a given type. By default it will be active.
+      #  Creates a new Block of a given type. By default it will be active.
       # Example URL: /blocks
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -45,10 +45,10 @@ module GoCardlessPro
         Resources::Block.new(unenvelope_body(response.body), response)
       end
 
-      # Retrieves the details of an existing block.
+      #  Retrieves the details of an existing block.
       # Example URL: /blocks/:identity
       #
-      # @param identity       # Unique identifier, beginning with "BLC".
+      # @param identity       #  Unique identifier, beginning with "BLC".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/blocks/:identity', {
@@ -64,8 +64,8 @@ module GoCardlessPro
         Resources::Block.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # blocks.
+      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      #  blocks.
       # Example URL: /blocks
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -93,10 +93,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Disables a block so that it no longer will prevent mandate creation.
+      #  Disables a block so that it no longer will prevent mandate creation.
       # Example URL: /blocks/:identity/actions/disable
       #
-      # @param identity       # Unique identifier, beginning with "BLC".
+      # @param identity       #  Unique identifier, beginning with "BLC".
       # @param options [Hash] parameters as a hash, under a params key.
       def disable(identity, options = {})
         path = sub_url('/blocks/:identity/actions/disable', {
@@ -132,10 +132,10 @@ module GoCardlessPro
         Resources::Block.new(unenvelope_body(response.body), response)
       end
 
-      # Enables a previously disabled block so that it will prevent mandate creation
+      #  Enables a previously disabled block so that it will prevent mandate creation
       # Example URL: /blocks/:identity/actions/enable
       #
-      # @param identity       # Unique identifier, beginning with "BLC".
+      # @param identity       #  Unique identifier, beginning with "BLC".
       # @param options [Hash] parameters as a hash, under a params key.
       def enable(identity, options = {})
         path = sub_url('/blocks/:identity/actions/enable', {
@@ -171,10 +171,10 @@ module GoCardlessPro
         Resources::Block.new(unenvelope_body(response.body), response)
       end
 
-      # Creates new blocks for a given reference. By default blocks will be active.
-      # Returns 201 if at least one block was created. Returns 200 if there were no
-      # new
-      # blocks created.
+      #  Creates new blocks for a given reference. By default blocks will be active.
+      #  Returns 201 if at least one block was created. Returns 200 if there were no
+      #  new
+      #  blocks created.
       # Example URL: /blocks/block_by_ref
       # @param options [Hash] parameters as a hash, under a params key.
       def block_by_ref(options = {})

@@ -10,27 +10,27 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a payout_item resource returned from the API
 
-    # When we collect a payment on your behalf, we add the money you've
-    # collected to your
-    # GoCardless balance, minus any fees paid. Periodically (usually every
-    # working day),
-    # we take any positive balance in your GoCardless account, and pay it out to
-    # your
-    # nominated bank account.
+    #  When we collect a payment on your behalf, we add the money you've
+    #  collected to your
+    #  GoCardless balance, minus any fees paid. Periodically (usually every
+    #  working day),
+    #  we take any positive balance in your GoCardless account, and pay it out
+    #  to your
+    #  nominated bank account.
     #
-    # Other actions in your GoCardless account can also affect your balance. For
-    # example,
-    # if a customer charges back a payment, we'll deduct the payment's amount
-    # from your
-    # balance, but add any fees you paid for that payment back to your balance.
+    #  Other actions in your GoCardless account can also affect your balance.
+    #  For example,
+    #  if a customer charges back a payment, we'll deduct the payment's amount
+    #  from your
+    #  balance, but add any fees you paid for that payment back to your balance.
     #
-    # The Payout Items API allows you to view, on a per-payout basis, the credit
-    # and debit
-    # items that make up that payout's amount.  Payout items can only be
-    # retrieved for payouts
-    # created in the last 6 months. Requests for older payouts will return an
-    # HTTP status
-    # <code>410 Gone</code>.
+    #  The Payout Items API allows you to view, on a per-payout basis, the
+    #  credit and debit
+    #  items that make up that payout's amount.  Payout items can only be
+    #  retrieved for payouts
+    #  created in the last 6 months. Requests for older payouts will return an
+    #  HTTP status
+    #  <code>410 Gone</code>.
     #
     class PayoutItem
       attr_reader :amount

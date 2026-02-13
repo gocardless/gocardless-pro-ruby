@@ -10,17 +10,17 @@ module GoCardlessPro
   module Services
     # Service for making requests to the CustomerNotification endpoints
     class CustomerNotificationsService < BaseService
-      # "Handling" a notification means that you have sent the notification yourself
-      # (and
-      # don't want GoCardless to send it).
-      # If the notification has already been actioned, or the deadline to notify has
-      # passed,
-      # this endpoint will return an `already_actioned` error and you should not take
-      # further action. This endpoint takes no additional parameters.
+      #  "Handling" a notification means that you have sent the notification yourself
+      #  (and
+      #  don't want GoCardless to send it).
+      #  If the notification has already been actioned, or the deadline to notify has
+      #  passed,
+      #  this endpoint will return an `already_actioned` error and you should not take
+      #  further action. This endpoint takes no additional parameters.
       #
       # Example URL: /customer_notifications/:identity/actions/handle
       #
-      # @param identity       # The id of the notification.
+      # @param identity       #  The id of the notification.
       # @param options [Hash] parameters as a hash, under a params key.
       def handle(identity, options = {})
         path = sub_url('/customer_notifications/:identity/actions/handle', {

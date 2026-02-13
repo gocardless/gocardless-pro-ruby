@@ -10,9 +10,9 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a mandate_pdf resource returned from the API
 
-    # Mandate PDFs allow you to easily display [scheme-rules
-    # compliant](#appendix-compliance-requirements) Direct Debit mandates to
-    # your customers.
+    #  Mandate PDFs allow you to easily display [scheme-rules
+    #  compliant](#appendix-compliance-requirements) Direct Debit mandates to
+    #  your customers.
     class MandatePdf
       attr_reader :expires_at
       attr_reader :url

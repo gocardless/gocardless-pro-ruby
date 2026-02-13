@@ -10,10 +10,10 @@ module GoCardlessPro
   module Services
     # Service for making requests to the BankAccountHolderVerification endpoints
     class BankAccountHolderVerificationsService < BaseService
-      # Verify the account holder of the bank account. A complete verification can be
-      # attached when creating an outbound payment. This endpoint allows partner
-      # merchants to create Confirmation of Payee checks on customer bank accounts
-      # before sending outbound payments.
+      #  Verify the account holder of the bank account. A complete verification can be
+      #  attached when creating an outbound payment. This endpoint allows partner
+      #  merchants to create Confirmation of Payee checks on customer bank accounts
+      #  before sending outbound payments.
       # Example URL: /bank_account_holder_verifications
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -48,11 +48,11 @@ module GoCardlessPro
         Resources::BankAccountHolderVerification.new(unenvelope_body(response.body), response)
       end
 
-      # Fetches a bank account holder verification by ID.
+      #  Fetches a bank account holder verification by ID.
       # Example URL: /bank_account_holder_verifications/:identity
       #
-      # @param identity       # The unique identifier for the bank account holder verification resource,
-      # e.g. "BAHV123".
+      # @param identity       #  The unique identifier for the bank account holder verification
+      #  resource, e.g. "BAHV123".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/bank_account_holder_verifications/:identity', {

@@ -10,12 +10,12 @@ module GoCardlessPro
   module Services
     # Service for making requests to the BillingRequestWithAction endpoints
     class BillingRequestWithActionsService < BaseService
-      # Creates a billing request and completes any specified actions in a single
-      # request.
-      # This endpoint allows you to create a billing request and immediately complete
-      # actions
-      # such as collecting customer details, bank account details, or other required
-      # actions.
+      #  Creates a billing request and completes any specified actions in a single
+      #  request.
+      #  This endpoint allows you to create a billing request and immediately complete
+      #  actions
+      #  such as collecting customer details, bank account details, or other required
+      #  actions.
       # Example URL: /billing_requests/create_with_actions
       # @param options [Hash] parameters as a hash, under a params key.
       def create_with_actions(options = {})

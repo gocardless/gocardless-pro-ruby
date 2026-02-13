@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the VerificationDetail endpoints
     class VerificationDetailsService < BaseService
-      # Creates a new verification detail
+      #  Creates a new verification detail
       # Example URL: /verification_details
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -29,7 +29,7 @@ module GoCardlessPro
         Resources::VerificationDetail.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a list of verification details belonging to a creditor.
+      #  Returns a list of verification details belonging to a creditor.
       # Example URL: /verification_details
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

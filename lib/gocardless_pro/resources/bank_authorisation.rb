@@ -10,16 +10,16 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a bank_authorisation resource returned from the API
 
-    # Bank Authorisations can be used to authorise Billing Requests.
-    # Authorisations
-    # are created against a specific bank, usually the bank that provides the
-    # payer's
-    # account.
+    #  Bank Authorisations can be used to authorise Billing Requests.
+    #  Authorisations
+    #  are created against a specific bank, usually the bank that provides the
+    #  payer's
+    #  account.
     #
-    # Creation of Bank Authorisations is only permitted from GoCardless hosted
-    # UIs
-    # (see Billing Request Flows) to ensure we meet regulatory requirements for
-    # checkout flows.
+    #  Creation of Bank Authorisations is only permitted from GoCardless hosted
+    #  UIs
+    #  (see Billing Request Flows) to ensure we meet regulatory requirements for
+    #  checkout flows.
     class BankAuthorisation
       attr_reader :authorisation_type
       attr_reader :authorised_at

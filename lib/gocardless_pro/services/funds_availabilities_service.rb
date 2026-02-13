@@ -10,13 +10,13 @@ module GoCardlessPro
   module Services
     # Service for making requests to the FundsAvailability endpoints
     class FundsAvailabilitiesService < BaseService
-      # Checks if the payer's current balance is sufficient to cover the amount
-      # the merchant wants to charge within the consent parameters defined on the
-      # mandate.
+      #  Checks if the payer's current balance is sufficient to cover the amount
+      #  the merchant wants to charge within the consent parameters defined on the
+      #  mandate.
       # Example URL: /funds_availability/:identity
       #
-      # @param identity       # Unique identifier, beginning with "MD". Note that this prefix may not
-      # apply to mandates created before 2016.
+      # @param identity       #  Unique identifier, beginning with "MD". Note that this prefix may not
+      #  apply to mandates created before 2016.
       # @param options [Hash] parameters as a hash, under a params key.
       def check(identity, options = {})
         path = sub_url('/funds_availability/:identity', {

@@ -10,8 +10,8 @@ module GoCardlessPro
   module Services
     # Service for making requests to the BillingRequestTemplate endpoints
     class BillingRequestTemplatesService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # Billing Request Templates.
+      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      #  Billing Request Templates.
       # Example URL: /billing_request_templates
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -39,10 +39,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Fetches a Billing Request Template
+      #  Fetches a Billing Request Template
       # Example URL: /billing_request_templates/:identity
       #
-      # @param identity       # Unique identifier, beginning with "BRT".
+      # @param identity       #  Unique identifier, beginning with "BRT".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/billing_request_templates/:identity', {
@@ -93,11 +93,11 @@ module GoCardlessPro
         Resources::BillingRequestTemplate.new(unenvelope_body(response.body), response)
       end
 
-      # Updates a Billing Request Template, which will affect all future Billing
-      # Requests created by this template.
+      #  Updates a Billing Request Template, which will affect all future Billing
+      #  Requests created by this template.
       # Example URL: /billing_request_templates/:identity
       #
-      # @param identity       # Unique identifier, beginning with "BRT".
+      # @param identity       #  Unique identifier, beginning with "BRT".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/billing_request_templates/:identity', {

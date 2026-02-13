@@ -10,20 +10,20 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a customer_notification resource returned from the API
 
-    # Customer Notifications represent the notification which is due to be sent
-    # to a customer
-    # after an event has happened. The event, the resource and the customer to
-    # be notified
-    # are all identified in the `links` property.
+    #  Customer Notifications represent the notification which is due to be sent
+    #  to a customer
+    #  after an event has happened. The event, the resource and the customer to
+    #  be notified
+    #  are all identified in the `links` property.
     #
-    # Note that these are ephemeral records - once the notification has been
-    # actioned in some
-    # way, it is no longer visible using this API.
+    #  Note that these are ephemeral records - once the notification has been
+    #  actioned in some
+    #  way, it is no longer visible using this API.
     #
-    # <p class="restricted-notice"><strong>Restricted</strong>: This API is
-    # currently only available for approved integrators - please <a
-    # href="mailto:help@gocardless.com">get in touch</a> if you would like to
-    # use this API.</p>
+    #  <p class="restricted-notice"><strong>Restricted</strong>: This API is
+    #  currently only available for approved integrators - please <a
+    #  href="mailto:help@gocardless.com">get in touch</a> if you would like to
+    #  use this API.</p>
     class CustomerNotification
       attr_reader :action_taken
       attr_reader :action_taken_at

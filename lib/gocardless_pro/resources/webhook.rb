@@ -10,7 +10,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a webhook resource returned from the API
 
-    # Basic description of a webhook
+    #  Basic description of a webhook
     class Webhook
       attr_reader :created_at
       attr_reader :id

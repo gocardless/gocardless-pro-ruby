@@ -10,22 +10,22 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a instalment_schedule resource returned from the API
 
-    # Instalment schedules are objects which represent a collection of related
-    # payments, with the
-    # intention to collect the `total_amount` specified. The API supports both
-    # schedule-based
-    # creation (similar to subscriptions) as well as explicit selection of
-    # differing payment
-    # amounts and charge dates.
+    #  Instalment schedules are objects which represent a collection of related
+    #  payments, with the
+    #  intention to collect the `total_amount` specified. The API supports both
+    #  schedule-based
+    #  creation (similar to subscriptions) as well as explicit selection of
+    #  differing payment
+    #  amounts and charge dates.
     #
-    # Unlike subscriptions, the payments are created immediately, so the
-    # instalment schedule
-    # cannot be modified once submitted and instead can only be cancelled (which
-    # will cancel
-    # any of the payments which have not yet been submitted).
+    #  Unlike subscriptions, the payments are created immediately, so the
+    #  instalment schedule
+    #  cannot be modified once submitted and instead can only be cancelled
+    #  (which will cancel
+    #  any of the payments which have not yet been submitted).
     #
-    # Customers will receive a single notification about the complete schedule
-    # of collection.
+    #  Customers will receive a single notification about the complete schedule
+    #  of collection.
     #
     class InstalmentSchedule
       attr_reader :created_at

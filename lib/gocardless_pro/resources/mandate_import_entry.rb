@@ -10,36 +10,36 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a mandate_import_entry resource returned from the API
 
-    # Mandate Import Entries are added to a [Mandate
-    # Import](#core-endpoints-mandate-imports).
-    # Each entry corresponds to one mandate to be imported into GoCardless.
+    #  Mandate Import Entries are added to a [Mandate
+    #  Import](#core-endpoints-mandate-imports).
+    #  Each entry corresponds to one mandate to be imported into GoCardless.
     #
-    # To import a mandate you will need:
-    # <ol>
-    #   <li>Identifying information about the customer (name/company and
-    # address)</li>
-    #   <li>Bank account details, consisting of an account holder name and
-    #      either an IBAN or <a href="#appendix-local-bank-details">local bank
-    # details</a></li>
-    #   <li>Amendment details (SEPA only)</li>
-    # </ol>
+    #  To import a mandate you will need:
+    #  <ol>
+    #    <li>Identifying information about the customer (name/company and
+    #  address)</li>
+    #    <li>Bank account details, consisting of an account holder name and
+    #       either an IBAN or <a href="#appendix-local-bank-details">local bank
+    #  details</a></li>
+    #    <li>Amendment details (SEPA only)</li>
+    #  </ol>
     #
-    # We suggest you provide a `record_identifier` (which is unique within the
-    # context of a
-    # single mandate import) to help you to identify mandates that have been
-    # created once the
-    # import has been processed by GoCardless. You can
-    # [list the mandate import
-    # entries](#mandate-import-entries-list-all-mandate-import-entries),
-    # match them up in your system using the `record_identifier`, and look at
-    # the `links`
-    # fields to find the mandate, customer and customer bank account that have
-    # been imported.
+    #  We suggest you provide a `record_identifier` (which is unique within the
+    #  context of a
+    #  single mandate import) to help you to identify mandates that have been
+    #  created once the
+    #  import has been processed by GoCardless. You can
+    #  [list the mandate import
+    #  entries](#mandate-import-entries-list-all-mandate-import-entries),
+    #  match them up in your system using the `record_identifier`, and look at
+    #  the `links`
+    #  fields to find the mandate, customer and customer bank account that have
+    #  been imported.
     #
-    # <p class="restricted-notice"><strong>Restricted</strong>: This API is
-    # currently only available for approved integrators - please <a
-    # href="mailto:help@gocardless.com">get in touch</a> if you would like to
-    # use this API.</p>
+    #  <p class="restricted-notice"><strong>Restricted</strong>: This API is
+    #  currently only available for approved integrators - please <a
+    #  href="mailto:help@gocardless.com">get in touch</a> if you would like to
+    #  use this API.</p>
     class MandateImportEntry
       attr_reader :created_at
       attr_reader :processing_errors

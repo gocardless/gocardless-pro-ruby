@@ -10,18 +10,18 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a creditor_bank_account resource returned from the API
 
-    # Creditor Bank Accounts hold the bank details of a
-    # [creditor](#core-endpoints-creditors). These are the bank accounts which
-    # your [payouts](#core-endpoints-payouts) will be sent to.
+    #  Creditor Bank Accounts hold the bank details of a
+    #  [creditor](#core-endpoints-creditors). These are the bank accounts which
+    #  your [payouts](#core-endpoints-payouts) will be sent to.
     #
-    # Note that creditor bank accounts must be unique, and so you will encounter
-    # a `bank_account_exists` error if you try to create a duplicate bank
-    # account. You may wish to handle this by updating the existing record
-    # instead, the ID of which will be provided as
-    # `links[creditor_bank_account]` in the error response.
+    #  Note that creditor bank accounts must be unique, and so you will
+    #  encounter a `bank_account_exists` error if you try to create a duplicate
+    #  bank account. You may wish to handle this by updating the existing record
+    #  instead, the ID of which will be provided as
+    #  `links[creditor_bank_account]` in the error response.
     #
-    # <p class="restricted-notice"><strong>Restricted</strong>: This API is not
-    # available for partner integrations.</p>
+    #  <p class="restricted-notice"><strong>Restricted</strong>: This API is not
+    #  available for partner integrations.</p>
     class CreditorBankAccount
       attr_reader :account_holder_name
       attr_reader :account_number_ending

@@ -10,7 +10,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a transferred_mandate resource returned from the API
 
-    # Mandates that have been transferred using Current Account Switch Service
+    #  Mandates that have been transferred using Current Account Switch Service
     class TransferredMandate
       attr_reader :encrypted_customer_bank_details
       attr_reader :encrypted_decryption_key

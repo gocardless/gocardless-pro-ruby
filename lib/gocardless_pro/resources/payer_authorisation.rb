@@ -10,64 +10,64 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a payer_authorisation resource returned from the API
 
-    # <p class="restricted-notice">
-    #   Don't use Payer Authorisations for new integrations.
-    #   It is deprecated in favour of
-    #   <a
-    # href="https://developer.gocardless.com/getting-started/billing-requests/overview/">
-    #   Billing Requests</a>. Use Billing Requests to build any future
-    # integrations.
-    # </p>
+    #  <p class="restricted-notice">
+    #    Don't use Payer Authorisations for new integrations.
+    #    It is deprecated in favour of
+    #    <a
+    #  href="https://developer.gocardless.com/getting-started/billing-requests/overview/">
+    #    Billing Requests</a>. Use Billing Requests to build any future
+    #  integrations.
+    #  </p>
     #
-    # Payer Authorisation resource acts as a wrapper for creating customer, bank
-    # account and mandate details in a single request.
-    # PayerAuthorisation API enables the integrators to build their own custom
-    # payment pages.
+    #  Payer Authorisation resource acts as a wrapper for creating customer,
+    #  bank account and mandate details in a single request.
+    #  PayerAuthorisation API enables the integrators to build their own custom
+    #  payment pages.
     #
-    # The process to use the Payer Authorisation API is as follows:
+    #  The process to use the Payer Authorisation API is as follows:
     #
-    #   1. Create a Payer Authorisation, either empty or with already available
-    # information
-    #   2. Update the authorisation with additional information or fix any
-    # mistakes
-    #   3. Submit the authorisation, after the payer has reviewed their
-    # information
-    #   4. [coming soon] Redirect the payer to the verification mechanisms from
-    # the response of the Submit request (this will be introduced as a
-    # non-breaking change)
-    #   5. Confirm the authorisation to indicate that the resources can be
-    # created
+    #    1. Create a Payer Authorisation, either empty or with already available
+    #  information
+    #    2. Update the authorisation with additional information or fix any
+    #  mistakes
+    #    3. Submit the authorisation, after the payer has reviewed their
+    #  information
+    #    4. [coming soon] Redirect the payer to the verification mechanisms from
+    #  the response of the Submit request (this will be introduced as a
+    #  non-breaking change)
+    #    5. Confirm the authorisation to indicate that the resources can be
+    #  created
     #
-    # After the Payer Authorisation is confirmed, resources will eventually be
-    # created as it's an asynchronous process.
+    #  After the Payer Authorisation is confirmed, resources will eventually be
+    #  created as it's an asynchronous process.
     #
-    # To retrieve the status and ID of the linked resources you can do one of
-    # the following:
-    # <ol>
-    #   <li> Listen to <code>  payer_authorisation_completed </code>  <a
-    # href="#appendix-webhooks"> webhook</a> (recommended)</li>
-    #   <li> Poll the GET <a
-    # href="#payer-authorisations-get-a-single-payer-authorisation">
-    # endpoint</a></li>
-    #   <li> Poll the GET events API
-    # <code>https://api.gocardless.com/events?payer_authorisation={id}&action=completed</code>
-    # </li>
-    # </ol>
+    #  To retrieve the status and ID of the linked resources you can do one of
+    #  the following:
+    #  <ol>
+    #    <li> Listen to <code>  payer_authorisation_completed </code>  <a
+    #  href="#appendix-webhooks"> webhook</a> (recommended)</li>
+    #    <li> Poll the GET <a
+    #  href="#payer-authorisations-get-a-single-payer-authorisation">
+    #  endpoint</a></li>
+    #    <li> Poll the GET events API
+    #  <code>https://api.gocardless.com/events?payer_authorisation={id}&action=completed</code>
+    #  </li>
+    #  </ol>
     #
-    # <p class="notice">
-    #   Note that the `create` and `update` endpoints behave differently than
-    #   other existing `create` and `update` endpoints. The Payer Authorisation
-    # is still saved if incomplete data is provided.
-    #   We return the list of incomplete data in the `incomplete_fields` along
-    # with the resources in the body of the response.
-    #   The bank account details(account_number, bank_code & branch_code) must
-    # be sent together rather than splitting across different request for both
-    # `create` and `update` endpoints.
-    #   <br><br>
-    #   The API is designed to be flexible and allows you to collect information
-    # in multiple steps without storing any sensitive data in the browser or in
-    # your servers.
-    # </p>
+    #  <p class="notice">
+    #    Note that the `create` and `update` endpoints behave differently than
+    #    other existing `create` and `update` endpoints. The Payer Authorisation
+    #  is still saved if incomplete data is provided.
+    #    We return the list of incomplete data in the `incomplete_fields` along
+    #  with the resources in the body of the response.
+    #    The bank account details(account_number, bank_code & branch_code) must
+    #  be sent together rather than splitting across different request for both
+    #  `create` and `update` endpoints.
+    #    <br><br>
+    #    The API is designed to be flexible and allows you to collect
+    #  information in multiple steps without storing any sensitive data in the
+    #  browser or in your servers.
+    #  </p>
     class PayerAuthorisation
       attr_reader :bank_account
       attr_reader :created_at

@@ -45,8 +45,8 @@ module GoCardlessPro
         Resources::OutboundPayment.new(unenvelope_body(response.body), response)
       end
 
-      # Creates an outbound payment to your verified business bank account as the
-      # recipient.
+      #  Creates an outbound payment to your verified business bank account as the
+      #  recipient.
       # Example URL: /outbound_payments/withdrawal
       # @param options [Hash] parameters as a hash, under a params key.
       def withdraw(options = {})
@@ -81,13 +81,13 @@ module GoCardlessPro
         Resources::OutboundPayment.new(unenvelope_body(response.body), response)
       end
 
-      # Cancels an outbound payment. Only outbound payments with either `verifying`,
-      # `pending_approval`, or `scheduled` status can be cancelled.
-      # Once an outbound payment is `executing`, the money moving process has begun
-      # and cannot be reversed.
+      #  Cancels an outbound payment. Only outbound payments with either `verifying`,
+      #  `pending_approval`, or `scheduled` status can be cancelled.
+      #  Once an outbound payment is `executing`, the money moving process has begun
+      #  and cannot be reversed.
       # Example URL: /outbound_payments/:identity/actions/cancel
       #
-      # @param identity       # Unique identifier of the outbound payment.
+      # @param identity       #  Unique identifier of the outbound payment.
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/outbound_payments/:identity/actions/cancel', {
@@ -123,11 +123,11 @@ module GoCardlessPro
         Resources::OutboundPayment.new(unenvelope_body(response.body), response)
       end
 
-      # Approves an outbound payment. Only outbound payments with the
-      # “pending_approval” status can be approved.
+      #  Approves an outbound payment. Only outbound payments with the
+      #  “pending_approval” status can be approved.
       # Example URL: /outbound_payments/:identity/actions/approve
       #
-      # @param identity       # Unique identifier of the outbound payment.
+      # @param identity       #  Unique identifier of the outbound payment.
       # @param options [Hash] parameters as a hash, under a params key.
       def approve(identity, options = {})
         path = sub_url('/outbound_payments/:identity/actions/approve', {
@@ -163,10 +163,10 @@ module GoCardlessPro
         Resources::OutboundPayment.new(unenvelope_body(response.body), response)
       end
 
-      # Fetches an outbound_payment by ID
+      #  Fetches an outbound_payment by ID
       # Example URL: /outbound_payments/:identity
       #
-      # @param identity       # Unique identifier of the outbound payment.
+      # @param identity       #  Unique identifier of the outbound payment.
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/outbound_payments/:identity', {
@@ -182,8 +182,8 @@ module GoCardlessPro
         Resources::OutboundPayment.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of outbound
-      # payments.
+      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of outbound
+      #  payments.
       # Example URL: /outbound_payments
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -211,10 +211,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Updates an outbound payment object. This accepts only the metadata parameter.
+      #  Updates an outbound payment object. This accepts only the metadata parameter.
       # Example URL: /outbound_payments/:identity
       #
-      # @param identity       # Unique identifier of the outbound payment.
+      # @param identity       #  Unique identifier of the outbound payment.
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/outbound_payments/:identity', {
@@ -234,7 +234,7 @@ module GoCardlessPro
         Resources::OutboundPayment.new(unenvelope_body(response.body), response)
       end
 
-      # Retrieve aggregate statistics on outbound payments.
+      #  Retrieve aggregate statistics on outbound payments.
       # Example URL: /outbound_payments/stats
       # @param options [Hash] parameters as a hash, under a params key.
       def stats(options = {})

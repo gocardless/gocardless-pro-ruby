@@ -10,9 +10,9 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a payment_account_transaction resource returned from the API
 
-    # Payment account transactions represent movements of funds on a given
-    # payment account. The payment account is provisioned by GoCardless and is
-    # used to fund [outbound payments](#core-endpoints-outbound-payments).
+    #  Payment account transactions represent movements of funds on a given
+    #  payment account. The payment account is provisioned by GoCardless and is
+    #  used to fund [outbound payments](#core-endpoints-outbound-payments).
     class PaymentAccountTransaction
       attr_reader :amount
       attr_reader :balance_after_transaction

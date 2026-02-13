@@ -10,10 +10,10 @@ module GoCardlessPro
   module Services
     # Service for making requests to the PaymentAccount endpoints
     class PaymentAccountsService < BaseService
-      # Retrieves the details of an existing payment account.
+      #  Retrieves the details of an existing payment account.
       # Example URL: /payment_accounts/:identity
       #
-      # @param identity       # Unique identifier, beginning with "BA".
+      # @param identity       #  Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/payment_accounts/:identity', {
@@ -29,8 +29,8 @@ module GoCardlessPro
         Resources::PaymentAccount.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # payment accounts.
+      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      #  payment accounts.
       # Example URL: /payment_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

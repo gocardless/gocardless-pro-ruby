@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Creditor endpoints
     class CreditorsService < BaseService
-      # Creates a new creditor.
+      #  Creates a new creditor.
       # Example URL: /creditors
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -45,8 +45,8 @@ module GoCardlessPro
         Resources::Creditor.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # creditors.
+      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      #  creditors.
       # Example URL: /creditors
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -74,10 +74,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Retrieves the details of an existing creditor.
+      #  Retrieves the details of an existing creditor.
       # Example URL: /creditors/:identity
       #
-      # @param identity       # Unique identifier, beginning with "CR".
+      # @param identity       #  Unique identifier, beginning with "CR".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/creditors/:identity', {
@@ -93,11 +93,11 @@ module GoCardlessPro
         Resources::Creditor.new(unenvelope_body(response.body), response)
       end
 
-      # Updates a creditor object. Supports all of the fields supported when creating
-      # a creditor.
+      #  Updates a creditor object. Supports all of the fields supported when creating
+      #  a creditor.
       # Example URL: /creditors/:identity
       #
-      # @param identity       # Unique identifier, beginning with "CR".
+      # @param identity       #  Unique identifier, beginning with "CR".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/creditors/:identity', {

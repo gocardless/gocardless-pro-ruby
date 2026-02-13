@@ -10,7 +10,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a bank_account_detail resource returned from the API
 
-    # Retrieve bank account details in JWE encrypted format
+    #  Retrieve bank account details in JWE encrypted format
     class BankAccountDetail
       attr_reader :ciphertext
       attr_reader :encrypted_key

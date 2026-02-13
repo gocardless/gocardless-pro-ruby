@@ -10,9 +10,9 @@ module GoCardlessPro
   module Services
     # Service for making requests to the PayerTheme endpoints
     class PayerThemesService < BaseService
-      # Creates a new payer theme associated with a creditor. If a creditor already
-      # has payer themes, this will update the existing payer theme linked to the
-      # creditor.
+      #  Creates a new payer theme associated with a creditor. If a creditor already
+      #  has payer themes, this will update the existing payer theme linked to the
+      #  creditor.
       # Example URL: /branding/payer_themes
       # @param options [Hash] parameters as a hash, under a params key.
       def create_for_creditor(options = {})

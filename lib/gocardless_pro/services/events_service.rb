@@ -10,8 +10,8 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Event endpoints
     class EventsService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # events.
+      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      #  events.
       # Example URL: /events
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -39,10 +39,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      # Retrieves the details of a single event.
+      #  Retrieves the details of a single event.
       # Example URL: /events/:identity
       #
-      # @param identity       # Unique identifier, beginning with "EV".
+      # @param identity       #  Unique identifier, beginning with "EV".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/events/:identity', {
