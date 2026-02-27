@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = GoCardlessPro::VERSION
   spec.authors       = %w(GoCardless)
   spec.email         = %w(engineering@gocardless.com)
-  spec.summary       = %q{A gem for calling the GoCardless Pro API}
+  spec.summary       = %q{A gem for calling the GoCardless API}
   spec.homepage      = 'https://github.com/gocardless/gocardless-pro-ruby'
   spec.license       = 'MIT'
 
