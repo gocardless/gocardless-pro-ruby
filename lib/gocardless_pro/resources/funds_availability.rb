@@ -10,9 +10,9 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a funds_availability resource returned from the API
 
-    #  Checks if the payer's current balance is sufficient to cover the amount
-    #  the merchant wants to charge within the consent parameters defined on the
-    #  mandate.
+    # Checks if the payer's current balance is sufficient to cover the amount
+    # the merchant wants to charge within the consent parameters defined on the
+    # mandate.
     class FundsAvailability
       attr_reader :available
 

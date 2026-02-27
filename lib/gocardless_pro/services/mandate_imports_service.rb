@@ -10,12 +10,11 @@ module GoCardlessPro
   module Services
     # Service for making requests to the MandateImport endpoints
     class MandateImportsService < BaseService
-      #  Mandate imports are first created, before mandates are added one-at-a-time,
-      #  so
-      #  this endpoint merely signals the start of the import process. Once you've
-      #  finished
-      #  adding entries to an import, you should
-      #  [submit](#mandate-imports-submit-a-mandate-import) it.
+      # Mandate imports are first created, before mandates are added one-at-a-time, so
+      # this endpoint merely signals the start of the import process. Once you've
+      # finished
+      # adding entries to an import, you should
+      # [submit](#mandate-imports-submit-a-mandate-import) it.
       # Example URL: /mandate_imports
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -50,10 +49,10 @@ module GoCardlessPro
         Resources::MandateImport.new(unenvelope_body(response.body), response)
       end
 
-      #  Returns a single mandate import.
+      # Returns a single mandate import.
       # Example URL: /mandate_imports/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "IM".
+      # @param identity       # Unique identifier, beginning with "IM".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/mandate_imports/:identity', {
@@ -69,21 +68,20 @@ module GoCardlessPro
         Resources::MandateImport.new(unenvelope_body(response.body), response)
       end
 
-      #  Submits the mandate import, which allows it to be processed by a member of
-      #  the
-      #  GoCardless team. Once the import has been submitted, it can no longer have
-      #  entries
-      #  added to it.
+      # Submits the mandate import, which allows it to be processed by a member of the
+      # GoCardless team. Once the import has been submitted, it can no longer have
+      # entries
+      # added to it.
       #
-      #  In our sandbox environment, to aid development, we automatically process
-      #  mandate
-      #  imports approximately 10 seconds after they are submitted. This will allow
-      #  you to
-      #  test both the "submitted" response and wait for the webhook to confirm the
-      #  processing has begun.
+      # In our sandbox environment, to aid development, we automatically process
+      # mandate
+      # imports approximately 10 seconds after they are submitted. This will allow you
+      # to
+      # test both the "submitted" response and wait for the webhook to confirm the
+      # processing has begun.
       # Example URL: /mandate_imports/:identity/actions/submit
       #
-      # @param identity       #  Unique identifier, beginning with "IM".
+      # @param identity       # Unique identifier, beginning with "IM".
       # @param options [Hash] parameters as a hash, under a params key.
       def submit(identity, options = {})
         path = sub_url('/mandate_imports/:identity/actions/submit', {
@@ -119,16 +117,16 @@ module GoCardlessPro
         Resources::MandateImport.new(unenvelope_body(response.body), response)
       end
 
-      #  Cancels the mandate import, which aborts the import process and stops the
-      #  mandates
-      #  being set up in GoCardless. Once the import has been cancelled, it can no
-      #  longer have
-      #  entries added to it. Mandate imports which have already been submitted or
-      #  processed
-      #  cannot be cancelled.
+      # Cancels the mandate import, which aborts the import process and stops the
+      # mandates
+      # being set up in GoCardless. Once the import has been cancelled, it can no
+      # longer have
+      # entries added to it. Mandate imports which have already been submitted or
+      # processed
+      # cannot be cancelled.
       # Example URL: /mandate_imports/:identity/actions/cancel
       #
-      # @param identity       #  Unique identifier, beginning with "IM".
+      # @param identity       # Unique identifier, beginning with "IM".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/mandate_imports/:identity/actions/cancel', {

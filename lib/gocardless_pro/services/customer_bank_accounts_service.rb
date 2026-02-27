@@ -10,19 +10,19 @@ module GoCardlessPro
   module Services
     # Service for making requests to the CustomerBankAccount endpoints
     class CustomerBankAccountsService < BaseService
-      #  Creates a new customer bank account object.
+      # Creates a new customer bank account object.
       #
-      #  There are three different ways to supply bank account details:
+      # There are three different ways to supply bank account details:
       #
-      #  - [Local details](#appendix-local-bank-details)
+      # - [Local details](#appendix-local-bank-details)
       #
-      #  - IBAN
+      # - IBAN
       #
-      #  - [Customer Bank Account
-      #  Tokens](#javascript-flow-create-a-customer-bank-account-token)
+      # - [Customer Bank Account
+      # Tokens](#javascript-flow-create-a-customer-bank-account-token)
       #
-      #  For more information on the different fields required in each country, see
-      #  [local bank details](#appendix-local-bank-details).
+      # For more information on the different fields required in each country, see
+      # [local bank details](#appendix-local-bank-details).
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -57,8 +57,8 @@ module GoCardlessPro
         Resources::CustomerBankAccount.new(unenvelope_body(response.body), response)
       end
 
-      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your bank
-      #  accounts.
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your bank
+      # accounts.
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -86,10 +86,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      #  Retrieves the details of an existing bank account.
+      # Retrieves the details of an existing bank account.
       # Example URL: /customer_bank_accounts/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "BA".
+      # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/customer_bank_accounts/:identity', {
@@ -105,11 +105,11 @@ module GoCardlessPro
         Resources::CustomerBankAccount.new(unenvelope_body(response.body), response)
       end
 
-      #  Updates a customer bank account object. Only the metadata parameter is
-      #  allowed.
+      # Updates a customer bank account object. Only the metadata parameter is
+      # allowed.
       # Example URL: /customer_bank_accounts/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "BA".
+      # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/customer_bank_accounts/:identity', {
@@ -129,16 +129,16 @@ module GoCardlessPro
         Resources::CustomerBankAccount.new(unenvelope_body(response.body), response)
       end
 
-      #  Immediately cancels all associated mandates and cancellable payments.
+      # Immediately cancels all associated mandates and cancellable payments.
       #
-      #  This will return a `disable_failed` error if the bank account has already
-      #  been disabled.
+      # This will return a `disable_failed` error if the bank account has already been
+      # disabled.
       #
-      #  A disabled bank account can be re-enabled by creating a new bank account
-      #  resource with the same details.
+      # A disabled bank account can be re-enabled by creating a new bank account
+      # resource with the same details.
       # Example URL: /customer_bank_accounts/:identity/actions/disable
       #
-      # @param identity       #  Unique identifier, beginning with "BA".
+      # @param identity       # Unique identifier, beginning with "BA".
       # @param options [Hash] parameters as a hash, under a params key.
       def disable(identity, options = {})
         path = sub_url('/customer_bank_accounts/:identity/actions/disable', {

@@ -10,45 +10,45 @@ module GoCardlessPro
   module Services
     # Service for making requests to the SchemeIdentifier endpoints
     class SchemeIdentifiersService < BaseService
-      #  Creates a new scheme identifier. The scheme identifier status will be
-      #  `pending` while GoCardless is
-      #  processing the request. Once the scheme identifier is ready to be used the
-      #  status will be updated to `active`.
-      #  At this point, GoCardless will emit a scheme identifier activated event via
-      #  webhook to notify you of this change.
-      #  In Bacs, it will take up to five working days for a scheme identifier to
-      #  become active. On other schemes, including SEPA,
-      #  this happens instantly.
+      # Creates a new scheme identifier. The scheme identifier status will be
+      # `pending` while GoCardless is
+      # processing the request. Once the scheme identifier is ready to be used the
+      # status will be updated to `active`.
+      # At this point, GoCardless will emit a scheme identifier activated event via
+      # webhook to notify you of this change.
+      # In Bacs, it will take up to five working days for a scheme identifier to
+      # become active. On other schemes, including SEPA,
+      # this happens instantly.
       #
-      #  #### Scheme identifier name validations
+      # #### Scheme identifier name validations
       #
-      #  The `name` field of a scheme identifier can contain alphanumeric characters,
-      #  spaces and
-      #  special characters.
+      # The `name` field of a scheme identifier can contain alphanumeric characters,
+      # spaces and
+      # special characters.
       #
-      #  Its maximum length and the special characters it supports depend on the
-      #  scheme:
+      # Its maximum length and the special characters it supports depend on the
+      # scheme:
       #
-      #  | __scheme__        | __maximum length__ | __special characters allowed__
-      #                   |
-      #  | :---------------- | :----------------- |
-      #  :-------------------------------------------------- |
-      #  | `bacs`            | 18 characters      | `/` `.` `&` `-`
-      #                   |
-      #  | `sepa`            | 70 characters      | `/` `?` `:` `(` `)` `.` `,` `+`
-      #  `&` `<` `>` `'` `"` |
-      #  | `ach`             | 16 characters      | `/` `?` `:` `(` `)` `.` `,` `'`
-      #  `+` `-`             |
-      #  | `faster_payments` | 18 characters      | `/` `?` `:` `(` `)` `.` `,` `'`
-      #  `+` `-`             |
+      # | __scheme__        | __maximum length__ | __special characters allowed__
+      #                 |
+      # | :---------------- | :----------------- |
+      # :-------------------------------------------------- |
+      # | `bacs`            | 18 characters      | `/` `.` `&` `-`
+      #                 |
+      # | `sepa`            | 70 characters      | `/` `?` `:` `(` `)` `.` `,` `+` `&`
+      # `<` `>` `'` `"` |
+      # | `ach`             | 16 characters      | `/` `?` `:` `(` `)` `.` `,` `'` `+`
+      # `-`             |
+      # | `faster_payments` | 18 characters      | `/` `?` `:` `(` `)` `.` `,` `'` `+`
+      # `-`             |
       #
-      #  The validation error that gets returned for an invalid name will contain a
-      #  suggested name
-      #  in the metadata that is guaranteed to pass name validations.
+      # The validation error that gets returned for an invalid name will contain a
+      # suggested name
+      # in the metadata that is guaranteed to pass name validations.
       #
-      #  You should ensure that the name you set matches the legal name or the trading
-      #  name of
-      #  the creditor, otherwise, there is an increased risk of chargeback.
+      # You should ensure that the name you set matches the legal name or the trading
+      # name of
+      # the creditor, otherwise, there is an increased risk of chargeback.
       #
       # Example URL: /scheme_identifiers
       # @param options [Hash] parameters as a hash, under a params key.
@@ -84,8 +84,8 @@ module GoCardlessPro
         Resources::SchemeIdentifier.new(unenvelope_body(response.body), response)
       end
 
-      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      #  scheme identifiers.
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your scheme
+      # identifiers.
       # Example URL: /scheme_identifiers
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -113,10 +113,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      #  Retrieves the details of an existing scheme identifier.
+      # Retrieves the details of an existing scheme identifier.
       # Example URL: /scheme_identifiers/:identity
       #
-      # @param identity       #  Unique identifier, usually beginning with "SU".
+      # @param identity       # Unique identifier, usually beginning with "SU".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/scheme_identifiers/:identity', {

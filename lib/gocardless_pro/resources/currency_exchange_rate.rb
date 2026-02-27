@@ -10,7 +10,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a currency_exchange_rate resource returned from the API
 
-    #  Currency exchange rates from our foreign exchange provider.
+    # Currency exchange rates from our foreign exchange provider.
     class CurrencyExchangeRate
       attr_reader :rate
       attr_reader :source

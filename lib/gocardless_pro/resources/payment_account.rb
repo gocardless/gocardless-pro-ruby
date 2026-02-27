@@ -10,8 +10,8 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a payment_account resource returned from the API
 
-    #  Access the details of bank accounts provided for you by GoCardless that
-    #  are used to fund [Outbound Payments](#core-endpoints-outbound-payments).
+    # Access the details of bank accounts provided for you by GoCardless that
+    # are used to fund [Outbound Payments](#core-endpoints-outbound-payments).
     class PaymentAccount
       attr_reader :account_balance
       attr_reader :account_holder_name

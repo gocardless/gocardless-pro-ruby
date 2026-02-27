@@ -10,7 +10,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a export resource returned from the API
 
-    #  File-based exports of data
+    # File-based exports of data
     class Export
       attr_reader :created_at
       attr_reader :currency

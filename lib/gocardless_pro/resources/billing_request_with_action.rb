@@ -10,14 +10,14 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a billing_request_with_action resource returned from the API
 
-    #   Billing Requests help create resources that require input or action from
-    #  a customer. An example of required input might be additional customer
-    #  billing details, while an action would be asking a customer to authorise
-    #  a payment using their mobile banking app.
+    #  Billing Requests help create resources that require input or action from
+    # a customer. An example of required input might be additional customer
+    # billing details, while an action would be asking a customer to authorise a
+    # payment using their mobile banking app.
     #
-    #  See [Billing Requests:
-    #  Overview](https://developer.gocardless.com/getting-started/billing-requests/overview/)
-    #  for how-to's, explanations and tutorials.
+    # See [Billing Requests:
+    # Overview](https://developer.gocardless.com/getting-started/billing-requests/overview/)
+    # for how-to's, explanations and tutorials.
     class BillingRequestWithAction
       attr_reader :bank_authorisations
       attr_reader :billing_requests

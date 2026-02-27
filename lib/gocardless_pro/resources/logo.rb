@@ -10,9 +10,9 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a logo resource returned from the API
 
-    #  Logos are image uploads that, when associated with a creditor, are shown
-    #  on the [billing request flow](#billing-requests-billing-request-flows)
-    #  payment pages.
+    # Logos are image uploads that, when associated with a creditor, are shown
+    # on the [billing request flow](#billing-requests-billing-request-flows)
+    # payment pages.
     class Logo
       attr_reader :id
 

@@ -10,10 +10,10 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a tax_rate resource returned from the API
 
-    #  Tax rates from tax authority.
+    # Tax rates from tax authority.
     #
-    #  We also maintain a [static list of the tax rates for each
-    #  jurisdiction](#appendix-tax-rates).
+    # We also maintain a [static list of the tax rates for each
+    # jurisdiction](#appendix-tax-rates).
     class TaxRate
       attr_reader :end_date
       attr_reader :id

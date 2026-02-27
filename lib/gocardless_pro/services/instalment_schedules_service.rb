@@ -10,25 +10,25 @@ module GoCardlessPro
   module Services
     # Service for making requests to the InstalmentSchedule endpoints
     class InstalmentSchedulesService < BaseService
-      #  Creates a new instalment schedule object, along with the associated payments.
-      #  This
-      #  API is recommended if you know the specific dates you wish to charge.
-      #  Otherwise,
-      #  please check out the [scheduling
-      #  version](#instalment-schedules-create-with-schedule).
+      # Creates a new instalment schedule object, along with the associated payments.
+      # This
+      # API is recommended if you know the specific dates you wish to charge.
+      # Otherwise,
+      # please check out the [scheduling
+      # version](#instalment-schedules-create-with-schedule).
       #
-      #  The `instalments` property is an array of payment properties (`amount` and
-      #  `charge_date`).
+      # The `instalments` property is an array of payment properties (`amount` and
+      # `charge_date`).
       #
-      #  It can take quite a while to create the associated payments, so the API will
-      #  return
-      #  the status as `pending` initially. When processing has completed, a
-      #  subsequent GET
-      #  request for the instalment schedule will either have the status `success` and
-      #  link
-      #  to the created payments, or the status `error` and detailed information about
-      #  the
-      #  failures.
+      # It can take quite a while to create the associated payments, so the API will
+      # return
+      # the status as `pending` initially. When processing has completed, a subsequent
+      # GET
+      # request for the instalment schedule will either have the status `success` and
+      # link
+      # to the created payments, or the status `error` and detailed information about
+      # the
+      # failures.
       # Example URL: /instalment_schedules
       # @param options [Hash] parameters as a hash, under a params key.
       def create_with_dates(options = {})
@@ -63,22 +63,20 @@ module GoCardlessPro
         Resources::InstalmentSchedule.new(unenvelope_body(response.body), response)
       end
 
-      #  Creates a new instalment schedule object, along with the associated payments.
-      #  This
-      #  API is recommended if you wish to use the GoCardless scheduling logic. For
-      #  finer
-      #  control over the individual dates, please check out the [alternative
-      #  version](#instalment-schedules-create-with-dates).
+      # Creates a new instalment schedule object, along with the associated payments.
+      # This
+      # API is recommended if you wish to use the GoCardless scheduling logic. For
+      # finer
+      # control over the individual dates, please check out the [alternative
+      # version](#instalment-schedules-create-with-dates).
       #
-      #  It can take quite a while to create the associated payments, so the API will
-      #  return
-      #  the status as `pending` initially. When processing has completed, a
-      #  subsequent
-      #  GET request for the instalment schedule will either have the status `success`
-      #  and link to
-      #  the created payments, or the status `error` and detailed information about
-      #  the
-      #  failures.
+      # It can take quite a while to create the associated payments, so the API will
+      # return
+      # the status as `pending` initially. When processing has completed, a subsequent
+      # GET request for the instalment schedule will either have the status `success`
+      # and link to
+      # the created payments, or the status `error` and detailed information about the
+      # failures.
       # Example URL: /instalment_schedules
       # @param options [Hash] parameters as a hash, under a params key.
       def create_with_schedule(options = {})
@@ -113,8 +111,8 @@ module GoCardlessPro
         Resources::InstalmentSchedule.new(unenvelope_body(response.body), response)
       end
 
-      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      #  instalment schedules.
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      # instalment schedules.
       # Example URL: /instalment_schedules
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -142,10 +140,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      #  Retrieves the details of an existing instalment schedule.
+      # Retrieves the details of an existing instalment schedule.
       # Example URL: /instalment_schedules/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "IS".
+      # @param identity       # Unique identifier, beginning with "IS".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/instalment_schedules/:identity', {
@@ -161,10 +159,10 @@ module GoCardlessPro
         Resources::InstalmentSchedule.new(unenvelope_body(response.body), response)
       end
 
-      #  Updates an instalment schedule. This accepts only the metadata parameter.
+      # Updates an instalment schedule. This accepts only the metadata parameter.
       # Example URL: /instalment_schedules/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "IS".
+      # @param identity       # Unique identifier, beginning with "IS".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/instalment_schedules/:identity', {
@@ -184,14 +182,14 @@ module GoCardlessPro
         Resources::InstalmentSchedule.new(unenvelope_body(response.body), response)
       end
 
-      #  Immediately cancels an instalment schedule; no further payments will be
-      #  collected for it.
+      # Immediately cancels an instalment schedule; no further payments will be
+      # collected for it.
       #
-      #  This will fail with a `cancellation_failed` error if the instalment schedule
-      #  is already cancelled or has completed.
+      # This will fail with a `cancellation_failed` error if the instalment schedule
+      # is already cancelled or has completed.
       # Example URL: /instalment_schedules/:identity/actions/cancel
       #
-      # @param identity       #  Unique identifier, beginning with "IS".
+      # @param identity       # Unique identifier, beginning with "IS".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/instalment_schedules/:identity/actions/cancel', {

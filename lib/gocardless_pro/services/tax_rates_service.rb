@@ -10,8 +10,8 @@ module GoCardlessPro
   module Services
     # Service for making requests to the TaxRate endpoints
     class TaxRatesService < BaseService
-      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of all tax
-      #  rates.
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of all tax
+      # rates.
       # Example URL: /tax_rates
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -39,10 +39,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      #  Retrieves the details of a tax rate.
+      # Retrieves the details of a tax rate.
       # Example URL: /tax_rates/:identity
       #
-      # @param identity       #  The unique identifier created by the jurisdiction, tax type and version
+      # @param identity       # The unique identifier created by the jurisdiction, tax type and version
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/tax_rates/:identity', {

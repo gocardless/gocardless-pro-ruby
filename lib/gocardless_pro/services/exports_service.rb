@@ -10,10 +10,10 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Export endpoints
     class ExportsService < BaseService
-      #  Returns a single export.
+      # Returns a single export.
       # Example URL: /exports/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "EX".
+      # @param identity       # Unique identifier, beginning with "EX".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/exports/:identity', {
@@ -29,7 +29,7 @@ module GoCardlessPro
         Resources::Export.new(unenvelope_body(response.body), response)
       end
 
-      #  Returns a list of exports which are available for download.
+      # Returns a list of exports which are available for download.
       # Example URL: /exports
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

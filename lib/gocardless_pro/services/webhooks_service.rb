@@ -10,8 +10,8 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Webhook endpoints
     class WebhooksService < BaseService
-      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      #  webhooks.
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      # webhooks.
       # Example URL: /webhooks
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -39,10 +39,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      #  Retrieves the details of an existing webhook.
+      # Retrieves the details of an existing webhook.
       # Example URL: /webhooks/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "WB".
+      # @param identity       # Unique identifier, beginning with "WB".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/webhooks/:identity', {
@@ -58,10 +58,10 @@ module GoCardlessPro
         Resources::Webhook.new(unenvelope_body(response.body), response)
       end
 
-      #  Requests for a previous webhook to be sent again
+      # Requests for a previous webhook to be sent again
       # Example URL: /webhooks/:identity/actions/retry
       #
-      # @param identity       #  Unique identifier, beginning with "WB".
+      # @param identity       # Unique identifier, beginning with "WB".
       # @param options [Hash] parameters as a hash, under a params key.
       def retry(identity, options = {})
         path = sub_url('/webhooks/:identity/actions/retry', {

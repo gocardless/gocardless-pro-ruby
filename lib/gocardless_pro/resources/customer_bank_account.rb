@@ -10,23 +10,23 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a customer_bank_account resource returned from the API
 
-    #  Customer Bank Accounts hold the bank details of a
-    #  [customer](#core-endpoints-customers). They always belong to a
-    #  [customer](#core-endpoints-customers), and may be linked to several
-    #  Direct Debit [mandates](#core-endpoints-mandates).
+    # Customer Bank Accounts hold the bank details of a
+    # [customer](#core-endpoints-customers). They always belong to a
+    # [customer](#core-endpoints-customers), and may be linked to several Direct
+    # Debit [mandates](#core-endpoints-mandates).
     #
-    #  Note that customer bank accounts must be unique, and so you will
-    #  encounter a `bank_account_exists` error if you try to create a duplicate
-    #  bank account. You may wish to handle this by updating the existing record
-    #  instead, the ID of which will be provided as
-    #  `links[customer_bank_account]` in the error response.
+    # Note that customer bank accounts must be unique, and so you will encounter
+    # a `bank_account_exists` error if you try to create a duplicate bank
+    # account. You may wish to handle this by updating the existing record
+    # instead, the ID of which will be provided as
+    # `links[customer_bank_account]` in the error response.
     #
-    #  _Note:_ To ensure the customer's bank accounts are valid, verify them
-    #  first
-    #  using
+    # _Note:_ To ensure the customer's bank accounts are valid, verify them
+    # first
+    # using
     #
-    #  [bank_details_lookups](#bank-details-lookups-perform-a-bank-details-lookup),
-    #  before proceeding with creating the accounts
+    # [bank_details_lookups](#bank-details-lookups-perform-a-bank-details-lookup),
+    # before proceeding with creating the accounts
     class CustomerBankAccount
       attr_reader :account_holder_name
       attr_reader :account_number_ending

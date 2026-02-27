@@ -10,11 +10,11 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a scenario_simulator resource returned from the API
 
-    #  Scenario Simulators allow you to manually trigger and test certain paths
-    #  that your
-    #  integration will encounter in the real world. These endpoints are only
-    #  active in the
-    #  sandbox environment.
+    # Scenario Simulators allow you to manually trigger and test certain paths
+    # that your
+    # integration will encounter in the real world. These endpoints are only
+    # active in the
+    # sandbox environment.
     class ScenarioSimulator
       attr_reader :id
 

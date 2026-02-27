@@ -10,8 +10,8 @@ module GoCardlessPro
   module Services
     # Service for making requests to the CurrencyExchangeRate endpoints
     class CurrencyExchangeRatesService < BaseService
-      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of all
-      #  exchange rates.
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of all
+      # exchange rates.
       # Example URL: /currency_exchange_rates
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

@@ -10,64 +10,63 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a subscription resource returned from the API
 
-    #  Subscriptions create [payments](#core-endpoints-payments) according to a
-    #  schedule.
+    # Subscriptions create [payments](#core-endpoints-payments) according to a
+    # schedule.
     #
-    #  ### Recurrence Rules
+    # ### Recurrence Rules
     #
-    #  The following rules apply when specifying recurrence:
+    # The following rules apply when specifying recurrence:
     #
-    #  - If `day_of_month` and `start_date` are not provided `start_date` will
-    #  be the [mandate](#core-endpoints-mandates)'s `next_possible_charge_date`
-    #  and the subscription will then recur based on the `interval` &
-    #  `interval_unit`
-    #  - If `month` or `day_of_month` are present the following validations
-    #  apply:
+    # - If `day_of_month` and `start_date` are not provided `start_date` will be
+    # the [mandate](#core-endpoints-mandates)'s `next_possible_charge_date` and
+    # the subscription will then recur based on the `interval` & `interval_unit`
+    # - If `month` or `day_of_month` are present the following validations
+    # apply:
     #
-    #  | __interval_unit__ | __month__                                      |
-    #  __day_of_month__                           |
-    #  | :---------------- | :--------------------------------------------- |
-    #  :----------------------------------------- |
-    #  | yearly            | optional (required if `day_of_month` provided) |
-    #  optional (invalid if `month` not provided) |
-    #  | monthly           | invalid                                        |
-    #  optional                                   |
-    #  | weekly            | invalid                                        |
-    #  invalid                                    |
+    # | __interval_unit__ | __month__                                      |
+    # __day_of_month__                           |
+    # | :---------------- | :--------------------------------------------- |
+    # :----------------------------------------- |
+    # | yearly            | optional (required if `day_of_month` provided) |
+    # optional (invalid if `month` not provided) |
+    # | monthly           | invalid                                        |
+    # optional                                   |
+    # | weekly            | invalid                                        |
+    # invalid                                    |
     #
-    #  Examples:
+    # Examples:
     #
-    #  | __interval_unit__ | __interval__ | __month__ | __day_of_month__ |
-    #  valid?                                             |
-    #  | :---------------- | :----------- | :-------- | :--------------- |
-    #  :------------------------------------------------- |
-    #  | yearly            | 1            | january   | -1               | valid
-    #                                               |
-    #  | monthly           | 6            |           |                  | valid
-    #                                               |
-    #  | monthly           | 6            |           | 12               | valid
-    #                                               |
-    #  | weekly            | 2            |           |                  | valid
-    #                                               |
-    #  | yearly            | 1            | march     |                  |
-    #  invalid - missing `day_of_month`                   |
-    #  | yearly            | 1            |           | 2                |
-    #  invalid - missing `month`                          |
-    #  | monthly           | 6            | august    | 12               |
-    #  invalid - `month` must be blank                    |
-    #  | weekly            | 2            | october   | 10               |
-    #  invalid - `month` and `day_of_month` must be blank |
+    # | __interval_unit__ | __interval__ | __month__ | __day_of_month__ | valid?
+    #                                             |
+    # | :---------------- | :----------- | :-------- | :--------------- |
+    # :------------------------------------------------- |
+    # | yearly            | 1            | january   | -1               | valid
+    #                                             |
+    # | monthly           | 6            |           |                  | valid
+    #                                             |
+    # | monthly           | 6            |           | 12               | valid
+    #                                             |
+    # | weekly            | 2            |           |                  | valid
+    #                                             |
+    # | yearly            | 1            | march     |                  |
+    # invalid - missing `day_of_month`                   |
+    # | yearly            | 1            |           | 2                |
+    # invalid - missing `month`                          |
+    # | monthly           | 6            | august    | 12               |
+    # invalid - `month` must be blank                    |
+    # | weekly            | 2            | october   | 10               |
+    # invalid - `month` and `day_of_month` must be blank |
     #
-    #  ### Rolling dates
+    # ### Rolling dates
     #
-    #  When a charge date falls on a non-business day, one of two things will
-    #  happen:
+    # When a charge date falls on a non-business day, one of two things will
+    # happen:
     #
-    #  - if the recurrence rule specified `-1` as the `day_of_month`, the charge
-    #  date will be rolled __backwards__ to the previous business day (i.e., the
-    #  last working day of the month).
-    #  - otherwise the charge date will be rolled __forwards__ to the next
-    #  business day.
+    # - if the recurrence rule specified `-1` as the `day_of_month`, the charge
+    # date will be rolled __backwards__ to the previous business day (i.e., the
+    # last working day of the month).
+    # - otherwise the charge date will be rolled __forwards__ to the next
+    # business day.
     class Subscription
       attr_reader :amount
       attr_reader :app_fee

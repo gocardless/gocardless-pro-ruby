@@ -10,8 +10,8 @@ module GoCardlessPro
   module Services
     # Service for making requests to the RedirectFlow endpoints
     class RedirectFlowsService < BaseService
-      #  Creates a redirect flow object which can then be used to redirect your
-      #  customer to the GoCardless hosted payment pages.
+      # Creates a redirect flow object which can then be used to redirect your
+      # customer to the GoCardless hosted payment pages.
       # Example URL: /redirect_flows
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -46,10 +46,10 @@ module GoCardlessPro
         Resources::RedirectFlow.new(unenvelope_body(response.body), response)
       end
 
-      #  Returns all details about a single redirect flow
+      # Returns all details about a single redirect flow
       # Example URL: /redirect_flows/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "RE".
+      # @param identity       # Unique identifier, beginning with "RE".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/redirect_flows/:identity', {
@@ -65,20 +65,19 @@ module GoCardlessPro
         Resources::RedirectFlow.new(unenvelope_body(response.body), response)
       end
 
-      #  This creates a [customer](#core-endpoints-customers), [customer bank
-      #  account](#core-endpoints-customer-bank-accounts), and
-      #  [mandate](#core-endpoints-mandates) using the details supplied by your
-      #  customer and returns the ID of the created mandate.
+      # This creates a [customer](#core-endpoints-customers), [customer bank
+      # account](#core-endpoints-customer-bank-accounts), and
+      # [mandate](#core-endpoints-mandates) using the details supplied by your
+      # customer and returns the ID of the created mandate.
       #
-      #  This will return a `redirect_flow_incomplete` error if your customer has not
-      #  yet been redirected back to your site, and a
-      #  `redirect_flow_already_completed` error if your integration has already
-      #  completed this flow. It will return a `bad_request` error if the
-      #  `session_token` differs to the one supplied when the redirect flow was
-      #  created.
+      # This will return a `redirect_flow_incomplete` error if your customer has not
+      # yet been redirected back to your site, and a `redirect_flow_already_completed`
+      # error if your integration has already completed this flow. It will return a
+      # `bad_request` error if the `session_token` differs to the one supplied when
+      # the redirect flow was created.
       # Example URL: /redirect_flows/:identity/actions/complete
       #
-      # @param identity       #  Unique identifier, beginning with "RE".
+      # @param identity       # Unique identifier, beginning with "RE".
       # @param options [Hash] parameters as a hash, under a params key.
       def complete(identity, options = {})
         path = sub_url('/redirect_flows/:identity/actions/complete', {

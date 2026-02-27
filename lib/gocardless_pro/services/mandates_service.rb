@@ -10,7 +10,7 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Mandate endpoints
     class MandatesService < BaseService
-      #  Creates a new mandate object.
+      # Creates a new mandate object.
       # Example URL: /mandates
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -45,8 +45,8 @@ module GoCardlessPro
         Resources::Mandate.new(unenvelope_body(response.body), response)
       end
 
-      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      #  mandates.
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      # mandates.
       # Example URL: /mandates
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -74,11 +74,11 @@ module GoCardlessPro
         ).enumerator
       end
 
-      #  Retrieves the details of an existing mandate.
+      # Retrieves the details of an existing mandate.
       # Example URL: /mandates/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "MD". Note that this prefix may not
-      #  apply to mandates created before 2016.
+      # @param identity       # Unique identifier, beginning with "MD". Note that this prefix may not
+      # apply to mandates created before 2016.
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/mandates/:identity', {
@@ -94,11 +94,11 @@ module GoCardlessPro
         Resources::Mandate.new(unenvelope_body(response.body), response)
       end
 
-      #  Updates a mandate object. This accepts only the metadata parameter.
+      # Updates a mandate object. This accepts only the metadata parameter.
       # Example URL: /mandates/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "MD". Note that this prefix may not
-      #  apply to mandates created before 2016.
+      # @param identity       # Unique identifier, beginning with "MD". Note that this prefix may not
+      # apply to mandates created before 2016.
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/mandates/:identity', {
@@ -118,16 +118,16 @@ module GoCardlessPro
         Resources::Mandate.new(unenvelope_body(response.body), response)
       end
 
-      #  Immediately cancels a mandate and all associated cancellable payments. Any
-      #  metadata supplied to this endpoint will be stored on the mandate cancellation
-      #  event it causes.
+      # Immediately cancels a mandate and all associated cancellable payments. Any
+      # metadata supplied to this endpoint will be stored on the mandate cancellation
+      # event it causes.
       #
-      #  This will fail with a `cancellation_failed` error if the mandate is already
-      #  cancelled.
+      # This will fail with a `cancellation_failed` error if the mandate is already
+      # cancelled.
       # Example URL: /mandates/:identity/actions/cancel
       #
-      # @param identity       #  Unique identifier, beginning with "MD". Note that this prefix may not
-      #  apply to mandates created before 2016.
+      # @param identity       # Unique identifier, beginning with "MD". Note that this prefix may not
+      # apply to mandates created before 2016.
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/mandates/:identity/actions/cancel', {
@@ -163,22 +163,21 @@ module GoCardlessPro
         Resources::Mandate.new(unenvelope_body(response.body), response)
       end
 
-      #  <a name="mandate_not_inactive"></a>Reinstates a cancelled or expired mandate
-      #  to the banks. You will receive a `resubmission_requested` webhook, but after
-      #  that reinstating the mandate follows the same process as its initial
-      #  creation, so you will receive a `submitted` webhook, followed by a
-      #  `reinstated` or `failed` webhook up to two working days later. Any metadata
-      #  supplied to this endpoint will be stored on the `resubmission_requested`
-      #  event it causes.
+      # <a name="mandate_not_inactive"></a>Reinstates a cancelled or expired mandate
+      # to the banks. You will receive a `resubmission_requested` webhook, but after
+      # that reinstating the mandate follows the same process as its initial creation,
+      # so you will receive a `submitted` webhook, followed by a `reinstated` or
+      # `failed` webhook up to two working days later. Any metadata supplied to this
+      # endpoint will be stored on the `resubmission_requested` event it causes.
       #
-      #  This will fail with a `mandate_not_inactive` error if the mandate is already
-      #  being submitted, or is active.
+      # This will fail with a `mandate_not_inactive` error if the mandate is already
+      # being submitted, or is active.
       #
-      #  Mandates can be resubmitted up to 10 times.
+      # Mandates can be resubmitted up to 10 times.
       # Example URL: /mandates/:identity/actions/reinstate
       #
-      # @param identity       #  Unique identifier, beginning with "MD". Note that this prefix may not
-      #  apply to mandates created before 2016.
+      # @param identity       # Unique identifier, beginning with "MD". Note that this prefix may not
+      # apply to mandates created before 2016.
       # @param options [Hash] parameters as a hash, under a params key.
       def reinstate(identity, options = {})
         path = sub_url('/mandates/:identity/actions/reinstate', {

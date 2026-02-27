@@ -10,12 +10,12 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Payment endpoints
     class PaymentsService < BaseService
-      #  <a name="mandate_is_inactive"></a>Creates a new payment object.
+      # <a name="mandate_is_inactive"></a>Creates a new payment object.
       #
-      #  This fails with a `mandate_is_inactive` error if the linked
-      #  [mandate](#core-endpoints-mandates) is cancelled or has failed. Payments can
-      #  be created against mandates with status of: `pending_customer_approval`,
-      #  `pending_submission`, `submitted`, and `active`.
+      # This fails with a `mandate_is_inactive` error if the linked
+      # [mandate](#core-endpoints-mandates) is cancelled or has failed. Payments can
+      # be created against mandates with status of: `pending_customer_approval`,
+      # `pending_submission`, `submitted`, and `active`.
       # Example URL: /payments
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -50,8 +50,8 @@ module GoCardlessPro
         Resources::Payment.new(unenvelope_body(response.body), response)
       end
 
-      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      #  payments.
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      # payments.
       # Example URL: /payments
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -79,10 +79,10 @@ module GoCardlessPro
         ).enumerator
       end
 
-      #  Retrieves the details of a single existing payment.
+      # Retrieves the details of a single existing payment.
       # Example URL: /payments/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "PM".
+      # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/payments/:identity', {
@@ -98,10 +98,10 @@ module GoCardlessPro
         Resources::Payment.new(unenvelope_body(response.body), response)
       end
 
-      #  Updates a payment object. This accepts only the metadata parameter.
+      # Updates a payment object. This accepts only the metadata parameter.
       # Example URL: /payments/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "PM".
+      # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/payments/:identity', {
@@ -121,15 +121,15 @@ module GoCardlessPro
         Resources::Payment.new(unenvelope_body(response.body), response)
       end
 
-      #  Cancels the payment if it has not already been submitted to the banks. Any
-      #  metadata supplied to this endpoint will be stored on the payment cancellation
-      #  event it causes.
+      # Cancels the payment if it has not already been submitted to the banks. Any
+      # metadata supplied to this endpoint will be stored on the payment cancellation
+      # event it causes.
       #
-      #  This will fail with a `cancellation_failed` error unless the payment's status
-      #  is `pending_submission`.
+      # This will fail with a `cancellation_failed` error unless the payment's status
+      # is `pending_submission`.
       # Example URL: /payments/:identity/actions/cancel
       #
-      # @param identity       #  Unique identifier, beginning with "PM".
+      # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/payments/:identity/actions/cancel', {
@@ -165,19 +165,19 @@ module GoCardlessPro
         Resources::Payment.new(unenvelope_body(response.body), response)
       end
 
-      #  <a name="retry_failed"></a>Retries a failed payment if the underlying mandate
-      #  is active. You will receive a `resubmission_requested` webhook, but after
-      #  that retrying the payment follows the same process as its initial creation,
-      #  so you will receive a `submitted` webhook, followed by a `confirmed` or
-      #  `failed` event. Any metadata supplied to this endpoint will be stored against
-      #  the payment submission event it causes.
+      # <a name="retry_failed"></a>Retries a failed payment if the underlying mandate
+      # is active. You will receive a `resubmission_requested` webhook, but after that
+      # retrying the payment follows the same process as its initial creation, so you
+      # will receive a `submitted` webhook, followed by a `confirmed` or `failed`
+      # event. Any metadata supplied to this endpoint will be stored against the
+      # payment submission event it causes.
       #
-      #  This will return a `retry_failed` error if the payment has not failed.
+      # This will return a `retry_failed` error if the payment has not failed.
       #
-      #  Payments can be retried up to 3 times.
+      # Payments can be retried up to 3 times.
       # Example URL: /payments/:identity/actions/retry
       #
-      # @param identity       #  Unique identifier, beginning with "PM".
+      # @param identity       # Unique identifier, beginning with "PM".
       # @param options [Hash] parameters as a hash, under a params key.
       def retry(identity, options = {})
         path = sub_url('/payments/:identity/actions/retry', {

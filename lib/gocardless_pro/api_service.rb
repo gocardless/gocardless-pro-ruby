@@ -7,7 +7,7 @@ require 'uri'
 require 'base64'
 
 module GoCardlessPro
-  #  GoCardless API
+  # GoCardless API
   class ApiService
     attr_reader :on_idempotency_conflict
 

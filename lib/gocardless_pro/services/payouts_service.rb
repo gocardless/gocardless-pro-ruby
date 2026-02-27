@@ -10,8 +10,8 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Payout endpoints
     class PayoutsService < BaseService
-      #  Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      #  payouts.
+      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
+      # payouts.
       # Example URL: /payouts
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -39,12 +39,12 @@ module GoCardlessPro
         ).enumerator
       end
 
-      #  Retrieves the details of a single payout. For an example of how to reconcile
-      #  the transactions in a payout, see [this
-      #  guide](#events-reconciling-payouts-with-events).
+      # Retrieves the details of a single payout. For an example of how to reconcile
+      # the transactions in a payout, see [this
+      # guide](#events-reconciling-payouts-with-events).
       # Example URL: /payouts/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "PO".
+      # @param identity       # Unique identifier, beginning with "PO".
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/payouts/:identity', {
@@ -60,10 +60,10 @@ module GoCardlessPro
         Resources::Payout.new(unenvelope_body(response.body), response)
       end
 
-      #  Updates a payout object. This accepts only the metadata parameter.
+      # Updates a payout object. This accepts only the metadata parameter.
       # Example URL: /payouts/:identity
       #
-      # @param identity       #  Unique identifier, beginning with "PO".
+      # @param identity       # Unique identifier, beginning with "PO".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/payouts/:identity', {
