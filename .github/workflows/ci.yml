@@ -17,9 +17,9 @@ jobs:
         faraday-version:
           - '2.0'
         ruby-version:
-          - '3.2'
           - '3.3'
           - '3.4'
+          - '4.0'
     env:
       FARADAY_VERSION: ${{ matrix.faraday-version }}
     steps:
@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: '4.0'
           bundler-cache: true
       - run: |
           mkdir -p $HOME/.gem
