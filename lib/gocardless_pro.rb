@@ -45,6 +45,9 @@ require_relative 'gocardless_pro/services/balances_service'
 require_relative 'gocardless_pro/resources/bank_account_detail'
 require_relative 'gocardless_pro/services/bank_account_details_service'
 
+require_relative 'gocardless_pro/resources/bank_account_holder_verification'
+require_relative 'gocardless_pro/services/bank_account_holder_verifications_service'
+
 require_relative 'gocardless_pro/resources/bank_authorisation'
 require_relative 'gocardless_pro/services/bank_authorisations_service'
 
@@ -90,6 +93,9 @@ require_relative 'gocardless_pro/services/events_service'
 require_relative 'gocardless_pro/resources/export'
 require_relative 'gocardless_pro/services/exports_service'
 
+require_relative 'gocardless_pro/resources/funds_availability'
+require_relative 'gocardless_pro/services/funds_availabilities_service'
+
 require_relative 'gocardless_pro/resources/instalment_schedule'
 require_relative 'gocardless_pro/services/instalment_schedules_service'
 
@@ -125,6 +131,12 @@ require_relative 'gocardless_pro/services/payer_themes_service'
 
 require_relative 'gocardless_pro/resources/payment'
 require_relative 'gocardless_pro/services/payments_service'
+
+require_relative 'gocardless_pro/resources/payment_account'
+require_relative 'gocardless_pro/services/payment_accounts_service'
+
+require_relative 'gocardless_pro/resources/payment_account_transaction'
+require_relative 'gocardless_pro/services/payment_account_transactions_service'
 
 require_relative 'gocardless_pro/resources/payout'
 require_relative 'gocardless_pro/services/payouts_service'

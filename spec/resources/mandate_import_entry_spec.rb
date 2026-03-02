@@ -18,24 +18,24 @@ describe GoCardlessPro::Resources::MandateImportEntry do
           'created_at' => 'created_at-input',
           'links' => 'links-input',
           'processing_errors' => 'processing_errors-input',
-          'record_identifier' => 'record_identifier-input'
+          'record_identifier' => 'record_identifier-input',
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/mandate_import_entries})
-          .with(
+        stub_request(:post, %r{.*api.gocardless.com/mandate_import_entries}).
+          with(
             body: {
               'mandate_import_entries' => {
 
                 'created_at' => 'created_at-input',
                 'links' => 'links-input',
                 'processing_errors' => 'processing_errors-input',
-                'record_identifier' => 'record_identifier-input'
-              }
+                'record_identifier' => 'record_identifier-input',
+              },
             }
-          )
-          .to_return(
+          ).
+          to_return(
             body: {
               'mandate_import_entries' =>
 
@@ -44,8 +44,8 @@ describe GoCardlessPro::Resources::MandateImportEntry do
                   'created_at' => 'created_at-input',
                   'links' => 'links-input',
                   'processing_errors' => 'processing_errors-input',
-                  'record_identifier' => 'record_identifier-input'
-                }
+                  'record_identifier' => 'record_identifier-input',
+                },
 
             }.to_json,
             headers: response_headers
@@ -67,9 +67,9 @@ describe GoCardlessPro::Resources::MandateImportEntry do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' }
-              ]
-            }
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 422
@@ -90,7 +90,7 @@ describe GoCardlessPro::Resources::MandateImportEntry do
           'created_at' => 'created_at-input',
           'links' => 'links-input',
           'processing_errors' => 'processing_errors-input',
-          'record_identifier' => 'record_identifier-input'
+          'record_identifier' => 'record_identifier-input',
         }
       end
 
@@ -105,11 +105,11 @@ describe GoCardlessPro::Resources::MandateImportEntry do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id
-                  }
-                }
-              ]
-            }
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 409
@@ -135,23 +135,21 @@ describe GoCardlessPro::Resources::MandateImportEntry do
               'created_at' => 'created_at-input',
               'links' => 'links-input',
               'processing_errors' => 'processing_errors-input',
-              'record_identifier' => 'record_identifier-input'
+              'record_identifier' => 'record_identifier-input',
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123'
-              }
-            }
+                after: 'ABC123',
+              },
+            },
           }.to_json,
           headers: response_headers
         )
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map do |x|
-                 x.class
-               end.uniq.first).to eq(GoCardlessPro::Resources::MandateImportEntry)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::MandateImportEntry)
 
         expect(get_list_response.records.first.created_at).to eq('created_at-input')
 
@@ -178,12 +176,12 @@ describe GoCardlessPro::Resources::MandateImportEntry do
             'created_at' => 'created_at-input',
             'links' => 'links-input',
             'processing_errors' => 'processing_errors-input',
-            'record_identifier' => 'record_identifier-input'
+            'record_identifier' => 'record_identifier-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -197,12 +195,12 @@ describe GoCardlessPro::Resources::MandateImportEntry do
             'created_at' => 'created_at-input',
             'links' => 'links-input',
             'processing_errors' => 'processing_errors-input',
-            'record_identifier' => 'record_identifier-input'
+            'record_identifier' => 'record_identifier-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )

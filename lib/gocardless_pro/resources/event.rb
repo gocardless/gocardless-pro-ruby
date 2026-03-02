@@ -15,10 +15,17 @@ module GoCardlessPro
     # mandate which has been transferred. Event creation is an asynchronous
     # process, so it can take some time between an action occurring and its
     # corresponding event getting included in API responses. See
-    # [here](#event-actions) for a complete list of event types.
+    # [here](#event-types) for a complete list of event types.
     class Event
-      attr_reader :action, :created_at, :customer_notifications, :details, :id, :metadata, :resource_metadata,
-                  :resource_type
+      attr_reader :action
+      attr_reader :created_at
+      attr_reader :customer_notifications
+      attr_reader :details
+      attr_reader :id
+      attr_reader :metadata
+      attr_reader :resource_metadata
+      attr_reader :resource_type
+      attr_reader :source
 
       # Initialize a event resource instance
       # @param object [Hash] an object returned from the API
@@ -34,6 +41,7 @@ module GoCardlessPro
         @metadata = object['metadata']
         @resource_metadata = object['resource_metadata']
         @resource_type = object['resource_type']
+        @source = object['source']
         @response = response
       end
 
@@ -88,6 +96,10 @@ module GoCardlessPro
           @links['mandate']
         end
 
+        def mandate_request
+          @links['mandate_request']
+        end
+
         def mandate_request_mandate
           @links['mandate_request_mandate']
         end
@@ -102,6 +114,10 @@ module GoCardlessPro
 
         def organisation
           @links['organisation']
+        end
+
+        def outbound_payment
+          @links['outbound_payment']
         end
 
         def parent_event

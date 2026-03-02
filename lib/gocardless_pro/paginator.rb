@@ -8,6 +8,7 @@ module GoCardlessPro
     def initialize(options = {})
       @service = options.fetch(:service)
       @options = options.fetch(:options)
+      @uri_params = options.reject { |k, _| %i[service options].include?(k) }
     end
 
     # Get a lazy enumerable for listing data from the API
@@ -22,7 +23,7 @@ module GoCardlessPro
 
           @options[:params] ||= {}
           @options[:params] = @options[:params].merge(after: after_cursor)
-          response = @service.list(@options.merge(after: after_cursor))
+          response = @service.list(*@uri_params.values, @options.merge(after: after_cursor))
         end
       end.lazy
     end
@@ -30,7 +31,7 @@ module GoCardlessPro
     private
 
     def get_initial_response
-      @initial_response ||= @service.list(@options)
+      @initial_response ||= @service.list(*@uri_params.values, @options)
     end
   end
 end

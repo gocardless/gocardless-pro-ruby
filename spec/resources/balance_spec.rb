@@ -22,14 +22,14 @@ describe GoCardlessPro::Resources::Balance do
               'balance_type' => 'balance_type-input',
               'currency' => 'currency-input',
               'last_updated_at' => 'last_updated_at-input',
-              'links' => 'links-input'
+              'links' => 'links-input',
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123'
-              }
-            }
+                after: 'ABC123',
+              },
+            },
           }.to_json,
           headers: response_headers
         )
@@ -66,12 +66,12 @@ describe GoCardlessPro::Resources::Balance do
             'balance_type' => 'balance_type-input',
             'currency' => 'currency-input',
             'last_updated_at' => 'last_updated_at-input',
-            'links' => 'links-input'
+            'links' => 'links-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -86,12 +86,12 @@ describe GoCardlessPro::Resources::Balance do
             'balance_type' => 'balance_type-input',
             'currency' => 'currency-input',
             'last_updated_at' => 'last_updated_at-input',
-            'links' => 'links-input'
+            'links' => 'links-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )

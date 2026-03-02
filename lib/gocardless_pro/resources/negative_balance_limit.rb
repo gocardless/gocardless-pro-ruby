@@ -16,7 +16,10 @@ module GoCardlessPro
     # changed on a per-creditor basis.
     #
     class NegativeBalanceLimit
-      attr_reader :balance_limit, :created_at, :currency, :id
+      attr_reader :balance_limit
+      attr_reader :created_at
+      attr_reader :currency
+      attr_reader :id
 
       # Initialize a negative_balance_limit resource instance
       # @param object [Hash] an object returned from the API

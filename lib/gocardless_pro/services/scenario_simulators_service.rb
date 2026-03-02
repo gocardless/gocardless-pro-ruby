@@ -99,9 +99,9 @@ module GoCardlessPro
       # PAD mandates, which do not expire.</li>
       # <li>`mandate_transferred`: Transitions a mandate through to
       # `transferred`, having been submitted to the banks, set up successfully
-      # and then moved to a new bank account due to the customer using the UK's
-      # Current Account Switching Service (CASS). It must start in the
-      # `pending_submission` state. Only compatible with Bacs mandates.</li>
+      # and then moved to a new bank account due. It must start in the
+      # `pending_submission` state. Only compatible with Bacs and SEPA
+      # mandates.</li>
       # <li>`mandate_transferred_with_resubmission`: Transitions a mandate
       # through `transferred` and resubmits it to the banks, can be caused be
       # the UK's Current Account Switching Service (CASS) or when a customer
@@ -132,6 +132,12 @@ module GoCardlessPro
       # `failed`. The billing request must be in the `pending` state, with all
       # actions completed except for `bank_authorisation`. Only billing requests
       # with a `payment_request` are supported.</li>
+      # <li>`billing_request_fulfilled_and_payment_confirmed_to_failed`:
+      # Authorises the billing request, fulfils it, moves the associated payment
+      # to `confirmed` and then moves it to `failed`. The billing request must
+      # be in the `pending` state, with all actions completed except for
+      # `bank_authorisation`. Only billing requests with a `payment_request` are
+      # supported.</li>
       # <li>`billing_request_fulfilled_and_payment_paid_out`: Authorises the
       # billing request, fulfils it, and moves the associated payment to
       # `paid_out`. The billing request must be in the `pending` state, with all
@@ -141,7 +147,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def run(identity, options = {})
         path = sub_url('/scenario_simulators/:identity/actions/run', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         params = options.delete(:params) || {}

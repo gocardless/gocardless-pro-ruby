@@ -26,14 +26,15 @@ describe GoCardlessPro::Resources::Event do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'resource_metadata' => 'resource_metadata-input',
-              'resource_type' => 'resource_type-input'
+              'resource_type' => 'resource_type-input',
+              'source' => 'source-input',
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123'
-              }
-            }
+                after: 'ABC123',
+              },
+            },
           }.to_json,
           headers: response_headers
         )
@@ -57,6 +58,8 @@ describe GoCardlessPro::Resources::Event do
         expect(get_list_response.records.first.resource_metadata).to eq('resource_metadata-input')
 
         expect(get_list_response.records.first.resource_type).to eq('resource_type-input')
+
+        expect(get_list_response.records.first.source).to eq('source-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -82,12 +85,13 @@ describe GoCardlessPro::Resources::Event do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'resource_metadata' => 'resource_metadata-input',
-            'resource_type' => 'resource_type-input'
+            'resource_type' => 'resource_type-input',
+            'source' => 'source-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -106,12 +110,13 @@ describe GoCardlessPro::Resources::Event do
             'links' => 'links-input',
             'metadata' => 'metadata-input',
             'resource_metadata' => 'resource_metadata-input',
-            'resource_type' => 'resource_type-input'
+            'resource_type' => 'resource_type-input',
+            'source' => 'source-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )
@@ -132,9 +137,9 @@ describe GoCardlessPro::Resources::Event do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/events/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
               'events' => {
 
@@ -146,8 +151,9 @@ describe GoCardlessPro::Resources::Event do
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
                 'resource_metadata' => 'resource_metadata-input',
-                'resource_type' => 'resource_type-input'
-              }
+                'resource_type' => 'resource_type-input',
+                'source' => 'source-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -155,7 +161,7 @@ describe GoCardlessPro::Resources::Event do
 
       subject(:get_response) do
         client.events.get(id, headers: {
-                            'Foo' => 'Bar'
+                            'Foo' => 'Bar',
                           })
       end
 
@@ -180,8 +186,9 @@ describe GoCardlessPro::Resources::Event do
               'links' => 'links-input',
               'metadata' => 'metadata-input',
               'resource_metadata' => 'resource_metadata-input',
-              'resource_type' => 'resource_type-input'
-            }
+              'resource_type' => 'resource_type-input',
+              'source' => 'source-input',
+            },
           }.to_json,
           headers: response_headers
         )

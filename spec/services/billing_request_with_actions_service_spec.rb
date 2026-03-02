@@ -16,30 +16,30 @@ describe GoCardlessPro::Services::BillingRequestWithActionsService do
         {
 
           'bank_authorisations' => 'bank_authorisations-input',
-          'billing_requests' => 'billing_requests-input'
+          'billing_requests' => 'billing_requests-input',
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/billing_requests/create_with_actions})
-          .with(
+        stub_request(:post, %r{.*api.gocardless.com/billing_requests/create_with_actions}).
+          with(
             body: {
               'billing_request_with_actions' => {
 
                 'bank_authorisations' => 'bank_authorisations-input',
-                'billing_requests' => 'billing_requests-input'
-              }
+                'billing_requests' => 'billing_requests-input',
+              },
             }
-          )
-          .to_return(
+          ).
+          to_return(
             body: {
               'billing_request_with_actions' =>
 
                 {
 
                   'bank_authorisations' => 'bank_authorisations-input',
-                  'billing_requests' => 'billing_requests-input'
-                }
+                  'billing_requests' => 'billing_requests-input',
+                },
 
             }.to_json,
             headers: response_headers
@@ -54,19 +54,19 @@ describe GoCardlessPro::Services::BillingRequestWithActionsService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/billing_requests/create_with_actions})
-                 .to_timeout.then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:post, %r{.*api.gocardless.com/billing_requests/create_with_actions}).
+                 to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/billing_requests/create_with_actions})
-                 .to_return({ status: 502,
-                              headers: { 'Content-Type' => 'text/html' },
-                              body: '<html><body>Response from Cloudflare</body></html>' })
-                 .then.to_return({ status: 200, headers: response_headers })
+          stub = stub_request(:post, %r{.*api.gocardless.com/billing_requests/create_with_actions}).
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
           expect(stub).to have_been_requested.twice
@@ -84,9 +84,9 @@ describe GoCardlessPro::Services::BillingRequestWithActionsService do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' }
-              ]
-            }
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 422
@@ -105,7 +105,7 @@ describe GoCardlessPro::Services::BillingRequestWithActionsService do
         {
 
           'bank_authorisations' => 'bank_authorisations-input',
-          'billing_requests' => 'billing_requests-input'
+          'billing_requests' => 'billing_requests-input',
         }
       end
 
@@ -120,11 +120,11 @@ describe GoCardlessPro::Services::BillingRequestWithActionsService do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id
-                  }
-                }
-              ]
-            }
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 409

@@ -20,14 +20,14 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
             'rate' => 'rate-input',
             'source' => 'source-input',
             'target' => 'target-input',
-            'time' => 'time-input'
+            'time' => 'time-input',
           }],
           meta: {
             cursors: {
               before: nil,
-              after: 'ABC123'
-            }
-          }
+              after: 'ABC123',
+            },
+          },
         }.to_json
       end
 
@@ -39,9 +39,7 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map do |x|
-                 x.class
-               end.uniq.first).to eq(GoCardlessPro::Resources::CurrencyExchangeRate)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::CurrencyExchangeRate)
 
         expect(get_list_response.records.first.rate).to eq('rate-input')
 
@@ -63,19 +61,19 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/currency_exchange_rates})
-                 .to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/currency_exchange_rates}).
+                 to_timeout.then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:get, %r{.*api.gocardless.com/currency_exchange_rates})
-                 .to_return({ status: 502,
-                              headers: { 'Content-Type' => 'text/html' },
-                              body: '<html><body>Response from Cloudflare</body></html>' })
-                 .then.to_return({ status: 200, headers: response_headers, body: body })
+          stub = stub_request(:get, %r{.*api.gocardless.com/currency_exchange_rates}).
+                 to_return({ status: 502,
+                             headers: { 'Content-Type' => 'text/html' },
+                             body: '<html><body>Response from Cloudflare</body></html>' }).
+                 then.to_return({ status: 200, headers: response_headers, body: body })
 
           get_list_response
           expect(stub).to have_been_requested.twice
@@ -93,12 +91,12 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
             'rate' => 'rate-input',
             'source' => 'source-input',
             'target' => 'target-input',
-            'time' => 'time-input'
+            'time' => 'time-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -112,12 +110,12 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
             'rate' => 'rate-input',
             'source' => 'source-input',
             'target' => 'target-input',
-            'time' => 'time-input'
+            'time' => 'time-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )
@@ -140,31 +138,31 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
               'rate' => 'rate-input',
               'source' => 'source-input',
               'target' => 'target-input',
-              'time' => 'time-input'
+              'time' => 'time-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1
-            }
+              limit: 1,
+            },
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/currency_exchange_rates\?after=AB345})
-                               .to_timeout.then
-                               .to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/currency_exchange_rates\?after=AB345}).
+                               to_timeout.then.
+                               to_return(
                                  body: {
                                    'currency_exchange_rates' => [{
 
                                      'rate' => 'rate-input',
                                      'source' => 'source-input',
                                      'target' => 'target-input',
-                                     'time' => 'time-input'
+                                     'time' => 'time-input',
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {}
-                                   }
+                                     cursors: {},
+                                   },
                                  }.to_json,
                                  headers: response_headers
                                )
@@ -183,18 +181,18 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
               'rate' => 'rate-input',
               'source' => 'source-input',
               'target' => 'target-input',
-              'time' => 'time-input'
+              'time' => 'time-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
-              limit: 1
-            }
+              limit: 1,
+            },
           }.to_json,
           headers: response_headers
         )
 
-        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/currency_exchange_rates\?after=AB345})
-                               .to_return(
+        second_response_stub = stub_request(:get, %r{.*api.gocardless.com/currency_exchange_rates\?after=AB345}).
+                               to_return(
                                  status: 502,
                                  body: '<html><body>Response from Cloudflare</body></html>',
                                  headers: { 'Content-Type' => 'text/html' }
@@ -205,12 +203,12 @@ describe GoCardlessPro::Services::CurrencyExchangeRatesService do
                                      'rate' => 'rate-input',
                                      'source' => 'source-input',
                                      'target' => 'target-input',
-                                     'time' => 'time-input'
+                                     'time' => 'time-input',
                                    }],
                                    meta: {
                                      limit: 2,
-                                     cursors: {}
-                                   }
+                                     cursors: {},
+                                   },
                                  }.to_json,
                                  headers: response_headers
                                )

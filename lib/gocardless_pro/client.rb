@@ -13,6 +13,11 @@ module GoCardlessPro
       @bank_account_details ||= Services::BankAccountDetailsService.new(@api_service)
     end
 
+    # Access to the service for bank_account_holder_verification to make API calls
+    def bank_account_holder_verifications
+      @bank_account_holder_verifications ||= Services::BankAccountHolderVerificationsService.new(@api_service)
+    end
+
     # Access to the service for bank_authorisation to make API calls
     def bank_authorisations
       @bank_authorisations ||= Services::BankAuthorisationsService.new(@api_service)
@@ -88,6 +93,11 @@ module GoCardlessPro
       @exports ||= Services::ExportsService.new(@api_service)
     end
 
+    # Access to the service for funds_availability to make API calls
+    def funds_availabilities
+      @funds_availabilities ||= Services::FundsAvailabilitiesService.new(@api_service)
+    end
+
     # Access to the service for instalment_schedule to make API calls
     def instalment_schedules
       @instalment_schedules ||= Services::InstalmentSchedulesService.new(@api_service)
@@ -146,6 +156,16 @@ module GoCardlessPro
     # Access to the service for payment to make API calls
     def payments
       @payments ||= Services::PaymentsService.new(@api_service)
+    end
+
+    # Access to the service for payment_account to make API calls
+    def payment_accounts
+      @payment_accounts ||= Services::PaymentAccountsService.new(@api_service)
+    end
+
+    # Access to the service for payment_account_transaction to make API calls
+    def payment_account_transactions
+      @payment_account_transactions ||= Services::PaymentAccountTransactionsService.new(@api_service)
     end
 
     # Access to the service for payout to make API calls
@@ -253,8 +273,8 @@ module GoCardlessPro
           'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '4.2.0'
-        }
+          'GoCardless-Client-Version' => '4.3.0',
+        },
       }
     end
 
@@ -274,7 +294,7 @@ module GoCardlessPro
           comment = [
             "#{ruby_engine}/#{ruby_version}",
             "#{RUBY_ENGINE}/#{interpreter_version}",
-            "#{RUBY_PLATFORM}"
+            "#{RUBY_PLATFORM}",
           ]
           comment << "faraday/#{Faraday::VERSION}"
           "#{gem_info} #{comment.join(' ')}"

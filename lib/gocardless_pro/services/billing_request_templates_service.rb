@@ -46,7 +46,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/billing_request_templates/:identity', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         options[:retry_failures] = true
@@ -79,7 +79,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
@@ -97,11 +97,11 @@ module GoCardlessPro
       # Requests created by this template.
       # Example URL: /billing_request_templates/:identity
       #
-      # @param identity       # Unique identifier, beginning with "BRQ".
+      # @param identity       # Unique identifier, beginning with "BRT".
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/billing_request_templates/:identity', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         params = options.delete(:params) || {}

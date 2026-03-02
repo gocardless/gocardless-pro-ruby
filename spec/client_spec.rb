@@ -6,7 +6,7 @@ describe GoCardlessPro::Client do
   let(:options) do
     {
       environment: environment,
-      token: token
+      token: token,
     }
   end
 

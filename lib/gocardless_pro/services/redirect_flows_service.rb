@@ -32,7 +32,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
@@ -53,7 +53,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/redirect_flows/:identity', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         options[:retry_failures] = true
@@ -81,7 +81,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def complete(identity, options = {})
         path = sub_url('/redirect_flows/:identity/actions/complete', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         params = options.delete(:params) || {}
@@ -99,7 +99,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end

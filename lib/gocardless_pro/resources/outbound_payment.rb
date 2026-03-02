@@ -14,17 +14,31 @@ module GoCardlessPro
     # [creditors](#core-endpoints-creditors).
     #
     # GoCardless will notify you via a [webhook](#appendix-webhooks) when the
-    # status of the outbound payment [changes](#event-actions-outbound-payment).
+    # status of the outbound payment [changes](#event-types-outbound-payment).
     #
-    # <p class="restricted-notice"><strong>Restricted</strong>: Outbound
-    # Payments are currently in Early Access and available only to a limited
-    # list of organisations. If you are interested in using this feature, please
-    # stay tuned for our public launch announcement. We are actively testing and
-    # refining our API to ensure it meets your needs and provides the best
-    # experience.</p>
+    # ####Rate limiting
+    #
+    # Two rate limits apply to the Outbound Payments APIs:
+    # - All POST Outbound Payment endpoints (create, withdraw, approve, cancel
+    # and etc.) share a single rate-limit group of 300 requests per minute. As
+    # initiating a payment typically requires two API calls (one to create the
+    # payment and one to approve it), this allows you to add approximately 150
+    # outbound payments per minute.
+    # - All remaining Outbound Payment endpoints are limited to 500 requests per
+    # minute.
     class OutboundPayment
-      attr_reader :amount, :created_at, :currency, :description, :execution_date, :id, :is_withdrawal, :metadata,
-                  :reference, :scheme, :status, :verifications
+      attr_reader :amount
+      attr_reader :created_at
+      attr_reader :currency
+      attr_reader :description
+      attr_reader :execution_date
+      attr_reader :id
+      attr_reader :is_withdrawal
+      attr_reader :metadata
+      attr_reader :reference
+      attr_reader :scheme
+      attr_reader :status
+      attr_reader :verifications
 
       # Initialize a outbound_payment resource instance
       # @param object [Hash] an object returned from the API

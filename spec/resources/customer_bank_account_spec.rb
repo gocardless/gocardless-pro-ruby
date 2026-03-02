@@ -26,13 +26,13 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
           'enabled' => 'enabled-input',
           'id' => 'id-input',
           'links' => 'links-input',
-          'metadata' => 'metadata-input'
+          'metadata' => 'metadata-input',
         }
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/customer_bank_accounts})
-          .with(
+        stub_request(:post, %r{.*api.gocardless.com/customer_bank_accounts}).
+          with(
             body: {
               'customer_bank_accounts' => {
 
@@ -47,11 +47,11 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'enabled' => 'enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
-                'metadata' => 'metadata-input'
-              }
+                'metadata' => 'metadata-input',
+              },
             }
-          )
-          .to_return(
+          ).
+          to_return(
             body: {
               'customer_bank_accounts' =>
 
@@ -68,8 +68,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                   'enabled' => 'enabled-input',
                   'id' => 'id-input',
                   'links' => 'links-input',
-                  'metadata' => 'metadata-input'
-                }
+                  'metadata' => 'metadata-input',
+                },
 
             }.to_json,
             headers: response_headers
@@ -91,9 +91,9 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
               type: 'validation_failed',
               code: 422,
               errors: [
-                { message: 'test error message', field: 'test_field' }
-              ]
-            }
+                { message: 'test error message', field: 'test_field' },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 422
@@ -122,7 +122,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
           'enabled' => 'enabled-input',
           'id' => 'id-input',
           'links' => 'links-input',
-          'metadata' => 'metadata-input'
+          'metadata' => 'metadata-input',
         }
       end
 
@@ -137,11 +137,11 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                   message: 'A resource has already been created with this idempotency key',
                   reason: 'idempotent_creation_conflict',
                   links: {
-                    conflicting_resource_id: id
-                  }
-                }
-              ]
-            }
+                    conflicting_resource_id: id,
+                  },
+                },
+              ],
+            },
           }.to_json,
           headers: response_headers,
           status: 409
@@ -150,8 +150,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
 
       let!(:get_stub) do
         stub_url = "/customer_bank_accounts/#{id}"
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          to_return(
             body: {
               'customer_bank_accounts' => {
 
@@ -166,8 +166,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'enabled' => 'enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
-                'metadata' => 'metadata-input'
-              }
+                'metadata' => 'metadata-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -201,23 +201,21 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
               'enabled' => 'enabled-input',
               'id' => 'id-input',
               'links' => 'links-input',
-              'metadata' => 'metadata-input'
+              'metadata' => 'metadata-input',
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123'
-              }
-            }
+                after: 'ABC123',
+              },
+            },
           }.to_json,
           headers: response_headers
         )
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map do |x|
-                 x.class
-               end.uniq.first).to eq(GoCardlessPro::Resources::CustomerBankAccount)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::CustomerBankAccount)
 
         expect(get_list_response.records.first.account_holder_name).to eq('account_holder_name-input')
 
@@ -268,12 +266,12 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
             'enabled' => 'enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'metadata' => 'metadata-input'
+            'metadata' => 'metadata-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -295,12 +293,12 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
             'enabled' => 'enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'metadata' => 'metadata-input'
+            'metadata' => 'metadata-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )
@@ -321,9 +319,9 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
     context 'passing in a custom header' do
       let!(:stub) do
         stub_url = '/customer_bank_accounts/:identity'.gsub(':identity', id)
-        stub_request(:get, /.*api.gocardless.com#{stub_url}/)
-          .with(headers: { 'Foo' => 'Bar' })
-          .to_return(
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
             body: {
               'customer_bank_accounts' => {
 
@@ -338,8 +336,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'enabled' => 'enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
-                'metadata' => 'metadata-input'
-              }
+                'metadata' => 'metadata-input',
+              },
             }.to_json,
             headers: response_headers
           )
@@ -347,7 +345,7 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
 
       subject(:get_response) do
         client.customer_bank_accounts.get(id, headers: {
-                                            'Foo' => 'Bar'
+                                            'Foo' => 'Bar',
                                           })
       end
 
@@ -375,8 +373,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
               'enabled' => 'enabled-input',
               'id' => 'id-input',
               'links' => 'links-input',
-              'metadata' => 'metadata-input'
-            }
+              'metadata' => 'metadata-input',
+            },
           }.to_json,
           headers: response_headers
         )
@@ -434,8 +432,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
               'enabled' => 'enabled-input',
               'id' => 'id-input',
               'links' => 'links-input',
-              'metadata' => 'metadata-input'
-            }
+              'metadata' => 'metadata-input',
+            },
           }.to_json,
           headers: response_headers
         )
@@ -471,8 +469,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
             'enabled' => 'enabled-input',
             'id' => 'id-input',
             'links' => 'links-input',
-            'metadata' => 'metadata-input'
-          }
+            'metadata' => 'metadata-input',
+          },
         }.to_json,
 
         headers: response_headers
@@ -495,8 +493,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
       let!(:stub) do
         # /customer_bank_accounts/%v/actions/disable
         stub_url = '/customer_bank_accounts/:identity/actions/disable'.gsub(':identity', resource_id)
-        stub_request(:post, /.*api.gocardless.com#{stub_url}/)
-          .with(
+        stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+          with(
             body: { foo: 'bar' },
             headers: { 'Foo' => 'Bar' }
           ).to_return(
@@ -514,8 +512,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'enabled' => 'enabled-input',
                 'id' => 'id-input',
                 'links' => 'links-input',
-                'metadata' => 'metadata-input'
-              }
+                'metadata' => 'metadata-input',
+              },
             }.to_json,
             headers: response_headers
           )

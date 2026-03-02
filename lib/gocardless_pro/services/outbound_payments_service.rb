@@ -31,7 +31,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
@@ -67,7 +67,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
@@ -91,7 +91,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def cancel(identity, options = {})
         path = sub_url('/outbound_payments/:identity/actions/cancel', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         params = options.delete(:params) || {}
@@ -109,7 +109,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
@@ -131,7 +131,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def approve(identity, options = {})
         path = sub_url('/outbound_payments/:identity/actions/approve', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         params = options.delete(:params) || {}
@@ -149,7 +149,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
@@ -170,7 +170,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/outbound_payments/:identity', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         options[:retry_failures] = true
@@ -218,7 +218,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/outbound_payments/:identity', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         params = options.delete(:params) || {}
@@ -228,6 +228,21 @@ module GoCardlessPro
         options[:retry_failures] = true
 
         response = make_request(:put, path, options)
+
+        return if response.body.nil?
+
+        Resources::OutboundPayment.new(unenvelope_body(response.body), response)
+      end
+
+      # Retrieve aggregate statistics on outbound payments.
+      # Example URL: /outbound_payments/stats
+      # @param options [Hash] parameters as a hash, under a params key.
+      def stats(options = {})
+        path = '/outbound_payments/stats'
+
+        options[:retry_failures] = false
+
+        response = make_request(:get, path, options)
 
         return if response.body.nil?
 

@@ -19,7 +19,8 @@ module GoCardlessPro
     # Overview](https://developer.gocardless.com/getting-started/billing-requests/overview/)
     # for how-to's, explanations and tutorials.
     class BillingRequestWithAction
-      attr_reader :bank_authorisations, :billing_requests
+      attr_reader :bank_authorisations
+      attr_reader :billing_requests
 
       # Initialize a billing_request_with_action resource instance
       # @param object [Hash] an object returned from the API

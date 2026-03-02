@@ -21,23 +21,21 @@ describe GoCardlessPro::Resources::CurrencyExchangeRate do
               'rate' => 'rate-input',
               'source' => 'source-input',
               'target' => 'target-input',
-              'time' => 'time-input'
+              'time' => 'time-input',
             }],
             meta: {
               cursors: {
                 before: nil,
-                after: 'ABC123'
-              }
-            }
+                after: 'ABC123',
+              },
+            },
           }.to_json,
           headers: response_headers
         )
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map do |x|
-                 x.class
-               end.uniq.first).to eq(GoCardlessPro::Resources::CurrencyExchangeRate)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::CurrencyExchangeRate)
 
         expect(get_list_response.records.first.rate).to eq('rate-input')
 
@@ -66,12 +64,12 @@ describe GoCardlessPro::Resources::CurrencyExchangeRate do
             'rate' => 'rate-input',
             'source' => 'source-input',
             'target' => 'target-input',
-            'time' => 'time-input'
+            'time' => 'time-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
-            limit: 1
-          }
+            limit: 1,
+          },
         }.to_json,
         headers: response_headers
       )
@@ -85,12 +83,12 @@ describe GoCardlessPro::Resources::CurrencyExchangeRate do
             'rate' => 'rate-input',
             'source' => 'source-input',
             'target' => 'target-input',
-            'time' => 'time-input'
+            'time' => 'time-input',
           }],
           meta: {
             limit: 2,
-            cursors: {}
-          }
+            cursors: {},
+          },
         }.to_json,
         headers: response_headers
       )

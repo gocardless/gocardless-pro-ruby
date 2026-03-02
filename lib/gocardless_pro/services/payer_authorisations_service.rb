@@ -18,7 +18,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
         path = sub_url('/payer_authorisations/:identity', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         options[:retry_failures] = true
@@ -56,7 +56,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
@@ -85,7 +85,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def update(identity, options = {})
         path = sub_url('/payer_authorisations/:identity', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         params = options.delete(:params) || {}
@@ -111,7 +111,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def submit(identity, options = {})
         path = sub_url('/payer_authorisations/:identity/actions/submit', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         params = options.delete(:params) || {}
@@ -129,7 +129,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
@@ -160,7 +160,7 @@ module GoCardlessPro
       # @param options [Hash] parameters as a hash, under a params key.
       def confirm(identity, options = {})
         path = sub_url('/payer_authorisations/:identity/actions/confirm', {
-                         'identity' => identity
+                         'identity' => identity,
                        })
 
         params = options.delete(:params) || {}
@@ -178,7 +178,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
