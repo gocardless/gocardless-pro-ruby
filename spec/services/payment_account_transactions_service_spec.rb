@@ -48,9 +48,7 @@ describe GoCardlessPro::Services::PaymentAccountTransactionsService do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map do |x|
-                 x.class
-               end.uniq.first).to eq(GoCardlessPro::Resources::PaymentAccountTransaction)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::PaymentAccountTransaction)
 
         expect(get_list_response.records.first.amount).to eq('amount-input')
 

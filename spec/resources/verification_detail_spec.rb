@@ -179,9 +179,7 @@ describe GoCardlessPro::Resources::VerificationDetail do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map do |x|
-                 x.class
-               end.uniq.first).to eq(GoCardlessPro::Resources::VerificationDetail)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::VerificationDetail)
 
         expect(get_list_response.records.first.address_line1).to eq('address_line1-input')
 

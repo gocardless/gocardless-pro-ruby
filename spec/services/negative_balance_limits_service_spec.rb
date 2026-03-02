@@ -40,9 +40,7 @@ describe GoCardlessPro::Services::NegativeBalanceLimitsService do
       end
 
       it 'wraps each item in the resource class' do
-        expect(get_list_response.records.map do |x|
-                 x.class
-               end.uniq.first).to eq(GoCardlessPro::Resources::NegativeBalanceLimit)
+        expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::NegativeBalanceLimit)
 
         expect(get_list_response.records.first.balance_limit).to eq('balance_limit-input')
 

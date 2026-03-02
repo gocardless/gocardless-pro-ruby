@@ -56,7 +56,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
@@ -129,7 +129,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end
@@ -178,7 +178,7 @@ module GoCardlessPro
           if e.idempotent_creation_conflict?
             case @api_service.on_idempotency_conflict
             when :raise
-              raise IdempotencyConflict, e.error
+              raise IdempotencyConflict.new(e.error)
             when :fetch
               return get(e.conflicting_resource_id)
             end

@@ -21,8 +21,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'faraday', ['>= 2', '< 3']
   spec.add_dependency 'base64'
 
-  spec.add_development_dependency 'rspec', '~> 3.7.0'
-  spec.add_development_dependency 'webmock', '~> 3.8.3'
-  spec.add_development_dependency 'rubocop', '~> 1.44.1'
-  spec.add_development_dependency 'yard', '~> 0.9.11'
+  spec.add_development_dependency 'rspec', '~> 3.13.0'
+  spec.add_development_dependency 'webmock', '~> 3.24.0'
+  spec.add_development_dependency 'rubocop', '~> 1.85.0'
+  spec.add_development_dependency 'yard', '~> 0.9.37'
 end
