@@ -9,6 +9,99 @@ describe GoCardlessPro::Resources::PaymentAccountTransaction do
 
   let(:response_headers) { { 'Content-Type' => 'application/json' } }
 
+  describe '#get' do
+    let(:id) { 'ID123' }
+
+    subject(:get_response) { client.payment_account_transactions.get(id) }
+
+    context 'passing in a custom header' do
+      let!(:stub) do
+        stub_url = '/payment_account_transactions/:identity'.gsub(':identity', id)
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).
+          with(headers: { 'Foo' => 'Bar' }).
+          to_return(
+            body: {
+              'payment_account_transactions' => {
+
+                'amount' => 'amount-input',
+                'balance_after_transaction' => 'balance_after_transaction-input',
+                'counterparty_name' => 'counterparty_name-input',
+                'currency' => 'currency-input',
+                'description' => 'description-input',
+                'direction' => 'direction-input',
+                'id' => 'id-input',
+                'links' => 'links-input',
+                'reference' => 'reference-input',
+                'value_date' => 'value_date-input',
+              },
+            }.to_json,
+            headers: response_headers
+          )
+      end
+
+      subject(:get_response) do
+        client.payment_account_transactions.get(id, headers: {
+                                                  'Foo' => 'Bar',
+                                                })
+      end
+
+      it 'includes the header' do
+        get_response
+        expect(stub).to have_been_requested
+      end
+    end
+
+    context 'when there is a payment_account_transaction to return' do
+      before do
+        stub_url = '/payment_account_transactions/:identity'.gsub(':identity', id)
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
+          body: {
+            'payment_account_transactions' => {
+
+              'amount' => 'amount-input',
+              'balance_after_transaction' => 'balance_after_transaction-input',
+              'counterparty_name' => 'counterparty_name-input',
+              'currency' => 'currency-input',
+              'description' => 'description-input',
+              'direction' => 'direction-input',
+              'id' => 'id-input',
+              'links' => 'links-input',
+              'reference' => 'reference-input',
+              'value_date' => 'value_date-input',
+            },
+          }.to_json,
+          headers: response_headers
+        )
+      end
+
+      it 'wraps the response in a resource' do
+        expect(get_response).to be_a(GoCardlessPro::Resources::PaymentAccountTransaction)
+      end
+    end
+
+    context 'when nothing is returned' do
+      before do
+        stub_url = '/payment_account_transactions/:identity'.gsub(':identity', id)
+        stub_request(:get, /.*api.gocardless.com#{stub_url}/).to_return(
+          body: '',
+          headers: response_headers
+        )
+      end
+
+      it 'returns nil' do
+        expect(get_response).to be_nil
+      end
+    end
+
+    context "when an ID is specified which can't be included in a valid URI" do
+      let(:id) { '`' }
+
+      it "doesn't raise an error" do
+        expect { get_response }.to_not raise_error(/bad URI/)
+      end
+    end
+  end
+
   describe '#list' do
     describe 'with no filters' do
       let(:identity) { 'ID123' }
