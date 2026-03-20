@@ -10,6 +10,27 @@ module GoCardlessPro
   module Services
     # Service for making requests to the PaymentAccountTransaction endpoints
     class PaymentAccountTransactionsService < BaseService
+      # Retrieves the details of an existing payment account transaction.
+      # Example URL: /payment_account_transactions/:identity
+      #
+      # @param identity       # The unique ID of the [bank
+      # account](#core-endpoints-creditor-bank-accounts) which happens to be the
+      # payment account.
+      # @param options [Hash] parameters as a hash, under a params key.
+      def get(identity, options = {})
+        path = sub_url('/payment_account_transactions/:identity', {
+                         'identity' => identity,
+                       })
+
+        options[:retry_failures] = true
+
+        response = make_request(:get, path, options)
+
+        return if response.body.nil?
+
+        Resources::PaymentAccountTransaction.new(unenvelope_body(response.body), response)
+      end
+
       # List transactions for a given payment account.
       # Example URL: /payment_accounts/:identity/transactions
       #
