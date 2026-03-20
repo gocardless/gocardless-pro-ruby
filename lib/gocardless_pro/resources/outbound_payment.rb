@@ -88,6 +88,10 @@ module GoCardlessPro
           @links['customer']
         end
 
+        def outbound_payment_import
+          @links['outbound_payment_import']
+        end
+
         def recipient_bank_account
           @links['recipient_bank_account']
         end

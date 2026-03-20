@@ -132,6 +132,10 @@ module GoCardlessPro
           @links['payment']
         end
 
+        def payment_account_transaction
+          @links['payment_account_transaction']
+        end
+
         def payment_request_payment
           @links['payment_request_payment']
         end
