@@ -48,3 +48,12 @@ jobs:
           printf -- "---\n:rubygems_api_key: $RUBYGEM_PUBLISH_API_KEY\n" > $HOME/.gem/credentials
           gem build *.gemspec
           gem push *.gem
+      - name: Create GitHub Release
+        if: steps.version_check.outputs.already_published == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=${{ steps.version_check.outputs.version }}
+          gh release create "v$VERSION" \
+            --title "v$VERSION" \
+            --generate-notes
