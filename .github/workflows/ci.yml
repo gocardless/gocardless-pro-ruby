@@ -41,10 +41,33 @@ jobs:
         with:
           ruby-version: '4.0'
           bundler-cache: true
-      - run: |
+      - name: Check if version is already released
+        id: version_check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(ruby -r ./lib/gocardless_pro/version.rb -e 'puts GoCardlessPro::VERSION')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            echo "already_published=true" >> $GITHUB_OUTPUT
+          else
+            echo "already_published=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Build and publish gem
+        if: steps.version_check.outputs.already_published == 'false'
+        run: |
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
           chmod 0600 $HOME/.gem/credentials
           printf -- "---\n:rubygems_api_key: $RUBYGEM_PUBLISH_API_KEY\n" > $HOME/.gem/credentials
           gem build *.gemspec
           gem push *.gem
+      - name: Create GitHub Release
+        if: steps.version_check.outputs.already_published == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=${{ steps.version_check.outputs.version }}
+          gh release create "v$VERSION" \
+            --title "v$VERSION" \
+            --generate-notes
