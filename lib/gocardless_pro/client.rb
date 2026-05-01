@@ -143,6 +143,16 @@ module GoCardlessPro
       @outbound_payments ||= Services::OutboundPaymentsService.new(@api_service)
     end
 
+    # Access to the service for outbound_payment_import to make API calls
+    def outbound_payment_imports
+      @outbound_payment_imports ||= Services::OutboundPaymentImportsService.new(@api_service)
+    end
+
+    # Access to the service for outbound_payment_import_entry to make API calls
+    def outbound_payment_import_entries
+      @outbound_payment_import_entries ||= Services::OutboundPaymentImportEntriesService.new(@api_service)
+    end
+
     # Access to the service for payer_authorisation to make API calls
     def payer_authorisations
       @payer_authorisations ||= Services::PayerAuthorisationsService.new(@api_service)

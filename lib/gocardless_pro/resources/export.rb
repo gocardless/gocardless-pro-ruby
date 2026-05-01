@@ -15,6 +15,7 @@ module GoCardlessPro
       attr_reader :created_at
       attr_reader :currency
       attr_reader :download_url
+      attr_reader :error_message
       attr_reader :export_type
       attr_reader :id
 
@@ -26,6 +27,7 @@ module GoCardlessPro
         @created_at = object['created_at']
         @currency = object['currency']
         @download_url = object['download_url']
+        @error_message = object['error_message']
         @export_type = object['export_type']
         @id = object['id']
         @response = response
