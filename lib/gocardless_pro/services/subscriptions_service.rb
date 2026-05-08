@@ -191,7 +191,7 @@ module GoCardlessPro
 
         params = options.delete(:params) || {}
         options[:params] = {}
-        options[:params]['data'] = params
+        options[:params][envelope_key] = params
 
         options[:retry_failures] = false
 
@@ -246,7 +246,7 @@ module GoCardlessPro
 
         params = options.delete(:params) || {}
         options[:params] = {}
-        options[:params]['data'] = params
+        options[:params][envelope_key] = params
 
         options[:retry_failures] = false
 
@@ -290,7 +290,7 @@ module GoCardlessPro
 
         params = options.delete(:params) || {}
         options[:params] = {}
-        options[:params]['data'] = params
+        options[:params][envelope_key] = params
 
         options[:retry_failures] = false
 
