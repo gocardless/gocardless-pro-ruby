@@ -39,6 +39,7 @@ module GoCardlessPro
       attr_reader :enabled
       attr_reader :id
       attr_reader :metadata
+      attr_reader :trusted_recipient
 
       # Initialize a customer_bank_account resource instance
       # @param object [Hash] an object returned from the API
@@ -57,6 +58,7 @@ module GoCardlessPro
         @id = object['id']
         @links = object['links']
         @metadata = object['metadata']
+        @trusted_recipient = object['trusted_recipient']
         @response = response
       end
 
