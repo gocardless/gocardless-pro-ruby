@@ -20,7 +20,7 @@ module GoCardlessPro
       #
       # To generate a PDF mandate in another language, set the `Accept-Language`
       # header when creating the PDF mandate to the relevant [ISO
-      # 639-1](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code
+      # 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code
       # supported for the scheme.
       #
       # | Scheme           | Supported languages
