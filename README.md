@@ -250,6 +250,22 @@ class WebhooksController < ApplicationController
 end
 ```
 
+#### Accessing the webhook ID
+
+If you need to access the webhook ID for debugging purposes, you can use `parse_with_meta` instead:
+
+```ruby
+result = GoCardlessPro::Webhook.parse_with_meta(
+  request_body: request.raw_post,
+  signature_header: request.headers['Webhook-Signature'],
+  webhook_endpoint_secret: webhook_endpoint_secret
+)
+events = result.events
+webhook_id = result.webhook_id  # e.g. "WB123" - useful for debugging
+```
+
+Note: The webhook ID is intended for debugging and logging purposes only. It should not be used for deduplication - instead, use the event IDs to deduplicate, as each event has a unique ID that remains consistent if the same event is sent multiple times.
+
 For more details on working with webhooks, see our ["Getting started" guide](https://developer.gocardless.com/getting-started/api/introduction/?lang=ruby).
 
 ### Using the OAuth API

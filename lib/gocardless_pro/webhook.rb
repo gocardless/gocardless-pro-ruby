@@ -1,6 +1,18 @@
 require 'openssl'
 
 module GoCardlessPro
+  # Represents the result of parsing a webhook, containing both the events
+  # and the webhook metadata.
+  class WebhookParseResult
+    attr_reader :events
+    attr_reader :webhook_id
+
+    def initialize(events, webhook_id)
+      @events = events
+      @webhook_id = webhook_id
+    end
+  end
+
   class Webhook
     class InvalidSignatureError < StandardError; end
 
@@ -36,6 +48,39 @@ module GoCardlessPro
         events = JSON.parse(options[:request_body])['events']
 
         events.map { |event| Resources::Event.new(event) }
+      end
+
+      # Validates that a webhook was genuinely sent by GoCardless using
+      # `.signature_valid?`, and then parses it into a WebhookParseResult containing
+      # both the events and the webhook ID from the meta field
+      #
+      # @option options [String] :request_body the request body
+      # @option options [String] :signature_header the signature included in the request,
+      #   found in the `Webhook-Signature` header
+      # @option options [String] :webhook_endpoint_secret the webhook endpoint secret for
+      #   your webhook endpoint, as configured in your GoCardless Dashboard
+      # @return [WebhookParseResult] containing the events and webhook ID
+      # @raise [InvalidSignatureError] if the signature header specified does not match
+      #   the signature computed using the request body and webhook endpoint secret
+      # @raise [ArgumentError] if a required keyword argument is not provided or is not
+      #   of the required type
+      def parse_with_meta(options = {})
+        validate_options!(options)
+
+        unless signature_valid?(request_body: options[:request_body],
+                                signature_header: options[:signature_header],
+                                webhook_endpoint_secret: options[:webhook_endpoint_secret])
+          raise InvalidSignatureError, "This webhook doesn't appear to be a genuine " \
+                                        'webhook from GoCardless, because the signature ' \
+                                        "header doesn't match the signature computed" \
+                                        ' with your webhook endpoint secret.'
+        end
+
+        parsed = JSON.parse(options[:request_body])
+        events = parsed['events'].map { |event| Resources::Event.new(event) }
+        webhook_id = parsed.dig('meta', 'webhook_id')
+
+        WebhookParseResult.new(events, webhook_id)
       end
 
       # Validates that a webhook was genuinely sent by GoCardless by computing its
