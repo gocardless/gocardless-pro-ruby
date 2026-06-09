@@ -22,6 +22,7 @@ module GoCardlessPro
       attr_reader :created_at
       attr_reader :funds_settlement
       attr_reader :id
+      attr_reader :mandate_type
       attr_reader :metadata
       attr_reader :next_possible_charge_date
       attr_reader :next_possible_standard_ach_charge_date
@@ -43,6 +44,7 @@ module GoCardlessPro
         @funds_settlement = object['funds_settlement']
         @id = object['id']
         @links = object['links']
+        @mandate_type = object['mandate_type']
         @metadata = object['metadata']
         @next_possible_charge_date = object['next_possible_charge_date']
         @next_possible_standard_ach_charge_date = object['next_possible_standard_ach_charge_date']

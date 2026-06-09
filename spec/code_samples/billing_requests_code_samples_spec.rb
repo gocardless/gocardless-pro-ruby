@@ -202,4 +202,42 @@ describe 'BillingRequests Code Samples' do
                                       })
     end
   end
+
+  describe '#fallback code sample' do
+    before do
+      # Convert :param placeholders to regex wildcards for flexible matching
+      stub_url = '/billing_requests/:identity/actions/fallback'.gsub(/:\w+/, '[^/]+')
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+        to_return(
+          body: { 'billing_requests' => {} }.to_json,
+          headers: response_headers
+        )
+    end
+
+    it 'executes without error' do
+      @client = client
+      @client.billing_requests.fallback('BR123')
+    end
+  end
+
+  describe '#choose_currency code sample' do
+    before do
+      # Convert :param placeholders to regex wildcards for flexible matching
+      stub_url = '/billing_requests/:identity/actions/choose_currency'.gsub(/:\w+/, '[^/]+')
+      stub_request(:post, /.*api.gocardless.com#{stub_url}/).
+        to_return(
+          body: { 'billing_requests' => {} }.to_json,
+          headers: response_headers
+        )
+    end
+
+    it 'executes without error' do
+      @client = client
+      @client.billing_requests.choose_currency('BR123', {
+                                                 params: {
+                                                   currency: 'GBP',
+                                                 },
+                                               })
+    end
+  end
 end
