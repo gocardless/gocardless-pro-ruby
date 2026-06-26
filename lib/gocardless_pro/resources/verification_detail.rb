@@ -27,10 +27,12 @@ module GoCardlessPro
       attr_reader :address_line3
       attr_reader :city
       attr_reader :company_number
+      attr_reader :country_code
       attr_reader :description
       attr_reader :directors
       attr_reader :name
       attr_reader :postal_code
+      attr_reader :region
 
       # Initialize a verification_detail resource instance
       # @param object [Hash] an object returned from the API
@@ -42,11 +44,13 @@ module GoCardlessPro
         @address_line3 = object['address_line3']
         @city = object['city']
         @company_number = object['company_number']
+        @country_code = object['country_code']
         @description = object['description']
         @directors = object['directors']
         @links = object['links']
         @name = object['name']
         @postal_code = object['postal_code']
+        @region = object['region']
         @response = response
       end
 
