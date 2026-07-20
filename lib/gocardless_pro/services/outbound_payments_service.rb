@@ -182,8 +182,9 @@ module GoCardlessPro
         Resources::OutboundPayment.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of outbound
-      # payments.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of outbound payments.
       # Example URL: /outbound_payments
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

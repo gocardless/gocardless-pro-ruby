@@ -10,8 +10,9 @@ module GoCardlessPro
   module Services
     # Service for making requests to the NegativeBalanceLimit endpoints
     class NegativeBalanceLimitsService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of negative
-      # balance limits.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of negative balance limits.
       # Example URL: /negative_balance_limits
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

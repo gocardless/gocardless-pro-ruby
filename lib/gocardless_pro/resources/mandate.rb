@@ -10,11 +10,12 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a mandate resource returned from the API
 
-    # Mandates represent the Direct Debit mandate with a
-    # [customer](#core-endpoints-customers).
+    # Mandates represent the Direct Debit mandate with a customer
+    # (https://developer.gocardless.com/api-reference/#core-endpoints-customers).
     #
-    # GoCardless will notify you via a [webhook](#appendix-webhooks) whenever
-    # the status of a mandate changes.
+    # GoCardless will notify you via a webhook
+    # (https://developer.gocardless.com/api-reference/#appendix-webhooks)
+    # whenever the status of a mandate changes.
     class Mandate
       attr_reader :authorisation_source
       attr_reader :consent_parameters

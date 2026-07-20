@@ -10,8 +10,9 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Webhook endpoints
     class WebhooksService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # webhooks.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your webhooks.
       # Example URL: /webhooks
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

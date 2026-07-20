@@ -10,8 +10,9 @@ module GoCardlessPro
   module Services
     # Service for making requests to the TaxRate endpoints
     class TaxRatesService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of all tax
-      # rates.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of all tax rates.
       # Example URL: /tax_rates
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

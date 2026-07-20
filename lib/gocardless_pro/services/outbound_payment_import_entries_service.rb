@@ -10,8 +10,9 @@ module GoCardlessPro
   module Services
     # Service for making requests to the OutboundPaymentImportEntry endpoints
     class OutboundPaymentImportEntriesService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of the entries
-      # for a given outbound payment import.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of the entries for a given outbound payment import.
       # Example URL: /outbound_payment_import_entries
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

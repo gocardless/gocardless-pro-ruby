@@ -64,8 +64,9 @@ module GoCardlessPro
         Resources::Block.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # blocks.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your blocks.
       # Example URL: /blocks
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

@@ -12,18 +12,16 @@ module GoCardlessPro
     class RefundsService < BaseService
       # Creates a new refund object.
       #
-      # This fails with:<a name="total_amount_confirmation_invalid"></a><a
-      # name="number_of_refunds_exceeded"></a><a
-      # name="available_refund_amount_insufficient"></a>
+      # This fails with:
       #
-      # - `total_amount_confirmation_invalid` if the confirmation amount doesn't match
+      # -
+      # `total_amount_confirmation_invalid` if the confirmation amount doesn't match
       # the total amount refunded for the payment. This safeguard is there to prevent
       # two processes from creating refunds without awareness of each other.
-      #
-      # - `available_refund_amount_insufficient` if the creditor does not have
+      # -
+      # `available_refund_amount_insufficient` if the creditor does not have
       # sufficient balance for refunds available to cover the cost of the requested
       # refund.
-      #
       # Example URL: /refunds
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -58,8 +56,9 @@ module GoCardlessPro
         Resources::Refund.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # refunds.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your refunds.
       # Example URL: /refunds
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

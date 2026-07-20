@@ -11,9 +11,10 @@ module GoCardlessPro
     # Represents an instance of a customer resource returned from the API
 
     # Customer objects hold the contact details for a customer. A customer can
-    # have several [customer bank
-    # accounts](#core-endpoints-customer-bank-accounts), which in turn can have
-    # several Direct Debit [mandates](#core-endpoints-mandates).
+    # have several customer bank accounts
+    # (https://developer.gocardless.com/api-reference/#core-endpoints-customer-bank-accounts),
+    # which in turn can have several Direct Debit mandates
+    # (https://developer.gocardless.com/api-reference/#core-endpoints-mandates).
     class Customer
       attr_reader :address_line1
       attr_reader :address_line2

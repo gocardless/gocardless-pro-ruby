@@ -45,8 +45,9 @@ module GoCardlessPro
         Resources::Creditor.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # creditors.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your creditors.
       # Example URL: /creditors
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

@@ -14,15 +14,18 @@ module GoCardlessPro
       #
       # There are three different ways to supply bank account details:
       #
-      # - [Local details](#appendix-local-bank-details)
-      #
-      # - IBAN
-      #
-      # - [Customer Bank Account
-      # Tokens](#javascript-flow-create-a-customer-bank-account-token)
+      # -
+      # Local details
+      # (https://developer.gocardless.com/api-reference/#appendix-local-bank-details)
+      # -
+      # IBAN
+      # -
+      # Customer Bank Account Tokens
+      # (https://developer.gocardless.com/api-reference/#javascript-flow-create-a-customer-bank-account-token)
       #
       # For more information on the different fields required in each country, see
-      # [local bank details](#appendix-local-bank-details).
+      # local bank details
+      # (https://developer.gocardless.com/api-reference/#appendix-local-bank-details).
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -57,8 +60,9 @@ module GoCardlessPro
         Resources::CustomerBankAccount.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your bank
-      # accounts.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your bank accounts.
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})

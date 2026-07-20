@@ -30,8 +30,7 @@ module GoCardlessPro
     # retrieved for payouts
     # created in the last 6 months. Requests for older payouts will return an
     # HTTP status
-    # <code>410 Gone</code>.
-    #
+    # 410 Gone.
     class PayoutItem
       attr_reader :amount
       attr_reader :taxes

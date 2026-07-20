@@ -45,8 +45,9 @@ module GoCardlessPro
         Resources::Mandate.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # mandates.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your mandates.
       # Example URL: /mandates
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -163,12 +164,12 @@ module GoCardlessPro
         Resources::Mandate.new(unenvelope_body(response.body), response)
       end
 
-      # <a name="mandate_not_inactive"></a>Reinstates a cancelled or expired mandate
-      # to the banks. You will receive a `resubmission_requested` webhook, but after
-      # that reinstating the mandate follows the same process as its initial creation,
-      # so you will receive a `submitted` webhook, followed by a `reinstated` or
-      # `failed` webhook up to two working days later. Any metadata supplied to this
-      # endpoint will be stored on the `resubmission_requested` event it causes.
+      # Reinstates a cancelled or expired mandate to the banks. You will receive a
+      # `resubmission_requested` webhook, but after that reinstating the mandate
+      # follows the same process as its initial creation, so you will receive a
+      # `submitted` webhook, followed by a `reinstated` or `failed` webhook up to two
+      # working days later. Any metadata supplied to this endpoint will be stored on
+      # the `resubmission_requested` event it causes.
       #
       # This will fail with a `mandate_not_inactive` error if the mandate is already
       # being submitted, or is active.

@@ -26,7 +26,6 @@ module GoCardlessPro
     #
     # Customers will receive a single notification about the complete schedule
     # of collection.
-    #
     class InstalmentSchedule
       attr_reader :created_at
       attr_reader :currency

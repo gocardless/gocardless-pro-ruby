@@ -14,6 +14,7 @@ module GoCardlessPro
     # single API call.
     #
     # The Workflow:
+    #
     # 1. Create the outbound payment import.
     # 2. Retrieve an authorisation link from the response.
     # 3. Redirect the user to the link to authorise the import.
@@ -25,9 +26,8 @@ module GoCardlessPro
     # Upon approval, a unique outbound payment is generated for every entry in
     # the import.
     #
-    # <p class="notice">Outbound Payment Imports are capped at 1000 entries. If
-    # you expect to exceed this limit, please create multiple smaller
-    # imports.</p>
+    # Outbound Payment Imports are capped at 1000 entries. If you expect to
+    # exceed this limit, please create multiple smaller imports.
     class OutboundPaymentImport
       attr_reader :amount_sum
       attr_reader :authorisation_url

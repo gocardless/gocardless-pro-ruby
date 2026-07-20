@@ -14,7 +14,9 @@ module GoCardlessPro
       # this endpoint merely signals the start of the import process. Once you've
       # finished
       # adding entries to an import, you should
-      # [submit](#mandate-imports-submit-a-mandate-import) it.
+      # submit
+      # (https://developer.gocardless.com/api-reference/#mandate-imports-submit-a-mandate-import)
+      # it.
       # Example URL: /mandate_imports
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
