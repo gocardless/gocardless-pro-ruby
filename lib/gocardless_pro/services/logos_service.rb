@@ -15,8 +15,8 @@ module GoCardlessPro
       #
       # We support JPG and PNG formats. Your logo will be scaled to a maximum of 300px
       # by 40px. For more guidance on how to upload logos that will look
-      # great across your customer payment page and notification emails see
-      # [here](https://developer.gocardless.com/gc-embed/setting-up-branding#tips_for_uploading_your_logo).
+      # great across your customer payment page and notification emails see here
+      # (https://developer.gocardless.com/gc-embed/setting-up-branding#tips_for_uploading_your_logo).
       # Example URL: /branding/logos
       # @param options [Hash] parameters as a hash, under a params key.
       def create_for_creditor(options = {})
@@ -41,7 +41,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

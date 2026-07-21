@@ -45,8 +45,9 @@ module GoCardlessPro
         Resources::Creditor.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # creditors.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your creditors.
       # Example URL: /creditors
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -123,7 +124,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

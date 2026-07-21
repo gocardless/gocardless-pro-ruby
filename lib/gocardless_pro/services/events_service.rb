@@ -10,8 +10,14 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Event endpoints
     class EventsService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # events.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your events.
+      #
+      # Important: This endpoint will no longer return events older than 18 months,
+      # including when filtering by resource. This takes effect no sooner than 1
+      # August 2026 in sandbox environments, and no sooner than 1 October 2026 in live
+      # environments.
       # Example URL: /events
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -64,7 +70,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

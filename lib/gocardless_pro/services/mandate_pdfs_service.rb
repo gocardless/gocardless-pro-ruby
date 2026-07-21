@@ -13,14 +13,14 @@ module GoCardlessPro
       # Generates a PDF mandate and returns its temporary URL.
       #
       # Customer and bank account details can be left blank (for a blank mandate),
-      # provided manually, or inferred from the ID of an existing
-      # [mandate](#core-endpoints-mandates).
+      # provided manually, or inferred from the ID of an existing mandate
+      # (https://developer.gocardless.com/api-reference/#core-endpoints-mandates).
       #
       # By default, we'll generate PDF mandates in English.
       #
       # To generate a PDF mandate in another language, set the `Accept-Language`
-      # header when creating the PDF mandate to the relevant [ISO
-      # 639-1](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code
+      # header when creating the PDF mandate to the relevant ISO 639-1
+      # (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code
       # supported for the scheme.
       #
       # | Scheme           | Supported languages
@@ -77,7 +77,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

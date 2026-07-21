@@ -20,11 +20,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
           'address_line3' => 'address_line3-input',
           'city' => 'city-input',
           'company_number' => 'company_number-input',
+          'country_code' => 'country_code-input',
           'description' => 'description-input',
           'directors' => 'directors-input',
           'links' => 'links-input',
           'name' => 'name-input',
           'postal_code' => 'postal_code-input',
+          'region' => 'region-input',
         }
       end
 
@@ -39,11 +41,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
                 'address_line3' => 'address_line3-input',
                 'city' => 'city-input',
                 'company_number' => 'company_number-input',
+                'country_code' => 'country_code-input',
                 'description' => 'description-input',
                 'directors' => 'directors-input',
                 'links' => 'links-input',
                 'name' => 'name-input',
                 'postal_code' => 'postal_code-input',
+                'region' => 'region-input',
               },
             }
           ).
@@ -58,11 +62,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
                   'address_line3' => 'address_line3-input',
                   'city' => 'city-input',
                   'company_number' => 'company_number-input',
+                  'country_code' => 'country_code-input',
                   'description' => 'description-input',
                   'directors' => 'directors-input',
                   'links' => 'links-input',
                   'name' => 'name-input',
                   'postal_code' => 'postal_code-input',
+                  'region' => 'region-input',
                 },
 
             }.to_json,
@@ -133,11 +139,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
           'address_line3' => 'address_line3-input',
           'city' => 'city-input',
           'company_number' => 'company_number-input',
+          'country_code' => 'country_code-input',
           'description' => 'description-input',
           'directors' => 'directors-input',
           'links' => 'links-input',
           'name' => 'name-input',
           'postal_code' => 'postal_code-input',
+          'region' => 'region-input',
         }
       end
 
@@ -183,11 +191,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
             'address_line3' => 'address_line3-input',
             'city' => 'city-input',
             'company_number' => 'company_number-input',
+            'country_code' => 'country_code-input',
             'description' => 'description-input',
             'directors' => 'directors-input',
             'links' => 'links-input',
             'name' => 'name-input',
             'postal_code' => 'postal_code-input',
+            'region' => 'region-input',
           }],
           meta: {
             cursors: {
@@ -218,6 +228,8 @@ describe GoCardlessPro::Services::VerificationDetailsService do
 
         expect(get_list_response.records.first.company_number).to eq('company_number-input')
 
+        expect(get_list_response.records.first.country_code).to eq('country_code-input')
+
         expect(get_list_response.records.first.description).to eq('description-input')
 
         expect(get_list_response.records.first.directors).to eq('directors-input')
@@ -225,6 +237,8 @@ describe GoCardlessPro::Services::VerificationDetailsService do
         expect(get_list_response.records.first.name).to eq('name-input')
 
         expect(get_list_response.records.first.postal_code).to eq('postal_code-input')
+
+        expect(get_list_response.records.first.region).to eq('region-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -270,11 +284,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
             'address_line3' => 'address_line3-input',
             'city' => 'city-input',
             'company_number' => 'company_number-input',
+            'country_code' => 'country_code-input',
             'description' => 'description-input',
             'directors' => 'directors-input',
             'links' => 'links-input',
             'name' => 'name-input',
             'postal_code' => 'postal_code-input',
+            'region' => 'region-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -295,11 +311,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
             'address_line3' => 'address_line3-input',
             'city' => 'city-input',
             'company_number' => 'company_number-input',
+            'country_code' => 'country_code-input',
             'description' => 'description-input',
             'directors' => 'directors-input',
             'links' => 'links-input',
             'name' => 'name-input',
             'postal_code' => 'postal_code-input',
+            'region' => 'region-input',
           }],
           meta: {
             limit: 2,
@@ -329,11 +347,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
               'address_line3' => 'address_line3-input',
               'city' => 'city-input',
               'company_number' => 'company_number-input',
+              'country_code' => 'country_code-input',
               'description' => 'description-input',
               'directors' => 'directors-input',
               'links' => 'links-input',
               'name' => 'name-input',
               'postal_code' => 'postal_code-input',
+              'region' => 'region-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -354,11 +374,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
                                      'address_line3' => 'address_line3-input',
                                      'city' => 'city-input',
                                      'company_number' => 'company_number-input',
+                                     'country_code' => 'country_code-input',
                                      'description' => 'description-input',
                                      'directors' => 'directors-input',
                                      'links' => 'links-input',
                                      'name' => 'name-input',
                                      'postal_code' => 'postal_code-input',
+                                     'region' => 'region-input',
                                    }],
                                    meta: {
                                      limit: 2,
@@ -384,11 +406,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
               'address_line3' => 'address_line3-input',
               'city' => 'city-input',
               'company_number' => 'company_number-input',
+              'country_code' => 'country_code-input',
               'description' => 'description-input',
               'directors' => 'directors-input',
               'links' => 'links-input',
               'name' => 'name-input',
               'postal_code' => 'postal_code-input',
+              'region' => 'region-input',
             }],
             meta: {
               cursors: { after: 'AB345' },
@@ -412,11 +436,13 @@ describe GoCardlessPro::Services::VerificationDetailsService do
                                      'address_line3' => 'address_line3-input',
                                      'city' => 'city-input',
                                      'company_number' => 'company_number-input',
+                                     'country_code' => 'country_code-input',
                                      'description' => 'description-input',
                                      'directors' => 'directors-input',
                                      'links' => 'links-input',
                                      'name' => 'name-input',
                                      'postal_code' => 'postal_code-input',
+                                     'region' => 'region-input',
                                    }],
                                    meta: {
                                      limit: 2,

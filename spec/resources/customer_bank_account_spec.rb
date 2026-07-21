@@ -27,6 +27,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
           'id' => 'id-input',
           'links' => 'links-input',
           'metadata' => 'metadata-input',
+          'payer_name_verification_result' => 'payer_name_verification_result-input',
+          'trusted_recipient' => 'trusted_recipient-input',
         }
       end
 
@@ -48,6 +50,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
+                'payer_name_verification_result' => 'payer_name_verification_result-input',
+                'trusted_recipient' => 'trusted_recipient-input',
               },
             }
           ).
@@ -69,6 +73,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                   'id' => 'id-input',
                   'links' => 'links-input',
                   'metadata' => 'metadata-input',
+                  'payer_name_verification_result' => 'payer_name_verification_result-input',
+                  'trusted_recipient' => 'trusted_recipient-input',
                 },
 
             }.to_json,
@@ -123,6 +129,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
           'id' => 'id-input',
           'links' => 'links-input',
           'metadata' => 'metadata-input',
+          'payer_name_verification_result' => 'payer_name_verification_result-input',
+          'trusted_recipient' => 'trusted_recipient-input',
         }
       end
 
@@ -167,6 +175,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
+                'payer_name_verification_result' => 'payer_name_verification_result-input',
+                'trusted_recipient' => 'trusted_recipient-input',
               },
             }.to_json,
             headers: response_headers
@@ -202,6 +212,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
+              'payer_name_verification_result' => 'payer_name_verification_result-input',
+              'trusted_recipient' => 'trusted_recipient-input',
             }],
             meta: {
               cursors: {
@@ -238,6 +250,10 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
         expect(get_list_response.records.first.id).to eq('id-input')
 
         expect(get_list_response.records.first.metadata).to eq('metadata-input')
+
+        expect(get_list_response.records.first.payer_name_verification_result).to eq('payer_name_verification_result-input')
+
+        expect(get_list_response.records.first.trusted_recipient).to eq('trusted_recipient-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -267,6 +283,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
             'id' => 'id-input',
             'links' => 'links-input',
             'metadata' => 'metadata-input',
+            'payer_name_verification_result' => 'payer_name_verification_result-input',
+            'trusted_recipient' => 'trusted_recipient-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -294,6 +312,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
             'id' => 'id-input',
             'links' => 'links-input',
             'metadata' => 'metadata-input',
+            'payer_name_verification_result' => 'payer_name_verification_result-input',
+            'trusted_recipient' => 'trusted_recipient-input',
           }],
           meta: {
             limit: 2,
@@ -337,6 +357,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
+                'payer_name_verification_result' => 'payer_name_verification_result-input',
+                'trusted_recipient' => 'trusted_recipient-input',
               },
             }.to_json,
             headers: response_headers
@@ -374,6 +396,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
+              'payer_name_verification_result' => 'payer_name_verification_result-input',
+              'trusted_recipient' => 'trusted_recipient-input',
             },
           }.to_json,
           headers: response_headers
@@ -433,6 +457,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
               'id' => 'id-input',
               'links' => 'links-input',
               'metadata' => 'metadata-input',
+              'payer_name_verification_result' => 'payer_name_verification_result-input',
+              'trusted_recipient' => 'trusted_recipient-input',
             },
           }.to_json,
           headers: response_headers
@@ -470,6 +496,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
             'id' => 'id-input',
             'links' => 'links-input',
             'metadata' => 'metadata-input',
+            'payer_name_verification_result' => 'payer_name_verification_result-input',
+            'trusted_recipient' => 'trusted_recipient-input',
           },
         }.to_json,
 
@@ -513,6 +541,8 @@ describe GoCardlessPro::Resources::CustomerBankAccount do
                 'id' => 'id-input',
                 'links' => 'links-input',
                 'metadata' => 'metadata-input',
+                'payer_name_verification_result' => 'payer_name_verification_result-input',
+                'trusted_recipient' => 'trusted_recipient-input',
               },
             }.to_json,
             headers: response_headers

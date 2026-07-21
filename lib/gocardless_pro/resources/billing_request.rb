@@ -10,17 +10,16 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a billing_request resource returned from the API
 
-    #  Billing Requests help create resources that require input or action from
-    # a customer. An example of required input might be additional customer
+    # Billing Requests help create resources that require input or action from a
+    # customer. An example of required input might be additional customer
     # billing details, while an action would be asking a customer to authorise a
     # payment using their mobile banking app.
     #
-    # See [Billing Requests:
-    # Overview](https://developer.gocardless.com/getting-started/billing-requests/overview/)
-    # for how-to's, explanations and tutorials. <p
-    # class="notice"><strong>Important</strong>: All properties associated with
-    # `subscription_request` and `instalment_schedule_request` are only
-    # supported for ACH and PAD schemes.</p>
+    # See Billing Requests: Overview
+    # (https://developer.gocardless.com/getting-started/billing-requests/overview/)
+    # for how-to's, explanations and tutorials. Important: All properties
+    # associated with `subscription_request` and `instalment_schedule_request`
+    # are only supported for ACH and PAD schemes.
     class BillingRequest
       attr_reader :actions
       attr_reader :created_at

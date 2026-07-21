@@ -123,6 +123,12 @@ require_relative 'gocardless_pro/services/negative_balance_limits_service'
 require_relative 'gocardless_pro/resources/outbound_payment'
 require_relative 'gocardless_pro/services/outbound_payments_service'
 
+require_relative 'gocardless_pro/resources/outbound_payment_import'
+require_relative 'gocardless_pro/services/outbound_payment_imports_service'
+
+require_relative 'gocardless_pro/resources/outbound_payment_import_entry'
+require_relative 'gocardless_pro/services/outbound_payment_import_entries_service'
+
 require_relative 'gocardless_pro/resources/payer_authorisation'
 require_relative 'gocardless_pro/services/payer_authorisations_service'
 

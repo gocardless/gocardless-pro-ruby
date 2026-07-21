@@ -14,8 +14,15 @@ module GoCardlessPro
     # has been updated, for example a payment which has been collected, or a
     # mandate which has been transferred. Event creation is an asynchronous
     # process, so it can take some time between an action occurring and its
-    # corresponding event getting included in API responses. See
-    # [here](#event-types) for a complete list of event types.
+    # corresponding event getting included in API responses. See here
+    # (https://developer.gocardless.com/api-reference/#event-types) for a
+    # complete list of event types.
+    #
+    # Important: Events older than 18 months will be archived and no longer
+    # accessible via the API or exports. Archival will begin no sooner than 1
+    # August 2026 in sandbox environments, and no sooner than 1 October 2026 in
+    # live environments. Events within the 18-month window are unaffected. If
+    # you need archived data, contact GoCardless support.
     class Event
       attr_reader :action
       attr_reader :created_at

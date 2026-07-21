@@ -10,8 +10,9 @@ module GoCardlessPro
   module Services
     # Service for making requests to the Payout endpoints
     class PayoutsService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # payouts.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your payouts.
       # Example URL: /payouts
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -40,8 +41,8 @@ module GoCardlessPro
       end
 
       # Retrieves the details of a single payout. For an example of how to reconcile
-      # the transactions in a payout, see [this
-      # guide](#events-reconciling-payouts-with-events).
+      # the transactions in a payout, see this guide
+      # (https://developer.gocardless.com/api-reference/#events-reconciling-payouts-with-events).
       # Example URL: /payouts/:identity
       #
       # @param identity       # Unique identifier, beginning with "PO".
@@ -89,7 +90,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

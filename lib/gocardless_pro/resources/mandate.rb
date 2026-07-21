@@ -10,11 +10,12 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a mandate resource returned from the API
 
-    # Mandates represent the Direct Debit mandate with a
-    # [customer](#core-endpoints-customers).
+    # Mandates represent the Direct Debit mandate with a customer
+    # (https://developer.gocardless.com/api-reference/#core-endpoints-customers).
     #
-    # GoCardless will notify you via a [webhook](#appendix-webhooks) whenever
-    # the status of a mandate changes.
+    # GoCardless will notify you via a webhook
+    # (https://developer.gocardless.com/api-reference/#appendix-webhooks)
+    # whenever the status of a mandate changes.
     class Mandate
       attr_reader :authorisation_source
       attr_reader :consent_parameters
@@ -22,6 +23,7 @@ module GoCardlessPro
       attr_reader :created_at
       attr_reader :funds_settlement
       attr_reader :id
+      attr_reader :mandate_type
       attr_reader :metadata
       attr_reader :next_possible_charge_date
       attr_reader :next_possible_standard_ach_charge_date
@@ -43,6 +45,7 @@ module GoCardlessPro
         @funds_settlement = object['funds_settlement']
         @id = object['id']
         @links = object['links']
+        @mandate_type = object['mandate_type']
         @metadata = object['metadata']
         @next_possible_charge_date = object['next_possible_charge_date']
         @next_possible_standard_ach_charge_date = object['next_possible_standard_ach_charge_date']

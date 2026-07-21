@@ -26,6 +26,7 @@ describe GoCardlessPro::Resources::Export do
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
                 'download_url' => 'download_url-input',
+                'error_message' => 'error_message-input',
                 'export_type' => 'export_type-input',
                 'id' => 'id-input',
               },
@@ -56,6 +57,7 @@ describe GoCardlessPro::Resources::Export do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'download_url' => 'download_url-input',
+              'error_message' => 'error_message-input',
               'export_type' => 'export_type-input',
               'id' => 'id-input',
             },
@@ -104,6 +106,7 @@ describe GoCardlessPro::Resources::Export do
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
               'download_url' => 'download_url-input',
+              'error_message' => 'error_message-input',
               'export_type' => 'export_type-input',
               'id' => 'id-input',
             }],
@@ -126,6 +129,8 @@ describe GoCardlessPro::Resources::Export do
         expect(get_list_response.records.first.currency).to eq('currency-input')
 
         expect(get_list_response.records.first.download_url).to eq('download_url-input')
+
+        expect(get_list_response.records.first.error_message).to eq('error_message-input')
 
         expect(get_list_response.records.first.export_type).to eq('export_type-input')
 
@@ -150,6 +155,7 @@ describe GoCardlessPro::Resources::Export do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'download_url' => 'download_url-input',
+            'error_message' => 'error_message-input',
             'export_type' => 'export_type-input',
             'id' => 'id-input',
           }],
@@ -170,6 +176,7 @@ describe GoCardlessPro::Resources::Export do
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
             'download_url' => 'download_url-input',
+            'error_message' => 'error_message-input',
             'export_type' => 'export_type-input',
             'id' => 'id-input',
           }],

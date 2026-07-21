@@ -10,13 +10,12 @@ module GoCardlessPro
   module Services
     # Service for making requests to the PayoutItem endpoints
     class PayoutItemsService < BaseService
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of items in
-      # the payout.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of items in the payout.
       #
-      # <strong>This endpoint only serves requests for payouts created in the last 6
-      # months. Requests for older payouts will return an HTTP status <code>410
-      # Gone</code>.</strong>
-      #
+      # This endpoint only serves requests for payouts created in the last 6 months.
+      # Requests for older payouts will return an HTTP status 410 Gone.
       # Example URL: /payout_items
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -50,7 +49,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

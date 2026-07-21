@@ -10,13 +10,16 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a payment resource returned from the API
 
-    # Payment objects represent payments from a
-    # [customer](#core-endpoints-customers) to a
-    # [creditor](#core-endpoints-creditors), taken against a Direct Debit
-    # [mandate](#core-endpoints-mandates).
+    # Payment objects represent payments from a customer
+    # (https://developer.gocardless.com/api-reference/#core-endpoints-customers)
+    # to a creditor
+    # (https://developer.gocardless.com/api-reference/#core-endpoints-creditors),
+    # taken against a Direct Debit mandate
+    # (https://developer.gocardless.com/api-reference/#core-endpoints-mandates).
     #
-    # GoCardless will notify you via a [webhook](#appendix-webhooks) whenever
-    # the state of a payment changes.
+    # GoCardless will notify you via a webhook
+    # (https://developer.gocardless.com/api-reference/#appendix-webhooks)
+    # whenever the state of a payment changes.
     class Payment
       attr_reader :amount
       attr_reader :amount_refunded

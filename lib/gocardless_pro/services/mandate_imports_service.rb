@@ -14,7 +14,9 @@ module GoCardlessPro
       # this endpoint merely signals the start of the import process. Once you've
       # finished
       # adding entries to an import, you should
-      # [submit](#mandate-imports-submit-a-mandate-import) it.
+      # submit
+      # (https://developer.gocardless.com/api-reference/#mandate-imports-submit-a-mandate-import)
+      # it.
       # Example URL: /mandate_imports
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -168,7 +170,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

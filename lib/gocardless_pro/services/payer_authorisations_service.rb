@@ -75,10 +75,9 @@ module GoCardlessPro
       # the request will be modified. An empty array of incomplete_fields means that
       # the resource is valid. This endpoint has been designed this way so you do not
       # need to save any payer data on your servers or the browser while still being
-      # able to implement a progressive solution, such a multi-step form. <p
-      # class="notice"> Note that in order to update the `metadata` attribute values
-      # it must be sent completely as it overrides the previously existing values.
-      # </p>
+      # able to implement a progressive solution, such a multi-step form.  Note that
+      # in order to update the `metadata` attribute values it must be sent completely
+      # as it overrides the previously existing values.
       # Example URL: /payer_authorisations/:identity
       #
       # @param identity       # Unique identifier, beginning with "PA".
@@ -147,13 +146,11 @@ module GoCardlessPro
       # be created.
       # A Payer Authorisation cannot be confirmed if it hasn't been submitted yet.
       #
-      # <p class="notice">
       #   The main use of the confirm endpoint is to enable integrators to acknowledge
       # the end of the setup process.
-      #   They might want to make the payers go through some other steps after they go
+      # They might want to make the payers go through some other steps after they go
       # through our flow or make them go through the necessary verification mechanism
       # (upcoming feature).
-      # </p>
       # Example URL: /payer_authorisations/:identity/actions/confirm
       #
       # @param identity       # Unique identifier, beginning with "PA".
@@ -198,7 +195,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

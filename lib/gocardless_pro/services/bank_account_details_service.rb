@@ -13,9 +13,9 @@ module GoCardlessPro
       # Returns bank account details in the flattened JSON Web Encryption format
       # described in RFC 7516.
       #
-      # You must specify a `Gc-Key-Id` header when using this endpoint. See [Public
-      # Key
-      # Setup](https://developer.gocardless.com/gc-embed/bank-details-access#public_key_setup)
+      # You must specify a `Gc-Key-Id` header when using this endpoint. See Public Key
+      # Setup
+      # (https://developer.gocardless.com/gc-embed/bank-details-access#public_key_setup)
       # for more details.
       # Example URL: /bank_account_details/:identity
       #
@@ -41,7 +41,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

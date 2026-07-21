@@ -10,9 +10,8 @@ module GoCardlessPro
   module Services
     # Service for making requests to the BillingRequest endpoints
     class BillingRequestsService < BaseService
-      # <p class="notice"><strong>Important</strong>: All properties associated with
-      # `subscription_request` and `instalment_schedule_request` are only supported
-      # for ACH and PAD schemes.</p>
+      # Important: All properties associated with `subscription_request` and
+      # `instalment_schedule_request` are only supported for ACH and PAD schemes.
       # Example URL: /billing_requests
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -47,7 +46,7 @@ module GoCardlessPro
         Resources::BillingRequest.new(unenvelope_body(response.body), response)
       end
 
-      # If the billing request has a pending <code>collect_customer_details</code>
+      # If the billing request has a pending collect_customer_details
       # action, this endpoint can be used to collect the details in order to
       # complete it.
       #
@@ -96,7 +95,7 @@ module GoCardlessPro
       end
 
       # If the billing request has a pending
-      # <code>collect_bank_account</code> action, this endpoint can be
+      # collect_bank_account action, this endpoint can be
       # used to collect the details in order to complete it.
       #
       # The endpoint takes the same payload as Customer Bank Accounts, but check
@@ -107,14 +106,14 @@ module GoCardlessPro
       # the payload along with the
       # country_code.
       #
-      # _ACH scheme_ For compliance reasons, an extra validation step is done using
+      # ACH scheme For compliance reasons, an extra validation step is done using
       # a third-party provider to make sure the customer's bank account can accept
       # Direct Debit. If a bank account is discovered to be closed or invalid, the
       # customer is requested to adjust the account number/routing number and
       # succeed in this check to continue with the flow.
       #
-      # _BACS scheme_ [Payer Name
-      # Verification](https://hub.gocardless.com/s/article/Introduction-to-Payer-Name-Verification?language=en_GB)
+      # BACS scheme Payer Name Verification
+      # (https://hub.gocardless.com/s/article/Introduction-to-Payer-Name-Verification?language=en_GB)
       # is enabled by default for UK based bank accounts, meaning we verify the
       # account holder name and bank account
       # number match the details held by the relevant bank.
@@ -277,8 +276,9 @@ module GoCardlessPro
         Resources::BillingRequest.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # billing requests.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your billing requests.
       # Example URL: /billing_requests
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -329,8 +329,7 @@ module GoCardlessPro
       # it.
       # Currently, the customer can only be notified by email.
       #
-      # This endpoint is currently supported only for Instant Bank Pay Billing
-      # Requests.
+      # This endpoint is currently supported only for Pay by Bank Billing Requests.
       # Example URL: /billing_requests/:identity/actions/notify
       #
       # @param identity       # Unique identifier, beginning with "BRQ".
@@ -499,7 +498,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

@@ -11,7 +11,8 @@ module GoCardlessPro
     # Represents an instance of a logo resource returned from the API
 
     # Logos are image uploads that, when associated with a creditor, are shown
-    # on the [billing request flow](#billing-requests-billing-request-flows)
+    # on the billing request flow
+    # (https://developer.gocardless.com/api-reference/#billing-requests-billing-request-flows)
     # payment pages.
     class Logo
       attr_reader :id

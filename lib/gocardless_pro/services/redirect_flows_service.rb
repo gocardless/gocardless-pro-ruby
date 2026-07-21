@@ -65,10 +65,14 @@ module GoCardlessPro
         Resources::RedirectFlow.new(unenvelope_body(response.body), response)
       end
 
-      # This creates a [customer](#core-endpoints-customers), [customer bank
-      # account](#core-endpoints-customer-bank-accounts), and
-      # [mandate](#core-endpoints-mandates) using the details supplied by your
-      # customer and returns the ID of the created mandate.
+      # This creates a customer
+      # (https://developer.gocardless.com/api-reference/#core-endpoints-customers),
+      # customer bank account
+      # (https://developer.gocardless.com/api-reference/#core-endpoints-customer-bank-accounts),
+      # and mandate
+      # (https://developer.gocardless.com/api-reference/#core-endpoints-mandates)
+      # using the details supplied by your customer and returns the ID of the created
+      # mandate.
       #
       # This will return a `redirect_flow_incomplete` error if your customer has not
       # yet been redirected back to your site, and a `redirect_flow_already_completed`
@@ -119,7 +123,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

@@ -20,7 +20,7 @@ module GoCardlessPro
       # become active. On other schemes, including SEPA,
       # this happens instantly.
       #
-      # #### Scheme identifier name validations
+      # Scheme identifier name validations
       #
       # The `name` field of a scheme identifier can contain alphanumeric characters,
       # spaces and
@@ -29,8 +29,8 @@ module GoCardlessPro
       # Its maximum length and the special characters it supports depend on the
       # scheme:
       #
-      # | __scheme__        | __maximum length__ | __special characters allowed__
-      #                 |
+      # | scheme        | maximum length | special characters allowed
+      #     |
       # | :---------------- | :----------------- |
       # :-------------------------------------------------- |
       # | `bacs`            | 18 characters      | `/` `.` `&` `-`
@@ -49,7 +49,6 @@ module GoCardlessPro
       # You should ensure that the name you set matches the legal name or the trading
       # name of
       # the creditor, otherwise, there is an increased risk of chargeback.
-      #
       # Example URL: /scheme_identifiers
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -84,8 +83,9 @@ module GoCardlessPro
         Resources::SchemeIdentifier.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your scheme
-      # identifiers.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your scheme identifiers.
       # Example URL: /scheme_identifiers
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -138,7 +138,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

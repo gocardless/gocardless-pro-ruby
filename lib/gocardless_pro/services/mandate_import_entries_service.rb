@@ -10,8 +10,9 @@ module GoCardlessPro
   module Services
     # Service for making requests to the MandateImportEntry endpoints
     class MandateImportEntriesService < BaseService
-      # For an existing [mandate import](#core-endpoints-mandate-imports), this
-      # endpoint can
+      # For an existing mandate import
+      # (https://developer.gocardless.com/api-reference/#core-endpoints-mandate-imports),
+      # this endpoint can
       # be used to add individual mandates to be imported into GoCardless.
       #
       # You can add no more than 30,000 rows to a single mandate import.
@@ -43,7 +44,6 @@ module GoCardlessPro
       # in your system (using the `record_identifier` that you provided when creating
       # the
       # mandate import).
-      #
       # Example URL: /mandate_import_entries
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -77,7 +77,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

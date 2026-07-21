@@ -14,7 +14,6 @@ module GoCardlessPro
     # which refunds are not permitted. The default limit is zero — refunds are
     # not permitted if the creditor has a negative balance. The limit can be
     # changed on a per-creditor basis.
-    #
     class NegativeBalanceLimit
       attr_reader :balance_limit
       attr_reader :created_at

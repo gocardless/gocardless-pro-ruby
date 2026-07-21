@@ -17,7 +17,6 @@ module GoCardlessPro
       # passed,
       # this endpoint will return an `already_actioned` error and you should not take
       # further action. This endpoint takes no additional parameters.
-      #
       # Example URL: /customer_notifications/:identity/actions/handle
       #
       # @param identity       # The id of the notification.
@@ -46,7 +45,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

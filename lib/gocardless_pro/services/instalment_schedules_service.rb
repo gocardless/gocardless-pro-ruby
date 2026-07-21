@@ -14,8 +14,8 @@ module GoCardlessPro
       # This
       # API is recommended if you know the specific dates you wish to charge.
       # Otherwise,
-      # please check out the [scheduling
-      # version](#instalment-schedules-create-with-schedule).
+      # please check out the scheduling version
+      # (https://developer.gocardless.com/api-reference/#instalment-schedules-create-with-schedule).
       #
       # The `instalments` property is an array of payment properties (`amount` and
       # `charge_date`).
@@ -67,8 +67,9 @@ module GoCardlessPro
       # This
       # API is recommended if you wish to use the GoCardless scheduling logic. For
       # finer
-      # control over the individual dates, please check out the [alternative
-      # version](#instalment-schedules-create-with-dates).
+      # control over the individual dates, please check out the alternative
+      # version
+      # (https://developer.gocardless.com/api-reference/#instalment-schedules-create-with-dates).
       #
       # It can take quite a while to create the associated payments, so the API will
       # return
@@ -111,8 +112,9 @@ module GoCardlessPro
         Resources::InstalmentSchedule.new(unenvelope_body(response.body), response)
       end
 
-      # Returns a [cursor-paginated](#api-usage-cursor-pagination) list of your
-      # instalment schedules.
+      # Returns a cursor-paginated
+      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # list of your instalment schedules.
       # Example URL: /instalment_schedules
       # @param options [Hash] parameters as a hash, under a params key.
       def list(options = {})
@@ -231,7 +233,13 @@ module GoCardlessPro
       #
       # @param body [Hash]
       def unenvelope_body(body)
-        body[envelope_key] || body['data']
+        if body.key?(envelope_key)
+          body[envelope_key]
+        elsif body.key?('data')
+          body['data']
+        else
+          body
+        end
       end
 
       # return the key which API responses will envelope data under

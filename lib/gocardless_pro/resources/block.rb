@@ -31,9 +31,9 @@ module GoCardlessPro
     #
     # Please note:
     #
-    #   - Payments and subscriptions cannot be created against a mandate in
+    # - Payments and subscriptions cannot be created against a mandate in
     # blocked state.
-    #   - A mandate can never be transitioned out of the blocked state.
+    # - A mandate can never be transitioned out of the blocked state.
     #
     # The one exception to this is when blocking a 'bank_name'. This block will
     # prevent bank
@@ -43,11 +43,9 @@ module GoCardlessPro
     # this block. Please
     # be aware that we cannot always match a bank account to a given bank name.
     #
-    # <p class="notice">
     #   This API is currently only available for GoCardless Protect+ integrators
-    # - please <a href="mailto:help@gocardless.com">get in touch</a> if you
-    # would like to use this API.
-    # </p>
+    # - please get in touch (mailto:help@gocardless.com) if you would like to
+    # use this API.
     class Block
       attr_reader :active
       attr_reader :block_type
