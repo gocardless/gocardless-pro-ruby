@@ -29,7 +29,7 @@ describe 'CustomerNotifications Code Samples' do
 
     it 'executes without error' do
       @client = client
-      @client.customer_notifications.handle('PCN123')
+      @client.customer_notifications.handle('EV1D18JEXAMPLE')
     end
   end
 end
