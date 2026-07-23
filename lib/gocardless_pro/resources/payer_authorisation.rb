@@ -51,14 +51,14 @@ module GoCardlessPro
     # https://api.gocardless.com/events?payer_authorisation={id}&action=completed
     #
     #
-    #   Note that the `create` and `update` endpoints behave differently than
-    # other existing `create` and `update` endpoints. The Payer Authorisation is
+    #   Note that the create and update endpoints behave differently than
+    # other existing create and update endpoints. The Payer Authorisation is
     # still saved if incomplete data is provided.
-    # We return the list of incomplete data in the `incomplete_fields` along
-    # with the resources in the body of the response.
+    # We return the list of incomplete data in the incomplete_fields along with
+    # the resources in the body of the response.
     # The bank account details(account_number, bank_code & branch_code) must be
     # sent together rather than splitting across different request for both
-    # `create` and `update` endpoints.
+    # create and update endpoints.
     #
     #
     #   The API is designed to be flexible and allows you to collect information
