@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe GoCardlessPro::Client do
-  subject { -> { described_class.new(options) } }
+  subject(:client) { described_class.new(options) }
 
   let(:options) do
     {
@@ -14,6 +14,8 @@ describe GoCardlessPro::Client do
     let(:environment) { :live }
     let(:token) { nil }
 
-    it { is_expected.to raise_error('No Access Token given to GoCardless Client') }
+    it 'raises an error' do
+      expect { client }.to raise_error('No Access Token given to GoCardless Client')
+    end
   end
 end
