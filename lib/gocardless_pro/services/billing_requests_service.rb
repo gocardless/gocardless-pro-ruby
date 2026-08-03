@@ -112,11 +112,15 @@ module GoCardlessPro
       # customer is requested to adjust the account number/routing number and
       # succeed in this check to continue with the flow.
       #
-      # BACS scheme Payer Name Verification
+      # BACS and SEPA schemes Payer Name Verification
       # (https://hub.gocardless.com/s/article/Introduction-to-Payer-Name-Verification?language=en_GB)
-      # is enabled by default for UK based bank accounts, meaning we verify the
-      # account holder name and bank account
-      # number match the details held by the relevant bank.
+      # is enabled by default for UK and Eurozone based bank accounts, meaning we
+      # verify the account holder name and bank account number/IBAN match
+      # the details held by the relevant bank. If there is no match, the endpoint will
+      # return a 422 - validation error on account_holder_name:
+      # "Account holder name does not match bank account details provided". Testing
+      # instructions are here
+      # (https://developer.gocardless.com/developer-tools/scenario-simulators/#payer_name_verification)
       # Example URL: /billing_requests/:identity/actions/collect_bank_account
       #
       # @param identity       # Unique identifier, beginning with "BRQ".
