@@ -75,12 +75,35 @@ jobs:
           printf -- "---\n:rubygems_api_key: $RUBYGEM_PUBLISH_API_KEY\n" > $HOME/.gem/credentials
           gem build *.gemspec
           gem push *.gem
+
+
+      - name: Extract changelog notes for this version
+        id: notes
+        if: steps.version_check.outputs.already_published == 'false'
+        run: |
+          VERSION="${{ steps.version_check.outputs.version }}"
+          NOTES=""
+          if [ -f CHANGELOG.md ]; then
+            NOTES=$(awk -v ver="$VERSION" '
+              $0 ~ "^## " ver {p=1; next}
+              p && /^## / {exit}
+              p {print}
+            ' CHANGELOG.md)
+          fi
+          {
+            echo "notes<<EOF"
+            echo "$NOTES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Create GitHub Release
         if: steps.version_check.outputs.already_published == 'false'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          VERSION=${{ steps.version_check.outputs.version }}
-          gh release create "v$VERSION" \
-            --title "v$VERSION" \
-            --generate-notes
+          NOTES="${{ steps.notes.outputs.notes }}"
+          if [ -n "$(echo "$NOTES" | tr -d '[:space:]')" ]; then
+            gh release create v${{ steps.version_check.outputs.version }} --notes "$NOTES"
+          else
+            gh release create v${{ steps.version_check.outputs.version }} --generate-notes
+          fi
