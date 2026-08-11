@@ -102,8 +102,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           NOTES="${{ steps.notes.outputs.notes }}"
+          TAG="v${{ steps.version_check.outputs.version }}"
           if [ -n "$(echo "$NOTES" | tr -d '[:space:]')" ]; then
-            gh release create v${{ steps.version_check.outputs.version }} --notes "$NOTES"
+            gh release create "$TAG" --title "$TAG" --notes "$NOTES"
           else
-            gh release create v${{ steps.version_check.outputs.version }} --generate-notes
+            gh release create "$TAG" --title "$TAG" --generate-notes
           fi
