@@ -17,6 +17,7 @@ describe GoCardlessPro::Resources::Payment do
 
           'amount' => 'amount-input',
           'amount_refunded' => 'amount_refunded-input',
+          'app_fee' => 'app_fee-input',
           'charge_date' => 'charge_date-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
@@ -41,6 +42,7 @@ describe GoCardlessPro::Resources::Payment do
 
                 'amount' => 'amount-input',
                 'amount_refunded' => 'amount_refunded-input',
+                'app_fee' => 'app_fee-input',
                 'charge_date' => 'charge_date-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
@@ -65,6 +67,7 @@ describe GoCardlessPro::Resources::Payment do
 
                   'amount' => 'amount-input',
                   'amount_refunded' => 'amount_refunded-input',
+                  'app_fee' => 'app_fee-input',
                   'charge_date' => 'charge_date-input',
                   'created_at' => 'created_at-input',
                   'currency' => 'currency-input',
@@ -122,6 +125,7 @@ describe GoCardlessPro::Resources::Payment do
 
           'amount' => 'amount-input',
           'amount_refunded' => 'amount_refunded-input',
+          'app_fee' => 'app_fee-input',
           'charge_date' => 'charge_date-input',
           'created_at' => 'created_at-input',
           'currency' => 'currency-input',
@@ -169,6 +173,7 @@ describe GoCardlessPro::Resources::Payment do
 
                 'amount' => 'amount-input',
                 'amount_refunded' => 'amount_refunded-input',
+                'app_fee' => 'app_fee-input',
                 'charge_date' => 'charge_date-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
@@ -207,6 +212,7 @@ describe GoCardlessPro::Resources::Payment do
 
               'amount' => 'amount-input',
               'amount_refunded' => 'amount_refunded-input',
+              'app_fee' => 'app_fee-input',
               'charge_date' => 'charge_date-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
@@ -238,6 +244,8 @@ describe GoCardlessPro::Resources::Payment do
         expect(get_list_response.records.first.amount).to eq('amount-input')
 
         expect(get_list_response.records.first.amount_refunded).to eq('amount_refunded-input')
+
+        expect(get_list_response.records.first.app_fee).to eq('app_fee-input')
 
         expect(get_list_response.records.first.charge_date).to eq('charge_date-input')
 
@@ -281,6 +289,7 @@ describe GoCardlessPro::Resources::Payment do
 
             'amount' => 'amount-input',
             'amount_refunded' => 'amount_refunded-input',
+            'app_fee' => 'app_fee-input',
             'charge_date' => 'charge_date-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
@@ -311,6 +320,7 @@ describe GoCardlessPro::Resources::Payment do
 
             'amount' => 'amount-input',
             'amount_refunded' => 'amount_refunded-input',
+            'app_fee' => 'app_fee-input',
             'charge_date' => 'charge_date-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
@@ -357,6 +367,7 @@ describe GoCardlessPro::Resources::Payment do
 
                 'amount' => 'amount-input',
                 'amount_refunded' => 'amount_refunded-input',
+                'app_fee' => 'app_fee-input',
                 'charge_date' => 'charge_date-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
@@ -397,6 +408,7 @@ describe GoCardlessPro::Resources::Payment do
 
               'amount' => 'amount-input',
               'amount_refunded' => 'amount_refunded-input',
+              'app_fee' => 'app_fee-input',
               'charge_date' => 'charge_date-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
@@ -459,6 +471,7 @@ describe GoCardlessPro::Resources::Payment do
 
               'amount' => 'amount-input',
               'amount_refunded' => 'amount_refunded-input',
+              'app_fee' => 'app_fee-input',
               'charge_date' => 'charge_date-input',
               'created_at' => 'created_at-input',
               'currency' => 'currency-input',
@@ -499,6 +512,7 @@ describe GoCardlessPro::Resources::Payment do
 
             'amount' => 'amount-input',
             'amount_refunded' => 'amount_refunded-input',
+            'app_fee' => 'app_fee-input',
             'charge_date' => 'charge_date-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
@@ -545,6 +559,7 @@ describe GoCardlessPro::Resources::Payment do
 
                 'amount' => 'amount-input',
                 'amount_refunded' => 'amount_refunded-input',
+                'app_fee' => 'app_fee-input',
                 'charge_date' => 'charge_date-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
@@ -580,6 +595,7 @@ describe GoCardlessPro::Resources::Payment do
 
             'amount' => 'amount-input',
             'amount_refunded' => 'amount_refunded-input',
+            'app_fee' => 'app_fee-input',
             'charge_date' => 'charge_date-input',
             'created_at' => 'created_at-input',
             'currency' => 'currency-input',
@@ -626,6 +642,7 @@ describe GoCardlessPro::Resources::Payment do
 
                 'amount' => 'amount-input',
                 'amount_refunded' => 'amount_refunded-input',
+                'app_fee' => 'app_fee-input',
                 'charge_date' => 'charge_date-input',
                 'created_at' => 'created_at-input',
                 'currency' => 'currency-input',
