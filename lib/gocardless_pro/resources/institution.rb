@@ -24,6 +24,7 @@ module GoCardlessPro
       attr_reader :limits
       attr_reader :logo_url
       attr_reader :name
+      attr_reader :roles
       attr_reader :status
 
       # Initialize a institution resource instance
@@ -38,6 +39,7 @@ module GoCardlessPro
         @limits = object['limits']
         @logo_url = object['logo_url']
         @name = object['name']
+        @roles = object['roles']
         @status = object['status']
         @response = response
       end

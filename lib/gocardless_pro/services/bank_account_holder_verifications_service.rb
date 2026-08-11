@@ -11,9 +11,9 @@ module GoCardlessPro
     # Service for making requests to the BankAccountHolderVerification endpoints
     class BankAccountHolderVerificationsService < BaseService
       # Verify the account holder of the bank account. A complete verification can be
-      # attached when creating an outbound payment. This endpoint allows partner
-      # merchants to create Confirmation of Payee checks on customer bank accounts
-      # before sending outbound payments.
+      # attached when creating an outbound payment.
+      # This endpoint allows partner merchants to create Confirmation of Payee checks
+      # on customer bank accounts before sending outbound payments.
       # Example URL: /bank_account_holder_verifications
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})

@@ -24,6 +24,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'limits' => 'limits-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
+            'roles' => 'roles-input',
             'status' => 'status-input',
           }],
           meta: {
@@ -58,6 +59,8 @@ describe GoCardlessPro::Services::InstitutionsService do
         expect(get_list_response.records.first.logo_url).to eq('logo_url-input')
 
         expect(get_list_response.records.first.name).to eq('name-input')
+
+        expect(get_list_response.records.first.roles).to eq('roles-input')
 
         expect(get_list_response.records.first.status).to eq('status-input')
       end
@@ -107,6 +110,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'limits' => 'limits-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
+            'roles' => 'roles-input',
             'status' => 'status-input',
           }],
           meta: {
@@ -130,6 +134,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'limits' => 'limits-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
+            'roles' => 'roles-input',
             'status' => 'status-input',
           }],
           meta: {
@@ -162,6 +167,7 @@ describe GoCardlessPro::Services::InstitutionsService do
               'limits' => 'limits-input',
               'logo_url' => 'logo_url-input',
               'name' => 'name-input',
+              'roles' => 'roles-input',
               'status' => 'status-input',
             }],
             meta: {
@@ -185,6 +191,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                                      'limits' => 'limits-input',
                                      'logo_url' => 'logo_url-input',
                                      'name' => 'name-input',
+                                     'roles' => 'roles-input',
                                      'status' => 'status-input',
                                    }],
                                    meta: {
@@ -213,6 +220,7 @@ describe GoCardlessPro::Services::InstitutionsService do
               'limits' => 'limits-input',
               'logo_url' => 'logo_url-input',
               'name' => 'name-input',
+              'roles' => 'roles-input',
               'status' => 'status-input',
             }],
             meta: {
@@ -239,6 +247,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                                      'limits' => 'limits-input',
                                      'logo_url' => 'logo_url-input',
                                      'name' => 'name-input',
+                                     'roles' => 'roles-input',
                                      'status' => 'status-input',
                                    }],
                                    meta: {
@@ -276,6 +285,7 @@ describe GoCardlessPro::Services::InstitutionsService do
             'limits' => 'limits-input',
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
+            'roles' => 'roles-input',
             'status' => 'status-input',
           }],
           meta: {
@@ -337,6 +347,7 @@ describe GoCardlessPro::Services::InstitutionsService do
                 'limits' => 'limits-input',
                 'logo_url' => 'logo_url-input',
                 'name' => 'name-input',
+                'roles' => 'roles-input',
                 'status' => 'status-input',
               },
             }.to_json,

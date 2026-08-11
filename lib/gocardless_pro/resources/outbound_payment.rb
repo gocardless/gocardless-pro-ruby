@@ -18,7 +18,7 @@ module GoCardlessPro
     # the status of the outbound payment changes
     # (https://developer.gocardless.com/api-reference/#event-types-outbound-payment).
     #
-    # ####Rate limiting
+    # Rate limiting
     #
     # Two rate limits apply to the Outbound Payments APIs:
     #
