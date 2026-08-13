@@ -1,6 +1,12 @@
 <!-- This file is generated, please add to it using `knope document-change` in the client-library-templates repo -->
 # Changelog
 
+## 4.5.3 (2026-08-13)
+
+### Fixes
+
+- Fix typo in mandate_import_entry status description
+
 ## 4.5.2 (2026-08-13)
 
 ### Fixes
