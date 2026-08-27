@@ -1,6 +1,12 @@
 <!-- This file is generated, please add to it using `knope document-change` in the client-library-templates repo -->
 # Changelog
 
+## 4.5.4 (2026-08-27)
+
+### Fixes
+
+- Fix typo in subscription status description
+
 ## 4.5.3 (2026-08-13)
 
 ### Fixes
