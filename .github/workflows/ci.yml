@@ -99,8 +99,8 @@ jobs:
         if: steps.version_check.outputs.already_published == 'false'
         env:
           GH_TOKEN: ${{ github.token }}
+          NOTES: ${{ steps.notes.outputs.notes }}
         run: |
-          NOTES="${{ steps.notes.outputs.notes }}"
           TAG="v${{ steps.version_check.outputs.version }}"
           if [ -n "$(echo "$NOTES" | tr -d '[:space:]')" ]; then
             gh release create "$TAG" --title "$TAG" --notes "$NOTES"
