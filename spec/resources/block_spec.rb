@@ -133,7 +133,7 @@ describe GoCardlessPro::Resources::Block do
       end
 
       let!(:get_stub) do
-        stub_url = "/blocks/#{id}"
+        stub_url = '/blocks/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {
