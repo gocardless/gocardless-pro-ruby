@@ -29,10 +29,10 @@ module GoCardlessPro
       # to the created payments, or the status `error` and detailed information about
       # the
       # failures.
-      # Example URL: /instalment_schedules
+      # Example URL: /instalment_schedules/create_with_dates
       # @param options [Hash] parameters as a hash, under a params key.
       def create_with_dates(options = {})
-        path = '/instalment_schedules'
+        path = '/instalment_schedules/create_with_dates'
 
         params = options.delete(:params) || {}
         options[:params] = {}
@@ -78,10 +78,10 @@ module GoCardlessPro
       # and link to
       # the created payments, or the status `error` and detailed information about the
       # failures.
-      # Example URL: /instalment_schedules
+      # Example URL: /instalment_schedules/create_with_schedule
       # @param options [Hash] parameters as a hash, under a params key.
       def create_with_schedule(options = {})
-        path = '/instalment_schedules'
+        path = '/instalment_schedules/create_with_schedule'
 
         params = options.delete(:params) || {}
         options[:params] = {}

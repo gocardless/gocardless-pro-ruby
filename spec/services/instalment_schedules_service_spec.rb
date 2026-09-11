@@ -28,7 +28,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_dates}).
           with(
             body: {
               'instalment_schedules' => {
@@ -75,7 +75,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+          stub = stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_dates}).
                  to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
@@ -83,7 +83,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+          stub = stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_dates}).
                  to_return({ status: 502,
                              headers: { 'Content-Type' => 'text/html' },
                              body: '<html><body>Response from Cloudflare</body></html>' }).
@@ -99,7 +99,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
       let(:new_resource) { {} }
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).to_return(
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_dates}).to_return(
           body: {
             error: {
               type: 'validation_failed',
@@ -138,7 +138,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
       end
 
       let!(:post_stub) do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).to_return(
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_dates}).to_return(
           body: {
             error: {
               type: 'invalid_state',
@@ -224,7 +224,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_schedule}).
           with(
             body: {
               'instalment_schedules' => {
@@ -271,7 +271,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
         before { allow_any_instance_of(GoCardlessPro::Request).to receive(:sleep) }
 
         it 'retries timeouts' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+          stub = stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_schedule}).
                  to_timeout.then.to_return({ status: 200, headers: response_headers })
 
           post_create_response
@@ -279,7 +279,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
         end
 
         it 'retries 5XX errors' do
-          stub = stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+          stub = stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_schedule}).
                  to_return({ status: 502,
                              headers: { 'Content-Type' => 'text/html' },
                              body: '<html><body>Response from Cloudflare</body></html>' }).
@@ -295,7 +295,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
       let(:new_resource) { {} }
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).to_return(
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_schedule}).to_return(
           body: {
             error: {
               type: 'validation_failed',
@@ -334,7 +334,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
       end
 
       let!(:post_stub) do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).to_return(
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_schedule}).to_return(
           body: {
             error: {
               type: 'invalid_state',

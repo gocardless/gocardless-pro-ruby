@@ -19,7 +19,7 @@ describe 'InstalmentSchedules Code Samples' do
   describe '#create_with_dates code sample' do
     before do
       # Convert :param placeholders to regex wildcards for flexible matching
-      stub_url = '/instalment_schedules'.gsub(/:\w+/, '[^/]+')
+      stub_url = '/instalment_schedules/create_with_dates'.gsub(/:\w+/, '[^/]+')
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).
         to_return(
           body: { 'instalment_schedules' => {} }.to_json,
@@ -65,7 +65,7 @@ describe 'InstalmentSchedules Code Samples' do
   describe '#create_with_schedule code sample' do
     before do
       # Convert :param placeholders to regex wildcards for flexible matching
-      stub_url = '/instalment_schedules'.gsub(/:\w+/, '[^/]+')
+      stub_url = '/instalment_schedules/create_with_schedule'.gsub(/:\w+/, '[^/]+')
       stub_request(:post, /.*api.gocardless.com#{stub_url}/).
         to_return(
           body: { 'instalment_schedules' => {} }.to_json,
