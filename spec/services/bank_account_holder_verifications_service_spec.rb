@@ -144,7 +144,7 @@ describe GoCardlessPro::Services::BankAccountHolderVerificationsService do
       end
 
       let!(:get_stub) do
-        stub_url = "/bank_account_holder_verifications/#{id}"
+        stub_url = '/bank_account_holder_verifications/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {

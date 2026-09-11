@@ -160,7 +160,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
       end
 
       let!(:get_stub) do
-        stub_url = "/instalment_schedules/#{id}"
+        stub_url = '/instalment_schedules/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {
@@ -356,7 +356,7 @@ describe GoCardlessPro::Services::InstalmentSchedulesService do
       end
 
       let!(:get_stub) do
-        stub_url = "/instalment_schedules/#{id}"
+        stub_url = '/instalment_schedules/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {

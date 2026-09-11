@@ -149,7 +149,7 @@ describe GoCardlessPro::Resources::CreditorBankAccount do
       end
 
       let!(:get_stub) do
-        stub_url = "/creditor_bank_accounts/#{id}"
+        stub_url = '/creditor_bank_accounts/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {
