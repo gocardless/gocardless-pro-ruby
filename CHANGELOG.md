@@ -1,6 +1,12 @@
 <!-- This file is generated, please add to it using `knope document-change` in the client-library-templates repo -->
 # Changelog
 
+## 4.8.1 (2026-09-22)
+
+### Fixes
+
+- Fix schema definition/component names to avoid losing types in openapi schema
+
 ## 4.8.0 (2026-09-17)
 
 ### Features
