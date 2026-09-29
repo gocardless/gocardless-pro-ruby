@@ -208,7 +208,7 @@ describe GoCardlessPro::Services::SubscriptionsService do
       end
 
       let!(:get_stub) do
-        stub_url = "/subscriptions/#{id}"
+        stub_url = '/subscriptions/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {

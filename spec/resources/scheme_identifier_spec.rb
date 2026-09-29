@@ -173,7 +173,7 @@ describe GoCardlessPro::Resources::SchemeIdentifier do
       end
 
       let!(:get_stub) do
-        stub_url = "/scheme_identifiers/#{id}"
+        stub_url = '/scheme_identifiers/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {

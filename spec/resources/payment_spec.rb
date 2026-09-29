@@ -165,7 +165,7 @@ describe GoCardlessPro::Resources::Payment do
       end
 
       let!(:get_stub) do
-        stub_url = "/payments/#{id}"
+        stub_url = '/payments/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {

@@ -168,7 +168,7 @@ describe GoCardlessPro::Services::RedirectFlowsService do
       end
 
       let!(:get_stub) do
-        stub_url = "/redirect_flows/#{id}"
+        stub_url = '/redirect_flows/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {

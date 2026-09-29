@@ -28,7 +28,7 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_dates}).
           with(
             body: {
               'instalment_schedules' => {
@@ -76,7 +76,7 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
       let(:new_resource) { {} }
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).to_return(
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_dates}).to_return(
           body: {
             error: {
               type: 'validation_failed',
@@ -115,7 +115,7 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
       end
 
       let!(:post_stub) do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).to_return(
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_dates}).to_return(
           body: {
             error: {
               type: 'invalid_state',
@@ -137,7 +137,7 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
       end
 
       let!(:get_stub) do
-        stub_url = "/instalment_schedules/#{id}"
+        stub_url = '/instalment_schedules/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {
@@ -185,7 +185,7 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
       end
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_schedule}).
           with(
             body: {
               'instalment_schedules' => {
@@ -233,7 +233,7 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
       let(:new_resource) { {} }
 
       before do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).to_return(
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_schedule}).to_return(
           body: {
             error: {
               type: 'validation_failed',
@@ -272,7 +272,7 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
       end
 
       let!(:post_stub) do
-        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules}).to_return(
+        stub_request(:post, %r{.*api.gocardless.com/instalment_schedules/create_with_schedule}).to_return(
           body: {
             error: {
               type: 'invalid_state',
@@ -294,7 +294,7 @@ describe GoCardlessPro::Resources::InstalmentSchedule do
       end
 
       let!(:get_stub) do
-        stub_url = "/instalment_schedules/#{id}"
+        stub_url = '/instalment_schedules/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {

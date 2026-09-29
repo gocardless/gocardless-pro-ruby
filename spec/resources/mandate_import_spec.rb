@@ -121,7 +121,7 @@ describe GoCardlessPro::Resources::MandateImport do
       end
 
       let!(:get_stub) do
-        stub_url = "/mandate_imports/#{id}"
+        stub_url = '/mandate_imports/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {

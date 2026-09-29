@@ -133,7 +133,7 @@ describe GoCardlessPro::Resources::OutboundPaymentImport do
       end
 
       let!(:get_stub) do
-        stub_url = "/outbound_payment_imports/#{id}"
+        stub_url = '/outbound_payment_imports/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {

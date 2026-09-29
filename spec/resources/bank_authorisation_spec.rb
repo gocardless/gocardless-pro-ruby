@@ -141,7 +141,7 @@ describe GoCardlessPro::Resources::BankAuthorisation do
       end
 
       let!(:get_stub) do
-        stub_url = "/bank_authorisations/#{id}"
+        stub_url = '/bank_authorisations/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {

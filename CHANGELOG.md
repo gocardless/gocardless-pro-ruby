@@ -1,6 +1,119 @@
 <!-- This file is generated, please add to it using `knope document-change` in the client-library-templates repo -->
 # Changelog
 
+## 4.9.0 (2026-09-25)
+
+### Features
+
+#### Add `interval` param to `GET /reporting/metrics` for aggregating results by day, week, or month
+
+You can now pass `interval` (`daily`, `weekly`, or `monthly`) when fetching metrics to have values aggregated over that period, instead of only receiving a single value for the full `start_date`/`end_date` range.
+
+## 4.8.2 (2026-09-22)
+
+### Fixes
+
+- Fix example values for a small number of fields to comply with the schema
+
+## 4.8.1 (2026-09-22)
+
+### Fixes
+
+- Fix schema definition/component names to avoid losing types in openapi schema
+
+## 4.8.0 (2026-09-17)
+
+### Features
+
+- Add "reference" to Create Bank Account Holder Verification
+
+## 4.7.3 (2026-09-16)
+
+### Fixes
+
+- Clean up docs and use a shared definition of event `include` and `resource_type` enums
+
+## 4.7.2 (2026-09-14)
+
+### Fixes
+
+#### Fix nullable field declarations and missing properties across multiple resources
+
+Adds `null` to type declarations for fields that legitimately return nil across redirect_flows, webhooks, scheme_identifiers, customer_bank_accounts, outbound_payments, and billing_request_with_actions. Also adds the missing `period_alignment` property to mandate consent_parameters.
+
+## 4.7.1 (2026-09-14)
+
+### Fixes
+
+#### Add missing enum values to schema definitions
+
+Adds `sepa_credit_transfer` and `sepa_instant_credit_transfer` to the complete scheme enum, adds hosted payment flow sources to the event source/type enum, and makes `creditor_type` nullable for legacy creditors.
+
+## 4.7.0 (2026-09-11)
+
+### Features
+
+#### Use specific sub-endpoints URLs for create /instalment_schedules: with_schedule and with_dates
+
+The two variants for creating an instalment_schedule were surfaced as separate functions. However, they both went to the same URL and endpoint on the backend.
+
+This created some bugs in generating our openapi schema and therefore our API reference documentation.
+
+Therefore, we've added specific URLs for each endpoint aliased to the original one: `POST /instalment_schedules/with_dates` or `POST /instalment_schedules/with_schedule`.
+
+The existing POST /instalment_schedules endpoint is unchanged and will remain available for the foreseeable future.
+
+Client libraries will now use the specific endpoint matching the method - if you are stubbing the HTTP call you may need to update those stubs.
+
+## 4.6.5 (2026-09-09)
+
+### Fixes
+
+- Add remember_me to ui_components bootstrap endpoint
+
+## 4.6.4 (2026-09-08)
+
+### Fixes
+
+#### Remove incorrect Pro/Enterprise restriction from mandate and customer bank account endpoints
+
+The "Create a mandate", "Reinstate a mandate", and "Create a customer bank account" endpoints incorrectly stated they were restricted to GoCardless Pro and Enterprise accounts. Custom payment pages are available to any merchant — they are not package-restricted.
+
+## 4.6.3 (2026-09-07)
+
+### Fixes
+
+- Update code samples to match change to integer types for amounts etc
+
+## 4.6.2 (2026-09-04)
+
+### Fixes
+
+#### Define common titles for common types
+
+The intention is to make it possible to define common types in generated code.
+Instead of ~37 different currency enum types which are all equivalent, we could have one.
+
+## 4.6.1 (2026-09-02)
+
+### Fixes
+
+- Fix typo in Mandate next_possible_standard_ach_charge_date description
+
+## 4.6.0 (2026-09-01)
+
+### Features
+
+#### Add `app_connected_organisations` export type
+
+Exports can now be created with `resource_type: app_connected_organisations`, allowing connected merchant details to be exported.
+
+## 4.5.4 (2026-08-27)
+
+### Fixes
+
+- Fix typo in subscription status description
+
 ## 4.5.3 (2026-08-13)
 
 ### Fixes

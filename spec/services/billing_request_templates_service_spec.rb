@@ -698,7 +698,7 @@ describe GoCardlessPro::Services::BillingRequestTemplatesService do
       end
 
       let!(:get_stub) do
-        stub_url = "/billing_request_templates/#{id}"
+        stub_url = '/billing_request_templates/:identity'.gsub(':identity', id)
         stub_request(:get, /.*api.gocardless.com#{stub_url}/).
           to_return(
             body: {
