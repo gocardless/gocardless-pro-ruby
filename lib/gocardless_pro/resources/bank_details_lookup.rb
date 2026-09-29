@@ -15,6 +15,7 @@ module GoCardlessPro
       attr_reader :available_debit_schemes
       attr_reader :bank_name
       attr_reader :bic
+      attr_reader :payer_name_verification_result
 
       # Initialize a bank_details_lookup resource instance
       # @param object [Hash] an object returned from the API
@@ -24,6 +25,7 @@ module GoCardlessPro
         @available_debit_schemes = object['available_debit_schemes']
         @bank_name = object['bank_name']
         @bic = object['bic']
+        @payer_name_verification_result = object['payer_name_verification_result']
         @response = response
       end
 
