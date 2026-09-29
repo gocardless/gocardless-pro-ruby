@@ -18,6 +18,7 @@ describe GoCardlessPro::Resources::BankDetailsLookup do
           'available_debit_schemes' => 'available_debit_schemes-input',
           'bank_name' => 'bank_name-input',
           'bic' => 'bic-input',
+          'payer_name_verification_result' => 'payer_name_verification_result-input',
         }
       end
 
@@ -30,6 +31,7 @@ describe GoCardlessPro::Resources::BankDetailsLookup do
                 'available_debit_schemes' => 'available_debit_schemes-input',
                 'bank_name' => 'bank_name-input',
                 'bic' => 'bic-input',
+                'payer_name_verification_result' => 'payer_name_verification_result-input',
               },
             }
           ).
@@ -42,6 +44,7 @@ describe GoCardlessPro::Resources::BankDetailsLookup do
                   'available_debit_schemes' => 'available_debit_schemes-input',
                   'bank_name' => 'bank_name-input',
                   'bic' => 'bic-input',
+                  'payer_name_verification_result' => 'payer_name_verification_result-input',
                 },
 
             }.to_json,
@@ -87,6 +90,7 @@ describe GoCardlessPro::Resources::BankDetailsLookup do
           'available_debit_schemes' => 'available_debit_schemes-input',
           'bank_name' => 'bank_name-input',
           'bic' => 'bic-input',
+          'payer_name_verification_result' => 'payer_name_verification_result-input',
         }
       end
 
