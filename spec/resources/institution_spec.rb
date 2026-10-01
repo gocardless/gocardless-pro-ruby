@@ -18,7 +18,6 @@ describe GoCardlessPro::Resources::Institution do
           body: {
             'institutions' => [{
 
-              'autocompletes_collect_bank_account' => 'autocompletes_collect_bank_account-input',
               'country_code' => 'country_code-input',
               'icon_url' => 'icon_url-input',
               'id' => 'id-input',
@@ -26,7 +25,6 @@ describe GoCardlessPro::Resources::Institution do
               'logo_url' => 'logo_url-input',
               'name' => 'name-input',
               'roles' => 'roles-input',
-              'status' => 'status-input',
             }],
             meta: {
               cursors: {
@@ -42,8 +40,6 @@ describe GoCardlessPro::Resources::Institution do
       it 'wraps each item in the resource class' do
         expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::Institution)
 
-        expect(get_list_response.records.first.autocompletes_collect_bank_account).to eq('autocompletes_collect_bank_account-input')
-
         expect(get_list_response.records.first.country_code).to eq('country_code-input')
 
         expect(get_list_response.records.first.icon_url).to eq('icon_url-input')
@@ -57,8 +53,6 @@ describe GoCardlessPro::Resources::Institution do
         expect(get_list_response.records.first.name).to eq('name-input')
 
         expect(get_list_response.records.first.roles).to eq('roles-input')
-
-        expect(get_list_response.records.first.status).to eq('status-input')
       end
 
       it 'exposes the cursors for before and after' do
@@ -76,7 +70,6 @@ describe GoCardlessPro::Resources::Institution do
         body: {
           'institutions' => [{
 
-            'autocompletes_collect_bank_account' => 'autocompletes_collect_bank_account-input',
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
@@ -84,7 +77,6 @@ describe GoCardlessPro::Resources::Institution do
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
             'roles' => 'roles-input',
-            'status' => 'status-input',
           }],
           meta: {
             cursors: { after: 'AB345' },
@@ -100,7 +92,6 @@ describe GoCardlessPro::Resources::Institution do
         body: {
           'institutions' => [{
 
-            'autocompletes_collect_bank_account' => 'autocompletes_collect_bank_account-input',
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
@@ -108,7 +99,6 @@ describe GoCardlessPro::Resources::Institution do
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
             'roles' => 'roles-input',
-            'status' => 'status-input',
           }],
           meta: {
             limit: 2,
@@ -138,7 +128,6 @@ describe GoCardlessPro::Resources::Institution do
         body: {
           'institutions' => [{
 
-            'autocompletes_collect_bank_account' => 'autocompletes_collect_bank_account-input',
             'country_code' => 'country_code-input',
             'icon_url' => 'icon_url-input',
             'id' => 'id-input',
@@ -146,7 +135,6 @@ describe GoCardlessPro::Resources::Institution do
             'logo_url' => 'logo_url-input',
             'name' => 'name-input',
             'roles' => 'roles-input',
-            'status' => 'status-input',
           }],
           meta: {
             cursors: {
@@ -189,7 +177,6 @@ describe GoCardlessPro::Resources::Institution do
             body: {
               'institutions' => {
 
-                'autocompletes_collect_bank_account' => 'autocompletes_collect_bank_account-input',
                 'country_code' => 'country_code-input',
                 'icon_url' => 'icon_url-input',
                 'id' => 'id-input',
@@ -197,7 +184,6 @@ describe GoCardlessPro::Resources::Institution do
                 'logo_url' => 'logo_url-input',
                 'name' => 'name-input',
                 'roles' => 'roles-input',
-                'status' => 'status-input',
               },
             }.to_json,
             headers: response_headers
