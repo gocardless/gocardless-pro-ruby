@@ -16,6 +16,10 @@ module GoCardlessPro
     # be notified
     # are all identified in the `links` property.
     #
+    # Only `payment_created`, `mandate_created` and `subscription_created`
+    # notifications are
+    # supported.
+    #
     # Note that these are ephemeral records - once the notification has been
     # actioned in some
     # way, it is no longer visible using this API.
