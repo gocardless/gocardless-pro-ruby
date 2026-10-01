@@ -283,7 +283,7 @@ module GoCardlessPro
           'User-Agent' => "#{user_agent}",
           'Content-Type' => 'application/json',
           'GoCardless-Client-Library' => 'gocardless-pro-ruby',
-          'GoCardless-Client-Version' => '4.10.6',
+          'GoCardless-Client-Version' => '4.11.0',
         },
       }
     end
