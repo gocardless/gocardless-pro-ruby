@@ -48,7 +48,7 @@ module GoCardlessPro
 
       options[:headers] ||= {}
       options[:headers] = @headers.merge(options[:headers])
-      Request.new(@connection, method, @path_prefix + path, options).request
+      Request.new(@connection, method, @path_prefix + validate_path(path), options).request
     end
 
     # inspect the API Service
@@ -60,6 +60,39 @@ module GoCardlessPro
     alias to_s inspect
 
     private
+
+    # Check that a request path cannot move the request off the configured API URL.
+    #
+    # `path` is documented as a URL without the base domain, but Faraday resolves it against
+    # the connection's prefix the way a browser resolves a link: an absolute URL
+    # ('https://host/x') or a scheme-relative one ('//host/x') replaces the configured origin
+    # outright, while the Authorization header is still attached. A caller that passes
+    # untrusted input as `path` would therefore hand the token to a host of someone else's
+    # choosing, so anything that is not a relative reference is rejected before it is joined.
+    #
+    # Parsing with URI.parse is what Faraday's own merge does, so a value cannot be read as
+    # relative here and as absolute there. URI.parse is strict and raises on values a looser
+    # parser might read as a host, so a parse failure is rejected for the same reason.
+    #
+    # Dot segments are left alone: they resolve against the base URL and so cannot leave the
+    # configured origin, which is the property this guards.
+    #
+    # @param path [String] the path to validate
+    def validate_path(path)
+      parsed = begin
+        URI.parse(path.to_s)
+      rescue URI::InvalidURIError
+        raise ArgumentError, "Invalid request path #{path.inspect}: not a valid URL path"
+      end
+
+      unless parsed.scheme.nil? && parsed.host.nil?
+        raise ArgumentError, "Invalid request path #{path.inspect}: a path may not specify " \
+                             'a scheme or a host, only a location relative to the configured ' \
+                             'API URL'
+      end
+
+      path
+    end
 
     def unpack_url(url)
       path = URI.parse(url).path
