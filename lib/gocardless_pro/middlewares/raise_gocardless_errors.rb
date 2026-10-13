@@ -17,7 +17,7 @@ module GoCardlessPro
           # Some errors are returned as string rather than objects, wrap in standard format
           json_body['error'] = {
             'message' => json_body['error'],
-            'status' => env.status,
+            'code' => env.status,
           }
         end
         error_type = json_body['error']['type']
@@ -44,7 +44,7 @@ module GoCardlessPro
           gocardless: GoCardlessPro::GoCardlessError,
           invalid_api_usage: GoCardlessPro::InvalidApiUsageError,
           invalid_state: GoCardlessPro::InvalidStateError,
-        }.fetch(type.to_sym)
+        }.fetch(type&.to_sym, GoCardlessPro::ApiError)
       end
 
       def generate_error_data(env)

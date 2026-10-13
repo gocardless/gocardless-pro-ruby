@@ -130,8 +130,32 @@ describe GoCardlessPro::Middlewares::RaiseGoCardlessErrors do
       it 'raises a wrapped error' do
         expect { connection.post('https://api.gocardless.com/widgets') }.
           to raise_error(GoCardlessPro::InvalidApiUsageError) do |error|
-            expect(error).to have_attributes({ message: 'unwrapped error' })
+            expect(error).to have_attributes({ message: 'unwrapped error', code: 400 })
           end
+      end
+    end
+
+    context 'for an error with an unrecognised type' do
+      let(:status) { 422 }
+      let(:body) { { error: { type: 'brand_new_type', message: 'something new' } }.to_json }
+
+      it 'raises an ApiError' do
+        expect { connection.post('https://api.gocardless.com/widgets') }.
+          to raise_error(GoCardlessPro::ApiError)
+      end
+    end
+
+    [404, 422].each do |error_status|
+      context "for an unwrapped string error with a #{error_status} status" do
+        let(:status) { error_status }
+        let(:body) { { error: 'unwrapped error' }.to_json }
+
+        it 'raises an ApiError with the message' do
+          expect { connection.post('https://api.gocardless.com/widgets') }.
+            to raise_error(GoCardlessPro::ApiError) do |error|
+              expect(error).to have_attributes({ message: 'unwrapped error', code: error_status })
+            end
+        end
       end
     end
   end
