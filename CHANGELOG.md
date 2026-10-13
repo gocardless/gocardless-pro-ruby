@@ -1,6 +1,18 @@
 <!-- This file is generated, please add to it using `knope document-change` in the client-library-templates repo -->
 # Changelog
 
+## 4.20.1 (2026-10-13)
+
+### Fixes
+
+#### Fix crash on string error bodies and unrecognised error types
+
+Error responses whose `error` is a plain string, with a status other than 400, 401, 403 or 429 (for example a 404 or 422), previously raised `NoMethodError: undefined method 'to_sym' for nil` instead of a GoCardless error. They now raise `GoCardlessPro::ApiError` with the message from the response.
+
+Error responses with an unrecognised `type` now also raise `GoCardlessPro::ApiError` instead of `KeyError`.
+
+`code` is now set to the HTTP status for string error bodies. It was previously `nil`.
+
 ## 4.20.0 (2026-10-12)
 
 ### Features

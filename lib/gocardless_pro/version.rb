@@ -3,5 +3,5 @@ end
 
 module GoCardlessPro
   # Current version of the GC gem
-  VERSION = '4.20.0'
+  VERSION = '4.20.1'
 end
