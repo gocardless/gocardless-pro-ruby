@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'base64'
 
   spec.add_development_dependency 'rspec', '~> 3.13.2'
-  spec.add_development_dependency 'webmock', '~> 3.30.0'
+  spec.add_development_dependency 'webmock', '~> 3.32.0'
   spec.add_development_dependency 'rubocop', '~> 1.92.0'
   spec.add_development_dependency 'yard', '~> 0.9.45'
 end
