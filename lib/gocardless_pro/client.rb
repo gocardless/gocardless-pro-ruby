@@ -239,7 +239,7 @@ module GoCardlessPro
     # @option options [Symbol] :environment the environment to connect to - one of `:live` or `:sandbox`.
     # @option options [Symbol] :access_token the API token
     # @option options [Symbol] :url the full URL used to make requests to. If you specify this, it will be used over the `environment` option.
-    # @option options [Symbol] :connection_options `Faraday` connection options hash, e.g. `{ request: { timeout: 3 } }`.
+    # @option options [Symbol] :connection_options `Faraday` connection options hash, e.g. `{ request: { timeout: 3 } }`. Requests time out after 60 seconds unless `request: { timeout: ... }` is set.
     # @return [Client] A client configured to use the API with HTTP Basic
     #   authentication.
     #

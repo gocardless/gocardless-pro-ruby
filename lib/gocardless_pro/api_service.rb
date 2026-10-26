@@ -9,6 +9,9 @@ require 'base64'
 module GoCardlessPro
   # GoCardless API
   class ApiService
+    # Seconds to wait for a response when `connection_options` doesn't set `request: { timeout: ... }`
+    DEFAULT_TIMEOUT = 60
+
     attr_reader :on_idempotency_conflict
 
     # Initialize an APIService
@@ -22,8 +25,9 @@ module GoCardlessPro
       root_url, @path_prefix = unpack_url(url)
       http_adapter = options[:http_adapter] || [:net_http]
       connection_options = options.fetch(:connection_options, {})
+      request_options = { timeout: DEFAULT_TIMEOUT }.merge(connection_options.fetch(:request, {}))
 
-      @connection = Faraday.new(root_url, connection_options) do |faraday|
+      @connection = Faraday.new(root_url, connection_options.merge(request: request_options)) do |faraday|
         faraday.response :raise_gocardless_errors
 
         faraday.adapter(*http_adapter)
