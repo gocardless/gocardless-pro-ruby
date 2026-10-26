@@ -1,6 +1,23 @@
 <!-- This file is generated, please add to it using `knope document-change` in the client-library-templates repo -->
 # Changelog
 
+## 4.21.0 (2026-10-26)
+
+### Features
+
+#### Set a 60 second request timeout explicitly
+
+Requests now time out after 60 seconds unless you set `request: { timeout: ... }` in the `connection_options` client option. Previously no timeout was set by this library, so the effective timeout depended on the Faraday adapter in use, and could be unlimited for some adapters. With the default `net_http` adapter the behaviour is effectively unchanged, as Net::HTTP already waits up to 60 seconds.
+
+```ruby
+client = GoCardlessPro::Client.new(
+  access_token: ENV["GOCARDLESS_TOKEN"],
+  connection_options: { request: { timeout: 10 } }
+)
+```
+
+Other `request` options in `connection_options`, such as `open_timeout`, are kept and do not remove the default `timeout`. A timed out request raises `Faraday::TimeoutError` once automatic retries are exhausted.
+
 ## 4.20.1 (2026-10-13)
 
 ### Fixes
