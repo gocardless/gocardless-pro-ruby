@@ -14,6 +14,32 @@ describe GoCardlessPro::ApiService do
     }
   end
 
+  describe 'request timeout' do
+    let(:connection) { service.instance_variable_get(:@connection) }
+
+    it 'defaults to 60 seconds' do
+      expect(GoCardlessPro::ApiService::DEFAULT_TIMEOUT).to eq(60)
+      expect(connection.options.timeout).to eq(60)
+    end
+
+    context 'when connection_options sets a timeout' do
+      let(:options) { { connection_options: { request: { timeout: 5 } } } }
+
+      it 'uses the configured timeout' do
+        expect(connection.options.timeout).to eq(5)
+      end
+    end
+
+    context 'when connection_options sets other request options' do
+      let(:options) { { connection_options: { request: { open_timeout: 2 } } } }
+
+      it 'keeps the default timeout' do
+        expect(connection.options.timeout).to eq(60)
+        expect(connection.options.open_timeout).to eq(2)
+      end
+    end
+  end
+
   it 'uses basic auth' do
     stub = stub_request(:get, 'https://api.example.com/customers').
            with(headers: { 'Authorization' => 'Bearer secret_token' }).

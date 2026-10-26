@@ -192,7 +192,7 @@ end
 
 If the client is unable to connect to GoCardless, an appropriate exception will be raised, for example:
 
-* `Faraday::TimeoutError`, in case of a timeout
+* `Faraday::TimeoutError`, in case of a timeout (requests time out after 60 seconds by default; change this with the `connection_options` client option, e.g. `connection_options: { request: { timeout: 10 } }`)
 * `Faraday::ConnectionFailed`, in case of a connection issue (e.g. problems with DNS resolution)
 * `GoCardlessPro::ApiError`, for `5xx` errors returned from our infrastructure, but not by the API itself
 
