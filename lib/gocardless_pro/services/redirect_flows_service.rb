@@ -14,6 +14,7 @@ module GoCardlessPro
       # customer to the GoCardless hosted payment pages.
       # Example URL: /redirect_flows
       # @param options [Hash] parameters as a hash, under a params key.
+      # @deprecated Redirect Flows are legacy APIs and cannot be used by new integrators. The Billing Request flow (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for your payment flows.
       def create(options = {})
         path = '/redirect_flows'
 
@@ -51,6 +52,7 @@ module GoCardlessPro
       #
       # @param identity       # Unique identifier, beginning with "RE".
       # @param options [Hash] parameters as a hash, under a params key.
+      # @deprecated Redirect Flows are legacy APIs and cannot be used by new integrators. The Billing Request flow (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for your payment flows.
       def get(identity, options = {})
         path = sub_url('/redirect_flows/:identity', {
                          'identity' => identity,
@@ -83,6 +85,7 @@ module GoCardlessPro
       #
       # @param identity       # Unique identifier, beginning with "RE".
       # @param options [Hash] parameters as a hash, under a params key.
+      # @deprecated Redirect Flows are legacy APIs and cannot be used by new integrators. The Billing Request flow (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for your payment flows.
       def complete(identity, options = {})
         path = sub_url('/redirect_flows/:identity/actions/complete', {
                          'identity' => identity,
