@@ -21,6 +21,7 @@ module GoCardlessPro
     # associated with `subscription_request` and `instalment_schedule_request`
     # are only supported for ACH and PAD schemes.
     class BillingRequest
+      attr_reader :account_information_request
       attr_reader :actions
       attr_reader :created_at
       attr_reader :fallback_enabled
@@ -42,6 +43,7 @@ module GoCardlessPro
       def initialize(object, response = nil)
         @object = object
 
+        @account_information_request = object['account_information_request']
         @actions = object['actions']
         @created_at = object['created_at']
         @fallback_enabled = object['fallback_enabled']
@@ -78,6 +80,10 @@ module GoCardlessPro
       class Links
         def initialize(links)
           @links = links || {}
+        end
+
+        def account_information_request
+          @links['account_information_request']
         end
 
         def bank_authorisation

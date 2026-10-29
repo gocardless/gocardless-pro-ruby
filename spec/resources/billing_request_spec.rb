@@ -15,6 +15,7 @@ describe GoCardlessPro::Resources::BillingRequest do
       let(:new_resource) do
         {
 
+          'account_information_request' => 'account_information_request-input',
           'actions' => 'actions-input',
           'created_at' => 'created_at-input',
           'fallback_enabled' => 'fallback_enabled-input',
@@ -40,6 +41,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -65,6 +67,7 @@ describe GoCardlessPro::Resources::BillingRequest do
 
                 {
 
+                  'account_information_request' => 'account_information_request-input',
                   'actions' => 'actions-input',
                   'created_at' => 'created_at-input',
                   'fallback_enabled' => 'fallback_enabled-input',
@@ -123,6 +126,7 @@ describe GoCardlessPro::Resources::BillingRequest do
       let(:new_resource) do
         {
 
+          'account_information_request' => 'account_information_request-input',
           'actions' => 'actions-input',
           'created_at' => 'created_at-input',
           'fallback_enabled' => 'fallback_enabled-input',
@@ -171,6 +175,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -213,6 +218,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => {
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -260,6 +266,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -296,6 +303,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => {
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -343,6 +351,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -379,6 +388,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => {
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -426,6 +436,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -462,6 +473,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => {
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -509,6 +521,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -545,6 +558,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => {
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -592,6 +606,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -625,6 +640,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           body: {
             'billing_requests' => [{
 
+              'account_information_request' => 'account_information_request-input',
               'actions' => 'actions-input',
               'created_at' => 'created_at-input',
               'fallback_enabled' => 'fallback_enabled-input',
@@ -655,6 +671,8 @@ describe GoCardlessPro::Resources::BillingRequest do
 
       it 'wraps each item in the resource class' do
         expect(get_list_response.records.map { |x| x.class }.uniq.first).to eq(GoCardlessPro::Resources::BillingRequest)
+
+        expect(get_list_response.records.first.account_information_request).to eq('account_information_request-input')
 
         expect(get_list_response.records.first.actions).to eq('actions-input')
 
@@ -702,6 +720,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => [{
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -733,6 +752,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => [{
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -780,6 +800,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -821,6 +842,7 @@ describe GoCardlessPro::Resources::BillingRequest do
           body: {
             'billing_requests' => {
 
+              'account_information_request' => 'account_information_request-input',
               'actions' => 'actions-input',
               'created_at' => 'created_at-input',
               'fallback_enabled' => 'fallback_enabled-input',
@@ -883,6 +905,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => {
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -930,6 +953,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -966,6 +990,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => {
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -1013,6 +1038,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -1049,6 +1075,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => {
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -1096,6 +1123,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
@@ -1132,6 +1160,7 @@ describe GoCardlessPro::Resources::BillingRequest do
         body: {
           'billing_requests' => {
 
+            'account_information_request' => 'account_information_request-input',
             'actions' => 'actions-input',
             'created_at' => 'created_at-input',
             'fallback_enabled' => 'fallback_enabled-input',
@@ -1179,6 +1208,7 @@ describe GoCardlessPro::Resources::BillingRequest do
             body: {
               'billing_requests' => {
 
+                'account_information_request' => 'account_information_request-input',
                 'actions' => 'actions-input',
                 'created_at' => 'created_at-input',
                 'fallback_enabled' => 'fallback_enabled-input',
