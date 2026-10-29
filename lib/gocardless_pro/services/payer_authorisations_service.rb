@@ -16,7 +16,7 @@ module GoCardlessPro
       #
       # @param identity       # Unique identifier, beginning with "PA".
       # @param options [Hash] parameters as a hash, under a params key.
-      # @deprecated Payer Authorisation is legacy API and cannot be used by new integrators. The Billing Request (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for any new integrations.
+      # @deprecated Payer Authorisation is legacy API and cannot be used by new integrators. The Billing Request (https://docs.gocardless.com/docs/api-reference/billing-request) API should be used for any new integrations.
       def get(identity, options = {})
         path = sub_url('/payer_authorisations/:identity', {
                          'identity' => identity,
@@ -39,7 +39,7 @@ module GoCardlessPro
       # solution, such as a multi-step form.
       # Example URL: /payer_authorisations
       # @param options [Hash] parameters as a hash, under a params key.
-      # @deprecated Payer Authorisation is legacy API and cannot be used by new integrators. The Billing Request (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for any new integrations.
+      # @deprecated Payer Authorisation is legacy API and cannot be used by new integrators. The Billing Request (https://docs.gocardless.com/docs/api-reference/billing-request) API should be used for any new integrations.
       def create(options = {})
         path = '/payer_authorisations'
 
@@ -84,7 +84,7 @@ module GoCardlessPro
       #
       # @param identity       # Unique identifier, beginning with "PA".
       # @param options [Hash] parameters as a hash, under a params key.
-      # @deprecated Payer Authorisation is legacy API and cannot be used by new integrators. The Billing Request (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for any new integrations.
+      # @deprecated Payer Authorisation is legacy API and cannot be used by new integrators. The Billing Request (https://docs.gocardless.com/docs/api-reference/billing-request) API should be used for any new integrations.
       def update(identity, options = {})
         path = sub_url('/payer_authorisations/:identity', {
                          'identity' => identity,
@@ -111,7 +111,7 @@ module GoCardlessPro
       #
       # @param identity       # Unique identifier, beginning with "PA".
       # @param options [Hash] parameters as a hash, under a params key.
-      # @deprecated Payer Authorisation is legacy API and cannot be used by new integrators. The Billing Request (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for any new integrations.
+      # @deprecated Payer Authorisation is legacy API and cannot be used by new integrators. The Billing Request (https://docs.gocardless.com/docs/api-reference/billing-request) API should be used for any new integrations.
       def submit(identity, options = {})
         path = sub_url('/payer_authorisations/:identity/actions/submit', {
                          'identity' => identity,
@@ -159,7 +159,7 @@ module GoCardlessPro
       #
       # @param identity       # Unique identifier, beginning with "PA".
       # @param options [Hash] parameters as a hash, under a params key.
-      # @deprecated Payer Authorisation is legacy API and cannot be used by new integrators. The Billing Request (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for any new integrations.
+      # @deprecated Payer Authorisation is legacy API and cannot be used by new integrators. The Billing Request (https://docs.gocardless.com/docs/api-reference/billing-request) API should be used for any new integrations.
       def confirm(identity, options = {})
         path = sub_url('/payer_authorisations/:identity/actions/confirm', {
                          'identity' => identity,

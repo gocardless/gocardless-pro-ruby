@@ -11,7 +11,7 @@ module GoCardlessPro
     # Service for making requests to the Balance endpoints
     class BalancesService < BaseService
       # Returns a cursor-paginated
-      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # (https://docs.gocardless.com/docs/api-reference/data-conventions#cursor-pagination)
       # list of balances for a given creditor. This endpoint is rate limited to 60
       # requests per minute.
       # Example URL: /balances

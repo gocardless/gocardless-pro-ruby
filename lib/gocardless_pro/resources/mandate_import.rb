@@ -17,17 +17,17 @@ module GoCardlessPro
     # The process is as follows:
     #
     # 1. Create a mandate import
-    # (https://developer.gocardless.com/api-reference/#mandate-imports-create-a-new-mandate-import)
+    # (https://docs.gocardless.com/docs/api-reference/mandate-import#create-a-new-mandate-import)
     # 2. Add entries
-    # (https://developer.gocardless.com/api-reference/#mandate-import-entries-add-a-mandate-import-entry)
+    # (https://docs.gocardless.com/docs/api-reference/mandate-import-entry#add-a-mandate-import-entry)
     # to the import
     # 3. Submit
-    # (https://developer.gocardless.com/api-reference/#mandate-imports-submit-a-mandate-import)
+    # (https://docs.gocardless.com/docs/api-reference/mandate-import#submit-a-mandate-import)
     # the import
     # 4. Wait until a member of the GoCardless team approves the import, at
     # which point the mandates will be created
     # 5. Link up the mandates
-    # (https://developer.gocardless.com/api-reference/#mandate-import-entries-list-all-mandate-import-entries)
+    # (https://docs.gocardless.com/docs/api-reference/mandate-import-entry#list-all-mandate-import-entries)
     # in your system
     #
     # When you add entries to your mandate import, they are not turned into
@@ -40,14 +40,14 @@ module GoCardlessPro
     # We will issue a `mandate_created` webhook for each entry, which will be
     # the same as the webhooks
     # triggered when  creating a mandate
-    # (https://developer.gocardless.com/api-reference/#mandates-create-a-mandate)
+    # (https://docs.gocardless.com/docs/api-reference/mandate#create-a-mandate)
     # using the mandates API. Once these
     # webhooks start arriving, any reconciliation can now be accomplished by
     # checking the current status
-    # (https://developer.gocardless.com/api-reference/#mandate-imports-get-a-mandate-import)
+    # (https://docs.gocardless.com/docs/api-reference/mandate-import#get-a-mandate-import)
     # of the mandate import and
     # linking up the mandates to your system
-    # (https://developer.gocardless.com/api-reference/#mandate-import-entries-list-all-mandate-import-entries).
+    # (https://docs.gocardless.com/docs/api-reference/mandate-import-entry#list-all-mandate-import-entries).
     #
     # Note that all Mandate Imports have an upper limit of 30,000 entries, so we
     # recommend you split your import into several smaller imports if you're

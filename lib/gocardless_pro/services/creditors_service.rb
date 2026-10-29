@@ -46,7 +46,7 @@ module GoCardlessPro
       end
 
       # Returns a cursor-paginated
-      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # (https://docs.gocardless.com/docs/api-reference/data-conventions#cursor-pagination)
       # list of your creditors.
       # Example URL: /creditors
       # @param options [Hash] parameters as a hash, under a params key.

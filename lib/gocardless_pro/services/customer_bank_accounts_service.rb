@@ -16,16 +16,16 @@ module GoCardlessPro
       #
       # -
       # Local details
-      # (https://developer.gocardless.com/api-reference/#appendix-local-bank-details)
+      # (https://docs.gocardless.com/docs/api-reference/local-bank-details)
       # -
       # IBAN
       # -
       # Customer Bank Account Tokens
-      # (https://developer.gocardless.com/api-reference/#javascript-flow-create-a-customer-bank-account-token)
+      # (https://docs.gocardless.com/docs/collect-payments/integration-types/javascript-drop-in-flow)
       #
       # For more information on the different fields required in each country, see
       # local bank details
-      # (https://developer.gocardless.com/api-reference/#appendix-local-bank-details).
+      # (https://docs.gocardless.com/docs/api-reference/local-bank-details).
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.
       def create(options = {})
@@ -61,7 +61,7 @@ module GoCardlessPro
       end
 
       # Returns a cursor-paginated
-      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # (https://docs.gocardless.com/docs/api-reference/data-conventions#cursor-pagination)
       # list of your bank accounts.
       # Example URL: /customer_bank_accounts
       # @param options [Hash] parameters as a hash, under a params key.

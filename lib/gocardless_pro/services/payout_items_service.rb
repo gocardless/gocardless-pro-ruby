@@ -11,7 +11,7 @@ module GoCardlessPro
     # Service for making requests to the PayoutItem endpoints
     class PayoutItemsService < BaseService
       # Returns a cursor-paginated
-      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # (https://docs.gocardless.com/docs/api-reference/data-conventions#cursor-pagination)
       # list of items in the payout.
       #
       # This endpoint only serves requests for payouts created in the last 6 months.

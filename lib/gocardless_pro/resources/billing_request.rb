@@ -16,7 +16,7 @@ module GoCardlessPro
     # payment using their mobile banking app.
     #
     # See Billing Requests: Overview
-    # (https://developer.gocardless.com/getting-started/billing-requests/overview/)
+    # (https://docs.gocardless.com/docs/collect-payments/setting-up-mandates)
     # for how-to's, explanations and tutorials. Important: All properties
     # associated with `subscription_request` and `instalment_schedule_request`
     # are only supported for ACH and PAD schemes.

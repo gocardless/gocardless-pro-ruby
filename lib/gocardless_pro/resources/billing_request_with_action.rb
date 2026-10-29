@@ -16,7 +16,7 @@ module GoCardlessPro
     # payment using their mobile banking app.
     #
     # See Billing Requests: Overview
-    # (https://developer.gocardless.com/getting-started/billing-requests/overview/)
+    # (https://docs.gocardless.com/docs/collect-payments/setting-up-mandates)
     # for how-to's, explanations and tutorials.
     class BillingRequestWithAction
       attr_reader :bank_authorisations

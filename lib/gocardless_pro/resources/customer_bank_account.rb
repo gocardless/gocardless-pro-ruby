@@ -11,11 +11,11 @@ module GoCardlessPro
     # Represents an instance of a customer_bank_account resource returned from the API
 
     # Customer Bank Accounts hold the bank details of a customer
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-customers).
-    # They always belong to a customer
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-customers),
-    # and may be linked to several Direct Debit mandates
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-mandates).
+    # (https://docs.gocardless.com/docs/api-reference/customer). They always
+    # belong to a customer
+    # (https://docs.gocardless.com/docs/api-reference/customer), and may be
+    # linked to several Direct Debit mandates
+    # (https://docs.gocardless.com/docs/api-reference/mandate).
     #
     # Note that customer bank accounts must be unique, and so you will encounter
     # a `bank_account_exists` error if you try to create a duplicate bank
@@ -26,7 +26,7 @@ module GoCardlessPro
     # Note: To ensure the customer's bank accounts are valid, verify them first
     # using
     # bank_details_lookups
-    # (https://developer.gocardless.com/api-reference/#bank-details-lookups-perform-a-bank-details-lookup),
+    # (https://docs.gocardless.com/docs/api-reference/bank-details-lookup#perform-a-bank-details-lookup),
     # before proceeding with creating the accounts
     class CustomerBankAccount
       attr_reader :account_holder_name

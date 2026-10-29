@@ -13,8 +13,8 @@ module GoCardlessPro
     # Deprecated: Redirect Flows are legacy APIs and cannot be used by new
     # integrators.
     # The Billing Request flow
-    # (https://developer.gocardless.com/api-reference/#billing-requests-billing-requests)
-    # API should be used for your payment flows.
+    # (https://docs.gocardless.com/docs/api-reference/billing-request) API
+    # should be used for your payment flows.
     #
     # Redirect flows enable you to use GoCardless' hosted payment pages
     # (https://pay-sandbox.gocardless.com/AL000000AKFPFF) to set up mandates
@@ -26,7 +26,7 @@ module GoCardlessPro
     #
     # 1.
     # You create
-    # (https://developer.gocardless.com/api-reference/#redirect-flows-create-a-redirect-flow)
+    # (https://docs.gocardless.com/docs/api-reference/redirect-flow#create-a-redirect-flow)
     # a redirect flow for your customer, and redirect them to the returned
     # redirect url, e.g. `https://pay.gocardless.com/flow/RE123`.
     # 2.
@@ -36,21 +36,18 @@ module GoCardlessPro
     # `redirect_flow_id=RE123` in the querystring.
     # 3.
     # You complete
-    # (https://developer.gocardless.com/api-reference/#redirect-flows-complete-a-redirect-flow)
+    # (https://docs.gocardless.com/docs/api-reference/redirect-flow#complete-a-redirect-flow)
     # the redirect flow, which creates a customer
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-customers),
-    # customer bank account
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-customer-bank-accounts),
-    # and mandate
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-mandates),
-    # and returns the ID of the mandate. You may wish to create a subscription
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-subscriptions)
-    # or payment
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-payments)
-    # at this point.
+    # (https://docs.gocardless.com/docs/api-reference/customer), customer bank
+    # account
+    # (https://docs.gocardless.com/docs/api-reference/customer-bank-account),
+    # and mandate (https://docs.gocardless.com/docs/api-reference/mandate), and
+    # returns the ID of the mandate. You may wish to create a subscription
+    # (https://docs.gocardless.com/docs/api-reference/subscription) or payment
+    # (https://docs.gocardless.com/docs/api-reference/payment) at this point.
     #
     # Once you have completed
-    # (https://developer.gocardless.com/api-reference/#redirect-flows-complete-a-redirect-flow)
+    # (https://docs.gocardless.com/docs/api-reference/redirect-flow#complete-a-redirect-flow)
     # the redirect flow via the API, you should display a confirmation page to
     # your customer, confirming that their Direct Debit has been set up. You can
     # build your own page, or redirect to the one we provide in the
