@@ -15,7 +15,7 @@ module GoCardlessPro
     # It is deprecated in favour of
     #
     #   Billing Requests
-    # (https://developer.gocardless.com/getting-started/billing-requests/overview/).
+    # (https://docs.gocardless.com/docs/collect-payments/setting-up-mandates).
     # Use Billing Requests to build any future integrations.
     #
     # Payer Authorisation resource acts as a wrapper for creating customer, bank
@@ -43,10 +43,9 @@ module GoCardlessPro
     # the following:
     #
     # 1.  Listen to   payer_authorisation_completed    webhook
-    # (https://developer.gocardless.com/api-reference/#appendix-webhooks)
-    # (recommended)
+    # (https://docs.gocardless.com/docs/api-reference/webhooks) (recommended)
     # 2.  Poll the GET  endpoint
-    # (https://developer.gocardless.com/api-reference/#payer-authorisations-get-a-single-payer-authorisation)
+    # (https://docs.gocardless.com/docs/api-reference/payer-authorisation#get-a-single-payer-authorisation)
     # 3.  Poll the GET events API
     # https://api.gocardless.com/events?payer_authorisation={id}&action=completed
     #

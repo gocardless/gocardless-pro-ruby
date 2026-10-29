@@ -11,7 +11,7 @@ module GoCardlessPro
     # Service for making requests to the Payout endpoints
     class PayoutsService < BaseService
       # Returns a cursor-paginated
-      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # (https://docs.gocardless.com/docs/api-reference/data-conventions#cursor-pagination)
       # list of your payouts.
       # Example URL: /payouts
       # @param options [Hash] parameters as a hash, under a params key.
@@ -42,7 +42,7 @@ module GoCardlessPro
 
       # Retrieves the details of a single payout. For an example of how to reconcile
       # the transactions in a payout, see this guide
-      # (https://developer.gocardless.com/api-reference/#events-reconciling-payouts-with-events).
+      # (https://docs.gocardless.com/docs/collect-payments/managing-payments/reconciling-payouts).
       # Example URL: /payouts/:identity
       #
       # @param identity       # Unique identifier, beginning with "PO".

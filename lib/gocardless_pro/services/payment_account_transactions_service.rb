@@ -14,7 +14,7 @@ module GoCardlessPro
       # Example URL: /payment_account_transactions/:identity
       #
       # @param identity       # The unique ID of the bank account
-      # (https://developer.gocardless.com/api-reference/#core-endpoints-creditor-bank-accounts)
+      # (https://docs.gocardless.com/docs/api-reference/creditor-bank-account)
       # which happens to be the payment account.
       # @param options [Hash] parameters as a hash, under a params key.
       def get(identity, options = {})
@@ -35,7 +35,7 @@ module GoCardlessPro
       # Example URL: /payment_accounts/:identity/transactions
       #
       # @param identity       # The unique ID of the bank account
-      # (https://developer.gocardless.com/api-reference/#core-endpoints-creditor-bank-accounts)
+      # (https://docs.gocardless.com/docs/api-reference/creditor-bank-account)
       # which happens to be the payment account.
       # @param options [Hash] parameters as a hash, under a params key.
       def list(identity, options = {})
@@ -57,7 +57,7 @@ module GoCardlessPro
       # Get a lazily enumerated list of all the items returned. This is similar to the `list` method but will paginate for you automatically.
       #
       # @param identity       # The unique ID of the bank account
-      # (https://developer.gocardless.com/api-reference/#core-endpoints-creditor-bank-accounts)
+      # (https://docs.gocardless.com/docs/api-reference/creditor-bank-account)
       # which happens to be the payment account.
       # @param options [Hash] parameters as a hash. If the request is a GET, these will be converted to query parameters.
       # Otherwise they will be the body of the request.

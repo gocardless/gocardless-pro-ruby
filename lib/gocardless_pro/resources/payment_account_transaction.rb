@@ -13,7 +13,7 @@ module GoCardlessPro
     # Payment account transactions represent movements of funds on a given
     # payment account. The payment account is provisioned by GoCardless and is
     # used to fund outbound payments
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-outbound-payments).
+    # (https://docs.gocardless.com/docs/api-reference/outbound-payment).
     class PaymentAccountTransaction
       attr_reader :amount
       attr_reader :balance_after_transaction

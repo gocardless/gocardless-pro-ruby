@@ -15,8 +15,8 @@ module GoCardlessPro
     # mandate which has been transferred. Event creation is an asynchronous
     # process, so it can take some time between an action occurring and its
     # corresponding event getting included in API responses. See here
-    # (https://developer.gocardless.com/api-reference/#event-types) for a
-    # complete list of event types.
+    # (https://docs.gocardless.com/docs/api-reference/events) for a complete
+    # list of event types.
     #
     # Important: Events older than 18 months will be archived and no longer
     # accessible via the API or exports. Archival will begin no sooner than 1

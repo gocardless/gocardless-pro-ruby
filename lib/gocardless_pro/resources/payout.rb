@@ -11,12 +11,11 @@ module GoCardlessPro
     # Represents an instance of a payout resource returned from the API
 
     # Payouts represent transfers from GoCardless to a creditor
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-creditors).
-    # Each payout contains the funds collected from one or many payments
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-payments).
-    # All the payments in a payout will have been collected in the same
-    # currency. Payouts are created automatically after a payment has been
-    # successfully collected.
+    # (https://docs.gocardless.com/docs/api-reference/creditor). Each payout
+    # contains the funds collected from one or many payments
+    # (https://docs.gocardless.com/docs/api-reference/payment). All the payments
+    # in a payout will have been collected in the same currency. Payouts are
+    # created automatically after a payment has been successfully collected.
     class Payout
       attr_reader :amount
       attr_reader :arrival_date

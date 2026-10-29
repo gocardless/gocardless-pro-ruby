@@ -12,7 +12,7 @@ module GoCardlessPro
 
     # Access the details of bank accounts provided for you by GoCardless that
     # are used to fund Outbound Payments
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-outbound-payments).
+    # (https://docs.gocardless.com/docs/api-reference/outbound-payment).
     class PaymentAccount
       attr_reader :account_balance
       attr_reader :account_holder_name

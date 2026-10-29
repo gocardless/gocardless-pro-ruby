@@ -11,7 +11,7 @@ module GoCardlessPro
     # Service for making requests to the NegativeBalanceLimit endpoints
     class NegativeBalanceLimitsService < BaseService
       # Returns a cursor-paginated
-      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # (https://docs.gocardless.com/docs/api-reference/data-conventions#cursor-pagination)
       # list of negative balance limits.
       # Example URL: /negative_balance_limits
       # @param options [Hash] parameters as a hash, under a params key.

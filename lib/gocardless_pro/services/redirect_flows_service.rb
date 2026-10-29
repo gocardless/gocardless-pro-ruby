@@ -14,7 +14,7 @@ module GoCardlessPro
       # customer to the GoCardless hosted payment pages.
       # Example URL: /redirect_flows
       # @param options [Hash] parameters as a hash, under a params key.
-      # @deprecated Redirect Flows are legacy APIs and cannot be used by new integrators. The Billing Request flow (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for your payment flows.
+      # @deprecated Redirect Flows are legacy APIs and cannot be used by new integrators. The Billing Request flow (https://docs.gocardless.com/docs/api-reference/billing-request) API should be used for your payment flows.
       def create(options = {})
         path = '/redirect_flows'
 
@@ -52,7 +52,7 @@ module GoCardlessPro
       #
       # @param identity       # Unique identifier, beginning with "RE".
       # @param options [Hash] parameters as a hash, under a params key.
-      # @deprecated Redirect Flows are legacy APIs and cannot be used by new integrators. The Billing Request flow (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for your payment flows.
+      # @deprecated Redirect Flows are legacy APIs and cannot be used by new integrators. The Billing Request flow (https://docs.gocardless.com/docs/api-reference/billing-request) API should be used for your payment flows.
       def get(identity, options = {})
         path = sub_url('/redirect_flows/:identity', {
                          'identity' => identity,
@@ -68,13 +68,11 @@ module GoCardlessPro
       end
 
       # This creates a customer
-      # (https://developer.gocardless.com/api-reference/#core-endpoints-customers),
-      # customer bank account
-      # (https://developer.gocardless.com/api-reference/#core-endpoints-customer-bank-accounts),
-      # and mandate
-      # (https://developer.gocardless.com/api-reference/#core-endpoints-mandates)
-      # using the details supplied by your customer and returns the ID of the created
-      # mandate.
+      # (https://docs.gocardless.com/docs/api-reference/customer), customer bank
+      # account
+      # (https://docs.gocardless.com/docs/api-reference/customer-bank-account), and
+      # mandate (https://docs.gocardless.com/docs/api-reference/mandate) using the
+      # details supplied by your customer and returns the ID of the created mandate.
       #
       # This will return a `redirect_flow_incomplete` error if your customer has not
       # yet been redirected back to your site, and a `redirect_flow_already_completed`
@@ -85,7 +83,7 @@ module GoCardlessPro
       #
       # @param identity       # Unique identifier, beginning with "RE".
       # @param options [Hash] parameters as a hash, under a params key.
-      # @deprecated Redirect Flows are legacy APIs and cannot be used by new integrators. The Billing Request flow (https://developer.gocardless.com/api-reference/#billing-requests) API should be used for your payment flows.
+      # @deprecated Redirect Flows are legacy APIs and cannot be used by new integrators. The Billing Request flow (https://docs.gocardless.com/docs/api-reference/billing-request) API should be used for your payment flows.
       def complete(identity, options = {})
         path = sub_url('/redirect_flows/:identity/actions/complete', {
                          'identity' => identity,

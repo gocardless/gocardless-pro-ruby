@@ -11,12 +11,12 @@ module GoCardlessPro
     # Represents an instance of a outbound_payment resource returned from the API
 
     # Outbound Payments represent payments sent from creditors
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-creditors).
+    # (https://docs.gocardless.com/docs/api-reference/creditor).
     #
     # GoCardless will notify you via a webhook
-    # (https://developer.gocardless.com/api-reference/#appendix-webhooks) when
-    # the status of the outbound payment changes
-    # (https://developer.gocardless.com/api-reference/#event-types-outbound-payment).
+    # (https://docs.gocardless.com/docs/api-reference/webhooks) when the status
+    # of the outbound payment changes
+    # (https://docs.gocardless.com/docs/api-reference/events/outbound-payment).
     #
     # Rate limiting
     #

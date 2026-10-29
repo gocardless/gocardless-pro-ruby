@@ -11,16 +11,15 @@ module GoCardlessPro
     # Represents an instance of a subscription resource returned from the API
 
     # Subscriptions create payments
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-payments)
-    # according to a schedule.
+    # (https://docs.gocardless.com/docs/api-reference/payment) according to a
+    # schedule.
     #
     # Recurrence Rules
     #
     # The following rules apply when specifying recurrence:
     #
     # - If `day_of_month` and `start_date` are not provided `start_date` will be
-    # the mandate
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-mandates)'s
+    # the mandate (https://docs.gocardless.com/docs/api-reference/mandate)'s
     # `next_possible_charge_date` and the subscription will then recur based on
     # the `interval` & `interval_unit`
     # - If `month` or `day_of_month` are present the following validations

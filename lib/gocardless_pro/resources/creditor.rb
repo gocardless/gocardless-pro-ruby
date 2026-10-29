@@ -10,8 +10,7 @@ module GoCardlessPro
   module Resources
     # Represents an instance of a creditor resource returned from the API
 
-    # Each payment
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-payments)
+    # Each payment (https://docs.gocardless.com/docs/api-reference/payment)
     # taken through the API is linked to a "creditor", to whom the payment is
     # then paid out. In most cases your organisation will have a single
     # "creditor", but the API also supports collecting payments on behalf of

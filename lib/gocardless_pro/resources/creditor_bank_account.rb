@@ -11,10 +11,9 @@ module GoCardlessPro
     # Represents an instance of a creditor_bank_account resource returned from the API
 
     # Creditor Bank Accounts hold the bank details of a creditor
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-creditors).
-    # These are the bank accounts which your payouts
-    # (https://developer.gocardless.com/api-reference/#core-endpoints-payouts)
-    # will be sent to.
+    # (https://docs.gocardless.com/docs/api-reference/creditor). These are the
+    # bank accounts which your payouts
+    # (https://docs.gocardless.com/docs/api-reference/payout) will be sent to.
     #
     # Note that creditor bank accounts must be unique, and so you will encounter
     # a `bank_account_exists` error if you try to create a duplicate bank

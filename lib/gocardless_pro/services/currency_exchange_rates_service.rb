@@ -11,7 +11,7 @@ module GoCardlessPro
     # Service for making requests to the CurrencyExchangeRate endpoints
     class CurrencyExchangeRatesService < BaseService
       # Returns a cursor-paginated
-      # (https://developer.gocardless.com/api-reference/#api-usage-cursor-pagination)
+      # (https://docs.gocardless.com/docs/api-reference/data-conventions#cursor-pagination)
       # list of all exchange rates.
       # Example URL: /currency_exchange_rates
       # @param options [Hash] parameters as a hash, under a params key.
