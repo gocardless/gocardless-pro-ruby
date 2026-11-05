@@ -24,6 +24,7 @@ module GoCardlessPro
       attr_reader :logo_url
       attr_reader :name
       attr_reader :roles
+      attr_reader :status
 
       # Initialize a institution resource instance
       # @param object [Hash] an object returned from the API
@@ -37,6 +38,7 @@ module GoCardlessPro
         @logo_url = object['logo_url']
         @name = object['name']
         @roles = object['roles']
+        @status = object['status']
         @response = response
       end
 
