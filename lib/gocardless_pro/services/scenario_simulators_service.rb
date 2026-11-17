@@ -96,6 +96,13 @@ module GoCardlessPro
       # invalid bank details). It must start in the `pending_submission` or
       # `submitted` states. Not compatible with SEPA mandates, which are
       # submitted with their first payment.
+      # - `mandate_cancelled`: Transitions a mandate through to `cancelled`, as
+      # if a bank had cancelled it (for example because the customer asked their
+      # bank to cancel the Direct Debit instruction). It must start in the
+      # `pending_submission`, `submitted` or `activated` state. Compatible with
+      # ACH, Autogiro, Bacs, BECS, Betalingsservice, PAD and SEPA mandates. The
+      # mandate's pending payments, subscriptions and instalment schedules are
+      # cancelled along with it, a few seconds later.
       # - `mandate_expired`: Transitions a mandate through to `expired`, having
       # been submitted to the banks, set up successfully and then expired
       # because no collection attempts were made against it for longer than the
